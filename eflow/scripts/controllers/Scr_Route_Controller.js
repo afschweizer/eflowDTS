@@ -106,7 +106,8 @@ $scope.Select = function(){
    		//var onSuccess = function(pos){
    		
    		var map = document.getElementById('Map_Dashboard_Route');
-   			
+   			map.style.height = 100;
+   			map.style.width = 100;
    		if(map){
 
    			eflowDTS.Map_Dashboard = new GMaps({
