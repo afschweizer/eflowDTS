@@ -105,7 +105,7 @@ $scope.Select = function(){
    		
    		//var onSuccess = function(pos){
    		
-   		var map = document.getElementById('Map_Dashboard');
+   		var map = document.getElementById('Map_Dashboard_Route');
    			
    		if(map){
 
