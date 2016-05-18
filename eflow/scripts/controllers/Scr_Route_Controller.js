@@ -3,7 +3,7 @@ DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
 	
-	$scope.Show_Components.Route_Form = true;
+	$scope.Show_Components.Route_Form = false;
 	$scope.Show_Components.Route_Table = true;
 	$scope.Show_Components.Route_Add = true;
 	$scope.Route = {};
