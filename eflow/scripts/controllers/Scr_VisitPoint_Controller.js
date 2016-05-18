@@ -133,9 +133,9 @@ function Select_Routes(){
 				
    		}
    		
-   		};
+   		/*};
    		
-   	/*	navigator.geolocation.getCurrentPosition(onSuccess);
+   		navigator.geolocation.getCurrentPosition(onSuccess);
    		
    	}else{   		 		
    		

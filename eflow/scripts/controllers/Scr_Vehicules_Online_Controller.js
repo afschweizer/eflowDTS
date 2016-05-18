@@ -141,10 +141,10 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 		   			
    		}
    		
-   		};
+   		/*};
    		
    		
-   	/*	var onError = function(err) {
+   		var onError = function(err) {
   			alert('ERROR(' + err.code + '): ' + err.message);
         };
     

@@ -144,7 +144,7 @@ $scope.Select = function(){
 		   			
    		}
    		
-   		};
+   		/*};
    		
    		
    		var onError = function(err) {
@@ -166,7 +166,7 @@ $scope.Select = function(){
                 		}
                 }
                 });
-     	}
+     	}*/
    	
    };
    
