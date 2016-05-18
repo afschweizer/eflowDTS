@@ -1,0 +1,130 @@
+
+<div ng-controller="Scr_Message_Controller" ng-init="init()">
+ <div id="Options">
+  <span id="Buttons" style="margin-left:7%;">
+  <span>
+    <a class="btn btn-primary span4" data-toggle="modal" data-target="#myModal">
+      <i class="glyphicon glyphicon-plus"></i>  Nuevo Mensaje</a>
+  </span>
+  </span>  
+  </div>
+  
+  <hr/>
+  
+  
+  <!--Table-->
+  
+      <div id="New_Message" class="table-responsive" style="margin-left: 1%;width: 98%; margin-right: 1%;" >
+    <table class="table table-responsive table-striped table-hover"  class="resizable" >
+     <thead >   
+        <tr style="background-color:#4096c6; color:#fff; align:center">   
+         <th style="width:auto;">Nº fila</th>
+        <th>
+          <p class="" />Mantenimiento
+       	  <input type="checkbox"  ng-model="master" ng-change="Checking_Checkboxes_Check()" />
+          </th>
+        <th style="text-align:center" ng-repeat="headersEs in ArrayHeadersEs" ng-click="To_Order_By(headersEs.value);"><i class="glyphicon glyphicon-sort"></i>   {{headersEs.es}}</th>
+       
+      </tr>
+       <tr>
+          <th>
+          </th>
+          <th>	
+            <span ng-show="Show_Actions">
+              <select style="width:175px " class="btn btn-primary span4" ng-model="Option" ng-change="Action_Option(Option)"> 
+                  <option value="">Acción</option>
+                  <option value="Eliminar">Eliminar</option>
+              </select>
+            </span>
+          </th>
+          <th>
+            <input ng-model="search.User">
+          </th>
+          <th>
+            <input ng-model="search.Date">
+          </th>
+          <th>
+				<input ng-model="search.Matter">          
+          </th>
+          <th>
+            <input ng-model="search.Detail">
+          </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr  ng-repeat="obj in ArrayMessage| filter: search |  orderBy: OrderList">
+        <td>{{$index+1}}</td> 
+        <td>
+          <input type="checkbox" name="CheckBox_Options" ng-model="master" ng-change="Checking_Checkboxes_Check()" ng-checked="master" value="{{obj}}" id_check="{{obj._id.$id}}"/> 
+         <!--<a >
+           <div class="btn-group" role="group" aria-label="...">
+ 				<i class="btn btn-danger glyphicon glyphicon-remove-sign"  data-toggle="tooltip" title="Eliminar" ng-click="Remove_Message(obj);"></i>
+        	  </div> 
+          </a>-->
+        </td>
+        <td>{{obj.User}}</td> 
+        <td>{{obj.Date}}</td> 
+        <td>{{obj.Matter}}</td>
+        <td>{{obj.Detail}}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>
+  
+  
+  
+  
+  
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-header" style="background-color:#4096c6;color:#fff">
+        <h2 class="modal-title"><i class="glyphicon glyphicon-envelope"></i>  Envío de Mensajes </h2>
+      </div>
+       <form>     
+            <div class="modal-body">
+
+            <div class="panel panel-info"><div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user" data-toggle="tooltip" title="Destinatario del Mensaje"></i></span>
+                        <select ng-model="User.ID" ng-options="Obj.ID as Obj.Name for Obj in ArrayUser" style="width: 80%;" class="form-control" id="Usuario"></select>
+                        &nbsp;
+                            <input type="checkbox"  id="check" ng-model="checked" ng-change="habilitar(checked)" data-toggle="tooltip" title="Enviar a Todos" style="width: 20px; height:20px"><b>Todos</b>
+                     </div> <br/>
+                    <!-- <div class="input-group">
+                        <span class="input-group-addon"><i data-toggle="tooltip" title="Destinatario del Mensaje"><img src="images/cars.png" align="left" alt="Smiley face" height="20px"></i></span>
+                        <select ng-model="Vehicle.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle"></select>
+                        &nbsp;
+                            <input type="checkbox"  id="check" ng-model="checked" ng-change="habilitar(checked)" data-toggle="tooltip" title="Enviar a Todos" style="width: 20px; height:20px"><b>Todos</b>
+                          </div>
+                        <br/>-->
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-text-color" data-toggle="tooltip" title="Asunto del Mensaje"></i></span>
+                              <textarea class="form-control" id="Asunto" rows="02" style="width: 95%;" ng-model="TextAsunto" placeholder="Asunto"></textarea>
+                          </div>                                                                  
+                        <br/>
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" data-toggle="tooltip" title="Detalle del Mensaje"></i>
+                        </span><textarea class="form-control" id="Message" rows="05" style="width: 95%;" ng-model="TextMessage" placeholder="Message"></textarea>
+                          </div>                                                                  
+                        <br/>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary glyphicon glyphicon-save"  data-dismiss="modal"  ng-click="Message(User.ID,TextAsunto,TextMessage,checked)"  data-toggle="tooltip" title="Envio del Mensaje"> Enviar</button>
+                <button type="Reset" class="btn btn-primary glyphicon glyphicon-remove" style="border-top: 2.5px;border-style:solid;border-color:#fff;" data-toggle="tooltip" title="Cancelación del Mensaje" data-dismiss="modal"> Cancelar </button>                        
+            </div>
+             </div> 
+        </form>
+      </div>                     
+    </div>  
+</div>
+  
+</div>
+	  
+	
+
+	

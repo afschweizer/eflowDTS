@@ -1,0 +1,71 @@
+
+<div ng-controller="Scr_Company_Controller" ng-init="init()">  
+
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+    <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Datos de la Compañia</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form  ng-submit="validate(Companys)"class="form-horizontal">
+                  <div class="box-body">
+                    <div class="form-group"> 
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
+                      <div class="col-sm-10">  
+                        <input type="text" class="form-control" ng-model="Companys.name" placeholder="Nombre"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Identificador</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.identifier" placeholder="Identificador"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Correo</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.mail" placeholder="Correo"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">País</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.country" placeholder="País"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Ubicación</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.location" placeholder="Ubicacion"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Teléfono</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.phone" placeholder="Teléfono"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Fax</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.fax" placeholder="Fax"required>
+                      </div>
+                    </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-info pull-right" >Guardar</button>
+                  </div><!-- /.box-footer -->
+                </form>
+              </div>
+  
+                </div>
+  
+  <div class="col-sm-2">
+  </div>
+  
+            </div>
+  
+

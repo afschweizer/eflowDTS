@@ -1,0 +1,48 @@
+<div class="container" ng-controller="Scr_Login_Controller" ng-init="init()">   
+  
+  
+  
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+     
+      
+        <div class="row">                  
+        </div>
+      <form ng-submit="Log_In(Log);">
+         <div class="panel panel-default">
+            <div class="panel-heading" style="color:#fff;background-color: #014D7C;">
+                <div class="panel-title text-center">Ingreso al sistema</div>
+            </div>     
+            <div class="panel-body">
+                <div name="form" id="form" class="form-horizontal">                   
+                    <div class="input-group">
+                        <span class="input-group-addon" style="background-color: #014D7C;color:#fff;"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="mail" type="email" required class="form-control" name="mail" value="" ng-model="Log.Mail" placeholder="Correo...">                                        
+                    </div>
+						<br/>
+                    <div class="input-group">
+                        <span class="input-group-addon" style="background-color: #014D7C;color:#fff;"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password" type="password" required class="form-control" name="password" ng-model="Log.Password"  placeholder="Contrase&ntilde;a...">
+                    </div>                                                                  
+						<br/>
+                   <!-- <div class="input-group">
+                        <span class="input-group-addon" style="background-color: #014D7C;color:#fff;"><i class="fa fa-university"></i></span>
+                        <input id="company" type="text" required class="form-control" name="company" ng-model="Log.Company"  placeholder="Compañia...">
+                    </div> -->                                                                 
+						<br/>
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="glyphicon glyphicon-log-in"></i> Ingresar</button>                          
+                        </div>
+                    </div>
+                </div>     
+            </div>                     
+        </div>  
+      </form>
+    </div>
+</div>

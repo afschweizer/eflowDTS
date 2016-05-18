@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html ng-app="DTS_APP">
+    <head>
+        <title>Delivery Tracking System</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="shortcut icon" href="images/Eflow_Icon.ico">
+		<link rel="stylesheet" href="styles/Css_Proyect.css">
+      
+	   <link rel="stylesheet" href="styles/Dashboard.css">
+      
+      <link rel="stylesheet" href="styles/responsive-calendar.css">
+<script src="scripts/externals/jspdf.min.js"></script>
+<script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+      <script src="//code.angularjs.org/1.2.19/i18n/angular-locale_es-es.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<script type="text/javascript" src="scripts/externals/Functions_Depurado.js"></script>
+      <script type="text/javascript" src="scripts/externals/dateFormat.js"></script>
+      <script src="scripts/externals/pagination.js"></script>
+      <script src="scripts/externals/Dexie.js"></script> 
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA6j2QfERe0APfyuG-tH6ffhM6vig3qoqk"></script>
+		<script type="text/javascript" src="scripts/externals/Gmaps.js"></script>
+
+    <!-- 	<script src="scripts/externals/jsPDF.js"></script>
+      
+      <script src="scripts/externals/AutoTable.js"></script>
+-->
+    <style>
+      .footer {
+        color:#000000;
+        background-color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+      </style>
+      
+      <script src="app.js"></script>
+		<script src="scripts/controllers/indexController.js"></script>
+		<script src="scripts/controllers/Scr_Job_Controller_jqwidgets.js"></script>
+		<script src="scripts/controllers/Scr_Job_Import_Controller.js"></script>
+		<script src="scripts/controllers/Scr_User_Import_Controller.js"></script>
+		<script src="scripts/controllers/Scr_Vehicule_Import_Controller.js"></script>
+		<script src="scripts/controllers/Scr_Route_Import_Controller.js"></script>
+		<script src="scripts/controllers/Scr_VisitPoint_Import_Controller.js"></script>
+		<script src="scripts/controllers/Scr_VisitPoint_DB_Controller.js"></script>
+      <script src="scripts/controllers/Scr_PV_DB_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Login_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Calendar_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Message_Controller.js"></script>
+      <script src="scripts/controllers/Scr_User_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Vehicule_Controller.js"></script>
+      <script src="scripts/controllers/Scr_DashBoard_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Vehicules_Detail_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Vehicules_Online_Controller.js"></script>
+      <script src="scripts/controllers/Scr_VisitPoint_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Company_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Route_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Product_Controller.js"></script>
+     
+
+      
+	<script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+	<script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   
+ 
+	 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>  
+    </head>
+    <body  ng-controller="indexController" ng-init="init();">
+      <!-- HEADER AND NAVBAR -->
+       <header >
+            <nav class="navbar navbar-default" style="">
+               <div class="navbar-header" style="width:100%; color:#000000;background-color: #ffffff"><!--background-color: #014D7C;-->
+                
+                 <span style=" float:left; text-align:left;">
+                   <img src="images/Logo.jpg" align="left" alt="Eflow" height="42px">
+        					<img src="images/DTS.png" align="left" alt="Delivery Tracking System" height="42px">
+                 </span>
+           <span >
+                   	<a class="navbar-brand glyphicon glyphicon-time" style="color:#000000;">
+                      {{Watch|date:"mediumTime"}}
+                     </a> 
+                 </span>
+                 <span >
+                  	<a class="navbar-brand glyphicon glyphicon-calendar"style="color:#000000;">
+                      {{Watch|date:"shortDate"}}
+                     </a>
+                 </span>
+                 <span style="float:right; text-align:right;color:#000000;">
+                    <h4>
+                  <ul style="list-style:none; ">
+                     <li id="Login" class="dropdown" style="color:#000000;">
+                       <span class="fa fa-university" data-toggle="tooltip" title="Usuario Activo"></span>{{Company}}      
+                       <span class="glyphicon glyphicon-user" data-toggle="tooltip" title="Usuario Activo"></span>{{UserName}}      .
+                       <a style="color:#000000;" ng-click="Sign_Out()" class="glyphicon glyphicon-log-out" data-toggle="tooltip" title="Cerrar Sesi&oacute;n" tabindex="0"></a>
+                     </li>
+                     </ul>
+                   </h4>
+                 </span>
+                      <!-- 
+                       <span class="caret"></span>
+                      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#fff;" >
+                     		<span class="glyphicon glyphicon-user"></span>{{UserName}} <span class="caret"></span>
+                      </a>
+                       --><!--
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                          <a  class="glyphicon glyphicon-cog" tabindex="0"  data-toggle="tooltip" title="Usuario Activo"> {{UserName}} </a>
+                       </li>
+                        <li class="dropdown-submenu">-->
+                        <!--</li>
+                        
+                      </ul>-->
+         <!--
+                      <ul class="nav pull-right">
+                     <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" id="nav-organisation" role="button" style="color:#fff;">
+                          <i class="fa fa-fw fa-building ">
+                          </i> {{UserName}} 
+                          <b class="caret">
+                          </b>
+                       </a>
+                        <ul aria-labelledby="nav-organisations" class="dropdown-menu" role="menu">
+                           <a class="dropdown-toggle" data-toggle="dropdown" id="nav-organisation" role="button">
+                          </a>
+      
+<li class="disabled" role="presentation">
+                             <a class="dropdown-toggle" data-toggle="dropdown" id="nav-organisation" role="button">
+                             </a>
+                             <a  role="menuitem" tabindex="-1">
+               
+<i class="fa fa-fw fa-building">
+                               </i> {{UserName}}
+                             </a>
+                          </li>
+                           <li role="presentation">
+                             <a href="#ad" role="menuitem" tabindex="-1">
+                               <i class="fa fa-fw fa-key">
+                               </i> Sign Out 
+                             </a>
+                          </li>
+                        </ul>
+                     </li>
+                  </ul>
+                 </span>-->
+              </div>
+				  <div>
+                <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Main_Menu">
+                 		<!--<li><a href="#Job_jqwidgets" data-toggle="tooltip" title="Tareas">Tareas</a></li>
+							<li><a href="#Jobs" data-toggle="tooltip" title="Mapas">Mapas</a></li>      
+                     <li><a href="#Company" data-toggle="tooltip" title="Vehículos">Company</a></li>  
+                 		<li><a href="#PV_DB" data-toggle="tooltip" title="Puntos De Visita">Puntos De Visita</a></li>-->
+                     <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Calendar" data-toggle="tooltip" title="Planificador">Planificador</a></li>
+                 		    
+                  	<li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicules_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
+               		<li ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false"><a data-toggle="tooltip" title="Mantenimiento">Mantenimiento</a>
+                   		 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.SubMenu_Maintenance">
+                  		    <li><a href="#user" data-toggle="tooltip" title="Usuarios">Usuarios</a></li>
+                             <li><a href="#vehicule" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
+                             <li><a href="#VisitPoint" data-toggle="tooltip" title="Establecimientos">Establecimientos</a></li>          
+                             <li><a href="#Routes" data-toggle="tooltip" title="Rutas">Rutas</a></li>           
+                            <!-- <li><a href="#product" data-toggle="tooltip" title="Productos">Productos</a></li>  --> 
+                 		
+                   </ul></li>
+                  	<li ng-click="Show_Components.SubMenu_Import = true;Show_Components.SubMenu_Maintenance = false"><a data-toggle="tooltip" title="Mantenimiento">Importar</a>
+                   		 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.SubMenu_Import">
+                  		     <li><a href="#Job_Import" data-toggle="tooltip" title="Importar Puntos de Visita">Trabajos</a></li>
+                  		     <li><a href="#User_Import" data-toggle="tooltip" title="Importar Usuarios">Usuarios</a></li> 
+                             <li><a href="#Vehicule_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
+                  		     <li><a href="#Route_Import" data-toggle="tooltip" title="Importar Rutas">Rutas</a></li> 
+                             <li><a href="#VisitPoint_Import" data-toggle="tooltip" title="Importar Establecimientos">Establecimientos</a></li>          
+                            <!-- <li><a href="#product" data-toggle="tooltip" title="Productos">Productos</a></li>  --> 
+                 		
+                   </ul></li>
+                  
+                  
+                </ul>
+              </div>
+            </nav>
+        </header>
+        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main">
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+				<div ng-view></div>
+          
+          
+    <!--  <script src="scripts/externals/Dashboard.js"></script> -->
+        </div>
+   <!--    <footer class="footer">
+      <div class="container" align="right" >
+ <span >
+          	<a class="navbar-brand glyphicon glyphicon-time" style="color:#000000;">
+            	{{Watch|date:"mediumTime"}}
+            </a> 
+          </span>
+          <span >
+            <a class="navbar-brand glyphicon glyphicon-calendar"style="color:#000000;">
+            	{{Watch|date:"shortDate"}}
+            </a>
+        </span>
+</div>
+    </footer>-->
+  <!--<footer class="footer">
+  <div class="container">
+    <p>
+      
+Hola Mundo
+    </p>
+  </div>  
+  </footer>   --> 
+  </body>
+    </html>

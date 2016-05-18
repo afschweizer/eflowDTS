@@ -1,0 +1,21 @@
+application: bright-proxy-102619
+version: 1
+runtime: php55
+api_version: 1
+
+handlers:
+
+- url: /(.+\.php)$
+  script: \1 
+  
+- url: /css
+  static_dir: css
+  
+- url: /JavaScript
+  static_dir: JavaScript
+  
+- url: /html
+  static_dir: html
+  
+- url: /images
+  static_dir: images

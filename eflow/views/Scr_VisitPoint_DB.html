@@ -1,0 +1,791 @@
+
+<script src="scripts/externals/jspdf.min.js"></script>
+<script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
+
+<div id="Contents" ng-controller="Scr_VisitPoint_DB_Controller" ng-init="init()">
+  <div id="container" style="clear:both; margin-left: 1%;width: 98%; margin-right: 1%;" >
+   <div style="text-align: center;">  
+    <span style="display:inline-block;">
+      <h4>
+          {{Date|date:"fullDate"}}
+      </h4>
+    </span>
+   </div>
+    <div id="left"  >     
+     <span  ng-show="Show_Actions">
+    		<select style="width:175px " class="btn btn-primary span4" ng-model="Option" ng-change="Action_Option(Option)"> 
+              <option value="">Selecione la opción deseada</option>
+              <option value="Eliminar">Eliminar</option>
+              <option value="Cambiar" >Asignar</option>
+              <option value="Estados" >Cambiar Estados</option>
+           </select>
+     </span>
+     <!-- 
+      <span>
+        <a class="btn btn-primary span4"  data-toggle="tooltip" title="Eliminar" ng-click="Delete_Job_DB();">
+          <i class="glyphicon glyphicon-remove-sign"></i>  Eliminar</a>
+      </span> 
+      <span>
+        <a class="btn btn-primary span4" title="Cambiar" data-toggle="tooltip" ng-click="Open_Modal_Change()">
+          <i class=" glyphicon glyphicon-pencil"></i>  Cambiar</a>
+      </span>
+       -->
+      <span>
+            <a class="btn btn-primary span4" ng-click="Open_Modal_Add_VisitPoint()" data-toggle="tooltip" title="Agregar una tarea" >
+            <i class="glyphicon glyphicon-plus"></i>  Nueva Tarea</a>
+      </span>
+      
+      <span id="right" style="float:right;"> 
+           <select style="width:175px " class="btn btn-primary span4" ng-model="Export_Type" ng-change="Export_File(Export_Type,(ArrayJobs | filter: search | filter: {'Visit_State': Status_Filter} | orderBy: OrderList))"> 
+              <option value="">Exportar a archivo</option>
+              <option value="JSON">JSON</option>
+              <option value="XML">XML</option>
+              <option value="CSV">CSV</option>
+              <option value="PDF">PDF</option>
+           </select>
+      </span> 
+      
+  <!--  
+      <span>
+      <div id="change" style="display:none">
+         <div class="form-group">
+           <span> 
+              <label>Asignar al Usuario:</label>
+              <select ng-model="Assign.User" ng-options="Obj.ID as Obj.Name for Obj in ArrayUser" style="width: 30%;" class="form-control" id="Usuario"></select>
+			  </span>
+           <span>
+              <label>Asignar al Vehículo:</label>
+              <select ng-model="Assign.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 30%;" class="form-control" id="Vehicle" ng-change="Info_Vehicule(Assign.ID_Truck,ArrayVehicle)"></select>
+          <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
+           </span>
+           <br/>
+            <span>
+            <a class="btn btn-primary span4" ng-click="Assign_All(Assign);" data-toggle="tooltip" title="Asignar" >
+            <i class=""></i>Guardar</a>  
+              
+      </span>
+		   </div>
+       </div>
+      </span>-->
+     <!-- <label>Filtrar por estado: <input ng-model="search.Visit_State"></label> <br>-->
+    </div> 
+    
+     <div id="Modal_Change_Status" class="modal fade"  role="dialog" >
+    <div class="modal-dialog modal-lg"  style="width: 40%;" >
+        <!-- Modal content-->
+        <div class="modal-content" >
+			<div class="modal-header" style="background-color:#4096c6;color:#fff">
+				<h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Cambiar Estado Actual </h2>
+            </div>
+            <div class="modal-body">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+               
+					</div>
+				</div>
+			    <div class="form-group">
+               <span>
+						<label>Asignar un Estado:   </label>
+					    <select ng-model="Status" ng-options="Obj.ID as Obj.Name for Obj in ArrayStatus" style="width: 80%;" class="form-control" id="Status"></select>
+				   </span>
+				</div>
+			</div>  
+      <div class="modal-footer">
+            <button type="submit" class="btn btn-primary glyphicon glyphicon-save" style="background-color:#295C7A" data-dismiss="modal" data-toggle="tooltip" title="Guardar" ng-click="Assign_Status(Status);"> Guardar</button>
+            <a class="btn btn-primary glyphicon glyphicon-remove" data-toggle="tooltip" title="Cerrar"  style="background-color:#295C7A" data-dismiss="modal"><b> Cerrar</b></a>
+    </div>
+        </div>
+	</div>  
+</div>
+  
+      <div id="Modal_Change" class="modal fade"  role="dialog" >
+    <div class="modal-dialog modal-lg"  style="width: 40%;" >
+        <!-- Modal content-->
+        <div class="modal-content" >
+			<div class="modal-header" style="background-color:#4096c6;color:#fff">
+				<h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Cambiar Usuario y Vehiculo </h2>
+            </div>
+            <div class="modal-body">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+                 <b>Todos</b> los campos necesarios.
+					</div>
+				</div>
+			    <div class="form-group">
+               <span>
+						<label>Asignar la Fecha:   </label>
+					    <input type="date" class="form-control" style="width: 50%;"  min="2015-01-01" ng-model="Assign.Estimated_Date" required>
+                </span>
+				   <br/>
+				    <span> 
+						<label>Asignar al Usuario: </label>
+						    <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name for Obj in ArrayUser" class="form-control" id="Usuario"> </select>
+               </span>
+				   <br/>
+				    <span>
+						<label>Asignar al Vehículo:</label>
+						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" class="form-control" id="Vehicle" ng-change="Info_Vehicule(Assign.ID_Truck,ArrayVehicle)"></select>
+						 <br/>
+                  <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
+               </span>
+				   <br/>
+				<!--	<span>
+						<a class="btn btn-primary span4" ng-click="Assign_All(Assign);" data-toggle="tooltip" title="Asignar" >
+						<i class=""></i>Guardar</a>  
+					</span>-->
+				</div>
+			</div>  
+      <div class="modal-footer">
+            <button type="submit" class="btn btn-primary glyphicon glyphicon-save" style="background-color:#295C7A" data-dismiss="modal" data-toggle="tooltip" title="Guardar" ng-click="Assign_All(Assign);"> Guardar</button>
+            <a class="btn btn-primary glyphicon glyphicon-remove" data-toggle="tooltip" title="Cerrar"  style="background-color:#295C7A" data-dismiss="modal"><b> Cerrar</b></a>
+    </div>
+        </div>
+	</div>  
+</div>
+  
+    <div style="float:left;"> 
+        <ul class="nav nav-pills ">
+           <li ><a ng-click="See_Status('')">Total de registros <span class="badgea">{{ArrayJobs.length}}</span></a></li>
+           <li ><a ng-click="See_Status('Finalized')">Finalizados <span class="badgea badge-Finalized" >{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}</span></a></li>
+           <li ><a ng-click="See_Status('Partial')">Parcialmente Finalizados <span class="badgea badge-Partial">{{(ArrayJobs | filter:  {'Visit_State': 'Partial'} :true).length}}</span></a></li> 
+           <li ><a ng-click="See_Status('In_Process')">En Proceso <span class="badgea badge-In_Process" >{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span></a></li>
+           <li ><a ng-click="See_Status('Aborted')">Abortados <span class="badgea badge-Aborted">{{(ArrayJobs | filter:  {'Visit_State': 'Aborted'} :true).length}}</span></a></li>
+           <li ><a ng-click="See_Status('Unassigned')">No Asignados <span class="badgea badge-Unassigned"  >{{(ArrayJobs | filter: {'Visit_State': 'Unassigned'} :true).length}}</span></a></li>
+          
+           
+        </ul>   
+    </div>
+       
+   
+</div>
+   
+
+
+  <!--Table VisitPoint DataBase -->
+  
+  <div id="Table_VisitPoint_DB"  class="table-responsive" style="margin-left: 1%;width: 98%; margin-right: 1%;" >  
+    <table class="table table-responsive table-hover"  class="resizable">
+     <thead >   
+        <tr style="background-color:#4096c6; color:#fff; align:center">  
+        <th style="width:auto;">Nº fila</th>
+         <th>
+        
+ 		  <input type="checkbox"  ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);" /> 
+        </th> 
+           <th  style="text-align:center" ng-repeat="header in Headers" ng-click="To_Order_By(header.value);" ><i class="glyphicon glyphicon-sort"></i>   {{header.es}}</th>
+         </tr>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>
+            <input ng-model="search.Name">
+          </th>
+          <th>
+            <input ng-model="search.ID_Truck">
+          </th>
+          <th>
+            <input ng-model="search.User">
+          </th>
+          <th>
+            <input ng-model="search.Route.Route_Name">
+          </th>
+          <th>
+            <input ng-model="search.Sequence">
+          </th>
+          <th>
+            <input ng-model="search.Estimated_Delivery_Time">     
+          </th>
+        </tr>
+      </thead>
+      <tbody><!--style="background-color:#deedf5" --> 
+        <tr  ng-class="obj.Visit_State" ng-repeat="obj in ArrayJobs | filter: search | filter: {'Visit_State': Status_Filter} | orderBy: OrderList ">         
+      
+          <td>{{$index+1}}</td>
+          <td><input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{obj._id.$id}}"/></td>  
+          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Name}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);">{{obj.ID_Truck}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);">{{obj.User}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Route.Route_Name}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Sequence}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Estimated_Delivery_Time}}</td>
+        </tr>
+      </tbody>
+    </table>
+        
+  </div>
+  <div class="text-center" >
+          
+          </div>
+  
+  <!--Modal VisitPoint Edit and Visualize -->
+  <div id="Modal_Edit_VisitPoint" class="modal fade" role="dialog">
+
+     <div class="modal-dialog modal-lg">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#4096c6;color:#fff">
+              <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar/Editar Tareas</h2>
+            </div>
+          
+            <div class="modal-body">
+
+            <div class="panel panel-info"><div class="panel-heading"><b>Puede</b> editar los campos.</div></div>
+              <div class="form-group">
+              <label class="col-sm-4 control-label">Número de orden:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Order_Number" placeholder="Número de orden..." required>
+            </div></div>
+                   </div>
+              <div class="form-group">
+              <label class="col-sm-4 control-label">Número de factura:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Invoice" placeholder="Número de factura..." required >
+            </div></div>
+                   </div>
+              
+                <div class="form-group">
+						<label class="col-sm-4 control-label">Establecimiento:</label> 
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Name" placeholder="Nombre De Establecimiento..." disabled >
+				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
+           				</div>
+						</div>
+					</div>
+              <!--
+              <div class="form-group">
+              <label class="col-sm-4 control-label">Nombre del establecimiento:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Name" placeholder="Nombre del establecimiento..." required>
+            </div></div>
+                   </div>
+                     <div class="form-group">
+              <label class="col-sm-4 control-label">Identificador del establecimiento:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.ID_Location" placeholder="Identificador del establecimiento..." required >
+           </div></div>
+                    </div>
+                    <div class="form-group">
+					 <label class="col-sm-4 control-label">Latitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label> 
+             	<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Latitude" placeholder="Latitud..." required>
+            </div></div>
+                   </div>
+              
+                    <div class="form-group"> 
+						<label class="col-sm-4 control-label">Longitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label> 
+              <div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Longitude" placeholder="Longitud..." required>
+            </div></div>
+                   </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label">Dirección:</label> 
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+                 <!--<div class="input-group">
+                    <input type="text" class="form-control" ng-model="VisitPoint.Province" style="width: 33%;" placeholder="Provincia..." required>
+						  <input type="text" class="form-control" ng-model="VisitPoint.Canton" style="width: 33%;" placeholder="Cantón..." required>
+ 						  <input type="text" class="form-control" ng-model="VisitPoint.District" style="width: 33%;" placeholder="Distrito..." required>
+                </div>-->
+              <!--<input type="text" class="form-control" ng-model="VisitPoint.Address" placeholder="Dirección exacta..." required>
+            </div></div>
+                   </div>-->
+          <!--  <div class="form-group">
+              <label>Nombre de la ruta:</label> 
+              <input type="text" class="form-control" ng-model="VisitPoint.Route" placeholder="Ruta..." required>
+            </div>-->
+                <!--   <div class="form-group">
+              <label class="col-sm-4 control-label">Número de teléfono:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="number" class="form-control" ng-model="VisitPoint.Telephone_Number" placeholder="Número de teléfono..." required>
+            </div></div>
+                   </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Entregar a:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Manager" placeholder="Entregar a..." required>
+            </div></div>
+                   </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Correo del establecimiento:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="text" class="form-control" ng-model="VisitPoint.Mail" placeholder="Correo del establecimiento..." required>
+            </div></div>
+                   </div>-->
+            <div class="form-group">
+              <label  class="col-sm-4 control-label" for="usr">Prioridad:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="number" class="form-control" ng-model="VisitPoint.Sequence" placeholder="Prioridad..." required>
+            </div></div>
+                   </div>        
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Fecha de visita:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="date" class="form-control" min="2015-01-01" ng-model="VisitPoint.Estimated_Date" required>
+           </div></div>
+                    </div>   
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Asignar al Usuario:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name for Obj in ArrayUser" style="width: 80%;" class="form-control" id="Usuario"></select>
+				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
+           </div></div>
+                    </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Asignar al Vehículo:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ></select><!--ng-change="Info_Vehicule(Vehicle.ID_Truck,ArrayVehicle)"
+				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}-->
+           <!-- <input type="text" class="form-control" ng-model="VisitPoint.ID_Truck" placeholder="Asignar al Vehiculo..." required>-->
+            </div></div>
+                   </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Tiempo promedio:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              <input type="number" class="form-control" ng-model="VisitPoint.Estimated_Delivery_Time" placeholder="Tiempo promedio..." required>
+            </div></div>
+                    </div>         
+            <div class="form-group">	 
+               <label>Ventana de tiempo:</label>
+                <input type="time" style="width:40%;right: 55%; float:left; position: absolute;"  data-toggle="tooltip" title="Hora de Inicio" class="form-control" ng-model="VisitPoint.Delivery_Period_Start" required>
+                <input type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" class="form-control" ng-model="VisitPoint.Delivery_Period_End" required>
+            </div> 
+            <br/>
+              
+            <br/>
+            <div  id="demo" class="panel panel-primary">
+             <div class="panel-heading" data-toggle="" data-target="#demo" style="background-color:#4096c6"><b>Trabajos</b>  
+              
+             </div> 
+           <div class="panel-body"> 
+              
+                    <div class="table-responsive">
+                      <table class="table table-condensed">
+                        <thead >
+                          <tr style="background-color:#4096c6; color:#fff">
+                            <th>Tipo</th>
+                            <th>Nombre</th>
+                           <!-- <th>Codigo de barras</th>-->
+                            <th>Descripción</th>
+                            <th>Unidad</th>
+                            <th>Cantidad</th>
+                            <th>Instrucciones</th>
+                            <th>Peso</th>
+                            <th>Volumen</th>
+                            <th>Mantenimiento</th>
+                          </tr>
+                        </thead>
+                        <tbody style="background-color:#deedf5">
+                          <tr ng-repeat="Task_Edit in Array_VisitPoint_Task_Edit">
+                            <td>
+             <input type="text" class="form-control" ng-model="Task_Edit.JobType"></td>
+                            <td>
+             <input type="text" class="form-control" ng-model="Task_Edit.JobName"></td>
+                         <!--   <td>
+             <input type="text" class="form-control" ng-model="Task_Edit.BarCode"></td>-->
+                            <td>
+             <input type="text" class="form-control" ng-model="Task_Edit.JobDescription"></td>
+                            <td>
+             <input type="text" class="form-control" ng-model="Task_Edit.UOM"></td>
+                            <td>
+             <input type="number" class="form-control" ng-model="Task_Edit.Quantity"></td>
+                            <td>
+             <input type="text" class="form-control" ng-model="Task_Edit.JobInstructions" ></td>
+                            <td>
+             <input type="number" class="form-control" ng-model="Task_Edit.JobWeight"></td>
+                            <td>
+             <input type="number" class="form-control" ng-model="Task_Edit.JobCubics" ></td>
+                            <td>
+                            <a class="btn btn-primary" data-toggle="tooltip" title="Eliminar tareas" style="background-color:#295C7A">
+                              <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);"></i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+
+                        
+                      </div>
+                    </div>
+        </div>
+
+
+         </div>
+
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary glyphicon glyphicon-save" style="background-color:#295C7A" data-dismiss="modal" data-toggle="tooltip" title="Guardar" ng-click="Save_Job_Edit(VisitPoint)"> Guardar</button>
+            <a class="btn btn-primary glyphicon glyphicon-remove" data-toggle="tooltip" title="Cerrar"  style="background-color:#295C7A" data-dismiss="modal"><b> Cerrar</b></a>
+
+            </div>
+               </div>
+                  
+
+
+
+        </div>
+      </div>
+  
+
+  <!--Modal VisitPoint Add -->
+  <div id="Modal_Add_VisitPoint" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Nueva Tarea</h2>
+            </div>
+            
+            <div class="modal-body">
+
+            <div class="panel panel-info"><div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>
+              
+             <form  ng-submit="Add_New_VisitPoint(VisitPoint_Add)">
+         <div class="form-group">
+						<label class="col-sm-4 control-label">Número de Orden:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Order_Number" placeholder="Número de orden..." required>
+							</div>
+						</div>
+                    </div>
+                    <div class="form-group">
+						<label class="col-sm-4 control-label">Número de factura:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Invoice" placeholder="Número de factura..." required >
+							</div>
+						</div>
+					</div>
+                <div class="form-group">
+						<label class="col-sm-4 control-label">Establecimiento:</label> 
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+              				<select ng-model="VisitPoint_Add.PV_Info" ng-options="Obj as Obj.Name for Obj in ArrayVisitPoint" style="width: 80%;" class="form-control" id="Establecimiento"></select>
+				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
+           				</div>
+						</div>
+					</div>
+               <!--
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Nombre del establecimiento:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Name" placeholder="Nombre del establecimiento..." required>
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Identificador del establecimiento:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.ID_Location" placeholder="Identificador del establecimiento..." required >
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+						<label class="col-sm-4 control-label">Latitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label> 
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Latitude" placeholder="Latitud..." required>
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+						<label class="col-sm-4 control-label">Longitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Longitude" placeholder="Longitud..." required>
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+						<label class="col-sm-4 control-label">Dirección:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Address" placeholder="Dirección..." required>
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+						<label class="col-sm-4 control-label">Número de teléfono:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">  
+							  <input required type="number" class="form-control" ng-model="VisitPoint_Add.Telephone_Number" placeholder="Número de teléfono..." required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Entregar a:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Manager" placeholder="Entregar a..." required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Correo del establecimiento:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Mail" placeholder="Correo del establecimiento..." required>
+							</div>
+						</div>
+					</div>-->
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="usr">Prioridad:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required type="number" class="form-control" ng-model="VisitPoint_Add.Sequence" placeholder="Prioridad..." required>
+							</div>
+						</div>
+					</div>        
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Fecha de visita:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input type="date" class="form-control" min="2015-01-01" min="{{Watch|date}}" ng-model="VisitPoint_Add.Estimated_Date" required>
+							</div>
+						</div>
+					</div> 
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Asignar al Usuario:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<select ng-model="VisitPoint_Add.User" ng-options="Obj.ID as Obj.Name for Obj in ArrayUser" style="width: 80%;" class="form-control" id="Usuario"></select>
+						<!--<input type="text" class="form-control" ng-model="VisitPoint_Add.User" placeholder="Asignar al Usuario..." required>-->
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Asignar al Vehiculo:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">						
+                       <select  ng-model="VisitPoint_Add.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ng-change="Info_Vehicule(VisitPoint_Add.ID_Truck,ArrayVehicle)"></select>
+<!--<input type="text" class="form-control" ng-model="VisitPoint_Add.User" placeholder="Asignar al Usuario..." required>-->
+							</div>
+						</div>
+					</div>      
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Tiempo promedio:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">
+								<input required  type="number" class="form-control" ng-model="VisitPoint_Add.Estimated_Delivery_Time" placeholder="Tiempo promedio..." required>
+							</div>
+						</div>
+					</div>   
+					<div class="form-group">	 
+						<label >    Ventana de tiempo:</label>
+					<input required type="time" style="width:40%;right: 55%; float:left; position: absolute;"  data-toggle="tooltip" title="Hora de Inicio" class="form-control" ng-model="VisitPoint_Add.Delivery_Period_Start" required>
+                <input required type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" class="form-control" ng-model="VisitPoint_Add.Delivery_Period_End" required>
+           </div>
+              
+            <br/>
+              
+            <br/>
+            <div  id="demo" class="panel panel-primary">
+             <div class="panel-heading" data-toggle="" data-target="#demo"><b>Trabajos</b></div>  
+     <div class="panel-body"> 
+              <div class="form-group">
+                  <label class="col-sm-4 control-label">Tipo de Tarea:</label> 
+                <div class="col-sm-8"> 
+                  <div class="form-group">
+                      <select class="form-control" ng-model="VisitPoint_Add_Task.Type" > 
+                        <option value="">Vacío</option>
+                        <option value="Entrega">Entrega</option>
+                        <option value="Recolección">Recolección</option>
+                      </select>
+                    </div>  
+                    </div>  
+             </div> 
+             
+                    <div class="form-group">      
+                       <label class="col-sm-4 control-label">Nombre:</label>
+                       <div class="col-sm-8">  
+                 <div class="form-group">
+                            <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.Name" placeholder="Nombre...">
+                       </div>
+                     </div>  
+                     </div>  
+              <div class="form-group">
+                  <label class="col-sm-4 control-label">Clasificación de Tarea:</label>
+                <div class="col-sm-8">  
+                 <div class="form-group">
+                      <select class="form-control" ng-model="VisitPoint_Add_Task.Serial" ng-change="Show_Serial(VisitPoint_Add_Task)" required> 
+                        <option value="SS">Sin serie</option>
+                        <option value="SU">Serie Unica</option>
+                        <option value="SP">Serie Programada</option>
+                      </select>
+                    </div>  
+                    </div>  
+             </div>  
+       <div class="form-group" ng-show="Show_Serie">      
+                       <label class="col-sm-4 control-label">Serie:</label>
+                       <div class="col-sm-5">  
+                 <div class="form-group">
+                            <input type="text" id="Input_Serial" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">
+                   
+                       </div>
+                     </div>
+         
+                       <div class="col-sm-3">  
+                 <div class="form-group">
+                        <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie)">
+                          <i class="glyphicon glyphicon-check" ></i> Guardar serie</a>
+                     </div>
+                     </div>
+                   <table style="width:100%">
+                    <tr>
+                      <th class="col-sm-8">Serie</th>
+                      <td class="col-sm-2">Mantenimiento</td>
+                    </tr>
+                    <tr ng-repeat="VisitPoint_Serial in Array_Serials">
+                      <td class="col-sm-8">{{VisitPoint_Serial.Serial}}</td>
+                      <td class="col-sm-2">
+                        <a class="btn btn-danger">
+                          <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Serial, Array_Serials);"></i></a>
+                      </td>
+                    </tr>
+                  </table>
+                     </div>   
+             
+                        <div class="form-group" ng-show="Show_Code">
+                   	     <label class="col-sm-4 control-label">Código de Barras:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                             <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.BarCode" placeholder="Codigo de barras...">
+                          </div>
+                       </div>    
+                        </div>  
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Descripción:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.Description" placeholder="Descripción...">
+                   </div>
+                        </div> 
+                        </div>        
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Unidad de entrega:</label>
+                          <div class="col-sm-8"> 
+                 <div class="form-group">  
+                       <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.UoM" placeholder="Unidad de medida...">
+                   </div>
+                        </div> 
+                        </div> 
+                        <div class="form-group"  ng-show="Show_Quantity">
+                      <label class="col-sm-4 control-label">Cantidad:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.Quantity" placeholder="Cantidad...">
+                    </div>
+                       </div> 
+                        </div> 
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Instrucciones:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.Instruction" placeholder="Instrucciones...">
+                    </div>
+                        </div> 
+                       </div>
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Peso:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobWeight" placeholder="Peso...">
+                   </div>
+                        </div> 
+                        </div> 
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Volumen:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobCubics" placeholder="Volumen...">
+                    </div>
+                        </div> 
+                       <!-- <div class="form-group">
+                      <label>Foto:</label>
+                        <input type="file" class="form-control" id="VisitPoint_Add_Task.Photo"/>
+                    </div>   -->   
+                    <div class="form-group">
+                      <span>
+                        <a   ng-click="Add_Task_In_VisitPoint_Array(VisitPoint_Add_Task)">
+                          <i class="glyphicon glyphicon-check" ></i> Guardar Trabajo</a>
+                      </span>
+                    </div> 
+                    <hr/>
+                    <div class="table-responsive">
+                      <h4>Trabajos asignados</h4>
+                      <table class="table table-condensed">
+                        <thead>
+                          <tr>
+                            <th>Tipo</th>
+                            <th>Nombre</th>
+                           <!-- <th>Código de barras</th>-->
+                            <th>Descripción</th>
+                            <th>Unidad</th>
+                            <th>Cantidad</th>
+                            <th>Instrucciones</th>
+                            <th>Peso</th>
+                            <th>Volumen</th>
+                            <th>Eliminar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="VisitPoint_Task in VisitPoint_Add_Array_Task">
+                            <td>{{VisitPoint_Task.JobType}}</td>
+                            <td>{{VisitPoint_Task.JobName}}</td>
+                           <!-- <td>{{VisitPoint_Task.BarCode}}</td>-->
+                            <td>{{VisitPoint_Task.JobDescription}}</td>
+                            <td>{{VisitPoint_Task.UOM}}</td>
+                            <td>{{VisitPoint_Task.Quantity}}</td>
+                            <td>{{VisitPoint_Task.JobInstructions}}</td>
+                            <td>{{VisitPoint_Task.JobWeight}}</td>
+                            <td>{{VisitPoint_Task.JobCubics}}</td>
+                            <td>
+                            <a class="btn btn-danger">
+                              <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);"></i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+        </div>
+
+
+         </div>
+
+           
+               </div>
+                    
+ <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" ><i class="glyphicon glyphicon-save"> </i>  Guardar</button>
+            <a class="btn btn-primary glyphicon glyphicon-remove" data-dismiss="modal"><b> Cerrar</b></a>
+
+            </div>
+
+              </form>
+
+        </div>
+      </div>
+
+      </div>
+   
+</div>

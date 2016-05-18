@@ -1,0 +1,265 @@
+	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<div id="Contents" ng-controller="Scr_Job_Controller" ng-init="init()">
+  
+  <div id="Options">
+   
+  <div style="text-align: center;">  
+    <span style="display:inline-block;">
+      <h4>
+          Mantenimiento de trabajos
+      </h4>
+    </span>
+   </div>
+  <span id="Buttons" style="margin-left:7%;">
+  <span>
+    <a class="btn btn-primary span4" data-toggle="modal" data-target="#myModal">
+      <i class="glyphicon glyphicon-plus"></i>  Nueva Tarea</a>
+  </span>
+        <span id="right" style="float:right;"> 
+           <select style="width:175px " class="btn btn-primary span4" ng-model="Export_Type" ng-change="Export_File(Export_Type,(ArrayJobs | filter: search | filter: {'Visit_State': Status_Filter} | orderBy: OrderList))"> 
+              <option value="">Exportar a archivo</option>
+              <option value="JSON">JSON</option>
+              <option value="XML">XML</option>
+              <option value="CSV">CSV</option>
+              <option value="PDF">PDF</option>
+           </select>
+      </span> 
+     <style>
+    label.filebutton {
+    overflow:hidden;
+    position:relative;
+}
+
+label span input {
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+}
+</style>
+    
+    
+ <span class="btn btn-primary span4"> 
+   <label class="filebutton">
+   	<span class="glyphicon glyphicon-search"> 
+   		<input value="Select" type="file" id="myfile" />Buscar Archivo
+      </span>
+   </label>
+ </span>
+  <button type="button" class="btn btn-primary span4 glyphicon glyphicon-upload" ng-click="Jalar()">Cargar Datos</button>
+        
+  </span>  
+  </div>
+  
+  <hr/>
+  
+  
+  <!--Table-->
+  
+      <div class="table-responsive">
+  <table class="table  table-striped table-hover" >
+    <thead>
+      <tr>
+        <th ng-repeat="headersEs in ArrayHeadersEs"><i class="glyphicon glyphicon-sort"></i>   {{headersEs}}</th>
+        <th><p class="" />Mantenimiento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  ng-repeat="obj in ArrayExcel">
+        <td>{{obj.IDDelivery_Location}}</td> 
+        <td>{{obj.Manager}}</td> 
+        <td>{{obj.Name}}</td> 
+        <td>{{obj.Address}}</td>
+        <td>{{obj.Telephone_Number}}</td> 
+        <td>{{obj.Mail}}</td> 
+        <td>{{obj.Latitude}}</td> 
+        <td>{{obj.Longitude}}</td> 
+        <td>{{obj.Sequence}}</td> 
+        <td>{{obj.Estimated_Date}}</td> 
+        <td>{{obj.Estimated_Delivery_Time}}</td> 
+        <td>{{obj.Start}}</td> 
+        <td>{{obj.End}}</td> 
+        <td>{{obj.User}}</td> 
+        <td>
+        	<a >
+           <div class="btn-group" role="group" aria-label="...">
+ 				<i class="btn btn-danger glyphicon glyphicon-remove-sign"  data-toggle="tooltip" title="Eliminar" ng-click="Remove_Job(obj);"></i>
+        		<i class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="tooltip modal" data-target="#myModal(obj)"title="Visualizar"></i>
+       		<i class="btn btn-success glyphicon glyphicon-floppy-disk" ng-click="Remove_Job(obj);"  data-toggle="tooltip"  title="Guardar"></i>
+        	  </div> 
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>
+  
+  
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Nueva Tarea</h2>
+      </div>
+ <form>     
+      <div class="modal-body">
+        
+      <div class="panel panel-info"><div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>
+      <div class="form-group">
+        <label>Nombre del establecimiento:</label>
+        <input type="text" class="form-control" ng-model="New_Job.Name" placeholder="Nombre del establecimiento..." required>
+      </div>
+               <div class="form-group">
+        <label>Identificador del establecimiento:</label>
+        <input type="text" class="form-control" ng-model="New_Job.IDDelivery_Location" placeholder="Identificador del establecimiento..." required text="{{obj.Manager}}">
+      </div>
+              <div class="form-group">
+        <label>Latitud</label>
+        <input type="text" class="form-control" ng-model="New_Job.Latitude" placeholder="Latitud..." required>
+      </div>
+              <div class="form-group">
+        <label>Longitud:</label>
+        <input type="text" class="form-control" ng-model="New_Job.Longitude" placeholder="Longitud..." required>
+      </div>
+              <div class="form-group">
+        <label>Dirección:</label>
+        <input type="text" class="form-control" ng-model="New_Job.Address" placeholder="Dirección..." required>
+      </div>
+             <div class="form-group">
+        <label>Número de teléfono:</label>
+        <input type="text" class="form-control" ng-model="New_Job.TelephoneNumber" placeholder="Número de teléfono..." required>
+      </div>
+      <div class="form-group">
+        <label>Entregar a:</label>
+        <input type="text" class="form-control" ng-model="New_Job.Manager" placeholder="Entregar a..." required>
+		</div>
+      <div class="form-group">
+        <label>Correo del establecimiento:</label>
+        <input type="text" class="form-control" ng-model="New_Job.Mail" placeholder="Correo del establecimiento..." required>
+      </div>
+      <div class="form-group">
+        <label for="usr">Prioridad:</label>
+        <input type="number" class="form-control" ng-model="New_Job.Sequence" placeholder="Prioridad..." required>
+      </div>        
+      <div class="form-group">
+        <label>Fecha de visita:</label>
+        <input type="date" class="form-control" ng-model="New_Job.EstimatedDate" required>
+      </div>        
+ 		<div class="form-group">	 
+         <label>Ventana de tiempo </label>
+          <input type="time" style="width:40%;right: 55%; float:left; position: absolute;"  data-toggle="tooltip" title="Hora de Inicio" class="form-control" ng-model="New_Job.DeliveryPeriod_Start" required>
+          <input type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" class="form-control" ng-model="New_Job.DeliveryPeriod_End" required>
+		</div> 
+ 		<br>
+      <div class="form-group">
+        <label>Tiempo promedio:</label>
+        <input type="number" class="form-control" ng-model="New_Job.EstimatedDeliveryTime" placeholder="Tiempo promedio..." required>
+      </div>  
+      <div class="form-group">
+        <label>Asignar a:</label>
+        <input type="text" class="form-control" ng-model="New_Job.User" placeholder="Asignar a..." required>
+      </div>
+      <div  id="demo" class="panel panel-primary">
+  		 <div class="panel-heading" data-toggle="" data-target="#demo"><b>Trabajos</b></div>  
+     <div class="panel-body"> 
+        <div class="form-group">
+            <label>Tipo de Tarea:</label>
+            <div class="form-group">
+                <select class="form-control" ng-model="Task.Type" required>
+                  <option value="">Vacío</option>
+                  <option value="Delivery">Entrega</option>
+                  <option value="Devolution">Devolución</option>
+                </select>
+              </div>        
+              <label>Nombre:</label>
+              <input type="text" class="form-control" ng-model="Task.Name" placeholder="Nombre..." required>
+         </div>        
+                  <div class="form-group">
+                <label>Descripción:</label>
+                 <input type="text" class="form-control" ng-model="Task.Description" placeholder="Descripción..." required>
+              </div>        
+                  <div class="form-group">
+                <label>Unidad de medida:</label>
+                 <input type="text" class="form-control" ng-model="Task.UoM" placeholder="Unidad de medida..." required>
+              </div> 
+                  <div class="form-group">
+                <label>Cantidad:</label>
+                 <input type="text" class="form-control" ng-model="Task.Quantity" placeholder="Cantidad..." required>
+              </div> 
+                  <div class="form-group">
+                <label>Instrucciones:</label>
+                 <input type="text" class="form-control" ng-model="Task.Instruction" placeholder="Instrucciones..." required>
+              </div>
+                  <div class="form-group">
+                <label>Foto:</label>
+                  <input type="file" class="form-control" id="Task.Photo"/>
+              </div> 
+              <div class="form-group">
+                <span>
+                  <a class="btn btn-primary" ng-click="Add_Task(Task)">
+                    <i class="glyphicon glyphicon-check" ></i> Guardar Trabajo</a>
+                </span>
+              </div> 
+              <hr/>
+              <div class="table-responsive">
+                <h4>Trabajos asignados</h4>
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Tipo de Tarea</th>
+                      <th>Nombre</th>
+                      <th>Descripción</th>
+                      <th>Unidad</th>
+                      <th>Cantidad</th>
+                      <th>Instrucciones</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="task in ArrayTask">
+                      <td>{{task.JobType}}</td>
+                      <td>{{task.JobName}}</td>
+                      <td>{{task.JobDescription}}</td>
+                      <td>{{task.UOM}}</td>
+                      <td>{{task.Quantity}}</td>
+                      <td>{{task.JobInstructions}}</td>
+                      <td>
+                      <a class="btn btn-danger">
+                        <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_Task(task);"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+  </div>
+      
+   
+   </div>
+      
+      <div class="modal-footer">
+        
+      <a class="btn btn-primary glyphicon glyphicon-save"><b> Guardar</b></a>
+      <a class="btn btn-primary glyphicon glyphicon-remove" data-dismiss="modal"><b> Cerrar</b></a>
+      
+      </div>
+         </div>
+       </form>      
+     
+   
+  
+  </div>
+</div>
+  
+</div>
+</div>

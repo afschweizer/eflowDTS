@@ -1,0 +1,361 @@
+
+<script src="scripts/externals/jspdf.min.js"></script>
+<script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
+<div ng-controller="Scr_User_Controller" ng-init="init()">  
+  <div id="Options">  
+  <div style="text-align: center;">  
+    <span style="display:inline-block;">
+      <h4>
+          Mantenimiento de Usuarios
+      </h4>
+    </span>
+   </div>
+  <span id="Buttons" style="margin-left:7%;">
+  <span>
+     <a class="btn btn-primary span4" ng-click="Open_Modal_Add_VisitPoint()" data-toggle="tooltip" title="Agregar un usuario" >
+       <i class="glyphicon glyphicon-plus"></i>Agregar Usuario</a>   
+	</span>
+  <span ng-show="Show_Actions">
+              <select style="width:175px " class="btn btn-primary span4" ng-model="Option" ng-change="Action_Option(Option)"> 
+                  <option value="">Acción</option>
+                  <option value="Eliminar">Eliminar</option>
+              </select>
+            </span>
+			    <span id="right" style="float:right;"> 
+           <select style="width:175px " class="btn btn-primary span4" ng-model="Export_Type" ng-change="Export_File(Export_Type,(ArrayUser | filter: search | orderBy: OrderList))"> 
+              <option value="">Exportar a archivo</option>
+              <option value="JSON">JSON</option>
+              <option value="XML">XML</option>
+              <option value="CSV">CSV</option>
+              <option value="PDF">PDF</option>
+           </select>
+      </span> 
+  </span>  
+  </div>
+  <hr/>
+  <!--Table-->
+  
+      <div id="New_User" class="table-responsive" style="margin-left: 1%;width: 98%; margin-right: 1%;" >
+    <table class="table table-responsive table-striped table-hover"  class="resizable" >
+     <thead >   
+        <tr style="background-color:#4096c6; color:#fff; align:center">   
+         <th style="width:auto;">Nº fila</th>
+        <th>
+          <p class="" />
+       	 <input type="checkbox"  ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);"/>
+        </th>
+        <th style="text-align:center" ng-repeat="headers in ArrayHeaders" ng-click="To_Order_By(headers.value);"><i class="glyphicon glyphicon-sort"></i>   {{headers.es}}</th>
+      </tr>
+       <tr>
+          <th>
+          </th>
+          <th>	
+            
+          </th>
+          <th>
+            <input ng-model="search.Name">
+          </th>
+          <th>
+            <input ng-model="search.Lastname">
+          </th>
+          <th>
+            <input ng-model="search.Lastname2">
+          </th>
+          <th>
+				<input ng-model="search.Identification">          
+          </th>
+          <th>
+            <input ng-model="search.Type">
+          </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr  ng-repeat="Obj in ArrayUser | filter: search |  orderBy: OrderList">
+        <td ng-click="Visualize_User(Obj);">{{$index+1}}</td>
+        <td>
+          <input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{Obj._id.$id}}"/> 
+         
+        	<!--<a >
+           <div class="btn-group" role="group" aria-label="...">
+ 				<i class="btn btn-danger glyphicon glyphicon-remove-sign"  data-toggle="tooltip" title="Eliminar" ng-click="Remove_Message(obj);"></i>
+        	  </div> 
+          </a>-->
+        </td>
+        <td ng-click="Visualize_User(Obj);">{{Obj.Name}}</td>
+		  <td ng-click="Visualize_User(Obj);">{{Obj.Lastname}}</td>
+        <td ng-click="Visualize_User(Obj);">{{Obj.Lastname2}}</td>
+        <td ng-click="Visualize_User(Obj);">{{Obj.Identification}}</td>
+        <td ng-click="Visualize_User(Obj);">{{Obj.Type}}</td> 
+      </tr>
+    </tbody>
+    
+  </table>
+</div>
+  
+    
+				<!-- Modal Agregar User-->
+				<div class="modal fade" id="Modal_Agregar_User" role="dialog">
+              <div class="modal-dialog modal-lg">
+                          <!-- Modal content-->
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h2 class="modal-title"><i class="glyphicon glyphicon-user"></i> Agregar Usuario</h2>
+                  </div>
+             			<form>     
+                		 <div class="modal-body">
+        
+                        <div class="panel panel-info">
+                          <div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>
+                     		   <div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Nombre de Usuario:</label>
+                <div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="UserName" type="text" class="form-control" name="UserName" value="" ng-model="User.UserName" placeholder="Nombre de Usuario..." required>
+                              </div></div>
+                       </div>
+                       		<div class="form-group">
+                                 <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Contraseña:</label>
+                <div class="col-sm-7"> 
+                  <div class="form-group">
+											<input id="Password" type="{{Type}}" class="form-control" name="Password" value="" ng-model="User.Password" placeholder="Contraseña..."required>
+                  </div></div> <div class="col-sm-1"> 
+                  <div class="form-group">
+											<input type="checkbox" value="Mostrar" ng-model="Ver" ng-change="Password(Ver)">
+                  </div>
+                             </div></div>
+                               <div class="form-group">
+											<label  class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Identificador:</label>
+                <div class="col-sm-8"> 
+                  <div class="form-group">
+												<input id="ID" type="text" class="form-control" name="ID" value="" ng-model="User.ID" placeholder="Identificador..." required>
+                                </div></div>  </div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Nombre:</label>
+                <div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="Name" type="text" class="form-control" name="Name" value="" ng-model="User.Name" placeholder="Nombre..." required>
+                                  </div></div></div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Primer Apellido:</label> <div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="Lastname" type="text" class="form-control" name="Lastname" value="" ng-model="User.Lastname" placeholder="Primer Apellido..." required>
+                             </div></div></div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Segundo Apellido</label> <div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="Lastname2" type="text" class="form-control" name="Lastname2" value="" ng-model="User.Lastname2" placeholder="Segundo Apellido..." required>
+                              </div></div></div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Cédula:</label> <div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="Identification" type="number" class="form-control" name="Identification" value="" ng-model="User.Identification" placeholder="Cédula..." required>
+                            </div></div></div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Correo:</label> <div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="Mail" type="text" class="form-control" name="Mail" value="" ng-model="User.Mail" placeholder="Correo..." required>
+                              </div></div></div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Género:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+										 <select ng-model="User.Gender" ng-options="Obj.value as Obj.es for Obj in ArrayGenders" style="width: 80%;" class="form-control" id="Gender" ></select>
+                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                              </div></div></div>
+                        <div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Tipo:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+										 <select ng-model="User.Type" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
+                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                              </div></div></div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Dirección:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+                    <input id="Address" type="text" class="form-control" name="Address" value="" ng-model="User.Address" placeholder="Dirección..." required>
+                               </div></div></div>
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Edad:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="Age" type="number" min="18" max="80" class="form-control" name="Age" value="" ng-model="User.Age" placeholder="Edad..." required>
+                              </div></div></div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>   
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>   
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                      </div>
+					
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary glyphicon glyphicon-save"  data-dismiss="modal" ng-click="Add_New_User(User)" data-toggle="tooltip" title="Guardar Usuario"> Guardar</button>
+                        <button type="Reset" class="btn btn-primary glyphicon glyphicon-remove" style="border-top: 2.5px;border-style:solid;border-color:#fff;" data-toggle="tooltip" title="Cancelación de Usuario" data-dismiss="modal"> Cancelar </button>                        
+          
+							</div>
+                 </form>      
+            </div>
+		</div>
+  </div>
+  
+  
+				<!-- Modal Edit User-->
+		 
+  <!--Modal VisitPoint Edit and Visualize -->
+  <div id="Modal_Edit_User" class="modal fade" role="dialog">
+
+     <div class="modal-dialog modal-lg">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#4096c6;color:#fff">
+              <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar/Editar Usuarios</h2>
+            </div>
+          
+            <div class="modal-body">
+
+            <div class="panel panel-info"><div class="panel-heading"><b>Puede</b> editar los campos.</div></div>
+          <div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Nombre de Usuario:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="UserName" type="text" class="form-control" name="UserName" value="" ng-model="User.UserName" placeholder="Nombre de Usuario..." required>
+                             </div></div></div> 
+              
+              
+                       			<div class="form-group">
+                                 <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Contraseña:</label>
+                                <div class="col-sm-7"> 
+                  <div class="form-group">
+											<input id="Password"  type="{{Type}}" class="form-control" name="Password" value="" ng-model="User.Password" placeholder="Contraseña..."required>
+                                 </div></div> 
+                                <div class="col-sm-1"> 
+                  <div class="form-group">
+                    <input type="checkbox" value="Mostrar" ng-model="Ver" ng-change="Password(Ver)">
+                                </div></div></div> 
+                               <div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Identificador:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+												<input id="ID" type="text" class="form-control" name="ID" value="" ng-model="User.ID" placeholder="Identificador..." required>
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Nombre:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="Name" type="text" class="form-control" name="Name" value="" ng-model="User.Name" placeholder="Nombre..." required>
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Primer Apellido:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="Lastname" type="text" class="form-control" name="Lastname" value="" ng-model="User.Lastname" placeholder="Primer Apellido..." required>
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Segundo Apellido</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="Lastname2" type="text" class="form-control" name="Lastname2" value="" ng-model="User.Lastname2" placeholder="Segundo Apellido..." required>
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Cédula:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="Identification" type="number" class="form-control" name="Identification" value="" ng-model="User.Identification" placeholder="Cédula..." required>
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Correo:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="Mail" type="text" class="form-control" name="Mail" value="" ng-model="User.Mail" placeholder="Correo..." required>
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Género:</label>	<div class="col-sm-8"> 
+                  <div class="form-group">
+												 
+                                <select ng-model="User.Gender" ng-options="Obj.value as Obj.es for Obj in ArrayGenders" style="width: 80%;" class="form-control" id="Gender" ></select>
+                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Edad:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="Age" type="number"  min="18" max="80"class="form-control" name="Age" value="" ng-model="User.Age" placeholder="Edad..." required>
+                              </div></div></div> 
+              <div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo:</label>	<div class="col-sm-8"> 
+                  <div class="form-group">
+												 
+                                <select ng-model="User.Type" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
+                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                              </div></div></div> 
+                       			<div class="form-group">
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Dirección:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											
+											<input id="Address" type="text" class="form-control" name="Address" value="" ng-model="User.Address" placeholder="Dirección..." required>
+                              </div></div></div> 
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>   
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>   
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+
+         </div>
+
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary glyphicon glyphicon-save" style="background-color:#295C7A" data-dismiss="modal" data-toggle="tooltip" title="Guardar" ng-click="Save_User_Edit(User)"> Guardar</button>
+            <a class="btn btn-primary glyphicon glyphicon-remove" data-toggle="tooltip" title="Cerrar"  style="background-color:#295C7A" data-dismiss="modal"><b> Cerrar</b></a>
+
+            </div>
+               </div>
+                  
+
+
+
+        </div>
+      </div>
+  
+</div>
+	

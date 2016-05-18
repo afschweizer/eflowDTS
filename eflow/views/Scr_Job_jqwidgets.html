@@ -1,0 +1,187 @@
+<div id="Contents" ng-controller="Scr_Job_Controller_jqwidgets" ng-init="init()">
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+        
+       
+       <div>
+              <select id="mySelect" ng-model="ExportOption" ng-change="myFunction(ExportOption)">
+                <option value="excelExport">Exportar a Excel
+                <option value="xmlExport">Exportar a XML
+                <option value="csvExport">Exportar a CSV
+                <option value="tsvExport">Exportar a TSV
+                <option value="htmlExport">Exportar a HTML
+                <option value="jsonExport">Exportar a JSON
+                <option value="pdfExport">Exportar a PDF
+                <option value="print">Imprimir
+              </select>
+       </div>
+    <div id="popupWindow" class="table-responsive" role="dialog">
+            <div><h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar Tarea</h2></div>
+				<div class="modal-body">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<b>Todos</b> los campos son requeridos.
+						</div>
+					</div>
+					<br>
+					<div class="form-group">
+                   	<label>Nombre del lugar:</label>
+							<input type="text" id="Name">
+              </div>
+				   <div  class="form-group">
+                     <label>Identificador:</label>
+                 		<input type="text" id="IDDelivery_Location">
+               </div>
+               <div class="form-group">
+							<label>Latitud:</label>
+							<input type="text" id="Latitude">
+				 </div>
+              <div class="form-group">
+							<label>Longitud:</label>
+							<input type="text" id="Longitude">
+              </div>
+					<div class="form-group">
+                    <label>Dirección:</label>
+                    <input type="text" id="Address">
+					</div>
+                  <div class="form-group">
+                    <label>Número de teléfono:</label>
+                    <input type="text" id="TelephoneNumber">
+						</div>
+					<div class="form-group">
+                    <label>Entregar a:</label>
+                    <input type="text" id="Manager">
+                  </div>
+                  <div class="form-group">
+                    <label>Correo del establecimiento:</label>
+                    <input type="text" id="Mail">
+                 </div>
+					<div class="form-group">
+                    <label for="usr">Prioridad:</label>
+                    <input type="number" id="Sequence">
+                   </div>
+                 <div class="form-group">
+                    <label>Asignar a:</label>
+                    <input type="text" id="User">
+                 </div>
+					<div class="form-group">
+                    <label>Tiempo promedio:</label>
+                    <input type="number" id="EstimatedDeliveryTime">
+                  </div>
+
+					<div class="form-group">
+                      <label>Fecha de visita:</label>
+                      <input type="date" id="EstimatedDate">
+                   </div> 
+					<br>
+					<div class="form-group"> 
+						<label>Ventana de tiempo</label>
+					<br>
+						<input type="time" style="width:40%;right: 55%; float:left; position: absolute;"  data-toggle="tooltip" title="Hora de Inicio" id="Start">
+						<input type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" id="End">
+					</div> 
+					<br>
+					<div  id="demo" class="panel panel-primary">
+						<div class="panel-heading" data-toggle="" data-target="#demo">
+							<b>Trabajos</b>
+						</div>  
+						<div class="panel-body"> 
+							<div class="table-responsive">
+								<table class="table table-condensed">
+									<thead>
+										<tr>
+											<th>Tipo de Tarea</th>
+											<th>Nombre</th>
+											<th>Descripción</th>
+											<th>Unidad</th>
+											<th>Cantidad</th>
+											<th>Instrucciones</th>
+											<th>Mantenimiento</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="task in JS">
+											<td>{{task.JobType}}</td>
+											<td>{{task.JobName}}</td>
+											<td>{{task.JobDescription}}</td>
+											<td>{{task.UOM}}</td>
+											<td>{{task.Quantity}}</td>
+											<td>{{task.JobInstructions}}</td>
+											<td>
+											<a class="btn btn-danger">
+											  <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(task,Array_Task_Edit);"></i></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary glyphicon glyphicon-save" data-dismiss="modal" ng-click="Save_Job_Edit(Obj_Edit)"> Guardar</button>
+						<a class="btn btn-primary glyphicon glyphicon-remove" data-dismiss="modal"><b> Cerrar</b></a>
+					</div>
+				</div>
+         
+<!--
+            <div>Edit</div>
+            <div style="overflow:auto; top=600,left=600,width=3000,height=3000">
+                <table>
+                    <tr>
+                        <td align="right">Manager:</td>
+                        <td align="left"><input id="Manager"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Name:</td>
+                        <td align="left"><input id="Name"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Address:</td>
+                        <td align="left"><input id="Address"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">TelephoneNumber:</td>
+                        <td align="left"><input id="TelephoneNumber"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">EstimatedDate:</td>
+                        <td align="left"><input id="EstimatedDate"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">EstimatedDeliveryTime:</td>
+                        <td align="left"><input id="EstimatedDeliveryTime"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Start:</td>
+                        <td align="left"><input id="Start"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">End:</td>
+                        <td align="left"><input id="End"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">User:</td>
+                        <td align="left"><input id="User"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Mail:</td>
+                        <td align="left"><input id="Mail"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                        </td>
+                        <td style="padding-top: 10px;" align="right">
+                          <input style="margin-right: 5px;" type="button" id="Save" value="Save" />
+                          <input id="Cancel" type="button" value="Cancel" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+       </div>
+      -->
+    </div>
+      <div id="jqxgrid">
+           
+       </div>
+      <div id="ordersGrid">
+        </div>
+</div>
