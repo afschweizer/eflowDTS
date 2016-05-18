@@ -101,7 +101,7 @@ $scope.Select = function(){
    
      function Load_Map(){
    	
-   	//if(navigator.geolocation){
+      //if(navigator.geolocation){
    		
    		//var onSuccess = function(pos){
    		
