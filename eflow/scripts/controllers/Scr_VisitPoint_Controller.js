@@ -12,8 +12,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		$scope.ArrayHeaders = Headers;
 		
 		$scope.Select();
-		$scope.Show_Components.VisitPoint_Form_New = false;
-		$scope.Show_Components.VisitPoint_Form_Edit = false;
+		$scope.Show_Components.VisitPoint_Form_New = true;
+		$scope.Show_Components.VisitPoint_Form_Edit = true;
 		$scope.Show_Components.VisitPoint_Table = true;
 		$scope.Show_Components.VisitPoint_Add = true;
 		Select_Routes();
