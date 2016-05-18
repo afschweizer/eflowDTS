@@ -101,9 +101,9 @@ $scope.Select = function(){
    
      function Load_Map(){
    	
-   	if(navigator.geolocation){
+   	//if(navigator.geolocation){
    		
-   		var onSuccess = function(pos){
+   		//var onSuccess = function(pos){
    		
    		var map = document.getElementById('Map_Dashboard');
    			
@@ -111,8 +111,8 @@ $scope.Select = function(){
 
    			eflowDTS.Map_Dashboard = new GMaps({
 			div: map,
-		    lat: pos.coords.latitude, 
-			lng: pos.coords.longitude,
+		    lat: eflowDTS.Geolocation.Latitude, 
+			lng: eflowDTS.Geolocation.Longitude,
 		    zoom: 12
 		    });
 		    
