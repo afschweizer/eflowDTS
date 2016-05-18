@@ -1,7 +1,7 @@
 var eflowDTS = {
     Configuration: {
         "URLs": {
-            "eflow_Get": "http://runnerp12.codenvycorp.com:51603/Eflow_Get.php",
+            "eflow_Get": "http://runnerp12.codenvycorpSAPRISSACACA.com:51603/Eflow_Get.php",
             "eflow_Post": "http://runnerp12.codenvycorp.com:51603/Eflow_Post.php",
             "eflow_Date_Time" : "http://runnerp12.codenvycorp.com:51603/time.php"
         }
