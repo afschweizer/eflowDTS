@@ -1,4 +1,8 @@
 var eflowDTS = {
+	Geolocation:{
+		"Latitude":9.935775, 
+		"Longitude":-84.105073
+	},
     Configuration: {
         "URLs": {
             "eflow_Get": "http://104.197.6.251/eflowDTS/Eflow_Get.php",

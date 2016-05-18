@@ -103,9 +103,9 @@ function Select_Routes(){
    
   function Load_Map(){
    	
-   	if(navigator.geolocation){
+   	//if(navigator.geolocation){
    		
-   		var onSuccess = function(pos){
+   		//var onSuccess = function(pos){
    		
    		var map = document.getElementById($scope.Map_Id);
    			
@@ -113,8 +113,8 @@ function Select_Routes(){
 
    			eflowDTS.Map_Dashboard = new GMaps({
 			div: map,
-		    lat: pos.coords.latitude, 
-			lng: pos.coords.longitude,
+		    lat: eflowDTS.Geolocation.Latitude, 
+			lng: eflowDTS.Geolocation.Longitude,
 		    zoom: 12,
 			click: function(e) {
              bootbox.dialog(
@@ -135,7 +135,7 @@ function Select_Routes(){
    		
    		};
    		
-   		navigator.geolocation.getCurrentPosition(onSuccess);
+   	/*	navigator.geolocation.getCurrentPosition(onSuccess);
    		
    	}else{   		 		
    		

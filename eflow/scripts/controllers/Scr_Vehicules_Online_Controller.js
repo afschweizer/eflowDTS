@@ -84,9 +84,9 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 	
 	Load_Map = function(User){
    	
-   	if(navigator.geolocation){
+   	//if(navigator.geolocation){
    		
-   		var onSuccess = function(pos){
+   		//var onSuccess = function(pos){
    		
    		var map = document.getElementById('Map_Online_User');
    			
@@ -95,8 +95,8 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
    			if(typeof User === 'undefined'){
 	   		    eflowDTS.Map_Dashboard = new GMaps({
 				div: map,
-			    lat: pos.coords.latitude, 
-				lng: pos.coords.longitude,
+			    lat: eflowDTS.Geolocation.Latitude, 
+				lng: eflowDTS.Geolocation.Longitude,
 			    zoom: 12
 			    });
 	        }else{
@@ -144,13 +144,13 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
    		};
    		
    		
-   		var onError = function(err) {
+   	/*	var onError = function(err) {
   			alert('ERROR(' + err.code + '): ' + err.message);
         };
-
+    
  		navigator.geolocation.getCurrentPosition(onSuccess,onError);
    		
-   	}else{  		 		
+    	}else{  		 		
    		
    		bootbox.dialog(
                 {
@@ -163,7 +163,7 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
                 		}
                 }
                 });
-     	}
+     	}*/
    	
    };
 	
