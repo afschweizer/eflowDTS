@@ -61,7 +61,7 @@ function To_Save_Eflow_Config() {
     eflowDTS.id = 1;
     
     DB.Store_eflowDTS.put(eflowDTS);*/
-    Cookie_EflowDTS = JSON.stringify(eflowDTS);
+   Cookie_EflowDTS = JSON.stringify(eflowDTS);
    document.cookie= Cookie_EflowDTS;
    
   // Check_Cookies();
