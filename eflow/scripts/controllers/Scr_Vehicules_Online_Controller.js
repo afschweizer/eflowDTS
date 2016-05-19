@@ -7,9 +7,9 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 	$scope.Show_Components.Map_Online_User = false;
 		To_Reload_Eflow_Config();	
 			Select_User_Online();
-			Select_Jobs();
+			Select_Jobs();			
 			$scope.Show_Components.Show_User_Online = true;	
-			$scope.Show_Components.Show_List = false;		
+			$scope.Show_Components.Show_List = false;				
 	};
 	
 	$scope.refresh = function(){
@@ -185,7 +185,7 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 		};
 		
 		var Success = function(json){
-			$scope.ArrayJobs = json;			
+			$scope.ArrayJobs = json;	
 		};
 		
 		var onError = function(e){

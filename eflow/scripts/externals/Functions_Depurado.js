@@ -1,4 +1,7 @@
-var eflowDTS = {
+var Compute_Engine = false;
+
+if(Compute_Engine === true){
+	var eflowDTS = {
 	Geolocation:{
 		"Latitude":9.935775, 
 		"Longitude":-84.105073
@@ -18,7 +21,31 @@ var eflowDTS = {
     },
     LoggedIn: false
 };
-
+}
+else{
+	
+	var eflowDTS = {
+	Geolocation:{
+		"Latitude":9.935775, 
+		"Longitude":-84.105073
+	},
+    Configuration: {
+        "URLs": {
+            "eflow_Get": "http://runnerp11.codenvycorp.com:65160/Eflow_Get.php",
+            "eflow_Post": "http://runnerp11.codenvycorp.com:65160/Eflow_Post.php",
+            "eflow_Date_Time" : "http://runnerp11.codenvycorp.com:65160/time.php"
+        }
+    },
+    Session: {},
+    Time : {    	
+    	"Day" : 86400000,
+    	"Hours" : 64800000,
+    	"Difference": 21600000
+    },
+    LoggedIn: false
+};
+	
+}
  var Cookie_EflowDTS ;
  
 function To_Save_Eflow_Config() {
