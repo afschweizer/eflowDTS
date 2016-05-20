@@ -12,7 +12,7 @@
    </div>
   <span id="Buttons" style="margin-left:7%;">
   <span>
-     <a class="btn btn-primary span4" ng-show="Show_Components.Route_Add" ng-click="Show_Components.Route_Table = false; Show_Components.Route_Form = true; Show_Components.Route_Add = false;" data-toggle="tooltip" title="Agregar Ruta" >
+     <a class="btn btn-primary span4" ng-show="Show_Components.Route_Add" ng-click="Show_Components.Route_Table = false; Show_Components.Route_Form = true; Show_Components.Route_Add = false; Show_Components.Export = false; Load();" data-toggle="tooltip" title="Agregar Ruta" >
        <i class="glyphicon glyphicon-plus"></i>Agregar Ruta</a>   
 	</span>
   <span ng-show="Show_Actions">
@@ -20,8 +20,8 @@
                   <option value="">Acción</option>
                   <option value="Eliminar">Eliminar</option>
               </select>
-            </span>    
-			<span id="right" style="float:right;"> 
+  </span>    
+			<span id="right" style="float:right;" ng-show="Show_Components.Export"> 
            <select style="width:175px " class="btn btn-primary span4" ng-model="Export_Type" ng-change="Export_File(Export_Type,(ArrayRoute | filter: search | orderBy: OrderList))"> 
               <option value="">Exportar a archivo</option>
               <option value="JSON">JSON</option>
@@ -84,7 +84,7 @@
                   <div class="box-footer">
                     <div class="container">
                     <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>  Guardar Ruta</button>
-                    <button type="reset" ng-click="Show_Components.Route_Form = false; Show_Components.Route_Table = true; Show_Components.Route_Add = true;" class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i>  Cancelar</button>
+                    <button type="reset" ng-click="Show_Components.Route_Form = false; Show_Components.Route_Table = true; Show_Components.Route_Add = true; Show_Components.Export = true;" class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i>  Cancelar</button>
                     </div>
                   </div><!-- /.box-footer -->
                 </form>

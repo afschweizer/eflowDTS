@@ -6,6 +6,7 @@ $scope.init = function(){
 	Load_Map_Init();
 	$scope.Show_Components.Route_Table = true;
 	$scope.Show_Components.Route_Add = true;
+	$scope.Show_Compónents.Export = true;
 	$scope.Route = {};
 	$scope.Check = false;
     To_Reload_Eflow_Config();
@@ -72,6 +73,7 @@ $scope.Visualize_Route = function(Obj){
 	$scope.Show_Components.Route_Form = true;
 	$scope.Show_Components.Route_Table = false;
 	$scope.Show_Components.Route_Add = false;
+	$scope.Show_Components.Export = false;
 	Load_Map();
 	$scope.Route = Obj;
 	$scope.Array_Route = Obj.Route_Path;
