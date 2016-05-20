@@ -3,7 +3,7 @@ DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
 	$scope.Show_Components.Route_Form = true;
-	Load_Map_Init();
+	Load_Map();
 	$scope.Show_Components.Route_Table = true;
 	$scope.Show_Components.Route_Add = true;
 	$scope.Show_Components.Export = true;
@@ -128,12 +128,14 @@ $scope.Select = function(){
    	var map = document.getElementById('Map_Dashboard_Route');
    		if(map){
 
-   	   eflowDTS.Session.Map_Dashboard = new GMaps({
+   	   /*eflowDTS.Session.Map_Dashboard = new GMaps({
 			div: map,
 		    lat: eflowDTS.Geolocation.Latitude, 
 			lng: eflowDTS.Geolocation.Longitude,
 		    zoom: 12
-		    });
+		    });*/
+		 
+		eflowDTS.Session.Map_Dashboard.removeOverlays();
 		    		
 		$scope.Array_Route = [];
 		    
