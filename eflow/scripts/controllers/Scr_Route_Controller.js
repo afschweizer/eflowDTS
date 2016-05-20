@@ -24,7 +24,7 @@ $scope.init = function(){
 		
 		if(map){ 
 			
-			eflowDTS.Map_Dashboard = new Gmaps({
+			eflowDTS.Map_Dashboard = new GMaps({
 				div: map,
 				lat:eflowDTS.Geolocation.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
