@@ -32,7 +32,7 @@ $scope.init = function(){
 				zoom:12				
 			});	
 			
-		$scope.Show_Components.Route_Form = false;
+		//$scope.Show_Components.Route_Form = false;
 		}
 		
 	};
@@ -134,9 +134,8 @@ $scope.Select = function(){
 			lng: eflowDTS.Geolocation.Longitude,
 		    zoom: 12
 		    });
-		    
-		
-		    $scope.Array_Route = [];
+		    		
+		$scope.Array_Route = [];
 		    
 		eflowDTS.Session.Map_Dashboard.setContextMenu({
 				  control: 'map',
