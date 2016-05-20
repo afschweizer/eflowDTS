@@ -1,4 +1,4 @@
-var Compute_Engine = false;
+var Compute_Engine = true;
 
 if(Compute_Engine === true){
 	var eflowDTS = {
