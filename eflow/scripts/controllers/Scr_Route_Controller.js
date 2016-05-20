@@ -1,5 +1,6 @@
-DTS_APP.controller('Scr_Route_Controller',function($scope) {
+var Map_Dashboard;
 
+DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
 	$scope.Show_Components.Route_Form = true;
@@ -25,7 +26,7 @@ $scope.init = function(){
 		
 		if(map){ 
 			
-			eflowDTS.Map_Dashboard = new GMaps({
+			Map_Dashboard = new GMaps({
 				div: map,
 				lat:eflowDTS.Geolocation.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
@@ -124,19 +125,17 @@ $scope.Select = function(){
    		
    		//var onSuccess = function(pos){
    		
-   		var map = document.getElementById('Map_Dashboard_Route');
-   			map.style.height = 100;
-   			map.style.width = 100;
+   	var map = document.getElementById('Map_Dashboard_Route');
    		if(map){
 
-   			eflowDTS.Map_Dashboard = new GMaps({
+   		/*Map_Dashboard = new GMaps({
 			div: map,
 		    lat: eflowDTS.Geolocation.Latitude, 
 			lng: eflowDTS.Geolocation.Longitude,
 		    zoom: 12
-		    });
-		    
-		   	eflowDTS.Map_Dashboard.setContextMenu({
+		    });*/
+		    $scope.Array_Route = [];
+		Map_Dashboard.setContextMenu({
 				  control: 'map',
 				  options: [{
 				    title: 'Agregar Vértice',
@@ -162,7 +161,7 @@ $scope.Select = function(){
 				  }]
 				});
 		   			
-   		}
+   		/*}
    		
    		/*};
    		
@@ -185,8 +184,8 @@ $scope.Select = function(){
                 		className : 'btn-primary'
                 		}
                 }
-                });
-     	}*/
+                });*/
+     	}
    	
    };
    
@@ -297,7 +296,7 @@ $scope.Select = function(){
    	
    var path = $scope.Array_Route;
 
-   eflowDTS.Map_Dashboard.drawPolygon({
+   Map_Dashboard.drawPolygon({
    paths: path, // pre-defined polygon shape
    strokeColor: '#BBD8E9',
    strokeOpacity: 1,
