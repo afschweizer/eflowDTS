@@ -20,9 +20,9 @@ $scope.init = function(){
 
 	function Load_Map_Init(){
 		
-		var map = document.getELementById('Map_Dashboard_Route');
+		var map = document.getElementById('Map_Dashboard_Route');
 		
-		if(map){
+		if(map){ 
 			
 			eflowDTS.Map_Dashboard = new Gmaps({
 				div: map,
@@ -30,8 +30,8 @@ $scope.init = function(){
 				lng:eflowDTS.Geolocation.Longitude,
 				zoom:12				
 			});			
-		}
 		$scope.Show_Components.Route_Form = false;
+		}
 		
 	};
 

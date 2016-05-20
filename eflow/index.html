@@ -36,6 +36,9 @@
     width: 100%;
     height: 60px;
 }
+      .nav.nav-tabs.nav-justified li a {
+    color: #fff;
+}
       </style>
       
       
@@ -135,8 +138,8 @@
               </div>
             </nav>
         </header>--> <header >
-            <nav class="navbar navbar-inverse " style="color: #000000;">
-               <div class="navbar-header" style="width:100%; color:#000000;background-color: #ffffff"><!--background-color: #014D7C;-->
+            <nav class="navbar navbar-dark bg-primary" style="color: #fff;">
+               <div class="navbar-header " style="width:100%; color:#000000;background-color: #ffffff"><!--background-color: #014D7C;-->
                 
                  <span style=" float:left; text-align:left;">
                    <img src="images/Logo.jpg" align="left" alt="Eflow" height="42px">
@@ -165,14 +168,14 @@
                  </span>
                      
               </div>
-      <div>
-                <ul class="nav  nav-tabs nav-justified"  ng-show="Show_Components.Main_Menu">
+      <div > 
+                <ul class="nav  nav-tabs nav-justified" ng-show="Show_Components.Main_Menu">
                      <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Calendar" data-toggle="tooltip" title="Planificador">Planificador</a></li>
                        
                    <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicules_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
  <li class="dropdown" ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false">
           <a  class="dropdown-toggle" data-toggle="dropdown" title="Mantenimiento">Mantenimiento <span class="caret"></span></a>
-          <ul class="dropdown-menu" ng-show="Show_Components.SubMenu_Maintenance">
+          <ul class="dropdown-menu " ng-show="Show_Components.SubMenu_Maintenance">
                         <li><a  href="#user" data-toggle="tooltip" title="Usuarios">Usuarios</a></li>
                              <li><a href="#vehicule" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
                              <li><a  href="#VisitPoint" data-toggle="tooltip" title="Establecimientos">Establecimientos</a></li>          
@@ -183,7 +186,7 @@
         </li>
 <li class="dropdown" ng-click="Show_Components.SubMenu_Import = true;Show_Components.SubMenu_Maintenance = false">
           <a  class="dropdown-toggle" data-toggle="dropdown" title="Importar">Importar<span class="caret"></span></a>
-          <ul class="dropdown-menu"  ng-show="Show_Components.SubMenu_Import">
+          <ul class="dropdown-menu nav  nav-tabs nav-justified"  ng-show="Show_Components.SubMenu_Import">
                          <li><a  href="#Job_Import" data-toggle="tooltip" title="Importar Puntos de Visita">Trabajos</a></li>
                          <li><a href="#User_Import" data-toggle="tooltip" title="Importar Usuarios">Usuarios</a></li> 
                              <li><a  href="#Vehicule_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
