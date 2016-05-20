@@ -634,6 +634,7 @@ doc.line(20, 130, 570, 130);
   doc.setFontSize(18);	
   doc.text(230, 160, 'Establecimientos');
 
+
   doc.setFontSize(13);
 doc.setFontType("normal");
 
