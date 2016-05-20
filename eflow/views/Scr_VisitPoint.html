@@ -14,7 +14,7 @@
    </div>
   <span id="Buttons" style="margin-left:7%;">
   <span>
-     <a class="btn btn-primary span4" ng-show="Show_Components.VisitPoint_Add" ng-click="Show_Components.VisitPoint_Table = false; Show_Components.VisitPoint_Form_New = true; Show_Components.VisitPoint_Add = false; Load_New_Visit_Point();" data-toggle="tooltip" title="Agregar Puntos de Visita">
+     <a class="btn btn-primary span4" ng-show="Show_Components.VisitPoint_Add" ng-click="Show_Components.VisitPoint_Table = false; Show_Components.VisitPoint_Form = true; Show_Components.VisitPoint_Add = false; Show_Components.Export = false; Load_New_Visit_Point();" data-toggle="tooltip" title="Agregar Puntos de Visita">
        <i class="glyphicon glyphicon-plus"></i>Agregar Puntos de Visita</a>   
 	</span>
   <span ng-show="Show_Actions">
@@ -23,7 +23,7 @@
                   <option value="Eliminar">Eliminar</option>
               </select>
             </span>
-			    <span id="right" style="float:right;"> 
+			    <span id="right" style="float:right;" ng-show="Show_Components.Export"> 
            <select style="width:175px " class="btn btn-primary span4" ng-model="Export_Type" ng-change="Export_File(Export_Type,(ArrayVisitPoint | filter: search | orderBy: OrderList))"> 
               <option value="">Exportar a archivo</option>
               <option value="JSON">JSON</option>
@@ -39,13 +39,13 @@
   
 				
   <!--  Agregar -->
-      <div class="row" ng-show="Show_Components.VisitPoint_Form_New">
+      <div class="row" ng-show="Show_Components.VisitPoint_Form">
      <!--Rastreo de Camión-->
 			<div class="col-md-5 col-sm-5 col-xs-12">
 		 		 <div class="pad"  >
                  <div id="world-map-markers" style="height: 600px;">
 							<div class="jvectormap-container"  style="width: 100%; height: 100%; position: relative; overflow: hidden; background-color: transparent;">
-								<div id="Map_Dashboard_New"  style="height: 600px;">
+								<div id="Map_Dashboard_VisitPoint"  style="height: 600px;">
 								</div>
 							</div>
 						</div>
@@ -138,7 +138,7 @@
                    
                   </div>
                 <button type="submit" class="btn btn-primary glyphicon glyphicon-save"  style="background-color:#295C7A" data-toggle="tooltip" title="Guardar"> Guardar</button>
-                <button type="reset" class="btn btn-primary glyphicon glyphicon-remove" ng-click="Show_Components.VisitPoint_Form_New = false;Show_Components.VisitPoint_Table = true; Show_Components.VisitPoint_Add = true;" title="Cancelar"  style="background-color:#295C7A" ><b> Cancelar</b></button>
+                <button type="reset" class="btn btn-primary glyphicon glyphicon-remove" ng-click="Show_Components.VisitPoint_Form = false; Show_Components.VisitPoint_Table = true; Show_Components.VisitPoint_Add = true; Show_Components.Export = true;" title="Cancelar"  style="background-color:#295C7A" ><b> Cancelar</b></button>
 
             </form>
         </div><!--/.col (right) -->
@@ -210,259 +210,5 @@
   </table>
 </div>
   
-    
+</div>
 				
-
-  
-				<!--  Edit -->
-		 
-              
-    <div class="row" ng-show="Show_Components.VisitPoint_Form_Edit">
-     <!--Rastreo de Camión-->
-			<div class="col-md-5 col-sm-5 col-xs-12">
-		 		 <div class="pad"  >
-                 <div id="world-map-markers" style="height: 600px;">
-							<div class="jvectormap-container"  style="width: 100%; height: 100%; position: relative; overflow: hidden; background-color: transparent;">
-								<div id="Map_Dashboard_Edit"  style="height: 600px;">
-								</div>
-							</div>
-						</div>
-               </div>
-            </div>
-    <div class="col-md-7 col-sm-7 col-xs-12">
-              <!-- form start -->
-                <form class="form-horizontal" ng-submit="Save_Visit_Point_Edit(VisitPoint)">
-                  <div class="box-body">
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Nombre del establecimiento:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Name" placeholder="Nombre del establecimiento..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Identificador del establecimiento:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.ID_Location" placeholder="Identificador del establecimiento..." required >
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Cédula Jurídica:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Legal_Cedula" placeholder="Cédula Jurídica..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Ruta:</label> 
-						<div class="col-sm-7"> 
-							<div class="form-group">  
-							
-							<!-- ng-model="VisitPoint.Route.ID_Route" ng-options="Obj.ID_Route as Obj.Route_Name for Obj in ArrayRoute" --> 
-              <select   ng-model="VisitPoint.Route" ng-options="Obj as Obj.Route_Name for Obj in ArrayRoute"  ng-change="Print_Zone(VisitPoint.Route)" style="width: 80%;" class="form-control" id="Ruta"></select>
-				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
-           </div>
-						</div>
-					</div> <div class="form-group">
-						<label class="col-sm-4 control-label">Latitud:</label> 
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input disabled required type="text" class="form-control" ng-model="VisitPoint.Latitude" placeholder="Latitud..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Longitud:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input  disabled required type="text" class="form-control" ng-model="VisitPoint.Longitude" placeholder="Longitud..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Dirección:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Address" placeholder="Dirección..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Número de teléfono:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">  
-							  <input required type="number" class="form-control" ng-model="VisitPoint.Telephone_Number" placeholder="Número de teléfono..." required>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Entregar a:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Manager" placeholder="Entregar a..." required>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Correo del establecimiento:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="email" class="form-control" ng-model="VisitPoint.Mail" placeholder="Correo del establecimiento..." required>
-							</div>
-						</div>
-					</div>
-                   
-                  </div>
-                  
-                  <button type="submit" class="btn btn-primary glyphicon glyphicon-save" style="background-color:#295C7A" data-toggle="tooltip" title="Guardar"> Guardar</button>
-                  <button type="reset"  ng-click="Show_Components.VisitPoint_Form_New = false; Show_Components.VisitPoint_Table = true; Show_Components.VisitPoint_Add = true; Show_Components.VisitPoint_Form_Edit = false;" class="btn btn-primary glyphicon glyphicon-remove" data-toggle="tooltip" title="Cerrar"  style="background-color:#295C7A"><b> Cancelar</b></button>
-
-                </form>
-                       			
-								
-
-
-            
-            </div>
-            </div>
-		
-  <!--
-				<div class="modal fade" id="Modal_Agregar_VisitPoint" role="dialog">
-              <div class="modal-dialog modal-lg">
-                          
-                <div class="modal-content">
-
-                  <div class="modal-header">
-                    <h2 class="modal-title"><i class="glyphicon glyphicon-user"></i> Agregar Puntos de Visita</h2>
-                  </div>
-             			<form>     
-                		 <div class="modal-body">
-        
-                        <div class="panel panel-info">
-                          <div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>
- <div class="row" >
-       
-			<div class="col-md-6 col-sm-6 col-xs-12">
-		 		 <div class="pad"  >
-                 <div id="world-map-markers" style="height: 600px;">
-							<div class="jvectormap-container"  style="width: 100%; height: 100%; position: relative; overflow: hidden; background-color: transparent;">
-								<div id="Map_Dashboard"  style="height: 600px;">
-								</div>
-							</div>
-						</div>
-               </div>
-            </div>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-                <form class="form-horizontal" ng-submit="Save(VisitPoint)" >
-                  <div class="box-body">
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Nombre del establecimiento:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Name" placeholder="Nombre del establecimiento..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Identificador del establecimiento:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.ID_Location" placeholder="Identificador del establecimiento..." required >
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Cédula Jurídica:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.CedJur" placeholder="Dirección..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Ruta:</label> 
-						<div class="col-sm-7"> 
-							<div class="form-group">  
-              <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name for Obj in ArrayRoute" style="width: 80%;" class="form-control" id="Usuario"></select>
-			 </div>
-						</div>
-					</div> <div class="form-group">
-						<label class="col-sm-4 control-label">Latitud:</label> 
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Latitude" placeholder="Latitud..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Longitud:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Longitude" placeholder="Longitud..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Dirección:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Address" placeholder="Dirección..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Número de teléfono:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">  
-							  <input required type="number" class="form-control" ng-model="VisitPoint.Telephone_Number" placeholder="Número de teléfono..." required>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Entregar a:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Manager" placeholder="Entregar a..." required>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Correo del establecimiento:</label>
-						<div class="col-sm-7"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint.Mail" placeholder="Correo del establecimiento..." required>
-							</div>
-						</div>
-					</div>
-                   
-                  </div>
-                  <div class="box-footer">
-                    <button type="reset" value="Reset" class="btn btn-primary"> Cancelar Punto Visita</button>
-                    <button type="submit" class="btn btn-primary pull-right"  > Guardar Punto Visita</button>
-                  </div>
-                </form>
-            </div>
-  
-           </div>
-                        <div class="modal-footer">
-								<button type="button" class="btn btn-primary glyphicon glyphicon-save"  data-dismiss="modal" ng-click="Add_New_User(User)" data-toggle="tooltip" title="Guardar Usuario"> Guardar</button>
-                        <button type="Reset" class="btn btn-primary glyphicon glyphicon-remove" style="border-top: 2.5px;border-style:solid;border-color:#fff;" data-toggle="tooltip" title="Cancelación de Usuario" data-dismiss="modal"> Cancelar </button>                        
-          
-							</div>
-                       
-            </div>
-                  </form>
-		</div>
-  </div>
-		</div>
-  
-  
-  </div>
-
--->
-
-
