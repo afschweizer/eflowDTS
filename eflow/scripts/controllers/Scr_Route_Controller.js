@@ -1,4 +1,4 @@
-
+var map;
 DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
@@ -21,18 +21,19 @@ $scope.init = function(){
 
 	function Load_Map_Init(){
 		
-		var map = document.getElementById('Map_Dashboard_Route');
+		var div = document.getElementById('Map_Dashboard_Route');
 		
-		if(map){ 
+		if(div){ 
 			
-			eflowDTS.Session.Map_Dashboard = new GMaps({
-				div: map,
+			map = new GMaps({
+				div: div,
 				lat:eflowDTS.Geolocation.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
 				zoom:12				
 			});	
+						
 			
-		//$scope.Show_Components.Route_Form = false;
+		$scope.Show_Components.Route_Form = false;
 		}
 		
 	};
@@ -121,25 +122,13 @@ $scope.Select = function(){
    
      function Load_Map(){
    	
-      //if(navigator.geolocation){
-   		
-   		//var onSuccess = function(pos){
-   		
-   	var map = document.getElementById('Map_Dashboard_Route');
-   		if(map){
-
-   	   /*eflowDTS.Session.Map_Dashboard = new GMaps({
-			div: map,
-		    lat: eflowDTS.Geolocation.Latitude, 
-			lng: eflowDTS.Geolocation.Longitude,
-		    zoom: 12
-		    });*/
-		 
-		eflowDTS.Session.Map_Dashboard.removeOverlays();
+     
+		map.removePolygons();
+		map.removeMarkers();
 		    		
 		$scope.Array_Route = [];
 		    
-		eflowDTS.Session.Map_Dashboard.setContextMenu({
+		map.setContextMenu({
 				  control: 'map',
 				  options: [{
 				    title: 'Agregar Vértice',
@@ -164,31 +153,8 @@ $scope.Select = function(){
 				    }
 				  }]
 				});
-		   			
-   		}
+		   			 	
    		
-   		/*};
-   		
-   		
-   		var onError = function(err) {
-  			alert('ERROR(' + err.code + '): ' + err.message);
-        };
-
- 		navigator.geolocation.getCurrentPosition(onSuccess,onError);
-   		
-   	}else{  		 		
-   		
-   		bootbox.dialog(
-                {
-                	title:"¡Alerta!",
-                	message:"Su navegador no soporta Geolocalization",
-                	buttons:{
-                	main:{
-                		label:'Ok!',
-                		className : 'btn-primary'
-                		}
-                }
-                });*/
      	
    	
    };
@@ -299,8 +265,8 @@ $scope.Select = function(){
    $scope.Print_Zone = function(){   	
    	
    var path = $scope.Array_Route;
-
-   eflowDTS.Session.Map_Dashboard.drawPolygon({
+         
+   map.drawPolygon({
    paths: path, // pre-defined polygon shape
    strokeColor: '#BBD8E9',
    strokeOpacity: 1,
