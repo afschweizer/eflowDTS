@@ -6,7 +6,7 @@ $scope.init = function(){
 	Load_Map_Init();
 	$scope.Show_Components.Route_Table = true;
 	$scope.Show_Components.Route_Add = true;
-	$scope.Show_Compónents.Export = true;
+	$scope.Show_Components.Export = true;
 	$scope.Route = {};
 	$scope.Check = false;
     To_Reload_Eflow_Config();
