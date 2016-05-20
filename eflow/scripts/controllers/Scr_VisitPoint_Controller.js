@@ -128,9 +128,9 @@ $scope.Load_New_Visit_Point = function(){
 	
 };
 
-$scope.Add_New_Visit_Point = function(New_Job){
+$scope.Save_Visit_Point = function(VP){
 
-        if(New_Job.Latitude === "" || typeof New_Job.Latitude === 'undefined' || New_Job.Longitude === "" || typeof New_Job.Longitude === 'undefined'){
+        if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === "" || typeof VP.Longitude === 'undefined'){
    		
    		bootbox.dialog({
    			title : "¡Alerta!",
@@ -145,6 +145,15 @@ $scope.Add_New_Visit_Point = function(New_Job){
    		
    	}else{
 
+
+		if(typeof VP._id === 'undefined'){
+			
+			//Insert
+			
+		}else{
+			//Update
+			
+		}
 		var JsonData = {
 					'Method_Name': 'Insert_Visit_Point',
 					 'Data': [{
@@ -261,14 +270,13 @@ $scope.Select = function(){
    
 $scope.Visualize_Visit_Point = function(Obj){
 	   
-   $scope.VisitPoint = Obj;
-   $scope.Show_Components.VisitPoint_Form_New = false;
-   $scope.Show_Components.VisitPoint_Form_Edit = true;
+   $scope.VisitPoint = Obj;   
+   $scope.Show_Components.VisitPoint_Form = true;
    $scope.Show_Components.VisitPoint_Table = false;
    $scope.Show_Components.VisitPoint_Add = false;
+   $scope.Show_Components.Export = false;
+   map.removePolygons();
    
-   $scope.Map_Id = 'Map_Dashboard_Edit';
-   Load_Map();
    Check_Route(Obj.Route); 
 };	
 
@@ -279,6 +287,7 @@ $scope.Visualize_Visit_Point = function(Obj){
 			for(var i = 0; i < $scope.ArrayRoute.length; i++){
 				
 				if($scope.ArrayRoute[i].Route_Name === Route.Route_Name){
+					
 					
 					$scope.Print_Zone($scope.ArrayRoute[i]);
 				}
