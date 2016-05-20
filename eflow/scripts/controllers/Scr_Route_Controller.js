@@ -2,8 +2,7 @@ DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 
 $scope.init = function(){
-	Load_Map();
-	$scope.Show_Components.Route_Form = false;
+	Load_Map_Init();
 	$scope.Show_Components.Route_Table = true;
 	$scope.Show_Components.Route_Add = true;
 	$scope.Route = {};
@@ -17,6 +16,12 @@ $scope.init = function(){
 	$scope.Select();
 	
 };
+
+	function Load_Map_Init(){
+		
+		
+		
+	};
 
 $scope.Checking_Checkboxes_Check = function(){
 	
