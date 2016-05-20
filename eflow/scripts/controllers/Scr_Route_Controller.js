@@ -25,7 +25,7 @@ $scope.init = function(){
 		
 		if(map){ 
 			
-			eflowDTS.Map_Dashboard = new GMaps({
+			eflowDTS.Session.Map_Dashboard = new GMaps({
 				div: map,
 				lat:eflowDTS.Geolocation.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
@@ -128,7 +128,7 @@ $scope.Select = function(){
    	var map = document.getElementById('Map_Dashboard_Route');
    		if(map){
 
-   	 eflowDTS.Map_Dashboard = new GMaps({
+   	   eflowDTS.Session.Map_Dashboard = new GMaps({
 			div: map,
 		    lat: eflowDTS.Geolocation.Latitude, 
 			lng: eflowDTS.Geolocation.Longitude,
@@ -137,7 +137,8 @@ $scope.Select = function(){
 		    
 		
 		    $scope.Array_Route = [];
-		Map_Dashboard.setContextMenu({
+		    
+		eflowDTS.Session.Map_Dashboard.setContextMenu({
 				  control: 'map',
 				  options: [{
 				    title: 'Agregar Vértice',
@@ -298,7 +299,7 @@ $scope.Select = function(){
    	
    var path = $scope.Array_Route;
 
-   Map_Dashboard.drawPolygon({
+   eflowDTS.Session.Map_Dashboard.drawPolygon({
    paths: path, // pre-defined polygon shape
    strokeColor: '#BBD8E9',
    strokeOpacity: 1,
