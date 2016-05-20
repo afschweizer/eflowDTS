@@ -1,4 +1,3 @@
-var Map_Dashboard;
 
 DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
@@ -26,12 +25,13 @@ $scope.init = function(){
 		
 		if(map){ 
 			
-			Map_Dashboard = new GMaps({
+			eflowDTS.Map_Dashboard = new GMaps({
 				div: map,
 				lat:eflowDTS.Geolocation.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
 				zoom:12				
-			});			
+			});	
+			
 		$scope.Show_Components.Route_Form = false;
 		}
 		
@@ -128,12 +128,14 @@ $scope.Select = function(){
    	var map = document.getElementById('Map_Dashboard_Route');
    		if(map){
 
-   		/*Map_Dashboard = new GMaps({
+   	 eflowDTS.Map_Dashboard = new GMaps({
 			div: map,
 		    lat: eflowDTS.Geolocation.Latitude, 
 			lng: eflowDTS.Geolocation.Longitude,
 		    zoom: 12
-		    });*/
+		    });
+		    
+		
 		    $scope.Array_Route = [];
 		Map_Dashboard.setContextMenu({
 				  control: 'map',
@@ -161,7 +163,7 @@ $scope.Select = function(){
 				  }]
 				});
 		   			
-   		/*}
+   		}
    		
    		/*};
    		
@@ -185,7 +187,7 @@ $scope.Select = function(){
                 		}
                 }
                 });*/
-     	}
+     	
    	
    };
    
