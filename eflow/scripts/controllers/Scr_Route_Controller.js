@@ -2,6 +2,7 @@ DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 
 $scope.init = function(){
+	$scope.Show_Components.Route_Form = true;
 	Load_Map_Init();
 	$scope.Show_Components.Route_Table = true;
 	$scope.Show_Components.Route_Add = true;
@@ -19,7 +20,18 @@ $scope.init = function(){
 
 	function Load_Map_Init(){
 		
+		var map = document.getELementById('Map_Dashboard_Route');
 		
+		if(map){
+			
+			eflowDTS.Map_Dashboard = new Gmaps({
+				div: map,
+				lat:eflowDTS.Geolocation.Latitude,
+				lng:eflowDTS.Geolocation.Longitude,
+				zoom:12				
+			});			
+		}
+		$scope.Show_Components.Route_Form = false;
 		
 	};
 
