@@ -83,7 +83,7 @@
 						<label class="col-sm-4 control-label">Ruta:</label> 
 						<div class="col-sm-7"> 
 							<div class="form-group">  
-              <select ng-model="Route" ng-options="Obj as Obj.Route_Name for Obj in ArrayRoute" ng-change="Print_Zone(VisitPoint.Route); VisitPoint.Latitude = '';
+              <select ng-model="Route" ng-options="Obj as Obj.Route_Name for Obj in ArrayRoute" ng-change="Print_Zone(Route); VisitPoint.Latitude = '';
         VisitPoint.Longitude='';" class="form-control" id="Ruta"></select>
 				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            </div>

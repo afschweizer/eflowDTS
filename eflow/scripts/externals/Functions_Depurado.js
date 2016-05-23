@@ -49,24 +49,11 @@ else{
  var Cookie_EflowDTS ;
  
 function To_Save_Eflow_Config() {
-    
- /*  var DB = new Dexie(eflowDTS.Session.Company);
-    
-    DB.version(1).stores({
-        Store_eflowDTS: '++id'
-    });
-    
-    DB.open();
-    
-    eflowDTS.id = 1;
-    
-    DB.Store_eflowDTS.put(eflowDTS);*/
+
    Cookie_EflowDTS = JSON.stringify(eflowDTS);
    document.cookie= Cookie_EflowDTS;
-   
-  // Check_Cookies();
-   
-}
+      
+};
 
 function To_Reload_Eflow_Config(){
 	
@@ -74,18 +61,10 @@ function To_Reload_Eflow_Config(){
 		 eflowDTS = JSON.parse(document.cookie);
 		}
 	else{
-		eflowDTS = JSON.parse(document.cookie);
-		/*Cookie_EflowDTS = JSON.stringify(eflowDTS);
-        document.cookie= Cookie_EflowDTS;*/
+		eflowDTS = JSON.parse(document.cookie);	
 	}
-		// eflowDTS = JSON.parse(document.cookie);
-		//UserName = cookies.Session.UserName;
-	//	$scope.Company = getCookie("Cookie_EflowDTS.Session.Company");
-	
-	//	alert(JSON.parse(cookies));
 		
-	
-}
+};
 
 function Load_Date (){
 	
@@ -166,7 +145,13 @@ function Log_In_Online(UserName, Password, Company,onSuccess, onError) {
 function Send_JSON(Url, JsonData, onSucess, onError) {
     try {
         var json;
-        var data = JSON.stringify(JsonData);
+        var data = JSON.stringify(JsonData,function( key, value ) {
+    if( key === "$$hashKey" ) {
+        return undefined;
+    }
+
+    return value;
+});
         var xhr = new XMLHttpRequest();
         xhr.open("POST", Url, !0);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
