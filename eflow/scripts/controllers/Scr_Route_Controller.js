@@ -4,7 +4,7 @@ DTS_APP.controller('Scr_Route_Controller',function($scope) {
 $scope.init = function(){
 	$scope.Show_Components.Route_Form = true;
 	Load_Map_Init();
-	$scope.Show_Components.Route_Table = true;
+	$scope.Show_Components.Route_Table = false;
 	$scope.Show_Components.Route_Add = true;
 	$scope.Show_Components.Export = true;
 	$scope.Route = {};
@@ -30,7 +30,10 @@ $scope.init = function(){
 				lat:eflowDTS.Geolocation.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
 				zoom:12	,
-				tilesloaded: function(e){$scope.Show_Components.Route_Form = false;}
+				tilesloaded: function(e){
+					$scope.Show_Components.Route_Form = false;
+					$scope.Show_Components.Route_Table = true;
+				}
 			});	
 						
 			

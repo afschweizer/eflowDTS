@@ -2,14 +2,13 @@ var map;
 DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 
 
-
-	$scope.init = function(){	
-	$scope.Show_Components = {};
-	$scope.Show_Components.Map_Online_User = true;
-		To_Reload_Eflow_Config();	
+			$scope.init = function(){	
+			$scope.Show_Components = {};
+			$scope.Show_Components.Map_Online_User = true;
+		    To_Reload_Eflow_Config();	
 			Select_User_Online();
 			Select_Jobs();	
-	Load_Init_Map();					
+	        Load_Init_Map();					
 			$scope.Show_Components.Show_User_Online = true;	
 			$scope.Show_Components.Show_List = false;				
 			};
@@ -23,11 +22,14 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 				div: div,
 			    lat: eflowDTS.Geolocation.Latitude, 
 				lng: eflowDTS.Geolocation.Longitude,
-			    zoom: 12
+			    zoom: 12,
+			    tilesloaded: function(e){
+			    	$scope.Show_Components.Map_Online_User = false;			    	
+			    	}
 			    }); 
 			 }
 			 
-		$scope.Show_Components.Map_Online_User = false;
+		//$scope.Show_Components.Map_Online_User = false;
 	};
 	
 	$scope.refresh = function(){
