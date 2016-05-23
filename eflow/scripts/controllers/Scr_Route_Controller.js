@@ -29,11 +29,12 @@ $scope.init = function(){
 				div: div,
 				lat:eflowDTS.Geolocation.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
-				zoom:12				
+				zoom:12	,
+				tilesloaded: function(e){$scope.Show_Components.Route_Form = false;}
 			});	
 						
 			
-		$scope.Show_Components.Route_Form = false;
+		//$scope.Show_Components.Route_Form = false;
 		}
 		
 	};
