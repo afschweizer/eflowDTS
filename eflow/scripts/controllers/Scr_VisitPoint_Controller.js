@@ -48,10 +48,14 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	};	
 
    $scope.Print_Zone = function(Obj){   	
-   			
+   		if(typeof Obj._id !== 'undefined'){
+   		$scope.VisitPoint.Latitude  = Obj.Latitude;
+        $scope.VisitPoint.Longitude	= Obj.Longitude;
+	    }else{
 		$scope.VisitPoint.Latitude  = "";
         $scope.VisitPoint.Longitude	= "";
-				
+	    }		
+
 		map.removePolygons();
 		
 		map.drawPolygon({
@@ -66,6 +70,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			  $scope.VisitPoint.Longitude = e.latLng.lng();			  
             }
 		});
+		
+		map.setCenter(Obj.Route_Path[0][0],Obj.Route_Path[0][1]);
    			
    };
    
