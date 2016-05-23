@@ -298,12 +298,12 @@ $scope.Visualize_Visit_Point = function(Obj){
    map.removePolygons();
    map.removeMarkers();
    map.addMarker({
-	 lat: parse.Float(Obj.Latitude),
-	 lng: Float.parseObj.Longitude)			 
+	 lat: parseFloat(Obj.Latitude),
+	 lng: parseFloat(Obj.Longitude)			 
    });
    Check_Route(Obj.Route); 
 };	
-
+ 
  function Check_Route(Route){
  	
 	 if($scope.ArrayRoute.length > 0){		
