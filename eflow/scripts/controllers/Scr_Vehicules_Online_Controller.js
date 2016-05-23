@@ -1,15 +1,33 @@
+var map;
+
 DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 
 
 
 	$scope.init = function(){	
 	$scope.Show_Components = {};
-	$scope.Show_Components.Map_Online_User = false;
+	$scope.Show_Components.Map_Online_User = true;
 		To_Reload_Eflow_Config();	
 			Select_User_Online();
-			Select_Jobs();			
+			Select_Jobs();	
+	Load_Init_Map();					
 			$scope.Show_Components.Show_User_Online = true;	
 			$scope.Show_Components.Show_List = false;				
+			};
+	
+	function Load_Init_Map(){
+		
+		var div = document.getElementById('Map_Online_User');
+   			
+   			if(div){
+	   		    map = new GMaps({
+				div: div,
+			    lat: eflowDTS.Geolocation.Latitude, 
+				lng: eflowDTS.Geolocation.Longitude,
+			    zoom: 12
+			    }); 
+			 }
+		$scope.Show_Components.Map_Online_User = false;
 	};
 	
 	$scope.refresh = function(){
@@ -84,37 +102,18 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 	
 	Load_Map = function(User){
    	
-   	//if(navigator.geolocation){
-   		
-   		//var onSuccess = function(pos){
-   		
-   		var map = document.getElementById('Map_Online_User');
-   			
-   		if(map){
-
-   			if(typeof User === 'undefined'){
-	   		    eflowDTS.Map_Dashboard = new GMaps({
-				div: map,
-			    lat: eflowDTS.Geolocation.Latitude, 
-				lng: eflowDTS.Geolocation.Longitude,
-			    zoom: 12
-			    });
+   	 	    if(typeof User === 'undefined'){
+	   		   map.setCenter(eflowDTS.Geolocation.Latitude,eflowDTS.Geolocation.Longitude);			    
 	        }else{
-		        eflowDTS.Map_Dashboard = new GMaps({
-				div: map,
-			    lat: User.Geolocation.Latitude, 
-				lng: User.Geolocation.Longitude,
-			    zoom: 16
-			    });	        	
+		       map.setCenter(User.Geolocation.Latitude,User.Geolocation.Longitude);		      	
 	        }
-
+			map.removeMarkers();
 			if($scope.ArrayUser.length > 0){
 		   
-			for(var i = 0; i < $scope.ArrayUser.length; i++){
-				
+			for(var i = 0; i < $scope.ArrayUser.length; i++){				
 		
 			var x = $scope.ArrayUser[i];
-  			eflowDTS.Map_Dashboard.addMarker({
+  			map.addMarker({
 			  lat: x.Geolocation.Latitude, 
 			  lng: x.Geolocation.Longitude,
 			  icon: 'images/truck.png',
@@ -132,39 +131,12 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
               '</div>'
 			  },
 			  value: x			  
-			  });
-			  	
+			  });			  	
 				
-			}
-			
-			}
-		   			
+			}			
+			}		   			
    		}
-   		
-   		/*};
-   		
-   		
-   		var onError = function(err) {
-  			alert('ERROR(' + err.code + '): ' + err.message);
-        };
-    
- 		navigator.geolocation.getCurrentPosition(onSuccess,onError);
-   		
-    	}else{  		 		
-   		
-   		bootbox.dialog(
-                {
-                	title:"¡Alerta!",
-                	message:"Su navegador no soporta Geolocalization",
-                	buttons:{
-                	main:{
-                		label:'Ok!',
-                		className : 'btn-primary'
-                		}
-                }
-                });
-     	}*/
-   	
+   		   		
    };
 	
 	function Select_Jobs(){
