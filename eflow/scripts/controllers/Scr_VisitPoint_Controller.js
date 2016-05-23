@@ -48,14 +48,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	};	
 
    $scope.Print_Zone = function(Obj){   	
-   		if(typeof Obj._id !== 'undefined'){
-   		$scope.VisitPoint.Latitude  = Obj.Latitude;
-        $scope.VisitPoint.Longitude	= Obj.Longitude;
-	    }else{
-		$scope.VisitPoint.Latitude  = "";
-        $scope.VisitPoint.Longitude	= "";
-	    }		
-
+   				
 		map.removePolygons();
 		
 		map.drawPolygon({
@@ -136,7 +129,7 @@ $scope.Load_New_Visit_Point = function(){
 
 $scope.Save_Visit_Point = function(VP){
 
-        if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === "" || typeof VP.Longitude === 'undefined'){
+     if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === "" || typeof VP.Longitude === 'undefined'){
    		
    		bootbox.dialog({
    			title : "¡Alerta!",
@@ -154,41 +147,20 @@ $scope.Save_Visit_Point = function(VP){
 
 		if(typeof VP._id === 'undefined'){
 			
-			//Insert
+			var JsonData = {
+				'Method_Name': 'Insert_Visit_Point',
+				'Data': [VP]
+			};//Insert
 			
-		}else{
-			//Update
-			
-		}
-		var JsonData = {
-					'Method_Name': 'Insert_Visit_Point',
-					 'Data': [{
-		    			"ID_Location" : New_Job.ID_Location,
-					    "Manager" : New_Job.Manager,
-					    "Name" : New_Job.Name,
-					    "Legal_Cedula" : New_Job.Legal_Cedula,
-					    "Address" : New_Job.Address,
-					    "Telephone_Number" : New_Job.Telephone_Number,
-					    "Mail" : New_Job.Mail,
-					    "Company" : eflowDTS.Session.Company,
-					    "Latitude" : New_Job.Latitude,
-					    "Longitude" : New_Job.Longitude,
-					    "Route" : {
-					    	"ID_Route":New_Job.Route.ID_Route,
-					    	"Route_Name":New_Job.Route.Route_Name
-					    	}
-					    }]			
-				};
-				var onSuccess = function(JsonData){
-								
-				$scope.Show_Components.VisitPoint_Form_New = false;
-				$scope.Show_Components.VisitPoint_Form_Edit = false;
+			var onSuccess = function(e){								
+				$scope.Show_Components.VisitPoint_Form = false;
 				$scope.Show_Components.VisitPoint_Table = true;
 				$scope.Show_Components.VisitPoint_Add = true;
+				$scope.Show_Components.Export = true;
 				$scope.Select();
 				bootbox.dialog({
    				title:"¡Alerta!",
-   				message:"La ruta ha sido creada",
+   				message:"El establecimiento ha sido creado",
    				buttons:{
    					main:{
    						label:'OK!',
@@ -197,10 +169,40 @@ $scope.Save_Visit_Point = function(VP){
    				}
    			    });
 				};
-				var onError = function(JsonData){
-				alert(JsonData);
-				};
-				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+				
+		}else{
+			
+			var JsonData = {
+				'Method_Name': 'Update_Visit_Point',
+				'Data': [VP]
+			};//Insert
+			
+			var onSuccess = function(e){								
+				$scope.Show_Components.VisitPoint_Form = false;
+				$scope.Show_Components.VisitPoint_Table = true;
+				$scope.Show_Components.VisitPoint_Add = true;
+				$scope.Show_Components.Export = true;
+				$scope.Select();
+				bootbox.dialog({
+   				title:"¡Alerta!",
+   				message:"El establecimiento ha sido creado",
+   				buttons:{
+   					main:{
+   						label:'OK!',
+   						className:'btn-primary'
+   					}
+   				}
+   			    });
+				};//Update
+			
+		}
+		
+			var onError = function(JsonData){
+			
+			};
+			
+			Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+			
 		}		
 		
 };
@@ -287,23 +289,15 @@ $scope.Visualize_Visit_Point = function(Obj){
 };	
 
  function Check_Route(Route){
-	 
-	 if($scope.ArrayRoute.length > 0){
-		
-			for(var i = 0; i < $scope.ArrayRoute.length; i++){
-				
-				if($scope.ArrayRoute[i].Route_Name === Route.Route_Name){
-					
-					
-					$scope.Print_Zone($scope.ArrayRoute[i]);
-				}
-				
-			}
-		 
-		 
-	 }
-	 
-	 
+ 	
+	 if($scope.ArrayRoute.length > 0){		
+		for(var i = 0; i < $scope.ArrayRoute.length; i++){				
+			if($scope.ArrayRoute[i].Route_Name === Route.Route_Name){										
+					$scope.Route = $scope.ArrayRoute[i]; 
+					$scope.Print_Zone($scope.ArrayRoute[i]);				
+			}				
+		}				 
+	 }	 	 
  };
 
 
