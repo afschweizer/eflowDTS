@@ -150,6 +150,7 @@ $scope.Save_Visit_Point = function(VP){
 			VP.Route = {};
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
+			VP.Company = eflowDTS.Session.Company;
 			var JsonData = {
 				'Method_Name': 'Insert_Visit_Point',
 				'Data': [VP]

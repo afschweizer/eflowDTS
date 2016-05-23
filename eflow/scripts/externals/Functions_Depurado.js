@@ -146,7 +146,7 @@ function Send_JSON(Url, JsonData, onSucess, onError) {
     try {
         var json;
         var data = JSON.stringify(JsonData,function( key, value ) {
-    if( key === "$$hashKey" ) {
+    if( key === "$hashKey" ) {
         return undefined;
     }
 
