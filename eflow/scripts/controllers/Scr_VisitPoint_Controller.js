@@ -61,11 +61,14 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			click: function(e) {
               $scope.VisitPoint.Latitude = e.latLng.lat();
 			  $scope.VisitPoint.Longitude = e.latLng.lng();
-			  this.removeMarkers();
-			  this.addMarker({
+			  map.removeMarkers();
+			  map.addMarker({
 			  lat: e.latLng.lat(),
 			  lng: e.latLng.lng(),
-			  
+			  title: 'Establecimiento',
+			  infoWindow: {
+              content: $scope.VisitPoint
+              }
               });
             }
 		});
