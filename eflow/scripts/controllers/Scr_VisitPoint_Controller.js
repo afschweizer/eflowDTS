@@ -60,7 +60,13 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		   fillOpacity: 0.4,
 			click: function(e) {
               $scope.VisitPoint.Latitude = e.latLng.lat();
-			  $scope.VisitPoint.Longitude = e.latLng.lng();			  
+			  $scope.VisitPoint.Longitude = e.latLng.lng();
+			  this.removeMarkers();
+			  this.addMarker({
+			  lat: e.latLng.lat(),
+			  lng: e.latLng.lng(),
+			  
+              });
             }
 		});
 		
@@ -124,6 +130,7 @@ $scope.Load_New_Visit_Point = function(){
 	
 	$scope.VisitPoint = {};
 	map.removePolygons();
+	map.removeMarkers();
 	
 };
 
@@ -290,7 +297,7 @@ $scope.Visualize_Visit_Point = function(Obj){
    $scope.Show_Components.VisitPoint_Add = false;
    $scope.Show_Components.Export = false;
    map.removePolygons();
-   
+   map.removeMarkers();
    Check_Route(Obj.Route); 
 };	
 
