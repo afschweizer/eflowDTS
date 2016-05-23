@@ -5,16 +5,17 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	$scope.init = function(){
 		
 		$scope.Polygon = {}; 
+		$scope.Show_Components.VisitPoint_Form = true;
 		To_Reload_Eflow_Config();
+		Load_Map_Init();
 		$scope.ArrayRoute = [];
 		var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
 		{"es":"RUTA","value":"Route"},{"es":"DIRECCION","value":"Address"},
 		{"es":"ENCARGADO","value":"Manager"},{"es":"CORREO","value":"Mail"}] ;
 		$scope.ArrayHeaders = Headers;		
 		$scope.Select();
-		$scope.Show_Components.VisitPoint_Form = true;
-		Load_Map_Init();
-		$scope.Show_Components.VisitPoint_Table = true;
+				
+		$scope.Show_Components.VisitPoint_Table = false;
 		$scope.Show_Components.VisitPoint_Add = true;
 		Select_Routes();
 	 
@@ -43,12 +44,11 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 				});
 			},
 			tilesloaded: function(e){
-			  $scope.Show_Components.VisitPoint_Form = false;	
+			  $scope.Show_Components.VisitPoint_Form = false;
 			  $scope.Show_Components.VisitPoint_Table = true;
 		    }
     	});
 	  }
-		$scope.Show_Components.VisitPoint_Form = false;
 	};	
 
    $scope.Print_Zone = function(Obj){   	

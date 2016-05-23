@@ -5,10 +5,10 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 			$scope.init = function(){	
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
+			Load_Init_Map();
 		    To_Reload_Eflow_Config();	
 			Select_User_Online();
-			Select_Jobs();	
-	        Load_Init_Map();					
+			Select_Jobs();		       				
 			$scope.Show_Components.Show_User_Online = true;	
 			$scope.Show_Components.Show_List = false;				
 			};
