@@ -1,5 +1,4 @@
 var map;
-
 DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 
 
@@ -27,6 +26,7 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 			    zoom: 12
 			    }); 
 			 }
+			 
 		$scope.Show_Components.Map_Online_User = false;
 	};
 	
@@ -101,7 +101,7 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 	};
 	
 	Load_Map = function(User){
-   	
+   	  
    	 	    if(typeof User === 'undefined'){
 	   		   map.setCenter(eflowDTS.Geolocation.Latitude,eflowDTS.Geolocation.Longitude);			    
 	        }else{
@@ -133,10 +133,10 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 			  value: x			  
 			  });			  	
 				
-			}			
-			}		   			
-   		}
-   		   		
+			}
+		}
+
+				   		
    };
 	
 	function Select_Jobs(){
