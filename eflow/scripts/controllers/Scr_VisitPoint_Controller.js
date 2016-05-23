@@ -64,11 +64,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			  map.removeMarkers();
 			  map.addMarker({
 			  lat: e.latLng.lat(),
-			  lng: e.latLng.lng(),
-			  title: 'Establecimiento',
-			  infoWindow: {
-              content: $scope.VisitPoint
-              }
+			  lng: e.latLng.lng()			 
               });
             }
 		});
@@ -301,6 +297,10 @@ $scope.Visualize_Visit_Point = function(Obj){
    $scope.Show_Components.Export = false;
    map.removePolygons();
    map.removeMarkers();
+   map.addMarker({
+	 lat: Obj.Latitude,
+	 lng: Obj.Longitude()			 
+   });
    Check_Route(Obj.Route); 
 };	
 
