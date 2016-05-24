@@ -13,10 +13,10 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		{"es":"RUTA","value":"Route"},{"es":"DIRECCION","value":"Address"},
 		{"es":"ENCARGADO","value":"Manager"},{"es":"CORREO","value":"Mail"}] ;
 		$scope.ArrayHeaders = Headers;		
-		$scope.Select();
-				
+		$scope.Select();				
 		$scope.Show_Components.VisitPoint_Table = false;
 		$scope.Show_Components.VisitPoint_Add = true;
+		$scope.Show_Components.Export = true;
 		Select_Routes();
 	 
 	};
