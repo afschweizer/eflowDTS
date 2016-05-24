@@ -5,8 +5,9 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	$scope.init = function(){
 		
 		$scope.Polygon = {}; 
+		$('#Charging').modal('show');
 		$scope.Show_Components.VisitPoint_Form = true;
-		To_Reload_Eflow_Config();
+		To_Reload_Eflow_Config();		
 		Load_Map_Init();
 		$scope.ArrayRoute = [];
 		var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
@@ -47,6 +48,9 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			  $scope.Show_Components.VisitPoint_Form = false;
 			  $scope.Show_Components.VisitPoint_Table = true;
 			  GMaps.off('tilesloaded',map);
+			  setTimeout(function(){
+	                	$('#Charging').modal('hide');
+	                	}, 3000);
 		    }
     	});
 	  }

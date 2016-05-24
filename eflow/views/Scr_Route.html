@@ -1,6 +1,48 @@
 
 <script src="scripts/externals/jspdf.min.js"></script>
 <script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
+
+<style>
+.modal {
+}
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+.modal-backdrop
+{
+    opacity:0.9 !important;
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+</style>
+
 <div id="Contents" ng-controller="Scr_Route_Controller" ng-init="init()"> 
 <div id="Options"> 
   <div style="text-align: center;">  
@@ -151,7 +193,7 @@
                          <h4 class="modal-title" id="myModalLabel">DTS</h4>
                 </div>
                 <div class="modal-body">
-                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate">  </span> Cargando......
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate">  </span> Cargando Mapa......
                 </div>
                 <div class="modal-footer">
                    

@@ -5,6 +5,7 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 			$scope.init = function(){	
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
+			$('#Charging').modal('show');
 			Load_Init_Map();
 		    To_Reload_Eflow_Config();	
 			Select_User_Online();
@@ -23,9 +24,11 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 			    lat: eflowDTS.Geolocation.Latitude, 
 				lng: eflowDTS.Geolocation.Longitude,
 			    zoom: 12,
-			    tilesloaded: function(e){
-			    	$scope.Show_Components.Map_Online_User = false;	
+			    tilesloaded: function(e){	
 			    	 GMaps.off('tilesloaded',map);
+			    	 setTimeout(function(){
+	                	$('#Charging').modal('hide');
+	                	}, 3000);
 			    	}
 			    }); 
 			 }

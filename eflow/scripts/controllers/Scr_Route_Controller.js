@@ -33,7 +33,10 @@ $scope.init = function(){
 					$scope.Show_Components.Route_Form = false;	
 	                $scope.Show_Components.Route_Table = true;
 	                GMaps.off('tilesloaded',map);
-	                $('#Charging').modal('hide');
+	                setTimeout(function(){
+	                	$('#Charging').modal('hide');
+	                	}, 3000);
+	                
                 }
 			});	
 		
