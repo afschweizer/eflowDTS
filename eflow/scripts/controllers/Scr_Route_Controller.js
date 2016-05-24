@@ -22,7 +22,7 @@ $scope.init = function(){
 	function Load_Map_Init(){
 		
 		var div = document.getElementById('Map_Dashboard_Route');
-		
+		$('#Charging').modal('show');
 		if(div){ 			
 			map = new GMaps({
 				div: div,
@@ -33,6 +33,7 @@ $scope.init = function(){
 					$scope.Show_Components.Route_Form = false;	
 	                $scope.Show_Components.Route_Table = true;
 	                GMaps.off('tilesloaded',map);
+	                $('#Charging').modal('hide');
                 }
 			});	
 		
