@@ -2,7 +2,7 @@ var map;
 DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
-	$scope.Show_Components.Route_Form = false;	
+	$scope.Show_Components.Route_Form = true;	
 	$scope.Show_Components.Route_Table = false;
 	Load_Map_Init();
 	$scope.Show_Components.Route_Add = true;
@@ -18,25 +18,12 @@ $scope.init = function(){
 	$scope.Select();
 	
 };
-
-/*
- $scope.$watch('Show_Components.Route_Form', function(newValue, oldValue) {
-        if (newValue !== oldValue) {
-           if (newValue){
-           	Load_Map_Init();
-           	map.refresh();
-            }
-        }
-    });*/
     
-    
-
 	function Load_Map_Init(){
 		
 		var div = document.getElementById('Map_Dashboard_Route');
 		
-		if(div){ 
-			
+		if(div){ 			
 			map = new GMaps({
 				div: div,
 				lat:eflowDTS.Geolocation.Latitude,
@@ -92,11 +79,8 @@ $scope.Visualize_Route = function(Obj){
 	$scope.Show_Components.Export = false;
 	Load_Map();
 	$scope.Route = Obj;
-	$scope.Array_Route = Obj.Route_Path;
-		
-	$scope.Print_Zone();
-	
-	
+	$scope.Array_Route = Obj.Route_Path;		
+	$scope.Print_Zone();		
 	
 };
 
