@@ -46,6 +46,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			tilesloaded: function(e){
 			  $scope.Show_Components.VisitPoint_Form = false;
 			  $scope.Show_Components.VisitPoint_Table = true;
+			  GMaps.off('tilesloaded',map);
 		    }
     	});
 	  }

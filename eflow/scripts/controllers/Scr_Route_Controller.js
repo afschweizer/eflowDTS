@@ -32,7 +32,7 @@ $scope.init = function(){
 				tilesloaded: function(e){					
 					$scope.Show_Components.Route_Form = false;	
 	                $scope.Show_Components.Route_Table = true;
-	                GMaps.off(,map);
+	                GMaps.off('tilesloaded',map);
                 }
 			});	
 		

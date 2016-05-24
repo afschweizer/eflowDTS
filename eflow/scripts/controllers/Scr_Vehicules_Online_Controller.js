@@ -24,7 +24,8 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 				lng: eflowDTS.Geolocation.Longitude,
 			    zoom: 12,
 			    tilesloaded: function(e){
-			    	$scope.Show_Components.Map_Online_User = false;			    	
+			    	$scope.Show_Components.Map_Online_User = false;	
+			    	 GMaps.off('tilesloaded',map);
 			    	}
 			    }); 
 			 }
