@@ -51,10 +51,15 @@ $scope.Show_Components = {};
         };
 		
 	$scope.Sign_Out = function(){
+		$("#Log_Out").modal('show');
 		document.cookie = "";
-		eflowDTS = JSON.parse(document.cookie); 
-		window.location.href = "#";
+		eflowDTS = JSON.parse(document.cookie); 		
+		setTimeout(function(){
+	         	$('#Log_Out').modal('hide');
+	         	window.location.href = "#";
+	    }, 3000);
 	}	
+	
     });
 	
 	

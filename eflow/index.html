@@ -27,8 +27,48 @@
       
       <script src="scripts/externals/AutoTable.js"></script>
 -->
-    <style>
-      .footer {
+  
+      <style>
+.modal {
+}
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+.modal-backdrop
+{
+    opacity:0.9 !important;
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+
+ .footer {
         color:#000000;
         background-color: #ffffff;
     position: absolute;
@@ -209,6 +249,28 @@
               </div>
             </nav>
         </header>
+      
+      
+          <!-- Modal -->
+<div class="modal fade" id="Log_Out" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                         <h4 class="modal-title" id="myModalLabel">DTS</h4>
+                </div>
+                <div class="modal-body">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>Cerrando Sesión...
+                </div>
+                <div class="modal-footer">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      
+      
         <!-- MAIN CONTENT AND INJECTED VIEWS -->
         <div id="main">
             <!-- angular templating -->
@@ -218,27 +280,6 @@
           
     <!--  <script src="scripts/externals/Dashboard.js"></script> -->
         </div>
-   <!--    <footer class="footer">
-      <div class="container" align="right" >
- <span >
-          	<a class="navbar-brand glyphicon glyphicon-time" style="color:#000000;">
-            	{{Watch|date:"mediumTime"}}
-            </a> 
-          </span>
-          <span >
-            <a class="navbar-brand glyphicon glyphicon-calendar"style="color:#000000;">
-            	{{Watch|date:"shortDate"}}
-            </a>
-        </span>
-</div>
-    </footer>-->
-  <!--<footer class="footer">
-  <div class="container">
-    <p>
-      
-Hola Mundo
-    </p>
-  </div>  
-  </footer>   --> 
+  
   </body>
     </html>
