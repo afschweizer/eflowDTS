@@ -41,6 +41,17 @@
     /* To center horizontally */
     margin: 0 auto;
 }
+  .modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #0480be;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
 </style>
 
 <div id="Contents" ng-controller="Scr_VisitPoint_Controller" ng-init="init()"> 
@@ -258,8 +269,8 @@
   <div class="modal fade" id="Charging" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">
         <div class="modal-dialog vertical-align-center">
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" >
+                <div class="modal-header modal-header-primary" >
                          <h4 class="modal-title" id="myModalLabel">DTS</h4>
                 </div>
                 <div class="modal-body">
