@@ -82,7 +82,7 @@ var onSuccess = function(result){
 }
 };
  
- bootbox.confirm("Â¿Desea Asignar los elementos seleccionados?",onSuccess);
+ bootbox.confirm("¿Desea Asignar los elementos seleccionados?",onSuccess);
 
 };
 
