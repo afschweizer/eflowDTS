@@ -130,7 +130,6 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 			  content: 
 			'<div class="small-box">'+
                 '<div class="inner">'+
-                  '<h5>'+x.Geolocation.Address+'      </h5> '+
                   '<h5>Placa: '+x.ID_Truck+'    </h5> '+
                   '<h5>'+x.UserName+'  </h5> '+
                   '</div>'+
