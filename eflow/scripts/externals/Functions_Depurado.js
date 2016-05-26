@@ -1,7 +1,4 @@
-var Compute_Engine = true;
-
-if(Compute_Engine === true){
-	var eflowDTS = {
+var eflowDTS = {
 	Geolocation:{
 		"Latitude":9.935775, 
 		"Longitude":-84.105073
@@ -21,37 +18,43 @@ if(Compute_Engine === true){
     },
     LoggedIn: false
 };
-}
-else{
-	
-	var eflowDTS = {
-	Geolocation:{
-		"Latitude":9.935775, 
-		"Longitude":-84.105073
-	},
-    Configuration: {
-        "URLs": {
-            "eflow_Get": "http://runnerp11.codenvycorp.com:52438/Eflow_Get.php",
-            "eflow_Post": "http://runnerp11.codenvycorp.com:52438/Eflow_Post.php",
-            "eflow_Date_Time" : "http://runnerp11.codenvycorp.com:52438/time.php"
-        }
-    },
-    Session: {},
-    Time : {    	
-    	"Day" : 86400000,
-    	"Hours" : 64800000,
-    	"Difference": 21600000
-    },
-    LoggedIn: false
-};
-	
-}
- var Cookie_EflowDTS ;
- 
-function To_Save_Eflow_Config() {
 
-   document.cookie = JSON.stringify(eflowDTS);
-      
+function Set_Cookie(key,value) {
+	
+    document.cookie = key+"="+JSON.stringify(value);
+    
+};
+
+function Exist_Cookie(key) {
+    var cookie = Get_Cookie(key);
+    if (cookie != "") {
+		return true;
+	} else {
+       return false;     
+    }
+};
+
+function Get_Cookie(key) {
+    var name = key + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return JSON.parse(c.substring(name.length,c.length));
+        }
+    }
+    return "";
+};
+
+function Delete_Cookie(key){
+  document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+};
+
+function To_Save_Eflow_Config() {
+   document.cookie = JSON.stringify(eflowDTS);      
 };
 
 function To_Reload_Eflow_Config(){
@@ -62,6 +65,7 @@ function To_Reload_Eflow_Config(){
 	else{
 		eflowDTS = JSON.parse(document.cookie);	
 	    }
+	  
 		
 };
 

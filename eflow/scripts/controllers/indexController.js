@@ -3,9 +3,18 @@ DTS_APP.controller('indexController', function($scope) {
 
        $scope.init = function() {
        	
+       	if(Exist_Cookie("EflowCookie") === true){
+       		eflowDTS = Get_Cookie("EflowCookie");
+       	}else{
+       		Set_Cookie("EflowCookie",eflowDTS);
+       	}
+       	
 		$scope.Show_Components = {};		
 		$scope.Show_Components.Main_Menu = true;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
+		
+		//To_Reload_Eflow_Config();
+		
            setInterval(function() {
                     timers();
                 }, 1000);
@@ -53,8 +62,12 @@ DTS_APP.controller('indexController', function($scope) {
 	$scope.Sign_Out = function(){
 		
 		$("#Log_Out").modal('show');
-		eflowDTS.LoggedIn = false;
-		To_Save_Eflow_Config();
+		
+		    eflowDTS.Save_Session = false;
+			eflowDTS.LoggedIn = false;	
+			Set_Cookie("EflowCookie",);
+		    //To_Save_Eflow_Config();
+		
 		setTimeout(function(){
 	         	$('#Log_Out').modal('hide');
 	         	window.location.href = "#";
