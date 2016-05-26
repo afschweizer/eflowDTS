@@ -1,7 +1,8 @@
 DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 
 	$scope.init = function(){
-		To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = GetCookie("EflowCookie");
 	
 		$scope.Select_VisitPoint();
 		
@@ -53,7 +54,8 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 		      onDayClick : function(){
 		      	
 		      	 eflowDTS.Session.Calendar_Date = (new Date(this.title).getTime());
-		      	 To_Save_Eflow_Config();
+		      	 //To_Save_Eflow_Config();
+		      	 Set_Cookie("EflowCookie",eflowDTS);
 		      	 location.href = "#/PV_DB";}
 	      });	
 		
