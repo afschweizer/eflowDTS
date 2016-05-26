@@ -3,7 +3,7 @@ DTS_APP.controller('indexController', function($scope) {
 
        $scope.init = function() {
        	
-$scope.Show_Components = {};		
+		$scope.Show_Components = {};		
 		$scope.Show_Components.Main_Menu = true;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
            setInterval(function() {
@@ -51,14 +51,18 @@ $scope.Show_Components = {};
         };
 		
 	$scope.Sign_Out = function(){
+		
 		$("#Log_Out").modal('show');
-		document.cookie = "";
-		eflowDTS = JSON.parse(document.cookie); 		
+		eflowDTS.LoggedIn = false;
+		To_Save_Eflow_Config();
 		setTimeout(function(){
 	         	$('#Log_Out').modal('hide');
 	         	window.location.href = "#";
 	    }, 3000);
-	}	
+	}
+	
+	
+	
 	
     });
 	

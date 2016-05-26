@@ -50,19 +50,18 @@ else{
  
 function To_Save_Eflow_Config() {
 
-   Cookie_EflowDTS = JSON.stringify(eflowDTS);
-   document.cookie= Cookie_EflowDTS;
+   document.cookie = JSON.stringify(eflowDTS);
       
 };
 
 function To_Reload_Eflow_Config(){
 	
 	if(typeof eflowDTS === 'undefined'){
-		 eflowDTS = JSON.parse(document.cookie);
+		 var eflowDTS = JSON.parse(document.cookie);
 		}
 	else{
 		eflowDTS = JSON.parse(document.cookie);	
-	}
+	    }
 		
 };
 
@@ -76,7 +75,7 @@ setInterval(function() {
 		$scope.Watch = new Date(x.Time);
 		$scope.$apply($scope.Watch);
 		//$scope.user = "Afuentes";
-	//	$scope.$apply($scope.user);
+	    //$scope.$apply($scope.user);
 	});
                 }, 1000);
 

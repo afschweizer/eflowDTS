@@ -1,9 +1,12 @@
+DTS_APP.controller('Scr_Login_Controller', function($scope) {
 
- DTS_APP.controller('Scr_Login_Controller', function($scope) {
-
-$scope.init = function() {
+    $scope.init = function() {    	
 	document.getElementById('Login').style.display = 'none';
 	$scope.Log = {};
+	if(eflowDTS.LoggedIn === true){
+		window.location.href = '#Calendar';
+	}
+	
 	};
 
     $scope.Show_Components.Main_Menu = false;
@@ -52,7 +55,11 @@ $scope.init = function() {
 				// create a message to display in our view
 					$scope.Show_Components.Main_Menu = true;
 					eflowDTS.Session = obj;
-					
+					if($scope.Save_Session === true){
+						eflowDTS.LoggedIn = true;
+				    }else{
+						eflowDTS.LoggedIn = false;					
+					}
 			    	DataCompany();
 			    	To_Save_Eflow_Config();
 	            	$scope.Mail = String(eflowDTS.Session.Mail);
