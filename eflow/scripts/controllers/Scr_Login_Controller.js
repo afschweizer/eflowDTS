@@ -6,6 +6,9 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 	
 	if(eflowDTS.Save_Session === true){
 		window.location.href = '#Calendar';
+		$scope.Mail = String(eflowDTS.Session.Mail);
+	    document.getElementById('Login').style.display = 'block';
+	    window.location.href = "#Calendar";
 	}
 	
 	};
