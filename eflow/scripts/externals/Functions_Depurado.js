@@ -16,7 +16,8 @@ var eflowDTS = {
     	"Hours" : 64800000,
     	"Difference": 21600000
     },
-    LoggedIn: false
+    LoggedIn: false,
+    Save_Session : false
 };
 
 function Set_Cookie(key,value) {

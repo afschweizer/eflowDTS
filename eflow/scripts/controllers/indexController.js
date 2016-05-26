@@ -44,7 +44,7 @@ DTS_APP.controller('indexController', function($scope) {
         
         Save_Error(error);
     }
-};
+}; 
 
         function timers() {
         
@@ -65,7 +65,7 @@ DTS_APP.controller('indexController', function($scope) {
 		
 		    eflowDTS.Save_Session = false;
 			eflowDTS.LoggedIn = false;	
-			Set_Cookie("EflowCookie",);
+			Set_Cookie("EflowCookie",eflowDTS);
 		    //To_Save_Eflow_Config();
 		
 		setTimeout(function(){
