@@ -1,14 +1,6 @@
 <?php
 try{
-/*  
-$uri = "mongodb://adminEprac:wolfe@ds053312.mongolab.com:53312/eflow"; 
-$options = array("connectTimeoutMS" => 30000);
 
-$conn = new MongoClient($uri,$options);
-  
-$db = $conn->selectDB("eflow");
-    
- */ /*------------------------------------------------------------*/
   
 $uri = "mongodb://adminEprac:wolfe@ds015953.mlab.com:15953/eflow_testing"; 
 $options = array("connectTimeoutMS" => 30000);
