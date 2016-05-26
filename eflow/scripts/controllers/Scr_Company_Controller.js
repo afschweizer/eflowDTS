@@ -2,7 +2,8 @@
  	
 	$scope.init = function(){
 		
-		To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
 		};
 		
 $scope.validate = function(com){

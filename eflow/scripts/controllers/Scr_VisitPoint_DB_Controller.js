@@ -2,7 +2,8 @@ DTS_APP.controller('Scr_VisitPoint_DB_Controller',function($scope) {
 
 $scope.init = function(){
 	
-		To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
 	//$scope.Show_Quantity=true;
 	       $scope.Show_Serie=false;
            $scope.Show_Code=false;

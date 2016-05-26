@@ -7,7 +7,8 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 			$scope.Show_Components.Map_Online_User = true;
 			$('#Charging').modal('show');
 			Load_Init_Map();
-		    To_Reload_Eflow_Config();	
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
 			Select_User_Online();
 			Select_Jobs();		       				
 			$scope.Show_Components.Show_User_Online = true;	
@@ -44,7 +45,9 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 	$scope.See_Info = function(User){
 		eflowDTS.Session.UserControl = User;
 		
-		To_Save_Eflow_Config();
+			 //To_Save_Eflow_Config();
+		      	 Set_Cookie("EflowCookie",eflowDTS);
+		
 		location.href="#/detail";
 	};
 	

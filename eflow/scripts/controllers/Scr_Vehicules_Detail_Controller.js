@@ -2,7 +2,8 @@ DTS_APP.controller('Scr_Vehicules_Detail_Controller',function($scope) {
 
 
 $scope.init = function(){
-		To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
 	Load_Map();
 	$scope.Load_Visit_Point();
 	$scope.Load_Route();

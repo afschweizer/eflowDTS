@@ -1,7 +1,8 @@
 DTS_APP.controller('Scr_User_Import_Controller',function($scope) {
 
 $scope.init = function(){
-		To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
    $scope.Check = false;
   //  $scope.Dates = new Date();
 $scope.ArrayUsers_Import = [];

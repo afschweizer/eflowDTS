@@ -107,7 +107,8 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 			
 					eflowDTS.Session.DataCompany = arr[0];
 					
-		      	 To_Save_Eflow_Config();
+		      	 //To_Save_Eflow_Config();
+		      	 Set_Cookie("EflowCookie",eflowDTS);
 		}
 		var onError = function(e){
 		alert(e);

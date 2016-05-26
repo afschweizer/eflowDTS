@@ -3,7 +3,8 @@ DTS_APP.controller('Scr_User_Controller',function($scope){
 
 $scope.Type = "password";
 $scope.init = function() {
-		To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
 var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"PRIMER APELLIDO","value":"Lastname"},
 	{"es":"SEGUNDO APELLIDO","value":"Lastname2"},{"es":"CEDULA","value":"Identification"},{"es":"Tipo","value":"Type"}] ;
 $scope.ArrayHeaders = Headers;

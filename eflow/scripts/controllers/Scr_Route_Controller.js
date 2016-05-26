@@ -9,7 +9,8 @@ $scope.init = function(){
 	$scope.Show_Components.Export = true;
 	$scope.Route = {};
 	$scope.Check = false;
-    To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
     
     var Headers= [{"es":"NOMBRE","value":"Route_Name"},{"es":"IDENTIFICADOR","value":"ID_Route"},
 	{"es":"DESCRIPCION","value":"Route_Description"}] ;

@@ -2,7 +2,8 @@ DTS_APP.controller('Scr_Job_Controller_jqwidgets',function($scope) {
 	
 $scope.init = function() {
 	
-		To_Reload_Eflow_Config();
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");
 $scope.Select();
 };	
 	

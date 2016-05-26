@@ -14,6 +14,7 @@ DTS_APP.controller('indexController', function($scope) {
 		$scope.Show_Components.SubMenu_Maintenance = false;
 		
 		//To_Reload_Eflow_Config();
+		//eflowDTS = GetCookie("EflowCookie");
 		
            setInterval(function() {
                     timers();
@@ -66,7 +67,8 @@ DTS_APP.controller('indexController', function($scope) {
 		    eflowDTS.Save_Session = false;
 			eflowDTS.LoggedIn = false;	
 			Set_Cookie("EflowCookie",eflowDTS);
-		    //To_Save_Eflow_Config();
+		      	 //To_Save_Eflow_Config();
+		      	// Set_Cookie("EflowCookie",eflowDTS);
 		
 		setTimeout(function(){
 	         	$('#Log_Out').modal('hide');

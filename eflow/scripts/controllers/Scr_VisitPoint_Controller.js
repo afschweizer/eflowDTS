@@ -7,7 +7,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		$scope.Polygon = {}; 
 		$('#Charging').modal('show');
 		$scope.Show_Components.VisitPoint_Form = true;
-		To_Reload_Eflow_Config();		
+		//To_Reload_Eflow_Config();
+		eflowDTS = Get_Cookie("EflowCookie");		
 		Load_Map_Init();
 		$scope.ArrayRoute = [];
 		var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
