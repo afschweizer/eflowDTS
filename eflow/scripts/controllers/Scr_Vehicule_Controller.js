@@ -194,7 +194,7 @@ $scope.Add_New_Vehicule = function(New_Vehicule){
 		var JsonData = 
 				{
 					'Method_Name': 'Insert_Vehicule',
-					'Data': { 
+					'Data':[ { 
 				        	"Company": eflowDTS.Session.Company,
 				            "Id_Vehicle": New_Vehicule.Id_Vehicle,
 						    "Brand": New_Vehicule.Brand,
@@ -207,7 +207,7 @@ $scope.Add_New_Vehicule = function(New_Vehicule){
 						    "Weight":New_Vehicule.Weight,
 						    "Cubics": New_Vehicule.Cubics,
 						    "Description": New_Vehicule.Description
-					    }
+					    }]
 				};
 				var onSuccess = function(JsonData){
 				$scope.Select();
