@@ -5,9 +5,9 @@ var eflowDTS = {
 	},
     Configuration: {
         "URLs": {
-            "eflow_Get": "http://104.197.6.251/eflowDTS/Eflow_Get.php",
-            "eflow_Post": "http://104.197.6.251/eflowDTS/Eflow_Post.php",
-            "eflow_Date_Time" : "http://104.197.6.251/eflowDTS/time.php"
+            "eflow_Get": "http://104.197.6.251/eflowDTS_Testing/eflowDTS/Eflow_Get.php",
+            "eflow_Post": "http://104.197.6.251/eflowDTS_Testing/eflowDTS/Eflow_Post.php",
+            "eflow_Date_Time" : "http://104.197.6.251/eflowDTS_Testing/eflowDTS/time.php"
         }
     },
     Session: {},
