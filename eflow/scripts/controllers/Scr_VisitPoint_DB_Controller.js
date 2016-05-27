@@ -1041,7 +1041,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 						$scope.VisitPoint_Add_Array_Task.push(obj);	
 					}
 					$scope.VisitPoint_Add_Task = {};
-					$scope.Array_Serials = {};
+					$scope.Array_Serials = [];
 	       $scope.Show_Serie=false;
            $scope.Show_Code=false;
            $scope.Show_Quantity=false;
