@@ -2,6 +2,7 @@ var map;
 DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
+       	Set_Current_Page();
 	$scope.Show_Components.Route_Form = true;	
 	$scope.Show_Components.Route_Table = false;
 	Load_Map_Init();

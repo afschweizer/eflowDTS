@@ -1,4 +1,5 @@
 var eflowDTS = {
+	
 	Geolocation:{
 		"Latitude":9.935775, 
 		"Longitude":-84.105073
@@ -17,7 +18,15 @@ var eflowDTS = {
     	"Difference": 21600000
     },
     LoggedIn: false,
-    Save_Session : false
+    Save_Session : false,
+    Ultimate_Page : ""
+};
+
+function Set_Current_Page(){
+	
+	eflowDTS.Ultimate_Page = window.location.hash;
+	Set_Cookie("EflowCookie",eflowDTS);
+	
 };
 
 function Set_Cookie(key,value) {

@@ -2,7 +2,7 @@ DTS_APP.controller('indexController', function($scope) {
 	
 
        $scope.init = function() {
-       	
+       
        	if(Exist_Cookie("EflowCookie") === true){
        		eflowDTS = Get_Cookie("EflowCookie");
        	}else{
@@ -10,7 +10,7 @@ DTS_APP.controller('indexController', function($scope) {
        	}
        	
 		$scope.Show_Components = {};		
-		$scope.Show_Components.Main_Menu = true;  
+		$scope.Show_Components.Main_Menu = false;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
 		
 		//To_Reload_Eflow_Config();

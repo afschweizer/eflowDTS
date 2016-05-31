@@ -3,6 +3,7 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 
 
 			$scope.init = function(){	
+       	Set_Current_Page();
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
 			$('#Charging').modal('show');
@@ -49,6 +50,8 @@ DTS_APP.controller('Scr_Vehicules_Online_Controller',function($scope){
 		      	 Set_Cookie("EflowCookie",eflowDTS);
 		
 		location.href="#/detail";
+			    	eflowDTS.Ultimate_Page="#/detail";
+	         	Set_Cookie("EflowCookie",eflowDTS);
 	};
 	
     function Select_User_Online(){		

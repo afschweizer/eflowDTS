@@ -7,6 +7,7 @@ $scope.Check = false;
 
 $scope.init = function() {
 	
+       	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		eflowDTS = Get_Cookie("EflowCookie");
 $scope.Headers = [{"es":"GERENTE","value":"VisitPoint.Manager"},{"es":"NOMBRE","value":"VisitPoint.Name"},

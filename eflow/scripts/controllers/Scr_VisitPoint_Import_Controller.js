@@ -1,8 +1,11 @@
 DTS_APP.controller('Scr_VisitPoint_Import_Controller',function($scope) {
 
 $scope.init = function(){
+       	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		eflowDTS = Get_Cookie("EflowCookie");
+		
+		alert();
    $scope.Check = false;
   //  $scope.Dates = new Date();
 $scope.ArrayVisitPoints_Import = [];

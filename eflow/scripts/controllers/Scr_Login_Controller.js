@@ -1,14 +1,19 @@
 DTS_APP.controller('Scr_Login_Controller', function($scope) {
 
-    $scope.init = function() {    	
+    $scope.init = function() {  
+      
 	document.getElementById('Login').style.display = 'none';
 	$scope.Log = {};
 	
 	if(eflowDTS.Save_Session === true){
-		window.location.href = '#Calendar';
+		$scope.Show_Components.Main_Menu = true;
+		$scope.Show_Components.SubMenu_Maintenance = true;
+		
+		window.location.href = eflowDTS.Ultimate_Page;
 		$scope.Mail = String(eflowDTS.Session.Mail);
-	    document.getElementById('Login').style.display = 'block';
-	    window.location.href = "#Calendar";
+		
+	   // document.getElementById('Login').style.display = 'block';
+	   
 	}
 	
 	};

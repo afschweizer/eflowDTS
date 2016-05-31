@@ -3,6 +3,7 @@ DTS_APP.controller('Scr_User_Controller',function($scope){
 
 $scope.Type = "password";
 $scope.init = function() {
+       	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		eflowDTS = Get_Cookie("EflowCookie");
 var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"PRIMER APELLIDO","value":"Lastname"},

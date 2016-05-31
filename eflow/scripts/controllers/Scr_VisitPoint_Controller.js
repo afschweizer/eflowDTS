@@ -3,6 +3,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 
 
 	$scope.init = function(){
+       	Set_Current_Page();
 		
 		$scope.Polygon = {}; 
 		$('#Charging').modal('show');
