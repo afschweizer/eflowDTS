@@ -17,6 +17,7 @@ $scope.Select();
     
 };
 
+
 $scope.Checking_Checkboxes_Check = function(){
 	
 	$scope.Show_Actions = false;
