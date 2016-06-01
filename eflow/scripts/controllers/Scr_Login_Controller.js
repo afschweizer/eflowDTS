@@ -2,16 +2,17 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 
     $scope.init = function() {  
       
-	document.getElementById('Login').style.display = 'none';
-	$scope.Log = {};
+	$scope.Show_Components.Login = false;
+	$scope.Log = {};	
 	
 	if(eflowDTS.Save_Session === true){
+		
 		$scope.Show_Components.Main_Menu = true;
 		$scope.Show_Components.SubMenu_Maintenance = true;
+		$scope.Show_Components.Login = true;
 		
 		window.location.href = eflowDTS.Ultimate_Page;
 		$scope.Mail = String(eflowDTS.Session.Mail);
-		$scope.Show_Components.Login=true;
 	   
 	}
 	
@@ -76,7 +77,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 			    	DataCompany();
 			    	To_Save_Eflow_Config();
 	            	$scope.Mail = String(eflowDTS.Session.Mail);
-	                document.getElementById('Login').style.display = 'block';
+	                $scope.Show_Components.Login = true;
 			    	window.location.href = "#Calendar";
             }
             
