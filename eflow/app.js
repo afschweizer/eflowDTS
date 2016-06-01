@@ -20,8 +20,8 @@
 			.when('/User_Import',{
             	templateUrl : 'views/Scr_User_Import.html'
             })
-			.when('/Vehicule_Import',{
-            	templateUrl : 'views/Scr_Vehicule_Import.html'
+			.when('/Vehicle_Import',{
+            	templateUrl : 'views/Scr_Vehicle_Import.html'
             })
 			.when('/Route_Import',{
             	templateUrl : 'views/Scr_Route_Import.html'
@@ -33,7 +33,7 @@
                 templateUrl : 'views/Scr_Message.html'
             })
             .when('/history', {
-                templateUrl : 'views/Scr_Vehicule_History.html'
+                templateUrl : 'views/Scr_Vehicle_History.html'
             })
             .when('/PV_DB', {
                 templateUrl : 'views/Scr_VisitPoint_DB.html'
@@ -47,17 +47,17 @@
              .when('/VisitPoint', {
                 templateUrl : 'views/Scr_VisitPoint.html'
             })
-            .when('/vehicule', {
-                templateUrl : 'views/Scr_Vehicule.html'  
+            .when('/vehicle', {
+                templateUrl : 'views/Scr_Vehicle.html'  
             })
             .when('/dashboard',{
             	templateUrl : 'views/Scr_DashBoard.html'
             })
             .when('/detail',{
-            	templateUrl : 'views/Scr_Vehicules_Detail.html'
+            	templateUrl : 'views/Scr_Vehicles_Detail.html'
             })         
-            .when('/Vehicules_Online', {
-                templateUrl : 'views/Scr_Vehicules_Online.html'
+            .when('/Vehicles_Online', {
+                templateUrl : 'views/Scr_Vehicles_Online.html'
             })
             .when('/product',{
                 templateUrl : 'views/Scr_Product.html'
@@ -110,7 +110,7 @@
 			
             // route for the map page
             .when('/map_notification', {
-                templateUrl : 'views/Scr_Map_Vehicule.html'
+                templateUrl : 'views/Scr_Map_Vehicle.html'
                
             })
 			

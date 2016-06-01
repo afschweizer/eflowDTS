@@ -30,9 +30,9 @@ switch($dataObject->Method_Name){
       require 'Update_Visit_Point.php';
       break;
     } 
-  case 'Update_Vehicules':
+  case 'Update_Vehicles':
     {
-      require 'Update_Vehicules.php';
+      require 'Update_Vehicles.php';
       break;
     } 
   case 'Insert_Geolocation':
@@ -75,9 +75,9 @@ switch($dataObject->Method_Name){
       require'Insert_User.php';
       break;
     }
-  case 'Insert_Vehicule':
+  case 'Insert_Vehicle':
     {
-      require'Insert_Vehicule.php';
+      require'Insert_Vehicle.php';
       break;
     }
   case 'Insert_Notification':
@@ -106,9 +106,9 @@ switch($dataObject->Method_Name){
       require'Delete_Visit_Point.php';
       break;
     }
-  case 'Delete_Vehicule':
+  case 'Delete_Vehicle':
     {
-      require'Delete_Vehicule.php';
+      require'Delete_Vehicle.php';
       break;
     }
   case 'Delete_Message':

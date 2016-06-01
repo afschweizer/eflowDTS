@@ -193,7 +193,7 @@ $(document).ready( function() {
 				    
 				    <span>
 						<label>Asignar al Vehículo:</label>
-						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" class="form-control" id="Vehicle" ng-change="Info_Vehicule(Assign.ID_Truck,ArrayVehicle)"></select>
+						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
 						 <br/>
                   <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
                </span>

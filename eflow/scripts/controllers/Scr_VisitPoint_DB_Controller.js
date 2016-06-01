@@ -21,7 +21,7 @@ $scope.init = function(){
 		$scope.Select_VisitPoint();
 		$scope.Select_Local();
 		$scope.Select_User();
-		$scope.Select_Vehicule();
+		$scope.Select_Vehicle();
 		clearInterval(myVar);
     
    var myVar = setInterval(function() {   	
@@ -148,7 +148,7 @@ $scope.Action_Option= function(Option){
 	}
 	
 }
- $scope.Info_Vehicule = function(Vehicle,ArrayVehicle){
+ $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
 	for ( i = 0; i < ArrayVehicle.length ; i++ ){
       if(Vehicle == ArrayVehicle[i].ID_Truck){
 		$scope.ObjVeh = {};
@@ -184,10 +184,10 @@ $scope.Select_User = function(){
     }
 };
 
-$scope.Select_Vehicule = function(){
+$scope.Select_Vehicle = function(){
 	try {
         var JsonData = {
-            'Method_Name': 'Select_All_Vehicule',
+            'Method_Name': 'Select_All_Vehicle',
             'Data': {
     			"Company": eflowDTS.Session.Company
             },

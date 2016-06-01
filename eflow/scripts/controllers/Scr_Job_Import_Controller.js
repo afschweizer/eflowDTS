@@ -14,7 +14,7 @@ $scope.init = function(){
 
 $scope.Select_User();
 
-$scope.Select_Vehicule();
+$scope.Select_Vehicle();
 
 };
 
@@ -51,7 +51,7 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
 };
 
 
-$scope.Info_Vehicule = function(Vehicle,ArrayVehicle){
+$scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
 	for ( var i = 0; i < ArrayVehicle.length ; i++ ){
       if(Vehicle === ArrayVehicle[i].ID_Truck){
 		$scope.ObjVeh = {};
@@ -86,7 +86,7 @@ $scope.Select_User = function(){
     }
 };
 
-$scope.Select_Vehicule = function(){
+$scope.Select_Vehicle = function(){
 	try {
         var JsonData = {
             'Method_Name': 'Select_All_Vehicle',

@@ -24,7 +24,7 @@ switch($dataObject->Method_Name){
       require'Login_Admin.php';
       break;
     }
-   case 'Select_All_Vehicule':
+   case 'Select_All_Vehicle':
     {
       require'Select_All_Vehicle.php';
       break;

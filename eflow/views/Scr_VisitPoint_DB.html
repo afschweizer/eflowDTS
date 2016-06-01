@@ -55,7 +55,7 @@
 			  </span>
            <span>
               <label>Asignar al Vehículo:</label>
-              <select ng-model="Assign.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 30%;" class="form-control" id="Vehicle" ng-change="Info_Vehicule(Assign.ID_Truck,ArrayVehicle)"></select>
+              <select ng-model="Assign.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 30%;" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
           <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
            </span>
            <br/>
@@ -124,7 +124,7 @@
 				   <br/>
 				    <span>
 						<label>Asignar al Vehículo:</label>
-						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" class="form-control" id="Vehicle" ng-change="Info_Vehicule(Assign.ID_Truck,ArrayVehicle)"></select>
+						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
 						 <br/>
                   <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
                </span>
@@ -349,7 +349,7 @@
               <label class="col-sm-4 control-label">Asignar al Vehículo:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">  
-              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ></select><!--ng-change="Info_Vehicule(Vehicle.ID_Truck,ArrayVehicle)"
+              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ></select><!--ng-change="Info_Vehicle(Vehicle.ID_Truck,ArrayVehicle)"
 				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}-->
            <!-- <input type="text" class="form-control" ng-model="VisitPoint.ID_Truck" placeholder="Asignar al Vehiculo..." required>-->
             </div></div>
@@ -577,7 +577,7 @@
 						<label class="col-sm-4 control-label">Asignar al Vehiculo:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">						
-                       <select  ng-model="VisitPoint_Add.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ng-change="Info_Vehicule(VisitPoint_Add.ID_Truck,ArrayVehicle)"></select>
+                       <select  ng-model="VisitPoint_Add.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ng-change="Info_Vehicle(VisitPoint_Add.ID_Truck,ArrayVehicle)"></select>
 <!--<input type="text" class="form-control" ng-model="VisitPoint_Add.User" placeholder="Asignar al Usuario..." required>-->
 							</div>
 						</div>

@@ -107,7 +107,7 @@
 		<script src="scripts/controllers/Scr_Job_Controller_jqwidgets.js"></script>
 		<script src="scripts/controllers/Scr_Job_Import_Controller.js"></script>
 		<script src="scripts/controllers/Scr_User_Import_Controller.js"></script>
-		<script src="scripts/controllers/Scr_Vehicule_Import_Controller.js"></script>
+		<script src="scripts/controllers/Scr_Vehicle_Import_Controller.js"></script>
 		<script src="scripts/controllers/Scr_Route_Import_Controller.js"></script>
 		<script src="scripts/controllers/Scr_VisitPoint_Import_Controller.js"></script>
 		<script src="scripts/controllers/Scr_VisitPoint_DB_Controller.js"></script>
@@ -116,10 +116,10 @@
       <script src="scripts/controllers/Scr_Calendar_Controller.js"></script>
       <script src="scripts/controllers/Scr_Message_Controller.js"></script>
       <script src="scripts/controllers/Scr_User_Controller.js"></script>
-      <script src="scripts/controllers/Scr_Vehicule_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Vehicle_Controller.js"></script>
       <script src="scripts/controllers/Scr_DashBoard_Controller.js"></script>
-      <script src="scripts/controllers/Scr_Vehicules_Detail_Controller.js"></script>
-      <script src="scripts/controllers/Scr_Vehicules_Online_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Vehicles_Detail_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Vehicles_Online_Controller.js"></script>
       <script src="scripts/controllers/Scr_VisitPoint_Controller.js"></script>
       <script src="scripts/controllers/Scr_Company_Controller.js"></script>
       <script src="scripts/controllers/Scr_Route_Controller.js"></script>
@@ -174,11 +174,11 @@
                 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Main_Menu">
                      <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Calendar" data-toggle="tooltip" title="Planificador">Planificador</a></li>
                  		    
-                  	<li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicules_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
+                  	<li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicles_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
                		<li ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false"><a data-toggle="tooltip" title="Mantenimiento">Mantenimiento</a>
                    		 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.SubMenu_Maintenance">
                   		    <li><a href="#user" data-toggle="tooltip" title="Usuarios">Usuarios</a></li>
-                             <li><a href="#vehicule" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
+                             <li><a href="#vehicle" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
                              <li><a href="#VisitPoint" data-toggle="tooltip" title="Establecimientos">Establecimientos</a></li>          
                              <li><a href="#Routes" data-toggle="tooltip" title="Rutas">Rutas</a></li>           
                            
@@ -187,7 +187,7 @@
                    		 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.SubMenu_Import">
                   		     <li><a href="#Job_Import" data-toggle="tooltip" title="Importar Puntos de Visita">Trabajos</a></li>
                   		     <li><a href="#User_Import" data-toggle="tooltip" title="Importar Usuarios">Usuarios</a></li> 
-                             <li><a href="#Vehicule_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
+                             <li><a href="#Vehicle_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
                   		     <li><a href="#Route_Import" data-toggle="tooltip" title="Importar Rutas">Rutas</a></li> 
                              <li><a href="#VisitPoint_Import" data-toggle="tooltip" title="Importar Establecimientos">Establecimientos</a></li>          
                            
@@ -232,12 +232,12 @@
                 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Main_Menu">
                      <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Calendar" data-toggle="tooltip" title="Planificador">Planificador</a></li>
                        
-                   <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicules_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
+                   <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicles_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
  <li class="dropdown" ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false">
           <a  class="dropdown-toggle" data-toggle="dropdown" title="Mantenimiento">Mantenimiento <span class="caret"></span></a>
           <ul class="dropdown-menu " style="background-color:#3E94DF; "ng-show="Show_Components.SubMenu_Maintenance">
                         <li><a style="color:#000;" href="#user" data-toggle="tooltip" title="Usuarios">Usuarios</a></li>
-                             <li><a style="color:#000;" href="#vehicule" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
+                             <li><a style="color:#000;" href="#vehicle" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
                              <li><a style="color:#000;" href="#VisitPoint" data-toggle="tooltip" title="Establecimientos">Establecimientos</a></li>          
                              <li><a style="color:#000;" href="#Routes" data-toggle="tooltip" title="Rutas">Rutas</a></li>           
                             <!-- <li><a href="#product" data-toggle="tooltip" title="Productos">Productos</a></li>  --> 
@@ -249,7 +249,7 @@
           <ul class="dropdown-menu"  style="background-color:#3E94DF; " ng-show="Show_Components.SubMenu_Import">
                          <li><a style="color:#000;" href="#Job_Import" data-toggle="tooltip" title="Importar Puntos de Visita">Trabajos</a></li>
                          <li><a style="color:#000;"href="#User_Import" data-toggle="tooltip" title="Importar Usuarios">Usuarios</a></li> 
-                             <li><a style="color:#000;" href="#Vehicule_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
+                             <li><a style="color:#000;" href="#Vehicle_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
                          <li><a style="color:#000;" href="#Route_Import" data-toggle="tooltip" title="Importar Rutas">Rutas</a></li> 
                              <li><a style="color:#000;" href="#VisitPoint_Import" data-toggle="tooltip" title="Importar Establecimientos">Establecimientos</a></li>          
                             <!-- <li><a href="#product" data-toggle="tooltip" title="Productos">Productos</a></li>  --> 
