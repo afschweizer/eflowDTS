@@ -11,8 +11,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 		
 		window.location.href = eflowDTS.Ultimate_Page;
 		$scope.Mail = String(eflowDTS.Session.Mail);
-		
-	   // document.getElementById('Login').style.display = 'block';
+		$scope.Show_Components.Login=true;
 	   
 	}
 	
