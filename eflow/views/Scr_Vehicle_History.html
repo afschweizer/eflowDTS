@@ -1,0 +1,21 @@
+<div ng-controller="Scr_Vehicles_Online_Controller" ng-init="init()">
+ 
+        <div class="row">                  
+        </div>
+        <div class="panel panel-default">
+                
+            <div class="panel-body">
+                <div name="form" id="form" class="form-horizontal">                   
+                    <div class="input-group">
+                        <span class="input-group-addon" style="background-color: #014D7C;color:#fff;"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="user" type="text" class="form-control" name="user" value="" ng-model="UserName" placeholder="Usuario...">                                        
+                    
+                        <span class="input-group-addon" style="background-color: #014D7C;color:#fff;"><i class="fa fa-automobile "></i></span>
+                        <input id="Vehicule" type="text" class="form-control" name="Vehicule" ng-model="Vehicule"  placeholder="Vehiculo...">
+                   		 </div>  
+                  <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ng-click="validate(UserName,Password)" ><i class="glyphicon glyphicon-log-in"></i> Ingresar</button>                          
+                     
+                    </div>
+                </div>     
+            </div>                     
+        </div>  
