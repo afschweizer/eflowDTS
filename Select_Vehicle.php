@@ -2,19 +2,18 @@
 
 include 'ConnectionMongo.php'; 
   
-
-
-
 $coll = $db->Store_Vehicle;
 
-$result = $coll->find($dataObject->Data);
+$result = $coll->find($dataObject->Data,$dataObject->Fields);
 
+$arrayResult = Array();
+  
 foreach($result as $doc){
  
- array_push($arrayResult, $doc);
- //$coll->update(array("_id"=> new MongoId($doc['_id'])), array('$set' => array("Transferring_State" => "Sync_With_Mobile")));
-
+  array_push($arrayResult, $doc);
+  
 }
+
 echo json_encode($arrayResult);
 
 ?>
