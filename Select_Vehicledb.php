@@ -14,6 +14,7 @@ foreach($result as $doc){
   
 }
 
+
 echo json_encode($arrayResult);
 
 ?>
