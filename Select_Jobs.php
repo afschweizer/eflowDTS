@@ -12,6 +12,7 @@ foreach($result as $doc){
  
   array_push($arrayResult, $doc);
   
+  
 }
 
 echo json_encode($arrayResult);
