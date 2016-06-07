@@ -189,7 +189,7 @@ $scope.Message = function(TextUsuario,TextAsunto,TextMessage,checked) {
 						"Collection_Info": 
 						{
 							"COLLECTION_NAME": "Store_Notification",
-							"COLLECTION_SCHEMA": "'_id.$id,User,Date,State,Matter,Details,Transferring_State'"
+							"COLLECTION_SCHEMA": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
 						},
 						"User": $scope.ArrayUser[i].ID,
 						"State": "Unread",
@@ -248,7 +248,7 @@ function SaveMessage(TextUsuario,TextAsunto,TextMessage, onSuccess, onError) {
 				"Collection_Info": 
 				{
 					"COLLECTION_NAME": "Store_Notification",
-					"COLLECTION_SCHEMA": "'_id.$id,User,Date,State,Matter,Details,Transferring_State'"
+					"COLLECTION_SCHEMA": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
     
 				},
 				"User": TextUsuario,

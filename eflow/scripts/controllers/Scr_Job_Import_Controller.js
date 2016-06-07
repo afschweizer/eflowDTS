@@ -301,7 +301,7 @@ function Complete_Json(Json_Array){
   Json.Collection_Info = {};
   Json.Company = eflowDTS.Session.Company;
   Json.Collection_Info.Collection_Name = "Store_Jobs";
-  Json.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck'";
+  Json.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
   Json.Visit_Point_Incidents = [];
   Json.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
 											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},
@@ -374,7 +374,7 @@ function Complete_Json_CSV(arr){
   pv.Invoice = parseInt(puntoVisitaExcel.Invoice);
   pv.Collection_Info = {};
   pv.Collection_Info.Collection_Name = "Store_Jobs";
-  pv.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck'";
+  pv.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
   pv.Visit_Point_Incidents = [];
   pv.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
 											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},

@@ -46,7 +46,7 @@ $scope.init = function(){
 				"Collection_Info": 
 				{
 					"Collection_Name": "Store_Notification",
-					"Collection_Schema": "'_id.$id,User,Date,State,Matter,Details,Transferring_State'"
+					"Collection_Schema": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
     
 				},
     			"Company": eflowDTS.Session.Company,

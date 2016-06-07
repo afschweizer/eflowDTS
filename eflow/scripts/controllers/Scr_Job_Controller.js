@@ -77,7 +77,7 @@ $scope.ArrayHeaders = Headers;
 		obj_Job.VisitPoint.Geolocation.Longitude = Job_Form.Longitude;
 		obj_Job.Collection_Info = {};
 		obj_Job.Collection_Info.COLLECTION_NAME = "Store_Jobs";
-		obj_Job.Collection_Info.COLLECTION_SCHEMA = "'_id.$id,User,VisitPoint.State_Visit,VisitPoint.Visit_Point_Incidents,Transferring_State,Sequence,VisitPoint.IDDelivery_Location'";
+		obj_Job.Collection_Info.COLLECTION_SCHEMA = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
 		obj_Job.Visit_Point_Incidents = [];
 		obj_Job.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
 											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},

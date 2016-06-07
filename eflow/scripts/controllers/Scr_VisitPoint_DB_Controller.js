@@ -238,7 +238,7 @@ obj.Transferring_State = "Pending_To_Mobile";
 obj.Invoice = new Date().getTime();
 obj.Collection_Info = {};
 obj.Collection_Info.Collection_Name = "Store_Jobs";
-obj.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck'";
+obj.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
 obj.Visit_Point_Incidents = [];
 obj.Visit_Point_Incidents_Type = y.Visit_Point_Incidents_Type;
 obj.Visit_Point_States =  [
@@ -679,7 +679,7 @@ $scope.Message=function(user,matter,detail){
 						"Collection_Info": 
 						{
 							"COLLECTION_NAME": "Store_Notification",
-							"COLLECTION_SCHEMA": "'_id.$id,User,Date,State,Matter,Details,Transferring_State'"
+							"COLLECTION_SCHEMA": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
 						},
 						"User": user,
 						"State": "Unread",
@@ -878,7 +878,7 @@ $scope.Add_New_VisitPoint = function(New_Job){
 		obj_Job.Invoice = New_Job.Invoice;
 		obj_Job.Collection_Info = {};
 		obj_Job.Collection_Info.Collection_Name = "Store_Jobs";
-		obj_Job.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck'";
+		obj_Job.Collection_Info.Collection_Schema = "_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
 		obj_Job.Visit_Point_Incidents = [];
 		obj_Job.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
 											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},
