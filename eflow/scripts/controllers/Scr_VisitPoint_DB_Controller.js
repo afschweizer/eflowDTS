@@ -854,6 +854,8 @@ $scope.Open_Modal_Change_Status = function(){
 	
 };
  
+ 
+ 
 $scope.Add_New_VisitPoint = function(New_Job){
 
 		var obj_Job = {};
