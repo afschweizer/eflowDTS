@@ -2,8 +2,12 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 
     $scope.init = function() {  
       
-	$scope.Show_Components.Login = false;
+		//$scope.Show_Components = {};		
+		$scope.Show_Components.Main_Menu = false;  
+		$scope.Show_Components.SubMenu_Maintenance = false;
+		$scope.Show_Components.Login = false;
 	$scope.Log = {};	
+	
 	
 	if(eflowDTS.Save_Session === true){
 		
@@ -18,7 +22,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 	
 	};
 
-    $scope.Show_Components.Main_Menu = false;
+   // $scope.Show_Components.Main_Menu = false;
 		
 	$scope.Log_In = function(Log){
 	try {

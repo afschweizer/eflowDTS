@@ -10,9 +10,9 @@ DTS_APP.controller('indexController', function($scope) {
        	}
        	
 		$scope.Show_Components = {};		
-		$scope.Show_Components.Main_Menu = false;  
-		$scope.Show_Components.SubMenu_Maintenance = false;
-		
+		$scope.Show_Components.Main_Menu = true;  
+		$scope.Show_Components.SubMenu_Maintenance = true;
+		$scope.Show_Components.Login = true;
 		//To_Reload_Eflow_Config();
 		//eflowDTS = GetCookie("EflowCookie");
 		
