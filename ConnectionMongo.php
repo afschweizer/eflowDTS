@@ -2,15 +2,13 @@
 try{
 
   
-<!--$uri = "mongodb://adminEprac:wolfe@ds061474.mlab.com:61474/eflow_testing";-->
-  $uri = "mongodb://adminEprac:wolfe@ds053312.mongolab.com:53312/eflow"; 
+$uri = "mongodb://adminEprac:wolfe@ds061474.mlab.com:61474/eflow_testing"; 
 $options = array("connectTimeoutMS" => 30000);
 
 $conn = new MongoClient($uri,$options);
   
-<!--$db = $conn->selectDB("eflow_testing");-->
- 
-$db = $conn->selectDB("eflow"); 
+$db = $conn->selectDB("eflow_testing");
+  
   
 }
 catch(MongoConnectionException $e) {
