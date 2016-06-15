@@ -79,6 +79,31 @@ function To_Reload_Eflow_Config(){
 		
 };
 
+ function Load_JSON(Url, Callback) {
+    try {
+        
+        var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', Url, true);
+        xobj.ontimeout = function(e) {
+            alert("timeout");
+        };
+        xobj.onreadystatechange = function() {
+            if (xobj.status === 404) {
+                alert("Not found");
+            } else {
+                if (xobj.readyState === 4 && xobj.status === 200) {
+                    Callback(xobj.responseText);
+                }
+            }
+        };
+        xobj.send(null);
+    } catch (error) {
+        
+        Save_Error(error);
+    }
+}; 
+
 function Load_Date (){
 	
 setInterval(function() {
@@ -96,6 +121,22 @@ setInterval(function() {
 	
 
 }
+
+function Get_Data_Geolocation(lat, long, polyX, polyY) {
+
+      var i, j = polyX.length - 1;
+      var oddNodes = false;
+
+      for(i = 0; i < polyX.length; i++) {
+          if((polyY[i] < long && polyY[j] >= long || polyY[j] < long && polyY[i] >= long) && (polyX[i] <= lat || polyX[j] <= lat)) {
+              oddNodes ^= (polyX[i] + (long - polyY[i]) / (polyY[j] - polyY[i]) * (polyX[j] - polyX[i]) < lat);
+          }
+          j = i;
+      }
+
+      return oddNodes;
+
+  }
 
 //-----------------------------.:
 

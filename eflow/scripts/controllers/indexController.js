@@ -22,30 +22,7 @@ DTS_APP.controller('indexController', function($scope) {
   
         };
 
-       function Load_JSON(Url, Callback) {
-    try {
-        
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-        xobj.open('GET', Url, true);
-        xobj.ontimeout = function(e) {
-            alert("timeout");
-        };
-        xobj.onreadystatechange = function() {
-            if (xobj.status === 404) {
-                alert("Not found");
-            } else {
-                if (xobj.readyState === 4 && xobj.status === 200) {
-                    Callback(xobj.responseText);
-                }
-            }
-        };
-        xobj.send(null);
-    } catch (error) {
-        
-        Save_Error(error);
-    }
-}; 
+      
 
         function timers() {
         
