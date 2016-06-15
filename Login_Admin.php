@@ -2,7 +2,6 @@
   
 include 'ConnectionMongo.php'; 
   
-//$coll = $db->Store_User_Employee;
 $coll = $db->Store_User_Access;
 
 $result = $coll->findOne($dataObject->Data);

@@ -5,14 +5,14 @@
   <div style="text-align: center;">  
     <span style="display:inline-block;">
       <h4>
-          Mantenimiento de Vehiculos
+          Mantenimiento de Vehículos
       </h4>
     </span>
    </div>
   <span id="Buttons" style="margin-left:7%;">
   <span>
      <a class="btn btn-primary span4" ng-click="Open_Modal_Add_VisitPoint()" data-toggle="tooltip" title="Agregar un vehiculo" >
-       <i class="glyphicon glyphicon-plus"></i>Agregar Vehiculo</a>   
+       <i class="glyphicon glyphicon-plus"></i>Agregar Vehículo</a>   
 	</span>
   <span ng-show="Show_Actions">
               <select style="width:175px " class="btn btn-primary span4" ng-model="Option" ng-change="Action_Option(Option)"> 
@@ -100,7 +100,7 @@
                 <div class="modal-content">
 
                   <div class="modal-header">
-                    <h2 class="modal-title"><i class="glyphicon glyphicon-user"></i> Agregar Vehiculo</h2>
+                    <h2 class="modal-title"><i class="glyphicon glyphicon-user"></i> Agregar Vehículo</h2>
                   </div>
              			<form>     
                 		 <div class="modal-body">
@@ -108,57 +108,57 @@
                         <div class="panel panel-info">
                           <div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>
                      		   <div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Identificador del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Identificador del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Id_Vehicle" type="text" class="form-control" name="Id_Vehicle" value="" ng-model="Vehicle.Id_Vehicle" placeholder="Identificador del Vehiculo..." required>
                               </div></div></div>
                                <div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 												<input id="Model" type="text" class="form-control" name="Type_Vehicle" value="" ng-model="Vehicle.Type_Vehicle" placeholder="Tipo del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-                                 <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Marca del Vehiculo:</label><div class="col-sm-8"> 
+                                 <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Marca del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Brand" type="text" class="form-control" name="Brand" value="" ng-model="Vehicle.Brand" placeholder="Marca del Vehiculo..."required>
                                 </div></div></div>
                                <div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Modelo del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Modelo del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 												<input id="Model" type="text" class="form-control" name="Model" value="" ng-model="Vehicle.Model" placeholder="Modelo del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Año del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Año del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Year" type="number" class="form-control" name="Year" value="" ng-model="Vehicle.Year" placeholder="Año del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Gasolina del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Gasolina del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Fuel" type="text" class="form-control" name="Fuel" value="" ng-model="Vehicle.Fuel" placeholder="Gasolina del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Cilindraje del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Cilindraje del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Cylinder_Capacity" type="text" class="form-control" name="Cylinder_Capacity" value="" ng-model="Vehicle.Cylinder_Capacity" placeholder="Cilindraje del Vehiculo..." required>
                              </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Placa del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Placa del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="ID_Truck" type="text" class="form-control" name="ID_Truck" value="" ng-model="Vehicle.ID_Truck" placeholder="Placa del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Peso del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Peso del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Weight" type="number" class="form-control" name="Weight" value="" ng-model="Vehicle.Weight" placeholder="Peso del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Volumen del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Volumen del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Cubics" type="number" class="form-control" name="Cubics" value="" ng-model="Vehicle.Cubics" placeholder="Volumen del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Descripción del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Descripción del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Description" type="text" class="form-control" name="Description" value="" ng-model="Vehicle.Description" placeholder="Descripción del Vehiculo..." required>
                                </div></div></div>
@@ -211,64 +211,64 @@
           <div class="modal-content">
 
             <div class="modal-header" style="background-color:#4096c6;color:#fff">
-              <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar/Editar Vehiculo</h2>
+              <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar/Editar Vehículo</h2>
             </div>
           
             <div class="modal-body">
 
             <div class="panel panel-info"><div class="panel-heading"><b>Puede</b> editar los campos.</div></div>
          			 <div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Identificador del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Identificador del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Id_Vehicle" type="text" class="form-control" name="Id_Vehicle" value="" ng-model="Vehicle.Id_Vehicle" placeholder="Identificador del Vehiculo..." required>
                               </div></div></div>
                                <div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 												<input id="Model" type="text" class="form-control" name="Type_Vehicle" value="" ng-model="Vehicle.Type_Vehicle" placeholder="Tipo del Vehiculo..." required>
                                </div></div></div>
                        			<div class="form-group">
-                                 <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Marca del Vehiculo:</label><div class="col-sm-8"> 
+                                 <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Marca del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Brand" type="text" class="form-control" name="Brand" value="" ng-model="Vehicle.Brand" placeholder="Marca del Vehiculo..."required>
                                </div></div></div>
                                <div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Modelo del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Modelo del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 												<input id="Model" type="text" class="form-control" name="Model" value="" ng-model="Vehicle.Model" placeholder="Modelo del Vehiculo..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Año del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Año del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Year" type="number" class="form-control" name="Year" value="" ng-model="Vehicle.Year" placeholder="Año del Vehiculo..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Gasolina del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Gasolina del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Fuel" type="text" class="form-control" name="Fuel" value="" ng-model="Vehicle.Fuel" placeholder="Gasolina del Vehiculo..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Cilindraje del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Cilindraje del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Cylinder_Capacity" type="text" class="form-control" name="Cylinder_Capacity" value="" ng-model="Vehicle.Cylinder_Capacity" placeholder="Cilindraje del Vehiculo..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Placa del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Placa del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="ID_Truck" type="text" class="form-control" name="ID_Truck" value="" ng-model="Vehicle.ID_Truck" placeholder="Placa del Vehiculo..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Peso del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Peso del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Weight" type="number" class="form-control" name="Weight" value="" ng-model="Vehicle.Weight" placeholder="Peso del Vehiculo..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Volumen del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Volumen del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Cubics" type="number" class="form-control" name="Cubics" value="" ng-model="Vehicle.Cubics" placeholder="Volumen del Vehiculo..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Descripción del Vehiculo:</label><div class="col-sm-8"> 
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Descripción del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Description" type="text" class="form-control" name="Description" value="" ng-model="Vehicle.Description" placeholder="Descripción del Vehiculo..." required>
                               </div></div></div>
