@@ -11,7 +11,7 @@
             .when('/', {
                 templateUrl : 'views/Scr_Login.html'
             })
-            .when('Data_Summary',{
+            .when('/Data_Summary',{
             	templateUrl : 'views/Scr_Summary.html'
             })
             
