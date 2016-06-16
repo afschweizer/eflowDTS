@@ -79,16 +79,18 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
                $scope.VisitPoint.Latitude = e.latLng.lat();
 			  $scope.VisitPoint.Longitude = e.latLng.lng();
 			  
-              var onSuccess = function(Geos){
+              var onSuccess = function(arr){
+              	var Geos=JSON.parse(arr);
               for (var i = 0; i < Geos.length; i++){
   
   var Poligon = Geos[i];
  
   
   	if ( Get_Data_Geolocation(e.latLng.lat(),e.latLng.lng(),Poligon.XARRAY.split(' '),Poligon.YARRAY.split(' ')) === 0){
-  		$scope.VisitPoint.PROVINCIA = Poligon.PROVINCIA;
-        $scope.VisitPoint.DISTRITO = Poligon.DISTRITO;
-        $scope.VisitPoint.Longitude = Poligon.CANTON;        
+  		$scope.VisitPoint.Provincia = Poligon.PROVINCIA;
+        $scope.VisitPoint.Distrito = Poligon.DISTRITO;
+        $scope.VisitPoint.Canton = Poligon.CANTON;  
+        $scope.$apply();
   		break ;
   	}
     
