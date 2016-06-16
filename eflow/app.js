@@ -11,6 +11,10 @@
             .when('/', {
                 templateUrl : 'views/Scr_Login.html'
             })
+            .when('Data_Summary',{
+            	templateUrl : 'views/Scr_Summary.html'
+            })
+            
             .when('/Calendar', {
                 templateUrl : 'views/Scr_Calendar.html'
             })
