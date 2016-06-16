@@ -86,9 +86,9 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
  
   
   	if ( Get_Data_Geolocation(e.latLng.lat(),e.latLng.lng(),Poligon.XARRAY.split(' '),Poligon.YARRAY.split(' ')) === 0){
-  		$scope.VisitPoint.PROVINCIA = = Poligon.PROVINCIA;
-        $scope.VisitPoint.DISTRITO = = Poligon.DISTRITO;
-        $scope.VisitPoint.Longitude = = Poligon.CANTON;        
+  		$scope.VisitPoint.PROVINCIA = Poligon.PROVINCIA;
+        $scope.VisitPoint.DISTRITO = Poligon.DISTRITO;
+        $scope.VisitPoint.Longitude = Poligon.CANTON;        
   		break ;
   	}
     
