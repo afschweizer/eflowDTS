@@ -1,3 +1,11 @@
+.modal-dna {
+    -webkit-box-shadow: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: relative !important;
+}
+
 .space-line-5px{
 	clear: both;
 	height: 5px;

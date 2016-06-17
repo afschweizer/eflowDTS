@@ -1,0 +1,147 @@
+<div id="Contents" ng-controller="Scr_Summary_Controller" ng-init="init()">
+<div class="container">
+    
+    
+    
+<div class="modal fade modal-dna" id="Charge_New_Modal" role="dialog">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                      <!-- header -->  
+                <button type="button" class="close" ng-click="Close_Modal('#Charge_New_Modal');">&times;</button> 
+                <h4><span class="fa fa-line-chart"></span><label> Análisis de Datos</label></h4>
+              </div>
+                <div class="modal-body">
+                  <!-- body -->
+                  
+          <form ng-submit="Charge_DataSet(DataSet)">     
+        <div class="row">
+           <div class="col-sm-12">	
+             <h4>
+               Nombre del DataSet:
+             </h4>
+                    <div class="input-group">
+                       <span class="input-group-addon"><i class="fa fa-list-ul" data-toggle="tooltip" title="Usuario"></i></span> 
+                      <select required ng-model="DataSet" ng-options="DataSet.Name for DataSet in ArrayDataSet track by DataSet._id.$id" class="form-control">
+                        <option value=""></option>
+                       </select>                        
+                    </div>
+           </div>
+        </div>    
+          
+             <div class="space-line-5px"></div>
+             <div class="space-line-5px"></div>
+                  
+        <div class="row">
+           <div class="col-sm-12">	
+            <button type="submit" class="btn btn-primary">Cargar</button>
+          	<button type="button" class="btn btn-primary" ng-click="Charge_DataSet(null);">Nuevo</button>
+           </div>
+        </div>  
+                  
+        </form>            
+                  
+                </div>
+                <div class="modal-footer">
+                   <!-- footer -->
+                  <button type="button" class="btn btn-primary" ng-click="Close_Modal('#Charge_New_Modal');">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+<div  class="modal fade" id="Save_Modal" role="dialog">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                      <!-- header -->  
+                  <button type="button" class="close" ng-click="Close_Modal('#Charge_New_Modal');">&times;</button>  
+                 <span class="glyphicon glyphicon-cloud-upload"></span><label>Salvar</label>                  
+                </div>
+                <div class="modal-body">
+                  <!-- body -->
+                
+                </div>
+                <div class="modal-footer">
+                   <!-- footer -->
+                  <button type="button" class="btn btn-primary" ng-click="Close_Modal('#Save_Modal');">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+  <div class="" id="Collapse_Filter">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <i class="fa fa-filter">&nbsp;</i>Filtros
+           <button type="button" class="close" data-toggle="collapse" href="#Filter_Panel"><i class="glyphicon glyphicon-resize-vertical"></i></button>
+        </h4>
+      </div>
+      <div id="Filter_Panel" class="panel-collapse collapse">
+        <div class="panel-body">
+        <form ng-submit="">
+        
+        <div class="row">
+           <div class="col-sm-12">	
+             <h4>
+               Nombre del DataSet:
+             </h4>
+                    <div class="input-group">
+                       <span class="input-group-addon"><i class="fa fa-list-ul" data-toggle="tooltip" title="Usuario"></i></span> 
+                      <select required ng-model="DataSet" ng-options="DataSet.Name for DataSet in ArrayDataSet track by DataSet._id.$id" class="form-control">
+                        <option value=""></option>
+                       </select>                        
+                    </div>
+           </div>
+        </div>
+          
+          <div class="row">
+            <h4>
+               &nbsp;&nbsp;&nbsp;Rango de Fechas:
+             </h4>
+           <div class="col-sm-4">             
+              <div class="input-group">
+                         <span class="input-group-addon"><i class="fa fa-calendar" data-toggle="tooltip" title="Fecha Inicial"></i></span> 
+                               <input type="date" ng-model="Start_Date" class="form-control">                
+              </div>
+           </div>            
+            <div class="col-sm-4">	
+              <div class="input-group">
+                         <span class="input-group-addon"><i class="fa fa-calendar" data-toggle="tooltip" title="Fecha Final"></i></span> 
+                        <input type="date" ng-model="End_Date" class="form-control">                                        
+              </div>
+           </div>
+            <div class="col-sm-4">	
+              <span type="button" class="btn btn-primary"><i class="fa fa-refresh">&nbsp;</i>Refrescar</span>
+           </div>
+        </div>
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+      <div class="panel-info">
+      	<div class="panel-heading"><h3 class="text-center">{{Current_DataSet.Name}}</h3></div>      
+      </div> 
+  </div>
+   
+  <div class="container-fluid ">
+        <div class="row">
+            <div id="Pivot_Table"></div>
+        </div>
+    </div>
+  
+  
+  
+  </div>
+</div>
