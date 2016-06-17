@@ -47,7 +47,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    		
    	}else{
    		
-   		 
+   	 	 
    	}
    	
    	Create_Pivot_Table(DataSet,[{"A":1,"B":1,"C":1},{"A":1,"B":1,"C":1},{"A":1,"B":1,"C":1},{"A":1,"B":1,"C":1}]);
@@ -55,7 +55,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    function Create_Pivot_Table(DataSet,ArrData){
    	
-   	var renderers = $.extend($.pivotUtilities.renderers, $.pivotUtilities.gchart_renderers, $.pivotUtilities.d3_renderers);
+   	var renderers = $.extend($.pivotUtilities.renderers, $.pivotUtilities.gchart_renderers);
             $("#Pivot_Table").pivotUI(ArrData, {
                 renderers: renderers,                
                 rows: DataSet.Rows,
