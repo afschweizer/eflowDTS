@@ -150,7 +150,7 @@
 						<div class="col-sm-7"> 
 							<div class="form-group">  
               <select ng-model="Route" ng-options="Obj as Obj.Route_Name for Obj in ArrayRoute" ng-change="Print_Zone(Route); VisitPoint.Latitude = '';
-        VisitPoint.Longitude='';" class="form-control" id="Ruta"></select>
+        VisitPoint.Longitude=''; VisitPoint.Pais=''; VisitPoint.Provincia=''; VisitPoint.Canton=''; VisitPoint.Distrito='';" class="form-control" id="Ruta"></select>
 				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            </div>
 						</div>
@@ -182,7 +182,7 @@
 						<label class="col-sm-4 control-label">País:</label>
 						<div class="col-sm-7"> 
 							<div class="form-group">
-								<input disabled required type="text" class="form-control" ng-model="VisitPoint.Pais" placeholder="País..."required>
+								<input disabled required type="text" class="form-control" ng-model="VisitPoint.Country" placeholder="País..."required>
 							</div>
 						</div>
 					</div>
@@ -190,7 +190,7 @@
 						<label class="col-sm-4 control-label">Provincia:</label>
 						<div class="col-sm-7"> 
 							<div class="form-group">
-								<input disabled required type="text" class="form-control" ng-model="VisitPoint.Provincia" placeholder="Provincia..."required>
+								<input disabled required type="text" class="form-control" ng-model="VisitPoint.Province" placeholder="Provincia..."required>
 							</div>
 						</div>
 					</div>
@@ -206,7 +206,7 @@
 						<label class="col-sm-4 control-label">Distrito:</label>
 						<div class="col-sm-7"> 
 							<div class="form-group">
-								<input disabled required type="text" class="form-control" ng-model="VisitPoint.Distrito" placeholder="Distrito..."required>
+								<input disabled required type="text" class="form-control" ng-model="VisitPoint.District" placeholder="Distrito..."required>
 							</div>
 						</div>
 					</div>

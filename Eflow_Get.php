@@ -78,6 +78,11 @@ switch($dataObject->Method_Name){
       require'Select_Item.php';
       break;
     }
+   case 'Select_DataSet':
+    {
+      require'Select_DataSet.php';
+      break;
+    }
    case 'Get_Data':
     {
       require'Get_Data.php';

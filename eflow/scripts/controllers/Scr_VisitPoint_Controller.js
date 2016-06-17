@@ -4,7 +4,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	$scope.init = function(){
        	Set_Current_Page();
 		
-		$scope.Polygon = {}; 
+		//$scope.Polygon = {}; 
 		$('#Charging').modal('show');
 		$scope.Show_Components.VisitPoint_Form = true;
 		//To_Reload_Eflow_Config();
@@ -68,14 +68,15 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			  $scope.VisitPoint.Longitude = e.latLng.lng();
 			  GMaps.geocode({'latLng': {lat: e.latLng.lat(), lng: e.latLng.lng()},'callback':function(results, status) {
     if (status === "OK") {
-	$scope.VisitPoint.Pais = results[results.length-1].formatted_address.split(',', 1);
-	$scope.VisitPoint.Provincia = results[results.length-2].formatted_address.split(',', 1);
-	$scope.VisitPoint.Canton = results[results.length-3].formatted_address.split(',', 1);
-	$scope.VisitPoint.Distrito = results[results.length-4].formatted_address.split(',', 1);
+	$scope.VisitPoint.Country = results[results.length-1].formatted_address.split(',', 1)[0];
+	$scope.VisitPoint.Province = results[results.length-2].formatted_address.split(',', 1)[0];
+	$scope.VisitPoint.Canton = results[results.length-3].formatted_address.split(',', 1)[0];
+	$scope.VisitPoint.District= results[results.length-4].formatted_address.split(',', 1)[0];
 	//alert("/pais "+pais+" /provincia "+provincia+" /canton "+canton+" /distrito "+distrito);
     // alert("pais: "+pais+", provincia: "+provincia+", canton: "+canton+", distrito: "+distrito);
       }
   }});
+  
 			  map.removeMarkers();
 			  map.addMarker({
 			  lat: e.latLng.lat(),

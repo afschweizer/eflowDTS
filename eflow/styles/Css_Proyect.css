@@ -1,3 +1,7 @@
+.space-line-5px{
+	clear: both;
+	height: 5px;
+}
 #map {
     height: 50%;
  }
