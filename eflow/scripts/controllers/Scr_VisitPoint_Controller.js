@@ -1,7 +1,6 @@
 var map;
 DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 
-
 	$scope.init = function(){
        	Set_Current_Page();
 		
@@ -21,13 +20,10 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		$scope.Show_Components.VisitPoint_Add = true;
 		$scope.Show_Components.Export = true;
 		Select_Routes();
-	 
 	};
 	
 	function Load_Map_Init(){
-		
 		var div = document.getElementById('Map_Dashboard_VisitPoint');
-		
 		if(div){
 		map = new GMaps({
 			div:div,
@@ -55,15 +51,11 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	                	}, 3000);
 		    }
     	});
-    	
-
-	  }
+    }
 	};	
 
    $scope.Print_Zone = function(Obj){   	
-   				
-		map.removePolygons();
-		
+   		map.removePolygons();
 		map.drawPolygon({
 		   paths: Obj.Route_Path, // pre-defined polygon shape
 		   strokeColor: '#BBD8E9',
@@ -81,11 +73,9 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	$scope.VisitPoint.Canton = results[results.length-3].formatted_address.split(',', 1);
 	$scope.VisitPoint.Distrito = results[results.length-4].formatted_address.split(',', 1);
 	//alert("/pais "+pais+" /provincia "+provincia+" /canton "+canton+" /distrito "+distrito);
-   
-       // alert("pais: "+pais+", provincia: "+provincia+", canton: "+canton+", distrito: "+distrito);
+    // alert("pais: "+pais+", provincia: "+provincia+", canton: "+canton+", distrito: "+distrito);
       }
   }});
-
 			  map.removeMarkers();
 			  map.addMarker({
 			  lat: e.latLng.lat(),
@@ -93,57 +83,10 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
               });
             }
 		});
-		
 		map.setCenter(Obj.Route_Path[0][0],Obj.Route_Path[0][1]);
-   			
    };
-   
-		/*	click: function(e) {
-							  map.removeMarkers();
-			  map.addMarker({ 
-			  lat: e.latLng.lat(),
-			  lng: e.latLng.lng()
-			 
-              });
-              
-               $scope.VisitPoint.Latitude = e.latLng.lat();
-			  $scope.VisitPoint.Longitude = e.latLng.lng();
-			 
-			  
-              var onSuccess = function(arr){
-              	var Geos=JSON.parse(arr);
-              for (var i = 0; i < Geos.length; i++){
-  
-  var Poligon = Geos[i];
- 
-  
-  	if ( Get_Data_Geolocation(e.latLng.lat(),e.latLng.lng(),Poligon.XARRAY.split(' '),Poligon.YARRAY.split(' ')) === 0){
-  		$scope.VisitPoint.Provincia = Poligon.PROVINCIA;
-        $scope.VisitPoint.Distrito = Poligon.DISTRITO;
-        $scope.VisitPoint.Canton = Poligon.CANTON;  
-        $scope.$apply();
-  		break ;
-  	}
-    
-  }	
-              	
-              };
-              Load_JSON("scripts/externals/Geolocations.json",onSuccess);
-              
-              $scope.VisitPoint.Latitude = e.latLng.lat();
-			  $scope.VisitPoint.Longitude = e.latLng.lng();
-			  
 
-            }
-		});
-		
-		map.setCenter(Obj.Route_Path[0][0],Obj.Route_Path[0][1]);
-   			
-   };
-   
-   */
 function Select_Routes(){
-
 	 try {
         var JsonData = {
             'Method_Name': 'Select_All_Route',
@@ -151,37 +94,23 @@ function Select_Routes(){
     			"Company": eflowDTS.Session.Company
             },
             'Fields':{
-            	
             }
         };
-		
-		var onSuccess = function(JsonData){
-		
+		var onSuccess = function(JsonData){		
 		$scope.ArrayRoute = JsonData;		
-
-		};
-		
-		var onError = function(JsonData){
-		
-		alert(JsonData);
-		
-		};
-		
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-        
+		};		
+		var onError = function(JsonData){		
+		alert(JsonData);		
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
     } catch (err) {
         alert(err);
-    }
-	
-   };
-   
-  
+    }	
+   };    
 
 $scope.To_Order_By = function(Order_Type){
-	
 	if ($scope.OrderList === Order_Type) {
-		
-    var Reverse = Order_Type.charAt(0);
+	 var Reverse = Order_Type.charAt(0);
     if (Reverse === '-') {
         $scope.OrderList = Order_Type.substr(1);
     } else {
@@ -192,19 +121,14 @@ $scope.To_Order_By = function(Order_Type){
 	}
 };
 
-
 $scope.Load_New_Visit_Point = function(){
-	
 	$scope.VisitPoint = {};
 	map.removePolygons();
-	map.removeMarkers();
-	
+	map.removeMarkers();	
 };
 
 $scope.Save_Visit_Point = function(VP){
-
-     if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === "" || typeof VP.Longitude === 'undefined'){
-   		
+if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === "" || typeof VP.Longitude === 'undefined'){
    		bootbox.dialog({
    			title : "¡Alerta!",
    			message : "Debe ingresar todos los campos",
@@ -215,12 +139,8 @@ $scope.Save_Visit_Point = function(VP){
 	   					}
    			    }
    		  });
-   		
    	}else{
-
-
 		if(typeof VP._id === 'undefined'){
-			
 			VP.Route = {};
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
@@ -229,7 +149,6 @@ $scope.Save_Visit_Point = function(VP){
 				'Method_Name': 'Insert_Visit_Point',
 				'Data': [VP]
 			};//Insert
-			
 			var onSuccess = function(e){								
 				$scope.Show_Components.VisitPoint_Form = false;
 				$scope.Show_Components.VisitPoint_Table = true;
@@ -247,16 +166,13 @@ $scope.Save_Visit_Point = function(VP){
    				}
    			    });
 				};
-				
 		}else{
-			
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
 			var JsonData = {
 				'Method_Name': 'Update_Visit_Point',
 				'Data': VP
 			};//Insert
-			
 			var onSuccess = function(e){								
 				$scope.Show_Components.VisitPoint_Form = false;
 				$scope.Show_Components.VisitPoint_Table = true;
@@ -274,32 +190,21 @@ $scope.Save_Visit_Point = function(VP){
    				}
    			    });
 				};//Update
-			
 		}
-		
 			var onError = function(JsonData){
-			
 			};
-			
 			Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
-			
-		}		
-		
+		}	
 };
 
 $scope.Delete = function(id){
 	try {
-	
 		var onSuccess = function(result){
-    
     if (result === true) {
-       
       var JsonData = {
             'Method_Name': 'Delete_Visit_Point',
             'Data':  id.$id
-            
         };
-		
 		var onSuccess = function(JsonData){
 		
 		$scope.Select();
