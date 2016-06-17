@@ -74,9 +74,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		   click: function(e) {
               $scope.VisitPoint.Latitude = e.latLng.lat();
 			  $scope.VisitPoint.Longitude = e.latLng.lng();
-			  var geocoder = new Gmaps.Geocoder;
-  geocoder.geocode({'location': {lat: e.latLng.lat(), lng: e.latLng.lng()}}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
+			  GMaps.geocode({'latLng': {lat: e.latLng.lat(), lng: e.latLng.lng()},'callback':function(results, status) {
+    if (status === "OK") {
 	$scope.VisitPoint.Pais = results[results.length-1].formatted_address.split(',', 1);
 	$scope.VisitPoint.Provincia = results[results.length-2].formatted_address.split(',', 1);
 	$scope.VisitPoint.Canton = results[results.length-3].formatted_address.split(',', 1);
@@ -85,7 +84,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
    
        // alert("pais: "+pais+", provincia: "+provincia+", canton: "+canton+", distrito: "+distrito);
       }
-  });
+  }});
 
 			  map.removeMarkers();
 			  map.addMarker({
