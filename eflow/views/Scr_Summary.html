@@ -86,17 +86,20 @@
       </div>
       <div id="Filter_Panel" class="panel-collapse collapse">
         <div class="panel-body">
-        <form ng-submit="">
+        <form ng-submit="Refresh_Pivot_Table(Filter)">
         
         <div class="row">
            <div class="col-sm-12">	
              <h4>
-               Nombre del DataSet:
+               Tipo de DataSet:
              </h4>
                     <div class="input-group">
-                       <span class="input-group-addon"><i class="fa fa-list-ul" data-toggle="tooltip" title="Usuario"></i></span> 
-                      <select required ng-model="DataSet" ng-options="DataSet.Name for DataSet in ArrayDataSet track by DataSet._id.$id" class="form-control">
-                        <option value=""></option>
+                      <span class="input-group-addon"><i class="fa fa-list-ul" data-toggle="tooltip" title="Usuario"></i></span> 
+                      <select required ng-model="Filter.DataSet" class="form-control">
+                        <option value="">Selección de DataSet</option>
+                        <option value="Item">Tareas</option>
+                        <option value="Visit_Point">Puntos de Visita</option>
+                        <option value="Trip">Viajes</option>
                        </select>                        
                     </div>
            </div>
@@ -105,22 +108,26 @@
           <div class="row">
             <h4>
                &nbsp;&nbsp;&nbsp;Rango de Fechas:
-             </h4>
-           <div class="col-sm-4">             
+             </h4> 
+           <div class="col-sm-4">              
               <div class="input-group">
                          <span class="input-group-addon"><i class="fa fa-calendar" data-toggle="tooltip" title="Fecha Inicial"></i></span> 
-                               <input type="date" ng-model="Start_Date" class="form-control">                
+                               <input required type="date" ng-model="Filter.Start_Date" class="form-control">                
               </div>
            </div>            
             <div class="col-sm-4">	
               <div class="input-group">
                          <span class="input-group-addon"><i class="fa fa-calendar" data-toggle="tooltip" title="Fecha Final"></i></span> 
-                        <input type="date" ng-model="End_Date" class="form-control">                                        
+                        <input required type="date" ng-model="Filter.End_Date" class="form-control">                                        
               </div>
            </div>
             <div class="col-sm-4">	
-              <span type="button" class="btn btn-primary"><i class="fa fa-refresh">&nbsp;</i>Refrescar</span>
+              <div class="form-group">
+                    <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="fa fa-refresh"></i> Refrescar</button>                          
+               </div>  
            </div>
+           
+            
         </div>
         </form>
         </div>

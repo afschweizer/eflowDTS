@@ -83,6 +83,21 @@ switch($dataObject->Method_Name){
       require'Select_DataSet.php';
       break;
     }
+    case 'Select_Summary_Item':
+    {
+      require'Select_Summary_Item.php';
+      break;
+    }
+    case 'Select_Summary_Visit_Point':
+    {
+      require'Select_Summary_Visit_Point.php';
+      break;
+    }
+    case 'Select_Summary_Trip':
+    {
+      require'Select_Summary_Trip.php';
+      break;
+    }    
    case 'Get_Data':
     {
       require'Get_Data.php';
