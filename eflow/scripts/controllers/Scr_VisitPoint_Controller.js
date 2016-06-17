@@ -55,6 +55,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	                	}, 3000);
 		    }
     	});
+    	
+
 	  }
 	};	
 
@@ -69,15 +71,45 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		   strokeWeight: 3,
 		   fillColor: '#BBD8E9',
 		   fillOpacity: 0.4,
-			click: function(e) {
-							  map.removeMarkers();
+		   click: function(e) {
+              $scope.VisitPoint.Latitude = e.latLng.lat();
+			  $scope.VisitPoint.Longitude = e.latLng.lng();
+			  var geocoder = new Gmaps.Geocoder;
+  geocoder.geocode({'location': {lat: e.latLng.lat(), lng: e.latLng.lng()}}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+	$scope.VisitPoint.Pais = results[results.length-1].formatted_address.split(',', 1);
+	$scope.VisitPoint.Provincia = results[results.length-2].formatted_address.split(',', 1);
+	$scope.VisitPoint.Canton = results[results.length-3].formatted_address.split(',', 1);
+	$scope.VisitPoint.Distrito = results[results.length-4].formatted_address.split(',', 1);
+	//alert("/pais "+pais+" /provincia "+provincia+" /canton "+canton+" /distrito "+distrito);
+   
+       // alert("pais: "+pais+", provincia: "+provincia+", canton: "+canton+", distrito: "+distrito);
+      }
+  });
+
+			  map.removeMarkers();
 			  map.addMarker({
 			  lat: e.latLng.lat(),
 			  lng: e.latLng.lng()			 
               });
+            }
+		});
+		
+		map.setCenter(Obj.Route_Path[0][0],Obj.Route_Path[0][1]);
+   			
+   };
+   
+		/*	click: function(e) {
+							  map.removeMarkers();
+			  map.addMarker({ 
+			  lat: e.latLng.lat(),
+			  lng: e.latLng.lng()
+			 
+              });
               
                $scope.VisitPoint.Latitude = e.latLng.lat();
 			  $scope.VisitPoint.Longitude = e.latLng.lng();
+			 
 			  
               var onSuccess = function(arr){
               	var Geos=JSON.parse(arr);
@@ -110,7 +142,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
    			
    };
    
-   
+   */
 function Select_Routes(){
 
 	 try {
@@ -725,46 +757,6 @@ doc.save('Establecimientos.pdf');
 
 
 
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: {lat: 40.731, lng: -73.997}
-  });
-  var geocoder = new google.maps.Geocoder;
-  var infowindow = new google.maps.InfoWindow;
-
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeLatLng(geocoder, map, infowindow);
-  });
-}
-
-function geocodeLatLng(geocoder, map, infowindow) {
-  var input = document.getElementById('latlng').value;
-  var latlngStr = input.split(',', 2);
-  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-  geocoder.geocode({'location': latlng}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-	var pais=results[results.length-1].formatted_address.split(',', 1);
-	var provincia=results[results.length-2].formatted_address.split(',', 1);
-	var canton=results[results.length-3].formatted_address.split(',', 1);
-	var distrito=results[results.length-4].formatted_address.split(',', 1);
-	alert("/pais "+pais+" /provincia "+provincia+" /canton "+canton+" /distrito "+distrito);
-      if (results[1]) {
-        map.setZoom(11);
-        var marker = new google.maps.Marker({
-          position: latlng,
-          map: map
-        });
-       // infowindow.setContent(results[1].formatted_address);
-        //infowindow.open(map, marker);
-      } else {
-        window.alert('No results found');
-      }
-    } else {
-      window.alert('Geocoder failed due to: ' + status);
-    }
-  });
-}
 
 
 });
