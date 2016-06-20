@@ -30,12 +30,6 @@ function Set_Current_Page(){
 	
 };
 
-function Set_Cookie(key,value) {
-   localStorage.setItem(key,JSON.stringify(value));
-   //document.cookie = key+"="+JSON.stringify(value);
-     
-};
-
 function Exist_Cookie(key) {
     var cookie = Get_Cookie(key);
     if (cookie != "") {
@@ -44,8 +38,28 @@ function Exist_Cookie(key) {
        return false;     
     }
 };
+function Set_Cookie(key,value) {
+ //  localStorage.setItem(key,JSON.stringify(value));
+   //document.cookie = key+"="+JSON.stringify(value);
+ 
+
+var obj = JSON.parse(localStorage.getItem(key));
+if(eflowDTS.equals(obj) === false){
+localStorage.setItem(key,JSON.stringify(value));
+//console.log("Seteando");
+}
+};
+
 
 function Get_Cookie(key) {
+//function Get(key){
+var obj = JSON.parse(localStorage.getItem(key));
+if(eflowDTS.equals(obj) === false){
+eflowDTS = obj;
+//console.log("Asignando");
+
+
+/*
     var name = key + "=";
     var ca = document.cookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -56,8 +70,9 @@ function Get_Cookie(key) {
         if (c.indexOf(name) == 0) {
             return JSON.parse(c.substring(name.length,c.length));
         }
-    }
+    }*/
     return "";
+    }
 };
 
 function Delete_Cookie(key){

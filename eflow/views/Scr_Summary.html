@@ -60,10 +60,18 @@
                 <div class="modal-header modal-header-primary">
                       <!-- header -->  
                   <button type="button" class="close" ng-click="Close_Modal('#Charge_New_Modal');">&times;</button>  
-                 <span class="glyphicon glyphicon-cloud-upload"></span><label>Salvar</label>                  
+                 <span class="glyphicon glyphicon-cloud-upload"></span><label>Guardar DataSet</label>                  
                 </div>
                 <div class="modal-body">
                   <!-- body -->
+                   
+                  <div>
+                  	<div class="input-group">
+                         <span class="input-group-addon"><i class="fa-area-chart" data-toggle="tooltip" title="Nombre del DataSet"></i></span> 
+                               <input required type="text" ng-model="Save.Name" class="form-control" place-holder="Nombre del DataSet...">                
+                     </div>
+                    <button type="button" class="btn btn-primary" ng-click="Close_Modal('#Save_Modal');">Cerrar</button>
+                  </div>
                 
                 </div>
                 <div class="modal-footer">
@@ -76,7 +84,7 @@
 </div>
   
   
-  <div class="" id="Collapse_Filter">
+<div class="" id="Collapse_Filter">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -136,19 +144,20 @@
     </div>
   </div>
   
-  <div class="row">
+  
+<div class="row">
       <div class="panel-info">
       	<div class="panel-heading"><h3 class="text-center">{{Current_DataSet.Name}}</h3></div>      
       </div> 
-  </div>
+</div>
    
-  <div class="container-fluid ">
+  
+<div class="container-fluid ">
         <div class="row">
             <div id="Pivot_Table"></div>
         </div>
-    </div>
+</div>
   
   
-  
-  </div>
+</div>
 </div>
