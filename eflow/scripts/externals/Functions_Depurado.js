@@ -31,9 +31,9 @@ function Set_Current_Page(){
 };
 
 function Set_Cookie(key,value) {
-	
-    document.cookie = key+"="+JSON.stringify(value);
-    
+   localStorage.setItem(key,JSON.stringify(value));
+   //document.cookie = key+"="+JSON.stringify(value);
+     
 };
 
 function Exist_Cookie(key) {
@@ -61,11 +61,13 @@ function Get_Cookie(key) {
 };
 
 function Delete_Cookie(key){
-  document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+//  document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+localStorage.removeItem(key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;');
 };
 
 function To_Save_Eflow_Config() {
-   document.cookie = JSON.stringify(eflowDTS);      
+  // document.cookie = JSON.stringify(eflowDTS);      
+  
 };
 
 function To_Reload_Eflow_Config(){
