@@ -51,6 +51,41 @@ localStorage.setItem(key,JSON.stringify(value));
 };
 
 
+Object.prototype.equals = function(x)
+{   
+    if (x === null || x === undefined) 
+        return false;
+            
+    if (Object.keys(this).length !== Object.keys(x).length) return false;
+                                   
+    for (var p in this)
+    {
+        // Evitamos navegar por las propiedades "heredadas"
+        if (this.hasOwnProperty(p)) {
+            if (!x.hasOwnProperty(p)) return false; 
+            // No es una propiedad de x                 
+            
+            switch(typeof(this[p])) {
+                case 'function': 
+                    return false;
+                case 'object': 
+                    if (!this[p].equals(x[p])) 
+              // Comparamos los objetos                               
+                        return false;  
+                    break; 
+                default:                    
+                    if (this[p] !== x[p])
+                        return false;  
+              // Las propiedades tienes valores distintos
+                    break;
+            }                        
+        }
+    }
+
+    return true;                
+}
+   
+
 function Get_Cookie(key) {
 //function Get(key){
 var obj = JSON.parse(localStorage.getItem(key));
