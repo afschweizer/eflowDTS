@@ -77,6 +77,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    $scope.New_DataSet = function(){
    	
+   	$("#Charge_New_Modal").modal('hide');
+   	
 	   	$scope.DataSet = {
 	   		"Name":"",
 	   		"Rows":[],
