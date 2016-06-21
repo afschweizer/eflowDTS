@@ -6,9 +6,9 @@
 			"Longitude":-84.105073
 		},
     Configuration: {
-        "URLs": {
+        "URLs": { 
             "eflow_Get": "http://104.197.6.251/eflowDTS_Testing/eflowDTS/Eflow_Get.php",
-            "eflow_Post": "http://104.197.6.251/eflowDTS_Development/eflowDTSEflow_Post.php",
+            "eflow_Post": "http://104.197.6.251/eflowDTS_Development/eflowDTS/Eflow_Post.php",
             "eflow_Date_Time" : "http://104.197.6.251/eflowDTS_Development/eflowDTS/time.php"
         }
     }, 
@@ -26,7 +26,7 @@ function Exist_Cookie(key){
 var cookie =Get_Cookie(key);
 if(cookie!)	
 }
- */
+ */  
 function Set_Current_Page(){
 	
 	eflowDTS.Ultimate_Page = window.location.hash;
@@ -38,18 +38,17 @@ function Set_Current_Page(){
 function Set_Cookie(key,value) {
 
 var obj = JSON.parse(localStorage.getItem(key));
-if(((JSON.stringify(obj)) === (JSON.stringify(eflowDTS)))===false)
+if(!((JSON.stringify(obj)) === (JSON.stringify(eflowDTS))))
 {
 localStorage.setItem(key,JSON.stringify(value));
 }
-alert("A");
 };
 
 function Get_Cookie(key) {
 
 var obj = JSON.parse(localStorage.getItem(key));
 
-if(((JSON.stringify(eflowDTS)) === (JSON.stringify(obj))) === false){
+if(!((JSON.stringify(eflowDTS)) === (JSON.stringify(obj)))){
 eflowDTS = obj;
 }
  
