@@ -66,12 +66,14 @@
                   <!-- body -->
                    
                   <div>
-                  	<div class="input-group">
+                  	<form>
+                       <div class="input-group">
                          <span class="input-group-addon"><i class="fa fa-area-chart" data-toggle="tooltip" title="Nombre del DataSet"></i></span> 
                                <input required type="text" ng-model="Save.Name" class="form-control" placeholder="Nombre del DataSet...">                
                      </div>
                     <br/> 
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
                   </div>
                 
                 </div>
@@ -90,16 +92,18 @@
       <div class="panel-heading">
         <h4 class="panel-title">
           <i class="fa fa-filter">&nbsp;</i>Filtros
-           <button type="button" class="close" data-toggle="collapse" href="#Filter_Panel"><i class="glyphicon glyphicon-resize-vertical"></i></button>
+          <button type="button" class="close" data-toggle="collapse" href="#Filter_Panel"><i class="glyphicon glyphicon-resize-vertical"></i></button>
+          <p class="text-center">Current_DataSet.Name</p>
+           
         </h4>
       </div>
       <div id="Filter_Panel" class="panel-collapse collapse">
         <div class="panel-body">
         <form ng-submit="Refresh_Pivot_Table(Filter)">
         
-        <div class="row">
+        <div class="row"> 
            <div class="col-sm-12">	
-             <h4>
+             <h4>  
                Tipo de DataSet:
              </h4>
                     <div class="input-group">
@@ -131,8 +135,9 @@
               </div>
            </div>
             <div class="col-sm-4">	
-              <div class="form-group">
-                    <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="fa fa-refresh"></i> Refrescar</button>                          
+              <div class="form-group">                                         
+                <button  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" data-toggle="modal" data-target="#Save_Modal" ><i class="fa fa-save"></i> Guardar</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="fa fa-refresh"></i> Refrescar</button> 
                </div>  
            </div>
            
@@ -144,21 +149,9 @@
       </div>
     </div>
   </div>
-  
-  
-<div id="Panel_Info" class="row">
-      <div class="panel-info">
-      	<div class="panel-heading">
-           <h3 class="text-center">{{Current_DataSet.Name}}</h3>
-           <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" data-toggle="modal" data-target="#Save_Modal" ><i class="fa fa-save"></i> Guardar</button>
-           <br/>
-           <br/>
-        </div>            
-      </div> 
-</div>
    
 <br/> 
-<br/>
+
   
 <div class="container-fluid ">
         <div class="row">

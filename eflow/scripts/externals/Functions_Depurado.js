@@ -30,28 +30,17 @@ function Set_Current_Page(){
 	
 };
 
-function Exist_Cookie(key) {
-    var cookie = Get_Cookie(key);
-    if (cookie != "") {
-		return true;
-	} else {
-       return false;     
-    }
-};
 function Set_Cookie(key,value) {
- //  localStorage.setItem(key,JSON.stringify(value));
-   //document.cookie = key+"="+JSON.stringify(value);
- 
 
 var obj = JSON.parse(localStorage.getItem(key));
-if(eflowDTS.equals(obj) === false){
+if(eflowDTS.Equal_To(obj) === false){
 localStorage.setItem(key,JSON.stringify(value));
-//console.log("Seteando");
+
 }
 };
 
 
-Object.prototype.equals = function(x)
+Object.prototype.Equal_To = function(x)
 {   
     if (x === null || x === undefined) 
         return false;
@@ -69,7 +58,7 @@ Object.prototype.equals = function(x)
                 case 'function': 
                     return false;
                 case 'object': 
-                    if (!this[p].equals(x[p])) 
+                    if (!this[p].Equal_To(x[p])) 
               // Comparamos los objetos                               
                         return false;  
                     break; 
@@ -84,53 +73,18 @@ Object.prototype.equals = function(x)
 
     return true;                
 }
-   
 
 function Get_Cookie(key) {
-//function Get(key){
+
 var obj = JSON.parse(localStorage.getItem(key));
-if(eflowDTS.equals(obj) === false){
+
+if(eflowDTS.Equal_To(obj) === false){
 eflowDTS = obj;
-//console.log("Asignando");
-
-
-/*
-    var name = key + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return JSON.parse(c.substring(name.length,c.length));
-        }
-    }*/
-    return "";
-    }
+}
+ 
 };
 
-function Delete_Cookie(key){
-//  document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-localStorage.removeItem(key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;');
-};
 
-function To_Save_Eflow_Config() {
-  // document.cookie = JSON.stringify(eflowDTS);      
-  
-};
-
-function To_Reload_Eflow_Config(){
-	
-	if(typeof eflowDTS === 'undefined'){
-		 var eflowDTS = JSON.parse(document.cookie);
-		}
-	else{
-		eflowDTS = JSON.parse(document.cookie);	
-	    }
-	  
-		
-};
 
  function Load_JSON(Url, Callback) {
     try {

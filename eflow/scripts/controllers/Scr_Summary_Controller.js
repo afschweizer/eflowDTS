@@ -36,7 +36,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    $scope.Charge_DataSet = function(DataSet){
    	$("#Charge_New_Modal").modal('hide');
-   	
+   	$("#Collapse_Filter").collapse('show');
    	if(DataSet === null){
    		var DataSet = {
    			"Aggregator_Name":"Count",
