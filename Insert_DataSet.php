@@ -10,7 +10,7 @@ $dataObject = json_decode($json);
 
 include 'ConnectionMongo.php'; 
   
-$coll = $db-> Store_DataSet ;
+$coll = $db->Store_DataSet;
 
 $ArrayLength = count($dataObject->Data);
 
@@ -22,7 +22,7 @@ if(isset($dataObject->Data[$i]->_id)){
 
     $coll->remove(array('_id' => new MongoId($dataObject->Data[$i]->_id->$id)));
 
-    $dataObject->Data[$i]->_id = new MongoId($dataObject->Data[$i]_id->$id);
+    $dataObject->Data[$i]->_id = new MongoId($dataObject->Data[$i]->_id->$id);
 
     $coll->insert($document);
    
