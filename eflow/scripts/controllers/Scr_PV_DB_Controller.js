@@ -9,7 +9,8 @@ $scope.init = function() {
 	
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
-		eflowDTS = Get_Cookie("EflowCookie");
+		Get_Cookie("EflowCookie");
+	//eflowDTS = Get_Cookie("EflowCookie");
 $scope.Headers = [{"es":"GERENTE","value":"VisitPoint.Manager"},{"es":"NOMBRE","value":"VisitPoint.Name"},
 		{"es":"DIRECCION","value":"VisitPoint.Address"},{"es":"TELEFONO","value":"VisitPoint.Telephone_Number"},
 		{"es":"VEHICULO","value":"VisitPoint.ID_Truck"},

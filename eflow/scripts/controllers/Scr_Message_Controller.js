@@ -4,7 +4,8 @@ $scope.init = function() {
        	Set_Current_Page();
 	
 		//To_Reload_Eflow_Config();
-		eflowDTS = Get_Cookie("EflowCookie");
+		Get_Cookie("EflowCookie");
+	//eflowDTS = Get_Cookie("EflowCookie");
 var HeadersEs = [{"es":"USUARIO","value":"User"},{"es":"FECHA","value":"Date"},
 	{"es":"ASUNTO","value":"Matter"},{"es":"DETALLE","value":"Detail"}] ;
 $scope.ArrayHeadersEs = HeadersEs;

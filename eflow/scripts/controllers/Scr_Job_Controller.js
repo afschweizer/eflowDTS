@@ -5,7 +5,8 @@ $scope.init = function() {
 	
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
-		eflowDTS = Get_Cookie("EflowCookie");
+		Get_Cookie("EflowCookie");
+	//eflowDTS = Get_Cookie("EflowCookie");
 var HeadersEs = ["Identificación Lugar De Entrega","Gerente","Nombre","Dirección","Número De Teléfono","Correo","Latitud","Longitud","Secuencia","Fecha Estimada","Tiempo Estimado De Entrega","Ventana de entrega Inicio","Ventana de entrega finalicacion","Usuario"] ;
 $scope.ArrayHeadersEs = HeadersEs;
 

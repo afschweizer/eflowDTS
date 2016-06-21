@@ -3,7 +3,8 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 	$scope.init = function(){
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
-		eflowDTS = Get_Cookie("EflowCookie");
+		Get_Cookie("EflowCookie");
+	//	eflowDTS = Get_Cookie("EflowCookie");
 	
 		$scope.Select_VisitPoint();		
 		
