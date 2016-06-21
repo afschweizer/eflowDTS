@@ -110,6 +110,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
         };
 		var onSuccess = function(ArrData){
 		$scope.PivotData = ArrData;
+		$scope.$apply();	
 		Create_Pivot_Table();	
 		};		
 		var onError = function(JsonData){		
