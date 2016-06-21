@@ -11,7 +11,7 @@
             "eflow_Post": "http://104.197.6.251/eflowDTS_Testing/eflowDTS/Eflow_Post.php",
             "eflow_Date_Time" : "http://104.197.6.251/eflowDTS_Testing/eflowDTS/time.php"
         }
-    },
+    }, 
     Session: {},
     Time : {    	
     	"Day" : 86400000,
@@ -22,7 +22,7 @@
     Save_Session : false,
     Ultimate_Page : ""
 };
-
+ 
 function Set_Current_Page(){
 	
 	eflowDTS.Ultimate_Page = window.location.hash;
