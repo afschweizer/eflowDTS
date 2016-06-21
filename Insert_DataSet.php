@@ -16,13 +16,13 @@ $ArrayLength = count($dataObject->Data);
 
 for($i = 0; $i < $ArrayLength; $i++){
 	
-if(isset(Data[$i]->_id)){
+if(isset($dataObject->Data[$i]->_id)){
   
     $id = '$id';
 
-    $coll->remove(array('_id' => new MongoId($document->_id->$id)));
+    $coll->remove(array('_id' => new MongoId($dataObject->Data[$i]->_id->$id)));
 
-    $document->_id = new MongoId($document->_id->$id);
+    $dataObject->Data[$i]->_id = new MongoId($dataObject->Data[$i]_id->$id);
 
     $coll->insert($document);
    
