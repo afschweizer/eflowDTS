@@ -38,10 +38,11 @@ function Set_Current_Page(){
 function Set_Cookie(key,value) {
 
 var obj = JSON.parse(localStorage.getItem(key));
-if((JSON.stringify(eflowDTS) === JSON.stringify(obj))===false)
+if(((JSON.stringify(obj)) === (JSON.stringify(eflowDTS)))===false)
 {
 localStorage.setItem(key,JSON.stringify(value));
 }
+alert("A");
 };
 
 function Get_Cookie(key) {
