@@ -122,23 +122,31 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    $scope.Save_DataSet = function(Name){
    	
+   	$scope.DataSet.Name = Name;
+   	
    	var JsonData = {
-            'Method_Name': 'Select_Summary_'+Filter.DataSet,
-             'Data': {
-             	"Start_Date": new Date(Filter.Start_Date).getTime(),
-             	"End_Date": new Date(Filter.End_Date).getTime(),
-    			"Company": eflowDTS.Session.Company
-            },
-            'Fields':{
-            }
+            'Method_Name': 'Insert_DataSet',
+             'Data': $scope.DataSet
         };
+        
 		var onSuccess = function(ArrData){
+			bootbox.dialog({
+			title:"¡Alerta!",
+			message:"Se ha guardado el DataSet",
+			buttons:{
+				main:{
+					label:"Ok!",
+					className:"btn-primary"
+				}
+			}
+				
+			});
+		};	
 		
-		
-		};		
 		var onError = function(JsonData){		
 		alert(JsonData);		
-		};		
+		};	
+		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
    	
    };
