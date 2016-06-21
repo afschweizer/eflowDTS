@@ -99,21 +99,18 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	var JsonData = {
             'Method_Name': 'Select_Summary_'+Filter.DataSet,
              'Data': {
-             	"Start_Date": new Date(Filter.Start_Date).getTime(),
-             	"End_Date": new Date(Filter.End_Date).getTime(),
+             	"Start_Date":  {
+                		"$gte": new Date(Filter.Start_Date).getTime(),
+                        "$lte": new Date(Filter.End_Date).getTime()
+                		},
     			"Company": eflowDTS.Session.Company
             },
             'Fields':{
             }
         };
 		var onSuccess = function(ArrData){
-		var DataSet = {
-   			"Aggregator_Name":"Count",
-   			"Rows":[],
-   			"Columns":[],
-   			"Renderer_Name":"Table"
-   		};
-		Create_Pivot_Table(DataSet,ArrData);	
+		$scope.PivotData = ArrData;
+		Create_Pivot_Table();	
 		};		
 		var onError = function(JsonData){		
 		alert(JsonData);		
