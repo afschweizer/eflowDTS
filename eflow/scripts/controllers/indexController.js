@@ -2,13 +2,13 @@ DTS_APP.controller('indexController', function($scope) {
 	
 
        $scope.init = function() {
-       
-       	if(Exist_Cookie("EflowCookie") === true){
+  /*     
+       //	if(Exist_Cookie("EflowCookie") === true){
        		Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
-       	}else{
+       	}else{*/
        		Set_Cookie("EflowCookie",eflowDTS);
-       	}
+       //	}
        	
 		$scope.Show_Components = {};		
 		$scope.Show_Components.Main_Menu = true;  

@@ -21,14 +21,19 @@
     LoggedIn: false,
     Save_Session : false,
     Ultimate_Page : ""
-};
- 
+};/*
+function Exist_Cookie(key){
+var cookie =Get_Cookie(key);
+if(cookie!)	
+}
+ */
 function Set_Current_Page(){
 	
 	eflowDTS.Ultimate_Page = window.location.hash;
 	Set_Cookie("EflowCookie",eflowDTS);
 	
 };
+
 
 function Set_Cookie(key,value) {
 
