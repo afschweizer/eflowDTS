@@ -54,25 +54,40 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	
    };
    
-   function Create_Pivot_Table(DataSet,ArrData){
+   function Create_Pivot_Table(){
    	
    	var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
    
-     $("#Pivot_Table").pivotUI(ArrData, {
+     $("#Pivot_Table").pivotUI($scope.PivotData, {
                 renderers: renderers,
-                aggregatorName:DataSet.Aggregator_Name,
-                cols: DataSet.Columns,
-                rows:DataSet.Rows,
-                rendererName:DataSet.Renderer_Name
-            });
+                aggregatorName: $scope.DataSet.Aggregator_Name,
+                cols: $scope.DataSet.Cols,
+                rows: $scope.DataSet.Rows,
+                rendererName: $scope.DataSet.Renderer_Name,
+                onRefresh: function(config){
+					$scope.DataSet.Cols = config.cols;
+					$scope.DataSet.Rows = config.rows;
+					$scope.DataSet.Renderer_Name = config.rendererName;
+					$scope.DataSet.Aggregator_Name = config.aggregatorName;
+					$scope.$apply();				
+				}
+     });
    	   	
    };
    
    $scope.New_DataSet = function(){
    	
-   	$scope.DataSet = {
-   		Name
-   	};
+	   	$scope.DataSet = {
+	   		"Name":"",
+	   		"Rows":[],
+	   		"Cols":[],
+	   		"Aggregator_Name":"Count",
+	   		"Renderer_Name": "Table"
+	   	};
+	   	
+	   	$scope.PivotData = [];
+	   	
+	   	Create_Pivot_Table();
    	
    };
    
@@ -105,6 +120,28 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	
    };
    
+   $scope.Save_DataSet = function(Name){
+   	
+   	var JsonData = {
+            'Method_Name': 'Select_Summary_'+Filter.DataSet,
+             'Data': {
+             	"Start_Date": new Date(Filter.Start_Date).getTime(),
+             	"End_Date": new Date(Filter.End_Date).getTime(),
+    			"Company": eflowDTS.Session.Company
+            },
+            'Fields':{
+            }
+        };
+		var onSuccess = function(ArrData){
+		
+		
+		};		
+		var onError = function(JsonData){		
+		alert(JsonData);		
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+   	
+   };
    
    
    
