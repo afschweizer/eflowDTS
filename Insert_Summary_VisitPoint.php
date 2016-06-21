@@ -1,15 +1,19 @@
-<?php     
-
+<?php
+  
 include 'ConnectionMongo.php'; 
+  
+$coll = $db->Store_Summary_VisitPoint;
 
-$coll = $db->Store_Summary_Visit_Point;
+$result = $coll->find($dataObject->Data,$dataObject->Fields);
 
- foreach($dataObject->Data as $doc){
+$arrayResult = Array();
+  
+foreach($result as $doc){
+ 
+  array_push($arrayResult, $doc);
+  
+}
 
-      $coll->insert($doc);
-	
-    }
-
-echo json_encode(array("Message"=>"Insertado"));
+echo json_encode($arrayResult);
 
 ?>

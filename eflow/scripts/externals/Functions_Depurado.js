@@ -33,52 +33,17 @@ function Set_Current_Page(){
 function Set_Cookie(key,value) {
 
 var obj = JSON.parse(localStorage.getItem(key));
-if(eflowDTS.Equal_To(obj) === false){
+if((JSON.stringify(eflowDTS) === JSON.stringify(obj))===false)
+{
 localStorage.setItem(key,JSON.stringify(value));
-
 }
 };
-
-
-Object.prototype.Equal_To = function(x)
-{   
-    if (x === null || x === undefined) 
-        return false;
-            
-    if (Object.keys(this).length !== Object.keys(x).length) return false;
-                                   
-    for (var p in this)
-    {
-        // Evitamos navegar por las propiedades "heredadas"
-        if (this.hasOwnProperty(p)) {
-            if (!x.hasOwnProperty(p)) return false; 
-            // No es una propiedad de x                 
-            
-            switch(typeof(this[p])) {
-                case 'function': 
-                    return false;
-                case 'object': 
-                    if (!this[p].Equal_To(x[p])) 
-              // Comparamos los objetos                               
-                        return false;  
-                    break; 
-                default:                    
-                    if (this[p] !== x[p])
-                        return false;  
-              // Las propiedades tienes valores distintos
-                    break;
-            }                        
-        }
-    }
-
-    return true;                
-}
 
 function Get_Cookie(key) {
 
 var obj = JSON.parse(localStorage.getItem(key));
 
-if(eflowDTS.Equal_To(obj) === false){
+if((JSON.stringify(eflowDTS) === JSON.stringify(obj)) === false){
 eflowDTS = obj;
 }
  
