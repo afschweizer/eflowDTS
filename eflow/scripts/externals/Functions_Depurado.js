@@ -49,7 +49,7 @@ function Get_Cookie(key) {
 
 var obj = JSON.parse(localStorage.getItem(key));
 
-if((JSON.stringify(eflowDTS) === JSON.stringify(obj)) === false){
+if(((JSON.stringify(eflowDTS)) === (JSON.stringify(obj))) === false){
 eflowDTS = obj;
 }
  
