@@ -68,6 +68,13 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	   	
    };
    
+   $scope.New_DataSet = function(){
+   	
+   	$scope.DataSet = {
+   		Name
+   	};
+   	
+   };
    
    $scope.Refresh_Pivot_Table = function(Filter){
    	

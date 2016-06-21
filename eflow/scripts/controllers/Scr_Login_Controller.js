@@ -79,7 +79,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 						Set_Cookie("EflowCookie",eflowDTS);							
 					}
 			    	DataCompany();
-			    	To_Save_Eflow_Config();
+			    //	To_Save_Eflow_Config();
 	            	$scope.Mail = String(eflowDTS.Session.Mail);
 	                $scope.Show_Components.Login = true;
 			    	window.location.href = "#Calendar";
