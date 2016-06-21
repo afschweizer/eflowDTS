@@ -35,6 +35,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    };
    
    $scope.Charge_DataSet = function(DataSet){
+   	
    	$("#Charge_New_Modal").modal('hide');
    	$("#Collapse_Filter").collapse('show');
    	if(DataSet === null){
@@ -125,10 +126,14 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    $scope.Save_DataSet = function(Name){
    	
    	$scope.DataSet.Name = Name;
+   	$scope.DataSet.Company = eflowDTS.Session.Company;
+   	$scope.DataSet.User = eflowDTS.Session.ID;
+   	$scope.DataSet.Date_Created = new Date().getTime();
+   	$scope.DataSet.Date_Updated = new Date().getTime();
    	
    	var JsonData = {
             'Method_Name': 'Insert_DataSet',
-             'Data': $scope.DataSet
+             'Data': [$scope.DataSet]
         };
         
 		var onSuccess = function(ArrData){
