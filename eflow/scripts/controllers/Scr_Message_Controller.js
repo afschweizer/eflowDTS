@@ -62,7 +62,7 @@ $scope.Delete_Message_DB = function(){
 		};
 	
 	var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
 	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -125,7 +125,7 @@ $scope.Select = function(){
 		$scope.$apply($scope.ArrayMessage);
 		}
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
     } catch (err) {
@@ -144,7 +144,7 @@ $scope.Select_User = function(){
 		$scope.$apply($scope.ArrayUser);
 		}
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
     } catch (err) {
@@ -204,7 +204,7 @@ $scope.Message = function(TextUsuario,TextAsunto,TextMessage,checked) {
 				$scope.Select();
 				}
 				var onError = function(JsonData){
-				alert(JsonData);
+				console.log(JsonData);
 				}
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 			}
@@ -227,11 +227,11 @@ $scope.Message = function(TextUsuario,TextAsunto,TextMessage,checked) {
 			{
 				SaveMessage(TextUsuario,TextAsunto,TextMessage,function(obj) {
 					if (obj.Result === false) {
-						alert("false");
+						console.log("false");
 					} 
 					else 
 					{
-						alert("true");
+						console.log("true");
 					};		
 				});
 			}

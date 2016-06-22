@@ -94,7 +94,7 @@ $scope.init = function(){
 		
 		var onError = function(JsonData){
 		
-		alert(JsonData);
+		console.log(JsonData);
 		
 		};
 		
@@ -177,11 +177,11 @@ $scope.Select_User = function(){
 		$scope.$apply($scope.ArrayUser);
 		}
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
     } catch (err) {
-        onError(err);
+        console.log(err);
     }
 };
 
@@ -201,11 +201,11 @@ $scope.Select_Vehicle = function(){
 		$scope.$apply($scope.ArrayVehicle);
 		}
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
     } catch (err) {
-        onError(err);
+        console.log(err);
     }
 };
 	
@@ -296,7 +296,7 @@ obj.Jobs.push(x);
 		};
 		
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -329,13 +329,13 @@ $scope.Select_VisitPoint = function(){
 		};
 		
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
         
     } catch (err) {
-        onError(err);
+        console.log(err);
     }
 };
 
@@ -568,7 +568,7 @@ $scope.Save_Job_Edit = function(Obj){
 			};
 				
 		var onError = function(JsonData){
-			alert(JsonData);
+			console.log(JsonData);
 			};
 				
 	Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -627,7 +627,7 @@ $scope.Delete_Job_DB = function(){
 		};
 	
 	var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
 	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -693,7 +693,7 @@ $scope.Message=function(user,matter,detail){
 				var onSuccess = function(JsonData){
 				}
 				var onError = function(JsonData){
-				alert(JsonData);
+				console.log(JsonData);
 				}
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 };
@@ -805,7 +805,7 @@ $scope.Assign_All = function(Assign){
 									$scope.Select_VisitPoint();
 								};
 								var onError = function(JsonData){
-									alert(JsonData);
+									console.log(JsonData);
 								};
 								Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
 							}
@@ -929,7 +929,7 @@ $scope.Add_New_VisitPoint = function(New_Job){
 				$('#Modal_Add_VisitPoint').modal('hide');
 				};
 				var onError = function(JsonData){
-				alert(JsonData);
+				console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 

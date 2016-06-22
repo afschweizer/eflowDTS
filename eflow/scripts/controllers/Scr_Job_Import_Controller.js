@@ -79,7 +79,7 @@ $scope.Select_User = function(){
 		$scope.$apply($scope.ArrayUser);
 		}
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
     } catch (err) {
@@ -104,7 +104,7 @@ $scope.Select_Vehicle = function(){
 		$scope.$apply($scope.ArrayVehicle);
 		}
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
     } catch (err) {
@@ -164,7 +164,7 @@ var onSuccess = function(result){
 		};
 		
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);

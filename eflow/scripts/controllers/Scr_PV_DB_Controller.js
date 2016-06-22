@@ -39,7 +39,7 @@ $scope.Select_PV = function(){
 		};
 		
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
@@ -107,7 +107,7 @@ $scope.Save_Edit_Job = function(Obj){
 		$scope.Select_PV();
 		};
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -166,7 +166,7 @@ $scope.Remove_Job = function(){
 		};
 	
 	var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
 	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -255,7 +255,7 @@ $scope.Add_New_Job = function(New_Job){
 				$scope.Select();
 				};
 				var onError = function(JsonData){
-				alert(JsonData);
+				console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 					
@@ -276,7 +276,7 @@ $scope.Save_Job_Edit = function(Obj){
 				$scope.Select();
 				};
 				var onError = function(JsonData){
-				alert(JsonData);
+console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 								
@@ -285,7 +285,7 @@ $scope.Save_Job_Edit = function(Obj){
 /*************Exportar de json a excel******************/
 
 $scope.Generar =function(){
-	alert( JSON.stringify($scope.ArrayJobs.Jobs));
+	console.log( JSON.stringify($scope.ArrayJobs.Jobs));
 	var data = ($scope.ArrayJobs);
         if(data === '')
             return;

@@ -61,14 +61,14 @@
   <div style="text-align: center;">  
     <span style="display:inline-block;">
       <h4>
-          Mantenimiento de Rutas
+          Mantenimiento del sector
       </h4>
     </span>
    </div>
   <span id="Buttons" style="margin-left:7%;">
   <span>
      <a class="btn btn-primary span4" ng-show="Show_Components.Route_Add" ng-click="Show_Components.Route_Table = false; Show_Components.Route_Form = true; Show_Components.Route_Add = false; Show_Components.Export = false; Load();" data-toggle="tooltip" title="Agregar Ruta" >
-       <i class="glyphicon glyphicon-plus"></i>Agregar Ruta</a>   
+       <i class="glyphicon glyphicon-plus"></i>Agregar Sector</a>   
 	</span>
   <span ng-show="Show_Actions">
               <select style="width:175px " class="btn btn-primary span4" ng-model="Option" ng-change="Action_Option(Option)"> 
@@ -110,26 +110,26 @@
                 <form class="form-horizontal" ng-submit="Save_Route(Route)">
                   <div class="box-body ">
                     <div class="form-group">
-						<label class="col-sm-4 control-label">Nombre de la ruta:</label>
+						<label class="col-sm-4 control-label">Nombre del Sector:</label>
 						<div class="col-sm-7"> 
 							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="Route.Route_Name" placeholder="Nombre de la ruta..." required>
+								<input required type="text" class="form-control" ng-model="Route.Route_Name" placeholder="Nombre del sector..." required>
 							</div>
 						</div>
 					</div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Identificador de la ruta:</label>
+                        <label class="col-sm-4 control-label">Identificador del Sector:</label>
 						<div class="col-sm-7"> 
 							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="Route.ID_Route" placeholder="Identificador de la ruta..." required >
+								<input required type="text" class="form-control" ng-model="Route.ID_Route" placeholder="Identificador del sector..." required >
 							</div>
 						</div>
 					</div>
                <div class="form-group" >
-                        <label class="col-sm-4 control-label">Descripción de la ruta:</label>
+                        <label class="col-sm-4 control-label">Descripción del Sector:</label>
 						<div class="col-sm-7"> 
 							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="Route.Route_Description" placeholder="Descripción de la ruta..." required >
+								<input required type="text" class="form-control" ng-model="Route.Route_Description" placeholder="Descripción del sector..." required >
 							</div>
 						</div>
 					</div>

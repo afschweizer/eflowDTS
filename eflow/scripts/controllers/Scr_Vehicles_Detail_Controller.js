@@ -76,7 +76,7 @@ $scope.init = function(){
 				$scope.TextMessage="";
 				};
 				var onError = function(JsonData){
-				alert(JsonData);
+				console.log(JsonData);
 				};
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 	
@@ -317,7 +317,7 @@ $scope.init = function(){
 	
 	var onError = function(e){
 		
-		
+		console.log(e);
 	};
 	
 	var onSuccess = function(JsonArray){
@@ -345,6 +345,7 @@ $scope.init = function(){
 	var onError = function(e){
 		
 		
+		console.log(e);
 	};
 	
 	var onSuccess = function(JsonArray){

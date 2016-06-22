@@ -77,7 +77,7 @@ var onSuccess = function(result){
 		};
 		
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);

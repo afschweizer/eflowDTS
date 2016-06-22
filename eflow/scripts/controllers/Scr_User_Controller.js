@@ -89,7 +89,7 @@ $scope.Delete_User_DB = function(){
 		};
 	
 	var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
 	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -116,7 +116,7 @@ $scope.Save_User_Edit = function(Obj){
 			};
 				
 		var onError = function(JsonData){
-			alert(JsonData);
+			console.log(JsonData);
 			};
 				
 	Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -162,7 +162,7 @@ $scope.Select = function(){
 		
 		var onError = function(JsonData){
 		
-		alert(JsonData);
+		console.log(JsonData);
 		
 		};
 		
@@ -197,7 +197,7 @@ $scope.Delete = function(id){
 		
 		var onError = function(JsonData){
 		
-		alert(JsonData);
+		console.log(JsonData);
 		
 		};
 		}
@@ -320,7 +320,7 @@ $scope.Add_New_User = function(New_User){
 				$scope.Select();
 				};
 				var onError = function(JsonData){
-				alert(JsonData);
+				console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 					

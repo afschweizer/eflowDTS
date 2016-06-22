@@ -26,11 +26,11 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		   $scope.ArrayDataSet = JsonData;		
 		};		
 		var onError = function(JsonData){		
-		alert(JsonData);		
+		console.log(JsonData);		
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
     } catch (err) {
-        alert(err);
+        console.log(err);
     }	
    };
    
@@ -116,7 +116,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		Create_Pivot_Table();	
 		};		
 		var onError = function(JsonData){		
-		alert(JsonData);		
+		console.log(JsonData);		
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
    	
@@ -151,7 +151,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		};	
 		
 		var onError = function(JsonData){		
-		alert(JsonData);		
+		console.log(JsonData);		
 		};	
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);

@@ -139,7 +139,7 @@ if( file.type.match(/text\/csv/) || file.type.match(/vnd\.ms-excel/) ){
 		   };
 	        oFReader.readAsText(file);
         } else {
-        	console.log("This file does not seem to be a CSV.");
+        	alert("This file does not seem to be a CSV.");
         } 
  };
  

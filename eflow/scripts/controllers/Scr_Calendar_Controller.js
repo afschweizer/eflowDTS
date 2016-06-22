@@ -63,7 +63,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 		};
 		
 		var onError = function(JsonData){
-		alert(JsonData);
+			console.log(JsonData);
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);

@@ -88,7 +88,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
         };
 		
 		var onError = function(obj) {
-            alert(obj.message);
+            console.log(obj.message);
             
         };
 		
@@ -96,7 +96,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
         }
     } catch (err) {
 	
-                alert(err.message);
+                console.log(err.message);
     }
 };
 
@@ -120,7 +120,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 		      	 Set_Cookie("EflowCookie",eflowDTS);
 		}
 		var onError = function(e){
-		alert(e);
+		console.log(e);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
         }

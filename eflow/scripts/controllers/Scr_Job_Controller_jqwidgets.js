@@ -218,7 +218,7 @@ $scope.Select();
 			
 		};
 		var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
     } catch (err) {

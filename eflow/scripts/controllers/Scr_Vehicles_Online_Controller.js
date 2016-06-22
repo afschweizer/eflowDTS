@@ -90,7 +90,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		
 		var onError = function(Error){
 			
-			alert(Error);
+			console.log(Error);
 			
 		};
 		
@@ -173,7 +173,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		};
 		
 		var onError = function(e){
-		alert(e);				
+		console.log(e);				
 		};
 		
 		Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Query,Success,onError);

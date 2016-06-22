@@ -42,7 +42,7 @@ $scope.validate = function(com){
 				$scope.fax="";
 				};
 				var onError = function(JsonData){
-				alert(JsonData);
+				console.log(JsonData);
 				};
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 	

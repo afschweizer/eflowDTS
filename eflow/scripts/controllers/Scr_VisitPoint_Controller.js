@@ -102,7 +102,7 @@ function Select_Routes(){
 		$scope.ArrayRoute = JsonData;		
 		};		
 		var onError = function(JsonData){		
-		alert(JsonData);		
+		console.log(JsonData);		
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
     } catch (err) {
@@ -215,7 +215,7 @@ $scope.Delete = function(id){
 		
 		var onError = function(JsonData){
 		
-		alert(JsonData);
+		console.log(JsonData);
 		
 		};
 		}
@@ -252,7 +252,7 @@ $scope.Select = function(){
 		
 		var onError = function(JsonData){
 		
-		alert(JsonData);
+		console.log(JsonData);
 		
 		};
 		
@@ -305,7 +305,7 @@ $scope.Save_Visit_Point_Edit = function(Obj){
 			};
 				
 		var onError = function(JsonData){
-			alert(JsonData);
+			console.log(JsonData);
 			};
 				
 	Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -344,7 +344,7 @@ $scope.Delete_Visit_Point_DB = function(){
 		};
 	
 	var onError = function(JsonData){
-		alert(JsonData);
+		console.log(JsonData);
 		};
 		
 	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError); 
