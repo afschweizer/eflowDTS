@@ -2,7 +2,7 @@
 try{
 
   
-$uri = "mongodb://adminEprac:wolfe@ds061474.mlab.com:61474/eflow_testing"; 
+$uri = "mongodb://eflowdts_testing:eprac123@ds047812.mlab.com:47812/eflowdts_testing"; 
 $options = array("connectTimeoutMS" => 30000);
 
 $conn = new MongoClient($uri,$options);
