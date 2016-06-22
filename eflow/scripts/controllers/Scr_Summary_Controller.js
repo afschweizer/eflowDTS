@@ -7,8 +7,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		
 	};
 	
-	$scope.Close_Modal = function(Modal){
-	  $(Modal).modal('hide');
+	$scope.Close_Modal = function(){
+	  $('#').modal('hide');
 	  window.location.href = "#Calendar";
 	};
 
