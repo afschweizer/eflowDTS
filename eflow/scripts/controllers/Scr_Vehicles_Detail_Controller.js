@@ -1,3 +1,4 @@
+var map;
 DTS_APP.controller('Scr_Vehicles_Detail_Controller',function($scope) {
 
 
@@ -90,12 +91,12 @@ $scope.init = function(){
    		
    		//var onSuccess = function(pos){
    		
-   		var map = document.getElementById('Map_Dashboard');
+   		var div = document.getElementById('Map_Dashboard');
    			
-   		if(map){
+   		if(div){
 
-   			eflowDTS.Map_Dashboard = new GMaps({
-			div: map,
+   			map = new GMaps({
+			div: div,
 		    lat: eflowDTS.Geolocation.Latitude, 
 			lng: eflowDTS.Geolocation.Longitude,
 		    zoom: 12
@@ -147,14 +148,14 @@ $scope.init = function(){
   		$scope.ArrayJobs = JsonArray;
   		$scope.Show_Summary = true;
   		
-  		if(!eflowDTS.Map_Dashboard){
+  		if(!map){
   			
-  		var map = document.getElementById('Map_Dashboard');
+  		var div = document.getElementById('Map_Dashboard');
    			
-   		if(map){
+   		if(div){
 
-   			eflowDTS.Map_Dashboard = new GMaps({
-			div: map,
+   			map = new GMaps({
+			div: div,
 		    lat: JsonArray[0].Latitude, 
 			lng: JsonArray[0].Latitude,
 		    zoom: 12
@@ -168,7 +169,7 @@ $scope.init = function(){
   		for(var i = 0; i < JsonArray.length; i++){
   			
   			var x = JsonArray[i];
-  					      eflowDTS.Map_Dashboard.addMarker({
+  					      map.addMarker({
 			  lat: JsonArray[i].Latitude, 
 			  lng: JsonArray[i].Longitude,
 			  icon: 'images/'+JsonArray[i].Visit_State+'.png',
@@ -255,7 +256,7 @@ $scope.init = function(){
 		  Position.push(JsonArray[i].Geolocation.Longitude);
 		  path.push(Position);
 		  
-		  eflowDTS.Map_Dashboard.drawRoute({
+		  map.drawRoute({
 		  	origin:[JsonArray[i-1].Geolocation.Latitude,JsonArray[i-1].Geolocation.Longitude],
 		  	destination:[JsonArray[i].Geolocation.Latitude,JsonArray[i].Geolocation.Longitude],
 		  	travelMode: 'driving',
@@ -266,13 +267,13 @@ $scope.init = function(){
 		  		  	  
   		}
   		
-  		if(!eflowDTS.Map_Dashboard){
+  		if(!map){
   			
-  		var map = document.getElementById('Map_Dashboard');
+  		var div = document.getElementById('Map_Dashboard');
    			
-   		if(map){
+   		if(div){
 
-   			eflowDTS.Map_Dashboard = new GMaps({
+   			map = new GMaps({
 			div: map,
 		    lat: JsonArray[0].Geolocation.Latitude, 
 			lng: JsonArray[0].Geolocation.Latitude,
@@ -283,7 +284,7 @@ $scope.init = function(){
   			
   		}
   		
-   eflowDTS.Map_Dashboard.drawPolyline({
+   map.drawPolyline({
 		  path: path,
 		  strokeColor: '#101010',
 		  strokeOpacity: 0.6,
