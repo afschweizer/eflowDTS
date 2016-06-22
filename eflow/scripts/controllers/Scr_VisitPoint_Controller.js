@@ -13,7 +13,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		Load_Map_Init();
 		$scope.ArrayRoute = [];
 		var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
-		{"es":"RUTA","value":"Route"},{"es":"DIRECCION","value":"Address"},
+		{"es":"SECTOR","value":"Route"},{"es":"DIRECCION","value":"Address"},
 		{"es":"ENCARGADO","value":"Manager"},{"es":"CORREO","value":"Mail"}] ;
 		$scope.ArrayHeaders = Headers;		
 		$scope.Select();				

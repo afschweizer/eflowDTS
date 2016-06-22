@@ -11,7 +11,7 @@ $scope.init = function(){
   //  $scope.Dates = new Date();
 $scope.ArrayVisitPoints_Import = [];
 	$scope.Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
-		{"es":"RUTA","value":"Route"},{"es":"DIRECCION","value":"Address"},
+		{"es":"SECTOR","value":"Route"},{"es":"DIRECCION","value":"Address"},
 		{"es":"ENCARGADO","value":"Manager"},{"es":"CORREO","value":"Mail"}] ;
  Select_Routes();
 

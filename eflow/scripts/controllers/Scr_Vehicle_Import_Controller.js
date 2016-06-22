@@ -9,7 +9,8 @@ $scope.init = function(){
   //  $scope.Dates = new Date();
 $scope.ArrayVehicles_Import = [];
 	$scope.Headers= 
-[{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},{"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
+[{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},
+{"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
 
 
 };

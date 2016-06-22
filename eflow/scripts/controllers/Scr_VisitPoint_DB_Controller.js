@@ -15,7 +15,7 @@ $scope.init = function(){
         $scope.Date = new Date(eflowDTS.Session.Calendar_Date);
 		$scope.Headers = [{"es":"NOMBRE","value":"Name"},
 		{"es":"VEHICULO","value":"ID_Truck"},{"es":"USUARIO","value":"User"},
-		{"es":"RUTA","value":"Route"},{"es":"SECUENCIA","value":"Sequence"},
+		{"es":"SECTOR","value":"Route"},{"es":"SECUENCIA","value":"Sequence"},
 		{"es":"DURACION","value":"Estimated_Delivery_Time"}];
 		$scope.ArrayStatus =[{"ID":"Partial","Name":"Parcialmente Finalizado"},{"ID":"In_Process","Name":"En Proceso"},
 		{"ID":"Aborted","Name":"Abortado"},{"ID":"Finalized","Name":"Finalizado"},{"ID":"Unassigned","Name":"No Asignado"}];
