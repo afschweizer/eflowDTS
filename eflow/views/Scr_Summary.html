@@ -66,10 +66,10 @@
                   <!-- body -->
                    
                   <div>
-                  	<form ng-submit="Save_DataSet(Name);">
+                  	<form ng-submit="Save_DataSet(Save_Name);">
                        <div class="input-group">
                          <span class="input-group-addon"><i class="fa fa-area-chart" data-toggle="tooltip" title="Nombre del DataSet"></i></span> 
-                               <input required type="text" ng-model="Name" class="form-control" placeholder="Nombre del DataSet...">                
+                               <input required type="text" ng-model="Save_Name" class="form-control" placeholder="Nombre del DataSet...">                
                      </div>
                     <br/> 
                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
@@ -93,7 +93,7 @@
         <h4 class="panel-title">
           <i class="fa fa-filter">&nbsp;</i>Filtros
           <button type="button" class="close" data-toggle="collapse" href="#Filter_Panel"><i class="glyphicon glyphicon-resize-vertical"></i></button>
-          <p class="text-center">DataSet.Name</p>
+          <p class="text-center">{{DataSet.Name}}</p>
            
         </h4>
       </div>
@@ -108,7 +108,7 @@
              </h4>
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-list-ul" data-toggle="tooltip" title="Usuario"></i></span> 
-                      <select required ng-model="Filter.DataSet" class="form-control">
+                      <select required ng-model="Filter.Type" class="form-control">
                         <option value="">Selección de DataSet</option>
                         <option value="Item">Tareas</option>
                         <option value="Visit_Point">Puntos de Visita</option>
@@ -136,7 +136,7 @@
            </div>
             <div class="col-sm-4">	
               <div class="form-group">                                         
-                <button  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" data-toggle="modal" data-target="#Save_Modal" ><i class="fa fa-save"></i> Guardar</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" data-toggle="modal" data-target="#Save_Modal" ng-click="Save_Name = DataSet.Name;"><i class="fa fa-save"></i> Guardar</button>&nbsp;&nbsp;&nbsp;
                 <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="fa fa-refresh"></i> Refrescar</button> 
                </div>  
            </div>

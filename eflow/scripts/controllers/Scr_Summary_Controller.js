@@ -8,12 +8,21 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 	};
 	
 	$scope.Close_Modal = function(){
-	  $('#').modal('hide');
-	  window.location.href = "#Calendar";
+		
+	$('#Charge_New_Modal').on('hidden.bs.modal', function (e) {
+  			window.location.href = "#Calendar";	
+    });
+    
+	$("#Charge_New_Modal").modal('hide');
+	
+	
 	};
 
 	function Select_DataSet(){
 	 try {
+	 	
+	 	$scope.User = eflowDTS.Session.ID;
+	 	
         var JsonData = {
             'Method_Name': 'Select_DataSet',
              'Data': {
@@ -36,21 +45,9 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    $scope.Charge_DataSet = function(DataSet){
    	
-   	$("#Charge_New_Modal").modal('hide');
-   	if(DataSet === null){
-   		var DataSet = {
-   			"Aggregator_Name":"Count",
-   			"Rows":[],
-   			"Columns":[],
-   			"Renderer_Name":"Table"
-   		};
-   		var Data = [];
-   		
-   	}else{
-      	 	  
-   	}
-   	
-   	Create_Pivot_Table(DataSet,Data);
+   	$("#Charge_New_Modal").modal('hide');   	
+   
+   	$scope.Refresh_Pivot_Table(DataSet);   	
    	
    };
    
@@ -78,6 +75,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    $scope.New_DataSet = function(){
    	
    	$("#Charge_New_Modal").modal('hide');
+   	   	
+   	eflowDTS.Session.Flag_DataSet = "New";
    	
 	   	$scope.DataSet = {
 	   		"Name":"",
@@ -96,7 +95,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    $scope.Refresh_Pivot_Table = function(Filter){
    	
    	var JsonData = {
-            'Method_Name': 'Select_Summary_'+Filter.DataSet,
+            'Method_Name': 'Select_Summary_'+Filter.Type,
              'Data': {
              	"Start_Date":  {
                 		"$gte": new Date(Filter.Start_Date).getTime(),
@@ -108,12 +107,19 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             }
         };
 		var onSuccess = function(ArrData){
+		
+		if($scope.DataSet.Name === ""){
+			eflowDTS.Session.Flag_DataSet = "New";
+		}else{
+			eflowDTS.Session.Flag_DataSet = "Old";
+		}
 		$scope.PivotData = ArrData;
 		$scope.DataSet.Type = Filter.DataSet;
 		$scope.DataSet.Start_Date = new Date(Filter.Start_Date).getTime();
 		$scope.DataSet.End_Date = new Date(Filter.End_Date).getTime();
 		$scope.$apply();	
 		Create_Pivot_Table();	
+		
 		};		
 		var onError = function(JsonData){		
 		console.log(JsonData);		
@@ -127,8 +133,10 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	
    	$scope.DataSet.Name = Name;
    	$scope.DataSet.Company = eflowDTS.Session.Company;
-   	$scope.DataSet.User = eflowDTS.Session.ID;
-   	$scope.DataSet.Date_Created = new Date().getTime();
+  	$scope.DataSet.User = eflowDTS.Session.ID;
+   	if(eflowDTS.Session.Flag_DataSet === "New"){
+      $scope.DataSet.Date_Created = new Date().getTime();
+   	}
    	$scope.DataSet.Date_Updated = new Date().getTime();
    	
    	var JsonData = {
@@ -137,7 +145,9 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
         };
         
 		var onSuccess = function(ArrData){
-			bootbox.dialog({
+			
+			$('#Save_Modal').on('hidden.bs.modal', function (e) {
+  			bootbox.dialog({
 			title:"¡Alerta!",
 			message:"Se ha guardado el DataSet",
 			buttons:{
@@ -148,6 +158,11 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 			}
 				
 			});
+    });
+    
+	$("#Save_Modal").modal('hide');
+	
+			
 		};	
 		
 		var onError = function(JsonData){		
@@ -157,6 +172,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
    	
    };
+   
+   
    
    
    
