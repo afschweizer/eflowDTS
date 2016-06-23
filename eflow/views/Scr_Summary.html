@@ -16,15 +16,22 @@
                   <!-- body -->
                   
           <form ng-submit="Charge_DataSet(DataSet);">     
-        <div class="row">
+        <div class="row">          
+              <div class="col-sm-4"> <input  class="btn btn-primary" type="button" value="Todos DataSet" ng-click="query = {}"></div>
+              <div class="col-sm-4"> <input  class="btn btn-primary" type="button" value="Mis DataSet" ng-click="query = QueryForUser"></div>
+              <div class="col-sm-4"> <input  class="btn btn-primary" type="button" value="DataSet Recientes" ng-click="query = QueryForDate"></div>
+        </div>
+            <div class="space-line-5px"></div>
+            <div class="space-line-5px"></div>
+         <div class="row">
            <div class="col-sm-12">	
              <h4>
                Nombre del DataSet:
              </h4>
                     <div class="input-group">
                        <span class="input-group-addon"><i class="fa fa-list-ul" data-toggle="tooltip" title="Usuario"></i></span> 
-                      <select required ng-model="DataSet" ng-options="DataSet.Name for DataSet in ArrayDataSet track by DataSet._id.$id" class="form-control">
-                        <option value=""></option>
+                      <select required ng-model="DataSet" ng-options="DataSet.Name for DataSet in ArrayDataSet | filter: query : true track by DataSet._id.$id" class="form-control">
+                        <option value="">Selección del DataSet</option>
                        </select>                        
                     </div>
            </div>
@@ -85,7 +92,7 @@
         </div>
     </div>
 </div>
-  
+   
   
 <div class="" id="Collapse_Filter">
     <div class="panel panel-primary">
@@ -136,7 +143,7 @@
            </div>
             <div class="col-sm-4">	
               <div class="form-group">                                         
-                <button type="button" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" data-toggle="modal" data-target="#Save_Modal" ng-click="Save_Name = DataSet.Name;"><i class="fa fa-save"></i> Guardar</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ng-click="Save_Name = DataSet.Name; Confirm_DataSet();"><i class="fa fa-save"></i> Guardar</button>&nbsp;&nbsp;&nbsp;
                 <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="fa fa-refresh"></i> Refrescar</button> 
                </div>  
            </div>

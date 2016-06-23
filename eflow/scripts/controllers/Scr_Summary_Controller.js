@@ -1,7 +1,19 @@
 DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 
 	$scope.init = function(){
-       
+        Set_Current_Page();
+		Get_Cookie("EflowCookie");
+		
+		$scope.query = {};
+		var User = eflowDTS.Session.ID;
+		var Date = new Date(new Date().format("yyyy-mm-dd")).getTime();
+		
+		$scope.QueryForUser = {"User":User};
+		
+		$scope.QueryForDate = function(DataSets){
+		return DataSets.Date_Updated >= Date;
+		};
+
        $("#Charge_New_Modal").modal('show');
        Select_DataSet();
 		
@@ -114,7 +126,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 			eflowDTS.Session.Flag_DataSet = "Old";
 		}
 		$scope.PivotData = ArrData;
-		$scope.DataSet.Type = Filter.DataSet;
+		$scope.DataSet.Type = Filter.Type;
 		$scope.DataSet.Start_Date = new Date(Filter.Start_Date).getTime();
 		$scope.DataSet.End_Date = new Date(Filter.End_Date).getTime();
 		$scope.$apply();	
@@ -129,8 +141,26 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	
    };
    
-   $scope.Save_DataSet = function(Name){
+   $scope.Confirm_DataSet = function(){
    	
+   	if(typeof $scope.DataSet.Type === "undefined" || typeof $scope.DataSet.Start_Date === "undefined" || typeof $scope.DataSet.End_Date === "undefined"){
+   		
+   		bootbox.dialog({
+			title:"¡Alerta!",
+			message:"Debe elegir un tipo de DataSet y un rango de fechas antes de guardar",
+			buttons:{
+				main:{
+					label:"Ok!",
+					className:"btn-primary"
+				}
+			}}); 
+   		
+   	}else{
+   	    $("#Save_Modal").modal('show');
+   	 }
+   };
+   
+   $scope.Save_DataSet = function(Name){
    	$scope.DataSet.Name = Name;
    	$scope.DataSet.Company = eflowDTS.Session.Company;
   	$scope.DataSet.User = eflowDTS.Session.ID;
@@ -146,7 +176,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
         
 		var onSuccess = function(ArrData){
 			
-			$('#Save_Modal').on('hidden.bs.modal', function (e) {
+		$('#Save_Modal').on('hidden.bs.modal', function (e) {
   			bootbox.dialog({
 			title:"¡Alerta!",
 			message:"Se ha guardado el DataSet",
@@ -155,25 +185,18 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 					label:"Ok!",
 					className:"btn-primary"
 				}
-			}
-				
-			});
-    });
+			}});
+	});
     
 	$("#Save_Modal").modal('hide');
-	
-			
-		};	
+	};	
 		
 		var onError = function(JsonData){		
 		console.log(JsonData);		
 		};	
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
-   	
    };
-   
-   
    
    
    
