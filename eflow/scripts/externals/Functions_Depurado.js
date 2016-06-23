@@ -1,5 +1,5 @@
 //google.load("visualization", "1", {packages:["corechart", "charteditor"]});   
-	var eflowDTS = {
+	var eflowDTS = { 
 		
 		Geolocation:{
 			"Latitude":9.935775, 

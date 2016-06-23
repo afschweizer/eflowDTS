@@ -4,7 +4,7 @@ include 'ConnectionMongo.php';
   
 $coll = $db->Store_Summary_Visit_Point;
 
-$result = $coll->find(array("Start_Date" => array('$gt' => $start, '$lte' => $end)));
+$result = $coll->find($dataObject->Data,$dataObject->Fields);
 
 $arrayResult = Array();
   

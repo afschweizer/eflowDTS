@@ -4,7 +4,7 @@ include 'ConnectionMongo.php';
   
 $coll = $db->Store_Summary_Trip;
 
-$result = $coll->find();
+$result = $coll->find($dataObject->Data,$dataObject->Fields);
 
 $arrayResult = Array();
   
