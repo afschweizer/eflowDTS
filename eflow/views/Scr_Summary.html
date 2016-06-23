@@ -1,7 +1,6 @@
 <div id="Contents" ng-controller="Scr_Summary_Controller" ng-init="init()">
 <div class="container"> 
-    
-    
+   
     
 <div class="modal fade" id="Charge_New_Modal" role="dialog">
     <div class="vertical-alignment-helper modal-dna">
@@ -16,15 +15,8 @@
                   <!-- body -->
                   
           <form ng-submit="Charge_DataSet(DataSet);">     
-        <div class="row">          
-              <div class="col-sm-4"> <input  class="btn btn-primary" type="button" value="Todos DataSet" ng-click="query = {}"></div>
-              <div class="col-sm-4"> <input  class="btn btn-primary" type="button" value="Mis DataSet" ng-click="query = QueryForUser"></div>
-              <div class="col-sm-4"> <input  class="btn btn-primary" type="button" value="DataSet Recientes" ng-click="query = QueryForDate"></div>
-        </div>
-            <div class="space-line-5px"></div>
-            <div class="space-line-5px"></div>
-         <div class="row">
-           <div class="col-sm-12">	
+          <div class="row">
+           <div class="col-sm-6">	
              <h4>
                Nombre del DataSet:
              </h4>
@@ -35,6 +27,21 @@
                        </select>                        
                     </div>
            </div>
+          
+            <div class="col-sm-6">	
+               <h4>
+                 Filtros:
+               </h4>
+               <div class="input-group">
+                  <div class="btn-group" role="group" aria-label="...">
+                    <button  class="btn btn-primary" type="button"  ng-click="query = {}"><i class="fa fa-cube"></i>Todos</button>
+                     <button class="btn btn-primary" type="button"  ng-click="query = QueryForUser"><i class="glyphicon glyphicon-star"></i>Personales</button>
+                    <button  class="btn btn-primary" type="button"  ng-click="query = QueryForDate"><i class="glyphicon glyphicon-time"></i>Recientes</button>
+                  </div>
+               </div>
+           </div>
+             
+            
         </div>    
           
              <div class="space-line-5px"></div>

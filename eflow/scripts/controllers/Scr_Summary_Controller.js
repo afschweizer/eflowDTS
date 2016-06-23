@@ -6,12 +6,12 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		
 		$scope.query = {};
 		var User = eflowDTS.Session.ID;
-		var Date = new Date(new Date().format("yyyy-mm-dd")).getTime();
+		var Current_Date = new Date(new Date().format("yyyy-mm-dd")).getTime()+eflowDTS.Time.Difference;	
 		
 		$scope.QueryForUser = {"User":User};
 		
 		$scope.QueryForDate = function(DataSets){
-		return DataSets.Date_Updated >= Date;
+		return DataSets.Date_Updated >= Current_Date;
 		};
 
        $("#Charge_New_Modal").modal('show');
