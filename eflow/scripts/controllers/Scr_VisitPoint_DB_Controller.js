@@ -916,6 +916,7 @@ $scope.Add_New_VisitPoint = function(New_Job){
 	else{
 		obj_Job.Visit_State = "In_Process";
 	}
+	
         $scope.ArrayJobs.push(obj_Job);
 		var Array_Save = [];
 		Array_Save.push(obj_Job);

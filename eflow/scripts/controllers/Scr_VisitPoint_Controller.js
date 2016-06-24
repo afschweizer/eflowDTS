@@ -73,8 +73,6 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	$scope.VisitPoint.Province = results[results.length-2].formatted_address.split(',', 1)[0];
 	$scope.VisitPoint.Canton = results[results.length-3].formatted_address.split(',', 1)[0];
 	$scope.VisitPoint.District= results[results.length-4].formatted_address.split(',', 1)[0];
-	//alert("/pais "+pais+" /provincia "+provincia+" /canton "+canton+" /distrito "+distrito);
-    // alert("pais: "+pais+", provincia: "+provincia+", canton: "+canton+", distrito: "+distrito);
       }
   }});
   
