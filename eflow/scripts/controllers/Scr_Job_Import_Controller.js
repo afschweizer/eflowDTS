@@ -304,12 +304,36 @@ function Complete_Json(Json_Array){
   Json.Collection_Info.Collection_Name = "Store_Jobs";
   Json.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
   Json.Visit_Point_Incidents = [];
-  Json.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
-											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},
-											  {"text":"Problemas con el vehículo.","value":"Vehiculo"},
-											  {"text":"Problema con Encargado.","value":"Encargado"},
-											  {"text":"No Visita.","value":"NoVisito"},
-											  {"text":"Otros.","value":"Otros"}];
+  Json.Visit_Point_Incidents_Type = [
+        {
+            "text": "Problemas con la mercaderia.",
+            "value": "Mercaderia"
+        },
+        {
+            "text": "Problemas con la ubicación.",
+            "value": "Ubicacion"
+        },
+        {
+            "text": "Problemas con el vehículo.",
+            "value": "Vehiculo"
+        },
+        {
+            "text": "Problema con Encargado.",
+            "value": "Encargado"
+        },
+        {
+            "text": "Retraso.",
+            "value": "Delay_Incidents"
+        },
+        {
+            "text": "No Visita.",
+            "value": "NoVisito"
+        },
+        {
+            "text": "Otros.",
+            "value": "Otros"
+        }
+    ];
   Json.Visit_Point_States = [{"name":"Pendiente"},{"name":"En Proceso"},{"name":"Finalizado"},{"name":"Abortado"}];
   Json.Visit_Point_Abort = " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;";
   Json.Visit_Point_Confirm = " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;";
@@ -332,7 +356,7 @@ function Complete_Json(Json_Array){
 
 function Complete_Json_CSV(arr){
  
- var obj={};
+ var obj={}; 
   
   for (var i=0;i<arr.length;i++){
 	  
@@ -352,6 +376,13 @@ function Complete_Json_CSV(arr){
   pv.Telephone_Number = parseInt(puntoVisitaExcel.Telephone_Number);
   pv.Mail = puntoVisitaExcel.Mail;
   pv.User = puntoVisitaExcel.User;
+  
+  pv.Canton = puntoVisitaExcel.Canton;
+  pv.Province = puntoVisitaExcel.Province;
+  pv.District = puntoVisitaExcel.District;
+  pv.Country = puntoVisitaExcel.Country;
+  pv.Legal_Cedula = puntoVisitaExcel.Legal_Cedula;
+  
   pv.ID_Truck = puntoVisitaExcel.ID_Truck;
   //pv.Visit_State = "Incompleted";
    if(pv.ID_Truck === "" || pv.ID_Truck === undefined || pv.User === "" || pv.User === undefined)
@@ -364,7 +395,7 @@ function Complete_Json_CSV(arr){
   pv.Longitude = parseFloat(puntoVisitaExcel.Longitude);
   pv.Route = {};
   pv.Route.Route_Name = puntoVisitaExcel.Route_Name;
-  pv.Route.Route = puntoVisitaExcel.ID_Route;
+  pv.Route.ID_Route = puntoVisitaExcel.ID_Route;
   pv.Sequence = parseInt(puntoVisitaExcel.Sequence);
   pv.Estimated_Date =  parseInt(puntoVisitaExcel.Estimated_Date);
   pv.Estimated_Delivery_Time = parseInt(puntoVisitaExcel.Estimated_Delivery_Time);
@@ -377,12 +408,36 @@ function Complete_Json_CSV(arr){
   pv.Collection_Info.Collection_Name = "Store_Jobs";
   pv.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
   pv.Visit_Point_Incidents = [];
-  pv.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
-											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},
-											  {"text":"Problemas con el vehículo.","value":"Vehiculo"},
-											  {"text":"Problema con Encargado.","value":"Encargado"},
-											  {"text":"No Visita.","value":"NoVisito"},
-											  {"text":"Otros.","value":"Otros"}];
+  pv.Visit_Point_Incidents_Type = [
+        {
+            "text": "Problemas con la mercaderia.",
+            "value": "Mercaderia"
+        },
+        {
+            "text": "Problemas con la ubicación.",
+            "value": "Ubicacion"
+        },
+        {
+            "text": "Problemas con el vehículo.",
+            "value": "Vehiculo"
+        },
+        {
+            "text": "Problema con Encargado.",
+            "value": "Encargado"
+        },
+        {
+            "text": "Retraso.",
+            "value": "Delay_Incidents"
+        },
+        {
+            "text": "No Visita.",
+            "value": "NoVisito"
+        },
+        {
+            "text": "Otros.",
+            "value": "Otros"
+        }
+    ];
   pv.Visit_Point_States = [{"name":"Pendiente"},{"name":"En Proceso"},{"name":"Finalizado"},{"name":"Abortado"}];
   pv.Visit_Point_Abort = " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;";
   pv.Visit_Point_Confirm = " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;";
