@@ -1,4 +1,4 @@
-//google.load("visualization", "1", {packages:["corechart", "charteditor"]});   
+google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});   
 	var eflowDTS = { 
 		
 		Geolocation:{

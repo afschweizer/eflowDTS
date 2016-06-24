@@ -6,7 +6,6 @@ $scope.init = function(){
 		Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
 		
-		alert();
    $scope.Check = false;
   //  $scope.Dates = new Date();
 $scope.ArrayVisitPoints_Import = [];
