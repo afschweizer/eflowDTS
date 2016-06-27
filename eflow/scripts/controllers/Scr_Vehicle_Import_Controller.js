@@ -243,6 +243,7 @@ function Complete_Json_CSV(arr){
   ve.Model = VehicleExcel.Model;
   ve.Year = VehicleExcel.Year;
   ve.Fuel = VehicleExcel.Fuel;
+  ve.Type_Vehicle = VehicleExcel.Type_Vehicle;
   ve.Cylinder_Capacity = VehicleExcel.Cylinder_Capacity;
   ve.Transferring_State = VehicleExcel.Transferring_State;
   ve.ID_Truck = VehicleExcel.ID_Truck;

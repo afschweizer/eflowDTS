@@ -238,9 +238,14 @@
                  </span>
                      
               </div>
-      <div> 
-                <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Main_Menu">
+      <div> <!--
+         <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Menu=true"> 
+        <li><a  href="#Login" data-toggle="tooltip" title="Login">Ingreso</a></li>
+        <li><a  href="#Verificar" data-toggle="tooltip" title="Verificar">Verificar Pedido</a></li>
+        </ul>      -->
+        <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Main_Menu"> 
                      <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Calendar" data-toggle="tooltip" title="Planificador">Planificador</a></li>
+                    
                        
                    <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicles_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
  <li class="dropdown" ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false">

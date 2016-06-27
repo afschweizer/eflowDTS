@@ -140,7 +140,7 @@ $scope.Import_Files = function(){
 		
 		 bootbox.dialog(
                 {
-                	title:"Â¡Alerta!",
+                	title:"¡Alerta!",
                 	message:"Debe elegir un archivo.",
                 	buttons:{
                 	main:{
@@ -290,11 +290,15 @@ function CSV_To_JSON(csv){
 			  
 			 var Obj = {};
 			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");
+			 var CurrentLineRoute = Lines[i].split("|");
 			 Obj.Company = eflowDTS.Session.Company;
 			 
 				 for(var j = 0; j < Headers.length; j++){
 					
-					
+				/*	if (Obj[Headers[j]] === "Route_Path"){
+						
+						Obj[Headers[j]] = CurrentLineRoute[j];
+					}*/
 					Obj[Headers[j]] = CurrentLine[j];
 					
 				 }
