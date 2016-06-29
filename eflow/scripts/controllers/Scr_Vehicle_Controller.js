@@ -13,7 +13,12 @@ var Headers=
 {"es":"AÑO","value":"Year"},
 {"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
 
-	
+var Type_Vehicle = [{"es":"Camión","value":"Camion"},{"es":"Vehiculo","value":"Vehiculo"},{"es":"Moto","value":"Moto"}] ;
+var Fuel_Vehicle = [{"es":"Gasolina súper","value":"super"},{"es":"Gasolina regular","value":"regular"},
+{"es":"Gasolina plus","value":"plus"},{"es":"Diésel","value":"diésel"},{"es":"Gas","value":"gas"}] ;
+	$scope.ArrayType_Vehicle = Type_Vehicle;
+$scope.ArrayFuel_Vehicle = Fuel_Vehicle;
+
 $scope.ArrayHeaders = Headers;
 $scope.Select();
     

@@ -115,7 +115,9 @@
                                <div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
-												<input id="Model" type="text" class="form-control" name="Type_Vehicle" value="" ng-model="Vehicle.Type_Vehicle" placeholder="Tipo del Vehiculo..." required>
+                    <select ng-model="Vehicle.Type_Vehicle" ng-options="Obj.value as Obj.es for Obj in ArrayType_Vehicle" style="width: 80%;" class="form-control" id="Type_Vehicle" ></select>
+                      
+												<!--<input id="Model" type="text" class="form-control" name="Type_Vehicle" value="" ng-model="Vehicle.Type_Vehicle" placeholder="Tipo del Vehiculo..." required>-->
                                </div></div></div>
                        			<div class="form-group">
                                  <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Marca del Vehículo:</label><div class="col-sm-8"> 
@@ -135,7 +137,9 @@
                        			<div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Gasolina del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
-											<input id="Fuel" type="text" class="form-control" name="Fuel" value="" ng-model="Vehicle.Fuel" placeholder="Gasolina del Vehiculo..." required>
+											    <select ng-model="Vehicle.Fuel" ng-options="Obj.value as Obj.es for Obj in ArrayFuel_Vehicle" style="width: 80%;" class="form-control" id="Fuel" ></select>
+                      
+												<!--<input id="Fuel" type="text" class="form-control" name="Fuel" value="" ng-model="Vehicle.Fuel" placeholder="Gasolina del Vehiculo..." required>-->
                                </div></div></div>
                        			<div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Cilindraje del Vehículo:</label><div class="col-sm-8"> 
