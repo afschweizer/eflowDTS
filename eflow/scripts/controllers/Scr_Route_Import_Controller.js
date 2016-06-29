@@ -265,6 +265,9 @@ function Import_CSV(file){
 		$scope.ArrayRoutes_Import.push(arr[i]);
 		$scope.$apply($scope.ArrayRoutes_Import);
 		
+		
+		
+		
 	    }		
 			
 		};
@@ -290,17 +293,35 @@ function CSV_To_JSON(csv){
 			  
 			 var Obj = {};
 			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");
-			 var CurrentLineRoute = Lines[i].split("|");
+			
 			 Obj.Company = eflowDTS.Session.Company;
 			 
 				 for(var j = 0; j < Headers.length; j++){
-					
-				/*	if (Obj[Headers[j]] === "Route_Path"){
+					/*
+					 var String = Lines[i].split("|");
+						var Arr = String.split("|");
+						var Path = [];
+						for(var i = 0; i < Arr.length; i = i+2){
 						
-						Obj[Headers[j]] = CurrentLineRoute[j];
-					}*/
+						var Coor = [];
+						Coor.push(parseFloat(Arr[i]));
+						Coor.push(parseFloat(Arr[i+1]));
+						Path.push(Coor);
+						}
+						console.log(Path);*/
+					if (Headers[j] === "Route_Path"){
+						 var Arr = CurrentLine[j].split("|");
+						var Path = [];
+						for(var i = 0; i < Arr.length; i = i+2){
+						
+						var Coor = [];
+						Coor.push(parseFloat(Arr[i]));
+						Coor.push(parseFloat(Arr[i+1]));
+						Path.push(Coor);}
+					Obj[Headers[j]] = Path;
+						}else{
 					Obj[Headers[j]] = CurrentLine[j];
-					
+					}
 				 }
 				 
 				 ArrayJson.push(Obj);

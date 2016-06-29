@@ -63,15 +63,15 @@
             .when('/Vehicles_Online', {
                 templateUrl : 'views/Scr_Vehicles_Online.html'
             })
-            .when('/product',{
-                templateUrl : 'views/Scr_Product.html'
-            })
             .when('/Company',{
                 templateUrl : 'views/Scr_Company.html'
             })
             
             .when('/Routes',{
             	templateUrl : 'views/Scr_Route.html'
+            })
+            .when('/tracking',{
+            	templateUrl : 'views/Scr_Tracking.html'
             })
             /*
             
