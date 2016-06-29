@@ -1,34 +1,22 @@
-
 DTS_APP.controller('Scr_Vehicle_Controller',function($scope){
-
 
 $scope.init = function() {
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 	Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
-var Headers= 
-[{"es":"PLACA","value":"ID_Truck"},
-{"es":"MARCA","value":"Brand"},
-{"es":"AÑO","value":"Year"},
-{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
-
+var Headers= [{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},{"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
 var Type_Vehicle = [{"es":"Camión","value":"Camion"},{"es":"Vehiculo","value":"Vehiculo"},{"es":"Moto","value":"Moto"}] ;
-var Fuel_Vehicle = [{"es":"Gasolina súper","value":"super"},{"es":"Gasolina regular","value":"regular"},
-{"es":"Gasolina plus","value":"plus"},{"es":"Diésel","value":"diésel"},{"es":"Gas","value":"gas"}] ;
+var Fuel_Vehicle = [{"es":"Gasolina súper","value":"super"},{"es":"Gasolina regular","value":"regular"},{"es":"Gasolina plus","value":"plus"},{"es":"Diésel","value":"diésel"},{"es":"Gas","value":"gas"}] ;
 	$scope.ArrayType_Vehicle = Type_Vehicle;
 $scope.ArrayFuel_Vehicle = Fuel_Vehicle;
-
 $scope.ArrayHeaders = Headers;
 $scope.Select();
-    
 };
 
 
 $scope.Checking_Checkboxes_Check = function(){
-	
 	$scope.Show_Actions = false;
-	
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 
 	for ( var i = 0; i < CheckBoxes_Array.length ; i++ ){
