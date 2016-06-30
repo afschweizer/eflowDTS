@@ -48,9 +48,21 @@
 .responsive-calendar .day.not-current a {
   color: #ddd;
 }
-.responsive-calendar .day .badge {
+.responsive-calendar .day .badge2 {
   position: absolute;
   top: 2px;
   right: 2px;
   z-index: 1;
+}
+.responsive-calendar .day .badge1 {
+  position: absolute;
+  top: 2px;
+  right: 28px;
+  z-index: 1;
+}
+
+.label-pill {
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 10rem;
 }

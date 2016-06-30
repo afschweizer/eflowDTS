@@ -16,8 +16,7 @@ $scope.ArrayLicense =License;
 $scope.ArrayGenders = Gender;
 $scope.ArrayTypes = Type;
 $scope.Select();
-$scope.Show_Components.License=false;
-$scope.Show_Components.Type_License=false;
+
     
 };
 $scope.Password = function(x){
@@ -82,7 +81,7 @@ $scope.Delete_User_DB = function(){
 	var Array_Delete_ID=[];
 	
 	for (i=0; i < CheckBoxes_Array.length ;i++){
-		if (CheckBoxes_Array[i].checked == true){
+		if (CheckBoxes_Array[i].checked === true){
 			//var Obj = JSON.parse(CheckBoxes_Array[i].value);
 			Array_Delete_ID.push(CheckBoxes_Array[i].attributes.id_check.value);
 			//Array_Remove($scope.ArrayJobs,Obj);
@@ -138,7 +137,8 @@ $scope.Save_User_Edit = function(Obj){
 
 
 $scope.Visualize_User = function(Obj){
-	   
+   $scope.Show_Components.License=false;
+   $scope.Show_Components.Type_License=false;
    $scope.User = Obj;
    
    $("#Modal_Edit_User").modal("show"); 
@@ -146,7 +146,8 @@ $scope.Visualize_User = function(Obj){
 };	
 	
 $scope.Open_Modal_Add_VisitPoint = function(){
-	
+	$scope.Show_Components.License=false;
+$scope.Show_Components.Type_License=false;
 	$scope.User = {};
 
 	$("#Modal_Agregar_User").modal("show");	
