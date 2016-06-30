@@ -26,12 +26,18 @@ $scope.Select_PV = function(){
             'Method_Name': 'Select_Jobs',
             'Data': {
             }
-        };
+        }; 
+        
 		var onSuccess = function(JsonData){
+			
 		$scope.ArrayJobs = [];
+		
 		for(var i=0; i<JsonData.length;i++){
+			
 			JsonData[i].Estimated_Date = new Date(JsonData[i].Estimated_Date);	
+			
 			$scope.ArrayJobs.push(JsonData[i]);
+			
 			$scope.$apply($scope.ArrayJobs);
 		}
 		$scope.ArrayJobs = JsonData;
