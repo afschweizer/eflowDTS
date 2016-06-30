@@ -1,5 +1,10 @@
+.responsive.calendar {
+   border-collapse:collapse;
+}
+
 .responsive-calendar .controls {
   text-align: center;
+ 
 }
 .responsive-calendar .controls a {
   cursor: pointer;
@@ -13,6 +18,9 @@
 }
 .responsive-calendar .day {
   display: inline-block;
+  border-radius: 0px;
+  border: 0.5px solid #337ab7;
+  
   position: relative;
   font-size: 14px;
   width: 14.285714285714286%;
@@ -23,6 +31,7 @@
   display: block;
   cursor: pointer;
   padding: 20% 0 20% 0;
+  
 }
 .responsive-calendar .day a:hover {
   background-color: #eee;

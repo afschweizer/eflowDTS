@@ -8,7 +8,9 @@ $scope.init = function() {
 var Headers= [{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},{"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
 var Type_Vehicle = [{"es":"Camión","value":"Camion"},{"es":"Vehiculo","value":"Vehiculo"},{"es":"Moto","value":"Moto"}] ;
 var Fuel_Vehicle = [{"es":"Gasolina súper","value":"super"},{"es":"Gasolina regular","value":"regular"},{"es":"Gasolina plus","value":"plus"},{"es":"Diésel","value":"diésel"},{"es":"Gas","value":"gas"}] ;
-	$scope.ArrayType_Vehicle = Type_Vehicle;
+$scope.ArrayType_Vehicle = Type_Vehicle;
+var License=[{"es":"A1","value":"A1"},{"es":"A2","value":"A2"},{"es":"A3","value":"A3"},{"es":"B1","value":"B1"},{"es":"B2","value":"B2"},{"es":"B3","value":"B3"},{"es":"B4","value":"B4"},{"es":"C1","value":"C1"},{"es":"C2","value":"C2"},{"es":"D1","value":"D1"},{"es":"D2","value":"D2"},{"es":"D3","value":"D3"},{"es":"E1","value":"E1"},{"es":"E2","value":"E2"}];
+$scope.ArrayLicense =License;
 $scope.ArrayFuel_Vehicle = Fuel_Vehicle;
 $scope.ArrayHeaders = Headers;
 $scope.Select();
@@ -194,6 +196,7 @@ $scope.Add_New_Vehicle = function(New_Vehicle){
 				        	"Company": eflowDTS.Session.Company,
 				            "Id_Vehicle": New_Vehicle.Id_Vehicle,
 				            "Type_Vehicle": New_Vehicle.Type_Vehicle,
+				            "License": New_Vehicle.License,
 						    "Brand": New_Vehicle.Brand,
 						    "Model": New_Vehicle.Model,
 						    "Year": New_Vehicle.Year,
@@ -319,6 +322,7 @@ function Generate_XML(arr) {
 		texto.push('\t<Id_Vehicle>' + datos[i].Id_Vehicle + '</Id_Vehicle>\n');
 		texto.push('\t<Brand>' + datos[i].Brand + '</Brand>\n');
 		texto.push('\t<Model>' + datos[i].Model + '</Model>\n');
+		texto.push('\t<License>' + datos[i].License + '</License>\n');
 		texto.push('\t<Year>' + datos[i].Year + '</Year>\n');
 		texto.push('\t<Fuel>' + datos[i].Fuel + '</Fuel>\n');
 		texto.push('\t<Cylinder_Capacity>' + datos[i].Cylinder_Capacity + '</Cylinder_Capacity>\n');
@@ -372,6 +376,7 @@ function Export_CSV(arr) {
 	   row += '"Id_Vehicle",';
 	   row += '"Brand",';
 	   row += '"Model",';
+	   row += '"License",';
 	   row += '"Year",';
 	   row += '"Fuel",';
 	   row += '"Cylinder_Capacity",';
@@ -391,6 +396,7 @@ function Export_CSV(arr) {
 		row += '"' + arrData[i].Id_Vehicle + '",';
 		row += '"' + arrData[i].Brand + '",';
 		row += '"' + arrData[i].Model + '",';
+		row += '"' + arrData[i].License+ '",';
 		row += '"' + arrData[i].Year + '",';
 		row += '"' + arrData[i].Fuel + '",';
 		row += '"' + arrData[i].Cylinder_Capacity + '",';
@@ -429,6 +435,7 @@ var columns = [
 		{title:"Marca",dataKey:"Brand"},
 		{title:"Modelo",dataKey:"Model"},
 		{title:"Año",dataKey:"Year"},
+		{title:"Licencia",dataKey:"License"},
 		{title:"Combustible",dataKey:"Fuel"},
 		{title:"Cilindraje",dataKey:"Cylinder_Capacity"},
 		{title:"Placa",dataKey:"ID_Truck"},
