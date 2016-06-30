@@ -7,15 +7,17 @@ $scope.init = function() {
 		//To_Reload_Eflow_Config();
 	Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
-var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"PRIMER APELLIDO","value":"Lastname"},
-	{"es":"SEGUNDO APELLIDO","value":"Lastname2"},{"es":"CEDULA","value":"Identification"},{"es":"Tipo","value":"Type"}] ;
+var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"PRIMER APELLIDO","value":"Lastname"},{"es":"SEGUNDO APELLIDO","value":"Lastname2"},{"es":"CEDULA","value":"Identification"},{"es":"Tipo","value":"Type"}] ;
 $scope.ArrayHeaders = Headers;
 var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 var Type =[{"es":"Administrador","value":"Administrador"},{"es":"Conductor","value":"Conductor"}] ;
+var License=[{"es":"A1","value":"A1"},{"es":"A2","value":"A2"},{"es":"A3","value":"A3"},{"es":"B1","value":"B1"},{"es":"B2","value":"B2"},{"es":"B3","value":"B3"},{"es":"B4","value":"B4"},{"es":"C1","value":"C1"},{"es":"C2","value":"C2"},{"es":"D1","value":"D1"},{"es":"D2","value":"D2"},{"es":"D3","value":"D3"},{"es":"E1","value":"E1"},{"es":"E2","value":"E2"}];
+$scope.ArrayLicense =License;
 $scope.ArrayGenders = Gender;
 $scope.ArrayTypes = Type;
 $scope.Select();
-  
+$scope.Show_Components.License=false;
+$scope.Show_Components.Type_License=false;
     
 };
 $scope.Password = function(x){
@@ -57,7 +59,17 @@ $scope.Action_Option= function(Option){
 		$scope.Delete_User_DB();
 	}
 };
-
+$scope.VERIFY_LICENSE=function(Type){
+	if (Type === "Conductor"){
+		$scope.Show_Components.Type_License=true;
+	}
+	
+	};
+$scope.SEE_LICENSE=function(){
+		$scope.Show_Components.License=true;
+	
+	};
+	
 
 $scope.Delete_User_DB = function(){
 	
@@ -311,7 +323,9 @@ $scope.Add_New_User = function(New_User){
 					    "Identification": New_User.Identification,
 					    "Mail": New_User.Mail.toLowerCase(),
 					    "Gender": New_User.Gender,
-					    "Age": New_User.Age,
+					    "Birthdate": New_User.Birthdate,
+					    "DueDate": New_User.DueDate,
+					    "License": New_User.License,
 					    "Type": New_User.Type,
 					    "Address": New_User.Address
 					    }]
@@ -433,7 +447,9 @@ function Generate_XML(arr) {
 		texto.push('\t<Identification>' + datos[i].Identification + '</Identification>\n');
 		texto.push('\t<Mail>' + datos[i].Mail + '</Mail>\n');
 		texto.push('\t<Gender>' + datos[i].Gender + '</Gender>\n');
-		texto.push('\t<Age>' + datos[i].Age + '</Age>\n');
+		texto.push('\t<Birthdate>' + datos[i].Birthdate + '</Birthdate>\n');
+		texto.push('\t<DueDate>' + datos[i].DueDate+ '</DueDate>\n');
+		texto.push('\t<License>' + datos[i].License+ '</DueDate>\n');
 		texto.push('\t<Type>' + datos[i].Type + '</Type>\n');
 		texto.push('\t<Address>' + datos[i].Address + '</Address>\n');
 					    
@@ -490,7 +506,9 @@ function Export_CSV(arr) {
 	   row += '"Identification",';
 	   row += '"Mail",';
 	   row += '"Gender",';
-	   row += '"Age",';
+	   row += '"Birthdate",';
+	   row += '"DueDate",';
+	   row += '"License",';
 	   row += '"Address",';
 	   row += '"Type",'; 
     
@@ -511,7 +529,9 @@ function Export_CSV(arr) {
 		row += '"' + arrData[i].Identification + '",';
 		row += '"' + arrData[i].Mail+ '",';
 		row += '"' + arrData[i].Gender + '",';
-		row += '"' + arrData[i].Age + '",';
+		row += '"' + arrData[i].Birthdate + '",';
+		row += '"' + arrData[i].DueDate + '",';
+		row += '"' + arrData[i].License + '",';
 		row += '"' + arrData[i].Address + '",';
 		row += '"' + arrData[i].Type + '",';
 		row.slice(0, row.length - 1);
@@ -549,7 +569,9 @@ var columns = [
 		{title:"Cedula",dataKey:"Identification"},
 		{title:"Correo",dataKey:"Mail"},
 		{title:"Genero",dataKey:"Gender"},
-		{title:"Edad",dataKey:"Age"},
+		{title:"Fecha de nacimiento",dataKey:"Birthdate"},
+		{title:"Licencia",dataKey:"License"},
+		{title:"Fecha de vencimiento",dataKey:"DueDate"},
 		{title:"Tipo",dataKey:"Type"},
 		{title:"Dirección",dataKey:"Address"}];
 var rows = [];
