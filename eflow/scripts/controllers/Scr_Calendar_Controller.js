@@ -25,7 +25,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
         };
 		var onSuccess = function(JsonData){
 		
-		var obj = {};
+		var obj = {}; 
 		
 		for(var i = 0; i < JsonData.length; i++){
 			  
@@ -33,12 +33,14 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
   
   if (! obj.hasOwnProperty((new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd"))){
 	  
-      obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")] = { "PuntosVisita": 1, "Rutas": 1};
+      obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")] = { "PuntosVisita": 1, "Rutas": 1, "ID_Rutas":[puntoVisita.Route.ID_Route]};
            
   }else{
-  	
-  	  obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].PuntosVisita++;
+  	  
+  	  if(obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].ID_Rutas.indexOf(puntoVisita.Route.ID_Route) === -1){  	  	
   	  obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].Rutas++;
+  	  }
+  	  obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].PuntosVisita++;
 
   }
   	 
