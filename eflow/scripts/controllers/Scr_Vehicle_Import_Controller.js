@@ -306,9 +306,12 @@ function CSV_To_JSON(csv){
 			 
 				 for(var j = 0; j < Headers.length; j++){
 					
-					
+					if(Headers[j] === "License"){
+						Obj[Headers[j]] = CurrentLine[j].split("|");
+					}else{
 					Obj[Headers[j]] = CurrentLine[j];
-					
+				    }
+
 				 }
 				 Obj.Company = eflowDTS.Session.Company;
 				 Obj.Year = parseInt(Obj.Year);

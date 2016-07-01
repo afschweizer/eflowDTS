@@ -60,7 +60,17 @@ $scope.Action_Option= function(Option){
 };
 $scope.Verify_License=function(Type){
 	if (Type === "Conductor"){
+		
 		$scope.Show_Components.Type_License=true;
+	}else{
+		
+		delete $scope.User.License;
+	    
+	    delete $scope.User.DueDate;		
+	    
+		$scope.Show_Components.Type_License = false;
+
+		$scope.Show_Components.License = false;
 	}
 	
 	};

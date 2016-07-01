@@ -1,4 +1,4 @@
-DTS_APP.controller('Scr_VisitPoint_Import_Controller',function($scope) {
+ DTS_APP.controller('Scr_VisitPoint_Import_Controller',function($scope) {
 
 $scope.init = function(){
        	Set_Current_Page();
