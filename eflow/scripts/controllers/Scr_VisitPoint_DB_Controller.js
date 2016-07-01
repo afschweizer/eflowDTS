@@ -10,6 +10,7 @@ $scope.init = function(){
 	       $scope.Show_Serie=false;
            $scope.Show_Code=false;
            $scope.Show_Quantity=false;
+           $scope.Show_Select_Vehicule = false;
 	    $scope.Array_Serials =  [];
         $scope.Check = false;
         $scope.Date = new Date(eflowDTS.Session.Calendar_Date);
@@ -104,6 +105,35 @@ $scope.init = function(){
     }
 	
    };
+
+$scope.Filter_License = function(ID){
+
+for(var j = 0; j <$scope.ArrayUser.length; j++){
+	if($scope.ArrayUser[j].ID === ID){
+		var User = $scope.ArrayUser[j];
+		break;
+	}
+}
+$scope.Show_Select_Vehicule = true;
+$scope.ArrayVehicle_Filter = [];
+
+for(var x = 0; x < $scope.ArrayVehicle.length; x++){
+    for(var y = 0; y < $scope.ArrayVehicle[x].License.length; y++){
+         for(var z = 0; z < User.License.length; z++){
+                    if($scope.ArrayVehicle[x].License[y] === User.License[z]){
+                        if($scope.ArrayVehicle_Filter.indexOf($scope.ArrayVehicle[x]) === -1){
+                            $scope.ArrayVehicle_Filter.push($scope.ArrayVehicle[x]);
+                           }
+                        break;
+                    }         
+         }
+     }
+
+}
+
+};
+
+
 	
  $scope.See_Status=function(status){
  	
@@ -517,7 +547,7 @@ $scope.To_Order_By = function(Order_Type){
 };
 
 $scope.Visualize_VisitPoint = function(Obj){
-	   
+	   $scope.Show_Select_Vehicule = true;
    $scope.VisitPoint = Obj;
    $scope.VisitPoint.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
    $scope.Array_VisitPoint_Task_Edit = Obj.Jobs;
@@ -831,6 +861,7 @@ $scope.Assign_All = function(Assign){
 	
 $scope.Open_Modal_Add_VisitPoint = function(){
 	
+	$scope.Show_Select_Vehicule = false;
 	$scope.VisitPoint_Add = {};
 	$scope.VisitPoint_Add_Task = {};
 	$scope.VisitPoint_Add_Array_Task = [];
