@@ -4,7 +4,7 @@ include 'ConnectionMongo.php';
   
 $coll = $db->Store_Vehicle;
 
-$result = $coll->find($dataObject->Data,$dataObject->Fields);
+$result = $coll->find();
 
 $arrayResult = Array();
   
