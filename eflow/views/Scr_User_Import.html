@@ -214,51 +214,52 @@ $(document).ready( function() {
                   <div class="form-group">
               										 <select ng-model="User_Import.Gender" ng-options="Obj.value as Obj.es for Obj in ArrayGenders" style="width: 80%;" class="form-control" id="Gender" ></select>
  </div> </div> </div>
+              <div class="form-group">
+											
+              <label class="col-sm-4 control-label">Tipo:</label>	<div class="col-sm-8"> 
+                  <div class="form-group">
+                                <select ng-model="User_Import.Type" ng-change="Verify_License(User.Type)" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
+                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                              </div></div></div> 
+              <div class="form-group" ng-show="Show_Components.Type_License" >
+											
+              <label class="col-sm-4 control-label">Tipo de Licencia:</label>	<div class="col-sm-8"> 
+                  <div class="form-group">
+                        <input type="text" class="form-control" name="License"  ng-model="User_Import.License" placeholder="Licencia..." required>
+ <!--<select ng-model="User_Import.License" ng-change="See_License()" ng-options="Obj.value as Obj.es for Obj in ArrayLicense" style="width: 80%;" class="form-control" id="License" ></select>
+                       <input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                              </div></div></div> 
+               <div class="form-group" ng-show="Show_Components.License">
+											
+              <label class="col-sm-4 control-label">Fecha de vencimiento:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="DueDate" type="date" class="form-control"  ng-model="User_Import.DueDate"  required>
+                              </div></div></div>
+              <div class="form-group">
+											
+              <label class="col-sm-4 control-label">Dirección:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+                    <input id="Address" type="text" class="form-control" name="Address" value="" ng-model="User_Import.Address" placeholder="Dirección..." required>
+                               </div></div></div>
+                       			<div class="form-group">
+											
+              <label class="col-sm-4 control-label">Fecha de nacimiento:</label><div class="col-sm-8"> 
+                  <div class="form-group">
+											<input id="Birthdate" type="date" class="form-control" name="Birthdate"  ng-model="User_Import.Birthdate"  required>
+                              </div></div></div>
           <!--  <div class="form-group">
               <label class="col-sm-4 control-label">Tipo:</label><div class="col-sm-8"> 
                   <div class="form-group">
              										 <select ng-model="User_Import.Type" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
  </div> </div> </div>-->
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Dirección:</label><div class="col-sm-8"> 
-                  <div class="form-group">
-              <input type="text" class="form-control" ng-model="User_Import.Address" placeholder="Dirección..." required>
-            </div> </div> </div> 
               
-              <div class="form-group">
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo:</label>	<div class="col-sm-8"> 
-                  <div class="form-group">
-                                <select ng-model="User_Import.Type" ng-change="VERIFY_LICENSE(User.Type)" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
-                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
-                              </div></div></div> 
-              <div class="form-group" ng-show="Show_Components.Type_License" >
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo de Licencia:</label>	<div class="col-sm-8"> 
-                  <div class="form-group">
-                                <select ng-model="User_Import.License" ng-change="SEE_LICENSE()" ng-options="Obj.value as Obj.es for Obj in ArrayLicense" style="width: 80%;" class="form-control" id="License" ></select>
-                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
-                              </div></div></div> 
-               <div class="form-group" ng-show="Show_Components.License">
-											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Fecha de vencimiento:</label><div class="col-sm-8"> 
-                  <div class="form-group">
-											<input id="DueDate" type="date" class="form-control"  ng-model="User_Import.DueDate"  required>
-                              </div></div></div>
-              <div class="form-group">
-											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Dirección:</label><div class="col-sm-8"> 
-                  <div class="form-group">
-                    <input id="Address" type="text" class="form-control" name="Address" value="" ng-model="User_Import.Address" placeholder="Dirección..." required>
-                               </div></div></div>
-                       			<div class="form-group">
-											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Fecha de nacimiento:</label><div class="col-sm-8"> 
-                  <div class="form-group">
-											<input id="Birthdate" type="date" min="18" max="80" class="form-control" name="Birthdate" value="" ng-model="User_Import.Birthdate"  required>
-                              </div></div></div>
               <!--
             <div class="form-group">
               <label class="col-sm-4 control-label">Edad:</label><div class="col-sm-8"> 
                   <div class="form-group">
              <input type="number" class="form-control" ng-model="User_Import.Age" placeholder="Edad..." required>
             </div> </div> </div>-->
-					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
            
 
             <div class="modal-footer">

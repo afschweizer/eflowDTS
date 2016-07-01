@@ -58,13 +58,13 @@ $scope.Action_Option= function(Option){
 		$scope.Delete_User_DB();
 	}
 };
-$scope.VERIFY_LICENSE=function(Type){
+$scope.Verify_License=function(Type){
 	if (Type === "Conductor"){
 		$scope.Show_Components.Type_License=true;
 	}
 	
 	};
-$scope.SEE_LICENSE=function(){
+$scope.See_License=function(){
 		$scope.Show_Components.License=true;
 	
 	};
@@ -134,12 +134,18 @@ $scope.Save_User_Edit = function(Obj){
 								
 };
 	
-
+ 
 
 $scope.Visualize_User = function(Obj){
-   $scope.Show_Components.License=false;
-   $scope.Show_Components.Type_License=false;
+	
    $scope.User = Obj;
+   if($scope.User.Type==="Conductor"){
+	$scope.Show_Components.License=true;
+   $scope.Show_Components.Type_License=true;
+   }else{
+	$scope.Show_Components.License=false;
+   $scope.Show_Components.Type_License=false;
+   }
    
    $("#Modal_Edit_User").modal("show"); 
    
