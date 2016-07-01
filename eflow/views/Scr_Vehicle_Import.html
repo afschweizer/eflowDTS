@@ -176,8 +176,14 @@ $(document).ready( function() {
                                <div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
-												<input id="Model" type="text" class="form-control" name="Type_Vehicle" value="" ng-model="Vehicle_Import.Type_Vehicle" placeholder="Tipo del Vehiculo..." required>
+												<input id="Model" type="text" class="form-control" name="Type_Vehicle" ng-model="Vehicle_Import.Type_Vehicle" placeholder="Tipo del Vehiculo..." required>
                                </div></div></div>
+              <div class="form-group"  >
+											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo de Licencia requerida:</label>	<div class="col-sm-8"> 
+                  <div class="form-group">
+                                <select ng-model="Vehicle_Import.License" ng-options="Obj.value as Obj.es for Obj in ArrayLicense" multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
+                       <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                              </div></div></div> 
                        			<div class="form-group">
                                  <label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Marca del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">

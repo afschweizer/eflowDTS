@@ -225,9 +225,9 @@ $(document).ready( function() {
 											
               <label class="col-sm-4 control-label">Tipo de Licencia:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
-                        <input type="text" class="form-control" name="License"  ng-model="User_Import.License" placeholder="Licencia..." required>
- <!--<select ng-model="User_Import.License" ng-change="See_License()" ng-options="Obj.value as Obj.es for Obj in ArrayLicense" style="width: 80%;" class="form-control" id="License" ></select>
-                       <input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
+                      
+ <select ng-model="User_Import.License" ng-change="See_License()" ng-options="Obj.value as Obj.es for Obj in ArrayLicense" multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
+                  <!--     <input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div> 
                <div class="form-group" ng-show="Show_Components.License">
 											
