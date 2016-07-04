@@ -142,6 +142,7 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
    	}else{
 		if(typeof VP._id === 'undefined'){
 			VP.Route = {};
+			VP.Creation_Date= new Date().getTime() + eflowDTS.Time.Difference;
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
 			VP.Company = eflowDTS.Session.Company;
@@ -169,6 +170,7 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
 		}else{
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
+			VP.Modification_date = new Date().getTime() + eflowDTS.Time.Difference;
 			delete VP.Pais;		
 			delete VP.Provincia;		
 			delete VP.Distrito;

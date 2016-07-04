@@ -31,6 +31,9 @@ $scope.init = function(){
     }, 120000);
     
 	};
+	
+	
+	
 	$scope.Add_Serial =function(value){
 	    if(value===""||value===undefined){
 	    	alert("Debe de ingresar una serie");	
@@ -181,7 +184,7 @@ $scope.Action_Option= function(Option){
 }
  $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
 	for ( i = 0; i < ArrayVehicle.length ; i++ ){
-      if(Vehicle == ArrayVehicle[i].ID_Truck){
+      if(Vehicle === ArrayVehicle[i].ID_Truck){
 		$scope.ObjVeh = {};
 		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
 		$scope.ObjVeh.Weight = ArrayVehicle[i].Weight;
@@ -258,6 +261,7 @@ obj.Mail = y.VisitPoint.Mail;
 obj.Latitude = y.VisitPoint.Geolocation.Latitude;
 obj.Longitude = y.VisitPoint.Geolocation.Longitude;
 obj.Estimated_Date = (new Date("2016-02-01").getTime()) + eflowDTS.Time.Difference;
+obj.Creation_Date = new Date().getTime() + eflowDTS.Time.Difference;
 obj.Delivery_Period_Start = y.DeliveryPeriod.Start;
 obj.Delivery_Period_End = y.DeliveryPeriod.End;
 obj.Estimated_Delivery_Time = y.EstimatedDeliveryTime;
@@ -560,6 +564,7 @@ $scope.Save_Job_Edit = function(Obj){
 		
 		var Json = Obj;
 		
+Json.Modification_date = new Date().getTime() + eflowDTS.Time.Difference;
 		Json.Estimated_Date = new Date(Obj.Estimated_Date).getTime() + eflowDTS.Time.Difference;
 		
 			if(Json.Visit_State === "Unassigned"){	
@@ -721,10 +726,10 @@ $scope.Message=function(user,matter,detail){
 					}
 				};
 				var onSuccess = function(JsonData){
-				}
+				};
 				var onError = function(JsonData){
 				console.log(JsonData);
-				}
+				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 };
 
@@ -892,6 +897,7 @@ $scope.Add_New_VisitPoint = function(New_Job){
 
 		var obj_Job = {};
 		//obj_Job.VisitPoint = {};
+		obj_Job.Creation_Date = new Date().getTime() + eflowDTS.Time.Difference;
 		obj_Job.ID_Location = New_Job.PV_Info.ID_Location;
 		obj_Job.Manager = New_Job.PV_Info.Manager;
 		obj_Job.Name = New_Job.PV_Info.Name;
@@ -997,8 +1003,9 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 		}
 		else{
 
-		
-		
+		/*
+		var cantidad={};
+		var id=$scope.VisitPoint_Add.ID_Truck;*/
 		        	var obj = {};
 		switch(Task_Obj.Serial) {
 		    case "SS":
@@ -1012,6 +1019,8 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.BarCode = Task_Obj.BarCode;
 					obj.UOM = Task_Obj.UoM;
 					obj.Quantity = Task_Obj.Quantity;
+				/*	cantidad.JobWeight = Task_Obj.JobWeight;
+					cantidad.JobCubics = Task_Obj.JobCubics;*/
 					obj.JobWeight = Task_Obj.JobWeight;
 					obj.JobCubics = Task_Obj.JobCubics;
 					obj.Quantity_Register = 0;
@@ -1020,9 +1029,11 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
 					obj.JobActions = [];
 					if($scope.VisitPoint_Add_Array_Task){
+						//$scope.Verify_Weight_Volume(id,cantidad);
 						$scope.VisitPoint_Add_Array_Task.push(obj);			
 					}else{
 						$scope.VisitPoint_Add_Array_Task = [];
+						//$scope.Verify_Weight_Volume(id,cantidad);
 						$scope.VisitPoint_Add_Array_Task.push(obj);	
 					}
 					$scope.VisitPoint_Add_Task = {};
@@ -1042,6 +1053,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobInstructions = Task_Obj.Instruction;
 					obj.UOM = Task_Obj.UoM;
 					obj.Quantity = Task_Obj.Quantity;
+					
 					obj.JobWeight = Task_Obj.JobWeight;
 					obj.JobCubics = Task_Obj.JobCubics;
 					obj.Quantity_Register = 0;

@@ -310,6 +310,7 @@ $scope.Select = function(){
    if(typeof Route._id === 'undefined'){
    	
      	var Obj = {};
+	    Obj.Creation_Date = new Date().getTime() + eflowDTS.Time.Difference;
    		Obj.Route_Name = Route.Route_Name;
    		Obj.ID_Route = Route.ID_Route;
    		Obj.Route_Description = Route.Route_Description;
@@ -347,6 +348,7 @@ $scope.Select = function(){
    		}else{
    			
    		var Obj = Route;
+   		Obj.Modification_date = new Date().getTime() + eflowDTS.Time.Difference;
 		Obj.Route_Path = $scope.Array_Route;
    		
    		delete Obj['$$hashKey'];

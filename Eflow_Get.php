@@ -108,6 +108,16 @@ switch($dataObject->Method_Name){
       require'Select_Geolocation.php';
       break;
     }
+   case 'Insert_Info_Vehicle':
+    {
+      require'Insert_Info_Vehicle.php';
+      break;
+    }
+   case 'Select_Info_Vehicle':
+    {
+      require'Select_Info_Vehicle.php';
+      break;
+    }
    default:
     {
     	echo json_encode( array('Error' => 'Metodo_Incorrecto'));

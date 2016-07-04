@@ -135,6 +135,11 @@ switch($dataObject->Method_Name){
       require 'Check_Connectivity.php';
       break;
     } 
+  case 'Update_Info_Vehicle':
+    {
+      require 'Update_Info_Vehicle.php';
+      break;
+    } 
   default:
     {
     	echo json_encode( array('Error' => 'Metodo Incorrecto'));
