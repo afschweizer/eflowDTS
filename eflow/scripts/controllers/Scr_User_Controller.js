@@ -125,7 +125,8 @@ $scope.Delete_User_DB = function(){
 
 $scope.Save_User_Edit = function(Obj){
 		var Json = Obj;
-		Json.Modification_date = new Date().getTime() + eflowDTS.Time.Difference;
+		Json.Control.Modification_date = new Date().getTime();
+		Json.Control.Modify_User = eflowDTS.Session.UserName;
 		Json.Mail=Obj.Mail.toLowerCase();
 		delete Json['$$hashKey'];
 		var JsonData = 
@@ -331,7 +332,10 @@ $scope.Add_New_User = function(New_User){
 		var JsonData = 	{
 					'Method_Name': 'Insert_User',
 					 'Data': [{
-					 	"Creation_Date": new Date().getTime() + eflowDTS.Time.Difference,
+					 	"Control":{
+					 	"Creation_Date": new Date().getTime(),
+					 	"Created_User" : eflowDTS.Session.UserName
+					 	},
 		    			"Company": eflowDTS.Session.Company,
 		    			"UserName": New_User.UserName,
 					    "Password": New_User.Password,
