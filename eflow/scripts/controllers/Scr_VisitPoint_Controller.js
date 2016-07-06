@@ -2,6 +2,7 @@ var map;
 DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 
 	$scope.init = function(){
+		
        	Set_Current_Page();
 		
 		//$scope.Polygon = {}; 
@@ -143,8 +144,8 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
 		if(typeof VP._id === 'undefined'){
 			VP.Route = {};
 			VP.Control = {};
-			VP.Control.Creation_Date= new Date().getTime();
-			VP.Control.Created_User =eflowDTS.Session.UserName;
+			VP.Control.Creation_Date = new Date().getTime();
+			VP.Control.Created_User = eflowDTS.Session.UserName;
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
 			VP.Company = eflowDTS.Session.Company;

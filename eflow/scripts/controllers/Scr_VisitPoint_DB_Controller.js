@@ -2,7 +2,7 @@ DTS_APP.controller('Scr_VisitPoint_DB_Controller',function($scope) {
 
 $scope.init = function(){
        	Set_Current_Page();
-	
+	 
 		//To_Reload_Eflow_Config();
 		Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
@@ -717,13 +717,17 @@ $scope.Assign_Status = function(status){
 			alert("Debe digitar o selecionar al menos un campo");
 		}
 		else{
+			
 			var ArrayID = IDS_CheckBoxes();
 			if(ArrayID.length > 0){
 				for(var i = 0; i < $scope.ArrayJobs.length; i++){
 					for(var j = 0; j < ArrayID.length; j++){
 						if($scope.ArrayJobs[i]._id.$id === ArrayID[j]){
+							
 							if($scope.ArrayJobs[i].Visit_State !== "Finalized"){
 								$scope.ArrayJobs[i].Visit_State = status;
+								$scope.ArrayJobs[i].Control.Modification_Date = new Date().getTime();
+								$scope.ArrayJobs[i].Control.Modify_User= eflowDTS.Session.UserName;
 								delete $scope.ArrayJobs[i].$$hashKey;
 								var JsonData = 
 								{
@@ -806,6 +810,9 @@ $scope.Assign_All = function(Assign){
 								}
 								$scope.ArrayJobs[i].User = user;
 								$scope.ArrayJobs[i].ID_Truck = truck; 
+								$scope.ArrayJobs[i].Control.Modification_Date = new Date().getTime(); 
+								$scope.ArrayJobs[i].Control.Modify_User = eflowDTS.Session.UserName; 
+								
 								$scope.ArrayJobs[i].Estimated_Date = new Date(date).getTime() + eflowDTS.Time.Difference;
 								$scope.ArrayJobs[i].Visit_State = "In_Process";
 								delete $scope.ArrayJobs[i].$$hashKey;

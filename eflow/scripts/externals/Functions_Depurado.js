@@ -25,7 +25,7 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 
 /*
 function Exist_Cookie(key){
-var cookie =Get_Cookie(key);
+var cookie = Get_Cookie(key);
 if(cookie!)	
 }
 */ 
@@ -38,11 +38,11 @@ function Set_Current_Page(){
 };
 
 
+
 function Set_Cookie(key,value) {
 
 var obj = JSON.parse(localStorage.getItem(key));
-if(!((JSON.stringify(obj)) === (JSON.stringify(eflowDTS))))
-{
+if(!((JSON.stringify(obj)) === (JSON.stringify(eflowDTS)))){
 localStorage.setItem(key,JSON.stringify(value));
 }
 };
@@ -50,11 +50,14 @@ localStorage.setItem(key,JSON.stringify(value));
 function Get_Cookie(key) {
 
 var obj = JSON.parse(localStorage.getItem(key));
-
 if(!((JSON.stringify(eflowDTS)) === (JSON.stringify(obj)))){
 eflowDTS = obj;
 }
  
+};
+
+function Exist_Cookie(){
+			
 };
 
 
