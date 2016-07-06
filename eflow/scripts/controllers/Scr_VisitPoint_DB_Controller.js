@@ -4,7 +4,7 @@ $scope.init = function(){
        	Set_Current_Page();
 	 
 		//To_Reload_Eflow_Config();
-		Get_Cookie("EflowCookie");
+		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
 	//$scope.Show_Quantity=true;
 	       $scope.Show_Serie=false;

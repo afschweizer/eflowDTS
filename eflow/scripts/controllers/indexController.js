@@ -7,7 +7,7 @@ DTS_APP.controller('indexController', function($scope) {
        		Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
        	}else{*/
-       		Set_Cookie("EflowCookie",eflowDTS);
+       		Set_Current_Page();
        //	}
        	
 		$scope.Show_Components = {};		

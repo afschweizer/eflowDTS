@@ -9,7 +9,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 			$('#Charging').modal('show');
 			Load_Init_Map();
 		//To_Reload_Eflow_Config();
-		Get_Cookie("EflowCookie");
+		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
 			Select_User_Online();
 			Select_Jobs();		       				

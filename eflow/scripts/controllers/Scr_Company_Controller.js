@@ -5,7 +5,7 @@
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		//eflowDTS = Get_Cookie("EflowCookie");
-		Get_Cookie("EflowCookie");
+		//Get_Cookie("EflowCookie");
 		};
 		
 $scope.validate = function(com){

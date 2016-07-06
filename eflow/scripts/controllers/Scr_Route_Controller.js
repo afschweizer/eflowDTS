@@ -2,7 +2,7 @@ var map;
 DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
-       	Set_Current_Page();
+    Set_Current_Page(); 
 	$scope.Show_Components.Route_Form = true;	
 	$scope.Show_Components.Route_Table = false;
 	Load_Map_Init();
@@ -11,7 +11,7 @@ $scope.init = function(){
 	$scope.Route = {};
 	$scope.Check = false;
 		//To_Reload_Eflow_Config();
-		Get_Cookie("EflowCookie");
+		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
     
     var Headers= [{"es":"NOMBRE","value":"Route_Name"},{"es":"IDENTIFICADOR","value":"ID_Route"},

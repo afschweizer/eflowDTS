@@ -7,9 +7,9 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 		},
     Configuration: {
         "URLs": { 
-            "eflow_Get": "http://104.197.6.251/eflowDTS_Development/eflowDTS/Eflow_Get.php",
-            "eflow_Post": "http://104.197.6.251/eflowDTS_Development/eflowDTS/Eflow_Post.php",
-            "eflow_Date_Time" : "http://104.197.6.251/eflowDTS_Development/eflowDTS/time.php"
+            "eflow_Get": "http://104.197.6.251/eflowDTS_Testing/eflowDTS/Eflow_Get.php",
+            "eflow_Post": "http://104.197.6.251/eflowDTS_Testing/eflowDTS/Eflow_Post.php",
+            "eflow_Date_Time" : "http://104.197.6.251/eflowDTS_Testing/eflowDTS/time.php"
         } 
     }, 
     Session: {},
@@ -28,36 +28,27 @@ function Exist_Cookie(key){
 var cookie = Get_Cookie(key);
 if(cookie!)	
 }
-*/ 
+*/   
  
 function Set_Current_Page(){
-	
-	eflowDTS.Ultimate_Page = window.location.hash;
-	Set_Cookie("EflowCookie",eflowDTS);
-	
+	if(Exist_Cookie("EflowCookie") === true){
+		Get_Cookie("EflowCookie");
+     }
+		eflowDTS.Ultimate_Page = window.location.hash;
+	    Set_Cookie("EflowCookie",eflowDTS);
 };
 
-
-
 function Set_Cookie(key,value) {
-
-var obj = JSON.parse(localStorage.getItem(key));
-if(!((JSON.stringify(obj)) === (JSON.stringify(eflowDTS)))){
-localStorage.setItem(key,JSON.stringify(value));
-}
+	localStorage.setItem(key,JSON.stringify(value));			
 };
 
 function Get_Cookie(key) {
-
-var obj = JSON.parse(localStorage.getItem(key));
-if(!((JSON.stringify(eflowDTS)) === (JSON.stringify(obj)))){
-eflowDTS = obj;
-}
- 
+	var obj = JSON.parse(localStorage.getItem(key));
+    eflowDTS = obj;
 };
 
-function Exist_Cookie(){
-			
+function Exist_Cookie(key){
+	return (localStorage.getItem(key) != null);		
 };
 
 

@@ -1,6 +1,6 @@
 DTS_APP.controller('Scr_PV_DB_Controller',function($scope) {
 	
-	
+	 
 $scope.currentPage = 1;
 $scope.pageSize = 10;
 $scope.Check = false;
@@ -9,7 +9,7 @@ $scope.init = function() {
 	
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
-		Get_Cookie("EflowCookie");
+		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
 $scope.Headers = [{"es":"GERENTE","value":"VisitPoint.Manager"},{"es":"NOMBRE","value":"VisitPoint.Name"},
 		{"es":"DIRECCION","value":"VisitPoint.Address"},{"es":"TELEFONO","value":"VisitPoint.Telephone_Number"},
