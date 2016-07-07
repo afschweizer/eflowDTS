@@ -20,6 +20,9 @@ $scope.init = function(){
 		{"es":"DURACION","value":"Estimated_Delivery_Time"}];
 		$scope.ArrayStatus =[{"ID":"Partial","Name":"Parcialmente Finalizado"},{"ID":"In_Process","Name":"En Proceso"},
 		{"ID":"Aborted","Name":"Abortado"},{"ID":"Finalized","Name":"Finalizado"},{"ID":"Unassigned","Name":"No Asignado"}];
+		var Unity= [{"es":"Unidad","value":"Unidad"},{"es":"Caja","value":"Caja"},
+		{"es":"Paquete","value":"Paquete"},{"es":"Bulto","value":"Bulto"}] ;
+		$scope.ArrayUnidads = Unity;	
 		$scope.Select_VisitPoint();
 		$scope.Select_Local();
 		$scope.Select_User();

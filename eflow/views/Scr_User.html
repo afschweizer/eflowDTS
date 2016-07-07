@@ -147,19 +147,16 @@
 											<input id="Lastname2" type="text" class="form-control" name="Lastname2" value="" ng-model="User.Lastname2" placeholder="Segundo Apellido..." required>
                               </div></div></div>
                        			<div class="form-group">
-											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Cédula:</label> <div class="col-sm-8"> 
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Cédula:</label> 
+                                <div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Identification" type="number" class="form-control" name="Identification" value="" ng-model="User.Identification" placeholder="Cédula..." required>
                             </div></div></div>
-                       			<div class="form-group">
-											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Correo:</label> <div class="col-sm-8"> 
-                  <div class="form-group">
-											<input id="Mail" type="text" class="form-control" name="Mail" value="" ng-model="User.Mail" placeholder="Correo..." required>
-                              </div></div></div>
+                       		
                        			<div class="form-group">
 											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Género:</label><div class="col-sm-8"> 
                   <div class="form-group">
-										 <select ng-model="User.Gender" ng-options="Obj.value as Obj.es for Obj in ArrayGenders" style="width: 80%;" class="form-control" id="Gender" ></select>
+										 <select ng-model="User.Gender" ng-options="Obj.value as Obj.es for Obj in ArrayGenders" style="width: 100%;" class="form-control" id="Gender" ></select>
                        <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div>
                      <!--   <div class="form-group">
@@ -172,7 +169,7 @@
                 <div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
-                                <select ng-model="User.Type" ng-change="Verify_License(User.Type)" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
+                                <select ng-model="User.Type" ng-change="Verify_License(User.Type)" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 100%;" class="form-control" id="Type" ></select>
                        <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div> 
               <div class="form-group" ng-show="Show_Components.Type_License" >
@@ -195,7 +192,19 @@
 											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Fecha de nacimiento:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											<input id="Birthdate" type="date" min="18" max="80" class="form-control" name="Birthdate" value="" ng-model="User.Birthdate"  required>
-                              </div></div></div>
+                              </div></div></div>	
+                        <div class="form-group">
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Correo:</label>
+                <!--                <div class="col-sm-4"> 
+                  <div class="form-group">
+											<input id="Mail" type="text" class="form-control" name="Mail" value="" ng-model="User.Mail" placeholder="Correo..." required>@{{Company}}.com
+                    <span class="input-group-addon col-sm-2"></span> 
+                </div> </div>-->
+                              <div class="col-sm-8">
+                             <div class="input-group col-sm-12">
+                          <input id="Mail" type="text" class="form-control" name="Mail" value="" ng-model="User.Mail" placeholder="Correo..." required>
+                            <span class="input-group-addon">@{{Company}}.com</span>
+                        </div> </div></div>
                         <br/>
                         <br/>
                         <br/>
