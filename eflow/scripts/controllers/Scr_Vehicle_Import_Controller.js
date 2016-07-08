@@ -104,7 +104,7 @@ $scope.Open_Modal_Add_Vehicle_Import = function(){
 $scope.To_Order_By = function(Order_Type){
 	
 	if ($scope.OrderList === Order_Type) {
-		
+		         
     var Reverse = Order_Type.charAt(0);
     if (Reverse === '-') {
         $scope.OrderList = Order_Type.substr(1);
