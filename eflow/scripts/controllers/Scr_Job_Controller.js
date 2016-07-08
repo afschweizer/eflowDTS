@@ -7,10 +7,13 @@ $scope.init = function() {
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
-var HeadersEs = ["Identificación Lugar De Entrega","Gerente","Nombre","Dirección","Número De Teléfono","Correo","Latitud","Longitud","Secuencia","Fecha Estimada","Tiempo Estimado De Entrega","Ventana de entrega Inicio","Ventana de entrega finalicacion","Usuario"] ;
+var HeadersEs = ["Identificación Lugar De Entrega","Gerente","Nombre","Dirección","Número De Teléfono",
+"Correo","Latitud","Longitud","Secuencia","Fecha Estimada","Tiempo Estimado De Entrega",
+"Ventana de entrega Inicio","Ventana de entrega finalicacion","Usuario"] ;
 $scope.ArrayHeadersEs = HeadersEs;
 
-var Headers = ["IDDelivery_Location","Manager","Name","Address","Telephone_Number","Mail","Latitude","Longitude", "Sequence","Estimated_Date","Estimated_Delivery_Time","Start","End","User"];
+var Headers = ["IDDelivery_Location","Manager","Name","Address","Telephone_Number","Mail",
+"Latitude","Longitude", "Sequence","Estimated_Date","Estimated_Delivery_Time","Start","End","User"];
 $scope.ArrayHeaders = Headers;
 
 };	

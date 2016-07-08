@@ -86,6 +86,7 @@ $scope.Delete_Vehicle_DB = function(){
 $scope.Save_Vehicle_Edit = function(Obj){
 		var Json = Obj;
 		Json.Control.Modification_date = new Date().getTime();
+		Json.ID_Truck=Json.ID_Truck.replace(/\s/g, '').toUpperCase();
 		Json.Control.Modify_User = eflowDTS.Session.UserName;
 		delete Json['$$hashKey'];
 		var JsonData = 
@@ -200,7 +201,7 @@ $scope.Add_New_Vehicle = function(New_Vehicle){
 					 	"Created_User" : eflowDTS.Session.UserName
 					 	},
 				        	"Company": eflowDTS.Session.Company,
-				            "Id_Vehicle": New_Vehicle.Id_Vehicle,
+				            "Id_Vehicle": New_Vehicle.Id_Vehicle.replace(/\s/g, '').toUpperCase(),
 				            "Type_Vehicle": New_Vehicle.Type_Vehicle,
 				            "License": New_Vehicle.License,
 						    "Brand": New_Vehicle.Brand,

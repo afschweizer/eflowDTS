@@ -350,7 +350,7 @@ $scope.Select = function(){
    		}else{
    			
    		var Obj = Route;
-   		Obj.Control.Modification_date = new Date().getTime();
+   		Obj.Control.Modification_date =  new Date().getTime();
    		Obj.Control.Modify_User= eflowDTS.Session.UserName;
 		Obj.Route_Path = $scope.Array_Route;
    		

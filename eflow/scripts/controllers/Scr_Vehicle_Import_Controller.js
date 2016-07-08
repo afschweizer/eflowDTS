@@ -61,6 +61,7 @@ var onSuccess = function(result){
 	for (i=0; i < CheckBoxes_Array.length ; i++){
 		if (CheckBoxes_Array[i].checked == true){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
+		json_obj.ID_Truck = json_obj.ID_Truck.replace(/\s/g, '').toUpperCase();
 			Array_Vehicle_To_Assign.push(json_obj);
 			}
 	}
@@ -172,6 +173,7 @@ $scope.Checking_Checkboxes = function(){
 $scope.Visualize_Vehicle_Import = function(Obj){
   
   		$scope.Vehicle_Import = Obj;
+  		
         $scope.Array_Vehicle_Import_Task = Obj.Jobs;
 	  //  $scope.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
         $("#Modal_Edit_Vehicle_Import").modal("show"); 
@@ -188,7 +190,9 @@ function Import_Json(file){
 	
 	for(var i = 0; i < arr.length; i++){
         arr[i].Company = eflowDTS.Session.Company;
-		$scope.ArrayVehicles_Import.push(arr[i]);		
+		arr[i].ID_Truck = arr[i].ID_Truck.replace(/\s/g, '').toUpperCase();
+		$scope.ArrayVehicles_Import.push(arr[i]);	
+		
 		$scope.$apply($scope.ArrayVehicles_Import);
 		
 	}
@@ -248,7 +252,7 @@ function Complete_Json_CSV(arr){
   ve.Type_Vehicle = VehicleExcel.Type_Vehicle;
   ve.Cylinder_Capacity = VehicleExcel.Cylinder_Capacity;
   ve.Transferring_State = VehicleExcel.Transferring_State;
-  ve.ID_Truck = VehicleExcel.ID_Truck;
+  ve.ID_Truck = VehicleExcel.ID_Truck.replace(/\s/g, '').toUpperCase();
   ve.Weight = VehicleExcel.Weight;
   ve.Cubics = VehicleExcel.Cubics;
   ve.Description = VehicleExcel.Description;

@@ -33,9 +33,9 @@ switch($dataObject->Method_Name){
     {
       require'Select_Vehicle.php';
       break;
-    }case 'Select_Vehicledb':
+    }case 'Check_Truck_ID':
     {
-      require'Select_Vehicledb.php';
+      require'Check_Truck_ID.php';
       break;
     }
    case 'Select_All_Route':

@@ -208,7 +208,8 @@ $scope.verificar = function(){
                 z.style.display = 'none';
                 }else if(x.style.display === 'none') {
              //   	alert("a");
-                y.style.display = 'none';
+                y.style.display 
+                = 'none';
                 x.style.display = 'block';
                 z.style.display = 'none';
                 }

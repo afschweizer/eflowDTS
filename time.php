@@ -12,7 +12,6 @@ $Date = date("Y-m-d H:i:s");
 $jsonArray = array();
 
 $jsonArray["Time"] = $Date;
-
 echo json_encode($jsonArray);
 
 ?>
