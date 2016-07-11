@@ -130,7 +130,7 @@ $scope.Save_User_Edit = function(Obj){
 		var Json = Obj;
 		Json.Control.Modification_date = new Date().getTime();
 		Json.Control.Modify_User = eflowDTS.Session.UserName;
-		Json.Mail=Obj.Mail.toLowerCase();
+		Json.Mail = Obj.Mail.toLowerCase();
 		delete Json['$$hashKey'];
 		var JsonData = 
 				{
@@ -347,7 +347,7 @@ $scope.Add_New_User = function(New_User){
 					    "Lastname": New_User.Lastname,
 					    "Lastname2": New_User.Lastname2,
 					    "Identification": New_User.Identification,
-					    "Mail": New_User.Mail.toLowerCase(),
+					    "Mail": New_User.Mail.toLowerCase()+"@"+ eflowDTS.Session.Company.toLowerCase()+".com",
 					    "Gender": New_User.Gender,
 					    "Birthdate": New_User.Birthdate,
 					    "DueDate": New_User.DueDate,
