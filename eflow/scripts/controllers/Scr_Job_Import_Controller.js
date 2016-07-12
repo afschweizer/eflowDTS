@@ -468,14 +468,14 @@ function Complete_Json_CSV(arr){
 		break;
 	}
 	case"SP":{
-		var arr = puntoVisitaExcel.JobInfo.split("|");
+		var arr1 = puntoVisitaExcel.JobInfo.split("|");
 		job.Serial_List = [];
-		for(var i = 0; i < arr.length; i++){
+		for(var j = 0; j < arr1.length; j++){
 			var serie = {};
-			serie.Serial = arr[i];
+			serie.Serial = arr1[j];
 			job.Serial_List.push(serie);
 		}
-		job.Quantity = arr.length;
+		job.Quantity = arr1.length;
 		break;
 	}
 	}
