@@ -2,7 +2,7 @@ DTS_APP.controller('Scr_Job_Controller',function($scope) {
 
 
 $scope.init = function() {
-	
+	try{
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
@@ -15,11 +15,32 @@ $scope.ArrayHeadersEs = HeadersEs;
 var Headers = ["IDDelivery_Location","Manager","Name","Address","Telephone_Number","Mail",
 "Latitude","Longitude", "Sequence","Estimated_Date","Estimated_Delivery_Time","Start","End","User"];
 $scope.ArrayHeaders = Headers;
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Job_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 
 };	
 
 	$scope.Add_Task = function(Task_Obj){
 		
+	try{
 		var obj = {};
 		
 		obj.JobID = (new Date().getTime()).toString();
@@ -44,27 +65,88 @@ $scope.ArrayHeaders = Headers;
 		}
 		
 		$scope.Task = {};
-		
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Job_Controller",
+                Method: "Add_Task",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 	};
 
 
 	$scope.Remove_Task = function(Task){
 		
+	try{
 		Array_Remove($scope.ArrayTask,Task);
 		
 		$scope.$apply($scope.ArrayTask);
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Job_Controller",
+                Method: "Remove_Task",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 	};
 
 
 	$scope.Remove_Job = function(obj){
 		
+	try{
 		Array_Remove($scope.ArrayExcel,obj);
 		
-		$scope.$apply($scope.ArrayExcel);
+		$scope.$apply($scope.ArrayExcel);}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Job_Controller",
+                Method: "Remove_Job",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 	};
 
 	$scope.Add_Job = function(Job_Form){
 		
+	try{
 		
 		var obj_Job = {};
 		
@@ -105,7 +187,26 @@ $scope.ArrayHeaders = Headers;
 		obj_Job.DeliveryPeriod.End = Job_Form.DeliveryPeriod_End;
 		obj_Job.Jobs = $scope.ArrayTask;
 		
-		
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Job_Controller",
+                Method: "Add_Job",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 		
 	};
 
@@ -126,6 +227,7 @@ $scope.ArrayHeaders = Headers;
 
 
  $scope.Jalar = function(){
+	try{
 var file=document.getElementById("myfile").files[0]; 	
 if( file.type.match(/text\/csv/) || file.type.match(/vnd\.ms-excel/) ){
         //if(file.type.match(/text\/csv/)){
@@ -144,6 +246,26 @@ if( file.type.match(/text\/csv/) || file.type.match(/vnd\.ms-excel/) ){
         } else {
         	alert("This file does not seem to be a CSV.");
         } 
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Job_Controller",
+                Method: "Jalar",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
  };
  
  
@@ -151,6 +273,8 @@ if( file.type.match(/text\/csv/) || file.type.match(/vnd\.ms-excel/) ){
    }); 
    
 function csvJSON(csv){
+	
+	try{
 	  var lines=csv.split("\n");
 	  var result = [];
 	  var headers=lines[0].split(",");
@@ -163,5 +287,25 @@ function csvJSON(csv){
 		 result.push(obj);
   	  }
      return JSON.stringify(result); //JSON
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Job_Controller",
+                Method: "csvJSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 }
 

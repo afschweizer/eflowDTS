@@ -1,7 +1,7 @@
 DTS_APP.controller('Scr_Login_Controller', function($scope) {
 
     $scope.init = function() {  
-      
+      try{
 		//$scope.Show_Components = {};		
 		$scope.Show_Components.Main_Menu = false;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
@@ -20,6 +20,26 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 	   
 	}
 	
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Login_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 	};
 
    // $scope.Show_Components.Main_Menu = false;
@@ -94,15 +114,36 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
         }
-    } catch (err) {
+    } catch (e) {
 	
-                console.log(err.message);
-    }
+                console.log(e.message);
+                
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Login_Controller",
+                Method: "Log_In",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+    
 };
 
 	
  function DataCompany() {	
 
+      try{
 		 var JsonData = {
             'Method_Name': 'Select_Company',
             'Data': {
@@ -123,7 +164,27 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 		console.log(e);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+       
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Login_Controller",
+                Method: "DataCompany",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
         }
+    }  }
 		
     });
 	

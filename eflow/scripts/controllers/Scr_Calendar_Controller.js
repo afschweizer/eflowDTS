@@ -1,13 +1,33 @@
 DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 
 	$scope.init = function(){
+		try{
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
 	
 		$scope.Select_VisitPoint();		
-		
+		     }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Calendar_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 	};
 
 	$scope.Select_VisitPoint = function(){
@@ -68,8 +88,17 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 		
 		var onError = function(JsonData){
 			
-			
-			
+			        var erro={
+			Generated: true,
+            Page: "Scr_Calendar_Controller",
+            Method: "Select_VisitPoint",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 			console.log(JsonData);
 		};
 		
@@ -87,7 +116,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
                 Description: "Error no controlado",
                 User: eflowDTS.Session.General.User,
                 Company: eflowDTS.Session.Company,
-                Date: eflowDTS_lib.GetServerTime().getTime(),
+                Date: new Date().getTime(),
                 Error: e
             };
             Save_Error(err);
