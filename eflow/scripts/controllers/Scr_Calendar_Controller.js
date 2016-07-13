@@ -11,7 +11,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 	};
 
 	$scope.Select_VisitPoint = function(){
-		
+		try{
 		 var JsonData = {
             'Method_Name': 'Select_Jobs',
             'Data': {
@@ -75,7 +75,26 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
         
+       }catch (e) {
         
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Get_Position",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                ID_Truck: eflowDTS.Session.General.ID_Truck,
+                Date: eflowDTS_lib.GetServerTime().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 	};
 
 });
