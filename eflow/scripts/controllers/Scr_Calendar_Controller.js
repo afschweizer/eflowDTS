@@ -67,6 +67,9 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 		};
 		
 		var onError = function(JsonData){
+			
+			
+			
 			console.log(JsonData);
 		};
 		
