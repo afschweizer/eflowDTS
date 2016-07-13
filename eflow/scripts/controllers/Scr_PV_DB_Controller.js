@@ -6,7 +6,7 @@ $scope.pageSize = 10;
 $scope.Check = false;
 
 $scope.init = function() {
-	
+	try{
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
@@ -16,7 +16,26 @@ $scope.Headers = [{"es":"GERENTE","value":"VisitPoint.Manager"},{"es":"NOMBRE","
 		{"es":"VEHICULO","value":"VisitPoint.ID_Truck"},
 		{"es":"USUARIO","value":"User"},{"es":"CORREO","value":"VisitPoint.Mail"}];
 $scope.Select_PV();
-
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 };
 
 $scope.Select_PV = function(){
@@ -50,12 +69,31 @@ $scope.Select_PV = function(){
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
         
-    } catch (err) {
-        onError(err);
-    }
+    } catch (e) {
+        onError(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Select_PV",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 };
 
 $scope.Order = function(Order_Type){
+	try{
 	if ($scope.orderList === Order_Type) {
     var Reverse = Order_Type.charAt(0);
     if (Reverse === '-') {
@@ -66,10 +104,31 @@ $scope.Order = function(Order_Type){
 	} else {
 	    $scope.orderList = Order_Type;
 	}
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Order",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 };
 
    
 $scope.Add_Task_In_New_Array = function(Task_Obj){
+	try{
 		
 		var obj = {};
 		obj.JobID = (new Date().getTime()).toString();
@@ -91,14 +150,54 @@ $scope.Add_Task_In_New_Array = function(Task_Obj){
 			$scope.Array_New_Task.push(obj);	    
 			$scope.$apply($scope.Array_New_Task);
 		}
-		$scope.Task = {};
+		$scope.Task = {};}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Add_Task_In_New_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 };
 
 $scope.Add_In_Array = function(Obj,Array	){
-	Array.push(Obj);
+	try{
+	Array.push(Obj);}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Add_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 };
 	
 $scope.Save_Edit_Job = function(Obj){
+	try{
 		
 		Obj.Jobs = $scope.Array_Task_Edit;
 		
@@ -117,24 +216,85 @@ $scope.Save_Edit_Job = function(Obj){
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+        }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Save_Edit_Job",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
 };
 	
 $scope.Remove_Task = function(Task){
+	try{
 	
 		Array_Remove($scope.ArrayTask,Task);
 		$scope.$apply($scope.ArrayTask);
-		
+		  }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Remove_Task",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 	
 $scope.Remove_In_Array = function(Obj,Array){
+	try{
 	
 	Array_Remove(Array,Obj);
 	$scope.$apply(Array);
-	
+	  }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Remove_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 
 $scope.Checking_Checkboxes = function(){
-	
+
+	try{	
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	
 	if($scope.Check === false){
@@ -147,11 +307,31 @@ $scope.Checking_Checkboxes = function(){
 	CheckBoxes_Array[i].checked = false;
 	}
 	$scope.Check = false;
-	}
+	}}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Checking_Checkboxes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 
 $scope.Remove_Job = function(){
 	
+	try{
 	if(confirm("¿Realmente desea borrar los elementos seleccionados?") == true){
 		
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
@@ -179,24 +359,85 @@ $scope.Remove_Job = function(){
 	 
 	 
 	 }
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Remove_Job",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 	
 $scope.Visualize_VisitPoint_Import = function(Obj){
+	try{
    //var x = document.getElementById('Import_Jobs');
      
                 $scope.PV = Obj;
                 $scope.Array_PV_Task = Obj.Jobs;
               //  x.style.display = 'block';
-                $("#Modal_Edit_PV").modal("show"); 
+                $("#Modal_Edit_PV").modal("show"); }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Visualize_VisitPoint_Import",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };	
 	
 $scope.See_Job = function(obj){
+	try{
 		    $scope.Obj_Edit = obj;
              $scope.Array_Task_Edit = obj.Jobs;
-             $("#myModal_Db_Edit").modal("show"); 
+             $("#myModal_Db_Edit").modal("show"); }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "See_Job",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 	
 $scope.verificar = function(){	
+	try{
    var x = document.getElementById('Import_Jobs');
    var y = document.getElementById('All_Jobs');
    var z = document.getElementById('myModal_Db_Edit');
@@ -212,10 +453,30 @@ $scope.verificar = function(){
                 = 'none';
                 x.style.display = 'block';
                 z.style.display = 'none';
-                }
+                }}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "verificar",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 
 $scope.Add_New_Job = function(New_Job){
+	try{
 		var obj_Job = {};
 		obj_Job.VisitPoint = {};
 		obj_Job.VisitPoint.IDDelivery_Location = New_Job.IDDelivery_Location;
@@ -266,9 +527,30 @@ $scope.Add_New_Job = function(New_Job){
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 					
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Add_New_Job",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 	
 $scope.Save_Job_Edit = function(Obj){
+	try{
 		var Json = Obj;
 		delete Json['$$hashKey'];
 		Json.Jobs = $scope.Array_Task_Edit;
@@ -287,19 +569,61 @@ console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 								
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Save_Job_Edit",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 
 /*************Exportar de json a excel******************/
 
 $scope.Generar =function(){
+	try{
 	console.log( JSON.stringify($scope.ArrayJobs.Jobs));
 	var data = ($scope.ArrayJobs);
         if(data === '')
             return;
         JSONToCSVConvertor(data, "Task Report", true);
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Generar",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 };
 
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+	try{
     //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
     var arrData = typeof JSONData !== 'object' ? JSON.parse(JSONData) : JSONData;
     var CSV = '';    
@@ -352,11 +676,32 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "JSONToCSVConvertor",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+};
 
 /*************Importar de Excel to Json******************/
 
 $scope.Jalar = function(){
+	try{
       $scope.verificar();
 	  var file=document.getElementById("myfile").files[0]; 	
       if( file.type.match(/text\/csv/) || file.type.match(/vnd\.ms-excel/) ){
@@ -377,10 +722,31 @@ $scope.Jalar = function(){
         } else {
         	console.log("This file does not seem to be a CSV.");
         } 
- };
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "Jalar",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+};
    }); 
    
 function csvJSON(csv){
+	try{
 	  var lines=csv.split("\n");
 	  var result = [];
 	  var headers=lines[0].split(",");
@@ -393,5 +759,25 @@ function csvJSON(csv){
 		 result.push(obj);
   	  }
      return JSON.stringify(result); //JSON
-}
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_PV_DB_Controller",
+                Method: "csvJSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+};
 
