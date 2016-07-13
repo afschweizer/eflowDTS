@@ -1,5 +1,5 @@
 1. The SDK files are located in the jqwidgets directory
- 
+ hola
  In general you need to use files from this directory only.
 
  Files list & description:
