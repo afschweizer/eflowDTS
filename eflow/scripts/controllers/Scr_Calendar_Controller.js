@@ -82,11 +82,11 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
-                Page: "Functions_Depurado",
-                Method: "Get_Position",
+                Page: "Scr_Calendar_Controller",
+                Method: "Select_VisitPoint",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.General.User,
-                ID_Truck: eflowDTS.Session.General.ID_Truck,
+                Company: eflowDTS.Session.Company,
                 Date: eflowDTS_lib.GetServerTime().getTime(),
                 Error: e
             };
