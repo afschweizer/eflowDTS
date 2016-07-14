@@ -1,6 +1,6 @@
 DTS_APP.controller('Scr_Vehicle_Import_Controller',function($scope) {
 
-$scope.init = function(){
+$scope.init = function(){try{
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 	//Get_Cookie("EflowCookie");
@@ -14,18 +14,60 @@ $scope.ArrayLicense =License;
 [{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},
 {"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
 
-
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Action_Option= function(Option){
+	try{
 	if(Option === "Asignar"){
 		$scope.Assign_Vehicle_In_DB();
 	}
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Action_Option",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes_Check = function(){
-	
+	try{
 	$scope.Show_Actions = false;
 	
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
@@ -37,20 +79,63 @@ $scope.Checking_Checkboxes_Check = function(){
 	   }
 	} 
 	
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Checking_Checkboxes_Check",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes_Check_Master = function(master){
-	
+	try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	for(var i = 0; i < CheckBoxes_Array.length; i++){
 		CheckBoxes_Array[i].checked = !master;
 	}
 	$scope.Checking_Checkboxes_Check();
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Checking_Checkboxes_Check_Master",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Assign_Vehicle_In_DB = function(){
-	
+	try{
 var onSuccess = function(result){
 	
 	if(result === true){
@@ -91,18 +176,61 @@ var onSuccess = function(result){
  
  bootbox.confirm("¿Desea Asignar los elementos seleccionados?",onSuccess);
 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Assign_Vehicle_In_DB",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Open_Modal_Add_Vehicle_Import = function(){
-	
+	try{
 	$scope.Vehicle_Import_Add = {};
 	$scope.Vehicle_Import_Add_Array_Task = [];
 	$("#Modal_Add_Vehicle_Import").modal("show");	
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Open_Modal_Add_Vehicle_Import",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
+
 $scope.To_Order_By = function(Order_Type){
-	
+	try{
 	if ($scope.OrderList === Order_Type) {
 		         
     var Reverse = Order_Type.charAt(0);
@@ -114,10 +242,32 @@ $scope.To_Order_By = function(Order_Type){
 	} else {
 	    $scope.OrderList = Order_Type;
 	}
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "To_Order_By",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Import_Files = function(){
-	
+	try{
 	var file = document.getElementById('Vehicle_File_Import').files[0];
 	
 	if(file){
@@ -156,10 +306,32 @@ $scope.Import_Files = function(){
 		
 	}
 		
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Import_Files",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes = function(){
-	
+	try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 
 	for ( var i = 0; i < CheckBoxes_Array.length ; i++ ){
@@ -168,20 +340,64 @@ $scope.Checking_Checkboxes = function(){
 		break;
 	   }
 	} 
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Checking_Checkboxes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Visualize_Vehicle_Import = function(Obj){
-  
+  try{
   		$scope.Vehicle_Import = Obj;
   		
         $scope.Array_Vehicle_Import_Task = Obj.Jobs;
 	  //  $scope.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
         $("#Modal_Edit_Vehicle_Import").modal("show"); 
                 
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Visualize_Vehicle_Import",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 function Import_Json(file){
-		
+		try{
 	oFReader = new FileReader();
 			
 	oFReader.onloadend = function() {
@@ -207,6 +423,28 @@ function Import_Json(file){
 			
 	oFReader.readAsText(file);
 */		
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Import_Json",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };/*
 function insertarI(ArrayVehicles_Import,ArrayVehicles_Import1){
 	
@@ -217,7 +455,7 @@ function insertarI(ArrayVehicles_Import,ArrayVehicles_Import1){
 }*/
 
 function ObtenerArray(obj){
-	  
+	  try{
 	  var array = [];
 	  var keys = Object.keys(obj);
 
@@ -227,7 +465,28 @@ for (var i = 0; i < keys.length; i++) {
 }
 	  return array;
 	  
-  };
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "ObtenerArray",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
   
 function Complete_Json(Json_Array){
 	
@@ -238,7 +497,7 @@ function Complete_Json(Json_Array){
 
 
 function Complete_Json_CSV(arr){
- 
+ try{
  for (var i=0;i<arr.length;i++){
 	  
   var VehicleExcel = arr[i];
@@ -263,11 +522,32 @@ function Complete_Json_CSV(arr){
  // $scope.ArrayJobs_Import = ObtenerArray(obj);
   insertarI($scope.ArrayVehicles_Import,ObtenerArray(obj));
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Complete_Json_CSV",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
  
  
 function Import_CSV(file){
-		
+		try{
 		oFReader = new FileReader();
 			
 	    oFReader.onloadend = function() {
@@ -287,17 +567,62 @@ function Import_CSV(file){
 			
 	    oFReader.readAsText(file,'ISO-8859-1');
 		
-    };
+ 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Import_CSV",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+ 
 		
 			
 $scope.Remove_In_Array = function(Obj,Array){
-	
+	try{
 	Array_Remove(Array,Obj);
 	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Remove_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 function CSV_To_JSON(csv){
-		
+		try{
 		  var Lines = csv.split("\n");
 		  var ArrayJson = [];
 		  var Headers = Lines[0].replace(/"/g,'').split(",");
@@ -327,6 +652,28 @@ function CSV_To_JSON(csv){
 		  
      return ArrayJson; 
 	 
-	};
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "CSV_To_JSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 }); 

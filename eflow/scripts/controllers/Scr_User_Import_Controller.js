@@ -1,6 +1,7 @@
 DTS_APP.controller('Scr_User_Import_Controller',function($scope) {
 
 $scope.init = function(){
+	try{
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 		Get_Cookie("EflowCookie");
@@ -19,25 +20,113 @@ var Type =[{"es":"Administrador","value":"Administrador"},{"es":"Conductor","val
 $scope.ArrayGenders = Gender;
 $scope.ArrayTypes = Type;
 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 $scope.Verify_License=function(Type){
+	try{
 	if (Type === "Conductor"){
 		$scope.Show_Components.Type_License=true;
 	}
 	
-	};
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Verify_License",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 $scope.See_License=function(){
+	try{
 		$scope.Show_Components.License=true;
 	
-	}; 
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "See_License",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+}; 
 $scope.Action_Option= function(Option){
+	try{
 	if(Option === "Asignar"){
 		$scope.Assign_User_In_DB();
 	}
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Action_Option",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes_Check = function(){
+	try{
 	
 	$scope.Show_Actions = false;
 	
@@ -50,9 +139,31 @@ $scope.Checking_Checkboxes_Check = function(){
 	   }
 	} 
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Checking_Checkboxes_Check",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes_Check_Master = function(master){
+	try{
 	
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	for(var i = 0; i < CheckBoxes_Array.length; i++){
@@ -60,10 +171,32 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
 	}
 	$scope.Checking_Checkboxes_Check();
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Checking_Checkboxes_Check_Master",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Assign_User_In_DB = function(){
 	
+	try{
 var onSuccess = function(result){
 	
 	if(result === true){
@@ -103,9 +236,31 @@ var onSuccess = function(result){
  
  bootbox.confirm("¿Desea Asignar los elementos seleccionados?",onSuccess);
 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Assign_User_In_DB",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Open_Modal_Add_User_Import = function(){
+	try{
 	
    $scope.Show_Components.License=true;
    $scope.Show_Components.Type_License=true;
@@ -113,9 +268,31 @@ $scope.Open_Modal_Add_User_Import = function(){
 	$scope.User_Import_Add_Array_Task = [];
 	$("#Modal_Add_User_Import").modal("show");	
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Open_Modal_Add_User_Import",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.To_Order_By = function(Order_Type){
+	try{
 	
 	if ($scope.OrderList === Order_Type) {
 		
@@ -128,9 +305,31 @@ $scope.To_Order_By = function(Order_Type){
 	} else {
 	    $scope.OrderList = Order_Type;
 	}
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "To_Order_By",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Import_Files = function(){
+	try{
 	
 	var file = document.getElementById('User_File_Import').files[0];
 	
@@ -170,9 +369,31 @@ $scope.Import_Files = function(){
 		
 	}
 		
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Import_Files",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes = function(){
+	try{
 	
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 
@@ -182,18 +403,62 @@ $scope.Checking_Checkboxes = function(){
 		break;
 	   }
 	} 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Checking_Checkboxes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Visualize_User_Import = function(Obj){
+	try{
   
   		$scope.User_Import = Obj;
         $scope.Array_User_Import_Task = Obj.Jobs;
 	  //  $scope.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
         $("#Modal_Edit_User_Import").modal("show"); 
                 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Visualize_User_Import",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 function Import_Json(file){
+	try{
 		
 	oFReader = new FileReader();
 			
@@ -213,10 +478,32 @@ function Import_Json(file){
 			
 	oFReader.readAsText(file);
 		
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Import_Json",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
  
  
 function ObtenerArray(obj){
+	try{
 	  
 	  var array = [];
 	  var keys = Object.keys(obj);
@@ -227,9 +514,31 @@ for (var i = 0; i < keys.length; i++) {
 }
 	  return array;
 	  
-  };
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "ObtenerArray",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
   
 function Import_CSV(file){
+	try{
 		
 		oFReader = new FileReader();
 			
@@ -249,16 +558,59 @@ function Import_CSV(file){
 			
 	    oFReader.readAsText(file,'ISO-8859-1');
 		
-    }; 
-		
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Import_CSV",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 			
 $scope.Remove_In_Array = function(Obj,Array){
+	try{
 	
 	Array_Remove(Array,Obj);
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "Remove_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 function CSV_To_JSON(csv){
+	try{
 		
 		  var Lines = csv.split("\n");
 		  var ArrayJson = [];
@@ -290,6 +642,27 @@ function CSV_To_JSON(csv){
 		  
      return ArrayJson; 
 	 
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Import_Controller",
+                Method: "CSV_To_JSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 }); 

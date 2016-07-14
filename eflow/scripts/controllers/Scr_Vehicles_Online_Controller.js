@@ -2,7 +2,7 @@ var map;
 DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 
 
-			$scope.init = function(){	
+			$scope.init = function(){	try{
        	Set_Current_Page();
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
@@ -15,10 +15,33 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 			Select_Jobs();		       				
 			$scope.Show_Components.Show_User_Online = true;	
 			$scope.Show_Components.Show_List = false;				
-			};
+			
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
 	
 	function Load_Init_Map(){
-		
+		try{
 		var div = document.getElementById('Map_Online_User');
    			
    			if(div){
@@ -37,14 +60,56 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 			 }
 			 
 		//$scope.Show_Components.Map_Online_User = false;
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Load_Init_Map",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
-	$scope.refresh = function(){
+	$scope.refresh = function(){try{
 		Select_User_Online();
 		Select_Jobs();
-	};
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "refresh",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
-	$scope.See_Info = function(User){
+	$scope.See_Info = function(User){try{
 		eflowDTS.Session.UserControl = User;
 		
 			 //To_Save_Eflow_Config();
@@ -53,9 +118,30 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		location.href="#/detail";
 			    	eflowDTS.Ultimate_Page="#/detail";
 	         	Set_Cookie("EflowCookie",eflowDTS);
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "See_Info",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
-    function Select_User_Online(){		
+    function Select_User_Online(){	try{	
 		var JsonData = {
 			'Method_Name': 'Select_User_Online',
              'Data': {
@@ -97,10 +183,31 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,JsonData,onSuccess,onError);
 		
 		
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Select_User_Online",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 	$scope.Create_Map = function(User){
-		
+		try{
 		if($scope.Show_Components.Map_Online_User === false){
 			$scope.Show_Components.Map_Online_User = true;
 			Load_Map(User);
@@ -111,10 +218,31 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 			Load_Map(User);
 		    }
 		}
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Create_Map",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 	Load_Map = function(User){
-   	  
+   	  try{
    	 	    if(typeof User === 'undefined'){
 	   		   map.setCenter(eflowDTS.Geolocation.Latitude,eflowDTS.Geolocation.Longitude);			    
 	        }else{
@@ -149,10 +277,31 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		}
 
 				   		
-   };
+  }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Load_Map",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 	function Select_Jobs(){
-		
+		try{
 		var Query = {
 			'Method_Name':'Select_Jobs',
 			'Data':{
@@ -177,8 +326,28 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		};
 		
 		Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Query,Success,onError);
-		
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Select_Jobs",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 
 

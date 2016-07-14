@@ -2,7 +2,7 @@ var map;
 DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 
 	$scope.init = function(){
-		
+		try{
        	Set_Current_Page();
 		
 		//$scope.Polygon = {}; 
@@ -22,9 +22,30 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		$scope.Show_Components.VisitPoint_Add = true;
 		$scope.Show_Components.Export = true;
 		Select_Routes();
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
-	function Load_Map_Init(){
+	function Load_Map_Init(){try{
 		var div = document.getElementById('Map_Dashboard_VisitPoint');
 		if(div){
 		map = new GMaps({
@@ -54,9 +75,30 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		    }
     	});
     }
-	};	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Load_Map_Init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
-   $scope.Print_Zone = function(Obj){   	
+   $scope.Print_Zone = function(Obj){ try{  	
    		map.removePolygons();
 		map.drawPolygon({
 		   paths: Obj.Route_Path, // pre-defined polygon shape
@@ -85,7 +127,28 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
             }
 		});
 		map.setCenter(Obj.Route_Path[0][0],Obj.Route_Path[0][1]);
-   };
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Print_Zone",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 function Select_Routes(){
 	 try {
@@ -104,12 +167,31 @@ function Select_Routes(){
 		console.log(JsonData);		
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
-    } catch (err) {
-        alert(err);
-    }	
-   };    
+    } catch (e) {
+        alert(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Select_Routes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
-$scope.To_Order_By = function(Order_Type){
+$scope.To_Order_By = function(Order_Type){try{
 	if ($scope.OrderList === Order_Type) {
 	 var Reverse = Order_Type.charAt(0);
     if (Reverse === '-') {

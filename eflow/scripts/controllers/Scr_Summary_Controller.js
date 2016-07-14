@@ -1,6 +1,7 @@
 DTS_APP.controller('Scr_Summary_Controller',function($scope) {
   
 	$scope.init = function(){
+		try{
         Set_Current_Page();
 		//Get_Cookie("EflowCookie");
 		
@@ -17,9 +18,31 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
        $("#Charge_New_Modal").modal('show');
        Select_DataSet();
 		
-	};
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 	$scope.Close_Modal = function(){
+		try{
 		
 	$('#Charge_New_Modal').on('hidden.bs.modal', function (e) {
   			window.location.href = "#Calendar";	
@@ -28,7 +51,28 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 	$("#Charge_New_Modal").modal('hide');
 	
 	
-	};
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "Close_Modal",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 	function Select_DataSet(){
 	 try {
@@ -50,20 +94,62 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		console.log(JsonData);		
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
-    } catch (err) {
-        console.log(err);
-    }	
-   };
+    } catch (e) {
+        console.log(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "Select_DataSet",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
    
    $scope.Charge_DataSet = function(DataSet){
+		try{
    	
    	$("#Charge_New_Modal").modal('hide');   	
    
    	$scope.Refresh_Pivot_Table(DataSet);   	
    	
-   };
+  }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "Charge_DataSet",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
    
    function Create_Pivot_Table(){
+		try{
    	
    	var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
    
@@ -82,9 +168,31 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 				}
      });
    	   	
-   };
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "Create_Pivot_Table",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
    
    $scope.New_DataSet = function(){
+		try{
    	
    	$("#Charge_New_Modal").modal('hide');
    	   	
@@ -101,10 +209,31 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 	   	$scope.PivotData = [];
 	   	
 	   	Create_Pivot_Table();
-   	
-   };
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "New_DataSet",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
    
    $scope.Refresh_Pivot_Table = function(Filter){
+		try{
    	
    	var JsonData = {
             'Method_Name': 'Select_Summary_'+Filter.Type,
@@ -138,10 +267,31 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
    	
-   	
-   };
+   }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "Refresh_Pivot_Table",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
    
    $scope.Confirm_DataSet = function(){
+		try{
    	
    	if(typeof $scope.DataSet.Type === "undefined" || typeof $scope.DataSet.Start_Date === "undefined" || typeof $scope.DataSet.End_Date === "undefined"){
    		
@@ -158,9 +308,31 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	}else{
    	    $("#Save_Modal").modal('show');
    	 }
-   };
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "Confirm_DataSet",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
    
    $scope.Save_DataSet = function(Name){
+		try{
    	$scope.DataSet.Name = Name;
    	$scope.DataSet.Company = eflowDTS.Session.Company;
   	$scope.DataSet.User = eflowDTS.Session.ID;
@@ -196,7 +368,28 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		};	
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
-   };
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Summary_Controller",
+                Method: "Save_DataSet",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
    
    
    
