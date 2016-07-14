@@ -142,6 +142,17 @@ $scope.init = function(){
 				$scope.TextMessage="";
 				};
 				var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Vehicles_Detail_Controller",
+                Method: "Message",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 				console.log(JsonData);
 				};
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -548,7 +559,18 @@ $scope.init = function(){
             }
 	};
 	
-	var onError = function(e){
+	var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Vehicles_Detail_Controller",
+                Method: "Load_Visit_Point",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		
 		console.log(e);
 	};
@@ -596,8 +618,18 @@ $scope.init = function(){
                 }
 	};
 	
-	var onError = function(e){
-		
+	var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Vehicles_Detail_Controller",
+                Method: "Load_Route",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		
 		console.log(e);
 	};

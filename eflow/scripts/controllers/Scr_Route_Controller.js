@@ -233,7 +233,18 @@ $scope.Select = function(){
 		};
 		
 		var onError = function(JsonData){
-		
+				
+					 var erro={
+			Generated: true,
+            Page: "Scr_Route_Controller",
+            Method: "Select",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		
 		};
@@ -381,6 +392,18 @@ $scope.Select = function(){
 		};
 	
 	var onError = function(JsonData){
+				
+					 var erro={
+			Generated: true,
+            Page: "Scr_Route_Controller",
+            Method: "Delete_Route_DB",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		};
 		
@@ -435,7 +458,18 @@ $scope.Select = function(){
 		};
 		
 		var onError = function(JsonData){
-		
+				
+					 var erro={
+			Generated: true,
+            Page: "Scr_Route_Controller",
+            Method: "Delete",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		
 		};
@@ -602,7 +636,20 @@ $scope.Select = function(){
    			'Data':[Obj]			
    		};
    		
-   		var OnError = function(e){};
+   		var OnError = function(JsonData){
+				
+					 var erro={
+			Generated: true,
+            Page: "Scr_Route_Controller",
+            Method: "Save_Route",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
+		};
    		
    		var OnSuccess = function(json){
    			
@@ -639,8 +686,20 @@ $scope.Select = function(){
    			'Data':Obj   			
    		};
    		
-   		var OnError = function(e){
-   			
+   		var OnError = function(JsonData){
+				
+					 var erro={
+			Generated: true,
+            Page: "Scr_Route_Controller",
+            Method: "Save_Route",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
+		
    		};
    		
    		var OnSuccess = function(json){

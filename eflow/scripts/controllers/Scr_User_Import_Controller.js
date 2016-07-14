@@ -226,6 +226,17 @@ var onSuccess = function(result){
 		};
 		
 		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_User_Import_Controller",
+                Method: "Assign_User_In_DB",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		console.log(JsonData);
 		};
 		

@@ -270,7 +270,18 @@ $scope.Delete_User_DB = function(){
 		$scope.Select();
 		};
 	
-	var onError = function(JsonData){
+	var onError =  function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Delete_User_DB",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;		
 		console.log(JsonData);
 		};
 		
@@ -322,7 +333,18 @@ $scope.Save_User_Edit = function(Obj){
 			$scope.Select();
 			};
 				
-		var onError = function(JsonData){
+		var onError =  function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Save_User_Edit",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;		
 			console.log(JsonData);
 			};
 				
@@ -444,7 +466,17 @@ $scope.Select = function(){
 		};
 		
 		var onError = function(JsonData){
-		
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Select",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;		
 		console.log(JsonData);
 		
 		};
@@ -497,7 +529,17 @@ $scope.Delete = function(id){
 		};
 		
 		var onError = function(JsonData){
-		
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Delete",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;		
 		console.log(JsonData);
 		
 		};
@@ -693,6 +735,17 @@ $scope.Add_New_User = function(New_User){
 				$scope.Select();
 				};
 				var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Add_New_User",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 				console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);

@@ -31,24 +31,109 @@ if(cookie!)
 */   
  
 function Set_Current_Page(){
+	try{
 	if(Exist_Cookie("EflowCookie") === true){
 		Get_Cookie("EflowCookie");
      }
 		eflowDTS.Ultimate_Page = window.location.hash;
 	    Set_Cookie("EflowCookie",eflowDTS);
+        }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Set_Current_Page",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
-function Set_Cookie(key,value) {
+function Set_Cookie(key,value) {try{
 	localStorage.setItem(key,JSON.stringify(value));			
+        }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Set_Cookie",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
-function Get_Cookie(key) {
+function Get_Cookie(key) {try{
 	var obj = JSON.parse(localStorage.getItem(key));
     eflowDTS = obj;
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Get_Cookie",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
-function Exist_Cookie(key){
+function Exist_Cookie(key){try{
 	return (localStorage.getItem(key) != null);		
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Exist_Cookie",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 
@@ -72,14 +157,31 @@ function Exist_Cookie(key){
             }
         };
         xobj.send(null);
-    } catch (error) {
+    }catch (e) {
         
-        Save_Error(error);
-    }
-}; 
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Load_JSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 function Load_Date (){
-	
+	try{
 setInterval(function() {
         
 		Load_JSON(eflowDTS.Configuration.URLs.eflow_Date_Time, function(Text_Json) {
@@ -94,10 +196,31 @@ setInterval(function() {
 
 	
 
-}
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Load_Date",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 function Get_Data_Geolocation(lat, long, polyX, polyY) {
-
+try{
       var i, j = polyX.length - 1;
       var oddNodes = false;
 
@@ -110,12 +233,33 @@ function Get_Data_Geolocation(lat, long, polyX, polyY) {
 
       return oddNodes;
 
-  }
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Get_Data_Geolocation",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 //-----------------------------.:
 
 function validate(UserName,Password){
-
+try{
 Log_In_Online(UserName, Password, function(obj) {
             if (obj.Result === false) {
                 alert("El usuario y contraseña no coinciden o usted aún no tiene una cuenta.");
@@ -125,12 +269,33 @@ Log_In_Online(UserName, Password, function(obj) {
             };
             
         });
-}
 
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "validate",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 //-----------------------------.:
 
 function onErrorGeolocating(error)
-{
+{try{
 	switch(error.code)
 	{
 		case error.PERMISSION_DENIED:
@@ -149,7 +314,28 @@ function onErrorGeolocating(error)
 			alert("ERROR: Unknown problem!");
 		break;
 	}
-}
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "onErrorGeolocating",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 //-----------------------------.:
 
@@ -164,11 +350,29 @@ function Log_In_Online(UserName, Password, Company,onSuccess, onError) {
             }
         };
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-    } catch (err) {
-        onError(err);
-    }
+    } catch (e) {
+        onError(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Log_In_Online",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
-
 //-----------------------------.:
 function Send_JSON(Url, JsonData, onSucess, onError) {
     try {
@@ -193,13 +397,32 @@ function Send_JSON(Url, JsonData, onSucess, onError) {
                 }
             }
         };
-    } catch (error) {
-        Save_Error(error);
-    }
+    } catch (e ) {
+        Save_Error(e );
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Send_JSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 //-----------------------------------
 function Array_Remove(Array,Value){
-	
+	try{
 	for ( var i = 0, j = Array.length ; i < j; i++ ) {
 		
     if ( Array[ i ] == Value ) {
@@ -210,4 +433,66 @@ function Array_Remove(Array,Value){
     
 return Array;
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Array_Remove",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
+
+//-----------------------------------
+
+function Save_Error(e) {
+    
+    try {
+        
+        if (typeof e === 'object') {
+            e.Transferring_State = "Pending_To_Cloud";
+            e.Company = eflowDTS.Session.Company;
+        } else {
+            
+            e = {
+                Generated: true,
+                Page: "Functions_Depurado",
+                Method: "Save_Error",
+                Description: "Error recibido no posee estructura de objeto",
+                User: eflowDTS.Session.General.User,
+                Date: new Date().getTime(),
+                Transferring_State: "Pending_To_Cloud",
+                Company: eflowDTS.Session.Company,
+                Error: e
+            };
+            
+        }
+        
+        var DB = new Dexie('eflowDTS');
+        
+        DB.version(1).stores({
+            Store_Error: '++id,Date,User,Transferring_State,Description,Page'
+        });
+        
+        DB.open();
+        
+        DB.Store_Error.add(e);
+        
+    } catch (err) {
+        console.log(err);
+    }
+}
+

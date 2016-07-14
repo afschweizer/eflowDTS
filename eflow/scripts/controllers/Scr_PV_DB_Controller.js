@@ -64,6 +64,18 @@ $scope.Select_PV = function(){
 		};
 		
 		var onError = function(JsonData){
+			
+					 var erro={
+			Generated: true,
+            Page: "Scr_PV_DB_Controller",
+            Method: "Select_PV",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		};
 		
@@ -212,6 +224,18 @@ $scope.Save_Edit_Job = function(Obj){
 		$scope.Select_PV();
 		};
 		var onError = function(JsonData){
+			
+					 var erro={
+			Generated: true,
+            Page: "Scr_PV_DB_Controller",
+            Method: "Select_PV",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		};
 		
@@ -352,6 +376,18 @@ $scope.Remove_Job = function(){
 		};
 	
 	var onError = function(JsonData){
+			
+					 var erro={
+			Generated: true,
+            Page: "Scr_PV_DB_Controller",
+            Method: "Remove_Job",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		};
 		
@@ -523,6 +559,17 @@ $scope.Add_New_Job = function(New_Job){
 				$scope.Select();
 				};
 				var onError = function(JsonData){
+					 var erro={
+			Generated: true,
+            Page: "Scr_PV_DB_Controller",
+            Method: "Add_New_Job",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 				console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -565,6 +612,18 @@ $scope.Save_Job_Edit = function(Obj){
 				$scope.Select();
 				};
 				var onError = function(JsonData){
+				
+					 var erro={
+			Generated: true,
+            Page: "Scr_PV_DB_Controller",
+            Method: "Save_Job_Edit",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);

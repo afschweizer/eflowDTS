@@ -122,7 +122,8 @@ $scope.ArrayHeaders = Headers;
 	try{
 		Array_Remove($scope.ArrayExcel,obj);
 		
-		$scope.$apply($scope.ArrayExcel);}catch (e) {
+		$scope.$apply($scope.ArrayExcel);
+		}catch (e) {
         
         var err;
         

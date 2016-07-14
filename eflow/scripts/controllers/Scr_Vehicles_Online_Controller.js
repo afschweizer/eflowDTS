@@ -174,8 +174,18 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 			
 		};
 		
-		var onError = function(Error){
-			
+		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Select_User_Online",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 			console.log(Error);
 			
 		};
@@ -321,7 +331,18 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 			$scope.ArrayJobs = json;	
 		};
 		
-		var onError = function(e){
+		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Select_Jobs",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		console.log(e);				
 		};
 		

@@ -1,6 +1,7 @@
 DTS_APP.controller('Scr_VisitPoint_DB_Controller',function($scope) {
 
 $scope.init = function(){
+	try{
        	Set_Current_Page();
 	 
 		//To_Reload_Eflow_Config();
@@ -33,11 +34,32 @@ $scope.init = function(){
        $scope.Select_VisitPoint();
     }, 120000);
     
-	};
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 	
 	
-	$scope.Add_Serial =function(value){
+	$scope.Add_Serial =function(value){try{
 	    if(value===""||value===undefined){
 	    	alert("Debe de ingresar una serie");	
 	    	
@@ -60,9 +82,30 @@ $scope.init = function(){
 				document.getElementById("Input_Serial").value="";
 			}
 		}
-	};
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_Serial",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 			
- $scope.Show_Serial = function(Value) {
+ $scope.Show_Serial = function(Value) {try{
       if (Value.Serial ==="SP"){
            $scope.Show_Serie=true;
 		   $scope.Show_Quantity=false;
@@ -78,6 +121,28 @@ $scope.init = function(){
       if (Value.Serial ==="SU"){
            $scope.Show_Quantity=true;
       }
+
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Show_Serial",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 	$scope.Select_Local= function(){
 
@@ -100,20 +165,49 @@ $scope.init = function(){
 		};
 		
 		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_Local",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		
 		console.log(JsonData);
 		
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-    } catch (err) {
-        onError(err);
-    }
-	
-   };
+    } catch (e) {
+        onError(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_Local",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 $scope.Filter_License = function(ID){
-
+try{
 for(var j = 0; j <$scope.ArrayUser.length; j++){
 	if($scope.ArrayUser[j].ID === ID){
 		var User = $scope.ArrayUser[j];
@@ -136,19 +230,59 @@ for(var x = 0; x < $scope.ArrayVehicle.length; x++){
      }
 
 }
-
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Filter_License",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
-
 
 	
  $scope.See_Status=function(status){
- 	
+ 	try{
 	$scope.Status_Filter=status;
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "See_Status",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes_Check = function(){
-	
+	try{
 	$scope.Show_Actions = false;
 	
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
@@ -160,20 +294,62 @@ $scope.Checking_Checkboxes_Check = function(){
 	   }
 	} 
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Checking_Checkboxes_Check",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes_Check_Master = function(master){
-	
+	try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	for(var i = 0; i < CheckBoxes_Array.length; i++){
 		CheckBoxes_Array[i].checked = !master;
 	}
 	$scope.Checking_Checkboxes_Check();
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Checking_Checkboxes_Check_Master",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 
-$scope.Action_Option= function(Option){
+$scope.Action_Option= function(Option){try{
 	if(Option === "Cambiar"){
 		$scope.Open_Modal_Change();
 	}	
@@ -183,10 +359,31 @@ $scope.Action_Option= function(Option){
 	if(Option === "Estados"){
 		$scope.Open_Modal_Change_Status();
 	}
-	
-}
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Action_Option",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
  $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
-	for ( i = 0; i < ArrayVehicle.length ; i++ ){
+	try{for ( i = 0; i < ArrayVehicle.length ; i++ ){
       if(Vehicle === ArrayVehicle[i].ID_Truck){
 		$scope.ObjVeh = {};
 		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
@@ -194,6 +391,28 @@ $scope.Action_Option= function(Option){
 		$scope.ObjVeh.Cubics = ArrayVehicle[i].Cubics;
       }     
    } 
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Info_Vehicle",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Select_User = function(){
@@ -212,14 +431,47 @@ $scope.Select_User = function(){
 		$scope.ArrayUser = JsonData;
 		$scope.$apply($scope.ArrayUser);
 		}
-		var onError = function(JsonData){
+		var onError =  function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_User",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
+		
 		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-    } catch (err) {
-        console.log(err);
-    }
+    } catch (e) {
+        console.log(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_User",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
+
+
 
 $scope.Select_Vehicle = function(){
 	try {
@@ -237,16 +489,46 @@ $scope.Select_Vehicle = function(){
 		$scope.$apply($scope.ArrayVehicle);
 		}
 		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_Vehicle",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-    } catch (err) {
-        console.log(err);
-    }
+    } catch (e) {
+        console.log(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_Vehicle",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
-	
+
 function Change_Structure(arr){
-	
+	try{
 	var NewArray = [];
 	
 	for(var i = 0; i < arr.length; i++){
@@ -334,9 +616,41 @@ function Change_Structure(arr){
 		};
 		
 		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Change_Structure",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		console.log(JsonData);
 		};
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Change_Structure",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 	
 $scope.Select_VisitPoint = function(){
@@ -357,16 +671,46 @@ $scope.Select_VisitPoint = function(){
 		//Change_Structure(JsonData);
 		};
 		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_VisitPoint",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		console.log(JsonData);
 		};
 	    Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-        } catch (err) {
-        console.log(err);
-    }
+        } catch (e) {
+        console.log(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_VisitPoint",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Export_File = function(Export_Type,Array_Jobs){
-	
+	try{
 	switch(Export_Type){
 		
 		case 'JSON':{
@@ -394,9 +738,30 @@ $scope.Export_File = function(Export_Type,Array_Jobs){
 			break;
 		}
 	}
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_File",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
-function Export_PDF (Arr){
+function Export_PDF (Arr){try{
 	/*
 var pdf = new jsPDF('p', 'pt', 'letter');
 var source = $('#Table_VisitPoint_DB')[0];
@@ -512,10 +877,33 @@ doc.setTextColor(100);
 
 doc.save('Puntos_de_Visita.pdf');
   
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_PDF",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
+
 $scope.To_Order_By = function(Order_Type){
-	
+	try{
 	if ($scope.OrderList === Order_Type) {
 		
     var Reverse = Order_Type.charAt(0);
@@ -527,9 +915,31 @@ $scope.To_Order_By = function(Order_Type){
 	} else {
 	    $scope.OrderList = Order_Type;
 	}
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "To_Order_By",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
-$scope.Visualize_VisitPoint = function(Obj){
+$scope.Visualize_VisitPoint = function(Obj){try{
 	   $scope.Show_Select_Vehicule = true;
    $scope.VisitPoint = Obj;
    $scope.VisitPoint.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
@@ -537,10 +947,31 @@ $scope.Visualize_VisitPoint = function(Obj){
    $scope.VisitPoint_Add_Task_Edit = {};
    $("#Modal_Edit_VisitPoint").modal("show"); 
    
-};	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Visualize_VisitPoint",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 $scope.Save_Job_Edit = function(Obj){
-		
+		try{
 		var Json = Obj;
 		
 	
@@ -584,21 +1015,75 @@ Json.Control.Modify_User= eflowDTS.Session.UserName;
 			};
 				
 		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Save_Job_Edit",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 			console.log(JsonData);
 			};
 				
 	Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 								
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Save_Job_Edit",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 	
 $scope.Remove_In_Array = function(Obj,Array){
-	
+	try{
 	Array_Remove(Array,Obj);
-	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Remove_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Checking_Checkboxes = function(){
-	
+	try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	
 	if($scope.Check === false){
@@ -612,10 +1097,32 @@ $scope.Checking_Checkboxes = function(){
 	}
 	$scope.Check = false;
 	}
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Checking_Checkboxes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Delete_Job_DB = function(){
-	
+	try{
 	var Success = function(result){
 	
 	if(result === true){
@@ -642,7 +1149,18 @@ $scope.Delete_Job_DB = function(){
 		$scope.Select_VisitPoint();
 		};
 	
-	var onError = function(JsonData){
+	var onError =function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Delete_Job_DB",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		console.log(JsonData);
 		};
 		
@@ -653,9 +1171,31 @@ $scope.Delete_Job_DB = function(){
 	 };
 	 
 	 bootbox.confirm("¿Realmente desea borrar los elementos seleccionados?",Success);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Delete_Job_DB",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
-$scope.Change = function(){
+$scope.Change = function(){try{
 	var x=document.getElementById("change");
 //	x.style.display="block";
 	if(x.style.display === "block")
@@ -664,18 +1204,62 @@ $scope.Change = function(){
 	}else{
 		x.style.display = "block";
 	}	 
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Change",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
-$scope.SaveChange = function(txtUser,txtVehicle){
+$scope.SaveChange = function(txtUser,txtVehicle){try{
 	if(txtUser==null||txtUser==""||txtVehicle==null||txtVehicle==""){
 		alert("Debe asignar un usuario y un vehiculo");
 	}
 	else{
 		$scope.VerificarCheckBoxes();
 	}
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "SaveChange",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 function IDS_CheckBoxes(){
-	
+	try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_ID_Check = [];
 	
@@ -686,8 +1270,30 @@ function IDS_CheckBoxes(){
 		}
 		
 		return Array_ID_Check;
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "IDS_CheckBoxes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
-$scope.Message=function(user,matter,detail){
+$scope.Message=function(user,matter,detail){try{
 	var JsonData = 
 				{
 					'Method_Name': 'Insert_Notification',
@@ -708,14 +1314,47 @@ $scope.Message=function(user,matter,detail){
 				};
 				var onSuccess = function(JsonData){
 				};
-				var onError = function(JsonData){
+				var onError =function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Message",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 				console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Message",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 
-$scope.Assign_Status = function(status){
+$scope.Assign_Status = function(status){try{
 		if(status === null||status ===""){
 			alert("Debe digitar o selecionar al menos un campo");
 		}
@@ -741,6 +1380,19 @@ $scope.Assign_Status = function(status){
 									$scope.Select_VisitPoint();
 								};
 								var onError = function(JsonData){
+				};
+				var onError =function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_Status",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 									alert(JsonData);
 								};
 								Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
@@ -764,9 +1416,31 @@ $scope.Assign_Status = function(status){
 			}			
 		}			
 	}	
-};	
 
-$scope.Assign_All = function(Assign){
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_Status",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+$scope.Assign_All = function(Assign){try{
 		var user,oldUser,date,truck;
 		if(Assign == undefined){
 			bootbox.dialog({
@@ -828,6 +1502,17 @@ $scope.Assign_All = function(Assign){
 									$scope.Select_VisitPoint();
 								};
 								var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_All",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 									console.log(JsonData);
 								};
 								Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
@@ -850,10 +1535,32 @@ $scope.Assign_All = function(Assign){
 				}	
 			}			
 		}	
-};	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_All",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 $scope.Open_Modal_Add_VisitPoint = function(){
-	
+	try{
 	$scope.Show_Select_Vehicule = false;
 	$scope.VisitPoint_Add = {};
 	$scope.VisitPoint_Add_Task = {};
@@ -862,27 +1569,91 @@ $scope.Open_Modal_Add_VisitPoint = function(){
 
 	$("#Modal_Add_VisitPoint").modal("show");	
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Open_Modal_Add_VisitPoint",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 $scope.Open_Modal_Change = function(){
-	
+	try{
 	document.getElementById("Usuario").selectedIndex = "-1";
 	document.getElementById("Vehicle").selectedIndex = "-1";
 	//$scope.Assign={};
 	//$scope.Assign.Estimated_Date = new Date(eflowDTS.Session.Calendar_Date).format("yyyy-mm-dd");
 	$("#Modal_Change").modal("show");	
 	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Open_Modal_Change",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 $scope.Open_Modal_Change_Status = function(){
-	
+	try{
 	$("#Modal_Change_Status").modal("show");	
-	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Open_Modal_Change_Status",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
  
  
  
 $scope.Add_New_VisitPoint = function(New_Job){
-
+try{
 		var obj_Job = {};
 		//obj_Job.VisitPoint = {};
 		obj_Job.Control={};
@@ -961,16 +1732,49 @@ $scope.Add_New_VisitPoint = function(New_Job){
 				$('#Modal_Add_VisitPoint').modal('hide');
 				};
 				var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_New_VisitPoint",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 				console.log(JsonData);
 				};
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_New_VisitPoint",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 
 
 $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
-	
+	try{
 	if(Task_Obj.Type === "" || Task_Obj.Type === 0 ||
 	Task_Obj.Name === "" || Task_Obj.Name === undefined ||
 	Task_Obj.Serial === "" || Task_Obj.Serial === undefined ||
@@ -1122,12 +1926,33 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 			$scope.VisitPoint_Add_Array_Task.push(obj);	
 		}
 		$scope.VisitPoint_Add_Task = {};*/
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_Task_In_VisitPoint_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 	
 
 
 function Delete_Attributes(arr){
-	
+	try{
 	var Json_Array = arr;
 	
 	for(var i = 0; i < Json_Array.length; i++){
@@ -1161,11 +1986,32 @@ function Delete_Attributes(arr){
 	
 	return Json_Array;
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Delete_Attributes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 
 function Export_JSON(arr){
-	
+	try{
 	var text = [];
 	
 	text.push(JSON.stringify(Delete_Attributes(arr)));
@@ -1178,11 +2024,32 @@ function Export_JSON(arr){
     Download_File(file, 'Puntos_de_Visita.json');
 
 	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_JSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 
 function Download_File(contenidoEnBlob, nombreArchivo) {
-   
+   try{
    var reader = new FileReader();
     reader.onload = function (event) {
         var save = document.createElement('a');
@@ -1198,16 +2065,59 @@ function Download_File(contenidoEnBlob, nombreArchivo) {
         (window.URL || window.webkitURL).revokeObjectURL(save.href);
     };
     reader.readAsDataURL(contenidoEnBlob);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Download_File",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 function Export_XML(arr){
-	
+	try{
 	Download_File(Generate_XML(arr), 'Puntos_de_Visita.xml');
-	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_XML",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
 };
 
 function Generate_XML(arr) {
-	
+	try{
 	var datos = arr ; 
     var texto = [];
     texto.push('<?xml version="1.0" encoding="UTF-8" ?>\n');
@@ -1258,10 +2168,31 @@ function Generate_XML(arr) {
     return new Blob(texto, {
         type: 'application/xml'
     });
-};
 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Generate_XML",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 function Export_CSV(arr) {
-	
+	try{
     
     var arrData = arr;
     var CSV = '';    
@@ -1351,6 +2282,28 @@ function Export_CSV(arr) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_CSV",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 });

@@ -166,6 +166,17 @@ var onSuccess = function(result){
 		};
 		
 		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Vehicle_Import_Controller",
+                Method: "Assign_Vehicle_In_DB",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
 		console.log(JsonData);
 		};
 		

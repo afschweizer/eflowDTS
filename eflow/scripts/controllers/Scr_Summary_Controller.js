@@ -90,7 +90,18 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		var onSuccess = function(JsonData){		
 		   $scope.ArrayDataSet = JsonData;		
 		};		
-		var onError = function(JsonData){		
+		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Select_DataSet",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);		
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
@@ -262,7 +273,18 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		Create_Pivot_Table();	
 		
 		};		
-		var onError = function(JsonData){		
+		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Refresh_Pivot_Table",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;		
 		console.log(JsonData);		
 		};		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
@@ -363,7 +385,18 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 	$("#Save_Modal").modal('hide');
 	};	
 		
-		var onError = function(JsonData){		
+		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Save_DataSet",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;				
 		console.log(JsonData);		
 		};	
 		

@@ -183,6 +183,19 @@ $scope.Select_User = function(){
 		$scope.$apply($scope.ArrayUser);
 		}
 		var onError = function(JsonData){
+			 var erro={
+			Generated: true,
+            Page: "Scr_Job_Import_Controller",
+            Method: "Select_User",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
+			
+			
 		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
@@ -227,6 +240,17 @@ $scope.Select_Vehicle = function(){
 		$scope.$apply($scope.ArrayVehicle);
 		}
 		var onError = function(JsonData){
+					 var erro={
+			Generated: true,
+            Page: "Scr_Job_Import_Controller",
+            Method: "Select_Vehicle",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
@@ -326,6 +350,17 @@ var onSuccess = function(result){
 		};
 		
 		var onError = function(JsonData){
+					 var erro={
+			Generated: true,
+            Page: "Scr_Job_Import_Controller",
+            Method: "Assign_VisitPoint_In_DB",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
 		console.log(JsonData);
 		};
 		

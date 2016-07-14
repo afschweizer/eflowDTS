@@ -108,6 +108,17 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
         };
 		
 		var onError = function(obj) {
+					 var erro={
+			Generated: true,
+            Page: "Scr_Login_Controller",
+            Method: "Log_In",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: obj
+        };
+			throw erro;
             console.log(obj.message);
             
         };
@@ -161,6 +172,17 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 		      	 Set_Cookie("EflowCookie",eflowDTS);
 		}
 		var onError = function(e){
+					 var erro={
+			Generated: true,
+            Page: "Scr_Login_Controller",
+            Method: "DataCompany",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;
 		console.log(e);
 		}
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
