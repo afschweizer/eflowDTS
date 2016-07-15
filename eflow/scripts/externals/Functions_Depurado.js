@@ -463,7 +463,6 @@ function Save_Error(e) {
     try {
         
         if (typeof e === 'object') {
-            e.Transferring_State = "Pending_To_Cloud";
             e.Company = eflowDTS.Session.Company;
         } else {
             
@@ -474,25 +473,62 @@ function Save_Error(e) {
                 Description: "Error recibido no posee estructura de objeto",
                 User: eflowDTS.Session.General.User,
                 Date: new Date().getTime(),
-                Transferring_State: "Pending_To_Cloud",
                 Company: eflowDTS.Session.Company,
                 Error: e
             };
             
         }
+        	var JsonData = {
+            'Method_Name': 'Insert_Error',
+            'Data': e
+        };
         
-        var DB = new Dexie('eflowDTS');
+	var onSuccess = function(JsonData){
+		
+		};
+	
+	var onError =  function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Functions_Depurado",
+                Method: "Save_Error",
+            Description: "onError",
+            User: eflowDTS.Session.General.User,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;		
+		};
+		
+	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+	 
         
-        DB.version(1).stores({
-            Store_Error: '++id,Date,User,Transferring_State,Description,Page'
-        });
         
-        DB.open();
         
-        DB.Store_Error.add(e);
         
-    } catch (err) {
+    } catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Array_Remove",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.General.User,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
         console.log(err);
-    }
-}
+        } else {
+            Save_Error(e);
+        console.log(e);
+        }
+    }  
+  
+};
 
