@@ -7,9 +7,9 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 		},
     Configuration: {
         "URLs": { 
-            "eflow_Get": "http://104.197.170.235/Testing/eflowDTS/Eflow_Get.php",
-           "eflow_Post": "http://104.197.170.235/Testing/eflowDTS/Eflow_Post.php",
-     "eflow_Date_Time" : "http://104.197.170.235/Testing/eflowDTS/time.php"
+            "eflow_Get": "http://104.197.119.240/development/eflowDTS/Eflow_Get.php",
+           "eflow_Post": "http://104.197.119.240/development/eflowDTS/Eflow_Post.php",
+     "eflow_Date_Time" : "http://104.197.119.240/development/eflowDTS/time.php"
         } 
     },     
     Session: {},
