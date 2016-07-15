@@ -101,9 +101,9 @@ $scope.Checking_Checkboxes_Check = function(){
         } else {
             Save_Error(e);
         }
-    } 
+    }  
 };
-
+ 
 $scope.Checking_Checkboxes_Check_Master = function(master){
 	try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
