@@ -2,7 +2,8 @@
 
 try{
 
-$uri = "mongodb://104.155.74.199:27017"; 
+
+$uri = "mongodb://myUser:12345678@104.155.74.199:27017/TestingDB"; 
 //$uri = "mongodb://Eprac_Production:eprac123@ds031223.mlab.com:31223/eflowdts_production"; 
 //$uri = "mongodb://Eprac_Development:eprac123@ds053658.mlab.com:53658/eflowdts_development"; 
 

@@ -105,7 +105,7 @@ $scope.Checking_Checkboxes_Check = function(){
 };
 
 $scope.Checking_Checkboxes_Check_Master = function(master){
-	
+	try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	for(var i = 0; i < CheckBoxes_Array.length; i++){
 		CheckBoxes_Array[i].checked = !master;
