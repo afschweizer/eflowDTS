@@ -30,7 +30,7 @@ $scope.init = function(){
                 Page: "Scr_Route_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -76,7 +76,7 @@ $scope.init = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Load_Map_Init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -111,7 +111,7 @@ $scope.Checking_Checkboxes_Check = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Checking_Checkboxes_Check",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -140,7 +140,7 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
                 Page: "Scr_Route_Controller",
                 Method: "Checking_Checkboxes_Check_Master",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -167,7 +167,7 @@ $scope.Load = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Load",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -200,7 +200,7 @@ $scope.Visualize_Route = function(Obj){
                 Page: "Scr_Route_Controller",
                 Method: "Visualize_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -239,7 +239,7 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Select",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -262,7 +262,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Select",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -321,7 +321,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Load_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -348,7 +348,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Action_Option",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -398,7 +398,7 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Delete_Route_DB",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -425,7 +425,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Delete_Route_DB",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -464,7 +464,7 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Delete",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -491,7 +491,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Delete",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -527,7 +527,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "To_Order_By",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -562,7 +562,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Print_Zone",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -589,7 +589,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Delete_Zone",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -643,7 +643,7 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Save_Route",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -693,7 +693,7 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Save_Route",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -740,7 +740,7 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Save_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -794,7 +794,7 @@ $scope.Export_File = function(Export_Type,Array_Routes){
                 Page: "Scr_Route_Controller",
                 Method: "Export_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -832,7 +832,7 @@ function Delete_Attributes(arr){
                 Page: "Scr_Route_Controller",
                 Method: "Delete_Attributes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -872,7 +872,7 @@ function Download_File(contenidoEnBlob, nombreArchivo) {
                 Page: "Scr_Route_Controller",
                 Method: "Download_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -917,7 +917,7 @@ function Generate_XML(arr) {
                 Page: "Scr_Route_Controller",
                 Method: "Generate_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -954,7 +954,7 @@ function Export_JSON(arr){
                 Page: "Scr_Route_Controller",
                 Method: "Export_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -980,7 +980,7 @@ function Export_XML(arr){
                 Page: "Scr_Route_Controller",
                 Method: "Export_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -1050,7 +1050,7 @@ function Export_CSV(arr) {
                 Page: "Scr_Route_Controller",
                 Method: "Export_CSV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -1152,7 +1152,7 @@ doc.save('Rutas.pdf');
                 Page: "Scr_Route_Controller",
                 Method: "Export_PDF",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

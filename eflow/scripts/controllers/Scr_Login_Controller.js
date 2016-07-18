@@ -30,7 +30,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
                 Page: "Scr_Login_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -113,7 +113,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
             Page: "Scr_Login_Controller",
             Method: "Log_In",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: obj
@@ -138,7 +138,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
                 Page: "Scr_Login_Controller",
                 Method: "Log_In",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -177,7 +177,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
             Page: "Scr_Login_Controller",
             Method: "DataCompany",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: e
@@ -197,7 +197,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
                 Page: "Scr_Login_Controller",
                 Method: "DataCompany",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

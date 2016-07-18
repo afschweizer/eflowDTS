@@ -26,7 +26,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -70,7 +70,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Load_Init_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -96,7 +96,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "refresh",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -128,7 +128,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "See_Info",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -180,7 +180,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_User_Online",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -203,7 +203,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_User_Online",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -238,7 +238,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Create_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -297,7 +297,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Load_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -337,7 +337,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_Jobs",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -357,7 +357,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_Jobs",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

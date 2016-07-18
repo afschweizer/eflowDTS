@@ -10,9 +10,9 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 		
     Configuration: {
         "URLs": { 
-           "eflow_Get": "http://104.197.119.240/development/eflowDTS/Eflow_Get.php",
-           "eflow_Post": "http://104.197.119.240/development/eflowDTS/Eflow_Post.php",
-           "eflow_Date_Time" : "http://104.197.119.240/development/eflowDTS/time.php"
+           "eflow_Get": "http://104.197.119.240/production/eflowDTS/Eflow_Get.php",
+           "eflow_Post": "http://104.197.119.240/production/eflowDTS/Eflow_Post.php",
+           "eflow_Date_Time" : "http://104.197.119.240/production/eflowDTS/time.php"
         } 
     },      
     Session: {},
@@ -50,7 +50,7 @@ function Set_Current_Page(){
                 Page: "Functions_Depurado",
                 Method: "Set_Current_Page",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -75,7 +75,7 @@ function Set_Cookie(key,value) {try{
                 Page: "Functions_Depurado",
                 Method: "Set_Cookie",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -101,7 +101,7 @@ function Get_Cookie(key) {try{
                 Page: "Functions_Depurado",
                 Method: "Get_Cookie",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -127,7 +127,7 @@ try{
                 Page: "Functions_Depurado",
                 Method: "Exist_Cookie",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -171,7 +171,7 @@ try{
                 Page: "Functions_Depurado",
                 Method: "Load_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -210,7 +210,7 @@ setInterval(function() {
                 Page: "Functions_Depurado",
                 Method: "Load_Date",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -247,7 +247,7 @@ try{
                 Page: "Functions_Depurado",
                 Method: "Get_Data_Geolocation",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -284,7 +284,7 @@ Log_In_Online(UserName, Password, function(obj) {
                 Page: "Functions_Depurado",
                 Method: "validate",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -328,7 +328,7 @@ function onErrorGeolocating(error)
                 Page: "Functions_Depurado",
                 Method: "onErrorGeolocating",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -365,7 +365,7 @@ function Log_In_Online(UserName, Password, Company,onSuccess, onError) {
                 Page: "Functions_Depurado",
                 Method: "Log_In_Online",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -412,7 +412,7 @@ function Send_JSON(Url, JsonData, onSucess, onError) {
                 Page: "Functions_Depurado",
                 Method: "Send_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -447,7 +447,7 @@ return Array;
                 Page: "Functions_Depurado",
                 Method: "Array_Remove",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -475,7 +475,7 @@ function Save_Error(e) {
                 Page: "Functions_Depurado",
                 Method: "Save_Error",
                 Description: "Error recibido no posee estructura de objeto",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Date: new Date().getTime(),
                 Company: eflowDTS.Session.Company,
                 Error: e
@@ -497,7 +497,7 @@ function Save_Error(e) {
                 Page: "Functions_Depurado",
                 Method: "Save_Error",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -521,7 +521,7 @@ function Save_Error(e) {
                 Page: "Functions_Depurado",
                 Method: "Array_Remove",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

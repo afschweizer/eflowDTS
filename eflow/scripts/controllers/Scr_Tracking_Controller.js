@@ -16,7 +16,7 @@ try{
                 Page: "Scr_Tracking_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -53,7 +53,7 @@ try{
                 Page: "Scr_Tracking_Controller",
                 Method: "Load_Init_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

@@ -18,7 +18,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
                 Page: "Scr_Calendar_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -93,7 +93,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
             Page: "Scr_Calendar_Controller",
             Method: "Select_VisitPoint",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -114,7 +114,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
                 Page: "Scr_Calendar_Controller",
                 Method: "Select_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

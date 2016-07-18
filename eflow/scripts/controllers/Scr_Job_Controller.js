@@ -25,7 +25,7 @@ $scope.ArrayHeaders = Headers;
                 Page: "Scr_Job_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -75,7 +75,7 @@ $scope.ArrayHeaders = Headers;
                 Page: "Scr_Job_Controller",
                 Method: "Add_Task",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -104,7 +104,7 @@ $scope.ArrayHeaders = Headers;
                 Page: "Scr_Job_Controller",
                 Method: "Remove_Task",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -133,7 +133,7 @@ $scope.ArrayHeaders = Headers;
                 Page: "Scr_Job_Controller",
                 Method: "Remove_Job",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -198,7 +198,7 @@ $scope.ArrayHeaders = Headers;
                 Page: "Scr_Job_Controller",
                 Method: "Add_Job",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -257,7 +257,7 @@ if( file.type.match(/text\/csv/) || file.type.match(/vnd\.ms-excel/) ){
                 Page: "Scr_Job_Controller",
                 Method: "Jalar",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -298,7 +298,7 @@ function csvJSON(csv){
                 Page: "Scr_Job_Controller",
                 Method: "csvJSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

@@ -31,7 +31,7 @@ DTS_APP.controller('indexController', function($scope) {
                 Page: "indexController",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -66,7 +66,7 @@ DTS_APP.controller('indexController', function($scope) {
                 Page: "indexController",
                 Method: "timers",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -103,7 +103,7 @@ DTS_APP.controller('indexController', function($scope) {
                 Page: "indexController",
                 Method: "Sign_Out",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

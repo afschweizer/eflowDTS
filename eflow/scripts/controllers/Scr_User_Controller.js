@@ -31,7 +31,7 @@ $scope.Select();
                 Page: "Scr_User_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -62,7 +62,7 @@ $scope.Type = "password";
                 Page: "Scr_User_Controller",
                 Method: "Password",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -98,7 +98,7 @@ $scope.Checking_Checkboxes_Check = function(){
                 Page: "Scr_User_Controller",
                 Method: "Checking_Checkboxes_Check",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -131,7 +131,7 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
                 Page: "Scr_User_Controller",
                 Method: "Checking_Checkboxes_Check_Master",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -160,7 +160,7 @@ $scope.Action_Option= function(Option){
                 Page: "Scr_User_Controller",
                 Method: "Action_Option",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -199,7 +199,7 @@ $scope.Verify_License=function(Type){
                 Page: "Scr_User_Controller",
                 Method: "Verify_License",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -226,7 +226,7 @@ $scope.See_License=function(){
                 Page: "Scr_User_Controller",
                 Method: "See_License",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -276,7 +276,7 @@ $scope.Delete_User_DB = function(){
                 Page: "Scr_Summary_Controller",
                 Method: "Delete_User_DB",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -304,7 +304,7 @@ $scope.Delete_User_DB = function(){
                 Page: "Scr_User_Controller",
                 Method: "Delete_User_DB",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -339,7 +339,7 @@ $scope.Save_User_Edit = function(Obj){
                 Page: "Scr_Summary_Controller",
                 Method: "Save_User_Edit",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -361,7 +361,7 @@ $scope.Save_User_Edit = function(Obj){
                 Page: "Scr_User_Controller",
                 Method: "Save_User_Edit",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -401,7 +401,7 @@ $scope.Visualize_User = function(Obj){
                 Page: "Scr_User_Controller",
                 Method: "Visualize_User",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -433,7 +433,7 @@ $scope.Show_Components.Type_License=false;
                 Page: "Scr_User_Controller",
                 Method: "Open_Modal_Add_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -471,7 +471,7 @@ $scope.Select = function(){
                 Page: "Scr_Summary_Controller",
                 Method: "Select",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -493,7 +493,7 @@ $scope.Select = function(){
                 Page: "Scr_User_Controller",
                 Method: "Select",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -507,6 +507,71 @@ $scope.Select = function(){
 };
    
   
+  
+  /*
+$scope.Select_Company = function(){
+
+	 try {
+        var JsonData = {
+            'Method_Name': 'Select_Company',
+             'Data': {
+    			"Company": eflowDTS.Session.Company
+            },
+            'Fields':{
+            	
+            }
+        };
+		
+		var onSuccess = function(JsonData){
+		eflowDTS.Session.DataCompany=JsonData;
+
+		};
+		
+		var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Summary_Controller",
+                Method: "Select_Company",
+            Description: "onError",
+            User: eflowDTS.Session.UserName,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;		
+		console.log(JsonData);
+		
+		};
+		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+    } catch (e ) {
+        onError(e );
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Controller",
+                Method: "Select_Company",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+   
+  
+   
+  
+  */
    
 
 $scope.Delete = function(id){
@@ -534,7 +599,7 @@ $scope.Delete = function(id){
                 Page: "Scr_Summary_Controller",
                 Method: "Delete",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -561,7 +626,7 @@ $scope.Delete = function(id){
                 Page: "Scr_User_Controller",
                 Method: "Delete",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -593,7 +658,7 @@ $scope.Generar =function(){
                 Page: "Scr_User_Controller",
                 Method: "Generar",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -690,7 +755,7 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
                 Page: "Scr_User_Controller",
                 Method: "JSONToCSVConvertor",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -740,7 +805,7 @@ $scope.Add_New_User = function(New_User){
                 Page: "Scr_Summary_Controller",
                 Method: "Add_New_User",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -761,7 +826,7 @@ $scope.Add_New_User = function(New_User){
                 Page: "Scr_User_Controller",
                 Method: "Add_New_User",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -800,7 +865,7 @@ $scope.To_Order_By = function(Order_Type){
                 Page: "Scr_User_Controller",
                 Method: "To_Order_By",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -857,7 +922,7 @@ $scope.Export_File = function(Export_Type,Array_Users){
                 Page: "Scr_User_Controller",
                 Method: "Export_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -898,7 +963,7 @@ function Delete_Attributes(arr){
                 Page: "Scr_User_Controller",
                 Method: "Delete_Attributes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -940,7 +1005,7 @@ function Download_File(contenidoEnBlob, nombreArchivo) {
                 Page: "Scr_User_Controller",
                 Method: "Download_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -996,7 +1061,7 @@ function Generate_XML(arr) {
                 Page: "Scr_User_Controller",
                 Method: "Generate_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -1035,7 +1100,7 @@ function Export_JSON(arr){
                 Page: "Scr_User_Controller",
                 Method: "Export_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -1063,7 +1128,7 @@ function Export_XML(arr){
                 Page: "Scr_User_Controller",
                 Method: "Export_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -1154,7 +1219,7 @@ function Export_CSV(arr) {
                 Page: "Scr_User_Controller",
                 Method: "Export_CSV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -1270,7 +1335,7 @@ doc.save('Usuarios.pdf');
                 Page: "Scr_User_Controller",
                 Method: "Export_PDF",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

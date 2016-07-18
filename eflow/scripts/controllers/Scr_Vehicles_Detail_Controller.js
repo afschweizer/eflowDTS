@@ -23,7 +23,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -50,7 +50,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "See_Info",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -77,7 +77,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Download_Certificate",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -147,7 +147,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Message",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -169,7 +169,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Message",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -233,7 +233,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -261,7 +261,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Open_Modal_Add_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -290,7 +290,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Open_Modal_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -369,7 +369,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Data_Charge",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -415,7 +415,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "PV_Info",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -452,7 +452,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "PV_Info_Prod",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -531,7 +531,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Draw_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -565,7 +565,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Visit_Point",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -593,7 +593,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Visit_Point",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -624,7 +624,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Route",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -652,7 +652,7 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e

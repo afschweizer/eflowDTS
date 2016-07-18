@@ -30,7 +30,7 @@ $scope.ArrayTypes = Type;
                 Page: "Scr_User_Import_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -58,7 +58,7 @@ $scope.Verify_License=function(Type){
                 Page: "Scr_User_Import_Controller",
                 Method: "Verify_License",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -84,7 +84,7 @@ $scope.See_License=function(){
                 Page: "Scr_User_Import_Controller",
                 Method: "See_License",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -112,7 +112,7 @@ $scope.Action_Option= function(Option){
                 Page: "Scr_User_Import_Controller",
                 Method: "Action_Option",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -149,7 +149,7 @@ $scope.Checking_Checkboxes_Check = function(){
                 Page: "Scr_User_Import_Controller",
                 Method: "Checking_Checkboxes_Check",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -181,7 +181,7 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
                 Page: "Scr_User_Import_Controller",
                 Method: "Checking_Checkboxes_Check_Master",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -231,7 +231,7 @@ var onSuccess = function(result){
                 Page: "Scr_User_Import_Controller",
                 Method: "Assign_User_In_DB",
             Description: "onError",
-            User: eflowDTS.Session.General.User,
+            User: eflowDTS.Session.UserName,
             Company: eflowDTS.Session.Company,
             Date: new Date().getTime(),
             Error: JsonData
@@ -257,7 +257,7 @@ var onSuccess = function(result){
                 Page: "Scr_User_Import_Controller",
                 Method: "Assign_User_In_DB",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -289,7 +289,7 @@ $scope.Open_Modal_Add_User_Import = function(){
                 Page: "Scr_User_Import_Controller",
                 Method: "Open_Modal_Add_User_Import",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -326,7 +326,7 @@ $scope.To_Order_By = function(Order_Type){
                 Page: "Scr_User_Import_Controller",
                 Method: "To_Order_By",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -390,7 +390,7 @@ $scope.Import_Files = function(){
                 Page: "Scr_User_Import_Controller",
                 Method: "Import_Files",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -424,7 +424,7 @@ $scope.Checking_Checkboxes = function(){
                 Page: "Scr_User_Import_Controller",
                 Method: "Checking_Checkboxes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -455,7 +455,7 @@ $scope.Visualize_User_Import = function(Obj){
                 Page: "Scr_User_Import_Controller",
                 Method: "Visualize_User_Import",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -499,7 +499,7 @@ function Import_Json(file){
                 Page: "Scr_User_Import_Controller",
                 Method: "Import_Json",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -535,7 +535,7 @@ for (var i = 0; i < keys.length; i++) {
                 Page: "Scr_User_Import_Controller",
                 Method: "ObtenerArray",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -579,7 +579,7 @@ function Import_CSV(file){
                 Page: "Scr_User_Import_Controller",
                 Method: "Import_CSV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -607,7 +607,7 @@ $scope.Remove_In_Array = function(Obj,Array){
                 Page: "Scr_User_Import_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
@@ -663,7 +663,7 @@ function CSV_To_JSON(csv){
                 Page: "Scr_User_Import_Controller",
                 Method: "CSV_To_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.General.User,
+                User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
                 Error: e
