@@ -787,7 +787,7 @@ $scope.Add_New_User = function(New_User){
 					    "Lastname": New_User.Lastname,
 					    "Lastname2": New_User.Lastname2,
 					    "Identification": New_User.Identification,
-					    "Mail": New_User.Mail.toLowerCase()+"@"+ eflowDTS.Session.Company.toLowerCase()+".com",
+					    "Mail": New_User.Mail.toLowerCase()+ eflowDTS.Session.DataCompany.Domain.toLowerCase(),
 					    "Gender": New_User.Gender,
 					    "Birthdate": New_User.Birthdate,
 					    "DueDate": New_User.DueDate,
