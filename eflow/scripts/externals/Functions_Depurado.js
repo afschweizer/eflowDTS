@@ -4,14 +4,17 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 		Geolocation:{
 			"Latitude":9.935775, 
 			"Longitude":-84.105073
-		},
+		}, 
+		
+		
+		
     Configuration: {
         "URLs": { 
-            "eflow_Get": "http://104.197.119.240/development/eflowDTS/Eflow_Get.php",
+           "eflow_Get": "http://104.197.119.240/development/eflowDTS/Eflow_Get.php",
            "eflow_Post": "http://104.197.119.240/development/eflowDTS/Eflow_Post.php",
-     "eflow_Date_Time" : "http://104.197.119.240/development/eflowDTS/time.php"
+           "eflow_Date_Time" : "http://104.197.119.240/development/eflowDTS/time.php"
         } 
-    },     
+    },      
     Session: {},
     Time : {    	
     	"Day" : 86400000,
@@ -21,7 +24,7 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
     LoggedIn: false,
     Save_Session : false,
     Ultimate_Page : ""
-};
+};   
 
 /*
 function Exist_Cookie(key){
@@ -111,7 +114,8 @@ function Get_Cookie(key) {try{
   
 };
 
-function Exist_Cookie(key){try{
+function Exist_Cookie(key){
+try{
 	return (localStorage.getItem(key) != null);		
  }catch (e) {
         
