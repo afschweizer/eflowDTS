@@ -330,6 +330,9 @@ var onSuccess = function(result){
 				else{
 					json_obj1.Visit_State = "In_Process";
 				}*/
+			json_obj.Control = {};
+			json_obj.Control.Creation_Date = new Date().getTime();
+			json_obj.Control.Created_User = eflowDTS.Session.UserName;
 			Array_VisitPoint_To_Assign.push(json_obj);
 			//Array_VisitPoint_To_Assign.push(JSON.parse(CheckBoxes_Array[i].value));
 			}

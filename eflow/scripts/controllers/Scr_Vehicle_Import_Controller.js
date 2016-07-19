@@ -146,7 +146,10 @@ var onSuccess = function(result){
 	for (i=0; i < CheckBoxes_Array.length ; i++){
 		if (CheckBoxes_Array[i].checked == true){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
-		json_obj.ID_Truck = json_obj.ID_Truck.replace(/\s/g, '').toUpperCase();
+			json_obj.ID_Truck = json_obj.ID_Truck.replace(/\s/g, '').toUpperCase();
+			json_obj.Control = {};
+			json_obj.Control.Creation_Date = new Date().getTime();
+			json_obj.Control.Created_User = eflowDTS.Session.UserName;
 			Array_Vehicle_To_Assign.push(json_obj);
 			}
 	}
