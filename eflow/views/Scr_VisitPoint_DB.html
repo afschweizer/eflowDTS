@@ -119,12 +119,12 @@
 				   <br/>
 				    <span> 
 						<label>Asignar al Usuario: </label>
-						    <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser" class="form-control" id="Usuario"> </select>
+						    <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" class="form-control" id="Usuario"> </select>
                </span>
 				   <br/>
 				    <span>
 						<label>Asignar al Vehículo:</label>
-						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
+						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
 						 <br/>
                   <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
                </span>
