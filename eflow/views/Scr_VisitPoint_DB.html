@@ -478,7 +478,7 @@
 						<label class="col-sm-4 control-label">Establecimiento:</label> 
 						<div class="col-sm-8"> 
 							<div class="form-group">  
-              				<select ng-model="VisitPoint_Add.PV_Info" ng-options="Obj as Obj.Name for Obj in ArrayVisitPoint" style="width: 80%;" class="form-control" id="Establecimiento"></select>
+              				<select ng-model="VisitPoint_Add.PV_Info" ng-options="Obj as Obj.Name for Obj in ArrayVisitPoint | orderBy:'Name'" style="width: 80%;" class="form-control" id="Establecimiento"></select>
 				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            				</div>
 						</div>
@@ -568,7 +568,7 @@
 						<label class="col-sm-4 control-label">Asignar al Usuario:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">
-								<select ng-model="VisitPoint_Add.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser" ng-change="Filter_License(VisitPoint_Add.User)" style="width: 80%;" class="form-control" id="Usuario"></select>
+								<select ng-model="VisitPoint_Add.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser | orderBy:'Name'" ng-change="Filter_License(VisitPoint_Add.User)" style="width: 80%;" class="form-control" id="Usuario"></select>
 						<!--<input type="text" class="form-control" ng-model="VisitPoint_Add.User" placeholder="Asignar al Usuario..." required>-->
 							</div>
 						</div>
@@ -577,7 +577,7 @@
 						<label class="col-sm-4 control-label">Asignar al Vehículo:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">						
-                       <select  ng-model="VisitPoint_Add.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter" style="width: 80%;" class="form-control" id="Vehicle" ng-change="Info_Vehicle(VisitPoint_Add.ID_Truck,ArrayVehicle)"></select>
+                       <select  ng-model="VisitPoint_Add.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter | orderBy:'ID_Truck'" style="width: 80%;" class="form-control" id="Vehicle" ng-change="Info_Vehicle(VisitPoint_Add.ID_Truck,ArrayVehicle)"></select>
 <!--<input type="text" class="form-control" ng-model="VisitPoint_Add.User" placeholder="Asignar al Usuario..." required>-->
 							</div>
 						</div>
