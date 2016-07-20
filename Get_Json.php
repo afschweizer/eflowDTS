@@ -22,8 +22,8 @@ for($i = 0; $i < count($Json_Object); $i++){
      
 }  
   
-echo json_encode(array('Message'=> 'Insertados '.count($Json_Object). ' documentos.'));
-  
+//echo json_encode(array('Message'=> 'Insertados '.count($Json_Object). ' documentos.'));
+  echo $Json_String;
 }catch(Exception $e){
   
   echo json_encode( array('Error' => $e->getMessage()));

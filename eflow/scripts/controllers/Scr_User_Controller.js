@@ -1271,20 +1271,20 @@ var doc = new jsPDF('p', 'pt');
        
 doc.setFontType("bold");
 
-doc.addImage(ima, 'JPEG', 20, 20, 90, 90);
+doc.addImage(ima, 'JPEG', 20, 20, 150, 90);
     
   
-doc.text(320, 70, 'Nombre de la Compañia: '+ Compania.Name);
+doc.text(220, 70, 'Nombre de la Compañia: '+ Compania.Name);
     
-doc.text(320, 80, 'Teléfono: '+ Compania.Phone);
+doc.text(220, 80, 'Teléfono: '+ Compania.Phone);
     
-doc.text(320, 90, 'Fax: '+ Compania.Fax);
+doc.text(220, 90, 'Fax: '+ Compania.Fax);
       
-doc.text(320, 100, 'Correo Electrónico: '+ Compania.Mail);
+doc.text(220, 100, 'Correo Electrónico: '+ Compania.Mail);
     
-doc.text(320, 110, 'País: '+ Compania.Country);
+doc.text(220, 110, 'País: '+ Compania.Country);
       
-doc.text(320, 120, 'Ubicación: '+ Compania.Location);
+doc.text(220, 120, 'Ubicación: '+ Compania.Location);
 
 doc.setLineWidth(1);
 doc.line(20, 130, 570, 130); 
