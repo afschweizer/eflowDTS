@@ -55,7 +55,6 @@ DTS_APP.controller('indexController', function($scope) {
 		$scope.$apply($scope.Watch);
 		$scope.UserName = eflowDTS.Session.UserName;
 		$scope.Company = eflowDTS.Session.Company;
-		$scope.Domain = eflowDTS.Session.DataCompany.Domain;
 		});
             }catch (e) {
         
