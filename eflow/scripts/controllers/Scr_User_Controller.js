@@ -1266,32 +1266,45 @@ for(var i = 0; i < Arr.length; i++){
 	   rows.push(Arr[i]);
 }	
 
-var doc = new jsPDF('p', 'pt');
+var doc = new jsPDF('l', 'pt');
    var header = function (data) {
-       
+      
+doc.setFontSize(13);
+  
+doc.setFontType("normal");
+
+doc.text(420, 50, 'Fecha: '+new Date($scope.Watch).format('dd/mm/yyyy'));
+doc.setFontSize(18);	
+
+doc.text(420, 160, 'Usuarios');
+
+doc.setFontSize(10);
+
+doc.setTextColor(100);
+
 doc.setFontType("bold");
 
 doc.addImage(ima, 'JPEG', 20, 20, 150, 90);
     
   
-doc.text(220, 70, 'Nombre de la Compañia: '+ Compania.Name);
+doc.text(420, 70, 'Nombre de la Compañia: '+ Compania.Name);
     
-doc.text(220, 80, 'Teléfono: '+ Compania.Phone);
+doc.text(420, 80, 'Teléfono: '+ Compania.Phone);
     
-doc.text(220, 90, 'Fax: '+ Compania.Fax);
+doc.text(420, 90, 'Fax: '+ Compania.Fax);
       
-doc.text(220, 100, 'Correo Electrónico: '+ Compania.Mail);
+doc.text(420, 100, 'Correo Electrónico: '+ Compania.Mail);
     
-doc.text(220, 110, 'País: '+ Compania.Country);
+doc.text(420, 110, 'País: '+ Compania.Country);
       
-doc.text(220, 120, 'Ubicación: '+ Compania.Location);
+doc.text(420, 120, 'Ubicación: '+ Compania.Location);
 
 doc.setLineWidth(1);
-doc.line(20, 130, 570, 130); 
+doc.line(20, 130, 800, 130); 
     };   
     var footer = function (data) {
         var str = "Pag " + data.pageCount;
-				doc.addImage(logo, 'JPEG', 280, 800, 90, 30);
+				doc.addImage(logo, 'JPEG', 420, 550, 90, 30);
         // Total page number plugin only available in jspdf v1.0+
        
         doc.text(str, data.settings.margin.left, doc.internal.pageSize.height - 30);
@@ -1303,28 +1316,16 @@ doc.line(20, 130, 570, 130);
         margin: {top: 80}
     };
 
-doc.setFontSize(18);	
 
-doc.text(230, 160, 'Usuarios');
-
-doc.setFontSize(13);
-  
-doc.setFontType("normal");
-
-doc.text(420, 50, 'Fecha: '+new Date($scope.Watch).format('dd/mm/yyyy'));
-
-doc.setFontSize(10);
-
-doc.setTextColor(100);
 
     doc.autoTable(columns, rows, {startY: 170,
+        beforePageContent: header,
+        afterPageContent: footer,
 	margin: {horizontal: 10},
         styles: {overflow: 'linebreak'},
         bodyStyles: {valign: 'top'},
         columnStyles: {email: {columnWidth: 'wrap'}},
-        beforePageContent: header,
-        afterPageContent: footer,
-        margin: {top: 80}
+        margin: {top: 180}
     });
 
         
