@@ -536,3 +536,46 @@ function Save_Error(e) {
   
 };
 
+function Image_To_Base64(url, callback) {
+ try{
+   var img = new Image();
+  img.crossOrigin = 'Anonymous';
+  img.onload = function() {
+    var canvas = document.createElement('CANVAS');
+    var ctx = canvas.getContext('2d');
+    var dataURL;
+    canvas.height = this.height;
+    canvas.width = this.width;
+    ctx.drawImage(this, 0, 0);
+    dataURL = canvas.toDataURL();
+    callback(dataURL);
+    canvas = null;
+  };
+  img.src = url;
+
+  } catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Image_To_Base64",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        console.log(err);
+        } else {
+            Save_Error(e);
+        console.log(e);
+        }
+    }  
+}
+
+
+
