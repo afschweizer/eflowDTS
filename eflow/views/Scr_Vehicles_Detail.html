@@ -325,12 +325,19 @@
                        <th style="width: 10px">#</th>
                        <th>Acción</th>
                        <th>Cantidad</th>
+                       <th>Notas</th>
+            
                     </tr>
                     <tr ng-repeat="jobs in Prod.JobActions">
                        <td>{{$index+1}}</td>
                        <td>{{jobs.Action_Type}}</td>
-                       <td>{{jobs.Quantity}} </td>
-                       <!--  <td ng-show="Show_Buttons">  
+                       <td>{{jobs.Quantity}} </td>  
+                      <td>
+                        <span>
+            <a class="btn btn-primary span4" ng-click="Open_Modal_Add_VisitPoint(jobs)" data-toggle="tooltip" title="Agregar una tarea" >
+              Visualizar</a>
+      </span>
+                      </td><!--  <td ng-show="Show_Buttons">  
                          <a ng-click="See_Info(jobs)" class=" small-box-footer ">
                             <i class="fa fa-arrow-circle-right"></i>
                           </a>
