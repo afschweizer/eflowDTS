@@ -80,8 +80,12 @@
    </div>
   <span id="Buttons" style="margin-left:7%;">
   <span>
-     <a class="btn btn-primary span4" ng-show="Show_Components.VisitPoint_Add" ng-click="Show_Components.VisitPoint_Table = false; Show_Components.VisitPoint_Form = true; Show_Components.VisitPoint_Add = false; Show_Components.Export = false; Load_New_Visit_Point();" data-toggle="tooltip" title="Agregar Puntos de Visita">
+     <a class="btn btn-primary span4" ng-show="Show_Components.VisitPoint_Add" ng-click="Show_Components.VisitPoint_Table = false; Show_Components.VisitPoint_Form = true; Show_Components.VisitPoint_See=false; Show_Components.VisitPoint_Add1 = false;  Show_Components.VisitPoint_Add = false; Show_Components.Export = false; Load_New_Visit_Point();" data-toggle="tooltip" title="Agregar Puntos de Visita">
        <i class="glyphicon glyphicon-plus"></i>Agregar Puntos de Visita</a>    
+	</span>
+    <span>
+     <a class="btn btn-primary span4" ng-show="Show_Components.VisitPoint_Add1" ng-click="Load_VisitPoint(); Show_Components.VisitPoint_Table = false; Show_Components.VisitPoint_See = true; Show_Components.VisitPoint_Form = false; Show_Components.VisitPoint_Add1 = false; Show_Components.VisitPoint_Add = false; Show_Components.Export = false; " data-toggle="tooltip" title="Ver Puntos de Visita">
+       <i class="glyphicon glyphicon-eye-open"></i>Ver Puntos de Visita</a>    
 	</span>
   <span ng-show="Show_Actions">
               <select style="width:175px " class="btn btn-primary span4" ng-model="Option" ng-change="Action_Option(Option)"> 
@@ -103,15 +107,34 @@
   <hr/>
   
   
+    <!--  Agregar -->
+      <div class="row" ng-show="Show_Components.VisitPoint_See">
+     <!--Rastreo de Camión-->
+			<div>
+           <span>
+     <a class="btn btn-primary span4" ng-click="Show_Components.VisitPoint_Form = false; Show_Components.VisitPoint_Table = true; Show_Components.VisitPoint_Add = true;Show_Components.Export = true;Show_Components.VisitPoint_See = false;Show_Components.VisitPoint_Add1 = true;  " data-toggle="tooltip" title="Ver Puntos de Visita">
+       <i class="glyphicon glyphicon-chevron-left"></i>Regresar</a>    
+	</span>
+		 		 <div class="pad"  >
+                 <div id="world-map-markers" style="height: 600px;">
+							<div class="jvectormap-container"  style="width: 100%; height: 100%; position: relative; overflow: hidden; background-color: transparent;">
+								<div id="Map_VisitPoint"  style="height: 600px;">
+								</div>
+							</div>
+						</div>
+               </div>
+            </div>
+            </div>
+  
 				
   <!--  Agregar -->
       <div class="row" ng-show="Show_Components.VisitPoint_Form">
      <!--Rastreo de Camión-->
-			<div class="col-md-5 col-sm-5 col-xs-12">
+			<div class="col-md-5 col-sm-5 col-xs-12"  style="resize: both;overflow: auto;">
 		 		 <div class="pad"  >
                  <div id="world-map-markers" style="height: 600px;">
-							<div class="jvectormap-container"  style="width: 100%; height: 100%; position: relative; overflow: hidden; background-color: transparent;">
-								<div id="Map_Dashboard_VisitPoint"  style="height: 600px;">
+							<div class="jvectormap-container"  style="width: 100%; height: 100%; position: relative; background-color: transparent;">
+								<div id="Map_Dashboard_VisitPoint"  style="width: 100%; height: 100%;">
 								</div>
 							</div>
 						</div>

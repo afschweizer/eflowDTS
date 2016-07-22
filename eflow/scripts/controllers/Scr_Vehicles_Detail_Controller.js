@@ -435,11 +435,11 @@ $scope.init = function(){
 		$scope.Notes=obj.JobActions;
 		for(var i=0;i<$scope.Notes.length;i++){
 		if(!$scope.Notes[i].Notes ==="No hay notas"){
-		//	$scope.Show_Notes=true;
-			//$scope.Show_Buttons=false;
+			$scope.Show_Notes=true;
+			$scope.Show_Buttons=false;
 		}else{
-			//$scope.Show_Notes=false;
-			//$scope.Show_Buttons=true;
+			$scope.Show_Notes=false;
+			$scope.Show_Buttons=true;
 		}
 }	
 }catch (e) {

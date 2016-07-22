@@ -5,14 +5,16 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 	$scope.init = function(){
 		try{
        	Set_Current_Page();
-		
+		$scope.flag = true;
 		//$scope.Polygon = {}; 
 		$('#Charging').modal('show');
 		$scope.Show_Components.VisitPoint_Form = true;
+		$scope.Show_Components.VisitPoint_See = true;
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");		
 		Load_Map_Init();
+		Load_Map_VisitPoint();
 		$scope.ArrayRoute = [];
 		var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
 		{"es":"SECTOR","value":"Route"},{"es":"DIRECCION","value":"Address"},
@@ -21,6 +23,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		$scope.Select();				
 		$scope.Show_Components.VisitPoint_Table = false;
 		$scope.Show_Components.VisitPoint_Add = true;
+		$scope.Show_Components.VisitPoint_Add1 = true;
 		$scope.Show_Components.Export = true;
 		Select_Routes();
 	}catch (e) {
@@ -46,6 +49,50 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
   
 };
 	
+	
+	function Load_Map_VisitPoint(){try{
+		var div = document.getElementById('Map_VisitPoint');
+		if(div){
+		map1 = new GMaps({
+			div:div,
+			lat:eflowDTS.Geolocation.Latitude,
+			lng:eflowDTS.Geolocation.Longitude,
+			zoom :8,
+			tilesloaded: function(e){
+			  $scope.Show_Components.VisitPoint_Form = false;
+			  $scope.Show_Components.VisitPoint_See = false;
+			  $scope.Show_Components.VisitPoint_Table = true;
+			  GMaps.off('tilesloaded',map);
+			  setTimeout(function(){
+	                	$('#Charging').modal('hide');
+	                	}, 3000);
+		    }
+    	});
+    }
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Load_Map_Init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};	
+	
+	
 	function Load_Map_Init(){try{
 		var div = document.getElementById('Map_Dashboard_VisitPoint');
 		if(div){
@@ -53,7 +100,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			div:div,
 			lat:eflowDTS.Geolocation.Latitude,
 			lng:eflowDTS.Geolocation.Longitude,
-			zoom :14,
+			zoom :14, resize:true,
 			click:function(e){
 				bootbox.dialog({
 					title:"¡Alerta!",
@@ -68,6 +115,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 			},
 			tilesloaded: function(e){
 			  $scope.Show_Components.VisitPoint_Form = false;
+			  $scope.Show_Components.VisitPoint_See = false;
 			  $scope.Show_Components.VisitPoint_Table = true;
 			  GMaps.off('tilesloaded',map);
 			  setTimeout(function(){
@@ -107,7 +155,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		   strokeOpacity: 1,
 		   strokeWeight: 3,
 		   fillColor: '#BBD8E9',
-		   fillOpacity: 0.4,
+		   fillOpacity: 0.4, 
+
 		   click: function(e) {
               $scope.VisitPoint.Latitude = e.latLng.lat();
 			  $scope.VisitPoint.Longitude = e.latLng.lng();
@@ -127,7 +176,9 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
               });
             }
 		});
-		map.setCenter(Obj.Route_Path[0][0],Obj.Route_Path[0][1]);
+		if($scope.flag === true){
+			map.setCenter(Obj.Route_Path[0][0],Obj.Route_Path[0][1]);
+		}
  }catch (e) {
         
         var err;
@@ -237,6 +288,23 @@ $scope.To_Order_By = function(Order_Type){try{
   
 };
 
+$scope.Load_VisitPoint= function(){
+	var Obj=$scope.ArrayVisitPoint;
+  	$scope.ArrayPoint=[];
+	map1.removePolygons();
+	map1.removeMarkers();	
+  for(var i=0; i<Obj.length;i++){
+  	
+  	 map1.addMarker({
+	 lat: parseFloat(Obj[i].Latitude),
+	 lng: parseFloat(Obj[i].Longitude)			 
+   });
+  	
+  	}
+  	
+
+}
+
 $scope.Load_New_Visit_Point = function(){try{
 	$scope.VisitPoint = {};
 	map.removePolygons();
@@ -291,6 +359,7 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
 			};//Insert
 			var onSuccess = function(e){								
 				$scope.Show_Components.VisitPoint_Form = false;
+				$scope.Show_Components.VisitPoint_See = false;
 				$scope.Show_Components.VisitPoint_Table = true;
 				$scope.Show_Components.VisitPoint_Add = true;
 				$scope.Show_Components.Export = true;
@@ -320,6 +389,7 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
 			};//Insert
 			var onSuccess = function(e){								
 				$scope.Show_Components.VisitPoint_Form = false;
+				$scope.Show_Components.VisitPoint_See = false;
 				$scope.Show_Components.VisitPoint_Table = true;
 				$scope.Show_Components.VisitPoint_Add = true;
 				$scope.Show_Components.Export = true;
@@ -496,19 +566,26 @@ $scope.Select = function(){
 };
    
 $scope.Visualize_Visit_Point = function(Obj){
-	try{   
+	try{
+		$scope.flag =false;
    $scope.VisitPoint = Obj;   
    $scope.Show_Components.VisitPoint_Form = true;
+   $scope.Show_Components.VisitPoint_See = false;
    $scope.Show_Components.VisitPoint_Table = false;
    $scope.Show_Components.VisitPoint_Add = false;
    $scope.Show_Components.Export = false;
    map.removePolygons();
    map.removeMarkers();
-   map.addMarker({
+  
+  map.setCenter(Obj.Latitude, Obj.Longitude, function(){
+  	 map.addMarker({
 	 lat: parseFloat(Obj.Latitude),
 	 lng: parseFloat(Obj.Longitude)			 
    });
+  });
+   
    Check_Route(Obj.Route); 
+   
 }catch (e) {
         
         var err;

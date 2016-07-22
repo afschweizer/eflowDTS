@@ -295,7 +295,7 @@ $scope.Select = function(){
 				    $scope.Array_Route.push(coor);				    
 				      this.addMarker({
 				        lat: e.latLng.lat(),
-				        lng: e.latLng.lng(),
+				        lng: e.latLng.lng(), draggable: true,
 				        title: 'Vértice',
 				        icon: 'images/Point_Blue.png'
 				      });
