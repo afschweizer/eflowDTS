@@ -83,6 +83,13 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
   
 };
 	
+	$scope.Resize = function(){
+		if(typeof map === "object"){
+			map.refresh();	
+		}
+
+	};
+	
 	$scope.refresh = function(){try{
 		Select_User_Online();
 		Select_Jobs();
