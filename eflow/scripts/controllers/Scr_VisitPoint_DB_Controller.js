@@ -1826,7 +1826,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 		var cantidad={};
 		var id=$scope.VisitPoint_Add.ID_Truck;*/
 		        	var obj = {};
-		  if(Task_Obj.JobType === "delivery"){
+		  if(Task_Obj.Type === "delivery"){
 		  	obj.JobTypeEs = "Entrega";
 		  }else{
 		  	obj.JobTypeEs = "Recolección";
