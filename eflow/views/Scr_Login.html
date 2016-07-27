@@ -43,14 +43,107 @@
                   </div>-->
 						<br/>
                     <div class="form-group">
+                
                         <!-- Button -->
                         <div class="col-sm-12 controls">
                             <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="glyphicon glyphicon-log-in"></i> Ingresar</button>                          
-                        </div>
+                             <span id="Buttons" style="margin-left:7%;">
+  <span>
+     <a class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;"  ng-click="Open_Modal_Add_Company()" data-toggle="tooltip" title="Agregar una compañia" >
+       <i ></i>Registrar</a>   
+	</span></span>  
+                      </div>
                     </div>
                 </div>     
             </div>                     
         </div>  
       </form>
     </div>
+  
+  	<!-- Modal Agregar User-->
+  <div class="modal fade" id="Modal_Agregar_Company" role="dialog">
+    <div class="modal-dialog modal-lg">
+                          <!-- Modal content-->
+       <div class="modal-content">
+				<div class="modal-header">
+                <h2 class="modal-title"><i class="glyphicon glyphicon-user"></i>Datos de la Compañia</h2>
+             </div> 
+                <div class="modal-body">
+        
+                 <div class="panel panel-info">
+                      <div class="panel-heading"><b>Todos</b> los campos son requeridos.
+                      </div>
+                  </div>
+                     	 <div class="form-group">
+                           
+                        </div>
+               </div>
+               <form  ng-submit="validate(Companys)"class="form-horizontal">
+                  <div class="box-body">
+                    <div class="form-group"> 
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
+                      <div class="col-sm-10">  
+                        <input type="text" class="form-control" ng-model="Companys.name" placeholder="Nombre"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Identificador</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.identifier" placeholder="Identificador"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Dominio</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.domain" placeholder="Dominio"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Correo</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.mail" placeholder="Correo"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">País</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.country" placeholder="País"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Ubicación</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.location" placeholder="Ubicacion"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Teléfono</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.phone" placeholder="Teléfono"required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Fax</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="Companys.fax" placeholder="Fax"required>
+                      </div>
+                    </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-info pull-right" >Guardar</button>
+                  </div><!-- /.box-footer -->
+                </form>
+               
+               
+       </div>
+    </div> 
+  </div>     
+                                
+                                
+                                
+                                
+                                
+                                
+                                
 </div>
