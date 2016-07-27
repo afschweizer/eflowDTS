@@ -8,10 +8,10 @@ $scope.init = function(){
 		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
 	//$scope.Show_Quantity=true;
-	       $scope.Show_Serie=false;
-           $scope.Show_Code=false;
-           $scope.Show_Quantity=false;
-           $scope.Show_Select_Vehicule = false;
+	    $scope.Show_Serie=false;
+        $scope.Show_Code=false;
+        $scope.Show_Quantity=false;
+        $scope.Show_Select_Vehicule = false;
 	    $scope.Array_Serials =  [];
         $scope.Check = false;
         $scope.Date = new Date(eflowDTS.Session.Calendar_Date);
@@ -1818,7 +1818,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 				}
 			}
 				
-			});
+			});  
 		}
 		else{
 
@@ -1828,7 +1828,9 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 		        	var obj = {};
 		  if(Task_Obj.JobType === "delivery"){
 		  	obj.JobTypeEs = "Entrega";
-		  }else{}
+		  }else{
+		  	obj.JobTypeEs = "Recolección";
+		  }
 		switch(Task_Obj.Serial) {
 		    case "SS":
 		        {
