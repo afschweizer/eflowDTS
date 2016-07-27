@@ -1155,7 +1155,1181 @@ $scope.Delete_Job_DB = function(){
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_Delete_ID=[];
 	
-	for (i=0; i < CheckBoxes_Array.length ;i++){
+		for (i=0; i < CheckBoxes_Array.length ;i++){
 		if (CheckBoxes_Array[i].checked == true){
 			//var Obj = JSON.parse(CheckBoxes_Array[i].value);
+			Array_Delete_ID.push(CheckBoxes_Array[i].attributes.id_check.value);
+			//Array_Remove($scope.ArrayJobs,Obj);
+			}
+	}
+		
+	
+	
+	var JsonData = {
+            'Method_Name': 'Delete_Task',
+            'Data': Array_Delete_ID
+        };
+        
+	var onSuccess = function(JsonData){
+		$scope.Select_VisitPoint();
+		};
+	
+	var onError =function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Delete_Job_DB",
+            Description: "onError",
+            User: eflowDTS.Session.UserName,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
+		console.log(JsonData);
+		};
+		
+	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+	 
+	 
+	 }
+	 };
+	 
+	 bootbox.confirm("¿Realmente desea borrar los elementos seleccionados?",Success);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Delete_Job_DB",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+$scope.Change = function(){try{
+	var x=document.getElementById("change");
+//	x.style.display="block";
+	if(x.style.display === "block")
+	{
+		x.style.display = "none";
+	}else{
+		x.style.display = "block";
+	}	 
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Change",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+$scope.SaveChange = function(txtUser,txtVehicle){try{
+	if(txtUser==null||txtUser==""||txtVehicle==null||txtVehicle==""){
+		alert("Debe asignar un usuario y un vehiculo");
+	}
+	else{
+		$scope.VerificarCheckBoxes();
+	}
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "SaveChange",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+function IDS_CheckBoxes(){
+	try{
+	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+	var Array_ID_Check = [];
+	
+	for (i=0; i < CheckBoxes_Array.length ;i++){
+			if (CheckBoxes_Array[i].checked === true){
+				Array_ID_Check.push(CheckBoxes_Array[i].attributes.id_check.value);
+			}
+		}
+		
+		return Array_ID_Check;
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "IDS_CheckBoxes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+$scope.Message=function(user,matter,detail){try{
+	var JsonData = 
+				{
+					'Method_Name': 'Insert_Notification',
+					'Data': 
+					{
+						"Collection_Info": 
+						{
+							"COLLECTION_NAME": "Store_Notification",
+							"COLLECTION_SCHEMA": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
+						},
+						"User": user,
+						"State": "Unread",
+						"Date": new Date(eflowDTS.Session.Calendar_Date).format("yyyy-mm-dd"),
+						"Matter": matter,
+						"Detail": detail,
+						"Transferring_State": "Pending_To_Mobile"
+					}
+				};
+				var onSuccess = function(JsonData){
+				};
+				var onError =function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Message",
+            Description: "onError",
+            User: eflowDTS.Session.UserName,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
+				console.log(JsonData);
+				};
+				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Message",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+$scope.Assign_Status = function(status){try{
+		if(status === null||status ===""){
+			alert("Debe digitar o selecionar al menos un campo");
+		}
+		else{
 			
+			var ArrayID = IDS_CheckBoxes();
+			if(ArrayID.length > 0){
+				for(var i = 0; i < $scope.ArrayJobs.length; i++){
+					for(var j = 0; j < ArrayID.length; j++){
+						if($scope.ArrayJobs[i]._id.$id === ArrayID[j]){
+							
+							if($scope.ArrayJobs[i].Visit_State !== "Finalized"){
+								$scope.ArrayJobs[i].Visit_State = status;
+								$scope.ArrayJobs[i].Control.Modification_Date = new Date().getTime();
+								$scope.ArrayJobs[i].Control.Modify_User= eflowDTS.Session.UserName;
+								delete $scope.ArrayJobs[i].$$hashKey;
+								var JsonData = 
+								{
+									'Method_Name': 'Update_Jobs',
+									'Data': $scope.ArrayJobs[i]
+								};
+								var onSuccess = function(JsonData){
+									$scope.Select_VisitPoint();
+								};
+								var onError = function(JsonData){
+				};
+				var onError =function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_Status",
+            Description: "onError",
+            User: eflowDTS.Session.UserName,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
+									alert(JsonData);
+								};
+								Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
+							}
+							else{
+								
+								bootbox.dialog({
+			title:"¡Alerta!",
+			message:"No se puede realizar cambios a trabajos ya terminados",
+			buttons:{
+				main:{
+					label:"Ok!",
+					className:"btn-primary"
+				}
+			}
+				
+			});
+					}
+				}
+				}	
+			}			
+		}			
+	}	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_Status",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+$scope.Assign_All = function(Assign){try{
+		var user,oldUser,date,truck;
+		if(Assign == undefined){
+			bootbox.dialog({
+			title:"¡Alerta!",
+			message:"Debe seleccionar al menos un registro.",
+			buttons:{
+				main:{
+					label:"Ok!",
+					className:"btn-primary"
+				}
+			}
+				
+			});
+		}
+		else{
+			var ArrayID = IDS_CheckBoxes();
+			if(ArrayID.length > 0){
+				for(var i = 0; i < $scope.ArrayJobs.length; i++){
+					for(var j = 0; j < ArrayID.length; j++){
+						if(Assign.hasOwnProperty("User")===true){
+							user = Assign.User;
+							oldUser = $scope.ArrayJobs[i].User;
+						}
+						else{
+							user = $scope.ArrayJobs[i].User;
+						}
+						if(Assign.hasOwnProperty("ID_Truck")===true){
+						   truck = Assign.ID_Truck;
+						}
+						else{
+						   truck = $scope.ArrayJobs[i].ID_Truck;
+						}
+						if(Assign.hasOwnProperty("Estimated_Date")===true){
+						   date = Assign.Estimated_Date;
+						}
+						else{
+						   date = $scope.ArrayJobs[i].Estimated_Date;
+						}
+						if($scope.ArrayJobs[i]._id.$id === ArrayID[j]){
+							if($scope.ArrayJobs[i].Visit_State !== "Finalized"){
+								if($scope.ArrayJobs[i].Visit_State === "Aborted"){
+									$scope.Message(oldUser,"Cambio de Trabajo","Se le ha desasignado un trabajo");
+									$scope.Message(user,"Cambio de Trabajo","Se le ha asignado un nuevo trabajo");
+								}
+								$scope.ArrayJobs[i].User = user;
+								$scope.ArrayJobs[i].ID_Truck = truck; 
+								$scope.ArrayJobs[i].Control.Modification_Date = new Date().getTime(); 
+								$scope.ArrayJobs[i].Control.Modify_User = eflowDTS.Session.UserName; 
+								
+								$scope.ArrayJobs[i].Estimated_Date = new Date(date).getTime() + eflowDTS.Time.Difference;
+								$scope.ArrayJobs[i].Visit_State = "In_Process";
+								delete $scope.ArrayJobs[i].$$hashKey;
+								var JsonData = 
+								{
+									'Method_Name': 'Update_Jobs',
+									'Data': $scope.ArrayJobs[i]
+								};
+								var onSuccess = function(JsonData){
+									$scope.Select_VisitPoint();
+								};
+								var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_All",
+            Description: "onError",
+            User: eflowDTS.Session.UserName,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
+									console.log(JsonData);
+								};
+								Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
+							}
+							else{
+									bootbox.dialog({
+									title:"¡Alerta!",
+									message:"No se puede realizar cambios a trabajos ya terminados",
+									buttons:{
+										main:{
+											label:"Ok!",
+											className:"btn-primary"
+										}
+									}
+										
+									});
+							}										
+						}
+					}
+				}	
+			}			
+		}	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Assign_All",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+	
+$scope.Open_Modal_Add_VisitPoint = function(){
+	try{
+	$scope.Show_Select_Vehicule = false;
+	$scope.VisitPoint_Add = {};
+	$scope.VisitPoint_Add_Task = {};
+	$scope.VisitPoint_Add_Array_Task = [];
+	$scope.VisitPoint_Add.Estimated_Date = new Date(eflowDTS.Session.Calendar_Date).format("yyyy-mm-dd");
+
+	$("#Modal_Add_VisitPoint").modal("show");	
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Open_Modal_Add_VisitPoint",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+$scope.Open_Modal_Change = function(){
+	try{
+	document.getElementById("Usuario").selectedIndex = "-1";
+	document.getElementById("Vehicle").selectedIndex = "-1";
+	//$scope.Assign={};
+	//$scope.Assign.Estimated_Date = new Date(eflowDTS.Session.Calendar_Date).format("yyyy-mm-dd");
+	$("#Modal_Change").modal("show");	
+	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Open_Modal_Change",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+$scope.Open_Modal_Change_Status = function(){
+	try{
+	$("#Modal_Change_Status").modal("show");	
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Open_Modal_Change_Status",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+ 
+ 
+ 
+$scope.Add_New_VisitPoint = function(New_Job){
+try{
+		var obj_Job = {};
+		//obj_Job.VisitPoint = {};
+		obj_Job.Control={};
+		obj_Job.Control.Creation_Date = new Date().getTime() ;
+		obj_Job.Control.Created_User = eflowDTS.Session.UserName;
+		obj_Job.ID_Location = New_Job.PV_Info.ID_Location;
+		obj_Job.Manager = New_Job.PV_Info.Manager;
+		obj_Job.Name = New_Job.PV_Info.Name;
+		obj_Job.Address = New_Job.PV_Info.Address;
+		obj_Job.Telephone_Number = New_Job.PV_Info.Telephone_Number;
+		obj_Job.Mail = New_Job.PV_Info.Mail;
+		obj_Job.Company= eflowDTS.Session.Company;	
+		obj_Job.Legal_Cedula = New_Job.PV_Info.Legal_Cedula;
+		obj_Job.Route = {};
+		obj_Job.Route.Route_Name=New_Job.PV_Info.Route.Route_Name;
+		obj_Job.Route.ID_Route=New_Job.PV_Info.Route.ID_Route;
+		
+		//obj_Job.Visit_State = "Incompleted";
+		obj_Job.Latitude = New_Job.PV_Info.Latitude;
+		obj_Job.Longitude = New_Job.PV_Info.Longitude;
+		obj_Job.Country = New_Job.PV_Info.Country;
+		obj_Job.District = New_Job.PV_Info.District;
+		obj_Job.Province = New_Job.PV_Info.Province;
+		obj_Job.Canton = New_Job.PV_Info.Canton;
+		obj_Job.ID_Truck = New_Job.ID_Truck;
+		obj_Job.Order_Number = New_Job.Order_Number;
+		obj_Job.Invoice = New_Job.Invoice;
+		obj_Job.Collection_Info = {};
+		obj_Job.Collection_Info.Collection_Name = "Store_Jobs";
+		obj_Job.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
+		obj_Job.Visit_Point_Incidents = [];
+		obj_Job.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
+											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},
+											  {"text":"Problemas con el vehículo.","value":"Vehiculo"},
+											  {"text":"Problema con Encargado.","value":"Encargado"},
+        									  {"text": "Retraso.", "value": "Delay_Incidents"},
+											  {"text":"No Visita.","value":"NoVisito"},
+											  {"text":"Otros.","value":"Otros"}];
+		obj_Job.Visit_Point_States = [{"name":"Pendiente"},
+									  {"name":"En Proceso"},
+									  {"name":"Finalizado"},
+									  {"name":"Abortado"}];
+									  
+						obj_Job.Visit_Point_Abort = " var incident = {}; eflowDTS_lib.GetServerTime().getTime();  incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = [] ;incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;",
+    obj_Job.Visit_Point_Confirm = " var incident = {}; eflowDTS_lib.GetServerTime().getTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = [];incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;",
+		/*							  
+		 " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;";
+        " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;";
+      */  obj_Job.Sequence = New_Job.Sequence;
+		obj_Job.Estimated_Date = new Date(New_Job.Estimated_Date).getTime() + eflowDTS.Time.Difference;
+		obj_Job.Estimated_Delivery_Time = New_Job.Estimated_Delivery_Time;
+		obj_Job.User = New_Job.User;
+		obj_Job.Transferring_State = "Pending_To_Mobile";
+		obj_Job.Delivery_Period_Start = New_Job.Delivery_Period_Start; 
+		obj_Job.Delivery_Period_End = New_Job.Delivery_Period_End;
+		obj_Job.Jobs = $scope.VisitPoint_Add_Array_Task;
+		
+		if(obj_Job.ID_Truck==null || obj_Job.ID_Truck==undefined||obj_Job.User==null || obj_Job.User==undefined)
+    {
+	    obj_Job.Visit_State = "Unassigned";
+	}
+	else{
+		obj_Job.Visit_State = "In_Process";
+	}
+	
+        $scope.ArrayJobs.push(obj_Job);
+		var Array_Save = [];
+		Array_Save.push(obj_Job);
+		var JsonData = 
+				{
+					'Method_Name': 'Insert_Job',
+					'Data': Array_Save
+				};
+				var onSuccess = function(JsonData){
+				$scope.Select_VisitPoint(); 
+				$('#Modal_Add_VisitPoint').modal('hide');
+				};
+				var onError = function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_New_VisitPoint",
+            Description: "onError",
+            User: eflowDTS.Session.UserName,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
+				console.log(JsonData);
+				};
+				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_New_VisitPoint",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+
+$scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
+	try{
+	if(Task_Obj.Type === "" || Task_Obj.Type === 0 ||
+	Task_Obj.Name === "" || Task_Obj.Name === undefined ||
+	Task_Obj.Serial === "" || Task_Obj.Serial === undefined ||
+	Task_Obj.Description === "" || Task_Obj.Description === undefined ||
+	Task_Obj.Instruction === "" || Task_Obj.Instruction === undefined ||
+	Task_Obj.UoM === "" || Task_Obj.UoM === undefined ||
+	Task_Obj.JobWeight === "" || Task_Obj.JobWeight === undefined ||
+	Task_Obj.JobCubics === "" || Task_Obj.JobCubics === undefined ){
+			bootbox.dialog({
+			title:"¡Alerta!",
+			message:"Debe completar todos los campos",
+			buttons:{
+				main:{
+					label:"Ok!",
+					className:"btn-primary"
+				}
+			}
+				
+			});
+		}
+		else{
+
+		/*
+		var cantidad={};
+		var id=$scope.VisitPoint_Add.ID_Truck;*/
+		        	var obj = {};
+		switch(Task_Obj.Serial) {
+		    case "SS":
+		        {
+		        	obj.JobClass="SS";
+					obj.JobID = (new Date().getTime()).toString();
+					obj.JobType = Task_Obj.Type;
+					obj.JobName = Task_Obj.Name;
+					obj.JobDescription = Task_Obj.Description;
+					obj.JobInstructions = Task_Obj.Instruction;
+					obj.BarCode = Task_Obj.BarCode;
+					obj.UOM = Task_Obj.UoM;
+					obj.Quantity = Task_Obj.Quantity;
+				/*	cantidad.JobWeight = Task_Obj.JobWeight;
+					cantidad.JobCubics = Task_Obj.JobCubics;*/
+					obj.JobWeight = Task_Obj.JobWeight;
+					obj.JobCubics = Task_Obj.JobCubics;
+					obj.Quantity_Register = 0;
+					obj.JobState = "Uninitiated";
+					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
+					obj.JobImage = "Funcion de Photos('Task.Photo')";
+					obj.JobActions = [];
+					if($scope.VisitPoint_Add_Array_Task){
+						//$scope.Verify_Weight_Volume(id,cantidad);
+						$scope.VisitPoint_Add_Array_Task.push(obj);			
+					}else{
+						$scope.VisitPoint_Add_Array_Task = [];
+						//$scope.Verify_Weight_Volume(id,cantidad);
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
+					}
+					$scope.VisitPoint_Add_Task = {};
+					
+	       $scope.Show_Serie=false;
+           $scope.Show_Code=false;
+           $scope.Show_Quantity=false;
+		        	break;
+		        }
+		    case "SU":
+		   		{
+		        	obj.JobClass="SU";
+					obj.JobID = (new Date().getTime()).toString();
+					obj.JobType = Task_Obj.Type;
+					obj.JobName = Task_Obj.Name;
+					obj.JobDescription = Task_Obj.Description;
+					obj.JobInstructions = Task_Obj.Instruction;
+					obj.UOM = Task_Obj.UoM;
+					obj.Quantity = Task_Obj.Quantity;
+					
+					obj.JobWeight = Task_Obj.JobWeight;
+					obj.JobCubics = Task_Obj.JobCubics;
+					obj.Quantity_Register = 0;
+					obj.JobState = "Uninitiated";
+					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
+					obj.JobImage = "Funcion de Photos('Task.Photo')";
+					obj.JobActions = [];
+					if($scope.VisitPoint_Add_Array_Task){
+						$scope.VisitPoint_Add_Array_Task.push(obj);			
+					}else{
+						$scope.VisitPoint_Add_Array_Task = [];
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
+					}
+					$scope.VisitPoint_Add_Task = {};
+	       $scope.Show_Serie=false;
+           $scope.Show_Code=false;
+           $scope.Show_Quantity=false;
+		        	break;
+		        }
+		    case "SP":
+		    	{
+		        	obj.JobClass="SP";
+					obj.JobID = (new Date().getTime()).toString();
+					obj.JobType = Task_Obj.Type;
+					obj.JobName = Task_Obj.Name;
+					obj.Serial_List= $scope.Array_Serials;
+					obj.JobDescription = Task_Obj.Description;
+					obj.JobInstructions = Task_Obj.Instruction;
+					obj.UOM = Task_Obj.UoM;
+					obj.Quantity = ($scope.Array_Serials.length);
+					obj.JobWeight = Task_Obj.JobWeight;
+					obj.JobCubics = Task_Obj.JobCubics;
+					obj.Quantity_Register = 0;
+					obj.JobState = "Uninitiated";
+					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
+					obj.JobImage = "Funcion de Photos('Task.Photo')";
+					obj.JobActions = [];
+					if($scope.VisitPoint_Add_Array_Task){
+						$scope.VisitPoint_Add_Array_Task.push(obj);			
+					}else{
+						$scope.VisitPoint_Add_Array_Task = [];
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
+					}
+					$scope.VisitPoint_Add_Task = {};
+					$scope.Array_Serials = [];
+	       $scope.Show_Serie=false;
+           $scope.Show_Code=false;
+           $scope.Show_Quantity=false;
+		        	break;
+		        }
+		}
+		}
+		
+		/*
+		var obj = {};
+		obj.JobID = (new Date().getTime()).toString();
+		obj.JobType = Task_Obj.Type;
+		obj.JobName = Task_Obj.Name;
+		obj.JobDescription = Task_Obj.Description;
+		obj.JobInstructions = Task_Obj.Instruction;
+		
+		obj.BarCode = Task_Obj.BarCode;
+		obj.UOM = Task_Obj.UoM;
+		obj.Quantity = Task_Obj.Quantity;
+		obj.JobWeight = Task_Obj.JobWeight;
+		obj.JobCubics = Task_Obj.JobCubics;
+		obj.Quantity_Register = 0;
+		obj.JobState = "Uninitiated";
+		obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
+		obj.JobImage = "Funcion de Photos('Task.Photo')";
+		obj.JobActions = [];
+		if($scope.VisitPoint_Add_Array_Task){
+			$scope.VisitPoint_Add_Array_Task.push(obj);			
+		}else{
+			$scope.VisitPoint_Add_Array_Task = [];
+			$scope.VisitPoint_Add_Array_Task.push(obj);	
+		}
+		$scope.VisitPoint_Add_Task = {};*/
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_Task_In_VisitPoint_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+	
+
+
+function Delete_Attributes(arr){
+	try{
+	var Json_Array = arr;
+	
+	for(var i = 0; i < Json_Array.length; i++){
+		
+		var Obj = Json_Array[i];
+		
+		delete Obj._id;
+		delete Obj.Visit_Point_Incidents;
+		delete Obj.Visit_Point_Incidents_Type;
+		delete Obj.Visit_Point_States;
+		delete Obj.Visit_State;
+		delete Obj.Visit_Point_Abort;
+		delete Obj.Visit_Point_Confirm;
+		delete Obj.Transferring_State;
+		delete Obj.$$hashKey;
+		
+		for(var y = 0; y < Obj.Jobs.length; y++){
+			
+			var Job = Obj.Jobs[y];
+			
+			delete Job.JobActions;
+			delete Job.Quantity_Register;
+			delete Job.JobState;		
+			delete Job.JobImage;
+			delete Job.JobValidator;
+			delete Job.$$hashKey;
+				
+		}
+		
+	}	
+	
+	return Json_Array;
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Delete_Attributes",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+function Export_JSON(arr){
+	try{
+	var text = [];
+	
+	text.push(JSON.stringify(Delete_Attributes(arr)));
+    
+    var file = new Blob(text, {
+        type: 'application/json'
+    });
+	
+	
+    Download_File(file, 'Puntos_de_Visita.json');
+
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_JSON",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+function Download_File(contenidoEnBlob, nombreArchivo) {
+   try{
+   var reader = new FileReader();
+    reader.onload = function (event) {
+        var save = document.createElement('a');
+        save.href = event.target.result;
+        save.target = '_blank';
+        save.download = nombreArchivo || 'archivo.dat';
+        var clicEvent = new MouseEvent('click', {
+            'view': window,
+                'bubbles': true,
+                'cancelable': true
+        });
+        save.dispatchEvent(clicEvent);
+        (window.URL || window.webkitURL).revokeObjectURL(save.href);
+    };
+    reader.readAsDataURL(contenidoEnBlob);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Download_File",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+function Export_XML(arr){
+	try{
+	Download_File(Generate_XML(arr), 'Puntos_de_Visita.xml');
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_XML",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+function Generate_XML(arr) {
+	try{
+	var datos = arr ; 
+    var texto = [];
+    texto.push('<?xml version="1.0" encoding="UTF-8" ?>\n');
+	texto.push('<Data>\n');
+	for(var i = 0; i < datos.length; i++){
+		texto.push('<VisitPoint>\n');
+		
+		texto.push('\t<ID_Location>' + datos[i].ID_Location + '</ID_Location>\n');
+		texto.push('\t<Manager>' + datos[i].Manager + '</Manager>\n');
+		texto.push('\t<Name>' + datos[i].Name + '</Name>\n');
+		texto.push('\t<Address>' + datos[i].Address + '</Address>\n');
+		texto.push('\t<TelephoneNumber>' + datos[i].Telephone_Number + '</TelephoneNumber>\n');
+		texto.push('\t<Mail>' + datos[i].Mail + '</Mail>\n');
+		texto.push('\t<Latitude>' + datos[i].Latitude + '</Latitude>\n');
+		texto.push('\t<Longitude>' + datos[i].Longitude + '</Longitude>\n');
+		texto.push('\t<Order_Number>' + datos[i].Order_Number + '</Order_Number>\n');
+		texto.push('\t<ID_Truck>' + datos[i].ID_Truck + '</ID_Truck>\n');
+		texto.push('\t<Invoice>' + datos[i].Invoice + '</Invoice>\n');
+		texto.push('\t<Sequence>' + datos[i].Sequence + '</Sequence>\n');
+		texto.push('\t<EstimatedDate>' + datos[i].Estimated_Date + '</EstimatedDate>\n');
+		texto.push('\t<EstimatedDeliveryTime>'+ datos[i].Estimated_Delivery_Time+'</EstimatedDeliveryTime>\n');
+		texto.push('<DeliveryPeriod>\n');
+		texto.push('\t<Start>' + datos[i].Delivery_Period_Start + '</Start>\n');
+		texto.push('\t<End>' + datos[i].Delivery_Period_End + '</End>\n');
+		texto.push('</DeliveryPeriod>\n');
+		texto.push('\t<User>' + datos[i].User + '</User>\n');
+		
+		for(var j = 0; j < datos[i].Jobs.length; j++){
+			texto.push('<Jobs>\n');
+			
+	texto.push('\t<JobID>' + datos[i].Jobs[j].JobID + '</JobID>\n');
+	texto.push('\t<JobType>' + datos[i].Jobs[j].JobType + '</JobType>\n');
+	texto.push('\t<JobName>' + datos[i].Jobs[j].JobName + '</JobName>\n');
+	texto.push('\t<BarCode>' + datos[i].Jobs[j].BarCode + '</BarCode>\n');
+	texto.push('\t<JobDescription>' + datos[i].Jobs[j].JobDescription + '</JobDescription>\n');
+	texto.push('\t<UOM>' + datos[i].Jobs[j].UOM + '</UOM>\n');
+	texto.push('\t<Quantity>' + datos[i].Jobs[j].Quantity + '</Quantity>\n');
+	texto.push('\t<JobWeight>' + datos[i].Jobs[j].JobWeight+ '</JobWeight>\n');
+	texto.push('\t<JobCubics>' + datos[i].Jobs[j].JobCubics+ '</JobCubics>\n');
+	texto.push('\t<JobInstructions>' + datos[i].Jobs[j].JobInstructions + '</JobInstructions>\n');
+	
+			texto.push('</Jobs>\n');
+		}
+		texto.push('</VisitPoint>\n');
+	}
+	texto.push('</Data>\n');
+    
+    return new Blob(texto, {
+        type: 'application/xml'
+    });
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Generate_XML",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+function Export_CSV(arr) {
+	try{
+    
+    var arrData = arr;
+    var CSV = '';    
+    
+        var row = "";
+           
+   		    row += '"ID_Location",';
+			row += '"Manager",';
+			row += '"Name",';
+			row += '"Address",';
+			row += '"Telephone_Number",';
+			row += '"Mail",';
+			row += '"Latitude",';
+			row += '"Longitude",';
+			row += '"Sequence",';
+			row += '"Order_Number",';
+			row += '"ID_Truck",';
+			row += '"Invoice",';
+			row += '"Estimated_Date",';
+			row += '"Estimated_Delivery_Time",';
+			row += '"Delivery_Period_Start",';
+			row += '"Delivery_Period_End",';
+			row += '"User",';
+			row += '"JobID",';
+			row += '"JobType",';
+			row += '"JobName",';
+			row += '"BarCode",';
+			row += '"JobDescription",';
+			row += '"UOM",';
+			row += '"Quantity",';
+			row += '"JobWeight",';
+			row += '"JobCubics",';
+			row += '"JobInstructions",';
+			
+        
+        row = row.slice(0, -1);
+         
+        CSV += row + '\r\n';
+    	
+    for (var i = 0; i < arrData.length; i++) {
+      
+		for(var j = 0; j < arrData[i].Jobs.length; j++){
+		row = "";
+		row += '"' + arrData[i].ID_Location + '",';
+		row += '"' + arrData[i].Manager + '",';
+		row += '"' + arrData[i].Name + '",';
+		row += '"' + arrData[i].Address + '",';
+		row += '"' + arrData[i].Telephone_Number + '",';
+		row += '"' + arrData[i].Mail + '",';
+		row += '"' + arrData[i].Latitude + '",';
+		row += '"' + arrData[i].Longitude + '",';
+		row += '"' + arrData[i].Sequence + '",';
+		row += '"' + arrData[i].Order_Number + '",';
+		row += '"' + arrData[i].ID_Truck + '",';
+		row += '"' + arrData[i].Invoice + '",';
+		row += '"' + arrData[i].Estimated_Date + '",';
+		row += '"' + arrData[i].Estimated_Delivery_Time + '",';
+		row += '"' + arrData[i].Delivery_Period_Start + '",';
+		row += '"' + arrData[i].Delivery_Period_End + '",';
+		row += '"' + arrData[i].User + '",';	
+		row += '"' + arrData[i].Jobs[j].JobID + '",';
+		row += '"' + arrData[i].Jobs[j].JobType + '",';
+		row += '"' + arrData[i].Jobs[j].JobName + '",';
+		row += '"' + arrData[i].Jobs[j].BarCode + '",';
+		row += '"' + arrData[i].Jobs[j].JobDescription + '",';
+		row += '"' + arrData[i].Jobs[j].UOM + '",';
+		row += '"' + arrData[i].Jobs[j].Quantity + '",';
+		row += '"' + arrData[i].Jobs[j].JobWeight + '",';
+		row += '"' + arrData[i].Jobs[j].JobCubics + '",';
+		row += '"' + arrData[i].Jobs[j].JobInstructions + '",';
+		row.slice(0, row.length - 1);
+       
+        CSV += row + '\r\n';
+		}        
+    } 
+    
+    if (CSV === '') {        
+        alert("Invalid data");
+        return;
+    }  
+
+    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+    var link = document.createElement("a");    
+    link.href = uri;
+    link.style = "visibility:hidden";
+    link.download = "Puntos_de_Visita.csv";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Export_CSV",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+	
+});
+		
