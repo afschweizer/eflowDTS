@@ -10,9 +10,9 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 		
     Configuration: {
         "URLs": { 
-           "eflow_Get": "http://104.197.119.240/production/eflowDTS/Eflow_Get.php",
-           "eflow_Post": "http://104.197.119.240/production/eflowDTS/Eflow_Post.php",
-           "eflow_Date_Time" : "http://104.197.119.240/production/eflowDTS/time.php"
+           "eflow_Get": "http://104.197.119.240/testing/eflowDTS/Eflow_Get.php",
+           "eflow_Post": "http://104.197.119.240/testing/eflowDTS/Eflow_Post.php",
+           "eflow_Date_Time" : "http://104.197.119.240/testing/eflowDTS/time.php"
         } 
     },      
     Session: {},

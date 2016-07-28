@@ -14,7 +14,6 @@
             .when('/Data_Summary',{
             	templateUrl : 'views/Scr_Summary.html'
             })
-            
             .when('/Calendar', {
                 templateUrl : 'views/Scr_Calendar.html'
             })
@@ -65,13 +64,15 @@
             })
             .when('/Company',{
                 templateUrl : 'views/Scr_Company.html'
-            })
-            
+            }) 
             .when('/Routes',{
             	templateUrl : 'views/Scr_Route.html'
             })
             .when('/tracking',{
             	templateUrl : 'views/Scr_Tracking.html'
+            })
+            .when('/VisitPoint_General_View',{
+            	templateUrl : 'views/Scr_VisitPoint_General_View.html'
             })
             /*
             
