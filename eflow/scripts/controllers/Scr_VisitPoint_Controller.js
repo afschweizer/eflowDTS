@@ -1,7 +1,7 @@
 
-var map;
+var map; 
 DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
-
+ 
 	$scope.init = function(){
 		try{
        	Set_Current_Page();
@@ -23,7 +23,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		$scope.Select();				
 		$scope.Show_Components.VisitPoint_Table = false;
 		$scope.Show_Components.VisitPoint_Add = true;
-		$scope.Show_Components.VisitPoint_Add1 = true;
+		$scope.Show_Components.VisitPoint_Add1 = false;
 		$scope.Show_Components.Export = true;
 		Select_Routes();
 	}catch (e) {
