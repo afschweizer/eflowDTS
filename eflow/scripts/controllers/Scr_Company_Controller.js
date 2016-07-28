@@ -3,6 +3,8 @@
 	$scope.init = function(){
 		try{
        	Set_Current_Page();
+       	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
+$scope.ArrayGenders = Gender;
 		//To_Reload_Eflow_Config();
 		//eflowDTS = Get_Cookie("EflowCookie");
 		//Get_Cookie("EflowCookie"); 
@@ -28,6 +30,10 @@
     } 
 		};
 		
+		
+$scope.toggle = function(id){
+	$('#'+id).collapse('toggle');
+}
 $scope.validate = function(com){
 try{
 						  var JsonData = {
