@@ -193,7 +193,7 @@
                   <div class="form-group">
 											<input id="Birthdate" type="date" min="18" max="80" class="form-control" name="Birthdate" value="" ng-model="User.Birthdate"  required>
                               </div></div></div>	
-                        <div class="form-group">
+                        <div class="form-group"  ng-show="Show_Components.Mail">
 											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Correo:</label>
                 <!--                <div class="col-sm-4"> 
                   <div class="form-group">
@@ -314,7 +314,7 @@
 											
 											<input id="Identification" type="number" class="form-control" name="Identification" value="" ng-model="User.Identification" placeholder="Cédula..." required>
                               </div></div></div> 
-                       			<div class="form-group">
+                       			<div class="form-group"  ng-show="Show_Components.Mail">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Correo:</label><div class="col-sm-8"> 
                   <div class="form-group">
 											

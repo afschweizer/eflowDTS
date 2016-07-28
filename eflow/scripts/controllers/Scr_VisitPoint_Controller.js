@@ -92,6 +92,11 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
   
 };	
 	
+	$scope.Resize = function(){
+		if(typeof map === "object"){
+			map.refresh();
+		}
+	};
 	
 	function Load_Map_Init(){try{
 		var div = document.getElementById('Map_Dashboard_VisitPoint');

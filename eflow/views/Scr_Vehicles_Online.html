@@ -1,11 +1,10 @@
 <style>
   
 #Wrapper_Map{
-    border: 2px solid;
     width: 100%;
-    height:400px;
+    height:410px;
     resize: vertical;
-    padding: 20px;
+    padding: 10px;
     overflow: auto;
 }
   
@@ -76,26 +75,20 @@
 		 		 <div class="box ">
                 <div class="box-header with-border bg-blue">
                   <h3 class="box-title"><b>Rastreo de Vehículos</b></h3>
-                 <div class="box-tools pull-right">
-                   <button class="btn btn-box-tool" data-toggle="tooltip" title="Refrescar" ng-click="Resize();"><i class="glyphicon glyphicon-sort"></i></button> 
+                 <div class="box-tools pull-right">                   
+                   <button class="btn btn-box-tool" data-toggle="tooltip" title="Ajustar Tamaño" ng-click="Resize();"><i class="glyphicon glyphicon-refresh"></i></button>
                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Refrescar" ng-click="Create_Map();"><i class="glyphicon glyphicon-sort"></i></button>
                   </div>
                 </div><!-- /.box-header -->
-                <div class="box-body no-padding" ng-show="Show_Components.Map_Online_User" id="Wrapper_Map">
-                      <div class="pad"  >
-                        <!-- Map will be created here -->
-                        <div id="world-map-markers" style="height: 410px;" >
-							<div class="jvectormap-container">
-								<div id="Map_Online_User"  style="width:100%;height:100%;"></div>
-							</div>
-						</div>
-                      </div>
-                </div><!-- /.box-body -->
-              </div>
+                <div class="box-body no-padding" ng-show="Show_Components.Map_Online_User">
+                   <div id="Wrapper_Map">
+								<div id="Map_Online_User" style="height:100%; width:100%;"></div>
+                   </div><!-- /.box-body -->
+                </div>
            </div>
-   </div>
+   </div> 
 
-
+</div>
  
   <br/>
   <br/>
@@ -157,5 +150,4 @@
 		
   
   
-  
-</div>
+  </div>

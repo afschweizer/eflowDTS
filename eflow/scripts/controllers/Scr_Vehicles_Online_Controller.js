@@ -2,11 +2,13 @@ var map;
 DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 
 
-			$scope.init = function(){	try{
-       	Set_Current_Page();
+			$scope.init = function(){
+				
+				try{
+       	    Set_Current_Page();
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
-			$('#Charging').modal('show');
+	        $('#Charging').modal('show');
 			Load_Init_Map();
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
@@ -42,6 +44,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 	
 	function Load_Init_Map(){
 		try{
+			
 		var div = document.getElementById('Map_Online_User');
    			
    			if(div){
@@ -84,6 +87,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 };
 	
 	$scope.Resize = function(){
+		
 		if(typeof map === "object"){
 			map.refresh();	
 		}

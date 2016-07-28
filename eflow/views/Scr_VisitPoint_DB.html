@@ -142,10 +142,10 @@
         </div>
 	</div>  
 </div>   
-  
+  <!-- style="background-color:#295C7A"*/-->
     <div style="float:left;"> 
-        <ul class="nav nav-pills ">
-           <li ><a ng-click="See_Status('')">Total de registros <span class="badgea">{{ArrayJobs.length}}</span></a></li>
+        <ul class="nav nav-pills " >
+           <li ><a ng-click="See_Status('')">Total de registros <span  class="badgea">{{ArrayJobs.length}}</span></a></li>
            <li ><a ng-click="See_Status('Finalized')">Finalizados <span class="badgea badge-Finalized" >{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}</span></a></li>
            <li ><a ng-click="See_Status('Partial')">Parcialmente Finalizados <span class="badgea badge-Partial">{{(ArrayJobs | filter:  {'Visit_State': 'Partial'} :true).length}}</span></a></li> 
            <li ><a ng-click="See_Status('In_Process')">En Proceso <span class="badgea badge-In_Process" >{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span></a></li>

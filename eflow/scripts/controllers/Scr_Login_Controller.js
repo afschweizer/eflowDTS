@@ -42,6 +42,36 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
     } 
 	};
 
+$scope.Open_Modal_Add_Company = function(){
+	try{
+
+	$("#Modal_Agregar_Company").modal("show");	
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Login_Controller",
+                Method: "Open_Modal_Add_Company",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+
    // $scope.Show_Components.Main_Menu = false;
 		
 	$scope.Log_In = function(Log){
