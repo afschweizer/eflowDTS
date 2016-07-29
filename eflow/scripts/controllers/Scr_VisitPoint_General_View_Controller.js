@@ -3,6 +3,8 @@ DTS_APP.controller('Scr_VisitPoint_General_View_Controller',function($scope){
 
 $scope.init = function(){
 try{
+	
+	$scope.ArrayRoute = [];
        	    Set_Current_Page();
 	        $('#Charging').modal('show');
 			
@@ -141,13 +143,11 @@ try{
 	
 	$scope.See_Routes = function(){
 	try{
-		if($scope.Array_Route.isArray()){
-			
-			map.removePoligons();
-			
+	map.removePolygons();
+	
 		for(var i = 0; i < $scope.Array_Route.length; i++){
-			var Route = $scope.Array_Route[i];
 			
+			var Route = $scope.Array_Route[i];			
 				map.drawPolygon({
 					paths: Route.Route_Path,
 					strokeColor: '#BBD8E9',
@@ -155,12 +155,8 @@ try{
 					strokeWeigth: 3,
 					fillColor: '#BBD8E9',
 					fillOpacity: 0.6				
-				});	
-			
+				});				
 		}
-	   }
-
-		
 		
 	}catch(e){		
 		console.error(e);

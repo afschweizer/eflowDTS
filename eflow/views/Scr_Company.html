@@ -1,7 +1,7 @@
 <div ng-controller="Scr_Company_Controller" ng-init="init()">  
  	<div class="panel panel-primary "  >
-      <div class="panel-heading" >Datos de la Compañia</div>
-      <div class="panel-body" >
+      <div class="panel-heading" ng-click="toggle('1')">Datos de la Compañia</div>
+      <div class="panel-body" id="1">
         <form  ng-submit="validate(Companys)"class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group"> 
@@ -61,11 +61,18 @@
     						 <div class="col-sm-2"></div>    
                     </div>
                     
-                    <div class="form-group ">
+                  
+                    
+                   
+                  </div><!-- /.box-body -->
+                 
+                </form>
+</div>
+    </div>  <div class="form-group ">
                         
                           <div class="panel panel-primary  "  >
-      <div class="panel-heading" >Ingresar datos del Usuario</div>
-          <div class="panel-body" >
+      <div class="panel-heading" ng-click="toggle('2')">Ingresar datos del Usuario</div>
+          <div class="panel-body" id="2">
             
             <form  ng-submit="validate(User)"class="form-horizontal">
           <div class="box-body"> 
@@ -146,19 +153,18 @@
             </div>
      
                     </div>
-                    
-                    <div class="form-group ">
+ <div class="form-group ">
                         
                           <div class="panel panel-primary "  >
-      <div class="panel-heading" >Ajustes</div>
-          <div class="panel-body" >
+      <div class="panel-heading"ng-click="toggle('3')">Ajustes</div>
+          <div class="panel-body" id="3">
             
             <form  ng-submit="validate(User)"class="form-horizontal">
           <div class="box-body"> 
         
                                
-            <div class="form-group">   
-                       <label class="col-sm-3 control-label">Unidad de medida:</label>
+            <div class="form-group"ng-click="toggle('4')">Unidad de medida:</div>
+          <div class="panel-body" id="4">  
                       
                        <label class="col-sm-2 control-label">Valor:</label>
                             <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
@@ -198,12 +204,6 @@
             </div>
      
                     </div>
-                  </div><!-- /.box-body -->
-                 
-                </form>
-</div>
-    </div>
-
     
      
         
