@@ -3,8 +3,19 @@
 <script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
 
 <style>
+    
+#Wrapper_Map{
+    width: 100%;
+    height:410px;
+    resize: vertical;
+    padding: 10px;
+    overflow: auto;
+} 
+  
 .modal {
+  
 }
+  
 .glyphicon-refresh-animate {
     -animation: spin .7s infinite linear;
     -webkit-animation: spin2 .7s infinite linear;
@@ -93,19 +104,43 @@
 
      <div class="row" ng-show="Show_Components.Route_Form">
        <!--Rastreo de Camión-->
-			<div class="col-md-6 col-sm-6 col-xs-12">
-		 		 <div class="pad"  >
-                 <div id="world-map-markers" style="height: 410px;">
-							<div class="jvectormap-container"  style="width: 100%; height: 100%; position: relative; overflow: hidden; background-color: transparent;">
-								<div id="Map_Dashboard_Route"  style="width: 400px; height: 400px;">
-								</div>
-							</div>
-						</div>
-               <button class="btn btn-primary" ng-click="Print_Zone()"><i class="glyphicon glyphicon-eye-open"></i>  Visualizar Zona</button> 
+			
+       <div class="col-md-12 col-sm-12 col-xs-12">
+         
+         <div class="col-md-6">
+		 		
+           <div class="box">
+                <div class="box-header with-border bg-blue">
+                  <h3 class="box-title"><b>Mapa</b></h3>
+                 <div class="box-tools pull-right">                   
+                   <button class="btn btn-box-tool" data-toggle="tooltip" title="Ajustar Tamaño" ng-click="Resize();"><i class="glyphicon glyphicon-refresh"></i></button>                   
+                 </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                   <div id="Wrapper_Map">
+								<div id="Map_Dashboard_Route" style="height:100%; width:100%;"></div>
+                   </div><!-- /.box-body -->
+                   <button class="btn btn-primary" ng-click="Print_Zone()"><i class="glyphicon glyphicon-eye-open"></i>  Visualizar Zona</button> 
                     <button class="btn btn-primary" ng-click="Delete_Zone()"><i class="glyphicon glyphicon-remove"></i>  Eliminar Zona</button>
-               </div>
+                </div>
+           </div>
+           
+           
             </div>
-    <div class="col-md-6 col-sm-6 col-xs-12">
+       
+    
+      
+      <div class="col-md-6">
+         <div class="box ">
+           
+           <div class="box-header with-border bg-blue">
+                  <h3 class="box-title"><b></b></h3>
+                 <div class="box-tools pull-right">                   
+                  
+                 </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                 
               <!-- form start -->
                 <form class="form-horizontal" ng-submit="Save_Route(Route)">
                   <div class="box-body ">
@@ -143,8 +178,10 @@
                     </div>
                   </div><!-- /.box-footer -->
                 </form>
-                      
+                   </div> 
+            </div>
             </div>  
+  </div>
             </div>
   
   <!--Table-->

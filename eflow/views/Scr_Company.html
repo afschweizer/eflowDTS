@@ -3,7 +3,7 @@
 	<div class="panel panel-primary "  ng-show="Show_Company" >
 		<div class="panel-heading" >Datos de la Compañia</div>
       <div class="panel-body">
-        <form  ng-submit="validate(Companys)"class="form-horizontal">
+        <form  ng-submit="validate_Companys(Companys);"class="form-horizontal">
           <div class="form-group"> 
             <label  class="col-sm-3 control-label">Nombre:</label>
             <div class="col-sm-7"> 
@@ -20,8 +20,9 @@
           </div>
           <div class="form-group">
             <label  class="col-sm-3 control-label">Dominio:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="Companys.domain" placeholder="Dominio"required>
+            <div class="input-group col-sm-7 ">
+              <span class="input-group-addon">@</span>
+              <input type="text" class="form-control " ng-model="Companys.domain" placeholder="Dominio"required>
             </div>
     			<div class="col-sm-2"></div>
           </div>
@@ -62,7 +63,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-12 controls">
-              <button ng-click="Show_User= true; Show_Company = false"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-log-in"></i> Siguiente</button>                          
+              <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" >Siguiente <i  class="glyphicon glyphicon-chevron-right"></i></button>                          
             </div>
           </div>
         </form>
@@ -71,7 +72,7 @@
 	<div class="panel panel-primary "    ng-show="Show_User" >
 		<div class="panel-heading" >Datos del Usuario</div>
       <div class="panel-body">
-        <form  ng-submit="validate(User)"class="form-horizontal">
+        <form  ng-submit="validate_User(User);"class="form-horizontal">
           <div class="form-group">
             <label  class="col-sm-3 control-label" style="text-align:right;font-weight: bold;">Identificador:</label>
             <div class="col-sm-9"> 
@@ -131,7 +132,7 @@
             <div class="col-sm-9">
               <div class="input-group col-sm-12">
                 <input id="Mail" type="text" class="form-control" name="Mail" value="" style="text-transform:lowercase " ng-model="User.Mail" placeholder="Correo..." required>
-                <span class="input-group-addon" style="text-transform:lowercase ">{{Companys.domain}}</span>
+            	 <span class="input-group-addon" style="text-transform:lowercase ">@{{Companys.domain}}</span>
               </div>
             </div>
           </div>
@@ -152,8 +153,8 @@
           </div>
           <div class="form-group">
             <div class="col-sm-12 controls">
-              <button  ng-click="Show_User= false; Show_Company = true"  class="btn btn-primary pull-left" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-log-in"></i> regresar</button>                          
-          	  <button  ng-click="Show_User= false; Show_Settings = true"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-log-in"></i> Siguiente</button>                          
+              <button  ng-click="Show_User= false; Show_Company = true"  class="btn btn-primary pull-left" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-chevron-left"></i> regresar</button>                          
+          	  <button  type="submit" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" >Siguiente<i  class="glyphicon glyphicon-chevron-right"></i> </button>                          
             </div>
           </div>
           
@@ -165,9 +166,38 @@
       <div class="panel-body">
         <form  ng-submit="validate(User)"class="form-horizontal">
           <div  class="panel panel-info">
-            <div class="panel-heading">Unidad de medida</div>
-            <div class="panel-body">
-              <div class="panel-body" id="4">  
+            <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = true">Unidad de Medida</div>
+            <div class="panel-body"  ng-show="Show_Settings_Unity"> 
+                <label class="col-sm-2 control-label">Valor:</label>
+                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <label class="col-sm-2 control-label">Descripcion:</label>
+                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <div class="col-sm-1">
+                  <a   ng-click="">
+                    <i class="glyphicon glyphicon-check" ></i>
+                  </a>
+                </div>
+                <table style="width:100%">
+                  <tr>
+                    <th class="col-sm-4">Valor</th>
+                    <th class="col-sm-4">Descripcion</th>
+                    <td class="col-sm-4">Mantenimiento</td>
+                  </tr>
+                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4">
+                      <a class="btn btn-danger">
+                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>  
+          <div  class="panel panel-info">
+            <div class="panel-heading"ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= true;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Combustible</div>
+            <div class="panel-body"  ng-show="Show_Settings_Fuel"> 
                 <label class="col-sm-2 control-label">Valor:</label>
                 <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
@@ -195,10 +225,103 @@
                 </table>
               </div>
             </div>
+          <div  class="panel panel-info">
+            <div class="panel-heading"ng-click="Show_Settings_License= false;Show_Settings_User= true;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Usuario</div>
+            <div class="panel-body"ng-show="Show_Settings_User" > 
+                <label class="col-sm-2 control-label">Valor:</label>
+                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <label class="col-sm-2 control-label">Descripcion:</label>
+                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <div class="col-sm-1">
+                  <a   ng-click="">
+                    <i class="glyphicon glyphicon-check" ></i>
+                  </a>
+                </div>
+                <table style="width:100%">
+                  <tr>
+                    <th class="col-sm-4">Valor</th>
+                    <th class="col-sm-4">Descripcion</th>
+                    <td class="col-sm-4">Mantenimiento</td>
+                  </tr>
+                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4">
+                      <a class="btn btn-danger">
+                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          <div  class="panel panel-info">
+            <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= true;Show_Settings_Unity = false">Tipos de Vehiculos</div>
+            <div class="panel-body" ng-show="Show_Settings_Vehicle"> 
+                <label class="col-sm-2 control-label">Valor:</label>
+                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <label class="col-sm-2 control-label">Descripcion:</label>
+                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <div class="col-sm-1">
+                  <a   ng-click="">
+                    <i class="glyphicon glyphicon-check" ></i>
+                  </a>
+                </div>
+                <table style="width:100%">
+                  <tr>
+                    <th class="col-sm-4">Valor</th>
+                    <th class="col-sm-4">Descripcion</th>
+                    <td class="col-sm-4">Mantenimiento</td>
+                  </tr>
+                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4">
+                      <a class="btn btn-danger">
+                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          <div  class="panel panel-info">
+            <div class="panel-heading" ng-click="Show_Settings_License= true;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Licencia</div>
+            <div class="panel-body" ng-show="Show_Settings_License"> 
+                <label class="col-sm-2 control-label">Valor:</label>
+                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <label class="col-sm-2 control-label">Descripcion:</label>
+                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <div class="col-sm-1">
+                  <a   ng-click="">
+                    <i class="glyphicon glyphicon-check" ></i>
+                  </a>
+                </div>
+                <table style="width:100%">
+                  <tr>
+                    <th class="col-sm-4">Valor</th>
+                    <th class="col-sm-4">Descripcion</th>
+                    <td class="col-sm-4">Mantenimiento</td>
+                  </tr>
+                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4">
+                      <a class="btn btn-danger">
+                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          <div class="form-group">
+            <div class="col-sm-12 controls">
+              <button  ng-click="Show_User= true; Show_Settings = false"  class="btn btn-primary pull-left" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-chevron-left"></i> regresar</button>                          
+          	  <button  type="submit" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-save"></i> Guardar</button>   
+              <button  type="reset" ng-click="Show_Company= false; Show_User= false; Show_Settings = false" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-remove"></i> Cancelar</button>                                    	                         
+            </div>
           </div>
-          
-          
-          
         </form>
       </div>
 	</div>
