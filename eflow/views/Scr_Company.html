@@ -1,4 +1,5 @@
 <div ng-controller="Scr_Company_Controller" ng-init="init()">  
+<label  class=" control-label">En proceso de creacion </label>
 	<div class="panel panel-primary "  ng-show="Show_Company" >
 		<div class="panel-heading" >Datos de la Compañia</div>
       <div class="panel-body">
@@ -169,33 +170,30 @@
               <div class="panel-body" id="4">  
                 <label class="col-sm-2 control-label">Valor:</label>
                 <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
-                   
-                         <label class="col-sm-2 control-label">Descripcion:</label>
-                            <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
-                   
-          
-                 <div class="col-sm-1">
-                        <a   ng-click="">
-                          <i class="glyphicon glyphicon-check" ></i> </a>
-                     </div>
-              
-              
-                   <table style="width:100%">
-                    <tr>
-                      <th class="col-sm-4">Valor</th>
-                      <th class="col-sm-4">Descripcion</th>
-                      <td class="col-sm-4">Mantenimiento</td>
-                    </tr>
-                    <tr ng-repeat="VisitPoint_Serial in Array_Serials">
-                      <td class="col-sm-4"> </td>
-                      <td class="col-sm-4"> </td>
-                      <td class="col-sm-4">
-                        <a class="btn btn-danger">
-                          <i class="glyphicon glyphicon-remove-sign" ng-click=""></i></a>
-                      </td>
-                    </tr>
-                  </table> 
-                    </div>
+                <label class="col-sm-2 control-label">Descripcion:</label>
+                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <div class="col-sm-1">
+                  <a   ng-click="">
+                    <i class="glyphicon glyphicon-check" ></i>
+                  </a>
+                </div>
+                <table style="width:100%">
+                  <tr>
+                    <th class="col-sm-4">Valor</th>
+                    <th class="col-sm-4">Descripcion</th>
+                    <td class="col-sm-4">Mantenimiento</td>
+                  </tr>
+                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4">
+                      <a class="btn btn-danger">
+                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
           
