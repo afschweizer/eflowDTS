@@ -45,7 +45,7 @@ function Select_Company(){
             'Method_Name': 'Select_Company',
             'Data': {
     			"Identifier": $scope.Companys.identifier,
-    			"Domain":$scope.Companys.domain,
+    			"Domain":"@"+$scope.Companys.domain,
     			"Name":$scope.Companys.name
             },
             'Fields':{
