@@ -178,7 +178,6 @@ $scope.Verify_License=function(Type){
 	try{
 	if (Type === "Conductor"){
 		
-$scope.Show_Components.Mail=true;
 		$scope.Show_Components.Type_License=true;
 	}else/*{
 	    
@@ -199,7 +198,6 @@ $scope.Show_Components.Mail=true;
 	    
 	    delete $scope.User.DueDate;		
 	    
-$scope.Show_Components.Mail=true;
 		$scope.Show_Components.Type_License = false;
 
 		$scope.Show_Components.License = false;

@@ -153,6 +153,36 @@
     						 <div class="col-sm-2"></div>
                     </div>
                     
+                    <div class="form-group ">
+                      <label  class="col-sm-3 control-label">     </label>
+                        
+                          <div class="panel panel-primary col-sm-7 "  >
+      <div class="panel-heading" ng-click="toggle('3')">Ajustes</div>
+          <div class="panel-body" id="3">
+            
+            <form  ng-submit="validate(User)"class="form-horizontal">
+          <div class="box-body"> 
+        
+                               
+            <div class="form-group">
+                                 <label class="col-sm-3 control-label"style="text-align:right;font-weight: bold;">Unidad de medida:</label>
+                <div class="col-sm-8"> 
+											<input id="Password" type="{{Type}}" class="form-control" name="Password" value="" ng-model="User.Password" placeholder="Contraseña..."required>
+                  </div> 
+                             <div class="col-sm-1"> 
+											<input type="checkbox" value="Mostrar" ng-model="Ver" ng-change="Password(Ver)">
+                             </div>
+                    </div>
+
+          </div>
+                
+                </form>
+            
+          </div>
+            </div>
+     
+    						 <div class="col-sm-2"></div>
+                    </div>
                   </div><!-- /.box-body -->
                  
                 </form><!--

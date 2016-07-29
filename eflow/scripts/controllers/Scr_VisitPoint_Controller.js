@@ -9,12 +9,11 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 		//$scope.Polygon = {}; 
 		$('#Charging').modal('show');
 		$scope.Show_Components.VisitPoint_Form = true;
-		$scope.Show_Components.VisitPoint_See = true;
+		$scope.Show_Components.VisitPoint_General_View = true;
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");		
 		Load_Map_Init();
-		Load_Map_VisitPoint();
 		$scope.ArrayRoute = [];
 		var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
 		{"es":"SECTOR","value":"Route"},{"es":"DIRECCION","value":"Address"},
@@ -572,12 +571,14 @@ $scope.Select = function(){
    
 $scope.Visualize_Visit_Point = function(Obj){
 	try{
-		$scope.flag =false;
+		
+   $scope.flag =false;
    $scope.VisitPoint = Obj;   
    $scope.Show_Components.VisitPoint_Form = true;
    $scope.Show_Components.VisitPoint_See = false;
    $scope.Show_Components.VisitPoint_Table = false;
    $scope.Show_Components.VisitPoint_Add = false;
+   $scope.Show_Components.VisitPoint
    $scope.Show_Components.Export = false;
    map.removePolygons();
    map.removeMarkers();
