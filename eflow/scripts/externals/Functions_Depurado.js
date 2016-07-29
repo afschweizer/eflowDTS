@@ -25,7 +25,22 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
     Save_Session : false,
     Ultimate_Page : ""
 };   
-
+function getRandomColor() {
+	
+    var Colors = [
+	'#AFF8DB',
+	'#85E3FF',
+	'#FFFFD1',
+	'#ACE7FF',
+	'#BFFCC6',
+	'#E7FFAC',
+	'#B28DFF',
+	'#C4F4F8',
+	'#6EB5FF'
+	];
+    
+    return  Colors[Math.floor(Math.random() * Colors.length-1)];
+}
 /*
 function Exist_Cookie(key){
 var cookie = Get_Cookie(key);
