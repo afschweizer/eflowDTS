@@ -9,7 +9,8 @@ try{
 		//To_Reload_Eflow_Config();
 		//Get_Cookie("EflowCookie");
 	//eflowDTS = Get_Cookie("EflowCookie");
-			Select_VisitPoint();	
+			Select_VisitPoint();
+			Select_Routes();
 				
 			
 	}catch (e) {
@@ -34,6 +35,64 @@ try{
     }  
   
 };
+	function Select_Routes(){
+		
+		try{
+			
+			var JsonData = {
+				'Method_Name':'Select_All_Route',
+				'Data':{
+					"Company":eflowDTS.Session.Company
+				},
+				'Fields':{}
+			};
+			
+			var onSuccess = function(Response){
+				
+				$scope.Array_Route = Response;
+				
+			};
+			
+			var onError = function(e){
+				
+				var err = {
+				Generated : true,
+				Page: "Scr_VisitPoint_General_View",
+				Method:"Select_Routes",
+				Description: "onError",
+				User: eflowDTS.Session.UserName,
+				Company: eflowDTS.Session.Company,
+				Date: new Date().getTime(),
+				Error: e
+				};
+				
+				throw err;
+				
+			};
+			
+			Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,JsonData,onSuccess,onError);
+			
+		}catch(e){
+			var obj;
+			if(e.hasOwnProperty("Generated") === false){
+				obj = {
+					Generated: false,
+					Page:"Scr_VisitPoint_General_View",
+					Method:"Select_Routes",
+					Description:"Error no Controlado",
+					User: eflowDTS.Session.UserName,
+					Company: eflowDTS.Session.Company,
+					Date: new Date().getTime(),
+					Error: e			
+				};
+				Save_Error(obj);
+			}else{
+				Save_Error(e);
+			}
+			
+		}
+		
+	};
 	
 	function Load_Init_Map(){
 		try{
@@ -79,6 +138,36 @@ try{
     }  
   
 };
+	
+	$scope.See_Routes = function(){
+	try{
+		if($scope.Array_Route.isArray()){
+			
+			map.removePoligons();
+			
+		for(var i = 0; i < $scope.Array_Route.length; i++){
+			var Route = $scope.Array_Route[i];
+			
+				map.drawPolygon({
+					paths: Route.Route_Path,
+					strokeColor: '#BBD8E9',
+					strokeOpacity: 1,
+					strokeWeigth: 3,
+					fillColor: '#BBD8E9',
+					fillOpacity: 0.6				
+				});	
+			
+		}
+	   }
+
+		
+		
+	}catch(e){		
+		console.error(e);
+	}
+	
+	};
+	
 	
 	function Add_Markers(){
 		

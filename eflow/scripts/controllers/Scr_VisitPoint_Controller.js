@@ -566,8 +566,8 @@ $scope.Select = function(){
             Save_Error(e);
         }
     }  
-  
-};
+   
+}; 
    
 $scope.Visualize_Visit_Point = function(Obj){
 	try{
@@ -578,7 +578,7 @@ $scope.Visualize_Visit_Point = function(Obj){
    $scope.Show_Components.VisitPoint_See = false;
    $scope.Show_Components.VisitPoint_Table = false;
    $scope.Show_Components.VisitPoint_Add = false;
-   $scope.Show_Components.VisitPoint
+   $scope.Show_Components.VisitPoint_General_View = false;
    $scope.Show_Components.Export = false;
    map.removePolygons();
    map.removeMarkers();
