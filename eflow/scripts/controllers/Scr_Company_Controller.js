@@ -1,7 +1,12 @@
  DTS_APP.controller('Scr_Company_Controller', function($scope) {
  	
 	$scope.init = function(){
+		
 		try{
+        $scope.Show_Company=true;
+        $scope.Show_User=false;
+        $scope.Show_Settings=false;
+        
        	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 $scope.ArrayGenders = Gender;
