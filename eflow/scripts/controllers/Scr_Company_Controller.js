@@ -3,14 +3,15 @@
 	$scope.init = function(){
 		
 		try{
-        $scope.Show_Company=true;
+        $scope.Show_Company=false;
         $scope.Show_User=false;
-        $scope.Show_Settings=false;
+        $scope.Show_Settings=true;
         $scope.Show_Settings_License= false;
         $scope.Show_Settings_User= false;
         $scope.Show_Settings_Fuel= false;
         $scope.Show_Settings_Vehicle= false;
         $scope.Show_Settings_Unity = false;
+				$scope.Array_Unity={};
        	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;
@@ -45,7 +46,7 @@ function Select_Company(){
             'Method_Name': 'Select_Company',
             'Data': {
     			"Identifier": $scope.Companys.identifier,
-    			"Domain":"@"+$scope.Companys.domain,
+    			"Domain":"@"+$scope.Companys.domain.toLowerCase(),
     			"Name":$scope.Companys.name
             },
             'Fields':{
@@ -95,6 +96,57 @@ function Select_Company(){
             Save_Error(e);
         }
     }  }
+$scope.validate_Settings =function(Obj,Array){
+		try{
+	    if(Obj.Value===""||Obj.Value===undefined||Obj.Description===""||Obj.Description===undefined){
+	    	alert("Debe de ingresar los valores");	
+	    	
+	    	}
+		else{
+			existe=false;
+			for (var i=0; i<  $scope.Array.length;i++){
+				if( $scope.Array[i].Value===Obj.Value)	{
+					existe=true;
+					break;
+				}			
+			}	
+			if(existe===true){
+				alert("Los datos que ha ingresado ya fueron ingresados en el sistema");
+			}
+			else{
+			   var obj_Array={};
+			    obj_Array.Value = Obj.Value;
+			    obj_Array.Description = Obj.Description;
+				$scope.Array.push(obj_Array);
+				document.getElementById("Input_Serial").value="";
+				document.getElementById("Input_Description").value="";
+			}
+		}
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_Serial",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+
 		
 $scope.validate_User= function(User){
 try{
@@ -155,19 +207,7 @@ try{
 		
 $scope.validate = function(Companys,User,Settings){
 try{
-						  var JsonData = {
-					            'Method_Name': 'Insert_Company',
-					            'Data': {
-					                'Name': Companys.name,
-					                'Identifier': Companys.identifier,
-					                'Domain': Companys.domain,
-					                'Mail': Companys.mail,
-					                'Country': Companys.country,
-					                'Location': Companys.location,
-					                'Phone': Companys.phone,
-					                'fax': Companys.fax
-					            }
-					        };
+						 
 						  var JsonData1 = {
 						  	'Method_Name': 'Insert_User',
 							 'Data': [{

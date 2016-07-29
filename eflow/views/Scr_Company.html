@@ -164,17 +164,17 @@
 	<div class="panel panel-primary "   ng-show="Show_Settings" >
 		<div class="panel-heading" >Ajustes</div>
       <div class="panel-body">
-        <form  ng-submit="validate(User)"class="form-horizontal">
+        <form  ng-submit=""class="form-horizontal">
           <div  class="panel panel-info">
             <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = true">Unidad de Medida</div>
             <div class="panel-body"  ng-show="Show_Settings_Unity"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Unity.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Unity.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
-                  <a   ng-click="">
-                    <i class="glyphicon glyphicon-check" ></i>
+                  <a   ng-click="validate_Settings(Unity,'Array_Unity')">
+                    <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
                 </div>
                 <table style="width:100%">
@@ -183,7 +183,7 @@
                     <th class="col-sm-4">Descripcion</th>
                     <td class="col-sm-4">Mantenimiento</td>
                   </tr>
-                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
+                  <tr ng-repeat="Unitis in Array_Unity">
                     <td class="col-sm-4"> </td>
                     <td class="col-sm-4"> </td>
                     <td class="col-sm-4">

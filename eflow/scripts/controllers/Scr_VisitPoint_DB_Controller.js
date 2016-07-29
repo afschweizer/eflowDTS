@@ -59,7 +59,8 @@ $scope.init = function(){
 	
 	
 	
-	$scope.Add_Serial =function(value){try{
+	$scope.Add_Serial =function(value){
+		try{
 	    if(value===""||value===undefined){
 	    	alert("Debe de ingresar una serie");	
 	    	

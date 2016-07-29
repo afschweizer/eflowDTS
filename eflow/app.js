@@ -74,6 +74,12 @@
             .when('/VisitPoint_General_View',{
             	templateUrl : 'views/Scr_VisitPoint_General_View.html'
             })
+            .when('/404',{
+            	templateUrl: 'view/Scr_404.html'
+            })
+            .otherwise({
+            	redirecTo : '/404'
+            })
             /*
             
            
