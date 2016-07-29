@@ -27,8 +27,8 @@
                 Page: "Scr_Company_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: "Default",
+                Company: "Default",
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -38,7 +38,63 @@
         }
     } 
 		};
+function Select_Company(){
 
+      try{
+		 var JsonData = {
+            'Method_Name': 'Select_Company',
+            'Data': {
+    			"Identifier": $scope.Companys.identifier,
+    			"Domain":$scope.Companys.domain,
+    			"Name":$scope.Companys.name
+            },
+            'Fields':{
+            	
+            }
+        };
+		var onSuccess = function(arr){
+			if(arr.length > 0){
+				alert("Esta Compañia ya esta registrada");
+				window.location.href='#'
+			}
+			
+		}
+		var onError = function(e){
+					 var erro={
+			Generated: true,
+            Page: "Scr_Company_Controller",
+            Method: "Select_Company",
+            Description: "onError",
+            User: "Default",
+            Company: "Default",
+            Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;
+		console.log(e);
+		}
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+       
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Login_Controller",
+                Method: "DataCompany",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  }
 		
 $scope.validate_User= function(User){
 try{
@@ -70,6 +126,7 @@ try{
 		};		
 $scope.validate_Companys= function(Companys){
 try{
+	   Select_Company();
         $scope.Companys=Companys;	
         $scope.Show_User= true; 
         $scope.Show_Company = false;
@@ -169,5 +226,9 @@ try{
         }
     } 
 						};
+						
+						
+						
+						
 
 });

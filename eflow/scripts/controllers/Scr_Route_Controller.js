@@ -1,4 +1,7 @@
 var map;
+var Array_Route = [];
+var Polygon;
+
 DTS_APP.controller('Scr_Route_Controller',function($scope) {
 
 $scope.init = function(){
@@ -451,13 +454,13 @@ $scope.Select = function(){
             
         };
 		
-		var onSuccess = function(JsonData){
+		var onSuccess = function(response){
 		
 		$scope.Select();
 		
 		};
 		
-		var onError = function(JsonData){
+		var onError = function(error){
 				
 					 var erro={
 			Generated: true,
@@ -542,16 +545,46 @@ $scope.Select = function(){
    $scope.Print_Zone = function(){   	
    	
 	try{
-   var path = $scope.Array_Route;
+		
+	
+		
+		map.removeMarkers();
+		 
+		 var path = $scope.Array_Route;
+		 
+	if(path.length > 0){		
          
-   map.drawPolygon({
+  Polygon = map.drawPolygon({
    paths: path, // pre-defined polygon shape
    strokeColor: '#BBD8E9',
    strokeOpacity: 1,
    strokeWeight: 3,
+   editable: true,
+   draggable:true,
    fillColor: '#BBD8E9',
    fillOpacity: 0.6
    });
+   
+    map.setContextMenu({
+        control: 'map',
+        options: [ {
+            title: 'Centrar Aquí',
+            name: 'Center_here',
+            action: function(e) {
+                this.setCenter(e.latLng.lat(), e.latLng.lng());
+            }
+        }]
+    });
+    
+   if(path.length > 0){
+   	map.setCenter(path[0][0],path[0][1]);
+   }
+   google.maps.event.addListener(Polygon.getPath(), "insert_at", Refresh_Path);
+  
+   google.maps.event.addListener(Polygon.getPath(), "set_at", Refresh_Path);
+   
+   } 
+   
    		}catch (e) {
         
         var err;
@@ -573,10 +606,25 @@ $scope.Select = function(){
         }
     }  
 };
+
+function Refresh_Path(){
+	
+	$scope.Array_Route = [];
+    var len = Polygon.getPath().getLength();
+   
+  for (var i = 0; i < len; i++) {
+	var coords = [];
+	coords.push(Polygon.getPath().getAt(i).lat());
+    coords.push(Polygon.getPath().getAt(i).lng());
+    $scope.Array_Route.push(coords);
+  }
+	
+};
    
    $scope.Delete_Zone = function(){
    	
 	try{
+		
      $scope.Array_Route = [];	
      Load_Map();
    	 	}catch (e) {
