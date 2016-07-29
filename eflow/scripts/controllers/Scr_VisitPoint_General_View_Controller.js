@@ -180,6 +180,7 @@ try{
 				},
 				click:function(e){
 					map.setCenter(VP.Latitude,VP.Longitude);
+					map.refresh();
 				}
 			});	
 			
