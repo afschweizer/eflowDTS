@@ -1,7 +1,7 @@
 <div ng-controller="Scr_Company_Controller" ng-init="init()">  
- 	<div class="panel panel-primary "  >
-      <div class="panel-heading" ng-click="toggle('1')">Datos de la Compañia</div>
-      <div class="panel-body" id="1">
+ 	<div class="panel panel-primary "  id="1" >
+      <div class="panel-heading" >Datos de la Compañia</div>
+      <div class="panel-body">
         <form  ng-submit="validate(Companys)"class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group"> 
@@ -60,7 +60,14 @@
                       </div>
     						 <div class="col-sm-2"></div>    
                     </div>
-                    
+                    <div class="form-group">
+                
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button ng-click="toggle('1')"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-log-in"></i> Siguiente</button>                          
+                   
+                      </div>
+                    </div>
                   
                     
                    
@@ -70,9 +77,9 @@
 </div>
     </div>  <div class="form-group ">
                         
-                          <div class="panel panel-primary  "  >
-      <div class="panel-heading" ng-click="toggle('2')">Ingresar datos del Usuario</div>
-          <div class="panel-body" id="2">
+    <div class="panel panel-primary  "id="2"  >
+      <div class="panel-heading">Ingresar datos del Usuario</div>
+          <div class="panel-body" >
             
             <form  ng-submit="validate(User)"class="form-horizontal">
           <div class="box-body"> 
@@ -147,6 +154,22 @@
 
           </div>
                 
+                    <div class="form-group">
+                
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button ng-click="toggle('1')"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-log-in"></i> Siguiente</button>                          
+                   
+                      </div>
+                    </div>
+                    <div class="form-group">
+                
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button ng-click="toggle('1')"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-log-in"></i> Siguiente</button>                          
+                   
+                      </div>
+                    </div>
                 </form>
             
           </div>

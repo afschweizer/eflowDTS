@@ -169,11 +169,20 @@ try{
 		
 		for(var i = 0; i < $scope.Array_VisitPoint.length; i++){
 			var VP = $scope.Array_VisitPoint[i];
+			
 			map.addMarker({
 				lat: VP.Latitude,
 				lng: VP.Longitude,
-				value: VP
+				value: VP,
+				title: VP.Name,
+				infoWindow:{
+					content: '<H3>'+VP.Name+'</H3></br><p><b>Sector: </b>'+VP.Route.Route_Name+'</p>'
+				},
+				click:function(e){
+					map.setCenter(VP.Latitude,VP.Longitude);
+				}
 			});	
+			
 			map.refresh();
 		}
 		
@@ -187,36 +196,7 @@ try{
 
 	};
 	
-	$scope.refresh = function(){try{
-		Select_User_Online();
-		Select_Jobs();
-		}catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Scr_Vehicles_Online_Controller",
-                Method: "refresh",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
 	
-	
-	
-	
- 
 	 
 	function Select_VisitPoint(){
 		try{
