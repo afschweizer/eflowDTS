@@ -39,11 +39,10 @@
     } 
 		};
 
-		ng-submit="Show_User= ; "
 		
 $scope.validate_User= function(User){
 try{
-        $scope.Companys=Companys;	
+        $scope.User=User;	
         $scope.Show_User= false; 
         $scope.Show_Company = false;
         $scope.Show_Settings = true;
@@ -56,7 +55,7 @@ try{
             err = {
                 Generated: false,
                 Page: "Scr_Company_Controller",
-                Method: "validate_Companys",
+                Method: "validate_User",
                 Description: "Error no controlado",
                 User: "Default",
                 Company: "Default",
