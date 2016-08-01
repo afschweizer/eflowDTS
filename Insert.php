@@ -19,7 +19,7 @@ for($i = 0; $i < $Array_Company_Length; $i++){
   $result = $coll->insert($dataObject->Company_Data[$i]);
 
 }
-echo json_encode(array("Message"=>"Insertado"));
+echo json_encode(array("Message"=>"Insertado Company_Data"));
 
  
 $coll1 = $db-> Store_User_Access ;
@@ -31,6 +31,6 @@ for($i = 0; $i < $Array_User_Length; $i++){
   $result = $coll1->insert($dataObject->User_Data[$i]);
 
 }
-echo json_encode(array("Message"=>"Insertado"));
+echo json_encode(array("Message"=>"Insertado User_Data"));
 
 ?>

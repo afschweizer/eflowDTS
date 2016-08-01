@@ -19,9 +19,6 @@
        	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;
-		//To_Reload_Eflow_Config();
-		//eflowDTS = Get_Cookie("EflowCookie");
-		//Get_Cookie("EflowCookie"); 
 		}catch (e) {
         
         var err;
