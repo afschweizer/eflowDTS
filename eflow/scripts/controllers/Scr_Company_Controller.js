@@ -105,8 +105,8 @@ $scope.validate_Settings =function(Obj,Array){
 		else{
 			existe=false;
 			for (var i=0; i<  $scope.Array.length;i++){
-				if( $scope.Array[i].Value===Obj.Value)	{
-					existe=true;
+				if( $scope.Array[i].Value === Obj.Value)	{
+					existe = true;
 					break;
 				}			
 			}	
@@ -114,10 +114,10 @@ $scope.validate_Settings =function(Obj,Array){
 				alert("Los datos que ha ingresado ya fueron ingresados en el sistema");
 			}
 			else{
-			   var obj_Array={};
+			   var obj_Array = {};
 			    obj_Array.Value = Obj.Value;
 			    obj_Array.Description = Obj.Description;
-				$scope.Array.push(obj_Array);
+				$scope.Array.value.push(obj_Array);
 				document.getElementById("Input_Serial").value="";
 				document.getElementById("Input_Description").value="";
 			}
