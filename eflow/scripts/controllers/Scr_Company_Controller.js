@@ -3,15 +3,19 @@
 	$scope.init = function(){
 		
 		try{
-        $scope.Show_Company=false;
+        $scope.Show_Company=true;
         $scope.Show_User=false;
-        $scope.Show_Settings=true;
+        $scope.Show_Settings=false;
         $scope.Show_Settings_License= false;
         $scope.Show_Settings_User= false;
         $scope.Show_Settings_Fuel= false;
         $scope.Show_Settings_Vehicle= false;
         $scope.Show_Settings_Unity = false;
-				$scope.Array_Unity={};
+		$scope.Array_Unity = [];
+		$scope.Array_Fuel = [];
+		$scope.Array_User = [];
+		$scope.Array_Vehicle = [];
+		$scope.Array_License = [];
        	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;
@@ -96,7 +100,7 @@ function Select_Company(){
             Save_Error(e);
         }
     }  }
-$scope.validate_Settings =function(Obj,Array){
+$scope.validate_Settings =function(Obj,Arr){
 		try{
 	    if(Obj.Value===""||Obj.Value===undefined||Obj.Description===""||Obj.Description===undefined){
 	    	alert("Debe de ingresar los valores");	
@@ -104,8 +108,8 @@ $scope.validate_Settings =function(Obj,Array){
 	    	}
 		else{
 			existe=false;
-			for (var i=0; i<  $scope.Array.length;i++){
-				if( $scope.Array[i].Value === Obj.Value)	{
+			for (var i=0; i< Arr.length;i++){
+				if( Arr[i].Value === Obj.Value)	{
 					existe = true;
 					break;
 				}			
@@ -114,11 +118,11 @@ $scope.validate_Settings =function(Obj,Array){
 				alert("Los datos que ha ingresado ya fueron ingresados en el sistema");
 			}
 			else{
-			   var obj_Array = {};
-			    obj_Array.Value = Obj.Value;
-			    obj_Array.Description = Obj.Description;
-				$scope.Array.value.push(obj_Array);
-				document.getElementById("Input_Serial").value="";
+				var Unity = {};
+				Unity.Value = Obj.Value;
+				Unity.Description = Obj.Description;
+				Arr.push(Unity);
+				document.getElementById("Input_Value").value="";
 				document.getElementById("Input_Description").value="";
 			}
 		}
@@ -145,6 +149,32 @@ $scope.validate_Settings =function(Obj,Array){
   
 };
 
+$scope.Remove_In_Array = function(Obj,Array){
+	try{
+	Array_Remove(Array,Obj);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Remove_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 
 		
@@ -243,7 +273,6 @@ try{
 					 
 				};
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData1, onSuccess, onError);
 	
 	 }catch (e) {
         
@@ -268,7 +297,80 @@ try{
 						};
 						
 						
-						
-						
+$scope.SaveData= function(){
+try{
+	  var JsonData = {
+						  	'Method_Name': 'Insert',
+							 'Company_Data': [{
+							 	"Control":{
+							 	"Creation_Date": new Date().getTime(),
+							 	"Created_User" : "Default"
+							 	},
+				    			"Name": $scope.Companys.name,
+				    			"Identifier": $scope.Companys.identifier,
+							    "Domain": "@"+$scope.Companys.domain.toLowerCase(),
+							    "Mail": $scope.Companys.mail.toLowerCase(),
+							    "Country":$scope.Companys.country,
+							    "Location": $scope.Companys.location,
+							    "Phone": $scope.Companys.phone,
+							    "Fax": $scope.Companys.fax,
+							    "Settings":{
+							    "Unity": $scope.Array_Unity,
+							    "Fuel": $scope.Array_Fuel,
+							    "User": $scope.Array_User ,
+							    "Vehicle": $scope.Array_Vehicle ,
+							    "License": $scope.Array_License 
+							    }
+							    }],
+							 'User_Data': [{
+							 	"Control":{
+							 	"Creation_Date": new Date().getTime(),
+							 	"Created_User" : "Default"
+							 	},
+				    			"Company": $scope.Companys.name,
+				    			"UserName": $scope.User.UserName,
+							    "Password": $scope.User.Password,
+							    "ID": $scope.User.ID,
+							    "Name":$scope.User.Name,
+							    "Lastname": $scope.User.Lastname,
+							    "Lastname2": $scope.User.Lastname2,
+							    "Identification": $scope.User.Identification,
+							    "Mail": $scope.User.Mail.toLowerCase()+ $scope.Companys.domain.toLowerCase(),
+							    "Gender": $scope.User.Gender,
+							    "Birthdate": $scope.User.Birthdate,
+							    "Type": "Administrador",
+							    "Address": $scope.User.Address
+							    }]
+						};
+			  var onSuccess = function(onSuccess){
+				alert("hola");
+				};
+				
+			var onError = function(onError){
+					 
+				};
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+	   
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Company_Controller",
+                Method: "validate_Companys",
+                Description: "Error no controlado",
+                User: "Default",
+                Company: "Default",
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+		};					
 
 });

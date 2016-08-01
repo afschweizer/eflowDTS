@@ -150,13 +150,16 @@ switch($dataObject->Method_Name){
       require 'Update_Info_Vehicle.php';
       break;
     } 
-    
   case 'Insert_Binnacle':
     {
       require 'Changes_Binnacle.php';
       break;
+    }
+  case 'Insert':
+    {
+      require 'Insert.php';
+      break;
     } 
-    
   default:
     {
     	echo json_encode( array('Error' => 'Metodo Incorrecto'));

@@ -20,9 +20,11 @@
           </div>
           <div class="form-group">
             <label  class="col-sm-3 control-label">Dominio:</label>
-            <div class="input-group col-sm-7 ">
-              <span class="input-group-addon">@</span>
-              <input type="text" class="form-control " ng-model="Companys.domain" placeholder="Dominio"required>
+            <div  class="col-sm-7 "> 
+              <div class="input-group col-sm-12 ">
+                <span class="input-group-addon">@</span>
+                <input type="text" class="form-control " ng-model="Companys.domain" placeholder="Dominio"required>
+              </div>    
             </div>
     			<div class="col-sm-2"></div>
           </div>
@@ -164,7 +166,7 @@
 	<div class="panel panel-primary "   ng-show="Show_Settings" >
 		<div class="panel-heading" >Ajustes</div>
       <div class="panel-body">
-        <form  ng-submit=""class="form-horizontal">
+        <form  ng-submit="SaveData();"class="form-horizontal">
           <div  class="panel panel-info">
             <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = true">Unidad de Medida</div>
             <div class="panel-body"  ng-show="Show_Settings_Unity"> 
@@ -173,7 +175,7 @@
                 <label class="col-sm-2 control-label">Descripcion:</label>
                 <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Unity.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
-                  <a   ng-click="validate_Settings(Unity,'Array_Unity')">
+                  <a   ng-click="validate_Settings(Unity,Array_Unity)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
                 </div>
@@ -184,11 +186,11 @@
                     <td class="col-sm-4">Mantenimiento</td>
                   </tr>
                   <tr ng-repeat="Unitis in Array_Unity">
-                    <td class="col-sm-4"> </td>
-                    <td class="col-sm-4"> </td>
+                    <td class="col-sm-4"> {{Unitis.Value}}</td>
+                    <td class="col-sm-4"> {{Unitis.Description}}</td>
                     <td class="col-sm-4">
                       <a class="btn btn-danger">
-                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                        <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Unitis,Array_Unity)"></i>
                       </a>
                     </td>
                   </tr>
@@ -199,12 +201,12 @@
             <div class="panel-heading"ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= true;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Combustible</div>
             <div class="panel-body"  ng-show="Show_Settings_Fuel"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Fuel.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Fuel.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
-                  <a   ng-click="">
-                    <i class="glyphicon glyphicon-check" ></i>
+                  <a   ng-click="validate_Settings(Fuel,Array_Fuel)">
+                    <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
                 </div>
                 <table style="width:100%">
@@ -213,12 +215,12 @@
                     <th class="col-sm-4">Descripcion</th>
                     <td class="col-sm-4">Mantenimiento</td>
                   </tr>
-                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
-                    <td class="col-sm-4"> </td>
-                    <td class="col-sm-4"> </td>
+                  <tr ng-repeat="Fuels in Array_Fuel">
+                    <td class="col-sm-4"> {{Fuels.Value}}</td>
+                    <td class="col-sm-4"> {{Fuels.Description}}</td>
                     <td class="col-sm-4">
                       <a class="btn btn-danger">
-                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                        <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Fuels,Array_Fuel)"></i>
                       </a>
                     </td>
                   </tr>
@@ -229,12 +231,12 @@
             <div class="panel-heading"ng-click="Show_Settings_License= false;Show_Settings_User= true;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Usuario</div>
             <div class="panel-body"ng-show="Show_Settings_User" > 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="User.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="User.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
-                  <a   ng-click="">
-                    <i class="glyphicon glyphicon-check" ></i>
+                  <a   ng-click="validate_Settings(User,Array_User)">
+                    <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
                 </div>
                 <table style="width:100%">
@@ -243,12 +245,12 @@
                     <th class="col-sm-4">Descripcion</th>
                     <td class="col-sm-4">Mantenimiento</td>
                   </tr>
-                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
-                    <td class="col-sm-4"> </td>
-                    <td class="col-sm-4"> </td>
+                  <tr ng-repeat="Users in Array_User">
+                    <td class="col-sm-4"> {{Users.Value}}</td>
+                    <td class="col-sm-4"> {{Users.Description}}</td>
                     <td class="col-sm-4">
                       <a class="btn btn-danger">
-                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                        <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Users,Array_User)"></i>
                       </a>
                     </td>
                   </tr>
@@ -259,12 +261,12 @@
             <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= true;Show_Settings_Unity = false">Tipos de Vehiculos</div>
             <div class="panel-body" ng-show="Show_Settings_Vehicle"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Vehicle.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Vehicle.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
-                  <a   ng-click="">
-                    <i class="glyphicon glyphicon-check" ></i>
+                  <a   ng-click="validate_Settings(Vehicle,Array_Vehicle)">
+                    <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
                 </div>
                 <table style="width:100%">
@@ -273,12 +275,12 @@
                     <th class="col-sm-4">Descripcion</th>
                     <td class="col-sm-4">Mantenimiento</td>
                   </tr>
-                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
-                    <td class="col-sm-4"> </td>
-                    <td class="col-sm-4"> </td>
+                  <tr ng-repeat="Vehicles in Array_Vehicle">
+                    <td class="col-sm-4"> {{Vehicles.Value}}</td>
+                    <td class="col-sm-4"> {{Vehicles.Description}}</td>
                     <td class="col-sm-4">
                       <a class="btn btn-danger">
-                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                        <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Vehicles,Array_Vehicle)"></i>
                       </a>
                     </td>
                   </tr>
@@ -289,12 +291,12 @@
             <div class="panel-heading" ng-click="Show_Settings_License= true;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Licencia</div>
             <div class="panel-body" ng-show="Show_Settings_License"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="License.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Serial" class="form-control" ng-model="Settings.Serie" placeholder="Serie...">
+                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="License.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
-                  <a   ng-click="">
-                    <i class="glyphicon glyphicon-check" ></i>
+                  <a   ng-click="validate_Settings(License,Array_License)">
+                    <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
                 </div>
                 <table style="width:100%">
@@ -303,12 +305,12 @@
                     <th class="col-sm-4">Descripcion</th>
                     <td class="col-sm-4">Mantenimiento</td>
                   </tr>
-                  <tr ng-repeat="VisitPoint_Serial in Array_Serials">
-                    <td class="col-sm-4"> </td>
-                    <td class="col-sm-4"> </td>
+                  <tr ng-repeat="Licenses in Array_License">
+                    <td class="col-sm-4"> {{Licenses.Value}}</td>
+                    <td class="col-sm-4"> {{Licenses.Description}}</td>
                     <td class="col-sm-4">
                       <a class="btn btn-danger">
-                        <i class="glyphicon glyphicon-remove-sign" ng-click=""></i>
+                        <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Licenses,Array_License)"></i>
                       </a>
                     </td>
                   </tr>
