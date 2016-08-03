@@ -10,18 +10,20 @@ $dataObject = json_decode($json);
 
 include 'ConnectionMongo.php'; 
   
+$Company_Data = false; 
 $coll = $db-> Store_Company;
 
 $Array_Company_Length = count($dataObject->Company_Data);
 
 for($i = 0; $i < $Array_Company_Length; $i++){
 
-  $result = $coll->insert($dataObject->Company_Data[$i]);
-
+$result = $coll->insert($dataObject->Company_Data[$i]);
+$Company_Data = true; 
 }
-echo json_encode(array("Message"=>"Insertado Company_Data"));
+//echo json_encode(array("Message"=>"Insertado Company_Data"));
 
- 
+ if ($Company_Data == true; ){
+  
 $coll1 = $db-> Store_User_Access ;
 
 $Array_User_Length = count($dataObject->User_Data);
@@ -31,6 +33,13 @@ for($i = 0; $i < $Array_User_Length; $i++){
   $result = $coll1->insert($dataObject->User_Data[$i]);
 
 }
-echo json_encode(array("Message"=>"Insertado User_Data"));
+echo json_encode(array("Message"=>"Insertado informacion de usuario y compañia"));
+   
+ }
+
+
+
+
+
 
 ?>

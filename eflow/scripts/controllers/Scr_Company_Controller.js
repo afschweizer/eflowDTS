@@ -36,10 +36,11 @@
             };
             Save_Error(err);
         } else {
-            Save_Error(e);
+            Save_Error(err);
         }
     } 
 		};
+		
 function Select_Company(){
 
       try{
@@ -57,7 +58,7 @@ function Select_Company(){
 		var onSuccess = function(arr){
 			if(arr.length > 0){
 				alert("Esta Compañia ya esta registrada");
-				window.location.href='#'
+				window.location.href='#';
 			}
 			
 		}
@@ -97,6 +98,7 @@ function Select_Company(){
             Save_Error(e);
         }
     }  }
+    
 $scope.validate_Settings =function(Obj,Arr){
 		try{
 	    if(Obj.Value===""||Obj.Value===undefined||Obj.Description===""||Obj.Description===undefined){
