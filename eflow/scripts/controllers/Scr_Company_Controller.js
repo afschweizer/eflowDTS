@@ -474,7 +474,7 @@ try{
 							    "Lastname": $scope.User.Lastname,
 							    "Lastname2": $scope.User.Lastname2,
 							    "Identification": $scope.User.Identification,
-							    "Mail": $scope.User.Mail.toLowerCase()+ "@"+$scope.Companys.domain1.toLowerCase()+"."+ Companys.domain2.toLowerCase(),
+							    "Mail": $scope.User.Mail.toLowerCase()+ "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Gender": $scope.User.Gender,
 							    "Birthdate": $scope.User.Birthdate,
 							    "Type": "Administrador",
