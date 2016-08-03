@@ -4,6 +4,9 @@ $scope.Type = "password";
 	$scope.init = function(){
 		
 		try{
+		$scope.Show_Components.Main_Menu = false;  
+		$scope.Show_Components.SubMenu_Maintenance = false;
+		$scope.Show_Components.Login = false;
 		$scope.Show_Map = true;
 		$scope.Class_Map = "fa fa-eye";
 		$scope.Text_Map = "Mostar Mapa";
