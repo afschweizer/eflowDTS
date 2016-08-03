@@ -16,7 +16,7 @@
 		$scope.Array_User = [];
 		$scope.Array_Vehicle = [];
 		$scope.Array_License = [];
-       	Set_Current_Page();
+      // 	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;
 		}catch (e) {
