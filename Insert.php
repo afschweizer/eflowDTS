@@ -14,13 +14,13 @@ $coll_Company = $db->Store_Company;
 
 $result_Insert_Company = $coll_Company->insert($dataObject->Company_Data);
  
-/* if ($result_Insert_Company->nInserted == 1){*/
+if ($result_Insert_Company->ok == 1){
   
 $coll_User = $db->Store_User_Access;
 
   $result_Insert_User = $coll_User->insert($dataObject->User_Data);
-/*   
-if($result_Insert_User->nInserted == 1){
+
+if($result_Insert_User->ok == 1){
   
   echo json_encode(array("Message"=>"Insertado informacion de usuario y compañia","Error"=>false));
   
@@ -33,10 +33,8 @@ if($result_Insert_User->nInserted == 1){
    
 }else{
   
-/* echo json_encode(array("Message"=>"Compañía no insertada","Error"=>true));
-  */
-  echo json_encode($result_Insert_Company);
-  
-/*}*/
+ echo json_encode(array("Message"=>"Compañía no insertada","Error"=>true));
+ 
+  }
 
 ?>
