@@ -14,7 +14,7 @@ $coll_Company = $db->Store_Company;
 
 $result_Insert_Company = $coll_Company->insert($dataObject->Company_Data);
  
-if ($result_Insert_Company->ok == 1){
+/*if ($result_Insert_Company->ok == 1){*/
   
 $coll_User = $db->Store_User_Access;
 
@@ -28,13 +28,13 @@ if($result_Insert_User->ok == 1){
   
   echo json_encode(array("Message"=>"Usuario no insertado","Error"=>true));
   
-}
+} 
    
-   
+  /* 
 }else{
   
  echo json_encode(array("Message"=>"Compañía no insertada","Error"=>true));
  
-  }
+  }*/
 
 ?>
