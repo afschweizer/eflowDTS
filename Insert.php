@@ -20,7 +20,7 @@ $coll_User = $db->Store_User_Access;
 
   $result_Insert_User = $coll_User->insert($dataObject->User_Data);
 
-if($result_Insert_User->result->ok == 1){
+/*if($result_Insert_User->result->ok == 1){
   
   echo json_encode(array("Message"=>"Insertado informacion de usuario y compañia","Error"=>false));
   
@@ -30,7 +30,7 @@ if($result_Insert_User->result->ok == 1){
   
 } 
    
-  /* 
+   
 }else{
   
  echo json_encode(array("Message"=>"Compañía no insertada","Error"=>true));
