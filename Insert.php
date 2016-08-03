@@ -9,18 +9,18 @@ $json = file_get_contents('php://input');
 $dataObject = json_decode($json);
 
 include 'ConnectionMongo.php';   
-
+ 
 $coll_Company = $db->Store_Company;
 
 $result_Insert_Company = $coll_Company->insert($dataObject->Company_Data);
- 
+  
 /*if ($result_Insert_Company->ok == 1){*/
   
 $coll_User = $db->Store_User_Access;
 
   $result_Insert_User = $coll_User->insert($dataObject->User_Data);
 
-if($result_Insert_User->ok == 1){
+if($result_Insert_User->result->ok == 1){
   
   echo json_encode(array("Message"=>"Insertado informacion de usuario y compañia","Error"=>false));
   
