@@ -14,7 +14,7 @@ $coll_Company = $db->Store_Company;
 
 $result_Insert_Company = $coll_Company->insert($dataObject->Company_Data);
  
-/* if ($result_Insert_Company->nInserted == 1){
+/* if ($result_Insert_Company->nInserted == 1){*/
   
 $coll_User = $db->Store_User_Access;
 
