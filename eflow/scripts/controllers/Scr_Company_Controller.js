@@ -446,7 +446,11 @@ try{
 							    "Domain": "@"+$scope.Companys.domain.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),
 							    "Country":$scope.Companys.country,
-							    "Location": $scope.Companys.location,
+							    "Location":
+							    {
+							    	"Latitud":$scope.Companys.location_Latitud,
+							    	"Longitud":$scope.Companys.location_Longitud
+							    },
 							    "Phone": $scope.Companys.phone,
 							    "Fax": $scope.Companys.fax,
 							    "Settings":{
