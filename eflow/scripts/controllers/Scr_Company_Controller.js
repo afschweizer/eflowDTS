@@ -388,7 +388,7 @@ try{
 							    "Lastname": User.Lastname,
 							    "Lastname2": User.Lastname2,
 							    "Identification": User.Identification,
-							    "Mail": User.Mail.toLowerCase()+ Companys.domain1.toLowerCase()+ Companys.domain2.toLowerCase(),
+							    "Mail": User.Mail.toLowerCase()+ Companys.domain.toLowerCase(),
 							    "Gender": User.Gender,
 							    "Birthdate": User.Birthdate,
 							    "Type": "Administrador",
