@@ -40,6 +40,7 @@ foreach($result as $doc){
 
 }
 
+sleep(30);
 
 echo json_encode($arrayResult);
 

@@ -443,7 +443,7 @@ try{
 							 	},
 				    			"Name": $scope.Companys.name,
 				    			"Identifier": $scope.Companys.identifier,
-							    "Domain": "@"+$scope.Companys.domain2.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
+							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),
 							    "Country":$scope.Companys.country,
 							    "Location":
@@ -482,8 +482,8 @@ try{
 							    }
 						};
 			  var onSuccess = function(onSuccess){
-			  	alert("hola");
-				window.location.href='#';			  	alert("hola1");
+			  	alert("g");
+				window.location.href="#";
 				};
 				
 			var onError = function(onError){
