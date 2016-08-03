@@ -482,7 +482,8 @@ try{
 							    }
 						};
 			  var onSuccess = function(onSuccess){
-				window.location.href='#';
+			  	alert("hola");
+				window.location.href='#';			  	alert("hola1");
 				};
 				
 			var onError = function(onError){
