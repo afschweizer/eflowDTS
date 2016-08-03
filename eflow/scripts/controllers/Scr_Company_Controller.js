@@ -184,7 +184,7 @@ function Select_Company(){
             'Method_Name': 'Select_Company',
             'Data': {
     			"Identifier": $scope.Companys.identifier,
-    			"Domain":"@"+$scope.Companys.domain.toLowerCase(),
+    			"Domain":"@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
     			"Name":$scope.Companys.name
             },
             'Fields':{
@@ -388,7 +388,7 @@ try{
 							    "Lastname": User.Lastname,
 							    "Lastname2": User.Lastname2,
 							    "Identification": User.Identification,
-							    "Mail": User.Mail.toLowerCase()+ Companys.domain.toLowerCase(),
+							    "Mail": User.Mail.toLowerCase()+ Companys.domain1.toLowerCase()+ Companys.domain2.toLowerCase(),
 							    "Gender": User.Gender,
 							    "Birthdate": User.Birthdate,
 							    "Type": "Administrador",
@@ -443,7 +443,7 @@ try{
 							 	},
 				    			"Name": $scope.Companys.name,
 				    			"Identifier": $scope.Companys.identifier,
-							    "Domain": "@"+$scope.Companys.domain.toLowerCase(),
+							    "Domain": "@"+$scope.Companys.domain2.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),
 							    "Country":$scope.Companys.country,
 							    "Location":
@@ -474,7 +474,7 @@ try{
 							    "Lastname": $scope.User.Lastname,
 							    "Lastname2": $scope.User.Lastname2,
 							    "Identification": $scope.User.Identification,
-							    "Mail": $scope.User.Mail.toLowerCase()+ $scope.Companys.domain.toLowerCase(),
+							    "Mail": $scope.User.Mail.toLowerCase()+ $scope.Companys.domain1.toLowerCase()+ Companys.domain2.toLowerCase(),
 							    "Gender": $scope.User.Gender,
 							    "Birthdate": $scope.User.Birthdate,
 							    "Type": "Administrador",
@@ -482,7 +482,7 @@ try{
 							    }
 						};
 			  var onSuccess = function(onSuccess){
-				alert("hola");
+				window.location.href='#';
 				};
 				
 			var onError = function(onError){

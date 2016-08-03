@@ -32,7 +32,9 @@
             <div  class="col-sm-7 "> 
               <div class="input-group col-sm-12 ">
                 <span class="input-group-addon">@</span>
-                <input type="text" class="form-control " ng-model="Companys.domain" placeholder="Dominio"required>
+                <input type="text" class="form-control " ng-model="Companys.domain1" placeholder="Dominio"required>
+                <span class="input-group-addon">.</span>
+                <input type="text" class="form-control " ng-model="Companys.domain2" placeholder="Dominio"required>
               </div>    
             </div>
     			<div class="col-sm-2"></div>
@@ -40,7 +42,7 @@
           <div class="form-group">
             <label  class="col-sm-3 control-label">Correo:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="Companys.mail" placeholder="Correo"required>
+              <input type="email" class="form-control" ng-model="Companys.mail" placeholder="Correo"required>
             </div>
     			<div class="col-sm-2"></div>
           </div>
@@ -354,7 +356,7 @@
             <div class="col-sm-12 controls">
               <button  ng-click="Show_User= true; Show_Settings = false"  class="btn btn-primary pull-left" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-chevron-left"></i> regresar</button>                          
           	  <button  type="submit" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-save"></i> Guardar</button>   
-              <button  type="reset" ng-click="Show_Company= false; Show_User= false; Show_Settings = false" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-remove"></i> Cancelar</button>                                    	                         
+              <button  ng-ref ng-click="Show_Company= false; Show_User= false; Show_Settings = false" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-remove"></i> Cancelar</button>                                    	                         
             </div>
           </div>
         </form>
