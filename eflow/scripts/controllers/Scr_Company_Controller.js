@@ -1,8 +1,12 @@
  DTS_APP.controller('Scr_Company_Controller', function($scope) {
  	
+$scope.Type = "password"; 
 	$scope.init = function(){
 		
 		try{
+		$scope.Show_Map = true;
+		$scope.Class_Map = "fa fa-eye";
+		$scope.Text_Map = "Mostar Mapa";
         $scope.Show_Company=true;
         $scope.Show_User=false;
         $scope.Show_Settings=false;
@@ -16,9 +20,11 @@
 		$scope.Array_User = [];
 		$scope.Array_Vehicle = [];
 		$scope.Array_License = [];
+		$scope.Companys={};
       // 	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;
+	Load_Map_Init();
 		}catch (e) {
         
         var err;
@@ -36,11 +42,138 @@
             };
             Save_Error(err);
         } else {
-            Save_Error(err);
+            Save_Error(e);
         }
     } 
 		};
 		
+		$scope.Switch_Map_Data = function(Show_Map){
+			if(Show_Map){
+			$scope.Class_Map = "fa fa-eye-slash";
+		    $scope.Text_Map = "Ocultar Mapa";
+			}else{
+			$scope.Class_Map = "fa fa-eye";
+			$scope.Text_Map = "Mostar Mapa";
+			}
+		};
+		
+	function Load_Map_Init(){
+		
+	try{
+		var div = document.getElementById('Map_Dashboard_Company');
+		$('#Charging').modal('show');
+		if(div){ 			
+			map = new GMaps({
+				div: div,
+				lat:eflowDTS.Geolocation.Latitude,
+				lng:eflowDTS.Geolocation.Longitude,
+				zoom:12	,
+				tilesloaded: function(e){					
+	                GMaps.off('tilesloaded',map);
+	                setTimeout(function(){
+	                	$('#Charging').modal('hide');
+	                	$scope.Show_Map = false;
+	                	}, 3000);
+	                
+                }
+			});	
+			
+			
+		map.removeMarkers();
+		    		
+		$scope.Array_Route = [];
+		    
+		map.setContextMenu({
+				  control: 'map',
+				  options: [{
+				    title: 'Agregar Vértice',
+				    name: 'Add_Vertex',
+				    action: function(e) {
+				    	
+			this.removeMarkers();
+				    	
+			  $scope.Companys.location_Latitud = e.latLng.lat();
+			  $scope.Companys.location_Longitud = e.latLng.lng();
+			  
+				   var marker =   this.addMarker({
+				        lat: e.latLng.lat(),
+				        lng: e.latLng.lng(), 
+				        draggable: true,
+				        title: 'Vértice',
+				        icon: 'images/Point_Blue.png'
+				      });
+				      
+			function refresh_Coords(e) {
+   			  $scope.Companys.location_Latitud = e.latLng.lat();
+			  $scope.Companys.location_Longitud = e.latLng.lng();
+			}
+	marker.addListener('drag', refresh_Coords);
+    marker.addListener('dragend', refresh_Coords);
+}
+				  }, {
+				    title: 'Centrar aquí',
+				    name: 'Center_here',
+				    action: function(e) {
+				      this.setCenter(e.latLng.lat(), e.latLng.lng());
+				    }
+				  }]
+				});
+		
+		}
+		
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Company_Controller",
+                Method: "Load_Map_Init",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+};
+		
+	$scope.Password = function(x){
+	try{
+
+if(x === true){
+$scope.Type = "text";
+}else{
+$scope.Type = "password";
+}
+
+   }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Company_Controller",
+                Method: "Password",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};	
 function Select_Company(){
 
       try{
@@ -300,7 +433,7 @@ $scope.SaveData= function(){
 try{
 	  var JsonData = {
 						  	'Method_Name': 'Insert',
-							 'Company_Data': [{
+							 'Company_Data': {
 							 	"Control":{
 							 	"Creation_Date": new Date().getTime(),
 							 	"Created_User" : "Default"
@@ -320,8 +453,8 @@ try{
 							    "Vehicle": $scope.Array_Vehicle ,
 							    "License": $scope.Array_License 
 							    }
-							    }],
-							 'User_Data': [{
+							    },
+							 'User_Data': {
 							 	"Control":{
 							 	"Creation_Date": new Date().getTime(),
 							 	"Created_User" : "Default"
@@ -339,7 +472,7 @@ try{
 							    "Birthdate": $scope.User.Birthdate,
 							    "Type": "Administrador",
 							    "Address": $scope.User.Address
-							    }]
+							    }
 						};
 			  var onSuccess = function(onSuccess){
 				alert("hola");

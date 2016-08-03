@@ -8,38 +8,33 @@ header('Access-Control-Allow-Headers: Content-Type, Depth, User-Agent, X-File-Si
 $json = file_get_contents('php://input');
 $dataObject = json_decode($json);
 
-include 'ConnectionMongo.php'; 
+include 'ConnectionMongo.php';   
+
+$coll_Company = $db-> Store_Company;
+
+$result_Insert_Company = $coll_Company->insert($dataObject->Company_Data);
+
+ if ($result_Insert_Company->nInserted == 1){
   
-$Company_Data = false; 
-$coll = $db-> Store_Company;
+$coll_User = $db-> Store_User_Access ;
 
-$Array_Company_Length = count($dataObject->Company_Data);
-
-for($i = 0; $i < $Array_Company_Length; $i++){
-
-$result = $coll->insert($dataObject->Company_Data[$i]);
-$Company_Data = true; 
-}
-//echo json_encode(array("Message"=>"Insertado Company_Data"));
-
- if ($Company_Data == true; ){
-  
-$coll1 = $db-> Store_User_Access ;
-
-$Array_User_Length = count($dataObject->User_Data);
-
-for($i = 0; $i < $Array_User_Length; $i++){
-
-  $result = $coll1->insert($dataObject->User_Data[$i]);
-
-}
-echo json_encode(array("Message"=>"Insertado informacion de usuario y compañia"));
+  $result_Insert_User = $coll_User->insert($dataObject->User_Data);
    
- }
-
-
-
-
-
+if($result_Insert_User->nInserted == 1){
+  
+  echo json_encode(array("Message"=>"Insertado informacion de usuario y compañia","Error"=>false));
+  
+}else{
+  
+  echo json_encode(array("Message"=>"Usuario no insertado","Error"=>true));
+  
+}
+   
+   
+}else{
+  
+  echo json_encode(array("Message"=>"Compañía no insertada","Error"=>true));
+  
+}
 
 ?>

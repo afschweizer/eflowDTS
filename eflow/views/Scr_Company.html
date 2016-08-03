@@ -1,3 +1,13 @@
+<style>
+#Wrapper_Map{
+    width: 100%;
+    height:410px;
+    resize: vertical;
+    padding: 10px;
+    overflow: auto;
+} 
+</style>
+
 <div ng-controller="Scr_Company_Controller" ng-init="init()">  
 	<div class="panel panel-primary "  ng-show="Show_Company" >
 		<div class="panel-heading" >Datos de la Compañia</div>
@@ -41,6 +51,40 @@
             </div>
     			<div class="col-sm-2"></div>
           </div>
+            <div class="form-group">
+            <label  class="col-sm-3 control-label">Ubicación:</label>
+              <div class="col-sm-7">
+              <input type="text" disabled class="col-sm-4" ng-model="Companys.location_Latitud" placeholder="Latitud">
+              <input type="text" disabled class="col-sm-4" ng-model="Companys.location_Longitud" placeholder="Longitud">
+                 <a class="btn" data-toggle="tooltip" title="Mostrar/Ocultar el mapa" ng-click="Show_Map = !Show_Map; Switch_Map_Data(Show_Map);">
+                <i ng-class="Class_Map"></i> {{Text_Map}}
+                 </a>  
+            </div>
+    			<div class="col-sm-2">
+                              
+              </div>
+            <label  class="col-sm-3 control-label"></label>
+            <div class="col-sm-7">
+              <div class="box" ng-show="Show_Map">
+                <div class="box-header with-border bg-blue">
+                  <h3 class="box-title"><b>Mapa</b></h3>
+                 <div class="box-tools pull-right">                   
+                   <button class="btn btn-box-tool" data-toggle="tooltip" title="Ajustar Tamaño" ng-click="Resize();"><i class="glyphicon glyphicon-refresh"></i></button>                   
+                 </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding" >
+                   <div id="Wrapper_Map">
+								<div id="Map_Dashboard_Company" style="height:100%; width:100%;"></div>
+                   </div><!-- /.box-body -->                  
+                </div>
+           </div>
+             </div>
+    			<div class="col-sm-2"></div>
+          </div>
+          
+          
+          
+          
           <div class="form-group">
             <label  class="col-sm-3 control-label">Ubicación:</label>
             <div class="col-sm-7">
@@ -51,14 +95,14 @@
           <div class="form-group">
             <label  class="col-sm-3 control-label">Teléfono:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="Companys.phone" placeholder="Teléfono"required>
+              <input type="number" class="form-control" ng-model="Companys.phone" placeholder="Teléfono"required>
             </div>
     			<div class="col-sm-2"></div>
           </div>
           <div class="form-group">
             <label  class="col-sm-3 control-label">Fax:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="Companys.fax" placeholder="Fax"required>
+              <input type="number" class="form-control" ng-model="Companys.fax" placeholder="Fax"required>
             </div>
             <div class="col-sm-2"></div>    
           </div>
@@ -327,4 +371,25 @@
         </form>
       </div>
 	</div>
+  
+  
+  <div class="modal fade" id="Charging" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                         <h4 class="modal-title" id="myModalLabel">DTS</h4>
+                </div>
+                <div class="modal-body">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                </div>
+                <div class="modal-footer">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
 </div>
