@@ -301,9 +301,9 @@ function Select_User(){
 		 var JsonData = {
             'Method_Name': 'Select_All_User',
             'Data': {
-    			"Identifier": $scope.Companys.identifier,
-    			"Mail":,
-    			"Name":$scope.Companys.name
+    			"UserName": $scope.User.UserName,
+				"Identification": $scope.User.Identification,
+				"Mail": $scope.User.Mail.toLowerCase()+ "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase()
             },
             'Fields':{
             	
@@ -311,7 +311,7 @@ function Select_User(){
         };
 		var onSuccess = function(arr){
 			if(arr.length > 0){
-				alert("Esta Compañia ya esta registrada");
+				alert("Este Usuario ya esta registrado");
 				window.location.href='#';
 			}
 			
@@ -320,7 +320,7 @@ function Select_User(){
 					 var erro={
 			Generated: true,
             Page: "Scr_Company_Controller",
-            Method: "Select_Company",
+            Method: "Select_User",
             Description: "onError",
             User: "Default",
             Company: "Default",
@@ -339,8 +339,8 @@ function Select_User(){
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
-                Page: "Scr_Login_Controller",
-                Method: "DataCompany",
+                Page: "Scr_Company_Controller",
+                Method: "Select_User",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
@@ -353,7 +353,162 @@ function Select_User(){
         }
     }  }
 
+						
+$scope.SaveData= function(){
+try{
+	  var JsonData = {
+						  	'Method_Name': 'Insert',
+							 'Company_Data': {
+							 	"Control":{
+							 	"Creation_Date": new Date().getTime(),
+							 	"Created_User" : "Default"
+							 	},
+				    			"Name": $scope.Companys.name,
+				    			"Identifier": $scope.Companys.identifier,
+							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
+							    "Mail": $scope.Companys.mail.toLowerCase(),
+							    "Country":$scope.Companys.country,
+							    "Location":
+							    {
+							    	"Latitud":$scope.Companys.location_Latitud,
+							    	"Longitud":$scope.Companys.location_Longitud
+							    },
+							    "Phone": $scope.Companys.phone,
+							    "Fax": $scope.Companys.fax,
+							    "Settings":{
+							    "Unity": $scope.Array_Unity,
+							    "Fuel": $scope.Array_Fuel,
+							    "User": $scope.Array_User ,
+							    "Vehicle": $scope.Array_Vehicle ,
+							    "License": $scope.Array_License 
+							    }
+							    },
+							 'User_Data': {
+							 	"Control":{
+							 	"Creation_Date": new Date().getTime(),
+							 	"Created_User" : "Default"
+							 	},
+				    			"Company": $scope.Companys.name,
+				    			"UserName": $scope.User.UserName,
+							    "Password": $scope.User.Password,
+							    "ID": $scope.User.ID,
+							    "Name":$scope.User.Name,
+							    "Lastname": $scope.User.Lastname,
+							    "Lastname2": $scope.User.Lastname2,
+							    "Identification": $scope.User.Identification,
+							    "Mail": $scope.User.Mail.toLowerCase()+ "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
+							    "Gender": $scope.User.Gender,
+							    "Birthdate": $scope.User.Birthdate,
+							    "Type": "Administrador",
+							    "Address": $scope.User.Address
+							    }
+						};
+			  var onSuccess = function(onSuccess){
+			  	window.location.href = "#";
+				};
+				
+			var onError = function(onError){
+					 
+				};
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+	   
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Company_Controller",
+                Method: "validate_Companys",
+                Description: "Error no controlado",
+                User: "Default",
+                Company: "Default",
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+		};					
 
+$scope.validate_Settings =function(Obj,Arr){
+		try{
+	    if(Obj.Value===""||Obj.Value===undefined||Obj.Description===""||Obj.Description===undefined){
+	    	alert("Debe de ingresar los valores");	
+	    	
+	    	}
+		else{
+			existe=false;
+			for (var i=0; i< Arr.length;i++){
+				if( Arr[i].Value === Obj.Value)	{
+					existe = true;
+					break;
+				}			
+			}	
+			if(existe===true){
+				alert("Los datos que ha ingresado ya fueron ingresados en el sistema");
+			}
+			else{
+				var Unity = {};
+				Unity.Value = Obj.Value;
+				Unity.Description = Obj.Description;
+				Arr.push(Unity);
+				document.getElementById("Input_Value").value="";
+				document.getElementById("Input_Description").value="";
+			}
+		}
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_Serial",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+$scope.Remove_In_Array = function(Obj,Array){
+	try{
+	Array_Remove(Array,Obj);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Remove_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 
 
