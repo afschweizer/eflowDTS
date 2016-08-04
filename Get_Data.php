@@ -13,7 +13,8 @@ $arrayResult = Array();
 foreach($result as $doc){
  
  array_push($arrayResult, $doc);
- $coll->update(array("_id"=> new MongoId($doc['_id'])), array('$set' => array("Transferring_State" => "Sync_With_Mobile","Control.Syncroniced_Date"=>date_timestamp_get(date_create())*1000)));
+ //$coll->update(array("_id"=> new MongoId($doc['_id'])), array('$set' => array("Transferring_State" => "Sync_With_Mobile","Control.Syncroniced_Date"=>date_timestamp_get(date_create())*1000)));
+ $coll->update(array("_id"=> new MongoId($doc['_id'])), array('$set' => array("Token_Sincronize" => "Sync_With_Mobile","Control.Syncroniced_Date"=>date_timestamp_get(date_create())*1000)));
 
 }
 
@@ -24,8 +25,9 @@ $result = $coll->find($dataObject->Data);
 foreach($result as $doc){
   
  array_push($arrayResult, $doc);
+ //$coll->update(array("_id"=> new MongoId($doc['_id'])), array('$set' => array("Transferring_State"  => "Sync_With_Mobile","Control.Syncroniced_Date"=>date_timestamp_get(date_create())*1000)));
  $coll->update(array("_id"=> new MongoId($doc['_id'])), array('$set' => array("Transferring_State"  => "Sync_With_Mobile","Control.Syncroniced_Date"=>date_timestamp_get(date_create())*1000)));
-
+  
 }
 
 
@@ -40,7 +42,6 @@ foreach($result as $doc){
 
 }
 
-sleep(30);
 
 echo json_encode($arrayResult);
 

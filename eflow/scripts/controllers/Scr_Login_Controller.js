@@ -97,8 +97,8 @@ $scope.Open_Modal_Add_Company = function(){
             'Data': {
                 'Mail': Log.Mail.toLowerCase(),
                 'Password': Log.Password,
-    			'Type': 'Administrador',
-    			'Company':  Log.Company = Log.Mail.split("@")[1].split(".")[0].toUpperCase() 
+    			'Type': 'Administrador'/*,
+    			'Company':  Log.Company = Log.Mail.split("@")[1].split(".")[0].toUpperCase() */
             }
         };
 		var onSuccess = function(obj) {
