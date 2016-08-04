@@ -301,8 +301,6 @@ function Select_User(){
 		 var JsonData = {
             'Method_Name': 'Select_All_User',
             'Data': {
-    			"UserName": $scope.User.UserName,
-				"Identification": $scope.User.Identification,
 				"Mail": $scope.User.Mail.toLowerCase()+ "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase()
             },
             'Fields':{
@@ -315,7 +313,7 @@ function Select_User(){
 		var onSuccess = function(arr){
 			if(arr.length > 0){
 				alert("Este Usuario ya esta registrado");
-				window.location.href='#';
+                document.getElementById("Mail").focus();
 			}
 			
 		}
