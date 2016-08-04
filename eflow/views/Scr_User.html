@@ -169,13 +169,13 @@
                 <div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
-                                <select ng-model="User.Type" ng-change="Verify_License(User.Type)" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 100%;" class="form-control" id="Type" ></select>
+                                <select ng-model="User.Type" ng-change="Verify_License(User.Type)" ng-options="Obj.Value as Obj.Description for Obj in ArrayTypes" style="width: 100%;" class="form-control" id="Type" ></select>
                        <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div> 
               <div class="form-group" ng-show="Show_Components.Type_License" >
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo de Licencia:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
-                                <select ng-model="User.License" ng-change="See_License()" ng-options="Obj.value as Obj.es for Obj in ArrayLicense" multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
+                                <select ng-model="User.License" ng-change="See_License()" ng-options="Obj.Value as Obj.Description for Obj in ArrayLicense" multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
                        <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div> 
                <div class="form-group" ng-show="Show_Components.License">
@@ -343,13 +343,13 @@
               <div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
-                                <select ng-model="User.Type" ng-change="Verify_License(User.Type)" ng-options="Obj.value as Obj.es for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
+                                <select ng-model="User.Type" ng-change="Verify_License(User.Type)" ng-options="Obj.Value as Obj.Description for Obj in ArrayTypes" style="width: 80%;" class="form-control" id="Type" ></select>
                        <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div> 
               <div class="form-group" ng-show="Show_Components.Type_License" >
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo de Licencia:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
-                                <select ng-model="User.License" ng-change="See_License()" ng-options="Obj.value as Obj.es for Obj in ArrayLicense"  multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
+                                <select ng-model="User.License" ng-change="See_License()" ng-options="Obj.Value as Obj.Description for Obj in ArrayLicense"  multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
                        <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div> 
                <div class="form-group" ng-show="Show_Components.License">

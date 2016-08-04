@@ -122,7 +122,7 @@
                          <div class="form-group"  >
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Tipo de Licencia requerida:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
-                                <select ng-model="Vehicle.License" ng-options="Obj.value as Obj.es for Obj in ArrayLicense"  multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
+                                <select ng-model="Vehicle.License" ng-options="Obj.Value as Obj.Description for Obj in ArrayLicense"  multiple ng-multiple="true" style="width: 80%;" class="form-control" id="License" ></select>
                        <!--<input id="Gender" type="text" class="form-control" name="Gender" value="" ng-model="User.Gender" placeholder="Género..." required>-->
                               </div></div></div> 
                        			<div class="form-group">
@@ -143,7 +143,7 @@
                        			<div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Combustible del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
-											    <select ng-model="Vehicle.Fuel" ng-options="Obj.value as Obj.es for Obj in ArrayFuel_Vehicle" style="width: 80%;" class="form-control" id="Fuel" ></select>
+											    <select ng-model="Vehicle.Fuel" ng-options="Obj.Value as Obj.Description for Obj in ArrayFuel_Vehicle" style="width: 80%;" class="form-control" id="Fuel" ></select>
                       
 												<!--<input id="Fuel" type="text" class="form-control" name="Fuel" value="" ng-model="Vehicle.Fuel" placeholder="Gasolina del Vehiculo..." required>-->
                                </div></div></div>
