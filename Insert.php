@@ -32,9 +32,8 @@ $coll_User = $db->Store_User_Access;
    
    
 }else{
-  
- echo json_encode(array("Message"=>"Compañía no insertada","Error"=>true));
- 
-  }*/
+  */
+ echo json_encode(array("Message"=>"Compañía no insertada"));
+  /* }*/
 
 ?>

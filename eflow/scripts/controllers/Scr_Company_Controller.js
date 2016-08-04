@@ -483,7 +483,6 @@ try{
 						};
 			  var onSuccess = function(onSuccess){
 			  	alert("g");
-				window.location.href="#";
 				};
 				
 			var onError = function(onError){
