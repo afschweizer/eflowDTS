@@ -312,11 +312,12 @@ function Select_User(){
         };
 		var onSuccess = function(arr){
 			if(arr.length > 0){
-				alert("Este Usuario ya esta registrado");
         $scope.Show_Company=false;
         $scope.Show_User=true;
         $scope.Show_Settings=false;
-                document.getElementById("Mail").focus();
+				alert("Este Usuario ya esta registrado");
+				document.getElementById("Mail_User")===""; 
+                document.getElementById("Mail_User").focus(); 
 			}
 			
 		}

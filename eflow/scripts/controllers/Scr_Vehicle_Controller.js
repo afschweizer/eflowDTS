@@ -6,12 +6,9 @@ $scope.init = function() {try{
 	//Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
 var Headers= [{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},{"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
-var Type_Vehicle = [{"es":"Panel","Value":"Panel"},{"es":"Busito Personal","value":"Busito Personal"},{"es":"Camión","value":"Camion"},{"es":"Vehiculo","value":"Vehiculo"},{"es":"Moto","value":"Moto"}] ;
-var Fuel_Vehicle = [{"es":"Gasolina súper","value":"super"},{"es":"Gasolina regular","value":"regular"},{"es":"Gasolina plus","value":"plus"},{"es":"Diésel","value":"diésel"},{"es":"Gas","value":"gas"}] ;
-$scope.ArrayType_Vehicle = Type_Vehicle;
-var License=[{"es":"A1","value":"A1"},{"es":"A2","value":"A2"},{"es":"A3","value":"A3"},{"es":"B1","value":"B1"},{"es":"B2","value":"B2"},{"es":"B3","value":"B3"},{"es":"B4","value":"B4"},{"es":"C1","value":"C1"},{"es":"C2","value":"C2"},{"es":"D1","value":"D1"},{"es":"D2","value":"D2"},{"es":"D3","value":"D3"},{"es":"E1","value":"E1"},{"es":"E2","value":"E2"}];
-$scope.ArrayLicense =License;
-$scope.ArrayFuel_Vehicle = Fuel_Vehicle;
+$scope.ArrayType_Vehicle = eflowDTS.Session.DataCompany.Settings.Vehicle;
+$scope.ArrayLicense = eflowDTS.Session.DataCompany.Settings.License;
+$scope.ArrayFuel_Vehicle = eflowDTS.Session.DataCompany.Settings.Fuel;
 $scope.ArrayHeaders = Headers;
 $scope.Select();
 }catch (e) {
