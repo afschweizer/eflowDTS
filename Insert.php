@@ -33,7 +33,7 @@ $coll_User = $db->Store_User_Access;
    
 }else{
   */
- echo json_encode(array("Message"=>"Compañía insertada"));
+ echo json_encode(array("Message"=>"Datos Insertados"));
   /* }*/
 
 ?>
