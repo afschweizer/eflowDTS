@@ -482,8 +482,9 @@ try{
 							    }
 						};
 			  var onSuccess = function(onSuccess){
-			  	alert("g");
+			  	alert(onSuccess.Message);
 				};
+				
 				
 			var onError = function(onError){
 					 
