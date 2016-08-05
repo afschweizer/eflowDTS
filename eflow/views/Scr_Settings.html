@@ -1,7 +1,5 @@
 <div class="container" ng-controller="Scr_Settings_Controller" ng-init="init()">   
-  	<div class="panel panel-primary "   >
-		<div class="panel-heading" >Ajustes</div>
-      <div class="panel-body">
+  	
         <form  ng-submit="SaveData();"class="form-horizontal">
           <div  class="panel panel-info">
             <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = true">Unidad de Medida</div>
@@ -10,7 +8,7 @@
                 <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Unity.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
                 <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Unity.Description" placeholder="Descripcion...">
-                <div class="col-sm-1">
+                <div class="col-sm-4">
                   <a   ng-click="validate_Settings(Unity,Array_Unity)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
@@ -40,7 +38,7 @@
                 <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Fuel.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
                 <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Fuel.Description" placeholder="Descripcion...">
-                <div class="col-sm-1">
+                <div class="col-sm-4">
                   <a   ng-click="validate_Settings(Fuel,Array_Fuel)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
@@ -70,7 +68,7 @@
                 <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="User.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
                 <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="User.Description" placeholder="Descripcion...">
-                <div class="col-sm-1">
+                <div class="col-sm-4">
                   <a   ng-click="validate_Settings(User,Array_User)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
@@ -100,7 +98,7 @@
                 <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Vehicle.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
                 <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Vehicle.Description" placeholder="Descripcion...">
-                <div class="col-sm-1">
+                <div class="col-sm-4">
                   <a   ng-click="validate_Settings(Vehicle,Array_Vehicle)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
@@ -130,7 +128,7 @@
                 <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="License.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
                 <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="License.Description" placeholder="Descripcion...">
-                <div class="col-sm-1">
+                <div class="col-sm-4">
                   <a   ng-click="validate_Settings(License,Array_License)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
                   </a>
@@ -154,16 +152,14 @@
               </div>
             </div>
           <div class="form-group">
-            <div class="col-sm-12 controls">
-              <button  ng-click="Show_User= true; Show_Settings = false"  class="btn btn-primary pull-left" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-chevron-left"></i> regresar</button>                          
+            <div class="col-sm-12 controls">                        
           	  <button  type="submit" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i  class="glyphicon glyphicon-save"></i> Guardar</button>   
-              <a href="#" ng-click="Show_Company= false; Show_User= false; Show_Settings = false" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" >
+              <a href="#Calendar" ng-click="Show_Company= false; Show_User= false; Show_Settings = false" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" >
                 <i  class="glyphicon glyphicon-remove"></i> Cancelar</a>                                    	                         
             </div>
           </div>
         </form>
-      </div>
-	</div>
+   
   
   
 </div>

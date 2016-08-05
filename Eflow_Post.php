@@ -20,6 +20,11 @@ switch($dataObject->Method_Name){
       require 'Update_Jobs.php';
       break;
     } 
+  case 'Update_Company':
+    {
+      require 'Update_Company.php';
+      break;
+    } 
   case 'Update_Users':
     {
       require 'Update_Users.php';

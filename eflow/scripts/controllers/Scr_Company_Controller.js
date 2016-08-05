@@ -252,7 +252,7 @@ function Select_Company(){
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
-                Page: "Scr_Login_Controller",
+                Page: "Scr_Company_Controller",
                 Method: "DataCompany",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.UserName,
@@ -472,7 +472,7 @@ $scope.validate_Settings =function(Obj,Arr){
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
-                Page: "Scr_VisitPoint_DB_Controller",
+                Page: "Scr_Company_Controller",
                 Method: "Add_Serial",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.UserName,
@@ -499,7 +499,7 @@ $scope.Remove_In_Array = function(Obj,Array){
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
-                Page: "Scr_VisitPoint_DB_Controller",
+                Page: "Scr_Company_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.UserName,

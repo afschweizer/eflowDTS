@@ -234,8 +234,11 @@
                      <li id="" class="dropdown" style="color:#000000;">
                        <span class="fa fa-university" data-toggle="tooltip" title="Usuario Activo"  style="text-transform:lowercase "></span>{{Company}}      
                        <span class="glyphicon glyphicon-user" data-toggle="tooltip" title="Usuario Activo"></span>{{UserName}}      .
-                       <a style="color:#000000;" ng-click="Sign_Out()" class="glyphicon glyphicon-log-out" data-toggle="tooltip" title="Cerrar Sesi&oacute;n" tabindex="0"></a>
-                       
+                       <span type="button" class="dropup glyphicon glyphicon-menu-hamburger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="font-weight: bold;">Menu.</span>
+                           <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a style="color:#000000;" ng-click="Sign_Out()" class="glyphicon glyphicon-log-out" data-toggle="tooltip" title="Cerrar Sesi&oacute;n" tabindex="0"> Cerrar Sesi&oacute;n</a></li>
+                            <li><a style="color:#000000;" href="#Settings" class="glyphicon glyphicon-cog" data-toggle="tooltip" title="Ajustes" tabindex="0"> Ajustes</a></li>
+                           </ul>
                      </li>
                      </ul>
                    </h4>
@@ -281,7 +284,7 @@
                    </ul></li>
                   
                  <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Data_Summary" data-toggle="tooltip" title="Análisis Datos">Análisis Datos</a></li> 
-                <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Settings" data-toggle="tooltip" title="Ajustes">Ajustes</a></li> 
+               <!-- <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Settings" data-toggle="tooltip" title="Ajustes">Ajustes</a></li> -->
                </ul>
               </div>
             </nav>
