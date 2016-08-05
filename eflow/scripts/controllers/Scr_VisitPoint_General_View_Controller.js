@@ -4,7 +4,7 @@ DTS_APP.controller('Scr_VisitPoint_General_View_Controller',function($scope){
 $scope.init = function(){
 try{
 	
-	$scope.ArrayRoute = [];
+	        $scope.ArrayRoute = [];
        	    Set_Current_Page();
 	        $('#Charging').modal('show');
 			
@@ -173,6 +173,7 @@ try{
 		for(var i = 0; i < $scope.Array_VisitPoint.length; i++){
 			var VP = $scope.Array_VisitPoint[i];
 			
+			if(typeof VP.Latitude === 'number' || typeof VP.Longitude === 'number'){
 			map.addMarker({
 				lat: VP.Latitude,
 				lng: VP.Longitude,
@@ -186,7 +187,7 @@ try{
 					map.refresh();
 				}
 			});	
-			
+			}
 			map.refresh();
 		}
 		
