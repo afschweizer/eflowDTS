@@ -75,7 +75,7 @@
             	templateUrl : 'views/Scr_VisitPoint_General_View.html'
             })
             .when('/Settings',{
-            	templateUrl : 'views/Scr_Settings_Controller.html'
+            	templateUrl : 'views/Scr_Settings.html'
             })
             .when('/404',{
             	templateUrl: 'views/Scr_404.html'
