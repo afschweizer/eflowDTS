@@ -127,7 +127,7 @@ try{
 					'Data': Json
 				};
 		var onSuccess = function(JsonData){
-			alert(JsonData);
+			DataCompany();
 			};
 				
 		var onError =  function(JsonData){
@@ -172,7 +172,61 @@ try{
     } 
 		};	
 
+function DataCompany() {	
 
+      try{
+		 var JsonData = {
+            'Method_Name': 'Select_Company',
+            'Data': {
+    			"Identifier": eflowDTS.Session.Company
+            },
+            'Fields':{
+            	
+            }
+        };
+		var onSuccess = function(arr){
+			
+					eflowDTS.Session.DataCompany = arr[0];
+					
+		      	 //To_Save_Eflow_Config();
+		      	 Set_Cookie("EflowCookie",eflowDTS);
+		}
+		var onError = function(e){
+					 var erro={
+			Generated: true,
+            Page: "Scr_Login_Controller",
+            Method: "DataCompany",
+            Description: "onError",
+            User: eflowDTS.Session.UserName,
+            Company: eflowDTS.Session.Company,
+            Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;
+		console.log(e);
+		}
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+       
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Settings_Controller",
+                Method: "DataCompany",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  }
 
 
     });
