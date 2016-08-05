@@ -14,7 +14,7 @@ try{
 			Select_VisitPoint();
 			Select_Routes();
 				
-			
+			  
 	}catch (e) {
         
         var err;
@@ -166,7 +166,10 @@ try{
 	}
 	
 	};
-	
+	  
+	  
+	  
+	  
 	
 	function Add_Markers(){
 		
