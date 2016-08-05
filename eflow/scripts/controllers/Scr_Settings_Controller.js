@@ -128,6 +128,7 @@ try{
 				};
 		var onSuccess = function(JsonData){
 			DataCompany();
+			    	window.location.href = "#Calendar";
 			};
 				
 		var onError =  function(JsonData){
