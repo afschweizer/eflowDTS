@@ -369,7 +369,7 @@ try{
 							 	"Created_User" : "Default"
 							 	},
 				    			"Name": $scope.Companys.name,
-				    			"Identifier": $scope.Companys.identifier,
+				    			"Identifier": $scope.Companys.identifier.toUpperCase(),
 							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),
 							    "Country":$scope.Companys.country,
