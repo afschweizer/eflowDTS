@@ -383,7 +383,16 @@ try{
 							    "Settings":{
 							    "Unity": $scope.Array_Unity,
 							    "Fuel": $scope.Array_Fuel,
-							    "User": $scope.Array_User ,
+							    "User": [
+							    	    {
+								          "Value": "Conductor",
+								          "Description": "Conductor"
+								        },
+								        {
+								          "Value": "Administrador",
+								          "Description": "Administrador"
+								        }
+							    ],//$scope.Array_User ,
 							    "Vehicle": $scope.Array_Vehicle ,
 							    "License": $scope.Array_License 
 							    }
@@ -531,7 +540,14 @@ $scope.Remove_In_Array = function(Obj,Array){
   
 };
 
+$scope.comprueba = function (que,donde)
+{
+var arroba = /@/;
+if(arroba.test(que)){
+	donde.value = que.replace(arroba,'');
+	}
 
+};
 
 
 
