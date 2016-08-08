@@ -206,9 +206,9 @@
             <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = true">Unidad de Medida</div>
             <div class="panel-body"  ng-show="Show_Settings_Unity"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Unity.Value" placeholder="Valor...">
+                <input class="col-sm-2"type="text" id="Array_UnityInput_Value" class="form-control" ng-model="Unity.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Unity.Description" placeholder="Descripcion...">
+                <input class="col-sm-2" type="text" id="Array_UnityInput_Description" class="form-control" ng-model="Unity.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
                   <a   ng-click="validate_Settings(Unity,Array_Unity)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
@@ -236,9 +236,9 @@
             <div class="panel-heading"ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= true;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Combustible</div>
             <div class="panel-body"  ng-show="Show_Settings_Fuel"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Fuel.Value" placeholder="Valor...">
+                <input class="col-sm-2"type="text" id="Array_FuelInput_Value" class="form-control" ng-model="Fuel.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Fuel.Description" placeholder="Descripcion...">
+                <input class="col-sm-2" type="text" id="Array_FuelInput_Description" class="form-control" ng-model="Fuel.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
                   <a   ng-click="validate_Settings(Fuel,Array_Fuel)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
@@ -266,9 +266,9 @@
             <div class="panel-heading"ng-click="Show_Settings_License= false;Show_Settings_User= true;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Usuario</div>
             <div class="panel-body"ng-show="Show_Settings_User" > 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="User.Value" placeholder="Valor...">
+                <input class="col-sm-2"type="text" id="Array_UserInput_Value" class="form-control" ng-model="User.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="User.Description" placeholder="Descripcion...">
+                <input class="col-sm-2" type="text" id="Array_UserInput_Description" class="form-control" ng-model="User.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
                   <a   ng-click="validate_Settings(User,Array_User)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
@@ -296,9 +296,9 @@
             <div class="panel-heading" ng-click="Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= true;Show_Settings_Unity = false">Tipos de Vehiculos</div>
             <div class="panel-body" ng-show="Show_Settings_Vehicle"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="Vehicle.Value" placeholder="Valor...">
+                <input class="col-sm-2"type="text" id="Array_VehicleInput_Value" class="form-control" ng-model="Vehicle.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="Vehicle.Description" placeholder="Descripcion...">
+                <input class="col-sm-2" type="text" id="Array_VehicleInput_Description" class="form-control" ng-model="Vehicle.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
                   <a   ng-click="validate_Settings(Vehicle,Array_Vehicle)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>
@@ -326,9 +326,9 @@
             <div class="panel-heading" ng-click="Show_Settings_License= true;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Licencia</div>
             <div class="panel-body" ng-show="Show_Settings_License"> 
                 <label class="col-sm-2 control-label">Valor:</label>
-                <input class="col-sm-2"type="text" id="Input_Value" class="form-control" ng-model="License.Value" placeholder="Valor...">
+                <input class="col-sm-2"type="text" id="Array_LicenseInput_Value" class="form-control" ng-model="License.Value" placeholder="Valor...">
                 <label class="col-sm-2 control-label">Descripcion:</label>
-                <input class="col-sm-2" type="text" id="Input_Description" class="form-control" ng-model="License.Description" placeholder="Descripcion...">
+                <input class="col-sm-2" type="text" id="Array_LicenseInput_Description" class="form-control" ng-model="License.Description" placeholder="Descripcion...">
                 <div class="col-sm-1">
                   <a   ng-click="validate_Settings(License,Array_License)">
                     <i class="glyphicon glyphicon-check" >Guardar Unidad de Medida</i>

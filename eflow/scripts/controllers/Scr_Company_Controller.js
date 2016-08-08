@@ -461,8 +461,8 @@ $scope.validate_Settings =function(Obj,Arr){
 				Unity.Value = Obj.Value;
 				Unity.Description = Obj.Description;
 				Arr.push(Unity);
-				document.getElementById("Input_Value").value="";
-				document.getElementById("Input_Description").value="";
+				document.getElementById(Arr+"Input_Value").value="";
+				document.getElementById(Arr+"Input_Description").value="";
 			}
 		}
 		}catch (e) {
