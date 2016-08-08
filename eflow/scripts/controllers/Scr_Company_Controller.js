@@ -461,8 +461,24 @@ $scope.validate_Settings =function(Obj,Arr){
 				Unity.Value = Obj.Value;
 				Unity.Description = Obj.Description;
 				Arr.push(Unity);
-				document.getElementById(Arr+"Input_Value").value="";
-				document.getElementById(Arr+"Input_Description").value="";
+				
+				var inputValues = document.getElementsByName("Input_Value");
+var inputDescription = document.getElementsByName("Input_Description");
+
+for(var j = 0; j < inputValues.length;j++){
+    inputValues[j].value = "";
+    //console.log("Limpiando input value: "+ i);
+}
+
+for(var k= 0; k < inputDescription.length; k++){
+    inputDescription[k].value = "";
+    //console.log("Limpiando input description: "+ i);
+}
+
+				
+				
+			//	document.getElementById("Input_Value").value="";
+			//	document.getElementById("Input_Description").value="";
 			}
 		}
 		}catch (e) {
