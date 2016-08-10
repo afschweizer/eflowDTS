@@ -31,7 +31,7 @@
       </span>
        -->
       <span>
-            <a class="btn btn-primary span4" ng-click="Open_Modal_Add_VisitPoint()" data-toggle="tooltip" title="Agregar una tarea" >
+            <a class="btn btn-primary span4" ng-click="Open_Modal_Add_VisitPoint();" data-toggle="tooltip" title="Agregar una tarea" >
             <i class="glyphicon glyphicon-plus"></i>  Nueva Tarea</a>
       </span>
       
@@ -226,7 +226,8 @@
           <div class="modal-content">
 
             <div class="modal-header" style="background-color:#4096c6;color:#fff">
-              <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar/Editar Tareas</h2>
+              <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar/Editar 
+              </h2>
             </div>
           
             <div class="modal-body">
@@ -369,12 +370,152 @@
             <br/>
               
             <br/>
+              
+<!--TAREAS-->
+     
             <div  id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo" style="background-color:#4096c6"><b>Trabajos</b>  
-              
+              <a class="btn btn-primary" data-toggle="tooltip" title="agregar tareas" style="background-color:#295C7A">
+               <i class="glyphicon glyphicon-plus" ng-click="Tareas=true;"></i></a>
+               <a class="btn btn-primary" data-toggle="tooltip" title="Cerrar" style="background-color:#295C7A">
+               <i class="glyphicon glyphicon-remove" ng-click="Tareas=false;VisitPoint_Add_Task={}"></i></a>
+                           
              </div> 
            <div class="panel-body"> 
-              
+              <div ng-show="Tareas">
+                
+              <div class="form-group">
+                  <label class="col-sm-4 control-label">Tipo de Tarea:</label> 
+                <div class="col-sm-8"> 
+                  <div class="form-group">
+                      <select class="form-control" ng-model="VisitPoint_Add_Task.JobType" > 
+                        <option value=""></option>
+                        <option value="delivery">Entrega</option>
+                        <option value="return">Recolección</option>
+                      </select>
+                    </div>  
+                    </div>  
+             </div> 
+             
+                    <div class="form-group">      
+                       <label class="col-sm-4 control-label">Nombre:</label>
+                       <div class="col-sm-8">  
+                 <div class="form-group">
+                            <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.JobName" placeholder="Nombre...">
+                       </div>
+                     </div>  
+                     </div>  
+              <div class="form-group">
+                  <label class="col-sm-4 control-label">Clasificación de Tarea:</label>
+                <div class="col-sm-8">  
+                 <div class="form-group">
+                      <select class="form-control" ng-model="VisitPoint_Add_Task.JobClass" ng-change="Show_Serial_Edit(VisitPoint_Add_Task)" required> 
+                        <option value="SS">Sin serie</option>
+                        <option value="SU">Serie Unica</option>
+                        <option value="SP">Serie Programada</option>
+                      </select>
+                    </div>  
+                    </div>  
+             </div>  
+       <div class="form-group" ng-show="Show_Serie">      
+                       <label class="col-sm-4 control-label">Serie:</label>
+                       <div class="col-sm-5">  
+                 <div class="form-group">
+                            <input type="text" id="Input_Serial" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">
+                   
+                       </div>
+                     </div>
+         
+                       <div class="col-sm-3">  
+                 <div class="form-group">
+                        <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie)">
+                          <i class="glyphicon glyphicon-check" ></i> Guardar serie</a>
+                     </div>
+                     </div>
+                   <table style="width:100%">
+                    <tr>
+                      <th class="col-sm-8">Serie</th>
+                      <td class="col-sm-2">Mantenimiento</td>
+                    </tr>
+                    <tr ng-repeat="VisitPoint_Serial in VisitPoint_Add_Task.Serial_List">
+                      <td class="col-sm-8">{{VisitPoint_Serial.Serial}}</td>
+                      <td class="col-sm-2">
+                        <a class="btn btn-danger">
+                          <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Serial, Array_Serials);"></i></a>
+                      </td>
+                    </tr>
+                  </table>
+                     </div>   
+               <div class="form-group" ng-show="Show_Code">
+                   	     <label class="col-sm-4 control-label">Código de Barras:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                             <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.BarCode" placeholder="Codigo de barras...">
+                          </div>
+                       </div>    
+                        </div>  
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Descripción:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.JobDescription" placeholder="Descripción...">
+                   </div>
+                        </div> 
+                        </div>        
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Unidad de medida:</label>
+                          <div class="col-sm-8"> 
+                 <div class="form-group">  						
+                       <select ng-model="VisitPoint_Add_Task.UOM" placeholder="Unidad de medida..." ng-options="Obj.Value as Obj.Description for Obj in ArrayUnidads" style="width: 80%;" class="form-control"></select>
+
+                       <!--<input type="text" class="form-control" ng-model="VisitPoint_Add_Task.UoM" placeholder="Unidad de medida...">-->
+                   </div>
+                        </div> 
+                        </div> 
+                        <div class="form-group"  ng-show="Show_Quantity">
+                      <label class="col-sm-4 control-label">Cantidad:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.Quantity" placeholder="Cantidad...">
+                    </div>
+                       </div> 
+                        </div> 
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Instrucciones:</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="text" class="form-control" ng-model="VisitPoint_Add_Task.JobInstructions" placeholder="Instrucciones...">
+                    </div>
+                        </div> 
+                       </div>
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Peso total(kg):</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobWeight" placeholder="Peso...">
+                   </div>
+                        </div> 
+                        </div> 
+                        <div class="form-group">
+                      <label class="col-sm-4 control-label">Volumen total(m³):</label>
+                          <div class="col-sm-8">   
+                 <div class="form-group">
+                       <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobCubics" placeholder="Volumen...">
+                    </div>
+                        </div> 
+                       <!-- <div class="form-group">
+                      <label>Foto:</label>
+                        <input type="file" class="form-control" id="VisitPoint_Add_Task.Photo"/>
+                    </div>   -->   
+                    <div class="form-group">
+                      <span>
+                        <a style="cursor: pointer"  ng-click="Add_Task_In_VisitPoint_Array_edit(VisitPoint_Add_Task)">
+                          <i class="glyphicon glyphicon-check" ></i> Guardar Trabajo</a>
+                      </span>
+                    </div> 
+                    <hr/>
+             </div>
+        </div>
                     <div class="table-responsive">
                       <table class="table table-condensed">
                         <thead >
@@ -414,6 +555,8 @@
                             <td>
                             <a class="btn btn-primary" data-toggle="tooltip" title="Eliminar tareas" style="background-color:#295C7A">
                               <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);"></i></a>
+                            <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
+                              <i class="glyphicon glyphicon-pencil"  ng-click="Tareas=true; Edit_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);" ></i></a>
                             </td>
                           </tr>
                         </tbody>
@@ -424,7 +567,7 @@
                       </div>
                     </div>
         </div>
-
+                    
 
          </div>
 
@@ -791,3 +934,4 @@
       </div>
    
 </div>
+  </div>

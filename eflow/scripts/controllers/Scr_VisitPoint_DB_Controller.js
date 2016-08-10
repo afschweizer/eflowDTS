@@ -103,7 +103,45 @@ $scope.init = function(){
     }  
   
 };
-			
+ $scope.Show_Serial_Edit= function(Value) {try{
+      if (Value.JobClass ==="SP"){
+           $scope.Show_Serie=true;
+		   $scope.Show_Quantity=false;
+      }else{
+           $scope.Show_Serie=false;
+      } 
+      if (Value.JobClass ==="SS"){
+           $scope.Show_Code=true;
+           $scope.Show_Quantity=true;
+      }else{
+           $scope.Show_Code=false;
+      } 
+      if (Value.JobClass ==="SU"){
+           $scope.Show_Quantity=true;
+      }
+
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Show_Serial_Edit",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
  $scope.Show_Serial = function(Value) {try{
       if (Value.Serial ==="SP"){
            $scope.Show_Serie=true;
@@ -1078,6 +1116,59 @@ Json.Control.Modify_User= eflowDTS.Session.UserName;
     }  
   
 };
+
+$scope.Edit_In_Array = function(Obj,Array){
+	try{
+		
+      /*  var Tareas_Edit = true;	
+		if($scope.Tareas===true){
+        $scope.Tareas=false;		
+		}
+		else{*/
+        $scope.Tareas=true;
+        
+        $scope.VisitPoint_Add_Task={};
+        //$scope.VisitPoint_Add_Task=Obj;
+        $scope.VisitPoint_Add_Task.JobClass = Obj.JobClass;
+		$scope.VisitPoint_Add_Task.JobID=Obj.JobID ;
+		$scope.VisitPoint_Add_Task.JobType=Obj.JobType;
+		$scope.VisitPoint_Add_Task.JobName=Obj.JobName;
+		$scope.VisitPoint_Add_Task.JobDescription=Obj.JobDescription;
+	    $scope.VisitPoint_Add_Task.JobInstructions=Obj.JobInstructions;
+	    $scope.VisitPoint_Add_Task.BarCode=Obj.BarCode;
+	    $scope.VisitPoint_Add_Task.UOM=Obj.UOM;
+	    $scope.VisitPoint_Add_Task.Quantity=Obj.Quantity;
+	    $scope.VisitPoint_Add_Task.JobWeight=Obj.JobWeight;
+	    $scope.VisitPoint_Add_Task.JobCubics=Obj.JobCubics;
+		$scope.VisitPoint_Add_Task.Serial_List=Obj.Serial_List;
+	    $scope.Show_Serial_Edit($scope.VisitPoint_Add_Task);
+        
+        //}
+        
+       
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Remove_In_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 $scope.Remove_In_Array = function(Obj,Array){
 	try{
@@ -1795,10 +1886,218 @@ try{
   
 };
 
+$scope.Validator=function(Task_Obj){
+	try {
+    var array = ["JobType", "JobName", "JobDescription", "UOM", "JobWeight", "JobCubics", "JobInstructions", "JobClass"];
+    var result = true;
+    for (var i = 0; i < array.length; i++) {
+        if (obj.hasOwnProperty(array[i]) === false || obj[array[i]] === null || obj[array[i]] === "") {
+            result = false;
+            break;
+        }
+    }
+    return result;
+} catch (e) {
+    var err;
+    if (e.hasOwnProperty("Generated") === false) {
+        err = {
+            Generated: false,
+            Page: "Scr_VisitPoint_DB_Controller",
+            Method: "Validator",
+            Description: "Error no controlado",
+            User: eflowDTS.Session.General.User,
+            ID_Truck: eflowDTS.Session.General.ID_Truck,
+            Date: eflowDTS_lib.GetServerTime().getTime(),
+            Error: e
+        };
+        Save_Error(err);
+    } else {
+        Save_Error(e);
+    }
+}
+};
 
+$scope.Add_Task_In_VisitPoint_Array_edit = function(Task_Obj){
+	try{
+	
+      if (Validator(Task_Obj) === false) {
+        
+        alert("Todos los campos son necesarios");
+        
+    } else { 
+   if(typeof Task_Obj.JobID === 'undefined'){
+   		Task_Obj.JobID = (new Date().getTime()).toString();
+    //$scope.Array_VisitPoint_Task_Edit.push(Task_Obj);
+	create_Task(Task_Obj);
+  }else{
+    for(var i = 0; i < $scope.Array_VisitPoint_Task_Edit.length; i++){
+       if($scope.Array_VisitPoint_Task_Edit[i].JobID === Task_Obj.JobID){
+	create_Task(Task_Obj);
+              break;
+       }
+    }
+  }
+  $scope.Task_Obj = {};
+
+	
+	}
+		
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Add_Task_In_VisitPoint_Array",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+$scope.create_Task = function() {
+try{
+var obj = {};
+		  if(Task_Obj.Type === "delivery"){
+		  	obj.JobTypeEs = "Entrega";
+		  }else{
+		  	obj.JobTypeEs = "Recolección";
+		  }
+		switch(Task_Obj.Serial) {
+		    case "SS":
+		        {
+		        	obj.JobClass="SS";
+					obj.JobID = Task_Obj.ID;
+					obj.JobType = Task_Obj.JobType;
+					obj.JobName = Task_Obj.JobName;
+					obj.JobDescription = Task_Obj.JobDescription;
+					obj.JobInstructions = Task_Obj.JobInstructions;
+					obj.BarCode = Task_Obj.BarCode;
+					obj.UOM = Task_Obj.UOM;
+					obj.Quantity = Task_Obj.Quantity;
+				/*	cantidad.JobWeight = Task_Obj.JobWeight;
+					cantidad.JobCubics = Task_Obj.JobCubics;*/
+					obj.JobWeight = Task_Obj.JobWeight;
+					obj.JobCubics = Task_Obj.JobCubics;
+					obj.Quantity_Register = 0;
+					obj.JobState = "Uninitiated";
+					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
+					obj.JobImage = "Funcion de Photos('Task.Photo')";
+					obj.JobActions = [];
+					if($scope.VisitPoint_Add_Array_Task){
+						//$scope.Verify_Weight_Volume(id,cantidad);
+						$scope.VisitPoint_Add_Array_Task.push(obj);			
+					}else{
+						$scope.VisitPoint_Add_Array_Task = [];
+						//$scope.Verify_Weight_Volume(id,cantidad);
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
+					}
+					$scope.VisitPoint_Add_Task = {};
+					
+	       $scope.Show_Serie=false;
+           $scope.Show_Code=false;
+           $scope.Show_Quantity=false;
+		        	break;
+		        }
+		    case "SU":
+		   		{
+		        	obj.JobClass="SU";
+					obj.JobID = Task_Obj.ID;
+					obj.JobType = Task_Obj.JobType;
+					obj.JobName = Task_Obj.JobName;
+					obj.JobDescription = Task_Obj.JobDescription;
+					obj.JobInstructions = Task_Obj.JobInstructions;
+					obj.UOM = Task_Obj.UOM;
+					obj.Quantity = Task_Obj.Quantity;
+					
+					obj.JobWeight = Task_Obj.JobWeight;
+					obj.JobCubics = Task_Obj.JobCubics;
+					obj.Quantity_Register = 0;
+					obj.JobState = "Uninitiated";
+					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
+					obj.JobImage = "Funcion de Photos('Task.Photo')";
+					obj.JobActions = [];
+					if($scope.VisitPoint_Add_Array_Task){
+						$scope.VisitPoint_Add_Array_Task.push(obj);			
+					}else{
+						$scope.VisitPoint_Add_Array_Task = [];
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
+					}
+					$scope.VisitPoint_Add_Task = {};
+	       $scope.Show_Serie=false;
+           $scope.Show_Code=false;
+           $scope.Show_Quantity=false;
+		        	break;
+		        }
+		    case "SP":
+		    	{
+		        	obj.JobClass="SP";
+					obj.JobID = Task_Obj.ID;
+					obj.JobType = Task_Obj.JobType;
+					obj.JobName = Task_Obj.JobName;
+					obj.Serial_List= $scope.Array_Serials;
+					obj.JobDescription = Task_Obj.JobDescription;
+					obj.JobInstructions = Task_Obj.JobInstructions;
+					obj.UOM = Task_Obj.UOM;
+					obj.Quantity = ($scope.Array_Serials.length);
+					obj.JobWeight = Task_Obj.JobWeight;
+					obj.JobCubics = Task_Obj.JobCubics;
+					obj.Quantity_Register = 0;
+					obj.JobState = "Uninitiated";
+					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
+					obj.JobImage = "Funcion de Photos('Task.Photo')";
+					obj.JobActions = [];					
+					if($scope.VisitPoint_Add_Array_Task){
+						$scope.VisitPoint_Add_Array_Task.push(obj);			
+					}else{
+						$scope.VisitPoint_Add_Array_Task = [];
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
+					}
+					$scope.VisitPoint_Add_Task = {};
+					$scope.Array_Serials = [];
+	       $scope.Show_Serie=false;
+           $scope.Show_Code=false;
+           $scope.Show_Quantity=false;
+		        	break;
+		        }
+		}
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "create_Task",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 	try{
+		
 	if(Task_Obj.Type === "" || Task_Obj.Type === 0 ||
 	Task_Obj.Name === "" || Task_Obj.Name === undefined ||
 	Task_Obj.Serial === "" || Task_Obj.Serial === undefined ||
@@ -1809,7 +2108,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 	Task_Obj.JobCubics === "" || Task_Obj.JobCubics === undefined ){
 			bootbox.dialog({
 			title:"¡Alerta!",
-			message:"Debe completar todos los campos",
+			message:"Debe completar todos los campos2",
 			buttons:{
 				main:{
 					label:"Ok!",

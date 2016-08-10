@@ -214,7 +214,7 @@ function Select_Company(){
 		 var JsonData = {
             'Method_Name': 'Select_Company',
             'Data': {
-    			"Identifier": $scope.Companys.identifier,
+    			"Identifier": $scope.Companys.name.toUpperCase(),
     			"Domain":"@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
     			"Name":$scope.Companys.name
             },
@@ -369,7 +369,7 @@ try{
 							 	"Created_User" : "Default"
 							 	},
 				    			"Name": $scope.Companys.name,
-				    			"Identifier": $scope.Companys.identifier.toUpperCase(),
+				    			"Identifier": $scope.Companys.name.toUpperCase(),
 							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),
 							    "Country":$scope.Companys.country,
@@ -540,14 +540,7 @@ $scope.Remove_In_Array = function(Obj,Array){
   
 };
 
-$scope.comprueba = function (que,donde)
-{
-var arroba = /@/;
-if(arroba.test(que)){
-	donde.value = que.replace(arroba,'');
-	}
 
-};
 
 
 

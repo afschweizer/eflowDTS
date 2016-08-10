@@ -10,13 +10,11 @@ foreach($result as $doc){
  
 $colle = $db->Store_Jobs_Send;
 
-$colle ->update(array("_id"=> new MongoId($doc["_id"].$id)), array('$set' => 
+$colle->update(array("_id"=> new MongoId($doc["_id"].$id)), array('$set' => 
         array("Transferring_State" => "Pending_To_Mobile")));
 
 }
 //echo date().time();
-
-
 
 ?>
 

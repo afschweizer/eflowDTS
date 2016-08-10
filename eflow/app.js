@@ -1,4 +1,4 @@
-// script.js
+1// script.js
 
     // create the module and name it DTS_APP
         // also include ngRoute for all our routing needs
@@ -73,6 +73,9 @@
             })
             .when('/VisitPoint_General_View',{
             	templateUrl : 'views/Scr_VisitPoint_General_View.html'
+            })
+            .when('/General_Detail_Routes',{
+            	templateUrl : 'views/Scr_General_Detail.html'
             })
             .when('/Settings',{
             	templateUrl : 'views/Scr_Settings.html'

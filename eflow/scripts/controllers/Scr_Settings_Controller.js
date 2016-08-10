@@ -194,7 +194,7 @@ function DataCompany() {
 		 var JsonData = {
             'Method_Name': 'Select_Company',
             'Data': {
-    			"Identifier": eflowDTS.Session.Company
+    			"Identifier": eflowDTS.Session.Company.toUpperCase(),
             },
             'Fields':{
             	
