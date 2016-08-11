@@ -421,14 +421,14 @@
                        <label class="col-sm-4 control-label">Serie:</label>
                        <div class="col-sm-5">  
                  <div class="form-group">
-                            <input type="text" id="Input_Serial" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">
+                            <input type="text" id="Input_Serial1" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">
                    
                        </div>
                      </div>
          
                        <div class="col-sm-3">  
                  <div class="form-group">
-                        <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie)">
+                        <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie,VisitPoint_Add_Task.Serial_List)">
                           <i class="glyphicon glyphicon-check" ></i> Guardar serie</a>
                      </div>
                      </div>
@@ -789,7 +789,7 @@
          
                        <div class="col-sm-3">  
                  <div class="form-group">
-                        <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie)">
+                        <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie,Array_Serials)">
                           <i class="glyphicon glyphicon-check" ></i> Guardar serie</a>
                      </div>
                      </div>
@@ -890,7 +890,7 @@
                             <th>Instrucciones</th>
                             <th>Peso</th>
                             <th>Volumen</th>
-                            <th>Eliminar</th>
+                            <th>Mantenimiento</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -907,6 +907,8 @@
                             <td>
                             <a class="btn btn-danger">
                               <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);"></i></a>
+                              <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
+                              <i class="glyphicon glyphicon-pencil"  ng-click="Edit_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);" ></i></a>
                             </td>
                           </tr>
                         </tbody>

@@ -913,7 +913,7 @@ doc.text(420, 50, 'Fecha: '+new Date($scope.Watch).format('dd/mm/yyyy'));
 doc.setTextColor(100);
 doc.setFontType("bold");
 
-doc.addImage(ima, 'JPEG', 20, 20, 150, 90);
+doc.addImage(ima, 'JPEG', 20, 20, 220, 90);
     
   
 doc.text(420, 70, 'Nombre de la Compañia: '+ Compania.Name);

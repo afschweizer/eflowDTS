@@ -264,7 +264,8 @@
                        			<div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Combustible del Vehículo:</label><div class="col-sm-8"> 
                   <div class="form-group">
-											<input id="Fuel" type="text" class="form-control" name="Fuel" value="" ng-model="Vehicle.Fuel" placeholder="Combustible del Vehiculo..." required>
+								   <select ng-model="Vehicle.Fuel" name="Fuel" ng-options="Obj.Value as Obj.Description for Obj in ArrayFuel_Vehicle" style="width: 80%;" class="form-control" id="Fuel" ></select>
+                      <!--<input id="Fuel" type="text" class="form-control" name="Fuel" value="" ng-model="Vehicle.Fuel" placeholder="Combustible del Vehiculo..." required>-->
                               </div></div></div>
                        			<div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Cilindraje del Vehículo:</label><div class="col-sm-8"> 

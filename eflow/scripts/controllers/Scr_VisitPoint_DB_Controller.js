@@ -14,6 +14,7 @@ $scope.init = function(){
         $scope.Show_Select_Vehicule = false;
 	    $scope.Array_Serials =  [];
         $scope.Check = false;
+        $scope.Tareas = false;
         $scope.Date = new Date(eflowDTS.Session.Calendar_Date);
 		$scope.Headers = [{"es":"NOMBRE","value":"Name"},
 		{"es":"VEHICULO","value":"ID_Truck"},{"es":"USUARIO","value":"User"},
@@ -57,30 +58,39 @@ $scope.init = function(){
 	
 	
 	
-	$scope.Add_Serial =function(value){
+	$scope.Add_Serial =function(value,Parameter_array){
 		try{
 	    if(value===""||value===undefined){
 	    	alert("Debe de ingresar una serie");	
 	    	
 	    	}
 		else{
-			existe=false;
-			for (var i=0; i<  $scope.Array_Serials.length;i++){
-				if( $scope.Array_Serials[i].Serial===value)	{
-					existe=true;
-					break;
-				}			
-			}	
-			if(existe===true){
-				alert("La serie que ha ingresado ya fue ingresada");
-			}
-			else{
-			   var obj_serials={};
-			   obj_serials.Serial = value;
-				$scope.Array_Serials.push(obj_serials);
-				document.getElementById("Input_Serial").value="";
-			}
+			if(Parameter_array===undefined){
+	    		Parameter_array=[];   	
+	    	}
+				existe=false;
+				for (var i=0; i<  Parameter_array/*Array_Serials*/.length;i++){
+					if( Parameter_array/*Array_Serials*/[i].Serial===value)	{
+						existe=true;
+						break;
+					}			
+				}	
+				if(existe===true){
+					alert("La serie que ha ingresado ya fue ingresada");
+				}
+				else{
+					
+	    
+					
+				   var obj_serials={};
+				   obj_serials.Serial = value;
+					//$scope.Array_Serials.push(obj_serials);
+					Parameter_array.push(obj_serials);
+					//document.getElementById("Input_Serial").value="";
+				}
 		}
+		document.getElementById("Input_Serial1").value="";
+		document.getElementById("Input_Serial").value="";
 		}catch (e) {
         
         var err;
@@ -103,23 +113,28 @@ $scope.init = function(){
     }  
   
 };
- $scope.Show_Serial_Edit= function(Value) {try{
-      if (Value.JobClass ==="SP"){
+ $scope.Show_Serial_Edit= function(Value) {
+ 	try{
+ 		$scope.Show_Serie=false;
+ 		$scope.Show_Code=false;
+ 		
+ switch(Value.JobClass){
+	 case 'SP':{
            $scope.Show_Serie=true;
-		   $scope.Show_Quantity=false;
-      }else{
-           $scope.Show_Serie=false;
+		   $scope.Show_Quantity=false;			
+			break;   
       } 
-      if (Value.JobClass ==="SS"){
+      case 'SS':{
            $scope.Show_Code=true;
-           $scope.Show_Quantity=true;
-      }else{
-           $scope.Show_Code=false;
+           $scope.Show_Quantity=true;			
+			break;          
       } 
-      if (Value.JobClass ==="SU"){
-           $scope.Show_Quantity=true;
+     case 'SU':{
+           $scope.Show_Quantity=true;			
+			break;
       }
 
+	}
 		}catch (e) {
         
         var err;
@@ -142,23 +157,28 @@ $scope.init = function(){
     }  
   
 };
- $scope.Show_Serial = function(Value) {try{
-      if (Value.Serial ==="SP"){
+ $scope.Show_Serial = function(Value) {
+ 	try{
+ 	
+ 		$scope.Show_Serie=false;
+ 		$scope.Show_Code=false;
+ 		
+ switch(Value.Serial){
+	 case 'SP':{
            $scope.Show_Serie=true;
-		   $scope.Show_Quantity=false;
-      }else{
-           $scope.Show_Serie=false;
+		   $scope.Show_Quantity=false;			
+			break;   
       } 
-      if (Value.Serial ==="SS"){
+      case 'SS':{
            $scope.Show_Code=true;
-           $scope.Show_Quantity=true;
-      }else{
-           $scope.Show_Code=false;
+           $scope.Show_Quantity=true;			
+			break;          
       } 
-      if (Value.Serial ==="SU"){
-           $scope.Show_Quantity=true;
+     case 'SU':{
+           $scope.Show_Quantity=true;			
+			break;
       }
-
+	}
 		}catch (e) {
         
         var err;
@@ -1007,6 +1027,7 @@ $scope.Visualize_VisitPoint = function(Obj){
    $scope.VisitPoint.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
    $scope.Array_VisitPoint_Task_Edit = Obj.Jobs;
    $scope.VisitPoint_Add_Task_Edit = {};
+        $scope.Tareas = false;
    $("#Modal_Edit_VisitPoint").modal("show"); 
    
 }catch (e) {
@@ -1245,8 +1266,8 @@ $scope.Delete_Job_DB = function(){
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_Delete_ID=[];
 	
-		for (i=0; i < CheckBoxes_Array.length ;i++){
-		if (CheckBoxes_Array[i].checked == true){
+		for (var i=0; i < CheckBoxes_Array.length ;i++){
+		if (CheckBoxes_Array[i].checked === true){
 			//var Obj = JSON.parse(CheckBoxes_Array[i].value);
 			Array_Delete_ID.push(CheckBoxes_Array[i].attributes.id_check.value);
 			//Array_Remove($scope.ArrayJobs,Obj);
@@ -1343,7 +1364,7 @@ $scope.Change = function(){try{
   
 };
 $scope.SaveChange = function(txtUser,txtVehicle){try{
-	if(txtUser==null||txtUser==""||txtVehicle==null||txtVehicle==""){
+	if(txtUser==null||txtUser===""||txtVehicle==null||txtVehicle===""){
 		alert("Debe asignar un usuario y un vehiculo");
 	}
 	else{
@@ -1378,7 +1399,7 @@ function IDS_CheckBoxes(){
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_ID_Check = [];
 	
-	for (i=0; i < CheckBoxes_Array.length ;i++){
+	for (var i=0; i < CheckBoxes_Array.length ;i++){
 			if (CheckBoxes_Array[i].checked === true){
 				Array_ID_Check.push(CheckBoxes_Array[i].attributes.id_check.value);
 			}
@@ -1729,7 +1750,7 @@ $scope.Open_Modal_Change = function(){
                 User: eflowDTS.Session.UserName,
                 Company: eflowDTS.Session.Company,
                 Date: new Date().getTime(),
-                Error: e
+                 Error: e
             };
             Save_Error(err);
         } else {
@@ -1891,7 +1912,7 @@ $scope.Validator=function(Task_Obj){
     var array = ["JobType", "JobName", "JobDescription", "UOM", "JobWeight", "JobCubics", "JobInstructions", "JobClass"];
     var result = true;
     for (var i = 0; i < array.length; i++) {
-        if (obj.hasOwnProperty(array[i]) === false || obj[array[i]] === null || obj[array[i]] === "") {
+        if (Task_Obj.hasOwnProperty(array[i]) === false || Task_Obj[array[i]] === null || Task_Obj[array[i]] === "") {
             result = false;
             break;
         }
@@ -1920,23 +1941,25 @@ $scope.Validator=function(Task_Obj){
 $scope.Add_Task_In_VisitPoint_Array_edit = function(Task_Obj){
 	try{
 	
-      if (Validator(Task_Obj) === false) {
+      if ($scope.Validator(Task_Obj) === false) {
         
         alert("Todos los campos son necesarios");
         
-    } else { 
-   if(typeof Task_Obj.JobID === 'undefined'){
+    } else { $scope.create_Task(Task_Obj);
+    
+  /* if(typeof Task_Obj.JobID === 'undefined'){
    		Task_Obj.JobID = (new Date().getTime()).toString();
     //$scope.Array_VisitPoint_Task_Edit.push(Task_Obj);
-	create_Task(Task_Obj);
+	
   }else{
     for(var i = 0; i < $scope.Array_VisitPoint_Task_Edit.length; i++){
        if($scope.Array_VisitPoint_Task_Edit[i].JobID === Task_Obj.JobID){
-	create_Task(Task_Obj);
+	$scope.create_Task(Task_Obj);
+	$scope.X[i] = obj;
               break;
        }
     }
-  }
+  }*/
   $scope.Task_Obj = {};
 
 	
@@ -1966,19 +1989,19 @@ $scope.Add_Task_In_VisitPoint_Array_edit = function(Task_Obj){
 };
 
 
-$scope.create_Task = function() {
+$scope.create_Task = function(Task_Obj) {
 try{
 var obj = {};
-		  if(Task_Obj.Type === "delivery"){
+		  if(Task_Obj.JobType === "delivery"){
 		  	obj.JobTypeEs = "Entrega";
 		  }else{
 		  	obj.JobTypeEs = "Recolección";
 		  }
-		switch(Task_Obj.Serial) {
+		switch(Task_Obj.JobClass) {
 		    case "SS":
 		        {
 		        	obj.JobClass="SS";
-					obj.JobID = Task_Obj.ID;
+					obj.JobID = Task_Obj.JobID;
 					obj.JobType = Task_Obj.JobType;
 					obj.JobName = Task_Obj.JobName;
 					obj.JobDescription = Task_Obj.JobDescription;
@@ -1986,8 +2009,6 @@ var obj = {};
 					obj.BarCode = Task_Obj.BarCode;
 					obj.UOM = Task_Obj.UOM;
 					obj.Quantity = Task_Obj.Quantity;
-				/*	cantidad.JobWeight = Task_Obj.JobWeight;
-					cantidad.JobCubics = Task_Obj.JobCubics;*/
 					obj.JobWeight = Task_Obj.JobWeight;
 					obj.JobCubics = Task_Obj.JobCubics;
 					obj.Quantity_Register = 0;
@@ -1995,25 +2016,34 @@ var obj = {};
 					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
 					obj.JobActions = [];
-					if($scope.VisitPoint_Add_Array_Task){
-						//$scope.Verify_Weight_Volume(id,cantidad);
-						$scope.VisitPoint_Add_Array_Task.push(obj);			
-					}else{
-						$scope.VisitPoint_Add_Array_Task = [];
-						//$scope.Verify_Weight_Volume(id,cantidad);
-						$scope.VisitPoint_Add_Array_Task.push(obj);	
-					}
+					  if(typeof Task_Obj.JobID === 'undefined'){
+				   		Task_Obj.JobID = (new Date().getTime()).toString();
+						if($scope.Array_VisitPoint_Task_Edit){
+							$scope.Array_VisitPoint_Task_Edit.push(obj);			
+						}else{
+							$scope.Array_VisitPoint_Task_Edit = [];
+							$scope.Array_VisitPoint_Task_Edit.push(obj);	
+						}
+				  }else{
+				    for(var i = 0; i < $scope.Array_VisitPoint_Task_Edit.length; i++){
+				       if($scope.Array_VisitPoint_Task_Edit[i].JobID === Task_Obj.JobID){
+				       	$scope.Array_VisitPoint_Task_Edit[i] = obj;
+				              break;
+				       }
+				    }
+				  }
 					$scope.VisitPoint_Add_Task = {};
 					
 	       $scope.Show_Serie=false;
            $scope.Show_Code=false;
            $scope.Show_Quantity=false;
+           $scope.Tareas=false;
 		        	break;
 		        }
 		    case "SU":
 		   		{
 		        	obj.JobClass="SU";
-					obj.JobID = Task_Obj.ID;
+					obj.JobID = Task_Obj.JobID;
 					obj.JobType = Task_Obj.JobType;
 					obj.JobName = Task_Obj.JobName;
 					obj.JobDescription = Task_Obj.JobDescription;
@@ -2028,25 +2058,36 @@ var obj = {};
 					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
 					obj.JobActions = [];
-					if($scope.VisitPoint_Add_Array_Task){
-						$scope.VisitPoint_Add_Array_Task.push(obj);			
-					}else{
-						$scope.VisitPoint_Add_Array_Task = [];
-						$scope.VisitPoint_Add_Array_Task.push(obj);	
-					}
+						  if(typeof Task_Obj.JobID === 'undefined'){
+				   		Task_Obj.JobID = (new Date().getTime()).toString();
+						if($scope.Array_VisitPoint_Task_Edit){
+							$scope.Array_VisitPoint_Task_Edit.push(obj);			
+						}else{
+							$scope.Array_VisitPoint_Task_Edit = [];
+							$scope.Array_VisitPoint_Task_Edit.push(obj);	
+						}
+				  }else{
+				    for(var i = 0; i < $scope.Array_VisitPoint_Task_Edit.length; i++){
+				       if($scope.Array_VisitPoint_Task_Edit[i].JobID === Task_Obj.JobID){
+				       	$scope.Array_VisitPoint_Task_Edit[i] = obj;
+				              break;
+				       }
+				    }
+				  }
 					$scope.VisitPoint_Add_Task = {};
 	       $scope.Show_Serie=false;
            $scope.Show_Code=false;
            $scope.Show_Quantity=false;
+           $scope.Tareas=false;
 		        	break;
 		        }
 		    case "SP":
 		    	{
 		        	obj.JobClass="SP";
-					obj.JobID = Task_Obj.ID;
+					obj.JobID = Task_Obj.JobID;
 					obj.JobType = Task_Obj.JobType;
 					obj.JobName = Task_Obj.JobName;
-					obj.Serial_List= $scope.Array_Serials;
+					obj.Serial_List= Task_Obj.Serial_List;//$scope.Array_Serials;
 					obj.JobDescription = Task_Obj.JobDescription;
 					obj.JobInstructions = Task_Obj.JobInstructions;
 					obj.UOM = Task_Obj.UOM;
@@ -2057,18 +2098,29 @@ var obj = {};
 					obj.JobState = "Uninitiated";
 					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
-					obj.JobActions = [];					
-					if($scope.VisitPoint_Add_Array_Task){
-						$scope.VisitPoint_Add_Array_Task.push(obj);			
-					}else{
-						$scope.VisitPoint_Add_Array_Task = [];
-						$scope.VisitPoint_Add_Array_Task.push(obj);	
-					}
+					obj.JobActions = [];		
+						  if(typeof Task_Obj.JobID === 'undefined'){
+				   		Task_Obj.JobID = (new Date().getTime()).toString();
+				    if($scope.Array_VisitPoint_Task_Edit){
+							$scope.Array_VisitPoint_Task_Edit.push(obj);			
+						}else{
+							$scope.Array_VisitPoint_Task_Edit = [];
+							$scope.Array_VisitPoint_Task_Edit.push(obj);	
+						}
+				  }else{
+				    for(var i = 0; i < $scope.Array_VisitPoint_Task_Edit.length; i++){
+				       if($scope.Array_VisitPoint_Task_Edit[i].JobID === Task_Obj.JobID){
+				       	$scope.Array_VisitPoint_Task_Edit[i] = obj;
+				              break;
+				       }
+				    }
+				  }
 					$scope.VisitPoint_Add_Task = {};
 					$scope.Array_Serials = [];
 	       $scope.Show_Serie=false;
            $scope.Show_Code=false;
            $scope.Show_Quantity=false;
+           $scope.Tareas=false;
 		        	break;
 		        }
 		}
@@ -2183,11 +2235,11 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
 					obj.JobActions = [];
-					if($scope.VisitPoint_Add_Array_Task){
+					if($scope.Array_VisitPoint_Task_Edit){
 						$scope.VisitPoint_Add_Array_Task.push(obj);			
 					}else{
-						$scope.VisitPoint_Add_Array_Task = [];
-						$scope.VisitPoint_Add_Array_Task.push(obj);	
+						$scope.Array_VisitPoint_Task_Edit = [];
+						$scope.Array_VisitPoint_Task_Edit.push(obj);	
 					}
 					$scope.VisitPoint_Add_Task = {};
 	       $scope.Show_Serie=false;
@@ -2213,11 +2265,11 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
 					obj.JobActions = [];					
-					if($scope.VisitPoint_Add_Array_Task){
-						$scope.VisitPoint_Add_Array_Task.push(obj);			
+					if($scope.Array_VisitPoint_Task_Edit){
+						$scope.Array_VisitPoint_Task_Edit.push(obj);			
 					}else{
-						$scope.VisitPoint_Add_Array_Task = [];
-						$scope.VisitPoint_Add_Array_Task.push(obj);	
+						$scope.Array_VisitPoint_Task_Edit = [];
+						$scope.Array_VisitPoint_Task_Edit.push(obj);	
 					}
 					$scope.VisitPoint_Add_Task = {};
 					$scope.Array_Serials = [];
@@ -2277,8 +2329,6 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
   
 };
 	
-
-
 function Delete_Attributes(arr){
 	try{
 	var Json_Array = arr;
