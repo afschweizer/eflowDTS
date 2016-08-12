@@ -25,7 +25,7 @@ $scope.Type = "password";
 		$scope.Array_Vehicle = [];
 		$scope.Array_License = [];
 		$scope.Companys={};
-		cargar_paises();
+		cargar_paises(); 
       // 	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;

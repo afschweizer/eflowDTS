@@ -1,0 +1,258 @@
+[		
+{"es":"Afganistán"}, 
+{"es":"Akrotiri"}, 
+{"es":"Albania"}, 
+{"es":"Alemania"}, 
+{"es":"Andorra"}, 
+{"es":"Angola"}]
+
+/* 
+{"es":"Anguila","value":"Anguila
+{"es":"Antártida","value":"Antártida
+{"es":"Antigua y Barbuda","value":"Antigua y Barbuda
+{"es":"Antillas Neerlandesas","value":"Antillas Neerlandesas
+{"es":"Arabia Saudí","value":"Arabia Saudí
+{"es":"Arctic Ocean","value":"Arctic Ocean
+{"es":"Argelia","value":"Argelia
+{"es":"Argentina","value":"Argentina
+{"es":"Armenia","value":"Armenia
+{"es":"Aruba","value":"Aruba
+{"es":"Ashmore andCartier Islands","value":"Ashmore andCartier Islands
+{"es":"Atlantic Ocean","value":"Atlantic Ocean
+{"es":"Australia","value":"Australia
+{"es":"Austria","value":"Austria
+{"es":"Azerbaiyán","value":"Azerbaiyán
+{"es":"Bahamas","value":"Bahamas
+{"es":"Bahráin","value":"Bahráin
+{"es":"Bangladesh","value":"Bangladesh
+{"es":"Barbados","value":"Barbados
+{"es":"Bélgica","value":"Bélgica
+{"es":"Belice","value":"Belice
+{"es":"Benín","value":"Benín
+{"es":"Bermudas","value":"Bermudas
+{"es":"Bielorrusia","value":"Bielorrusia
+{"es":"Birmania Myanmar","value":"Birmania Myanmar
+{"es":"Bolivia","value":"Bolivia
+{"es":"Bosnia y Hercegovina","value":"Bosnia y Hercegovina
+{"es":"Botsuana","value":"Botsuana
+{"es":"Brasil","value":"Brasil
+{"es":"Brunéi","value":"Brunéi
+{"es":"Bulgaria","value":"Bulgaria
+{"es":"Burkina Faso","value":"Burkina Faso
+{"es":"Burundi","value":"Burundi
+{"es":"Bután","value":"Bután
+{"es":"Cabo Verde","value":"Cabo Verde
+{"es":"Camboya","value":"Camboya
+{"es":"Camerún","value":"Camerún
+{"es":"Canadá","value":"Canadá
+{"es":"Chad","value":"Chad
+{"es":"Chile","value":"Chile
+{"es":"China","value":"China
+{"es":"Chipre","value":"Chipre
+{"es":"Clipperton Island","value":"Clipperton Island
+{"es":"Colombia","value":"Colombia
+{"es":"Comoras","value":"Comoras
+{"es":"Congo","value":"Congo
+{"es":"Coral Sea Islands","value":"Coral Sea Islands 
+{"es":"Corea del Norte","value":"Corea del Norte
+{"es":"Corea del Sur","value":"Corea del Sur
+{"es":"Costa de Marfil","value":"Costa de Marfil
+{"es":"Costa Rica","value":"Costa Rica
+{"es":"Croacia","value":"Croacia
+{"es":"Cuba","value":"Cuba
+{"es":"Dhekelia","value":"Dhekelia
+{"es":"Dinamarca","value":"Dinamarca 
+{"es":"Dominica","value":"Dominica
+{"es":"Ecuador","value":"Ecuador
+{"es":"Egipto","value":"Egipto
+{"es":"El Salvador","value":"
+{"es":"El Vaticano","value":"
+{"es":"Emiratos Árabes Unidos","value":" 
+{"es":"Eritrea","value":"
+{"es":"Eslovaquia","value":"
+{"es":"Eslovenia","value":"
+{"es":"España","value":"
+{"es":"Estados Unidos","value":"
+{"es":"Estonia","value":"
+{"es":"Etiopía","value":"
+{"es":"Filipinas","value":"
+{"es":"Finlandia","value":"
+{"es":"Fiyi","value":"
+{"es":"Francia","value":"
+{"es":"Gabón","value":"
+{"es":"Gambia","value":"
+{"es":"aza Strip","value":"
+{"es":"Georgia","value":"
+{"es":"Ghana","value":"
+{"es":"Gibraltar","value":"
+{"es":"Granada","value":"
+{"es":"Grecia","value":"
+{"es":"Groenlandia","value":"
+{"es":"Guam","value":"
+{"es":"Guatemala","value":"
+{"es":"Guernsey","value":"
+{"es":"Guinea","value":"
+{"es":"Guinea Ecuatorial","value":"
+{"es":"Guinea-Bissau","value":"
+{"es":"Guyana","value":"
+{"es":"Haití","value":"
+{"es":"Honduras","value":"
+{"es":"Hong Kong","value":"
+{"es":"Hungría","value":"
+{"es":"India","value":"
+{"es":"Indian Ocean","value":"
+{"es":"Indonesia","value":"
+{"es":"Irán","value":"
+{"es":"Iraq","value":"
+{"es":"Irlanda","value":"
+{"es":"Isla Bouvet","value":"
+{"es":"Isla Christmas","value":"
+{"es":"Isla Norfolk","value":"
+{"es":"Islandia","value":"
+{"es":"Islas Caimán","value":"
+{"es":"Islas Cocos","value":"
+{"es":"Islas Cook","value":"
+{"es":"Islas Feroe","value":"
+{"es":"Islas Georgia del Sur y Sandwich del Sur","value":"
+{"es":"Islas Heard y McDonald","value":"
+{"es":"Islas Malvinas","value":"
+{"es":"Islas Marianas del Norte","value":"
+{"es":"IslasMarshall","value":"
+{"es":"Islas Pitcairn","value":"
+{"es":"Islas Salomón","value":"
+{"es":"Islas Turcas y Caicos","value":"
+{"es":"Islas Vírgenes Americanas","value":"
+{"es":"Islas Vírgenes Británicas","value":"
+{"es":"Israel","value":"
+{"es":"Italia","value":"
+{"es":"Jamaica","value":"
+{"es":"Jan Mayen","value":"
+{"es":"Japón","value":"
+{"es":"Jersey","value":"
+{"es":"Jordania","value":"
+{"es":"Kazajistán","value":"
+{"es":"Kenia","value":"
+{"es":"Kirguizistán","value":"
+{"es":"Kiribati","value":"
+{"es":"Kuwait","value":"
+{"es":"Laos","value":"
+{"es":"Lesoto","value":"
+{"es":"Letonia","value":"
+{"es":"Líbano","value":"
+{"es":"Liberia","value":"
+{"es":"Libia","value":"
+{"es":"Liechtenstein","value":"
+{"es":"Lituania","value":"
+{"es":"Luxemburgo","value":"
+{"es":"Macao","value":"
+{"es":"Macedonia","value":"
+{"es":"Madagascar","value":"
+{"es":"Malasia","value":"
+{"es":"Malaui","value":"
+{"es":"Maldivas","value":"
+{"es":"Malí","value":"
+{"es":"Malta","value":"
+{"es":"Man, Isle of","value":"
+{"es":"Marruecos","value":"
+{"es":"Mauricio","value":"
+{"es":"Mauritania","value":"
+{"es":"Mayotte","value":"
+{"es":"México","value":"
+{"es":"Micronesia","value":"
+{"es":"Moldavia","value":"
+{"es":"Mónaco","value":"
+{"es":"Mongolia","value":"
+{"es":"Montserrat","value":"
+{"es":"Mozambique","value":"
+{"es":"Namibia","value":"
+{"es":"Nauru","value":"
+{"es":"Navassa Island","value":"
+{"es":"Nepal","value":"
+{"es":"Nicaragua","value":"
+{"es":"Níger","value":"
+{"es":"Nigeria","value":"
+{"es":"Niue","value":"
+{"es":"Noruega","value":"
+{"es":"Nueva Caledonia","value":"
+{"es":"Nueva Zelanda","value":"
+{"es":"Omán","value":"
+{"es":"Pacific Ocean","value":"
+{"es":"Países Bajos","value":"
+{"es":"Pakistán","value":"
+{"es":"Palaos","value":"
+{"es":"Panamá","value":"
+{"es":"Papúa-Nueva Guinea","value":"
+{"es":"Paracel Islands","value":"
+{"es":"Paraguay","value":"
+{"es":"Perú","value":"
+{"es":"Polinesia Francesa","value":"
+{"es":"Polonia","value":"
+{"es":"Portugal","value":"
+{"es":"Puerto Rico","value":"
+{"es":"Qatar","value":"
+{"es":"Reino Unido","value":"
+{"es":"República Centroafricana","value":"
+{"es":"República Checa","value":"
+{"es":"República Democrática del Congo","value":"
+{"es":"República Dominicana","value":"
+{"es":"Ruanda","value":"
+{"es":"Rumania","value":"
+{"es":"Rusia","value":"
+{"es":"Sáhara Occidenta","value":"
+{"es":"Samoa","value":"
+{"es":"Samoa Americana","value":"
+{"es":"San Cristóbal y Nieves","value":"
+{"es":"San Marino","value":"
+{"es":"San Pedro y Miquelón","value":"
+{"es":"San Vicente y las Granadinas","value":"
+{"es":"Santa Helena","value":"
+{"es":"Santa Lucía","value":"
+{"es":"Santo Tomé y Príncipe","value":"
+{"es":"Senegal","value":"
+{"es":"Seychelles","value":"
+{"es":"Sierra Leona","value":"
+{"es":"Singapur","value":"
+{"es":"Siria","value":"
+{"es":"Somalia","value":"
+{"es":"Southern Ocean","value":"
+{"es":"Spratly Islands","value":"
+{"es":"Sri Lanka","value":"
+{"es":"Suazilandia","value":"
+{"es":"Sudáfrica","value":"
+{"es":"Sudán","value":"
+{"es":"Suecia","value":"
+{"es":"Suiza","value":"
+{"es":"Surinam","value":"
+{"es":"Svalbard y Jan Mayen","value":"
+{"es":"Tailandia","value":"
+{"es":"Taiwán","value":"
+{"es":"Tanzania","value":"
+{"es":"Tayikistán","value":"
+{"es":"Territorio Británico del Océano Indico","value":"
+{"es":"Territorios Australes Franceses","value":"
+{"es":"Timor Oriental","value":"
+{"es":"Togo","value":"
+{"es":"Tokelau","value":"
+{"es":"Tonga","value":"
+{"es":"Trinidad y Tobago","value":"
+{"es":"Túnez","value":"
+{"es":"Turkmenistán","value":"
+{"es":"Turquía","value":"
+{"es":"Tuvalu","value":"
+{"es":"Ucrania","value":"
+{"es":"Uganda","value":"
+{"es":"Unión Europea","value":"
+{"es":"Uruguay","value":"
+{"es":"Uzbekistán","value":"
+{"es":"Vanuatu","value":"
+{"es":"Venezuela","value":"
+{"es":"Vietnam","value":"
+{"es":"Wake Island","value":"
+{"es":"Wallis y Futuna","value":"
+{"es":"West Bank","value":"
+{"es":"World","value":"
+{"es":"Yemen","value":"
+{"es":"Yibuti","value":"
+{"es":"Zambia","value":""},
+{"es":"Zimbabue","value":""}
+]*/
