@@ -4,7 +4,8 @@ $scope.Type = "password";
 	$scope.init = function(){
 		
 		try{
-		$scope.Show_Components.Main_Menu = false;  
+	    
+	    $scope.Show_Components.Main_Menu = false;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
 		$scope.Show_Components.Login = false;
 		$scope.Show_Map = true;
@@ -24,6 +25,7 @@ $scope.Type = "password";
 		$scope.Array_Vehicle = [];
 		$scope.Array_License = [];
 		$scope.Companys={};
+		cargar_paises();
       // 	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;
@@ -60,6 +62,28 @@ $scope.Type = "password";
 			}
 		};
 		
+		function comprueba(que,donde)
+{
+var arroba = /@/;
+if(arroba.test(que)){
+	donde.value = que.replace(arroba,'');
+	}
+
+};
+
+  function cargar_paises(){
+  	
+  	var Callback=function(response){
+  		
+  		$scope.Array_Country=JSON.parse(response);
+  		
+  	};
+  	
+  	Load_JSON("scripts/externals/Paises.json", Callback);
+  	
+  };
+  
+  
 	function Load_Map_Init(){
 		
 	try{

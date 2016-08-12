@@ -8,15 +8,12 @@
 } 
 </style>
 <script>
-function comprueba(que,donde)
-{
-var arroba = /@/;
-if(arroba.test(que)){
-	donde.value = que.replace(arroba,'');
-	}
 
-}
+  
+
 </script>
+
+
 <div ng-controller="Scr_Company_Controller" ng-init="init()">  
 	<div class="panel panel-primary "  ng-show="Show_Company" >
 		<div class="panel-heading" >Datos de la Compañia</div>
@@ -58,7 +55,9 @@ if(arroba.test(que)){
           <div class="form-group">
             <label  class="col-sm-3 control-label">País:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="Companys.country" placeholder="País"required>
+              <!--<input type="text" class="form-control" ng-model="Companys.country" placeholder="País"required>-->
+              <select ng-model="User.Gender" ng-options="Obj.es for Obj in paises" style="width: 100%;" class="form-control" id="Gender" ></select>
+                      
             </div>
     			<div class="col-sm-2"></div>
           </div>
