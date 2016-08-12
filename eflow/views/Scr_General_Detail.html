@@ -1,0 +1,28 @@
+<script type="text/javascript" src="scripts/externals/knob.js"></script>  
+<div id="Contents" ng-controller="Scr_General_Detail_Controller" ng-init="init()"> 
+    
+  
+ 
+  <button ng-click="Generate_Charts()">
+    Generar Gráficos
+  </button>
+  
+  
+  
+<div class="row">
+                <div class="col-xs-3 text-center" ng-repeat="obj in Array_Objs">
+                  <input type="text" class="knob" value="{{obj.Value}}" readonly data-width="90" data-height="90" data-fgColor="#932ab6">
+
+                  <div class="knob-label">{{obj.Name}}</div>
+                </div>
+ </div>
+
+  
+<div class="row">
+  
+aaa
+  
+</div>
+  
+  
+</div>
