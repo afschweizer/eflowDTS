@@ -35,8 +35,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
                 Page: "Scr_VisitPoint_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -78,8 +78,8 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
                 Page: "Scr_VisitPoint_Controller",
                 Method: "Load_Map_Init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -91,10 +91,37 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
   
 };	
 	
-	$scope.Resize = function(){
+	$scope.Resize = function(){try{
 		if(typeof map === "object"){
 			map.refresh();
 		}
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Resize",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }
+		
+		
+		
+		
+		
+		
+		
 	};
 	
 	function Load_Map_Init(){try{

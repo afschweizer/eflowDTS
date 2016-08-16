@@ -114,20 +114,28 @@
 			    <div class="form-group">
                <span>
 						<label>Asignar la Fecha:   </label>
-					    <input type="date" class="form-control" style="width: 50%;"  min="2015-01-01" ng-model="Assign.Estimated_Date" required>
+					    <input type="date" class="form-control" style="width: 100%;"  min="2015-01-01" ng-model="Assign.Estimated_Date" required>
                 </span>
 				   <br/>
 				    <span> 
 						<label>Asignar al Usuario: </label>
-						    <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" class="form-control" id="Usuario"> </select>
+                   <input type="" class="form-control" list="Users" ng-model="Assign.User" placeholder="User"required>
+              <datalist id="Users">
+                  <option ng-repeat="Obj in ArrayUser| orderBy:'Name'" value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}"> </option>
+              </datalist>    
+						  <!--  <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" class="form-control" id="Usuario"> </select>-->
                </span>
 				   <br/>
 				    <span>
 						<label>Asignar al Vehículo:</label>
-						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
+                   <input type="" class="form-control" list="ID_Trucks" ng-model="Assign.ID_Truck"  placeholder="Vehículo"required>
+              <datalist id="ID_Trucks" >
+                  <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
+              </datalist> 
+						<!--<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
 						 <br/>
                   <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
-               </span>
+               --></span>
 				   <br/>
 				<!--	<span>
 						<a class="btn btn-primary span4" ng-click="Assign_All(Assign);" data-toggle="tooltip" title="Asignar" >
@@ -341,7 +349,12 @@
             <div class="form-group">
               <label class="col-sm-4 control-label">Asignar al Usuario:</label>
 						<div class="col-sm-8"> 
-							<div class="form-group">  
+							<div class="form-group">    
+                       <input type="" class="form-control" list="Users" ng-model="VisitPoint.User" placeholder="User"required>
+              <datalist id="Users">
+                  <option ng-repeat="Obj in ArrayUser | orderBy:'Name' " value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}" > </option>
+              </datalist>    
+						  <!-- 
               <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+ Obj.ID + ' )' for Obj in ArrayUser" style="width: 80%;" class="form-control" id="Usuario"></select>
 				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            </div></div>
@@ -350,6 +363,11 @@
               <label class="col-sm-4 control-label">Asignar al Vehículo:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">  
+                         <input type="" class="form-control" list="ID_Trucks" ng-model="VisitPoint.ID_Truck" placeholder="Vehículo"required>
+              <datalist id="ID_Trucks">
+                  <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
+              </datalist>    
+						  <!-- 
               <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ></select><!--ng-change="Info_Vehicle(Vehicle.ID_Truck,ArrayVehicle)"
 				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}-->
            <!-- <input type="text" class="form-control" ng-model="VisitPoint.ID_Truck" placeholder="Asignar al Vehiculo..." required>-->
@@ -376,7 +394,7 @@
             <div  id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo" style="background-color:#4096c6"><b>Trabajos</b>  
               <a class="btn btn-primary" data-toggle="tooltip" title="agregar tareas" style="background-color:#295C7A">
-               <i class="glyphicon glyphicon-plus" ng-click="Tareas=true;"></i></a>
+               <i class="glyphicon glyphicon-plus" ng-click="Tareas=true;VisitPoint_Add_Task={};"></i></a>
                <a class="btn btn-primary" data-toggle="tooltip" title="Cerrar" style="background-color:#295C7A">
                <i class="glyphicon glyphicon-remove" ng-click="Tareas=false;VisitPoint_Add_Task={}"></i></a>
                            
@@ -441,7 +459,7 @@
                       <td class="col-sm-8">{{VisitPoint_Serial.Serial}}</td>
                       <td class="col-sm-2">
                         <a class="btn btn-danger">
-                          <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Serial, Array_Serials);"></i></a>
+                          <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Serial, VisitPoint_Add_Task.Serial_List);"></i></a>
                       </td>
                     </tr>
                   </table>
@@ -466,7 +484,7 @@
                       <label class="col-sm-4 control-label">Unidad de medida:</label>
                           <div class="col-sm-8"> 
                  <div class="form-group">  						
-                       <select ng-model="VisitPoint_Add_Task.UOM" placeholder="Unidad de medida..." ng-options="Obj.Value as Obj.Description for Obj in ArrayUnidads" style="width: 80%;" class="form-control"></select>
+                       <select ng-model="VisitPoint_Add_Task.UOM" placeholder="Unidad de medida..." ng-options="Obj.Value as Obj.Description for Obj in ArrayUnidads  | orderBy:'Value'" style="width: 80%;" class="form-control"></select>
 
                        <!--<input type="text" class="form-control" ng-model="VisitPoint_Add_Task.UoM" placeholder="Unidad de medida...">-->
                    </div>
@@ -936,4 +954,4 @@
       </div>
    
 </div>
-  </div>
+</div>

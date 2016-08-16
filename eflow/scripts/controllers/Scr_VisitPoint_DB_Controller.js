@@ -43,8 +43,8 @@ $scope.init = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -65,9 +65,6 @@ $scope.init = function(){
 	    	
 	    	}
 		else{
-			if(Parameter_array===undefined){
-	    		Parameter_array=[];   	
-	    	}
 				existe=false;
 				for (var i=0; i<  Parameter_array/*Array_Serials*/.length;i++){
 					if( Parameter_array/*Array_Serials*/[i].Serial===value)	{
@@ -86,6 +83,8 @@ $scope.init = function(){
 				   obj_serials.Serial = value;
 					//$scope.Array_Serials.push(obj_serials);
 					Parameter_array.push(obj_serials);
+				//	setTimeout(function(){$scope.$apply();},1);
+					
 					//document.getElementById("Input_Serial").value="";
 				}
 		}
@@ -101,8 +100,8 @@ $scope.init = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Add_Serial",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -121,7 +120,9 @@ $scope.init = function(){
  switch(Value.JobClass){
 	 case 'SP':{
            $scope.Show_Serie=true;
-		   $scope.Show_Quantity=false;			
+		   $scope.Show_Quantity=false;	
+		   
+	    $scope.VisitPoint_Add_Task.Serial_List =  [];
 			break;   
       } 
       case 'SS':{
@@ -145,8 +146,8 @@ $scope.init = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Show_Serial_Edit",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -189,8 +190,8 @@ $scope.init = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Show_Serial",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -227,9 +228,9 @@ $scope.init = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_Local",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -250,8 +251,8 @@ $scope.init = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_Local",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -297,8 +298,8 @@ for(var x = 0; x < $scope.ArrayVehicle.length; x++){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Filter_License",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -325,8 +326,8 @@ for(var x = 0; x < $scope.ArrayVehicle.length; x++){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "See_Status",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -361,8 +362,8 @@ $scope.Checking_Checkboxes_Check = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Checking_Checkboxes_Check",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -392,8 +393,8 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Checking_Checkboxes_Check_Master",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -427,8 +428,8 @@ $scope.Action_Option= function(Option){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Action_Option",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -459,8 +460,8 @@ $scope.Action_Option= function(Option){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Info_Vehicle",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -494,9 +495,9 @@ $scope.Select_User = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_User",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -515,8 +516,8 @@ $scope.Select_User = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_User",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -535,7 +536,7 @@ $scope.Select_Vehicle = function(){
         var JsonData = {
             'Method_Name': 'Select_All_Vehicle',
             'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -551,9 +552,9 @@ $scope.Select_Vehicle = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_Vehicle",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -571,8 +572,8 @@ $scope.Select_Vehicle = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_Vehicle",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -678,9 +679,9 @@ function Change_Structure(arr){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Change_Structure",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -697,8 +698,8 @@ function Change_Structure(arr){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Change_Structure",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -733,9 +734,9 @@ $scope.Select_VisitPoint = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_VisitPoint",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -753,8 +754,8 @@ $scope.Select_VisitPoint = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -805,8 +806,8 @@ $scope.Export_File = function(Export_Type,Array_Jobs){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Export_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -961,8 +962,8 @@ Image_To_Base64("images/logo.png",onSucces_Img1);
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Export_PDF",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -999,8 +1000,8 @@ $scope.To_Order_By = function(Order_Type){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "To_Order_By",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1040,8 +1041,8 @@ $scope.Visualize_VisitPoint = function(Obj){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Visualize_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1103,9 +1104,9 @@ Json.Control.Modify_User= eflowDTS.Session.UserName;
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Save_Job_Edit",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -1125,8 +1126,8 @@ Json.Control.Modify_User= eflowDTS.Session.UserName;
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Save_Job_Edit",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1178,8 +1179,8 @@ $scope.Edit_In_Array = function(Obj,Array){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1205,8 +1206,8 @@ $scope.Remove_In_Array = function(Obj,Array){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1244,8 +1245,8 @@ $scope.Checking_Checkboxes = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Checking_Checkboxes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1291,9 +1292,9 @@ $scope.Delete_Job_DB = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Delete_Job_DB",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -1318,8 +1319,8 @@ $scope.Delete_Job_DB = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Delete_Job_DB",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1351,8 +1352,8 @@ $scope.Change = function(){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Change",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1381,8 +1382,8 @@ $scope.SaveChange = function(txtUser,txtVehicle){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "SaveChange",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1417,8 +1418,8 @@ function IDS_CheckBoxes(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "IDS_CheckBoxes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1456,9 +1457,9 @@ $scope.Message=function(user,matter,detail){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Message",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -1476,8 +1477,8 @@ $scope.Message=function(user,matter,detail){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Message",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1523,9 +1524,9 @@ $scope.Assign_Status = function(status){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Assign_Status",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -1563,8 +1564,8 @@ $scope.Assign_Status = function(status){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Assign_Status",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1643,9 +1644,9 @@ $scope.Assign_All = function(Assign){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Assign_All",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -1682,8 +1683,8 @@ $scope.Assign_All = function(Assign){try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Assign_All",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1715,8 +1716,8 @@ $scope.Open_Modal_Add_VisitPoint = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Open_Modal_Add_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1747,8 +1748,8 @@ $scope.Open_Modal_Change = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Open_Modal_Change",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                  Error: e
             };
@@ -1773,8 +1774,8 @@ $scope.Open_Modal_Change_Status = function(){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Open_Modal_Change_Status",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1873,9 +1874,9 @@ try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Add_New_VisitPoint",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -1894,8 +1895,8 @@ try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Add_New_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1926,9 +1927,10 @@ $scope.Validator=function(Task_Obj){
             Page: "Scr_VisitPoint_DB_Controller",
             Method: "Validator",
             Description: "Error no controlado",
-            User: eflowDTS.Session.General.User,
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             ID_Truck: eflowDTS.Session.General.ID_Truck,
-            Date: eflowDTS_lib.GetServerTime().getTime(),
             Error: e
         };
         Save_Error(err);
@@ -1975,8 +1977,8 @@ $scope.Add_Task_In_VisitPoint_Array_edit = function(Task_Obj){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Add_Task_In_VisitPoint_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2134,8 +2136,8 @@ var obj = {};
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "create_Task",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2316,8 +2318,8 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Add_Task_In_VisitPoint_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2374,8 +2376,8 @@ function Delete_Attributes(arr){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Delete_Attributes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2412,8 +2414,8 @@ function Export_JSON(arr){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Export_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2454,8 +2456,8 @@ function Download_File(contenidoEnBlob, nombreArchivo) {
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Download_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2481,8 +2483,8 @@ function Export_XML(arr){
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Export_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2557,8 +2559,8 @@ function Generate_XML(arr) {
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Generate_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -2671,8 +2673,8 @@ function Export_CSV(arr) {
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Export_CSV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

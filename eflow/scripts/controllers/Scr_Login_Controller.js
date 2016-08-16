@@ -2,21 +2,20 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 
     $scope.init = function() {  
       try{
-		//$scope.Show_Components = {};		
+				
 		$scope.Show_Components.Main_Menu = false;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
 		$scope.Show_Components.Login = false;
-	$scope.Log = {};	
+	    $scope.Log = {};	
 	
 	
-	if(eflowDTS.Save_Session === true){
+	if(eflowDTS.Session.Save_Session === true){
 		
 		$scope.Show_Components.Main_Menu = true;
 		$scope.Show_Components.SubMenu_Maintenance = true;
 		$scope.Show_Components.Login = true;
 		
-		window.location.href = eflowDTS.Ultimate_Page;
-		$scope.Mail = String(eflowDTS.Session.Mail);
+		window.location.href = eflowDTS.Session.Ultimate_Page;		
 	   
 	}
 	
@@ -30,8 +29,8 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
                 Page: "Scr_Login_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -41,44 +40,13 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
         }
     } 
 	};
-
-$scope.Open_Modal_Add_Company = function(){
-	try{
-
-	$("#Modal_Agregar_Company").modal("show");	
-	
-}catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Scr_Login_Controller",
-                Method: "Open_Modal_Add_Company",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-
-
-
-   // $scope.Show_Components.Main_Menu = false;
 		
 	$scope.Log_In = function(Log){
 	try {
 		 	
 		if(Log.Mail === "" || Log.Mail === undefined || Log.Password === "" || Log.Password === undefined ){
-			bootbox.dialog({
+			
+		bootbox.dialog({
 			title:"¡Alerta!",
 			message:"Debe completar todos los campos",
 			buttons:{
@@ -86,24 +54,24 @@ $scope.Open_Modal_Add_Company = function(){
 					label:"Ok!",
 					className:"btn-primary"
 				}
-			}
-				
+			}				
 			});
-		}
-		else{
+			
+		}else{
    
-        var JsonData = {
+        var Request = {
             'Method_Name': 'Login_Admin',
             'Data': {
                 'Mail': Log.Mail.toLowerCase(),
                 'Password': Log.Password,
-    			'Type': 'Administrador'/*,
-    			'Company':  Log.Company = Log.Mail.split("@")[1].split(".")[0].toUpperCase() */
+    			'Type': 'Administrador'
             }
         };
-		var onSuccess = function(obj) {
-            if (obj.Result === false) {
-                bootbox.dialog(
+        
+		var onSuccess = function(Response) {
+            if (Response.Result === false) {
+            	
+             bootbox.dialog(
                 {
                 	title:"¡Alerta!",
                 	message:"Datos incorrectos.",
@@ -112,54 +80,47 @@ $scope.Open_Modal_Add_Company = function(){
                 		label:'Ok!',
                 		className : 'btn-primary'
                 		}
-                }
+                     }
                 });
+                
             } else {
-				// create a message to display in our view
+				
 					$scope.Show_Components.Main_Menu = true;
-					eflowDTS.Session = obj;
 					
-					if($scope.Save_Session === true){						
-						eflowDTS.LoggedIn = true;
-						eflowDTS.Save_Session = true;
-						Set_Cookie("EflowCookie",eflowDTS);						
-				    }else{				    	
-						eflowDTS.LoggedIn = true;	
-						eflowDTS.Save_Session = false;
-						Set_Cookie("EflowCookie",eflowDTS);							
-					}
+					eflowDTS.Session.Current_User = Response;
+					
+					eflowDTS.Session.LoggedIn = true;
+					eflowDTS.Session.Save_Session = $scope.Save_Session;
+					Set_Cookie("EflowCookie",eflowDTS);						
+				    											
 			    	DataCompany();
-			    //	To_Save_Eflow_Config();
-	            	$scope.Mail = String(eflowDTS.Session.Mail);
 	                $scope.Show_Components.Login = true;
-			    	window.location.href = "#Calendar";
+			    	//window.location.href = "#Calendar";
             }
             
         };
 		
-		var onError = function(obj) {
-					 var erro={
+		var onError = function(Response_Error) {
+			
+           var erro = {
 			Generated: true,
             Page: "Scr_Login_Controller",
             Method: "Log_In",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
+            User: eflowDTS.Session.Current_User.UserName,
+            Company: eflowDTS.Session.Company.Identifier,
             Date: new Date().getTime(),
-            Error: obj
+            Error: Response_Error
         };
-			throw erro;
-            console.log(obj.message);
-            
+			throw erro;          
         };
 		
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, Request, onSuccess, onError);
+        
         }
+        
     } catch (e) {
 	
-                console.log(e.message);
-                
-        
         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -168,8 +129,8 @@ $scope.Open_Modal_Add_Company = function(){
                 Page: "Scr_Login_Controller",
                 Method: "Log_In",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -185,24 +146,26 @@ $scope.Open_Modal_Add_Company = function(){
  function DataCompany() {	
 
       try{
-		 var JsonData = {
+		 var Request = {
             'Method_Name': 'Select_Company',
             'Data': {
-    			"Identifier": eflowDTS.Session.Company.toUpperCase()
+    			"Identifier": eflowDTS.Session.Current_User.Company.toUpperCase()
             },
             'Fields':{
             	
             }
         };
-		var onSuccess = function(arr){
+        
+		var onSuccess = function(Response){
 			
-					eflowDTS.Session.DataCompany = arr[0];
-					
-		      	 //To_Save_Eflow_Config();
-		      	 Set_Cookie("EflowCookie",eflowDTS);
-		}
+			eflowDTS.Session.Company = Response[0];
+		    Set_Cookie("EflowCookie",eflowDTS);
+		    
+		};
+		
 		var onError = function(e){
-					 var erro={
+		
+		var erro = {
 			Generated: true,
             Page: "Scr_Login_Controller",
             Method: "DataCompany",
@@ -213,9 +176,9 @@ $scope.Open_Modal_Add_Company = function(){
             Error: e
         };
 			throw erro;
-		console.log(e);
-		}
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+		};
+		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, Request, onSuccess, onError);
        
 		}catch (e) {
         
@@ -227,8 +190,8 @@ $scope.Open_Modal_Add_Company = function(){
                 Page: "Scr_Login_Controller",
                 Method: "DataCompany",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -236,7 +199,9 @@ $scope.Open_Modal_Add_Company = function(){
         } else {
             Save_Error(e);
         }
-    }  }
+    }   
+}
+
 		
     });
 	

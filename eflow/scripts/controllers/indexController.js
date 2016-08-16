@@ -1,3 +1,11 @@
+function ValidateInput(e,patron) {  
+    return ! patron.test(String.fromCharCode(e.which));    
+} 
+
+function Clear(input,values){
+input.value = input.value.replace(values,'');
+}
+
 DTS_APP.controller('indexController', function($scope) {
 	
 
@@ -31,8 +39,8 @@ DTS_APP.controller('indexController', function($scope) {
                 Page: "indexController",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -52,7 +60,7 @@ DTS_APP.controller('indexController', function($scope) {
              
 		var x = JSON.parse(Text_Json);
 		$scope.Watch = new Date(x.Time);
-		$scope.$apply($scope.Watch);
+		$scope.$apply();
 		$scope.UserName = eflowDTS.Session.UserName;
 		$scope.Company = eflowDTS.Session.Company;
 		});
@@ -66,8 +74,8 @@ DTS_APP.controller('indexController', function($scope) {
                 Page: "indexController",
                 Method: "timers",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -103,8 +111,8 @@ DTS_APP.controller('indexController', function($scope) {
                 Page: "indexController",
                 Method: "Sign_Out",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

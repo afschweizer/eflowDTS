@@ -1,8 +1,8 @@
-1// script.js
+// script.js
 
     // create the module and name it DTS_APP
         // also include ngRoute for all our routing needs
-    var DTS_APP = angular.module('DTS_APP', ['ngRoute','ngPagination']);
+    var DTS_APP = angular.module('DTS_APP', ['ngRoute']);
 
     // configure our routes
     DTS_APP.config(function($routeProvider) {
@@ -32,12 +32,6 @@
 			.when('/VisitPoint_Import',{
             	templateUrl : 'views/Scr_VisitPoint_Import.html'
             })
-            .when('/notification', {
-                templateUrl : 'views/Scr_Message.html'
-            })
-            .when('/history', {
-                templateUrl : 'views/Scr_Vehicle_History.html'
-            })
             .when('/PV_DB', {
                 templateUrl : 'views/Scr_VisitPoint_DB.html'
             })
@@ -52,9 +46,6 @@
             })
             .when('/vehicle', {
                 templateUrl : 'views/Scr_Vehicle.html'  
-            })
-            .when('/dashboard',{
-            	templateUrl : 'views/Scr_DashBoard.html'
             })
             .when('/detail',{
             	templateUrl : 'views/Scr_Vehicles_Detail.html'
@@ -85,76 +76,6 @@
             })
             .otherwise({
             	redirectTo : '/404'
-            })
-            /*
-            
-           
-             // route for the Scr_Jobs page
-            .when('/Jobs2', {
-                templateUrl : 'views/Scr_Jobs2.html'
-              
-            })
-             // route for the Scr_Jobs page
-            .when('/PV_DB', {
-                templateUrl : 'views/Scr_VisitPoint_DB.html'
-            })
-            // route for the map page
-           
-            // route for the map page
-            .when('/tareas', {
-                templateUrl : 'views/Scr_Tareas.html'
-               
-            })
-            // route for the map page
-            .when('/map', {
-                templateUrl : 'views/Scr_Map.html'
-               
-            })
-            // route for the map page
-            .when('/map1', {
-                templateUrl : 'views/Scr_Map_Position.html'
-               
-            })
-			
-            // route for the map page
-            .when('/item', {
-                templateUrl : 'views/Scr_Item.html'
-               
-            })
-			
-            // route for the map page
-            
-			
-            // route for the map page
-            .when('/map_notification', {
-                templateUrl : 'views/Scr_Map_Vehicle.html'
-               
-            })
-			
-            // route for the map page
-            .when('/login', {
-                templateUrl : 'views/Scr_Login.html'
-               
-            })
-			
-            // route for the map page
-            .when('/user', {
-                templateUrl : 'views/Scr_User.html'
-               
-            })
-			
-            // route for the map page
-            .when('/job', {
-                templateUrl : 'views/Scr_Job.html'
-               
-            })
-            // route for the map page
-           
-			.when('/main', {
-                templateUrl : 'views/Scr_Main.html'
-               
-            })	
-            */
-           ;
+            });
 			
     });

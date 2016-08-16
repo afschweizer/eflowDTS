@@ -1,60 +1,93 @@
 google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});   
-	var eflowDTS = { 
-		 
-		Geolocation:{
-			"Latitude":9.935775, 
-			"Longitude":-84.105073
-		}, 
-		
-		
-		
-    Configuration: {
-        "URLs": { 
-           "eflow_Get": "http://104.197.119.240/testing/eflowDTS/Eflow_Get.php",
-           "eflow_Post": "http://104.197.119.240/testing/eflowDTS/Eflow_Post.php",
-           "eflow_Date_Time" : "http://104.197.119.240/testing/eflowDTS/time.php"
-        } 
-    },      
-    Session: {},
-    Time : {    	
-    	"Day" : 86400000,
-    	"Hours" : 64800000,
-    	"Difference": 21600000
-    },
-    LoggedIn: false,
-    Save_Session : false,
-    Ultimate_Page : ""
-};   
-function getRandomColor() {
+
+var eflowDTS = {
+  Configuration: {
+    "URLs": {
+      "eflow_Get": "http://104.197.119.240/testing/eflowDTS/Eflow_Get.php",
+      "eflow_Post": "http://104.197.119.240/testing/eflowDTS/Eflow_Post.php",
+      "eflow_Date_Time": "http://104.197.119.240/testing/eflowDTS/time.php"
+    }
+  },
+  Session: {
+    "Current_User": {},
+    "Company": {},
+    "Ram": {},
+    "LoggedIn": false,
+    "Save_Session": false,
+    "Ultimate_Page": ""
+  }
+}; 
+
+function Random_Color() {
+	
+try{
 	
     var Colors = [
-	'#AFF8DB',
-	'#85E3FF',
-	'#FFFFD1',
-	'#ACE7FF',
-	'#BFFCC6',
-	'#E7FFAC',
-	'#B28DFF',
-	'#C4F4F8',
-	'#6EB5FF'
-	];
+	{
+		"Border":"#19bd9b",
+		"BackGround":"#16a086"	
+	},{
+		"Border":"#f2c40f",
+		"BackGround":"#f39c11"	
+	},{
+		"Border":"#2dcc70",
+		"BackGround":"#27ae61"	
+	},{
+		"Border":"#e67f22",
+		"BackGround":"#d45300"	
+	},{
+		"Border":"#3398dc",
+		"BackGround":"#2a80b9"	
+	},{
+		"Border":"#e84c3d",
+		"BackGround":"#c1392b"	
+	},{
+		"Border":"#9b58b7",
+		"BackGround":"#8f44ad"	
+	},{
+		"Border":"#ecf0f1",
+		"BackGround":"#bec3c7"	
+	},{
+		"Border":"#34495e",
+		"BackGround":"#2c3f50"	
+	},{
+		"Border":"#96a6a6",
+		"BackGround":"#7e8c8d"	
+	}];
     
     return  Colors[Math.floor(Math.random() * Colors.length-1)];
+    
+    }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Functions_Depurado",
+                Method: "Random_Color",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }   
 }
-/*
-function Exist_Cookie(key){
-var cookie = Get_Cookie(key);
-if(cookie!)	
-}
-*/   
  
 function Set_Current_Page(){
 	try{
+		
 	if(Exist_Cookie("EflowCookie") === true){
 		Get_Cookie("EflowCookie");
      }
-		eflowDTS.Ultimate_Page = window.location.hash;
+		eflowDTS.Session.Ultimate_Page = window.location.hash;
 	    Set_Cookie("EflowCookie",eflowDTS);
+        
         }catch (e) {
         
         var err;
@@ -76,12 +109,15 @@ function Set_Current_Page(){
         }
     }  
   
-};
+}
 
-function Set_Cookie(key,value) {try{
+function Set_Cookie(key,value) {
+	
+	try{
+		
 	localStorage.setItem(key,JSON.stringify(value));			
-        }catch (e) {
         
+   }catch (e) {        
         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -99,13 +135,15 @@ function Set_Cookie(key,value) {try{
         } else {
             Save_Error(e);
         }
-    }  
-  
+    }    
 };
 
-function Get_Cookie(key) {try{
-	var obj = JSON.parse(localStorage.getItem(key));
+function Get_Cookie(key) {	
+try{
+	
+	var obj = JSON.parse(localStorage.getItem(key));	
     eflowDTS = obj;
+    
  }catch (e) {
         
         var err;
@@ -130,8 +168,11 @@ function Get_Cookie(key) {try{
 };
 
 function Exist_Cookie(key){
+	
 try{
-	return (localStorage.getItem(key) != null);		
+	
+	return (localStorage.getItem(key) != null);	
+	
  }catch (e) {
         
         var err;
@@ -200,18 +241,20 @@ try{
 };
 
 function Load_Date (){
+	
 	try{
-setInterval(function() {
-        
-		Load_JSON(eflowDTS.Configuration.URLs.eflow_Date_Time, function(Text_Json) {
+		
+setInterval(function() {        
+
+Load_JSON(eflowDTS.Configuration.URLs.eflow_Date_Time, function(Text_Json) {
              
 	    var x = JSON.parse(Text_Json);
 		$scope.Watch = new Date(x.Time);
 		$scope.$apply($scope.Watch);
 		//$scope.user = "Afuentes";
 	    //$scope.$apply($scope.user);
-	});
-                }, 1000);
+	}); 
+ }, 1000);
 
 	
 
@@ -239,6 +282,7 @@ setInterval(function() {
 };
 
 function Get_Data_Geolocation(lat, long, polyX, polyY) {
+	
 try{
       var i, j = polyX.length - 1;
       var oddNodes = false;
@@ -275,124 +319,7 @@ try{
   
 };
 
-//-----------------------------.:
 
-function validate(UserName,Password){
-try{
-Log_In_Online(UserName, Password, function(obj) {
-            if (obj.Result === false) {
-                alert("El usuario y contraseña no coinciden o usted aún no tiene una cuenta.");
-            } else {
-                alert("hola");
-                
-            };
-            
-        });
-
- }catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Functions_Depurado",
-                Method: "validate",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-//-----------------------------.:
-
-function onErrorGeolocating(error)
-{try{
-	switch(error.code)
-	{
-		case error.PERMISSION_DENIED:
-			alert('Por favor active su GPS!');
-		break;
-
-		case error.POSITION_UNAVAILABLE:
-			alert("No se puede obtener la posición en este momento");
-		break;
-
-		case error.TIMEOUT:
-			alert("ERROR: No se puede obtener la posición en este momento!");
-		break;
-
-		default:
-			alert("ERROR: Unknown problem!");
-		break;
-	}
-}catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Functions_Depurado",
-                Method: "onErrorGeolocating",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-
-//-----------------------------.:
-
-function Log_In_Online(UserName, Password, Company,onSuccess, onError) {
-    try {
-        var JsonData = {
-            'Method_Name': 'Login_Appery',
-            'Data': {
-                'UserName': UserName,
-                'Password': Password,
-                'Company': Company
-            }
-        };
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-    } catch (e) {
-        onError(e);
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Functions_Depurado",
-                Method: "Log_In_Online",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-//-----------------------------.:
 function Send_JSON(Url, JsonData, onSucess, onError) {
     try {
         var json;
@@ -444,7 +371,7 @@ function Array_Remove(Array,Value){
 	try{
 	for ( var i = 0, j = Array.length ; i < j; i++ ) {
 		
-    if ( Array[ i ] == Value ) {
+    if ( Array[ i ] === Value ) {
       Array.splice( i, 1 );
       i--;
     }
@@ -475,14 +402,16 @@ return Array;
   
 };
 
-//-----------------------------------
+
 
 function Save_Error(e) {
     
     try {
         
         if (typeof e === 'object') {
-            e.Company = eflowDTS.Session.Company;
+        	
+            e.Company = eflowDTS.Session.Company.Identifier;
+            
         } else {
             
             e = {
@@ -490,9 +419,9 @@ function Save_Error(e) {
                 Page: "Functions_Depurado",
                 Method: "Save_Error",
                 Description: "Error recibido no posee estructura de objeto",
-                User: eflowDTS.Session.UserName,
+                User: eflowDTS.Session.Current_UserUserName,
                 Date: new Date().getTime(),
-                Company: eflowDTS.Session.Company,
+                Company: eflowDTS.Session.Company.Identifier,
                 Error: e
             };
             

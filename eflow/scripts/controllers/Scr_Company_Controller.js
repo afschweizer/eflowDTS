@@ -1,4 +1,17 @@
- DTS_APP.controller('Scr_Company_Controller', function($scope) {
+function comprueba(val,input){
+	
+var arroba = /@/;
+
+/*if(arroba.test(val)){
+	input.value = val.replace(arroba,'');
+	}*/
+if(!arroba.test(val)){
+return val;	
+}
+
+};
+
+DTS_APP.controller('Scr_Company_Controller', function($scope) {
  	
 $scope.Type = "password"; 
 	$scope.init = function(){
@@ -62,14 +75,7 @@ $scope.Type = "password";
 			}
 		};
 		
-		function comprueba(que,donde)
-{
-var arroba = /@/;
-if(arroba.test(que)){
-	donde.value = que.replace(arroba,'');
-	}
-
-};
+	
 
   function cargar_paises(){
   	
@@ -426,7 +432,7 @@ try{
 							 	"Creation_Date": new Date().getTime(),
 							 	"Created_User" : "Default"
 							 	},
-				    			"Company": $scope.Companys.name,
+				    			"Company": $scope.Companys.name.toUpperCase(),
 				    			"UserName": $scope.User.UserName,
 							    "Password": $scope.User.Password,
 							    "ID": $scope.User.ID,
