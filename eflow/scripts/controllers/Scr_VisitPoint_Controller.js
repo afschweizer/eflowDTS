@@ -2,8 +2,8 @@
 var map; 
 DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
  
-	$scope.init = function(){
-		try{
+$scope.init = function(){
+try{
        	Set_Current_Page();
 		$scope.flag = true;
 		//$scope.Polygon = {}; 
@@ -49,13 +49,13 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
 };
 	
 	
-	function Load_Map_VisitPoint(){try{
+function Load_Map_VisitPoint(){try{
 		var div = document.getElementById('Map_VisitPoint');
 		if(div){
 		map1 = new GMaps({
 			div:div,
-			lat:eflowDTS.Geolocation.Latitude,
-			lng:eflowDTS.Geolocation.Longitude,
+			lat:eflowDTS.Company.Location.Latitud,
+			lng:eflowDTS.Company.Location.Longitud,
 			zoom :8,
 			tilesloaded: function(e){
 			  $scope.Show_Components.VisitPoint_Form = false;
@@ -90,8 +90,9 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
     }  
   
 };	
-	
-	$scope.Resize = function(){try{
+
+$scope.Resize = function(){
+try{
 		if(typeof map === "object"){
 			map.refresh();
 		}

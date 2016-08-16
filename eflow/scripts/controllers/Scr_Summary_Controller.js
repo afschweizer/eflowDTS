@@ -6,7 +6,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		//Get_Cookie("EflowCookie");
 		
 		$scope.query = {};
-		var User = eflowDTS.Session.Ram.ID;
+		var User = eflowDTS.Session.Current_User.ID;
 		var Current_Date = new Date(new Date().format("yyyy-mm-dd")).getTime()+eflowDTS.Time.Difference;	
 		
 		$scope.QueryForUser = {"User":User};
@@ -253,7 +253,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 		"$gte": new Date(Filter.Start_Date).getTime(),
                         "$lte": new Date(Filter.End_Date).getTime()
                 		},
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             }
@@ -261,9 +261,9 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		var onSuccess = function(ArrData){
 		
 		if($scope.DataSet.Name === ""){
-			eflowDTS.Session.Flag_DataSet = "New";
+			eflowDTS.Session.Ram.Flag_DataSet = "New";
 		}else{
-			eflowDTS.Session.Flag_DataSet = "Old";
+			eflowDTS.Session.Ram.Flag_DataSet = "Old";
 		}
 		$scope.PivotData = ArrData;
 		$scope.DataSet.Type = Filter.Type;
@@ -356,8 +356,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    $scope.Save_DataSet = function(Name){
 		try{
    	$scope.DataSet.Name = Name;
-   	$scope.DataSet.Company = eflowDTS.Session.Company;
-  	$scope.DataSet.User = eflowDTS.Session.ID;
+   	$scope.DataSet.Company = eflowDTS.Session.Company.Identifier;
+  	$scope.DataSet.User = eflowDTS.Session.Current_User.ID;
    	if(eflowDTS.Session.Flag_DataSet === "New"){
       $scope.DataSet.Date_Created = new Date().getTime();
    	}

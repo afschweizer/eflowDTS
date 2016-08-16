@@ -36,8 +36,8 @@ try{
    			if(div){
 	   		    map = new GMaps({
 				div: div,
-			    lat: eflowDTS.Geolocation.Latitude, 
-				lng: eflowDTS.Geolocation.Longitude,
+			    lat: eflowDTS.Session.Company.Location.Latitude, 
+				lng: eflowDTS.Session.Company.Location.Longitude,
 			    zoom: 12
 			    }); 
 			 }
