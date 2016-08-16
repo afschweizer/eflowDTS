@@ -6,9 +6,9 @@ $scope.init = function() {try{
 	//Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
 var Headers= [{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},{"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
-$scope.ArrayType_Vehicle = eflowDTS.Session.DataCompany.Settings.Vehicle;
-$scope.ArrayLicense = eflowDTS.Session.DataCompany.Settings.License;
-$scope.ArrayFuel_Vehicle = eflowDTS.Session.DataCompany.Settings.Fuel;
+$scope.ArrayType_Vehicle = eflowDTS.Session.Company.Settings.Vehicle;
+$scope.ArrayLicense = eflowDTS.Session.Company.Settings.License;
+$scope.ArrayFuel_Vehicle = eflowDTS.Session.Company.Settings.Fuel;
 $scope.ArrayHeaders = Headers;
 $scope.Select();
 }catch (e) {
@@ -438,9 +438,9 @@ try{
 					'Data':[ {
 					 	"Control":{
 					 	"Creation_Date": new Date().getTime(),
-					 	"Created_User" : eflowDTS.Session.UserName
+					 	"Created_User" : eflowDTS.Session.Current_User.UserName
 					 	},
-				        	"Company": eflowDTS.Session.Company,
+				        	"Company": eflowDTS.Session.Company.Identifier,
 				            "Id_Vehicle": New_Vehicle.Id_Vehicle.replace(/\s/g, '').toUpperCase(),
 				            "Type_Vehicle": New_Vehicle.Type_Vehicle,
 				            "License": New_Vehicle.License,
@@ -879,7 +879,7 @@ var onSucces_Img2 = function(img2){
 
 var ima = img2;
 
-var Compania = eflowDTS.Session.DataCompany;
+var Compania = eflowDTS.Session.Company;
 var columns = [
    		//{title:"Compañia",dataKey:"Company"},
 		{title:"Identificador",dataKey:"Id_Vehicle"},

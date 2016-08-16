@@ -8,7 +8,7 @@ $scope.init = function(){try{
    $scope.Check = false;
   //  $scope.Dates = new Date();
 $scope.ArrayVehicles_Import = [];
-$scope.ArrayLicense =eflowDTS.Session.DataCompany.Settings.License;
+$scope.ArrayLicense =eflowDTS.Session.Company.Settings.License;
 	$scope.Headers= 
 [{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},
 {"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
@@ -148,7 +148,7 @@ var onSuccess = function(result){
 			json_obj.ID_Truck = json_obj.ID_Truck.replace(/\s/g, '').toUpperCase();
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
-			json_obj.Control.Created_User = eflowDTS.Session.UserName;
+			json_obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
 			Array_Vehicle_To_Assign.push(json_obj);
 			}
 	}

@@ -15,8 +15,8 @@ $scope.ArrayUsers_Import = [];
 	{"es":"SEGUNDO APELLIDO","value":"Lastname2"},{"es":"CEDULA","value":"Identification"},{"es":"TIPO","value":"Type"}] ;
 var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 $scope.ArrayGenders = Gender;
-$scope.ArrayLicense = eflowDTS.Session.DataCompany.Settings.License;
-$scope.ArrayTypes = eflowDTS.Session.DataCompany.Settings.User;
+$scope.ArrayLicense = eflowDTS.Session.Company.Settings.License;
+$scope.ArrayTypes = eflowDTS.Session.Company.Settings.User;
 }catch (e) {
         
         var err;
@@ -206,7 +206,7 @@ var onSuccess = function(result){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
-			json_obj.Control.Created_User = eflowDTS.Session.UserName;
+			json_obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
 			Array_User_To_Assign.push(json_obj);
 			}
 	}
