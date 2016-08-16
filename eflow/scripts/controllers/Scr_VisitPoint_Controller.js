@@ -251,12 +251,12 @@ function Select_Routes(){
             Error: e
         };
 			throw erro;					
-		};	
-		
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);  
-        
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
     } catch (e) {
-         var err;
+        alert(e);
+        
+        var err;
         
         if (e.hasOwnProperty("Generated") === false) {
             err = {
@@ -277,10 +277,8 @@ function Select_Routes(){
   
 };
 
-$scope.To_Order_By = function(Order_Type){
-try{
-	
-if ($scope.OrderList === Order_Type) {
+$scope.To_Order_By = function(Order_Type){try{
+	if ($scope.OrderList === Order_Type) {
 	 var Reverse = Order_Type.charAt(0);
     if (Reverse === '-') {
         $scope.OrderList = Order_Type.substr(1);
@@ -290,7 +288,6 @@ if ($scope.OrderList === Order_Type) {
 	} else {
 	    $scope.OrderList = Order_Type;
 	}
-	
 }catch (e) {
         
         var err;
@@ -315,22 +312,19 @@ if ($scope.OrderList === Order_Type) {
 };
 
 $scope.Load_VisitPoint= function(){
-try{
-	
+	try{
 	var Obj=$scope.ArrayVisitPoint;
   	$scope.ArrayPoint=[];
 	map1.removePolygons();
 	map1.removeMarkers();	
-	
   for(var i=0; i<Obj.length;i++){
   	
   	 map1.addMarker({
 	 lat: parseFloat(Obj[i].Latitude),
 	 lng: parseFloat(Obj[i].Longitude)			 
-        });
+   });
   	
-}
-
+  	}
   }catch (e) {
         
         var err;
@@ -352,12 +346,10 @@ try{
         }
     }};
 
-$scope.Load_New_Visit_Point = function(){
-try{
+$scope.Load_New_Visit_Point = function(){try{
 	$scope.VisitPoint = {};
 	map.removePolygons();
 	map.removeMarkers();	
-	
 }catch (e) {
         
         var err;
@@ -381,9 +373,7 @@ try{
   
 };
 
-$scope.Save_Visit_Point = function(VP){
-try{
-	
+$scope.Save_Visit_Point = function(VP){try{
 if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === "" || typeof VP.Longitude === 'undefined'){
    		bootbox.dialog({
    			title : "¡Alerta!",
@@ -400,10 +390,10 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
 			VP.Route = {};
 			VP.Control = {};
 			VP.Control.Creation_Date = new Date().getTime();
-			VP.Control.Created_User = eflowDTS.Session.Current_User.UserName;
+			VP.Control.Created_User = eflowDTS.Session.UserName;
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
-			VP.Company = eflowDTS.Session.Company.Identifier;
+			VP.Company = eflowDTS.Session.Company;
 			var JsonData = {
 				'Method_Name': 'Insert_Visit_Point',
 				'Data': [VP]
@@ -430,7 +420,7 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
 			VP.Control.Modification_date = new Date().getTime();
-			VP.Control.Modify_User = eflowDTS.Session.Current_User.UserName;
+			VP.Control.Modify_User = eflowDTS.Session.UserName;
 			delete VP.Pais;		
 			delete VP.Provincia;		
 			delete VP.Distrito;
@@ -457,7 +447,7 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
    			    });
 				};//Update
 		}
-			var onError =function(e){
+			var onError =function(JsonData){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_Controller",
@@ -466,15 +456,12 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: e
+            Error: JsonData
         };
 			throw erro;			
 			};
-			
 			Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
-			
 		}	
-		
 }catch (e) {
         
         var err;
@@ -502,18 +489,17 @@ $scope.Delete = function(id){
 	try {
 		var onSuccess = function(result){
     if (result === true) {
-     
-     var JsonData = {
+      var JsonData = {
             'Method_Name': 'Delete_Visit_Point',
             'Data':  id.$id
         };
-		var onSuccess = function(Response){
+		var onSuccess = function(JsonData){
 		
 		$scope.Select();
 		
 		};
 		
-		var onError = function(e){
+		var onError = function(JsonData){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_Controller",
@@ -522,20 +508,22 @@ $scope.Delete = function(id){
            User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: e
+            Error: JsonData
         };
 			throw erro;		
+		console.log(JsonData);
+		
 		};
 		}
-		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-        
     };
     
     bootbox.confirm("¿Est"+'\u00e1'+" seguro que desea borrar el Punto de Visita del sistema?",onSuccess);
     
     
     } catch (e) {
+            onError(e);
+        
         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -563,21 +551,21 @@ $scope.Select = function(){
         var JsonData = {
             'Method_Name': 'Select_All_Visit_Point',
              'Data': {
-    			"Company": eflowDTS.Session.Company.Identifier
+    			"Company": eflowDTS.Session.Company
             },
             'Fields':{
             	
             }
         }; 
 		
-		var onSuccess = function(Response){
+		var onSuccess = function(JsonData){
 		
-		$scope.ArrayVisitPoint = Response;
+		$scope.ArrayVisitPoint = JsonData;
 		$scope.$apply($scope.ArrayVisitPoint);
 
 		};
 		
-		var onError =  function(e){
+		var onError =  function(JsonData){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_Controller",
@@ -586,14 +574,14 @@ $scope.Select = function(){
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: e
+            Error: JsonData
         };
-			throw erro;	
+			throw erro;		
+		console.log(JsonData);
 		
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-        
     } catch (e) {
         onError(e);
         
@@ -706,11 +694,11 @@ $scope.Save_Visit_Point_Edit = function(Obj){try{
 					'Method_Name': 'Update_Visit_Point',
 					'Data': [Json]
 				};
-		var onSuccess = function(Response){
+		var onSuccess = function(JsonData){
 			$scope.Select();
 			};
 				
-		var onError = function(e){
+		var onError = function(JsonData){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_Controller",
@@ -722,6 +710,7 @@ $scope.Save_Visit_Point_Edit = function(Obj){try{
             Error: JsonData
         };
 			throw erro;	
+			console.log(JsonData);
 			};
 				
 	Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -760,8 +749,8 @@ $scope.Delete_Visit_Point_DB = function(){
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_Delete_ID=[];
 	
-	for (var i=0; i < CheckBoxes_Array.length ;i++){
-		if (CheckBoxes_Array[i].checked === true){
+	for (i=0; i < CheckBoxes_Array.length ;i++){
+		if (CheckBoxes_Array[i].checked == true){
 			//var Obj = JSON.parse(CheckBoxes_Array[i].value);
 			Array_Delete_ID.push(CheckBoxes_Array[i].attributes.id_check.value);
 			//Array_Remove($scope.ArrayJobs,Obj);
@@ -780,7 +769,7 @@ $scope.Delete_Visit_Point_DB = function(){
 		$scope.Select();
 		};
 	
-	var onError = function(e){
+	var onError = function(JsonData){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_Controller",
@@ -789,9 +778,10 @@ $scope.Delete_Visit_Point_DB = function(){
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: e
+            Error: JsonData
         };
 			throw erro;	
+		console.log(JsonData);
 		};
 		
 	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError); 
@@ -1262,7 +1252,7 @@ var logo = img1;
 var onSucces_Img2 = function(img2){
 
 var ima = img2;
-var Compania = eflowDTS.Session.Company;
+var Compania = eflowDTS.Session.DataCompany;
 var columns = [
    		//{title:"Compañia",dataKey:"Company"},
 		{title:"Identificador",dataKey:"ID_Location"},
@@ -1374,6 +1364,9 @@ Image_To_Base64("images/logo.png",onSucces_Img1);
     }  
   
 };
+
+
+
 
 
 });

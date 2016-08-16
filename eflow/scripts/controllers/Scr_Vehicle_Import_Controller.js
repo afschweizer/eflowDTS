@@ -520,7 +520,7 @@ function Complete_Json_CSV(arr){
   ve.Weight = VehicleExcel.Weight;
   ve.Cubics = VehicleExcel.Cubics;
   ve.Description = VehicleExcel.Description;
-  ve.Company = eflowDTS.Session.Company;
+  ve.Company = eflowDTS.Session.Company.Identifier;
   
   }
   
@@ -647,7 +647,7 @@ function CSV_To_JSON(csv){
 				    }
 
 				 }
-				 Obj.Company = eflowDTS.Session.Company;
+				 Obj.Company = eflowDTS.Session.Company.Identifier;
 				 Obj.Year = parseInt(Obj.Year);
 				 Obj.Weight = parseInt(Obj.Weight);
 				 Obj.Cubics = parseInt(Obj.Cubics);

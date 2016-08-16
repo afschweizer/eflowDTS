@@ -11,8 +11,8 @@ $scope.init = function(){
 	Load_Map();
 	$scope.Load_Visit_Point();
 	$scope.Load_Route();
-	$scope.User = eflowDTS.Session.UserControl;
-    $scope.Company = eflowDTS.Session.Company;
+	$scope.User = eflowDTS.Session.Ram.UserControl;
+    $scope.Company = eflowDTS.Session.Company.Identifier;
 }catch (e) {
         
         var err;
@@ -38,7 +38,7 @@ $scope.init = function(){
 
 	
 	$scope.See_Info = function(jobs){try{
-		eflowDTS.Session.Current_Incidents=jobs;
+		eflowDTS.Session.Ram.Current_Incidents=jobs;
 		location.href="#/dashboard";
 }catch (e) {
         
@@ -117,9 +117,9 @@ $scope.init = function(){
 					"Collection_Schema": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
     
 				},
-    			"Company": eflowDTS.Session.Company,
-                "User": eflowDTS.Session.UserControl.User,
-    			"ID_Truck": eflowDTS.Session.UserControl.ID_Truck,
+    			"Company": eflowDTS.Session.Company.Identifier,
+                "User": eflowDTS.Session.Ram.UserControl.User,
+    			"ID_Truck": eflowDTS.Session.Ram.UserControl.ID_Truck,
                 "Estimated_Date": new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference,
 				"State": "Unread",
 				"Matter": TextAsunto,
@@ -196,8 +196,8 @@ $scope.init = function(){
 
    			map = new GMaps({
 			div: div,
-		    lat: eflowDTS.Geolocation.Latitude, 
-			lng: eflowDTS.Geolocation.Longitude,
+		    lat: eflowDTS.Session.Company.Location.Latitud, 
+			lng: eflowDTS.Session.Company.Location.Longitud,
 		    zoom: 12
 		    });
 		   			
@@ -535,9 +535,9 @@ $scope.init = function(){
  	var JsonData = {
             'Method_Name': 'Select_Jobs',
             'Data': {
-    			"Company": eflowDTS.Session.Company,
-                "User": eflowDTS.Session.UserControl.User,
-    			"ID_Truck": eflowDTS.Session.UserControl.ID_Truck,
+    			"Company": eflowDTS.Session.Company.Identifier,
+                "User": eflowDTS.Session.Ram.UserControl.User,
+    			"ID_Truck": eflowDTS.Session.Ram.UserControl.ID_Truck,
                 "Estimated_Date": new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference
                 },
             'Fields':{
@@ -598,9 +598,9 @@ $scope.init = function(){
  	var JsonData = {
             'Method_Name': 'Select_Geolocation',
             'Data': {
-    			"Company": eflowDTS.Session.Company,
-                "User": eflowDTS.Session.UserControl.User,
-    			"ID_Truck": eflowDTS.Session.UserControl.ID_Truck
+    			"Company": eflowDTS.Session.Company.Identifier,
+                "User": eflowDTS.Session.Ram.UserControl.User,
+    			"ID_Truck": eflowDTS.Session.Ram.UserControl.ID_Truck
                 }
 	};
 	

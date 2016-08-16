@@ -1,18 +1,14 @@
 var map;
 DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 
-
-			$scope.init = function(){
-				
-				try{
+$scope.init = function(){
+try{
        	    Set_Current_Page();
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
 	        $('#Charging').modal('show');
 			Load_Init_Map();
-		//To_Reload_Eflow_Config();
-		//Get_Cookie("EflowCookie");
-	//eflowDTS = Get_Cookie("EflowCookie");
+		
 			Select_User_Online();
 			Select_Jobs();		       				
 			$scope.Show_Components.Show_User_Online = true;	
@@ -50,8 +46,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
    			if(div){
 	   		    map = new GMaps({
 				div: div,
-			    lat: eflowDTS.Geolocation.Latitude, 
-				lng: eflowDTS.Geolocation.Longitude,
+			    lat: eflowDTS.Company.Location.Latitud, 
+				lng: eflowDTS.Company.Location.Longitud,
 			    zoom: 12,
 			    tilesloaded: function(e){	
 			    	 GMaps.off('tilesloaded',map);
@@ -139,15 +135,13 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
   
 };
 	
-	$scope.See_Info = function(User){try{
-		eflowDTS.Session.UserControl = User;
-		
-			 //To_Save_Eflow_Config();
-		      	 Set_Cookie("EflowCookie",eflowDTS);
-		
+$scope.See_Info = function(User){
+try{
+		eflowDTS.Session.Ram.UserControl = User;
 		location.href="#/detail";
-			    	eflowDTS.Ultimate_Page="#/detail";
-	         	Set_Cookie("EflowCookie",eflowDTS);
+		eflowDTS.Session.Ultimate_Page="#/detail";
+	    Set_Cookie("EflowCookie",eflowDTS);
+	    
 	}catch (e) {
         
         var err;
@@ -175,7 +169,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		var JsonData = {
 			'Method_Name': 'Select_User_Online',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -193,18 +187,14 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 					$scope.Show_Components.Show_User_Online = false;
 					$scope.Show_Components.Show_List = true;
 				}
-				
-					
-				}
-								
+				}			
 			}else{
-				$scope.Show_User_Online = true;			
-				
+				$scope.Show_User_Online = true;		
 			}
 			
 		};
 		
-		var onError = function(JsonData){
+		var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_Vehicles_Online_Controller",
@@ -213,13 +203,10 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
 			throw erro;	
-			console.log(Error);
-			
 		};
-		
 		Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,JsonData,onSuccess,onError);
 		
 		
@@ -281,10 +268,10 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
   
 };
 	
-	Load_Map = function(User){
-   	  try{
+var Load_Map = function(User){
+ try{
    	 	    if(typeof User === 'undefined'){
-	   		   map.setCenter(eflowDTS.Geolocation.Latitude,eflowDTS.Geolocation.Longitude);			    
+	   		   map.setCenter(eflowDTS.Company.Location.Latitud,eflowDTS.Company.Location.Longitud);			    
 	        }else{
 		       map.setCenter(User.Geolocation.Latitude,User.Geolocation.Longitude);		      	
 	        }
@@ -354,14 +341,14 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 				'User':true,
 				'Name':true,
 				'ID_Truck':true				
-			}
+			} 
 		};
 		
 		var Success = function(json){
 			$scope.ArrayJobs = json;	
 		};
 		
-		var onError = function(JsonData){
+		var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_Vehicles_Online_Controller",
@@ -370,13 +357,13 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
-			throw erro;	
-		console.log(e);				
+			throw erro;				
 		};
 		
 		Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Query,Success,onError);
+		
 	}catch (e) {
         
         var err;
@@ -398,8 +385,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
         }
     }  
   
-};
-	
+}
 
 
 });
