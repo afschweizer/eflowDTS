@@ -6,7 +6,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		//Get_Cookie("EflowCookie");
 		
 		$scope.query = {};
-		var User = eflowDTS.Session.ID;
+		var User = eflowDTS.Session.Ram.ID;
 		var Current_Date = new Date(new Date().format("yyyy-mm-dd")).getTime()+eflowDTS.Time.Difference;	
 		
 		$scope.QueryForUser = {"User":User};
@@ -77,12 +77,12 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 	function Select_DataSet(){
 	 try {
 	 	
-	 	$scope.User = eflowDTS.Session.ID;
+	 	$scope.User = eflowDTS.Session.Ram.ID;
 	 	
         var JsonData = {
             'Method_Name': 'Select_DataSet',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             }

@@ -3,11 +3,11 @@ DTS_APP.controller('Scr_Settings_Controller', function($scope) {
     $scope.init = function() {
     		try{
        	Set_Current_Page();
-$scope.Array_License = eflowDTS.Session.DataCompany.Settings.License;
-$scope.Array_User = eflowDTS.Session.DataCompany.Settings.User;
-$scope.Array_Vehicle = eflowDTS.Session.DataCompany.Settings.Vehicle;
-$scope.Array_Fuel = eflowDTS.Session.DataCompany.Settings.Fuel;
-$scope.Array_Unity = eflowDTS.Session.DataCompany.Settings.Unity;
+$scope.Array_License = eflowDTS.Session.Company.Settings.License;
+$scope.Array_User = eflowDTS.Session.Company.Settings.User;
+$scope.Array_Vehicle = eflowDTS.Session.Company.Settings.Vehicle;
+$scope.Array_Fuel = eflowDTS.Session.Company.Settings.Fuel;
+$scope.Array_Unity = eflowDTS.Session.Company.Settings.Unity;
 
 
    }catch (e) {
@@ -126,9 +126,9 @@ for(var k = 0; k < inputDescription.length; k++){
 
 $scope.SaveData= function(){
 try{
-		var Json = eflowDTS.Session.DataCompany;
+		var Json = eflowDTS.Session.Company;
 		Json.Control.Modification_date = new Date().getTime();
-		Json.Control.Modify_User = eflowDTS.Session.UserName;
+		Json.Control.Modify_User = eflowDTS.Session.Current_User.UserName;
 		Json.Settings = {
 							    "Unity": $scope.Array_Unity,
 							    "Fuel": $scope.Array_Fuel,
@@ -194,7 +194,7 @@ function DataCompany() {
 		 var JsonData = {
             'Method_Name': 'Select_Company',
             'Data': {
-    			"Identifier": eflowDTS.Session.Company.toUpperCase(),
+    			"Identifier": eflowDTS.Session.Company.Identifier.toUpperCase(),
             },
             'Fields':{
             	
@@ -202,7 +202,7 @@ function DataCompany() {
         };
 		var onSuccess = function(arr){
 			
-					eflowDTS.Session.DataCompany = arr[0];
+					eflowDTS.Session.Company = arr[0];
 					
 		      	 //To_Save_Eflow_Config();
 		      	 Set_Cookie("EflowCookie",eflowDTS);

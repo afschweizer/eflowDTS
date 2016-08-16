@@ -1,13 +1,10 @@
  DTS_APP.controller('Scr_VisitPoint_Import_Controller',function($scope) {
 
-$scope.init = function(){try{
+$scope.init = function(){
+try{
        	Set_Current_Page();
-		//To_Reload_Eflow_Config();
-		//Get_Cookie("EflowCookie");
-	//eflowDTS = Get_Cookie("EflowCookie");
-		
-   $scope.Check = false;
-  //  $scope.Dates = new Date();
+				
+       $scope.Check = false;
 $scope.ArrayVisitPoints_Import = [];
 	$scope.Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
 		{"es":"SECTOR","value":"Route"},{"es":"DIRECCION","value":"Address"},
@@ -145,7 +142,7 @@ var onSuccess = function(result){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
-			json_obj.Control.Created_User = eflowDTS.Session.UserName;
+			json_obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
 			Array_VisitPoint_To_Assign.push(json_obj);
 			}
 	}
@@ -155,13 +152,13 @@ var onSuccess = function(result){
             'Data':  Array_VisitPoint_To_Assign
             
         };
-		var onSuccess = function(JsonData){
+		var onSuccess = function(Response){
 		
 		$scope.ArrayVisitPoints_Import = [];
 		
 		};
 		
-		var onError =function(JsonData){
+		var onError =function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_Import_Controller",
@@ -170,10 +167,9 @@ var onSuccess = function(result){
             	User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
-			throw erro;
-		console.log(JsonData);
+			throw erro;		
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -182,6 +178,7 @@ var onSuccess = function(result){
 };
  
  bootbox.confirm("¿Desea Asignar los elementos seleccionados?",onSuccess);
+ 
 }catch (e) {
         
         var err;
@@ -335,7 +332,7 @@ $scope.Checking_Checkboxes = function(){
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 
 	for ( var i = 0; i < CheckBoxes_Array.length ; i++ ){
-	  if(CheckBoxes_Array[i].checked = true){
+	  if(CheckBoxes_Array[i].checked === true){
 		$scope.Show_Actions=true;	
 		break;
 	   }
@@ -435,6 +432,7 @@ function Import_Json(file){
 
 function Complete_Json_CSV(arr){
  try{
+ 	
  for (var i=0;i<arr.length;i++){
 	  
   var VisitPointExcel = arr[i];
@@ -442,12 +440,11 @@ function Complete_Json_CSV(arr){
   var vp = {};
   
   vp.Lastname = VisitPointExcel.Lastname;
-  us.Company = eflowDTS.Session.Company;
-  
+  us.Company = eflowDTS.Session.Company.Identifier;  
   }
   
- // $scope.ArrayJobs_Import = ObtenerArray(obj);
   insertarI($scope.ArrayUsers_Import,ObtenerArray(obj));
+  
 	}catch (e) {
         
         var err;
@@ -511,7 +508,7 @@ for (var i = 0; i < keys.length; i++) {
         var JsonData = {
             'Method_Name': 'Select_All_Route',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	"ID_Route":true,
@@ -539,15 +536,12 @@ for (var i = 0; i < keys.length; i++) {
             Error: JsonData
         };
 			throw erro;
-		console.log(JsonData);
-		
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
         
     } catch (e) {
-        console.log(e);
-        
+      
         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -615,6 +609,7 @@ function Import_CSV(file){
 		
 $scope.Remove_In_Array = function(Obj,Array){
 	try{
+		
 	Array_Remove(Array,Obj);
 		
  }catch (e) {
@@ -661,7 +656,7 @@ function CSV_To_JSON(csv){
 					}
 					
 				 }
-				 Obj.Company = eflowDTS.Session.Company;
+				 Obj.Company = eflowDTS.Session.Company.Identifier;
 				 Obj.Legal_Cedula = parseInt(Obj.Legal_Cedula);
 				 Obj.Telephone_Number = parseInt(Obj.Telephone_Number);
 				 Obj.Latitude = parseFloat(Obj.Latitude);
