@@ -12,10 +12,10 @@ var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"PRIMER APELLIDO","value":"La
 {"es":"SEGUNDO APELLIDO","value":"Lastname2"},{"es":"CEDULA","value":"Identification"},{"es":"TIPO","value":"Type"}] ;
 $scope.ArrayHeaders = Headers;
 var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
-$scope.ArrayLicense = eflowDTS.Session.DataCompany.Settings.License;
-$scope.ArrayTypes = eflowDTS.Session.DataCompany.Settings.User;
+$scope.ArrayLicense = eflowDTS.Session.Company.Settings.License;
+$scope.ArrayTypes = eflowDTS.Session.Company.Settings.User;
 $scope.ArrayGenders = Gender;
-$scope.Domain = eflowDTS.Session.DataCompany.Domain;
+$scope.Domain = eflowDTS.Session.Company.Domain;
 $scope.Select();
 
    }catch (e) {
@@ -331,7 +331,7 @@ $scope.Save_User_Edit = function(Obj){
 	try{
 		var Json = Obj;
 		Json.Control.Modification_date = new Date().getTime();
-		Json.Control.Modify_User = eflowDTS.Session.UserName;
+		Json.Control.Modify_User = eflowDTS.Session.Current_User.UserName;
 		Json.Mail = Obj.Mail.toLowerCase();
 		delete Json['$$hashKey'];
 		var JsonData = 
@@ -461,7 +461,7 @@ $scope.Select = function(){
         var JsonData = {
             'Method_Name': 'Select_All_User',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -787,9 +787,9 @@ $scope.Add_New_User = function(New_User){
 					 'Data': [{
 					 	"Control":{
 					 	"Creation_Date": new Date().getTime(),
-					 	"Created_User" : eflowDTS.Session.UserName
+					 	"Created_User" : eflowDTS.Session.Current_User.UserName
 					 	},
-		    			"Company": eflowDTS.Session.Company,
+		    			"Company": eflowDTS.Session.Company.Identifier,
 		    			"UserName": New_User.UserName,
 					    "Password": New_User.Password,
 					    "ID": New_User.ID,
@@ -797,7 +797,7 @@ $scope.Add_New_User = function(New_User){
 					    "Lastname": New_User.Lastname,
 					    "Lastname2": New_User.Lastname2,
 					    "Identification": New_User.Identification,
-					    "Mail": New_User.Mail.toLowerCase()+ eflowDTS.Session.DataCompany.Domain.toLowerCase(),
+					    "Mail": New_User.Mail.toLowerCase()+ eflowDTS.Session.Company.Domain.toLowerCase(),
 					    "Gender": New_User.Gender,
 					    "Birthdate": New_User.Birthdate,
 					    "DueDate": New_User.DueDate,
@@ -1252,7 +1252,7 @@ var onSucces_Img2 = function(img2){
 
 var ima = img2;
 
-var Compania = eflowDTS.Session.DataCompany;
+var Compania = eflowDTS.Session.Company;
 var columns = [
    		//{title:"Compañia",dataKey:"Company"},
 		{title:"Usuario",dataKey:"UserName"},

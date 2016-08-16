@@ -123,8 +123,8 @@ try{
 		if(div){
 		map = new GMaps({
 			div:div,
-			lat:eflowDTS.Geolocation.Latitude,
-			lng:eflowDTS.Geolocation.Longitude,
+			lat:eflowDTS.Company.Location.Latitud,
+			lng:eflowDTS.Company.Location.Longitud,
 			zoom :14, resize:true,
 			click:function(e){
 				bootbox.dialog({
@@ -193,8 +193,7 @@ try{
 	$scope.VisitPoint.District= results[results.length-4].formatted_address.split(',', 1)[0];
       }
   }});
-  
-			  map.removeMarkers();
+  map.removeMarkers();
 			  map.addMarker({
 			  lat: e.latLng.lat(),
 			  lng: e.latLng.lng()			 
@@ -232,15 +231,15 @@ function Select_Routes(){
         var JsonData = {
             'Method_Name': 'Select_All_Route',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             }
         };
-		var onSuccess = function(JsonData){		
-		$scope.ArrayRoute = JsonData;		
+		var onSuccess = function(Response){		
+		$scope.ArrayRoute = Response;		
 		};		
-		var onError = function(JsonData){
+		var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_Controller",
@@ -249,16 +248,15 @@ function Select_Routes(){
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
-			throw erro;			
-		console.log(JsonData);		
-		};		
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
-    } catch (e) {
-        alert(e);
+			throw erro;					
+		};	
+		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);  
         
-        var err;
+    } catch (e) {
+         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
             err = {
@@ -280,7 +278,8 @@ function Select_Routes(){
 };
 
 $scope.To_Order_By = function(Order_Type){try{
-	if ($scope.OrderList === Order_Type) {
+	
+if ($scope.OrderList === Order_Type) {
 	 var Reverse = Order_Type.charAt(0);
     if (Reverse === '-') {
         $scope.OrderList = Order_Type.substr(1);
@@ -290,6 +289,7 @@ $scope.To_Order_By = function(Order_Type){try{
 	} else {
 	    $scope.OrderList = Order_Type;
 	}
+	
 }catch (e) {
         
         var err;
@@ -1152,223 +1152,4 @@ function Export_XML(arr){
                 Method: "Export_XML",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.Current_User.UserName,
-                Company: eflowDTS.Session.Company.Identifier,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-
-
-function Export_CSV(arr) {
-	try{
-    
-    var arrData = arr;
-    var CSV = '';    
-    
-        var row = "";
-      // row += '"Company",';
-	   row += '"ID_Location",';
-	   row += '"Manager",';
-	   row += '"Name",';
-	   row += '"Legal_Cedula",';
-	   row += '"Address",';
-	   row += '"Telephone_Number",';
-	   row += '"Mail",';
-	   row += '"Latitude",';
-	   row += '"Longitude",';
-	   row += '"ID_Route",';
-	   row += '"Route_Name",';
-    
-        row = row.slice(0, -1);
-         
-        CSV += row + '\r\n';
-    	
-    for (var i = 0; i < arrData.length; i++) {
-      
-		row = "";
-		//row += '"' + arrData[i].Company + '",';
-		row += '"' + arrData[i].ID_Location + '",';
-		row += '"' + arrData[i].Manager + '",';
-		row += '"' + arrData[i].Name + '",';
-		row += '"' + arrData[i].Legal_Cedula + '",';
-		row += '"' + arrData[i].Address + '",';
-		row += '"' + arrData[i].Telephone_Number + '",';
-		row += '"' + arrData[i].Mail + '",';
-		row += '"' + arrData[i].Latitude+ '",';
-		row += '"' + arrData[i].Longitude + '",';
-		row += '"' + arrData[i].Route.ID_Route + '",';
-		row += '"' + arrData[i].Route.Route_Name + '",';
-		row.slice(0, row.length - 1);
-       
-        CSV += row + '\r\n';
-    } 
-    
-    if (CSV === '') {        
-        alert("Invalid data");
-        return;
-    }  
-
-    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
-    var link = document.createElement("a");    
-    link.href = uri;
-    link.style = "visibility:hidden";
-    link.download = "Establecimientos.csv";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-}catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Scr_VisitPoint_Controller",
-                Method: "Export_CSV",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.Current_User.UserName,
-                Company: eflowDTS.Session.Company.Identifier,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-function Export_PDF (Arr){
-	try{	
-	var onSucces_Img1 = function(img1){
-
-var logo = img1;
-
-var onSucces_Img2 = function(img2){
-
-var ima = img2;
-var Compania = eflowDTS.Session.DataCompany;
-var columns = [
-   		//{title:"Compañia",dataKey:"Company"},
-		{title:"Identificador",dataKey:"ID_Location"},
-		{title:"Encargado",dataKey:"Manager"},
-		{title:"Nombre",dataKey:"Name"},
-		{title:"Cedula Juridica",dataKey:"Legal_Cedula"},
-		{title:"Dirección",dataKey:"Address"},
-		{title:"Telefono",dataKey:"Telephone_Number"},
-		{title:"Correo",dataKey:"Mail"},
-		{title:"Latitud",dataKey:"Latitude"},
-		{title:"Longitud",dataKey:"Longitude"},
-		{title:"Identificador Ruta",dataKey:"Route>ID_Route"},
-		{title:"Nombre Ruta",dataKey:"Route>Route_Name"}];
-var rows = [];
-for(var i = 0; i < Arr.length; i++){
-	   rows.push(Arr[i]);
-}	
-
-var doc = new jsPDF('l', 'pt');
-   var header = function (data) {
-        doc.setFontSize(18);	
-  doc.text(420, 160, 'Establecimientos');
-
-
-  doc.setFontSize(13);
-doc.setFontType("normal");
-
-doc.text(420, 50, 'Fecha: '+new Date($scope.Watch).format('dd/mm/yyyy'));
-
-  doc.setFontSize(10);
-
-doc.setTextColor(100);
-doc.setFontType("bold");
-
-doc.addImage(ima, 'JPEG', 20, 20, 150, 90);
-    
-  
-doc.text(420, 70, 'Nombre de la Compañia: '+ Compania.Name);
-    
-doc.text(420, 80, 'Teléfono: '+ Compania.Phone);
-    
-doc.text(420, 90, 'Fax: '+ Compania.Fax);
-      
-doc.text(420, 100, 'Correo Electrónico: '+ Compania.Mail);
-    
-doc.text(420, 110, 'País: '+ Compania.Country);
-      
-doc.text(420, 120, 'Ubicación: '+ Compania.Location);
-
-doc.setLineWidth(1);
-doc.line(20, 130, 800, 130); 
-    };   
-    var footer = function (data) {
-        var str = "Pag " + data.pageCount;
-				doc.addImage(logo, 'JPEG', 420, 550, 90, 30);
-        // Total page number plugin only available in jspdf v1.0+
-       
-        doc.text(str, data.settings.margin.left, doc.internal.pageSize.height - 30);
-    };
-
-    var options = {
-        beforePageContent: header,
-        afterPageContent: footer,
-        margin: {top: 80}
-    };
- 
-
-    doc.autoTable(columns, rows, {startY: 170,
-	margin: {horizontal: 10},
-        styles: {overflow: 'linebreak'},
-        bodyStyles: {valign: 'top'},
-        columnStyles: {email: {columnWidth: 'wrap'}},
-        beforePageContent: header,
-        afterPageContent: footer,
-        margin: {top: 180}
-    });
-
-        
-
-
-doc.save('Establecimientos.pdf');
-
-};
-Image_To_Base64("images/ima.png",onSucces_Img2);
-
-};
-Image_To_Base64("images/logo.png",onSucces_Img1);
-
-	
-   }catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Scr_VisitPoint_Controller",
-                Method: "Export_PDF",
-                Description: "Error no controlado",
-               User: eflowDTS.Session.Current_User.UserName,
-                Company: eflowDTS.Session.Company.Identifier,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-
-
-
-
-
-});
+               
