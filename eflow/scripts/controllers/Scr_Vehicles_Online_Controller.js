@@ -46,8 +46,8 @@ try{
    			if(div){
 	   		    map = new GMaps({
 				div: div,
-			    lat: eflowDTS.Company.Location.Latitud, 
-				lng: eflowDTS.Company.Location.Longitud,
+			    lat: eflowDTS.Session.Company.Location.Latitud, 
+				lng: eflowDTS.Session.Company.Location.Longitud,
 			    zoom: 12,
 			    tilesloaded: function(e){	
 			    	 GMaps.off('tilesloaded',map);
@@ -271,7 +271,7 @@ try{
 var Load_Map = function(User){
  try{
    	 	    if(typeof User === 'undefined'){
-	   		   map.setCenter(eflowDTS.Company.Location.Latitud,eflowDTS.Company.Location.Longitud);			    
+	   		   map.setCenter(eflowDTS.Session.Company.Location.Latitud,eflowDTS.Session.Company.Location.Longitud);			    
 	        }else{
 		       map.setCenter(User.Geolocation.Latitude,User.Geolocation.Longitude);		      	
 	        }
