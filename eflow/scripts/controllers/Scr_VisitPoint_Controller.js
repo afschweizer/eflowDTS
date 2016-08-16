@@ -54,8 +54,8 @@ function Load_Map_VisitPoint(){try{
 		if(div){
 		map1 = new GMaps({
 			div:div,
-			lat:eflowDTS.Company.Location.Latitud,
-			lng:eflowDTS.Company.Location.Longitud,
+			lat:eflowDTS.Session.Company.Location.Latitud,
+			lng:eflowDTS.Session.Company.Location.Longitud,
 			zoom :8,
 			tilesloaded: function(e){
 			  $scope.Show_Components.VisitPoint_Form = false;
@@ -123,8 +123,8 @@ try{
 		if(div){
 		map = new GMaps({
 			div:div,
-			lat:eflowDTS.Company.Location.Latitud,
-			lng:eflowDTS.Company.Location.Longitud,
+			lat:eflowDTS.Session.Company.Location.Latitud,
+			lng:eflowDTS.Session.Company.Location.Longitud,
 			zoom :14, resize:true,
 			click:function(e){
 				bootbox.dialog({

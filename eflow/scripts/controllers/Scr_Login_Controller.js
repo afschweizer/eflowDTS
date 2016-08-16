@@ -160,6 +160,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
 			
 			eflowDTS.Session.Company = Response[0];
 		    Set_Cookie("EflowCookie",eflowDTS);
+		    window.location.href = "#Calendar";
 		    
 		};
 		
