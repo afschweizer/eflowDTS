@@ -1,21 +1,18 @@
 DTS_APP.controller('Scr_VisitPoint_DB_Controller',function($scope) {
  
 $scope.init = function(){
-	try{
+try{
+	
        	Set_Current_Page();
 	 
-		//To_Reload_Eflow_Config();
-		//Get_Cookie("EflowCookie");
-	//eflowDTS = Get_Cookie("EflowCookie");
-	//$scope.Show_Quantity=true;
-	    $scope.Show_Serie=false;
+		$scope.Show_Serie=false;
         $scope.Show_Code=false;
         $scope.Show_Quantity=false;
         $scope.Show_Select_Vehicule = false;
 	    $scope.Array_Serials =  [];
         $scope.Check = false;
         $scope.Tareas = false;
-        $scope.Date = new Date(eflowDTS.Session.Calendar_Date);
+        $scope.Date = new Date(eflowDTS.Session.Ram.Calendar_Date);
 		$scope.Headers = [{"es":"NOMBRE","value":"Name"},
 		{"es":"VEHICULO","value":"ID_Truck"},{"es":"USUARIO","value":"User"},
 		{"es":"SECTOR","value":"Route"},{"es":"SECUENCIA","value":"Sequence"},
@@ -58,15 +55,15 @@ $scope.init = function(){
 	
 	
 	
-	$scope.Add_Serial =function(value,Parameter_array){
-		try{
-	    if(value===""||value===undefined){
-	    	alert("Debe de ingresar una serie");	
+$scope.Add_Serial =function(value,Parameter_array){
+try{
+	 
+	 if(value===""||value===undefined){
+	    	alert("Debe de ingresar una serie");
 	    	
-	    	}
-		else{
-				existe=false;
-				for (var i=0; i<  Parameter_array/*Array_Serials*/.length;i++){
+	  }else{
+				var existe = false;
+			 for (var i=0; i <  Parameter_array/*Array_Serials*/.length;i++){
 					if( Parameter_array/*Array_Serials*/[i].Serial===value)	{
 						existe=true;
 						break;
@@ -76,10 +73,7 @@ $scope.init = function(){
 					alert("La serie que ha ingresado ya fue ingresada");
 				}
 				else{
-					
-	    
-					
-				   var obj_serials={};
+					var obj_serials={};
 				   obj_serials.Serial = value;
 					//$scope.Array_Serials.push(obj_serials);
 					Parameter_array.push(obj_serials);
@@ -158,6 +152,7 @@ $scope.init = function(){
     }  
   
 };
+
  $scope.Show_Serial = function(Value) {
  	try{
  	
@@ -208,41 +203,40 @@ $scope.init = function(){
         var JsonData = {
             'Method_Name': 'Select_All_Visit_Point',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
             }
         };
 		
-		var onSuccess = function(JsonData){
+		var onSuccess = function(Response){
 		
-		$scope.ArrayVisitPoint = JsonData;
+		$scope.ArrayVisitPoint = Response;
 		$scope.$apply($scope.ArrayVisitPoint);
 
 		};
 		
-		var onError = function(JsonData){
+		var onError = function(e){
 			var erro={
-			Generated: true,
+			    Generated: true,
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Select_Local",
-            Description: "onError",
-            User: eflowDTS.Session.Current_User.UserName,
+                Description: "onError",
+                User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
-        };
+                Error: e
+                };     
+                
 			throw erro;	
-		
-		console.log(JsonData);
 		
 		};
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-    } catch (e) {
-        onError(e);
         
+    } catch (e) {
+             
         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -266,7 +260,8 @@ $scope.init = function(){
 
 $scope.Filter_License = function(ID){
 try{
-for(var j = 0; j <$scope.ArrayUser.length; j++){
+	
+for(var j = 0; j < $scope.ArrayUser.length; j++){
 	if($scope.ArrayUser[j].ID === ID){
 		var User = $scope.ArrayUser[j];
 		break;
@@ -286,8 +281,8 @@ for(var x = 0; x < $scope.ArrayVehicle.length; x++){
                     }         
          }
      }
-
 }
+
 }catch (e) {
         
         var err;
@@ -297,34 +292,6 @@ for(var x = 0; x < $scope.ArrayVehicle.length; x++){
                 Generated: false,
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "Filter_License",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.Current_User.UserName,
-                Company: eflowDTS.Session.Company.Identifier,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-
-	
- $scope.See_Status=function(status){
- 	try{
-	$scope.Status_Filter=status;
-	
-}catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Scr_VisitPoint_DB_Controller",
-                Method: "See_Status",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
@@ -376,7 +343,7 @@ $scope.Checking_Checkboxes_Check = function(){
 };
 
 $scope.Checking_Checkboxes_Check_Master = function(master){
-	try{
+try{
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	for(var i = 0; i < CheckBoxes_Array.length; i++){
 		CheckBoxes_Array[i].checked = !master;
@@ -407,15 +374,24 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
 };
 
 
-$scope.Action_Option= function(Option){try{
-	if(Option === "Cambiar"){
+$scope.Action_Option= function(Option){
+try{
+	switch(Option){
+	  case "Cambiar":{
 		$scope.Open_Modal_Change();
+		break;
 	}	
-	if(Option === "Eliminar"){
+      case "Eliminar":{
 		$scope.Delete_Job_DB();
+		break;
 	}
-	if(Option === "Estados"){
+       case "Estados":{
 		$scope.Open_Modal_Change_Status();
+		break;
+	}
+	default :{
+		break;
+	}	
 	}
 
 }catch (e) {
@@ -437,11 +413,13 @@ $scope.Action_Option= function(Option){try{
         } else {
             Save_Error(e);
         }
-    }  
-  
+    }    
 };
+
  $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
-	try{for ( i = 0; i < ArrayVehicle.length ; i++ ){
+	try{
+	
+	for(var i = 0; i < ArrayVehicle.length ; i++ ){
       if(Vehicle === ArrayVehicle[i].ID_Truck){
 		$scope.ObjVeh = {};
 		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
@@ -475,38 +453,37 @@ $scope.Action_Option= function(Option){try{
 
 $scope.Select_User = function(){
 	try {
-        var JsonData = {
+        var Request = {
             'Method_Name': 'Select_All_User',
             'Data': {
-    			"Company": eflowDTS.Session.Company,
+    			"Company": eflowDTS.Session.Company.Identifier,
     			"Type": "Conductor"
             },
             'Fields':{
             	
             }
         };
-		var onSuccess = function(JsonData){
-		$scope.ArrayUser = JsonData;
+		var onSuccess = function(Response){
+		$scope.ArrayUser = Response;
 		$scope.$apply($scope.ArrayUser);
-		}
-		var onError =  function(JsonData){
+		};
+		var onError =  function(e){
 			var erro={
 			Generated: true,
-                Page: "Scr_VisitPoint_DB_Controller",
-                Method: "Select_User",
+            Page: "Scr_VisitPoint_DB_Controller",
+            Method: "Select_User",
             Description: "onError",
             User: eflowDTS.Session.Current_User.UserName,
-                Company: eflowDTS.Session.Company.Identifier,
-                Date: new Date().getTime(),
-            Error: JsonData
+            Company: eflowDTS.Session.Company.Identifier,
+            Date: new Date().getTime(),
+            Error: e
         };
-			throw erro;	
+			throw erro;			
+		};
 		
-		console.log(JsonData);
-		}
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
-    } catch (e) {
-        console.log(e);
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, Request, onSuccess, onError);
+        
+    } catch (e) {        
         
         var err;
         
@@ -533,7 +510,7 @@ $scope.Select_User = function(){
 
 $scope.Select_Vehicle = function(){
 	try {
-        var JsonData = {
+        var Request = {
             'Method_Name': 'Select_All_Vehicle',
             'Data': {
     			"Company": eflowDTS.Session.Company.Identifier
@@ -542,27 +519,28 @@ $scope.Select_Vehicle = function(){
             	
             }
         };
-		var onSuccess = function(JsonData){
-		$scope.ArrayVehicle = JsonData;
-		$scope.$apply($scope.ArrayVehicle);
-		}
-		var onError = function(JsonData){
+		var onSuccess = function(Response){
+			$scope.ArrayVehicle = Response;
+			$scope.$apply($scope.ArrayVehicle);
+		};
+		
+		var onError = function(e){
 			var erro={
 			Generated: true,
-                Page: "Scr_VisitPoint_DB_Controller",
-                Method: "Select_Vehicle",
+            Page: "Scr_VisitPoint_DB_Controller",
+            Method: "Select_Vehicle",
             Description: "onError",
             User: eflowDTS.Session.Current_User.UserName,
-                Company: eflowDTS.Session.Company.Identifier,
-                Date: new Date().getTime(),
-            Error: JsonData
+            Company: eflowDTS.Session.Company.Identifier,
+            Date: new Date().getTime(),
+            Error: e
         };
 			throw erro;	
-		console.log(JsonData);
-		}
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+		};
+		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, Request, onSuccess, onError);
+        
     } catch (e) {
-        console.log(e);
         
         var err;
         
@@ -586,7 +564,8 @@ $scope.Select_Vehicle = function(){
 };
 
 function Change_Structure(arr){
-	try{
+try{
+	
 	var NewArray = [];
 	
 	for(var i = 0; i < arr.length; i++){
@@ -717,18 +696,18 @@ $scope.Select_VisitPoint = function(){
         var JsonData = {
             'Method_Name': 'Select_Jobs',
             'Data': {
-    			"Company": eflowDTS.Session.Company,
-            	"Estimated_Date":  eflowDTS.Session.Calendar_Date
+    			"Company": eflowDTS.Session.Company.Identifier,
+            	"Estimated_Date":  eflowDTS.Session.Ram.Calendar_Date
             },
             'Fields':{
             	
             }
         };
-		var onSuccess = function(JsonData){
-		$scope.ArrayJobs = JsonData;
+		var onSuccess = function(Response){
+		$scope.ArrayJobs = Response;
 		//Change_Structure(JsonData);
 		};
-		var onError = function(JsonData){
+		var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_DB_Controller",
@@ -737,15 +716,15 @@ $scope.Select_VisitPoint = function(){
            User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
 			throw erro;	
-		console.log(JsonData);
+		
 		};
 	    Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+	    
         } catch (e) {
-        console.log(e);
-        
+      
         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -852,7 +831,7 @@ var onSucces_Img2 = function(img2){
 
 var ima = img2;
 
-var Compania = eflowDTS.Session.DataCompany;
+var Compania = eflowDTS.Session.Company;
 var columns = [
     {/*title: "Gerente", dataKey: "Manager"},
     {title: "Nombre", dataKey: "Name"}, 
@@ -977,7 +956,7 @@ Image_To_Base64("images/logo.png",onSucces_Img1);
 
 
 $scope.To_Order_By = function(Order_Type){
-	try{
+try{
 	if ($scope.OrderList === Order_Type) {
 		
     var Reverse = Order_Type.charAt(0);
@@ -1014,7 +993,7 @@ $scope.To_Order_By = function(Order_Type){
 };
 
 $scope.Visualize_VisitPoint = function(Obj){
-	try{
+try{
 		for(var i = 0; i < Obj.Jobs.length; i++){
 			if(Obj.Jobs[i].JobType === "delivery"){
 				Obj.Jobs[i].JobTypeEs = "Entrega";
@@ -1028,7 +1007,7 @@ $scope.Visualize_VisitPoint = function(Obj){
    $scope.VisitPoint.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
    $scope.Array_VisitPoint_Task_Edit = Obj.Jobs;
    $scope.VisitPoint_Add_Task_Edit = {};
-        $scope.Tareas = false;
+   $scope.Tareas = false;
    $("#Modal_Edit_VisitPoint").modal("show"); 
    
 }catch (e) {
@@ -1060,7 +1039,7 @@ $scope.Save_Job_Edit = function(Obj){
 		
 	
 Json.Control.Modification_Date = new Date().getTime();
-Json.Control.Modify_User= eflowDTS.Session.UserName;
+Json.Control.Modify_User= eflowDTS.Session.Current_User.UserName;
 		Json.Estimated_Date = new Date(Obj.Estimated_Date).getTime() + eflowDTS.Time.Difference;
 		
 			if(Json.Visit_State === "Unassigned"){	
@@ -1094,11 +1073,11 @@ Json.Control.Modify_User= eflowDTS.Session.UserName;
 					'Data': Json
 				};
 				
-		var onSuccess = function(JsonData){
+		var onSuccess = function(Response){
 			$scope.Select_VisitPoint();
 			};
 				
-		var onError = function(JsonData){
+		var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_DB_Controller",
@@ -1107,10 +1086,10 @@ Json.Control.Modify_User= eflowDTS.Session.UserName;
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
 			throw erro;	
-			console.log(JsonData);
+			
 			};
 				
 	Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
@@ -1430,9 +1409,9 @@ function IDS_CheckBoxes(){
     }  
   
 };
-$scope.Message=function(user,matter,detail){try{
-	var JsonData = 
-				{
+$scope.Message=function(user,matter,detail){
+try{
+	var JsonData =	{
 					'Method_Name': 'Insert_Notification',
 					'Data': 
 					{
@@ -1443,7 +1422,7 @@ $scope.Message=function(user,matter,detail){try{
 						},
 						"User": user,
 						"State": "Unread",
-						"Date": new Date(eflowDTS.Session.Calendar_Date).format("yyyy-mm-dd"),
+						"Date": new Date(eflowDTS.Session.Ram.Calendar_Date).format("yyyy-mm-dd"),
 						"Matter": matter,
 						"Detail": detail,
 						"Transferring_State": "Pending_To_Mobile"
@@ -1451,7 +1430,7 @@ $scope.Message=function(user,matter,detail){try{
 				};
 				var onSuccess = function(JsonData){
 				};
-				var onError =function(JsonData){
+				var onError =function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_DB_Controller",
@@ -1460,11 +1439,11 @@ $scope.Message=function(user,matter,detail){try{
            User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
 			throw erro;	
-				console.log(JsonData);
-				};
+		};
+				
 				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 
 }catch (e) {
@@ -1506,7 +1485,7 @@ $scope.Assign_Status = function(status){try{
 							if($scope.ArrayJobs[i].Visit_State !== "Finalized"){
 								$scope.ArrayJobs[i].Visit_State = status;
 								$scope.ArrayJobs[i].Control.Modification_Date = new Date().getTime();
-								$scope.ArrayJobs[i].Control.Modify_User= eflowDTS.Session.UserName;
+								$scope.ArrayJobs[i].Control.Modify_User= eflowDTS.Session.Current_User.UserName;
 								delete $scope.ArrayJobs[i].$$hashKey;
 								var JsonData = 
 								{
@@ -1516,9 +1495,9 @@ $scope.Assign_Status = function(status){try{
 								var onSuccess = function(JsonData){
 									$scope.Select_VisitPoint();
 								};
-								var onError = function(JsonData){
+								var onError = function(e){
 				};
-				var onError =function(JsonData){
+				var onError =function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_DB_Controller",
@@ -1527,16 +1506,15 @@ $scope.Assign_Status = function(status){try{
            User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
 			throw erro;	
-									alert(JsonData);
-								};
-								Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
-							}
-							else{
-								
-								bootbox.dialog({
+		};
+			Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
+			
+			}else{			
+			
+			bootbox.dialog({
 			title:"¡Alerta!",
 			message:"No se puede realizar cambios a trabajos ya terminados",
 			buttons:{
@@ -1625,7 +1603,7 @@ $scope.Assign_All = function(Assign){try{
 								$scope.ArrayJobs[i].User = user;
 								$scope.ArrayJobs[i].ID_Truck = truck; 
 								$scope.ArrayJobs[i].Control.Modification_Date = new Date().getTime(); 
-								$scope.ArrayJobs[i].Control.Modify_User = eflowDTS.Session.UserName; 
+								$scope.ArrayJobs[i].Control.Modify_User = eflowDTS.Session.Current_UserUserName; 
 								
 								$scope.ArrayJobs[i].Estimated_Date = new Date(date).getTime() + eflowDTS.Time.Difference;
 								$scope.ArrayJobs[i].Visit_State = "In_Process";
@@ -1638,7 +1616,7 @@ $scope.Assign_All = function(Assign){try{
 								var onSuccess = function(JsonData){
 									$scope.Select_VisitPoint();
 								};
-								var onError = function(JsonData){
+								var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_DB_Controller",
@@ -1647,25 +1625,23 @@ $scope.Assign_All = function(Assign){try{
            User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
 			throw erro;	
-									console.log(JsonData);
-								};
-								Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
+		};
+			Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);	
+			
+			}else{
+				bootbox.dialog({
+					title:"¡Alerta!",
+					message:"No se puede realizar cambios a trabajos ya terminados",
+					buttons:{
+						main:{
+							label:"Ok!",
+							className:"btn-primary"
 							}
-							else{
-									bootbox.dialog({
-									title:"¡Alerta!",
-									message:"No se puede realizar cambios a trabajos ya terminados",
-									buttons:{
-										main:{
-											label:"Ok!",
-											className:"btn-primary"
-										}
-									}
-										
-									});
+						}
+					});
 							}										
 						}
 					}
@@ -1702,7 +1678,7 @@ $scope.Open_Modal_Add_VisitPoint = function(){
 	$scope.VisitPoint_Add = {};
 	$scope.VisitPoint_Add_Task = {};
 	$scope.VisitPoint_Add_Array_Task = [];
-	$scope.VisitPoint_Add.Estimated_Date = new Date(eflowDTS.Session.Calendar_Date).format("yyyy-mm-dd");
+	$scope.VisitPoint_Add.Estimated_Date = new Date(eflowDTS.Session.Ram.Calendar_Date).format("yyyy-mm-dd");
 
 	$("#Modal_Add_VisitPoint").modal("show");	
 	
@@ -1795,14 +1771,14 @@ try{
 		//obj_Job.VisitPoint = {};
 		obj_Job.Control={};
 		obj_Job.Control.Creation_Date = new Date().getTime() ;
-		obj_Job.Control.Created_User = eflowDTS.Session.UserName;
+		obj_Job.Control.Created_User = eflowDTS.Session.Current_UserUserName;
 		obj_Job.ID_Location = New_Job.PV_Info.ID_Location;
 		obj_Job.Manager = New_Job.PV_Info.Manager;
 		obj_Job.Name = New_Job.PV_Info.Name;
 		obj_Job.Address = New_Job.PV_Info.Address;
 		obj_Job.Telephone_Number = New_Job.PV_Info.Telephone_Number;
 		obj_Job.Mail = New_Job.PV_Info.Mail;
-		obj_Job.Company= eflowDTS.Session.Company;	
+		obj_Job.Company= eflowDTS.Session.Company.Identifier;	
 		obj_Job.Legal_Cedula = New_Job.PV_Info.Legal_Cedula;
 		obj_Job.Route = {};
 		obj_Job.Route.Route_Name=New_Job.PV_Info.Route.Route_Name;
@@ -1864,11 +1840,11 @@ try{
 					'Method_Name': 'Insert_Job',
 					'Data': Array_Save
 				};
-				var onSuccess = function(JsonData){
+				var onSuccess = function(Response){
 				$scope.Select_VisitPoint(); 
 				$('#Modal_Add_VisitPoint').modal('hide');
 				};
-				var onError = function(JsonData){
+				var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_VisitPoint_DB_Controller",
@@ -1877,14 +1853,11 @@ try{
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
 			throw erro;
-				console.log(JsonData);
-				};
-				Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
-
-
+		};
+			Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 }catch (e) {
         
         var err;
@@ -1930,7 +1903,6 @@ $scope.Validator=function(Task_Obj){
            User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            ID_Truck: eflowDTS.Session.General.ID_Truck,
             Error: e
         };
         Save_Error(err);

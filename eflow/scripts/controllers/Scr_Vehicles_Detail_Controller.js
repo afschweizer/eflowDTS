@@ -23,8 +23,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -50,8 +50,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "See_Info",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -77,8 +77,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Download_Certificate",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -147,9 +147,9 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Message",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -169,8 +169,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Message",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -233,8 +233,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -261,8 +261,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Open_Modal_Add_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -290,8 +290,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Open_Modal_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -322,11 +322,8 @@ $scope.init = function(){
 			lng: JsonArray[0].Latitude,
 		    zoom: 12
 		    });
-		   			
    		}
-  			
   		}
-  		
   		
   		for(var i = 0; i < JsonArray.length; i++){
   			
@@ -348,18 +345,11 @@ $scope.init = function(){
 			  	}else{
 			  		$scope.Show_Certificate = false;
 			  	}
-			  	
 			  }
-			  });
-			  
-			    			
+			  });		
   		}
-  		
   		}
-  	
-  	
-  	
-	}catch (e) {
+  		}catch (e) {
         
         var err;
         
@@ -369,8 +359,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Data_Charge",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -415,8 +405,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "PV_Info",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -452,8 +442,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "PV_Info_Prod",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -515,10 +505,6 @@ $scope.init = function(){
 		  strokeWeight: 6
 		  });
 		
-		
-		 
-  				
-  		
   		}
   	
  }catch (e) {
@@ -531,8 +517,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Draw_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -565,9 +551,9 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Visit_Point",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -593,8 +579,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Visit_Point",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -624,9 +610,9 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Route",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -652,8 +638,8 @@ $scope.init = function(){
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Load_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

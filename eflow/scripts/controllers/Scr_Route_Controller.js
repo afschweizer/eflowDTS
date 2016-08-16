@@ -33,8 +33,8 @@ $scope.init = function(){
                 Page: "Scr_Route_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -53,7 +53,7 @@ $scope.init = function(){
 		if(div){ 			
 			map = new GMaps({
 				div: div,
-				lat:eflowDTS.Geolocation.Latitude,
+				lat:eflowDTS.Session.Company.Location.Latitude,
 				lng:eflowDTS.Geolocation.Longitude,
 				zoom:12	,
 				tilesloaded: function(e){					
@@ -79,8 +79,8 @@ $scope.init = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Load_Map_Init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -114,8 +114,8 @@ $scope.Checking_Checkboxes_Check = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Checking_Checkboxes_Check",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -143,8 +143,8 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
                 Page: "Scr_Route_Controller",
                 Method: "Checking_Checkboxes_Check_Master",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -170,8 +170,8 @@ $scope.Load = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Load",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -203,8 +203,8 @@ $scope.Visualize_Route = function(Obj){
                 Page: "Scr_Route_Controller",
                 Method: "Visualize_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -242,9 +242,9 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Select",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -265,8 +265,8 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Select",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -324,8 +324,8 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Load_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -351,8 +351,8 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Action_Option",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -401,9 +401,9 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Delete_Route_DB",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -428,8 +428,8 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Delete_Route_DB",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -467,9 +467,9 @@ $scope.Select = function(){
             Page: "Scr_Route_Controller",
             Method: "Delete",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -494,8 +494,8 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Delete",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -530,8 +530,8 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "To_Order_By",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -595,8 +595,8 @@ $scope.Select = function(){
                 Page: "Scr_Route_Controller",
                 Method: "Print_Zone",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -608,7 +608,7 @@ $scope.Select = function(){
 };
 
 function Refresh_Path(){
-	
+	try{
 	$scope.Array_Route = [];
     var len = Polygon.getPath().getLength();
    
@@ -618,7 +618,26 @@ function Refresh_Path(){
     coords.push(Polygon.getPath().getAt(i).lng());
     $scope.Array_Route.push(coords);
   }
-	
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Route_Controller",
+                Method: "Refresh_Path",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }
 };
    
    $scope.Delete_Zone = function(){
@@ -637,8 +656,8 @@ function Refresh_Path(){
                 Page: "Scr_Route_Controller",
                 Method: "Delete_Zone",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -741,9 +760,9 @@ function Refresh_Path(){
             Page: "Scr_Route_Controller",
             Method: "Save_Route",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -788,8 +807,8 @@ function Refresh_Path(){
                 Page: "Scr_Route_Controller",
                 Method: "Save_Route",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -842,8 +861,8 @@ $scope.Export_File = function(Export_Type,Array_Routes){
                 Page: "Scr_Route_Controller",
                 Method: "Export_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -880,8 +899,8 @@ function Delete_Attributes(arr){
                 Page: "Scr_Route_Controller",
                 Method: "Delete_Attributes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -920,8 +939,8 @@ function Download_File(contenidoEnBlob, nombreArchivo) {
                 Page: "Scr_Route_Controller",
                 Method: "Download_File",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -965,8 +984,8 @@ function Generate_XML(arr) {
                 Page: "Scr_Route_Controller",
                 Method: "Generate_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1002,8 +1021,8 @@ function Export_JSON(arr){
                 Page: "Scr_Route_Controller",
                 Method: "Export_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1028,8 +1047,8 @@ function Export_XML(arr){
                 Page: "Scr_Route_Controller",
                 Method: "Export_XML",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1098,8 +1117,8 @@ function Export_CSV(arr) {
                 Page: "Scr_Route_Controller",
                 Method: "Export_CSV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1214,8 +1233,8 @@ Image_To_Base64("images/logo.png",onSucces_Img1);
                 Page: "Scr_Route_Controller",
                 Method: "Export_PDF",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

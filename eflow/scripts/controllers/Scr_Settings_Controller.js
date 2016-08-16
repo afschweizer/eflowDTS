@@ -20,8 +20,8 @@ $scope.Array_Unity = eflowDTS.Session.DataCompany.Settings.Unity;
                 Page: "Scr_Settings_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -47,8 +47,8 @@ $scope.Remove_In_Array = function(Obj,Array){
                 Page: "Scr_Settings_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -111,8 +111,8 @@ for(var k = 0; k < inputDescription.length; k++){
                 Page: "Scr_Settings_Controller",
                 Method: "validate_Settings",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -152,9 +152,9 @@ try{
                 Page: "Scr_Summary_Controller",
                 Method: "Save_User_Edit",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;		
@@ -213,9 +213,9 @@ function DataCompany() {
             Page: "Scr_Login_Controller",
             Method: "DataCompany",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: e
         };
 			throw erro;
@@ -233,8 +233,8 @@ function DataCompany() {
                 Page: "Scr_Settings_Controller",
                 Method: "DataCompany",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

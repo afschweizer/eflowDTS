@@ -1,16 +1,14 @@
 DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 
-	$scope.init = function(){
-		try{
-       	Set_Current_Page();
-		//To_Reload_Eflow_Config();
-		//Get_Cookie("EflowCookie");
-	//	eflowDTS = Get_Cookie("EflowCookie");
-	
-		$scope.Select_VisitPoint();		
-		     }catch (e) {
+$scope.init = function(){
+try{
+			
+    Set_Current_Page();
+	$scope.Select_VisitPoint();		
+
+ }catch (e) {
         
-        var err;
+     var err;
         
         if (e.hasOwnProperty("Generated") === false) {
             err = {
@@ -18,8 +16,8 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
                 Page: "Scr_Calendar_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -28,14 +26,16 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
             Save_Error(e);
         }
     } 
-	};
+    
+};
 
-	$scope.Select_VisitPoint = function(){
-		try{
-		 var JsonData = {
+$scope.Select_VisitPoint = function(){
+try{
+	 
+	 var Request = {
             'Method_Name': 'Select_Jobs',
             'Data': {
-    			'Company': eflowDTS.Session.Company
+    			'Company': eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	'Estimated_Date':true,
@@ -43,13 +43,15 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
             	'Route.ID_Route':true
             }
         };
-		var onSuccess = function(JsonData){
+        
+        
+		var onSuccess = function(Response){
 		
 		var obj = {}; 
 		
-		for(var i = 0; i < JsonData.length; i++){
+		for(var i = 0; i < Response.length; i++){
 			  
-     var puntoVisita = JsonData[i];
+     var puntoVisita = Response[i];
   
   if (! obj.hasOwnProperty((new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd"))){
 	  
@@ -63,9 +65,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
   	  obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].PuntosVisita++;
 
   }
-  	 
-			
-		}
+  	 }
 		
 		
 		var date = new Date();
@@ -76,33 +76,31 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 			  
 	          events: obj,
 	          
-		      onDayClick : function(){
-		      	
-		      	 eflowDTS.Session.Calendar_Date = (new Date(this.title).getTime());
-		      	 //To_Save_Eflow_Config();
+		      onDayClick : function(){		      	
+		      	 eflowDTS.Session.Ram.Calendar_Date = (new Date(this.title).getTime());
 		      	 Set_Cookie("EflowCookie",eflowDTS);
-		      	 location.href = "#/PV_DB";}
+		      	 location.href = "#/PV_DB";
+		      	 }
 	      });	
 		
 		};
 		
-		var onError = function(JsonData){
+		var onError = function(e){
 			
-			        var erro={
+		var erro={
 			Generated: true,
             Page: "Scr_Calendar_Controller",
             Method: "Select_VisitPoint",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
-            Error: JsonData
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: e
         };
 			throw erro;
-			console.log(JsonData);
 		};
 		
-        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, Request, onSuccess, onError);
         
        }catch (e) {
         
@@ -114,8 +112,8 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
                 Page: "Scr_Calendar_Controller",
                 Method: "Select_VisitPoint",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

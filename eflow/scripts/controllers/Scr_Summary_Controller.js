@@ -28,8 +28,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -61,8 +61,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Close_Modal",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -96,9 +96,9 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Select_DataSet",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -116,8 +116,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Select_DataSet",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -146,8 +146,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Charge_DataSet",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -189,8 +189,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Create_Pivot_Table",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -230,8 +230,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "New_DataSet",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -279,9 +279,9 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Refresh_Pivot_Table",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;		
@@ -299,8 +299,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Refresh_Pivot_Table",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -340,8 +340,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Confirm_DataSet",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -391,9 +391,9 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Save_DataSet",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;				
@@ -411,8 +411,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Page: "Scr_Summary_Controller",
                 Method: "Save_DataSet",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

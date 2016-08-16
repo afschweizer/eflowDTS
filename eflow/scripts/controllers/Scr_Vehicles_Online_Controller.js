@@ -345,7 +345,7 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 		var Query = {
 			'Method_Name':'Select_Jobs',
 			'Data':{
-				'Company':eflowDTS.Session.Company,
+				'Company':eflowDTS.Session.Company.Identifier,
 				"Estimated_Date": new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference
                 
 			},

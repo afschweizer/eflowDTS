@@ -26,8 +26,8 @@ $scope.Select_PV();
                 Page: "Scr_PV_DB_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -70,9 +70,9 @@ $scope.Select_PV = function(){
             Page: "Scr_PV_DB_Controller",
             Method: "Select_PV",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -92,8 +92,8 @@ $scope.Select_PV = function(){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Select_PV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -126,8 +126,8 @@ $scope.Order = function(Order_Type){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Order",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -172,8 +172,8 @@ $scope.Add_Task_In_New_Array = function(Task_Obj){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Add_Task_In_New_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+          User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -196,8 +196,8 @@ $scope.Add_In_Array = function(Obj,Array	){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Add_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -230,9 +230,9 @@ $scope.Save_Edit_Job = function(Obj){
             Page: "Scr_PV_DB_Controller",
             Method: "Select_PV",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -250,8 +250,8 @@ $scope.Save_Edit_Job = function(Obj){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Save_Edit_Job",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -277,8 +277,8 @@ $scope.Remove_Task = function(Task){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Remove_Task",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -304,8 +304,8 @@ $scope.Remove_In_Array = function(Obj,Array){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -341,8 +341,8 @@ $scope.Checking_Checkboxes = function(){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Checking_Checkboxes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -382,9 +382,9 @@ $scope.Remove_Job = function(){
             Page: "Scr_PV_DB_Controller",
             Method: "Remove_Job",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -405,8 +405,8 @@ $scope.Remove_Job = function(){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Remove_Job",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -434,8 +434,8 @@ $scope.Visualize_VisitPoint_Import = function(Obj){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Visualize_VisitPoint_Import",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+              User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -460,8 +460,8 @@ $scope.See_Job = function(obj){
                 Page: "Scr_PV_DB_Controller",
                 Method: "See_Job",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -499,8 +499,8 @@ $scope.verificar = function(){
                 Page: "Scr_PV_DB_Controller",
                 Method: "verificar",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -564,9 +564,9 @@ $scope.Add_New_Job = function(New_Job){
             Page: "Scr_PV_DB_Controller",
             Method: "Add_New_Job",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -584,8 +584,8 @@ $scope.Add_New_Job = function(New_Job){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Add_New_Job",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -618,9 +618,9 @@ $scope.Save_Job_Edit = function(Obj){
             Page: "Scr_PV_DB_Controller",
             Method: "Save_Job_Edit",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -638,8 +638,8 @@ console.log(JsonData);
                 Page: "Scr_PV_DB_Controller",
                 Method: "Save_Job_Edit",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -669,8 +669,8 @@ $scope.Generar =function(){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Generar",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -745,8 +745,8 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
                 Page: "Scr_PV_DB_Controller",
                 Method: "JSONToCSVConvertor",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -791,8 +791,8 @@ $scope.Jalar = function(){
                 Page: "Scr_PV_DB_Controller",
                 Method: "Jalar",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -828,8 +828,8 @@ function csvJSON(csv){
                 Page: "Scr_PV_DB_Controller",
                 Method: "csvJSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

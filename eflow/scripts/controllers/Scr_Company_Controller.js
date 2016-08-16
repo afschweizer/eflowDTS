@@ -66,6 +66,7 @@ $scope.Type = "password";
 		};
 		
 		$scope.Switch_Map_Data = function(Show_Map){
+			try{
 			if(Show_Map){
 			$scope.Class_Map = "fa fa-eye-slash";
 		    $scope.Text_Map = "Ocultar Mapa";
@@ -73,12 +74,32 @@ $scope.Type = "password";
 			$scope.Class_Map = "fa fa-eye";
 			$scope.Text_Map = "Mostar Mapa";
 			}
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Company_Controller",
+                Method: "Switch_Map_Data",
+                Description: "Error no controlado",
+                User: "Default",
+                Company: "Default",
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
 		};
 		
 	
 
   function cargar_paises(){
-  	
+  	try{
   	var Callback=function(response){
   		
   		$scope.Array_Country=JSON.parse(response);
@@ -87,7 +108,27 @@ $scope.Type = "password";
   	
   	Load_JSON("scripts/externals/Paises.json", Callback);
   	
-  };
+ }catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Company_Controller",
+                Method: "cargar_paises",
+                Description: "Error no controlado",
+                User: "Default",
+                Company: "Default",
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+		};
   
   
 	function Load_Map_Init(){
@@ -98,8 +139,8 @@ $scope.Type = "password";
 		if(div){ 			
 			map = new GMaps({
 				div: div,
-				lat:eflowDTS.Geolocation.Latitude,
-				lng:eflowDTS.Geolocation.Longitude,
+				lat:eflowDTS.Session.Company.Location.Latitude,
+				lng:eflowDTS.Session.Company.Location.Longitude,
 				zoom:12	,
 				tilesloaded: function(e){					
 	                GMaps.off('tilesloaded',map);
@@ -136,7 +177,7 @@ $scope.Type = "password";
 				        icon: 'images/Point_Blue.png'
 				      });
 				      
-			function refresh_Coords(e) {
+function refresh_Coords(e) {
    			  $scope.Companys.location_Latitud = e.latLng.lat();
 			  $scope.Companys.location_Longitud = e.latLng.lng();
 			}
@@ -164,8 +205,8 @@ $scope.Type = "password";
                 Page: "Scr_Company_Controller",
                 Method: "Load_Map_Init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -195,8 +236,8 @@ $scope.Type = "password";
                 Page: "Scr_Company_Controller",
                 Method: "Password",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -283,10 +324,10 @@ function Select_Company(){
             err = {
                 Generated: false,
                 Page: "Scr_Company_Controller",
-                Method: "DataCompany",
+                Method: "Select_Company",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -377,8 +418,8 @@ function Select_User(){
                 Page: "Scr_Company_Controller",
                 Method: "Select_User",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -464,7 +505,7 @@ try{
             err = {
                 Generated: false,
                 Page: "Scr_Company_Controller",
-                Method: "validate_Companys",
+                Method: "SaveData",
                 Description: "Error no controlado",
                 User: "Default",
                 Company: "Default",
@@ -528,10 +569,10 @@ for(var k= 0; k < inputDescription.length; k++){
             err = {
                 Generated: false,
                 Page: "Scr_Company_Controller",
-                Method: "Add_Serial",
+                Method: "validate_Settings",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -557,8 +598,8 @@ $scope.Remove_In_Array = function(Obj,Array){
                 Page: "Scr_Company_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+              User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

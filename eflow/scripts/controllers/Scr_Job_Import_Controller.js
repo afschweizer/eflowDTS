@@ -28,8 +28,8 @@ $scope.Select_Vehicle();
                 Page: "Scr_Job_Import_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -56,8 +56,8 @@ $scope.Action_Option= function(Option){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Action_Option",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -92,8 +92,8 @@ $scope.Checking_Checkboxes_Check = function(){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Checking_Checkboxes_Check",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -122,8 +122,8 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Checking_Checkboxes_Check_Master",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -155,8 +155,8 @@ $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Info_Vehicle",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -172,7 +172,7 @@ $scope.Select_User = function(){
         var JsonData = {
             'Method_Name': 'Select_All_User',
             'Data': {
-            	"Company":eflowDTS.Session.Company
+            	"Company":eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -188,9 +188,9 @@ $scope.Select_User = function(){
             Page: "Scr_Job_Import_Controller",
             Method: "Select_User",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -211,8 +211,8 @@ $scope.Select_User = function(){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Select_User",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -228,7 +228,7 @@ $scope.Select_Vehicle = function(){
         var JsonData = {
             'Method_Name': 'Select_All_Vehicle',
             'Data': {
-            	"Company":eflowDTS.Session.Company
+            	"Company":eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -245,9 +245,9 @@ $scope.Select_Vehicle = function(){
             Page: "Scr_Job_Import_Controller",
             Method: "Select_Vehicle",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -265,8 +265,8 @@ $scope.Select_Vehicle = function(){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Select_Vehicle",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -295,8 +295,8 @@ $scope.Open_Modal_Change = function(){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Open_Modal_Change",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -332,7 +332,7 @@ var onSuccess = function(result){
 				}*/
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
-			json_obj.Control.Created_User = eflowDTS.Session.UserName;
+			json_obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
 			Array_VisitPoint_To_Assign.push(json_obj);
 			//Array_VisitPoint_To_Assign.push(JSON.parse(CheckBoxes_Array[i].value));
 			}
@@ -358,9 +358,9 @@ var onSuccess = function(result){
             Page: "Scr_Job_Import_Controller",
             Method: "Assign_VisitPoint_In_DB",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;
@@ -383,8 +383,8 @@ var onSuccess = function(result){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Assign_VisitPoint_In_DB",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -411,8 +411,8 @@ $scope.Open_Modal_Add_VisitPoint_Import = function(){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Open_Modal_Add_VisitPoint_Import",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -446,8 +446,8 @@ $scope.To_Order_By = function(Order_Type){
                 Page: "Scr_Job_Import_Controller",
                 Method: "To_Order_By",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -508,8 +508,8 @@ $scope.Import_Files = function(){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Import_Files",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -541,8 +541,8 @@ $scope.Checking_Checkboxes = function(){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Checking_Checkboxes",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -570,8 +570,8 @@ $scope.Visualize_VisitPoint_Import = function(Obj){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Visualize_VisitPoint_Import",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -605,8 +605,8 @@ function Import_Json(file){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Import_Json",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -632,8 +632,8 @@ function insertarI(ArrayJobs_Import,ArrayJobs_Import1){
                 Page: "Scr_Job_Import_Controller",
                 Method: "insertarI",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -661,7 +661,7 @@ function Complete_Json(Json_Array){
 				}
   Json.Transferring_State = "Pending_To_Mobile";
   Json.Collection_Info = {};
-  Json.Company = eflowDTS.Session.Company;
+  Json.Company = eflowDTS.Session.Company.Identifier;
   Json.Collection_Info.Collection_Name = "Store_Jobs";
   Json.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
   Json.Visit_Point_Incidents = [];
@@ -721,8 +721,8 @@ function Complete_Json(Json_Array){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Complete_Json",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -822,7 +822,7 @@ function Complete_Json_CSV(arr){
   pv.Visit_Point_States = [{"name":"Pendiente"},{"name":"En Proceso"},{"name":"Finalizado"},{"name":"Abortado"}];
   pv.Visit_Point_Abort = " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;";
   pv.Visit_Point_Confirm = " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;";
-  pv.Company = eflowDTS.Session.Company;
+  pv.Company = eflowDTS.Session.Company.Identifier;
   var job = {};
   
   						
@@ -877,8 +877,8 @@ function Complete_Json_CSV(arr){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Complete_Json_CSV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -910,8 +910,8 @@ for (var i = 0; i < keys.length; i++) {
                 Page: "Scr_Job_Import_Controller",
                 Method: "ObtenerArray",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -944,8 +944,8 @@ function Import_CSV(file){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Import_CSV",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -971,8 +971,8 @@ $scope.Remove_In_Array = function(Obj,Array){
                 Page: "Scr_Job_Import_Controller",
                 Method: "Remove_In_Array",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -1015,8 +1015,8 @@ function CSV_To_JSON(csv){
                 Page: "Scr_Job_Import_Controller",
                 Method: "CSV_To_JSON",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
