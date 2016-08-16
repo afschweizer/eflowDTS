@@ -28,8 +28,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "init",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -73,8 +73,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Load_Init_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -87,11 +87,30 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 };
 	
 	$scope.Resize = function(){
-		
+		try{
 		if(typeof map === "object"){
 			map.refresh();	
 		}
-
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Online_Controller",
+                Method: "Resize",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }
 	};
 	
 	$scope.refresh = function(){try{
@@ -107,8 +126,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "refresh",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -139,8 +158,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "See_Info",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -191,9 +210,9 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_User_Online",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -214,8 +233,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_User_Online",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -249,8 +268,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Create_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -308,8 +327,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Load_Map",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
@@ -348,9 +367,9 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_Jobs",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
-            Date: new Date().getTime(),
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
             Error: JsonData
         };
 			throw erro;	
@@ -368,8 +387,8 @@ DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
                 Page: "Scr_Vehicles_Online_Controller",
                 Method: "Select_Jobs",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };
