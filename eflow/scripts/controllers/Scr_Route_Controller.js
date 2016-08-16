@@ -54,7 +54,7 @@ $scope.init = function(){
 			map = new GMaps({
 				div: div,
 				lat:eflowDTS.Session.Company.Location.Latitude,
-				lng:eflowDTS.Geolocation.Longitude,
+				lng:eflowDTS.Session.Company.Location.Longitude,
 				zoom:12	,
 				tilesloaded: function(e){					
 					$scope.Show_Components.Route_Form = false;	
@@ -221,7 +221,7 @@ $scope.Select = function(){
         var JsonData = {
             'Method_Name': 'Select_All_Route',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -691,11 +691,11 @@ function Refresh_Path(){
      	var Obj = {};
         Obj.Control = {};
 	    Obj.Control.Creation_Date = new Date().getTime();
-	    Obj.Control.Created_User = eflowDTS.Session.UserName;
+	    Obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
    		Obj.Route_Name = Route.Route_Name;
    		Obj.ID_Route = Route.ID_Route;
    		Obj.Route_Description = Route.Route_Description;
-   		Obj.Company = eflowDTS.Session.Company;
+   		Obj.Company = eflowDTS.Session.Company.Identifier;
    		Obj.Route_Path = $scope.Array_Route;
    		
    		var JsonData = {
@@ -710,8 +710,8 @@ function Refresh_Path(){
             Page: "Scr_Route_Controller",
             Method: "Save_Route",
             Description: "onError",
-            User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
+            User: eflowDTS.Session.Current_User.UserName,
+            Company: eflowDTS.Session.Company.Identifier,
             Date: new Date().getTime(),
             Error: JsonData
         };
@@ -743,7 +743,7 @@ function Refresh_Path(){
    			
    		var Obj = Route;
    		Obj.Control.Modification_date =  new Date().getTime();
-   		Obj.Control.Modify_User= eflowDTS.Session.UserName;
+   		Obj.Control.Modify_User= eflowDTS.Session.Current_User.UserName;
 		Obj.Route_Path = $scope.Array_Route;
    		
    		delete Obj['$$hashKey'];
@@ -1140,7 +1140,7 @@ var logo = img1;
 var onSucces_Img2 = function(img2){
 
 var ima = img2;
-var Compania = eflowDTS.Session.DataCompany;
+var Compania = eflowDTS.Session.Company;
 var columns = [
    		//{title:"Compañia",dataKey:"Company"},
 		{title:"Nombre de la Ruta",dataKey:"Route_Name"},

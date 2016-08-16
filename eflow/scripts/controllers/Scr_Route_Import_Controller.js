@@ -147,7 +147,7 @@ var onSuccess = function(result){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
-			json_obj.Control.Created_User = eflowDTS.Session.UserName;
+			json_obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
 			Array_Route_To_Assign.push(json_obj);
 			}
 	}

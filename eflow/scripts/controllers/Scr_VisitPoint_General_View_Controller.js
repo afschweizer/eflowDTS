@@ -3,18 +3,13 @@ DTS_APP.controller('Scr_VisitPoint_General_View_Controller',function($scope){
 
 $scope.init = function(){
 try{
+	 $scope.ArrayRoute = [];
+     Set_Current_Page();
+	$('#Charging').modal('show');
 	
-	        $scope.ArrayRoute = [];
-       	    Set_Current_Page();
-	        $('#Charging').modal('show');
-			
-		//To_Reload_Eflow_Config();
-		//Get_Cookie("EflowCookie");
-	//eflowDTS = Get_Cookie("EflowCookie");
-			Select_VisitPoint();
-			Select_Routes();
-				
-			  
+	Select_VisitPoint();
+	Select_Routes();
+	
 	}catch (e) {
         
         var err;
@@ -39,14 +34,12 @@ try{
 };
 
 
-	function Select_Routes(){
-		
-		try{
-			
-			var JsonData = {
+function Select_Routes(){
+try{
+	var JsonData = {
 				'Method_Name':'Select_All_Route',
 				'Data':{
-					"Company":eflowDTS.Session.Company
+					"Company":eflowDTS.Session.Company.Identifier
 				},
 				'Fields':{}
 			};
@@ -77,6 +70,7 @@ try{
 			Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,JsonData,onSuccess,onError);
 			
 		}catch(e){
+			
 			var obj;
 			if(e.hasOwnProperty("Generated") === false){
 				obj = {
@@ -106,8 +100,8 @@ try{
    			if(div){
 	   		    map = new GMaps({
 				div: div,
-			    lat: eflowDTS.Geolocation.Latitude, 
-				lng: eflowDTS.Geolocation.Longitude,
+			    lat: eflowDTS.Company.Location.Latitud, 
+				lng: eflowDTS.Company.Location.Longitud,
 			    zoom: 12,
 			    tilesloaded: function(e){	
 			    	 GMaps.off('tilesloaded',map);
@@ -150,18 +144,19 @@ try{
 		for(var i = 0; i < $scope.Array_Route.length; i++){
 			
 			var Route = $scope.Array_Route[i];	
-			var color = getRandomColor();
+			var color = RandomColor();
 				map.drawPolygon({
 					paths: Route.Route_Path,
-					strokeColor: color, 
+					strokeColor: color.Border, 
 					strokeOpacity: 1,
 					strokeWeigth: 3,
-					fillColor: color,
+					fillColor: color.BackGround,
 					fillOpacity: 0.6	
 				});				
 		}
 		
-	}catch(e){		
+	}catch(e){
+		
 		var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -205,7 +200,8 @@ try{
 			}
 			map.refresh();
 		}
-	}catch(e){		
+	}catch(e){
+		
 		var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -227,11 +223,12 @@ try{
 	}
 	};
 	
-	$scope.Resize = function(){
-		try {
+$scope.Resize = function(){
+try {
 		if(typeof map === "object"){
 			map.refresh();	
 		}
+		
 }catch(e){		
 		var err;
         
@@ -251,14 +248,14 @@ try{
             Save_Error(e);
         }
 	}
-	};
-	function Select_VisitPoint(){
-		try{
-			 
-		var Query = {
+};
+
+function Select_VisitPoint(){
+try{
+	var Query = {
 			'Method_Name':'Select_All_Visit_Point',
 			'Data':{
-				'Company':eflowDTS.Session.Company                
+				'Company':eflowDTS.Session.Company.Identifier               
 			},
 			'Fields':{			
 			}
@@ -266,11 +263,10 @@ try{
 		
 		var Success = function(json){
 			$scope.Array_VisitPoint = json;			
-			Load_Init_Map();
-			
+			Load_Init_Map();			
 		};
 		
-		var onError = function(JsonData){
+		var onError = function(e){
 			var erro={
 			Generated: true,
                 Page: "Scr_Vehicles_Online_Controller",
@@ -279,13 +275,13 @@ try{
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: e
         };
-			throw erro;	
-		console.log(e);				
+			throw erro;				
 		};
 		
 		Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Query,Success,onError);
+		
 	}catch (e) {
         
         var err;
@@ -305,8 +301,7 @@ try{
         } else {
             Save_Error(e);
         }
-    }  
-  
+    }    
 };
 	
 
