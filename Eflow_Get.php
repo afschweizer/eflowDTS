@@ -24,6 +24,21 @@ switch($dataObject->Method_Name){
       require'Login_Admin.php';
       break;
     }
+    case 'Check_Truck_ID':
+    {
+      require'Check_Truck_ID.php';
+      break;
+    }
+   case 'Get_Data':
+    {
+      require'Get_Data.php';
+      break;
+    }
+   case 'Insert_Info_Vehicle':
+    {
+      require'Insert_Info_Vehicle.php';
+      break;
+    }
    case 'Select_All_Vehicle':
     {
       require'Select_All_Vehicle.php';
@@ -32,10 +47,6 @@ switch($dataObject->Method_Name){
    case 'Select_Vehicle':
     {
       require'Select_Vehicle.php';
-      break;
-    }case 'Check_Truck_ID':
-    {
-      require'Check_Truck_ID.php';
       break;
     }
    case 'Select_All_Route':
@@ -97,27 +108,17 @@ switch($dataObject->Method_Name){
     {
       require'Select_Summary_Trip.php';
       break;
-    }    
-   case 'Get_Data':
+    }  
+   case 'Select_Info_Vehicle':
     {
-      require'Get_Data.php';
+      require'Select_Info_Vehicle.php';
       break;
     }
    case 'Select_Geolocation':
     {
       require'Select_Geolocation.php';
       break;
-    }
-   case 'Insert_Info_Vehicle':
-    {
-      require'Insert_Info_Vehicle.php';
-      break;
-    }
-   case 'Select_Info_Vehicle':
-    {
-      require'Select_Info_Vehicle.php';
-      break;
-    }
+    }  
    default:
     {
     	echo json_encode( array('Error' => 'Metodo_Incorrecto'));

@@ -40,6 +40,26 @@ switch($dataObject->Method_Name){
       require 'Update_Vehicles.php';
       break;
     } 
+  case 'Update_Route':
+    {
+      require'Update_Route.php';
+      break;      
+    }
+  case 'Update_Info_Vehicle':
+    {
+      require 'Update_Info_Vehicle.php';
+      break;
+    } 
+  case 'Insert_Binnacle':
+    {
+      require 'Changes_Binnacle.php';
+      break;
+    }
+  case 'Insert':
+    {
+      require 'Insert.php';
+      break;
+    } 
   case 'Insert_Geolocation':
     {
       require 'Insert_Geolocation.php';
@@ -55,11 +75,6 @@ switch($dataObject->Method_Name){
     {
       require'Insert_DataSet.php';
       break;
-    }
-  case 'Update_Route':
-    {
-      require'Update_Route.php';
-      break;      
     }
   case 'Insert_Visit_Point':
     {
@@ -100,6 +115,21 @@ switch($dataObject->Method_Name){
       require'Insert_Data_Ap.php';
       break;
     }
+  case 'Insert_Route':
+    {
+      require'Insert_Route.php';
+      break;
+    }
+  case 'Insert_Error_Back':
+    {
+      require'Insert_Error_Back.php';
+      break;
+    }
+  case 'Insert_Error':
+    {
+      require'Insert_Error.php';
+      break;
+    }
   case 'Delete_Task':
     {
       require'Delete_Task.php';
@@ -125,21 +155,6 @@ switch($dataObject->Method_Name){
       require'Delete_Message.php';
       break;
     }
-  case 'Insert_Route':
-    {
-      require'Insert_Route.php';
-      break;
-    }
-  case 'Insert_Error_Back':
-    {
-      require'Insert_Error_Back.php';
-      break;
-    }
-  case 'Insert_Error':
-    {
-      require'Insert_Error.php';
-      break;
-    }
   case 'Delete_Route':
     {
       require 'Delete_Route.php';
@@ -148,21 +163,6 @@ switch($dataObject->Method_Name){
   case 'Check_Connectivity':
     {
       require 'Check_Connectivity.php';
-      break;
-    } 
-  case 'Update_Info_Vehicle':
-    {
-      require 'Update_Info_Vehicle.php';
-      break;
-    } 
-  case 'Insert_Binnacle':
-    {
-      require 'Changes_Binnacle.php';
-      break;
-    }
-  case 'Insert':
-    {
-      require 'Insert.php';
       break;
     } 
   case 'Confirm_Synch':

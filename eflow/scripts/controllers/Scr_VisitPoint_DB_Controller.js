@@ -54,8 +54,9 @@ try{
 };
 	
 	
- $scope.See_Status=function(status){
- 	try{
+$scope.See_Status=function(status){
+try{
+ 		
 	$scope.Status_Filter=status;
 	
 }catch (e) {
@@ -68,8 +69,8 @@ try{
                 Page: "Scr_VisitPoint_DB_Controller",
                 Method: "See_Status",
                 Description: "Error no controlado",
-                User: eflowDTS.Session.UserName,
-                Company: eflowDTS.Session.Company,
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
             };

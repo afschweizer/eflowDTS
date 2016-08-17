@@ -153,12 +153,12 @@
   <!-- style="background-color:#295C7A"*/-->
     <div style="float:left;"> 
         <ul class="nav nav-pills " >
-           <li ><a ng-click="Status_Filter='';">Total de registros <span  class="badgea">{{ArrayJobs.length}}</span></a></li>
-           <li ><a ng-click="Status_Filter='Finalized'">Finalizados <span class="badgea badge-Finalized" >{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}</span></a></li>
-           <li ><a ng-click="Status_Filter='Partial';">Parcialmente Finalizados <span class="badgea badge-Partial">{{(ArrayJobs | filter:  {'Visit_State': 'Partial'} :true).length}}</span></a></li> 
-           <li ><a ng-click="Status_Filter='In_Process';">En Proceso <span class="badgea badge-In_Process" >{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span></a></li>
-           <li ><a ng-click="Status_Filter='Aborted';">Abortados <span class="badgea badge-Aborted">{{(ArrayJobs | filter:  {'Visit_State': 'Aborted'} :true).length}}</span></a></li>
-           <li ><a ng-click="Status_Filter='Unassigned';">No Asignados <span class="badgea badge-Unassigned"  >{{(ArrayJobs | filter: {'Visit_State': 'Unassigned'} :true).length}}</span></a></li>
+           <li ><a ng-click="See_Status('');">Total de registros <span  class="badgea">{{ArrayJobs.length}}</span></a></li>
+           <li ><a ng-click="See_Status('Finalized');">Finalizados <span class="badgea badge-Finalized" >{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}</span></a></li>
+           <li ><a ng-click="See_Status('Partial');">Parcialmente Finalizados <span class="badgea badge-Partial">{{(ArrayJobs | filter:  {'Visit_State': 'Partial'} :true).length}}</span></a></li> 
+           <li ><a ng-click="See_Status('In_Process');">En Proceso <span class="badgea badge-In_Process" >{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span></a></li>
+           <li ><a ng-click="See_Status('Aborted');">Abortados <span class="badgea badge-Aborted">{{(ArrayJobs | filter:  {'Visit_State': 'Aborted'} :true).length}}</span></a></li>
+           <li ><a ng-click="See_Status('Unassigned');">No Asignados <span class="badgea badge-Unassigned"  >{{(ArrayJobs | filter: {'Visit_State': 'Unassigned'} :true).length}}</span></a></li>
           
            
         </ul>   
