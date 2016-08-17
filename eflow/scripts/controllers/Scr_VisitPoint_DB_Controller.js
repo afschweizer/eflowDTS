@@ -54,6 +54,32 @@ try{
 };
 	
 	
+ $scope.See_Status=function(status){
+ 	try{
+	$scope.Status_Filter=status;
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "See_Status",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.UserName,
+                Company: eflowDTS.Session.Company,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 	
 $scope.Add_Serial =function(value,Parameter_array){
 try{

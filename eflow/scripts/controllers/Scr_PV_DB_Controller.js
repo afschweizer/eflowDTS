@@ -7,15 +7,14 @@ $scope.Check = false;
 
 $scope.init = function() {
 	try{
+		
        	Set_Current_Page();
-		//To_Reload_Eflow_Config();
-		//Get_Cookie("EflowCookie");
-	//eflowDTS = Get_Cookie("EflowCookie");
-$scope.Headers = [{"es":"GERENTE","value":"VisitPoint.Manager"},{"es":"NOMBRE","value":"VisitPoint.Name"},
+   $scope.Headers = [{"es":"GERENTE","value":"VisitPoint.Manager"},{"es":"NOMBRE","value":"VisitPoint.Name"},
 		{"es":"DIRECCION","value":"VisitPoint.Address"},{"es":"TELEFONO","value":"VisitPoint.Telephone_Number"},
 		{"es":"VEHICULO","value":"VisitPoint.ID_Truck"},
 		{"es":"USUARIO","value":"User"},{"es":"CORREO","value":"VisitPoint.Mail"}];
-$scope.Select_PV();
+     $scope.Select_PV();
+
 }catch (e) {
         
         var err;
@@ -37,6 +36,9 @@ $scope.Select_PV();
         }
     }  
 };
+
+
+
 
 $scope.Select_PV = function(){
 	try {

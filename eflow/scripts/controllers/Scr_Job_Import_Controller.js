@@ -1,11 +1,10 @@
 DTS_APP.controller('Scr_Job_Import_Controller',function($scope) {
 
 $scope.init = function(){
-	try{
-       	Set_Current_Page();
-		//To_Reload_Eflow_Config();
-		//Get_Cookie("EflowCookie");
-	//eflowDTS = Get_Cookie("EflowCookie");
+try{
+		
+    Set_Current_Page();
+		
     $scope.Check = false;
     $scope.Dates = new Date();
 	$scope.ArrayJobs_Import = [];
