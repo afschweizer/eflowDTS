@@ -142,8 +142,8 @@ var onSuccess = function(result){
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_Route_To_Assign = [];
 	
-	for (i=0; i < CheckBoxes_Array.length ; i++){
-		if (CheckBoxes_Array[i].checked == true){
+	for (var i=0; i < CheckBoxes_Array.length ; i++){
+		if (CheckBoxes_Array[i].checked === true){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
@@ -422,7 +422,7 @@ function Import_Json(file){
 	
 	for(var i = 0; i < arr.length; i++){
 
-		arr[i].Company = eflowDTS.Session.Company;
+		arr[i].Company = eflowDTS.Session.Company.Identifier;
 		$scope.ArrayRoutes_Import.push(arr[i]);		
 		$scope.$apply($scope.ArrayRoutes_Import);
 		
@@ -481,7 +481,7 @@ function Complete_Json_CSV(arr){
   ro.ID_Route = RouteExcel.ID_Route;
   ro.Route_Description = RouteExcel.Route_Description;
   ro.Route_Path = RouteExcel.Route_Path;
-  ro.Company = eflowDTS.Session.Company;
+  ro.Company = eflowDTS.Session.Company.Identifier;
   
   }
   
@@ -633,12 +633,12 @@ function CSV_To_JSON(csv){
 		  var ArrayJson = [];
 		  var Headers = Lines[0].replace(/"/g,'').split(",");
 		  
-		  for(var i = 1; i < (Lines.length)-1; i++){
+		  for(var x = 1; x < (Lines.length)-1; x++){
 			  
 			 var Obj = {};
-			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");
+			 var CurrentLine = Lines[x].replace(/"/g,'').split(",");
 			
-			 Obj.Company = eflowDTS.Session.Company;
+			 Obj.Company = eflowDTS.Session.Company.Identifier;
 			 
 				 for(var j = 0; j < Headers.length; j++){
 					/*
