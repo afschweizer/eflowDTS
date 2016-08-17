@@ -480,7 +480,7 @@ function Import_Json(file){
 	
 	for(var i = 0; i < arr.length; i++){
 
-		arr[i].Company = eflowDTS.Session.Company;
+		arr[i].Company = eflowDTS.Session.Company.Identifier;
 		$scope.ArrayUsers_Import.push(arr[i]);		
 		$scope.$apply($scope.ArrayUsers_Import);
 		
@@ -631,7 +631,7 @@ function CSV_To_JSON(csv){
 			  
 			 var Obj = {};
 			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");
-			 Obj.Company = eflowDTS.Session.Company;
+			 Obj.Company = eflowDTS.Session.Company.Identifier;
 			 
 				 for(var j = 0; j < Headers.length; j++){					
 					
@@ -646,7 +646,7 @@ function CSV_To_JSON(csv){
 				 
 				// Obj.Age = parseInt(Obj.Age);
 				 Obj.Identification = parseInt(Obj.Identification);
-				 Obj.Company = eflowDTS.Session.Company;
+				 Obj.Company = eflowDTS.Session.Company.Identifier;
 				 
 				 ArrayJson.push(Obj);
 		  }

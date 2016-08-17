@@ -393,7 +393,7 @@ if(VP.Latitude === "" || typeof VP.Latitude === 'undefined' || VP.Longitude === 
 			VP.Control.Created_User = eflowDTS.Session.UserName;
 			VP.Route.Route_Name = $scope.Route.Route_Name;
 			VP.Route.ID_Route = $scope.Route.ID_Route;
-			VP.Company = eflowDTS.Session.Company;
+			VP.Company = eflowDTS.Session.Company.Identifier;
 			var JsonData = {
 				'Method_Name': 'Insert_Visit_Point',
 				'Data': [VP]
@@ -551,7 +551,7 @@ $scope.Select = function(){
         var JsonData = {
             'Method_Name': 'Select_All_Visit_Point',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -1252,7 +1252,7 @@ var logo = img1;
 var onSucces_Img2 = function(img2){
 
 var ima = img2;
-var Compania = eflowDTS.Session.DataCompany;
+var Compania = eflowDTS.Session.Company;
 var columns = [
    		//{title:"Compañia",dataKey:"Company"},
 		{title:"Identificador",dataKey:"ID_Location"},
@@ -1291,7 +1291,6 @@ doc.addImage(ima, 'JPEG', 20, 20, 150, 90);
     
   
 doc.text(420, 70, 'Nombre de la Compañia: '+ Compania.Name);
-    
 doc.text(420, 80, 'Teléfono: '+ Compania.Phone);
     
 doc.text(420, 90, 'Fax: '+ Compania.Fax);

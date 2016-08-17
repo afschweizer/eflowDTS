@@ -14,7 +14,7 @@ $scope.ArrayLicense =eflowDTS.Session.Company.Settings.License;
 {"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
 
 }catch (e) {
-        
+         
         var err;
         
         if (e.hasOwnProperty("Generated") === false) {
@@ -418,7 +418,7 @@ function Import_Json(file){
 	arr = JSON.parse(this.result);
 	
 	for(var i = 0; i < arr.length; i++){
-        arr[i].Company = eflowDTS.Session.Company;
+        arr[i].Company = eflowDTS.Session.Company.Identifier;
 		arr[i].ID_Truck = arr[i].ID_Truck.replace(/\s/g, '').toUpperCase();
 		$scope.ArrayVehicles_Import.push(arr[i]);	
 		

@@ -172,7 +172,7 @@ DTS_APP.controller('Scr_Login_Controller', function($scope) {
             Method: "DataCompany",
             Description: "onError",
             User: eflowDTS.Session.UserName,
-            Company: eflowDTS.Session.Company,
+            Company: eflowDTS.Session.Company.Identifier,
             Date: new Date().getTime(),
             Error: e
         };

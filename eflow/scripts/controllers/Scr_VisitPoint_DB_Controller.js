@@ -644,7 +644,7 @@ try{
 	obj.Visit_Point_Abort = " var incident = {}; incident.Date = eflowDTS_lib.GetServerTime().toString(); incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;";
 	obj.Visit_Point_Confirm = " var incident = {}; incident.Date = eflowDTS_lib.GetServerTime().toString(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;";
 	
-	obj.Company	= eflowDTS.Session.Company;	
+	obj.Company	= eflowDTS.Session.Company.Identifier;	
 	obj.Jobs = [];
 	for(var j = 0; j < arr[i].Jobs.length; j++){
 		

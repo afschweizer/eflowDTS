@@ -399,7 +399,7 @@ function Import_Json(file){
 	
 	for(var i = 0; i < arr.length; i++){
 
-		arr[i].Company = eflowDTS.Session.Company;
+		arr[i].Company = eflowDTS.Session.Company.Identifier;
 		$scope.ArrayVisitPoints_Import.push(arr[i]);		
 		$scope.$apply($scope.ArrayVisitPoints_Import);
 		
