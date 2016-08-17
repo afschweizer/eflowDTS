@@ -53,8 +53,8 @@ $scope.init = function(){
 		if(div){ 			
 			map = new GMaps({
 				div: div,
-				lat:eflowDTS.Session.Company.Location.Latitude,
-				lng:eflowDTS.Session.Company.Location.Longitude,
+				lat:eflowDTS.Session.Company.Location.Latitud,
+				lng:eflowDTS.Session.Company.Location.Longitud,
 				zoom:12	,
 				tilesloaded: function(e){					
 					$scope.Show_Components.Route_Form = false;	

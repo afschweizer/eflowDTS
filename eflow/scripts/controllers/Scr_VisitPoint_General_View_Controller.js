@@ -3,6 +3,7 @@ DTS_APP.controller('Scr_VisitPoint_General_View_Controller',function($scope){
 
 $scope.init = function(){
 try{
+	
 	 $scope.ArrayRoute = [];
      Set_Current_Page();
 	$('#Charging').modal('show');
@@ -100,8 +101,8 @@ try{
    			if(div){
 	   		    map = new GMaps({
 				div: div,
-			    lat: eflowDTS.Company.Location.Latitud, 
-				lng: eflowDTS.Company.Location.Longitud,
+			    lat: eflowDTS.Session.Company.Location.Latitud, 
+				lng: eflowDTS.Session.Company.Location.Longitud,
 			    zoom: 12,
 			    tilesloaded: function(e){	
 			    	 GMaps.off('tilesloaded',map);

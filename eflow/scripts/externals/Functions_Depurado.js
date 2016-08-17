@@ -15,7 +15,11 @@ var eflowDTS = {
     "LoggedIn": false,
     "Save_Session": false,
     "Ultimate_Page": ""
-  }
+  } ,Time : {    	
+    	"Day" : 86400000,
+    	"Hours" : 64800000,
+    	"Difference": 21600000
+    }
 }; 
 
 function Random_Color() {
