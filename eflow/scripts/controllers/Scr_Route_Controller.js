@@ -1182,7 +1182,7 @@ doc.text(420, 100, 'Correo Electrónico: '+ Compania.Mail);
     
 doc.text(420, 110, 'País: '+ Compania.Country);
       
-doc.text(420, 120, 'Ubicación: '+ Compania.Location);
+doc.text(420, 120, 'Ubicación: '+ Compania.Address);
 
 doc.setLineWidth(1);
 doc.line(20, 130, 800, 130); 

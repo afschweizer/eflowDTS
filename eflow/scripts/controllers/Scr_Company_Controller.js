@@ -449,6 +449,7 @@ try{
 							    	"Latitud":$scope.Companys.location_Latitud,
 							    	"Longitud":$scope.Companys.location_Longitud
 							    },
+							     "Address": $scope.Companys.Address,
 							    "Phone": $scope.Companys.phone,
 							    "Fax": $scope.Companys.fax,
 							    "Settings":{
