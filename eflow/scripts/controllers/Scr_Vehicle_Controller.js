@@ -313,7 +313,7 @@ $scope.Select = function(){
         var JsonData = {
             'Method_Name': 'Select_All_Vehicle',
              'Data': {
-    			"Company": eflowDTS.Session.Company
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
