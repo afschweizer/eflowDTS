@@ -184,16 +184,18 @@ $scope.Load = function(){
 
 $scope.Visualize_Route = function(Obj){
 	
-	try{
+try{
+	
 	$scope.Show_Components.Route_Form = true;
 	$scope.Show_Components.Route_Table = false;
 	$scope.Show_Components.Route_Add = false;
 	$scope.Show_Components.Export = false;
 	Load_Map();
 	$scope.Route = Obj;
-	$scope.Array_Route = Obj.Route_Path;		
-	$scope.Print_Zone();		
-		}catch (e) {
+	$scope.Array_Route = Obj.Route_Path;	
+	$scope.Print_Zone();	
+	
+}catch (e) {
         
         var err;
         
@@ -546,11 +548,10 @@ $scope.Select = function(){
    	
 	try{
 		
-	
-		
 		map.removeMarkers();
 		 
 		 var path = $scope.Array_Route;
+		 $scope.Route.Route_Path = path;
 		 
 	if(path.length > 0){		
          
