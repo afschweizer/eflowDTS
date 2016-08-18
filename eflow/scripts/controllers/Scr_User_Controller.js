@@ -390,6 +390,8 @@ $scope.Visualize_User = function(Obj){
 	try{
 	
    $scope.User = Obj;
+   
+	$scope.User.Mail=Obj.Mail.split("@")[0];
    if($scope.User.Type==="Conductor"){
 	$scope.Show_Components.License=true;
    $scope.Show_Components.Type_License=true;

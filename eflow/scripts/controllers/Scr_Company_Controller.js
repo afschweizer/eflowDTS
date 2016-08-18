@@ -42,7 +42,8 @@ $scope.Type = "password";
       // 	Set_Current_Page();
        	var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 		$scope.ArrayGenders = Gender;
-	Load_Map_Init();
+	    Load_Map_Init();
+	
 		}catch (e) {
         
         var err;
@@ -100,6 +101,7 @@ $scope.Type = "password";
 
   function cargar_paises(){
   	try{
+  		
   	var Callback=function(response){
   		
   		$scope.Array_Country=JSON.parse(response);
@@ -139,9 +141,9 @@ $scope.Type = "password";
 		if(div){ 			
 			map = new GMaps({
 				div: div,
-				lat:eflowDTS.Session.Company.Location.Latitude,
-				lng:eflowDTS.Session.Company.Location.Longitude,
-				zoom:12	,
+				lat: 9.904668,
+				lng: -83.906478,
+				zoom: 1,
 				tilesloaded: function(e){					
 	                GMaps.off('tilesloaded',map);
 	                setTimeout(function(){

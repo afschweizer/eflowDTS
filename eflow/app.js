@@ -74,6 +74,9 @@
             .when('/404',{
             	templateUrl: 'views/Scr_404.html'
             })
+            .when('/Scr_Historic_Information',{
+            	templateUrl: 'views/Scr_Historic_Information.html'
+            })
             .otherwise({
             	redirectTo : '/404'
             });

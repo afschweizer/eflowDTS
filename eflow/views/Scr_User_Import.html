@@ -204,11 +204,12 @@ $(document).ready( function() {
                   <div class="form-group">
               <input type="number" class="form-control" ng-model="User_Import.Identification" placeholder="Cédula..." required>
             </div> </div> </div>
-                   <div class="form-group">
+              
+            <!--       <div class="form-group">
               <label class="col-sm-4 control-label">Correo:</label><div class="col-sm-8"> 
                   <div class="form-group">
               <input type="text" class="form-control" ng-model="User_Import.Mail" placeholder="Correo..." required>
-            </div> </div> </div>
+            </div> </div> </div>-->
             <div class="form-group">
               <label class="col-sm-4 control-label">Género:</label><div class="col-sm-8"> 
                   <div class="form-group">
@@ -247,6 +248,14 @@ $(document).ready( function() {
                   <div class="form-group">
 											<input id="Birthdate" type="date" class="form-control" name="Birthdate"  ng-model="User_Import.Birthdate"  required>
                               </div></div></div>
+              
+                <div class="form-group" >
+						<label class="col-sm-4 control-label" >Correo:</label>
+                   <div class="col-sm-8">
+                    <div class="input-group col-sm-12">
+                          <input id="Mail" type="text" class="form-control" name="Mail" value="" style="text-transform:lowercase " ng-model="User_Import.Mail" placeholder="Correo..." required>
+                            <span class="input-group-addon" style="text-transform:lowercase ">{{Domain}}</span>
+                        </div> </div></div>
           <!--  <div class="form-group">
               <label class="col-sm-4 control-label">Tipo:</label><div class="col-sm-8"> 
                   <div class="form-group">

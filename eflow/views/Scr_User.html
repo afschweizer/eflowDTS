@@ -316,12 +316,6 @@
 											
 											<input id="Identification" type="number" class="form-control" name="Identification" value="" ng-model="User.Identification" placeholder="Cédula..." required>
                               </div></div></div> 
-                       			<div class="form-group"  >
-											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Correo:</label><div class="col-sm-8"> 
-                  <div class="form-group">
-											
-											<input id="Mail" type="text" class="form-control" name="Mail" value="" ng-model="User.Mail" placeholder="Correo..." required>
-                              </div></div></div> 
                        			<div class="form-group">
 											<label class="col-sm-4 control-label"style="text-align:right;font-weight: bold;">Género:</label>	<div class="col-sm-8"> 
                   <div class="form-group">
@@ -366,7 +360,14 @@
 											
 											<input id="Address" type="text" class="form-control" name="Address" value="" ng-model="User.Address" placeholder="Dirección..." required>
                               </div></div></div> 
-                        <br/><br/><br/> <br/> <br/><br/><br/><br/><br/><br/><br/> <br/>  <br/> <br/> <br/> <br/><br/> <br/> <br/><br/> <br/><br/> <br/> <br/> <br/> <br/>
+                 <div class="form-group" >
+											<label class="col-sm-4 control-label" style="text-align:right;font-weight: bold;">Correo:</label>
+                              <div class="col-sm-8">
+                             <div class="input-group col-sm-12">
+                         <input id="Mail" type="text" class="form-control" name="Mail" value="" ng-model="User.Mail" placeholder="Correo..." required>
+                            <span class="input-group-addon" style="text-transform:lowercase ">{{Domain}}</span>
+                        </div> </div>
+                        </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/>  <br/> <br/> <br/> <br/><br/> <br/> <br/><br/> <br/><br/> <br/> <br/> <br/> <br/>
 
 
          </div>

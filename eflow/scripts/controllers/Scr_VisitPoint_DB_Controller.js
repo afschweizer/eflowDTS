@@ -1021,6 +1021,7 @@ try{
 
 $scope.Visualize_VisitPoint = function(Obj){
 try{
+	
 		for(var i = 0; i < Obj.Jobs.length; i++){
 			if(Obj.Jobs[i].JobType === "delivery"){
 				Obj.Jobs[i].JobTypeEs = "Entrega";
@@ -1031,7 +1032,7 @@ try{
 		
    $scope.Show_Select_Vehicule = true;
    $scope.VisitPoint = Obj;
-   $scope.VisitPoint.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
+   $scope.VisitPoint.Estimated_Date = /*new Date(*/Obj.Estimated_Date/*).format("yyyy-mm-dd")*/;
    $scope.Array_VisitPoint_Task_Edit = Obj.Jobs;
    $scope.VisitPoint_Add_Task_Edit = {};
    $scope.Tareas = false;
@@ -1797,7 +1798,7 @@ try{
 		var obj_Job = {};
 		//obj_Job.VisitPoint = {};
 		obj_Job.Control={};
-		obj_Job.Control.Creation_Date = new Date().getTime() ;
+		obj_Job.Control.Creation_Date = new Date().getTime();
 		obj_Job.Control.Created_User = eflowDTS.Session.Current_UserUserName;
 		obj_Job.ID_Location = New_Job.PV_Info.ID_Location;
 		obj_Job.Manager = New_Job.PV_Info.Manager;
@@ -1825,7 +1826,7 @@ try{
 		obj_Job.Collection_Info.Collection_Name = "Store_Jobs";
 		obj_Job.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
 		obj_Job.Visit_Point_Incidents = [];
-				obj_Job.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
+		obj_Job.Visit_Point_Incidents_Type = [{"text":"Problemas con la mercaderia.","value":"Mercaderia"},
 											  {"text":"Problemas con la ubicación.","value":"Ubicacion"},
 											  {"text":"Problemas con el vehículo.","value":"Vehiculo"},
 											  {"text":"Problema con Encargado.","value":"Encargado"},
@@ -1837,13 +1838,14 @@ try{
 									  {"name":"Finalizado"},
 									  {"name":"Abortado"}];
 									  
-						obj_Job.Visit_Point_Abort = " var incident = {}; eflowDTS_lib.GetServerTime().getTime();  incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = [] ;incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;",
-    obj_Job.Visit_Point_Confirm = " var incident = {}; eflowDTS_lib.GetServerTime().getTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = [];incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;",
+		obj_Job.Visit_Point_Abort = " var incident = {}; eflowDTS_lib.GetServerTime().getTime();  incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = [] ;incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;",
+        obj_Job.Visit_Point_Confirm = " var incident = {}; eflowDTS_lib.GetServerTime().getTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = [];incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;",
 		/*							  
 		 " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Abortada\";incident.Detail = \"Visita Abortada\";incident.Problems_Option = \"Visita_Abortada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Aborted\";return obj;";
         " var incident = {}; eflowDTS_lib.GetServerTime(); incident.Description = \"Visita Confirmada\";incident.Detail = \"Visita Confirmada\";incident.Problems_Option = \"Visita_Confirmada\";incident.Notes = \"No hay notas\";incident.Latitude = pos.coords.latitude;incident.Longitude = pos.coords.longitude;obj.Visit_Point_Incidents.push(incident);obj.Visit_State = \"Finalized\";return obj;";
-      */  obj_Job.Sequence = New_Job.Sequence;
-		obj_Job.Estimated_Date = new Date(New_Job.Estimated_Date).getTime() + eflowDTS.Time.Difference;
+      */obj_Job.Sequence = New_Job.Sequence;
+		//obj_Job.Estimated_Date = new Date(New_Job.Estimated_Date).getTime() + eflowDTS.Time.Difference;
+		obj_Job.Estimated_Date = new Date(New_Job.Estimated_Date.replace(/-/g, '\/')).format("yyyy-mm-dd");
 		obj_Job.Estimated_Delivery_Time = New_Job.Estimated_Delivery_Time;
 		obj_Job.User = New_Job.User;
 		obj_Job.Transferring_State = "Pending_To_Mobile";
@@ -1858,7 +1860,7 @@ try{
 	else{
 		obj_Job.Visit_State = "In_Process";
 	}
-	
+	 
         $scope.ArrayJobs.push(obj_Job);
 		var Array_Save = [];
 		Array_Save.push(obj_Job);

@@ -17,6 +17,7 @@ var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"
 $scope.ArrayGenders = Gender;
 $scope.ArrayLicense = eflowDTS.Session.Company.Settings.License;
 $scope.ArrayTypes = eflowDTS.Session.Company.Settings.User;
+$scope.Domain = eflowDTS.Session.Company.Domain;
 }catch (e) {
         
         var err;
@@ -207,6 +208,7 @@ var onSuccess = function(result){
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
 			json_obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
+			json_obj.Mail = json_obj.Mail.split("@")[0]+ eflowDTS.Session.Company.Domain.toLowerCase();
 			Array_User_To_Assign.push(json_obj);
 			}
 	}
@@ -480,6 +482,7 @@ function Import_Json(file){
 	
 	for(var i = 0; i < arr.length; i++){
 
+		arr[i].Mail =arr[i].Mail.split("@")[0];
 		arr[i].Company = eflowDTS.Session.Company.Identifier;
 		$scope.ArrayUsers_Import.push(arr[i]);		
 		$scope.$apply($scope.ArrayUsers_Import);
@@ -559,7 +562,7 @@ function Import_CSV(file){
 		arr = CSV_To_JSON(this.result);
 		
 		for(var i = 0; i < arr.length; i++){
-
+		arr[i].Mail =arr[i].Mail.split("@")[0];
 		$scope.ArrayUsers_Import.push(arr[i]);
 		$scope.$apply($scope.ArrayUsers_Import);
 		

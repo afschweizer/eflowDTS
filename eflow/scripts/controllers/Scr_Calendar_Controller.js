@@ -53,16 +53,16 @@ try{
 			  
      var puntoVisita = Response[i];
   
-  if (! obj.hasOwnProperty((new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd"))){
+  if (! obj.hasOwnProperty(/*(new Date(*/puntoVisita.Estimated_Date/*)).format("yyyy-mm-dd")*/)){
 	  
-      obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")] = { "PuntosVisita": 1, "Rutas": 1, "ID_Rutas":[puntoVisita.Route.ID_Route]};
+      obj[/*(new Date(*/puntoVisita.Estimated_Date/*)).format("yyyy-mm-dd")*/] = { "PuntosVisita": 1, "Rutas": 1, "ID_Rutas":[puntoVisita.Route.ID_Route]};
            
   }else{
   	  
-  	  if(obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].ID_Rutas.indexOf(puntoVisita.Route.ID_Route) === -1){  	  	
-  	  obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].Rutas++;
+  	  if(obj[/*(new Date(*/puntoVisita.Estimated_Date/*)).format("yyyy-mm-dd")*/].ID_Rutas.indexOf(puntoVisita.Route.ID_Route) === -1){  	  	
+  	  obj[/*(new Date(*/puntoVisita.Estimated_Date/*)).format("yyyy-mm-dd")*/].Rutas++;
   	  }
-  	  obj[(new Date(puntoVisita.Estimated_Date)).format("yyyy-mm-dd")].PuntosVisita++;
+  	  obj[/*(new Date(*/puntoVisita.Estimated_Date/*)).format("yyyy-mm-dd")*/].PuntosVisita++;
 
   }
   	 }
@@ -77,7 +77,7 @@ try{
 	          events: obj,
 	          
 		      onDayClick : function(){		      	
-		      	 eflowDTS.Session.Ram.Calendar_Date = (new Date(this.title).getTime());
+		      	 eflowDTS.Session.Ram.Calendar_Date = (new Date(this.title)).format("yyyy-mm-dd");
 		      	 Set_Cookie("EflowCookie",eflowDTS);
 		      	 location.href = "#/PV_DB";
 		      	 }
@@ -92,7 +92,7 @@ try{
             Page: "Scr_Calendar_Controller",
             Method: "Select_VisitPoint",
             Description: "onError",
-           User: eflowDTS.Session.Current_User.UserName,
+            User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
             Error: e
