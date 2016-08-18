@@ -12,7 +12,7 @@ try{
 	    $scope.Array_Serials =  [];
         $scope.Check = false;
         $scope.Tareas = false;
-        $scope.Date = new Date(eflowDTS.Session.Ram.Calendar_Date);
+        $scope.Date = new Date(eflowDTS.Session.Ram.Calendar_Date.replace(/-/g,'\/'));
 		$scope.Headers = [{"es":"NOMBRE","value":"Name"},
 		{"es":"VEHICULO","value":"ID_Truck"},{"es":"USUARIO","value":"User"},
 		{"es":"SECTOR","value":"Route"},{"es":"SECUENCIA","value":"Sequence"},
@@ -1029,7 +1029,7 @@ try{
 			  Obj.Jobs[i].JobTypeEs = "Recolección";
 			}
 		}
-		
+		 
    $scope.Show_Select_Vehicule = true;
    $scope.VisitPoint = Obj;
    $scope.VisitPoint.Estimated_Date = /*new Date(*/Obj.Estimated_Date/*).format("yyyy-mm-dd")*/;
@@ -1068,7 +1068,7 @@ $scope.Save_Job_Edit = function(Obj){
 	
 Json.Control.Modification_Date = new Date().getTime();
 Json.Control.Modify_User= eflowDTS.Session.Current_User.UserName;
-		Json.Estimated_Date = new Date(Obj.Estimated_Date).getTime() + eflowDTS.Time.Difference;
+Json.Estimated_Date = new Date(Obj.Estimated_Date.replace(/-/g,'\/')).format("yyyy-mm-dd");
 		
 			if(Json.Visit_State === "Unassigned"){	
 				if(Json.ID_Truck==null || Json.ID_Truck==undefined||Json.User==null || Json.User==undefined)
@@ -1498,7 +1498,8 @@ try{
 };
 
 
-$scope.Assign_Status = function(status){try{
+$scope.Assign_Status = function(status){
+try{
 		if(status === null||status ===""){
 			alert("Debe digitar o selecionar al menos un campo");
 		}
@@ -1583,7 +1584,8 @@ $scope.Assign_Status = function(status){try{
   
 };
 
-$scope.Assign_All = function(Assign){try{
+$scope.Assign_All = function(Assign){
+try{
 		var user,oldUser,date,truck;
 		if(Assign == undefined){
 			bootbox.dialog({
@@ -1631,9 +1633,9 @@ $scope.Assign_All = function(Assign){try{
 								$scope.ArrayJobs[i].User = user;
 								$scope.ArrayJobs[i].ID_Truck = truck; 
 								$scope.ArrayJobs[i].Control.Modification_Date = new Date().getTime(); 
-								$scope.ArrayJobs[i].Control.Modify_User = eflowDTS.Session.Current_UserUserName; 
+								$scope.ArrayJobs[i].Control.Modify_User = eflowDTS.Session.Current_User.UserName; 
 								
-								$scope.ArrayJobs[i].Estimated_Date = new Date(date).getTime() + eflowDTS.Time.Difference;
+								$scope.ArrayJobs[i].Estimated_Date = date;
 								$scope.ArrayJobs[i].Visit_State = "In_Process";
 								delete $scope.ArrayJobs[i].$$hashKey;
 								var JsonData = 

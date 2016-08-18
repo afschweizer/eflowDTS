@@ -4,15 +4,14 @@ DTS_APP.controller('Scr_Vehicles_Detail_Controller',function($scope) {
 
 $scope.init = function(){
 	try{
-       	Set_Current_Page();
-		//To_Reload_Eflow_Config();
-	//Get_Cookie("EflowCookie");
-	//	eflowDTS = Get_Cookie("EflowCookie");
+		
+    Set_Current_Page();
 	Load_Map();
 	$scope.Load_Visit_Point();
 	$scope.Load_Route();
 	$scope.User = eflowDTS.Session.Ram.UserControl;
     $scope.Company = eflowDTS.Session.Company.Identifier;
+    
 }catch (e) {
         
         var err;
@@ -37,9 +36,11 @@ $scope.init = function(){
 };
 
 	
-	$scope.See_Info = function(jobs){try{
-		eflowDTS.Session.Ram.Current_Incidents=jobs;
+$scope.See_Info = function(jobs){
+try{
+		eflowDTS.Session.Ram.Current_Incidents = jobs;
 		location.href="#/dashboard";
+		
 }catch (e) {
         
         var err;
@@ -64,7 +65,9 @@ $scope.init = function(){
 };
 
 
-	$scope.Download_Certificate = function(PV){		try{
+$scope.Download_Certificate = function(PV){
+try{
+	
 		window.open(PV.Certificate.PDF);				
 	
 }catch (e) {
@@ -527,18 +530,18 @@ $scope.init = function(){
             Save_Error(e);
         }
     }  
-  
-};
+   
+}; 
  
  $scope.Load_Visit_Point = function(){
- 	try{
+ try{
  	var JsonData = {
             'Method_Name': 'Select_Jobs',
             'Data': {
     			"Company": eflowDTS.Session.Company.Identifier,
                 "User": eflowDTS.Session.Ram.UserControl.User,
     			"ID_Truck": eflowDTS.Session.Ram.UserControl.ID_Truck,
-                "Estimated_Date": new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference
+                "Estimated_Date": eflowDTS.Session.Ram.UserControl.Date
                 },
             'Fields':{
             	

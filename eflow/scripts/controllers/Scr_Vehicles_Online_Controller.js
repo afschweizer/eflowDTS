@@ -138,6 +138,7 @@ try{
 $scope.See_Info = function(User){
 try{
 		eflowDTS.Session.Ram.UserControl = User;
+		eflowDTS.Session.Ram.UserControl.Date = new Date().format("yyyy-mm-dd");
 		location.href="#/detail";
 		eflowDTS.Session.Ultimate_Page="#/detail";
 	    Set_Cookie("EflowCookie",eflowDTS);
@@ -169,7 +170,7 @@ try{
 		var JsonData = {
 			'Method_Name': 'Select_User_Online',
              'Data': {
-    			"Company": eflowDTS.Session.Company.Identifier
+    		/*	"Company": eflowDTS.Session.Company.Identifier*/
             },
             'Fields':{
             	
@@ -181,12 +182,12 @@ try{
 			if(Json.length > 0){
 			  var Today = $scope.Watch;
 			  for(var i = 0; i < Json.length; i++){
-				if((Today - new Date(Json[i].Date)) < 300000){
+			/*	if((Today - new Date(Json[i].Date)) < 300000){*/
 					$scope.ArrayUser.push(Json[i]);
 					$scope.$apply($scope.ArrayUser);	
 					$scope.Show_Components.Show_User_Online = false;
 					$scope.Show_Components.Show_List = true;
-				}
+				/*}*/
 				}			
 			}else{
 				$scope.Show_User_Online = true;		
