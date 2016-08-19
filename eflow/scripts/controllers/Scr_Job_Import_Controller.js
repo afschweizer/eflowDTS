@@ -317,7 +317,7 @@ var onSuccess = function(result){
 	var Array_VisitPoint_To_Assign = [];
 	
 	for (i=0; i < CheckBoxes_Array.length ; i++){
-		if (CheckBoxes_Array[i].checked == true){
+		if (CheckBoxes_Array[i].checked === true){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
 			//var json_obj1={};
 			//json_obj1.Estimated_Date = new Date(json_obj.Estimated_Date).getTime() + eflowDTS.Time.Difference;
@@ -557,7 +557,7 @@ $scope.Visualize_VisitPoint_Import = function(Obj){
   
   		$scope.VisitPoint_Import = Obj;
         $scope.Array_VisitPoint_Import_Task = Obj.Jobs;
-	    $scope.Estimated_Date = new Date(Obj.Estimated_Date).format("yyyy-mm-dd");
+	    $scope.Estimated_Date = new Date(Obj.Estimated_Date.replace(/-/g,'\/'));
         $("#Modal_Edit_VisitPoint_Import").modal("show"); 
          }catch (e) {
         
@@ -777,7 +777,7 @@ function Complete_Json_CSV(arr){
   pv.Route.Route_Name = puntoVisitaExcel.Route_Name;
   pv.Route.ID_Route = puntoVisitaExcel.ID_Route;
   pv.Sequence = parseInt(puntoVisitaExcel.Sequence);
-  pv.Estimated_Date =  parseInt(puntoVisitaExcel.Estimated_Date);
+  pv.Estimated_Date =  puntoVisitaExcel.Estimated_Date);
   pv.Estimated_Delivery_Time = parseInt(puntoVisitaExcel.Estimated_Delivery_Time);
   pv.Transferring_State = 'Pending_To_Mobile';
   pv.Delivery_Period_Start = puntoVisitaExcel.Delivery_Period_Start;
