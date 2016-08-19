@@ -23,7 +23,7 @@ var eflowDTS = {
     }
 }; 
 
-function Random_Color() {
+function RandomColor() {
 	
 try{
 	
