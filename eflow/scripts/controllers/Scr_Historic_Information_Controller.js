@@ -180,8 +180,10 @@ $scope.Send_Information = function(Historic){
             Save_Error(e);
         }
     }  
-};
+};      
 
+
+ 
 $scope.Select_User = function(User){
 	try {
         var Request = {

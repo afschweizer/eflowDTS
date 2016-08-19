@@ -2,7 +2,7 @@ var map;
 DTS_APP.controller('Scr_Vehicles_Online_Controller',function($scope){
 
 $scope.init = function(){
-try{
+try{ 
        	    Set_Current_Page();
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
@@ -170,7 +170,7 @@ try{
 		var JsonData = {
 			'Method_Name': 'Select_User_Online',
              'Data': {
-    		/*	"Company": eflowDTS.Session.Company.Identifier*/
+    			"Company": eflowDTS.Session.Company.Identifier
             },
             'Fields':{
             	
@@ -182,12 +182,12 @@ try{
 			if(Json.length > 0){
 			  var Today = $scope.Watch;
 			  for(var i = 0; i < Json.length; i++){
-			/*	if((Today - new Date(Json[i].Date)) < 300000){*/
+				if((Today - new Date(Json[i].Date)) < 300000){
 					$scope.ArrayUser.push(Json[i]);
 					$scope.$apply($scope.ArrayUser);	
 					$scope.Show_Components.Show_User_Online = false;
 					$scope.Show_Components.Show_List = true;
-				/*}*/
+				}
 				}			
 			}else{
 				$scope.Show_User_Online = true;		
