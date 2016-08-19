@@ -1679,7 +1679,7 @@ try{
 			}			
 		}	
 
-}catch (e) {
+}catch (e) { 
         
         var err;
         
@@ -1708,7 +1708,7 @@ $scope.Open_Modal_Add_VisitPoint = function(){
 	$scope.VisitPoint_Add = {};
 	$scope.VisitPoint_Add_Task = {};
 	$scope.VisitPoint_Add_Array_Task = [];
-	$scope.VisitPoint_Add.Estimated_Date = new Date(eflowDTS.Session.Ram.Calendar_Date).format("yyyy-mm-dd");
+	$scope.VisitPoint_Add.Estimated_Date = new Date(eflowDTS.Session.Ram.Calendar_Date.replace(/-/g,'\/'));
 
 	$("#Modal_Add_VisitPoint").modal("show");	
 	
