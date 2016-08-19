@@ -123,16 +123,16 @@
               <datalist id="Users">
                   <option ng-repeat="Obj in ArrayUser| orderBy:'Name'" value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}"> </option>
               </datalist>    -->
-						  <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" class="form-control" id="Usuario"> </select>
+						  <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" ng-change="Filter_License(Assign.User)"  class="form-control" id="Usuario"> </select>
                </span>
 				   <br/>
-				    <span>
+				    <span ng-show="Show_Select_Vehicule">
 						<label>Asignar al Vehículo:</label>
                <!--    <input type="" class="form-control" list="ID_Trucks" ng-model="Assign.ID_Truck"  placeholder="Vehículo"required>
               <datalist id="ID_Trucks" >
                   <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
               </datalist> -->
-						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
+						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
 						 <br/>
                   <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
                </span>
@@ -355,7 +355,7 @@
                   <option ng-repeat="Obj in ArrayUser | orderBy:'Name' " value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}" > </option>
               </datalist>  -->  
 						 
-              <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+ Obj.ID + ' )' for Obj in ArrayUser" style="width: 80%;" class="form-control" id="Usuario"></select>
+              <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+ Obj.ID + ' )' for Obj in ArrayUser" ng-change="Filter_License(VisitPoint.User)"  style="width: 80%;" class="form-control" id="Usuario"></select>
 				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            </div></div>
                     </div>
@@ -368,7 +368,8 @@
                   <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
               </datalist>    
 						  -->
-              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ></select><!--ng-change="Info_Vehicle(Vehicle.ID_Truck,ArrayVehicle)"
+              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter" style="width: 80%;" class="form-control" id="Vehicle" ></select>
+                       <!--ng-change="Info_Vehicle(Vehicle.ID_Truck,ArrayVehicle)"
 				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
            <!-- <input type="text" class="form-control" ng-model="VisitPoint.ID_Truck" placeholder="Asignar al Vehiculo..." required>-->
             </div></div>

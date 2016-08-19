@@ -557,7 +557,7 @@ $scope.Visualize_VisitPoint_Import = function(Obj){
   
   		$scope.VisitPoint_Import = Obj;
         $scope.Array_VisitPoint_Import_Task = Obj.Jobs;
-	    $scope.Estimated_Date = new Date(Obj.Estimated_Date.replace(/-/g,'\/'));
+	    $scope.Estimated_Date = new Date(Obj.Estimated_Date.replace(/-/g,'\/')).format("yyyy-mm-dd");
         $("#Modal_Edit_VisitPoint_Import").modal("show"); 
          }catch (e) {
         
@@ -782,8 +782,8 @@ function Complete_Json_CSV(arr){
   pv.Transferring_State = 'Pending_To_Mobile';
   pv.Delivery_Period_Start = puntoVisitaExcel.Delivery_Period_Start;
   pv.Delivery_Period_End =  puntoVisitaExcel.Delivery_Period_End;
-  pv.Order_Number = parseInt(puntoVisitaExcel.Order_Number);
-  pv.Invoice = parseInt(puntoVisitaExcel.Invoice);
+  pv.Order_Number = puntoVisitaExcel.Order_Number;
+  pv.Invoice = puntoVisitaExcel.Invoice;
   pv.Collection_Info = {};
   pv.Collection_Info.Collection_Name = "Store_Jobs";
   pv.Collection_Info.Collection_Schema = "'_id.$id,Name,Visit_State,Transferring_State,Sequence,ID_Location,Order_Number,User,Estimated_Date,ID_Truck,Company,[User+ID_Truck+Company]'";
@@ -839,7 +839,7 @@ function Complete_Json_CSV(arr){
   job.JobClass = puntoVisitaExcel.JobClass;
   switch(job.JobClass){
 	case"SS":{
-		job.Barcode = parseInt(puntoVisitaExcel.JobInfo.split("|")[0]);
+		job.Barcode = puntoVisitaExcel.JobInfo.split("|")[0];
 		job.Quantity = parseInt(puntoVisitaExcel.JobInfo.split("|")[1]);
 		break;
 	}

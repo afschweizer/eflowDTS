@@ -18,7 +18,8 @@
                 <div class="box-header with-border bg-blue">
                   <h3 class="box-title"><b>Resumen</b></h3>
                   <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Mostrar/ Ocultar" ng-click="Show_Summary = !Show_Summary"><i class="glyphicon glyphicon-sort"></i></button>
+                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Mostrar/ Ocultar" ng-click="Show_Summary = !Show_Summary">
+                      <i class="glyphicon glyphicon-sort"></i></button>
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -127,6 +128,52 @@
                       </div>
                 </div><!-- /.box-body -->
               </div>
+  
+    <!--  <div class="row" >
+      Rastreo de Camión
+			<div class="col-md-12 col-sm-12 col-xs-12">
+		 		 <div class="box ">
+                <div class="box-header with-border bg-blue">
+                  <h3 class="box-title"><b>Lista Puntos de Visita</b></h3>
+                 <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Mostrar/ Ocultar" ng-click="Show_Summary = !Show_Summary">
+                      <i class="glyphicon glyphicon-sort"></i></button>
+                  </div>
+                </div>
+                 <div class="box-body no-padding" >
+                  <table class="table table-responsive table-striped table-hover">
+                    <tbody>
+                    <tr class="bg-aqua"style="width: 10px">
+                       <th >Dirección</th><th class="bg-aqua"style="width: 10px">Encargado</th>
+              <td class="text-left" > {{PV.Manager}}</td>
+                    </tr>
+					  </tbody>
+					</table>
+					<table class="table table-responsive table-striped table-hover">
+						<tbody>
+                    <tr class="bg-teal">
+                       <th style="width: 10px">#</th>
+                       <th>Producto</th>
+                       <th>Cantidad</th>
+                       <th>Porcentaje</th>
+                    </tr>
+                    <tr ng-repeat="job in PV.Jobs">
+                       <td ng-click="PV_Info_Prod(job)">{{$index+1}}</td>
+                       <td class="text-left" ng-click="PV_Info_Prod(job)">{{job.JobName}}</td>
+                       <td ng-click="PV_Info_Prod(job)">{{job.Quantity}}</td>
+                       <td>
+                          <div class="progress progress-xs progress-striped active">
+                             <div class="progress-bar bg-teal" style="width:{{((job.Quantity_Register*100)/job.Quantity)}}%"><b style="color:#000">{{(job.Quantity_Register*100)/job.Quantity}}%</b></div>
+                          </div>
+                       </td>
+                    </tr>
+					  </tbody>
+					</table>
+                </div>
+              </div>
+           </div>
+       
+           </div>-->
   
      <div class="row" >
        <!--Rastreo de Camión-->
