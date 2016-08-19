@@ -777,7 +777,7 @@ function Complete_Json_CSV(arr){
   pv.Route.Route_Name = puntoVisitaExcel.Route_Name;
   pv.Route.ID_Route = puntoVisitaExcel.ID_Route;
   pv.Sequence = parseInt(puntoVisitaExcel.Sequence);
-  pv.Estimated_Date =  puntoVisitaExcel.Estimated_Date);
+  pv.Estimated_Date =  puntoVisitaExcel.Estimated_Date; 
   pv.Estimated_Delivery_Time = parseInt(puntoVisitaExcel.Estimated_Delivery_Time);
   pv.Transferring_State = 'Pending_To_Mobile';
   pv.Delivery_Period_Start = puntoVisitaExcel.Delivery_Period_Start;
