@@ -341,13 +341,7 @@ try{
 			  },
 			  value:JsonArray[i],
 			  click: function(e) {
-			  	PV_Info(e.value);
-			  	$scope.Show_PV = true;
-			  	if(e.value.Certificate){
-			  		$scope.Show_Certificate = true;			  		
-			  	}else{
-			  		$scope.Show_Certificate = false;
-			  	}
+			  	$scope.PV_Info(e.value);			  	
 			  }
 			  });		
   		}
@@ -375,8 +369,22 @@ try{
   
 };
   
-  function PV_Info(obj){try{
-   	$scope.PV = obj;
+ $scope.PV_Info = function(obj){
+ try{
+ 	
+ 	$scope.Show_PV_General = false;
+ 	$scope.Show_PV_Process = false;
+ 	$scope.Show_PV_Aborted = false;
+ 	$scope.Show_PV_Partial = false;
+ 	$scope.Show_PV_Finalized = false;
+ 	
+ 	$scope.Show_PV = true;
+		if(obj.Certificate){
+			  		$scope.Show_Certificate = true;			  		
+		}else{
+			  		$scope.Show_Certificate = false;
+		}
+   	    $scope.PV = obj;
 		$scope.Show_Detail_Prod=false;
         $scope.Show_Incidentes=false;
 		$scope.Show_Punto_Visita=true;

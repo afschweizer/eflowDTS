@@ -37,15 +37,36 @@
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
-         <div class="col-md-3 col-sm-6 col-xs-12">
+      
+         <!-- <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="info-box bg-teal">
-                <span class="info-box-icon "><i class="fa fa-home"></i></span>
+                
+    <div class="info-box bg-teal">
+         <span class="info-box-icon dropdown-toggle" data-toggle="dropdown"><i class="fa fa-home"></i> </span>
+                <ul class="dropdown-menu" role="menu">
+             <li class="list-group-item" ng-repeat="pv in ArrayJobs">
+                <span style="color: #000;"><i class="fa fa-home" ></i> {{pv.Name}}</span>
+              </li> 
+      </ul>
                 <div class="info-box-content">
                   <span class="info-box-text">Puntos Visita</span>
                   <span class="info-box-number">{{(ArrayJobs).length}}</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->			
+                </div><!-- /.info-box-content -->  
+      
+      <div class="col-md-3 col-sm-6 col-xs-12">
+           <div class="info-box bg-teal">                
+                <div class="info-box bg-teal">
+                     <span class="info-box-icon" ng-click="Show_PV_General = !Show_PV_General"><i class="fa fa-home"></i> </span>                            
+                            <div class="info-box-content">
+                              <span class="info-box-text">Puntos Visita</span>
+                              <span class="info-box-number">{{(ArrayJobs).length}}</span>                            
+                            </div><!-- /.info-box-content --> 
+              </div>
+             <div ng-show="Show_PV_General"> 
+                    <div class="list-group-item bg-teal" ng-repeat="PV_General in ArrayJobs" ng-click="PV_Info(PV_General);"><i class="fa fa-home fa-2x"></i>    {{PV_General.Name}}</div>
+             </div>      
+          </div><!-- /.info-box -->           
+      </div><!-- /.col -->			
 			<div class="col-md-3 col-sm-6 col-xs-12">
               <div class="info-box bg-olive">
                 <span class="info-box-icon"><i class="fa fa-bar-chart-o"></i></span>
@@ -86,41 +107,63 @@
   			
     <div class="row" >
   			<div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box" style=" background-color: #A9E2F3;">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-road"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">En Proceso</span>
-                  <span class="info-box-number">{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
+              <div class="info-box" style=" background-color: #A9E2F3;">    
+                 <div class="info-box" style=" background-color: #A9E2F3;">  
+                    <span class="info-box-icon" ng-click="Show_PV_Process = !Show_PV_Process"><i class="glyphicon glyphicon-road"></i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">En Proceso</span>
+                      <span class="info-box-number">{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span>
+                    </div><!-- /.info-box-content -->
+                    </div>
+                <div ng-show="Show_PV_Process"> 
+                        <div class="list-group-item" style=" background-color: #A9E2F3;" ng-repeat="PV_Process in ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true" ng-click="PV_Info(PV_Process);"><i class="fa fa-home fa-2x"></i>    {{PV_Process.Name}}</div>
+                    </div>
+              
+                </div><!-- /.info-box -->          
             </div><!-- /.col -->
+      
          <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box" style="background-color: #F5A9A9;">
-                          <span class="info-box-icon"><i class="fa fa-close"></i></span>
+                          <div class="info-box" style="background-color: #F5A9A9;">
+                          <span class="info-box-icon" ng-click="Show_PV_Aborted = !Show_PV_Aborted"><i class="fa fa-close"></i></span>
                           <div class="info-box-content">
                             <span class="info-box-text">Abortados</span>
                             <span class="info-box-number">{{(ArrayJobs | filter:  {'Visit_State': 'Aborted'} :true).length}}</span>
                           </div><!-- /.info-box-content -->
-                        </div><!-- /.info-box -->
-</div><!-- /.col -->            
+                          </div>
+                        <div ng-show="Show_PV_Aborted"> 
+                              <div class="list-group-item" style="background-color: #F5A9A9;" ng-repeat="PV_Aborted in ArrayJobs | filter:  {'Visit_State': 'Aborted'} :true" ng-click="PV_Info(PV_Aborted);"><i class="fa fa-home fa-2x"></i>    {{PV_Aborted.Name}}</div>
+                          </div>
+                        </div><!-- /.info-box -->         
+			</div><!-- /.col -->            
          <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box " style="background-color: #F2F5A9;">
-                          <span class="info-box-icon"><i class="glyphicon glyphicon-adjust"></i></span>
+                           <div class="info-box " style="background-color: #F2F5A9;">
+                          <span class="info-box-icon" ng-click="Show_PV_Partial = !Show_PV_Partial"><i class="glyphicon glyphicon-adjust"></i></span>
                           <div class="info-box-content">
                             <span class="info-box-text">Parciales</span>
                             <span class="info-box-number">{{(ArrayJobs | filter:  {'Visit_State': 'Partial'} :true).length}}</span>
                           </div><!-- /.info-box-content -->
-                        </div><!-- /.info-box -->
-</div><!-- /.col -->
+                             </div>
+                          <div ng-show="Show_PV_Partial"> 
+                              <div class="list-group-item" style="background-color: #F2F5A9;" ng-repeat="PV_Partial in ArrayJobs | filter:  {'Visit_State': 'Partial'} :true" ng-click="PV_Info(PV_Partial);"><i class="fa fa-home fa-2x"></i>    {{PV_Partial.Name}}</div>
+                          </div>
+                        </div><!-- /.info-box -->       
+			</div><!-- /.col -->
          <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box" style="background-color: #D0F5A9;">
-                          <span class="info-box-icon"><i class="fa fa-check"></i></span>
+                          <div class="info-box" style="background-color: #D0F5A9;">
+                          <span class="info-box-icon"ng-click="Show_PV_Finalized = !Show_PV_Finalized"><i class="fa fa-check"></i></span>
                           <div class="info-box-content">
                             <span class="info-box-text">Finalizados</span>
                             <span class="info-box-number">{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}</span>
-                          </div><!-- /.info-box-content -->
-                        </div><!-- /.info-box -->
-</div><!-- /.col -->
+                          </div>
+                             </div><!-- /.info-box-content -->
+                          <div ng-show="Show_PV_Finalized"> 
+                              <div class="list-group-item" style="background-color: #D0F5A9;" ng-repeat="PV_Finalized in ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true" ng-click="PV_Info(PV_Finalized);"><i class="fa fa-home fa-2x"></i>    {{PV_Finalized.Name}}</div>
+                          </div>
+                        </div><!-- /.info-box -->             
+			</div><!-- /.col -->
      </div>			
  
   </div>
@@ -128,52 +171,6 @@
                       </div>
                 </div><!-- /.box-body -->
               </div>
-  
-    <!--  <div class="row" >
-      Rastreo de Camión
-			<div class="col-md-12 col-sm-12 col-xs-12">
-		 		 <div class="box ">
-                <div class="box-header with-border bg-blue">
-                  <h3 class="box-title"><b>Lista Puntos de Visita</b></h3>
-                 <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Mostrar/ Ocultar" ng-click="Show_Summary = !Show_Summary">
-                      <i class="glyphicon glyphicon-sort"></i></button>
-                  </div>
-                </div>
-                 <div class="box-body no-padding" >
-                  <table class="table table-responsive table-striped table-hover">
-                    <tbody>
-                    <tr class="bg-aqua"style="width: 10px">
-                       <th >Dirección</th><th class="bg-aqua"style="width: 10px">Encargado</th>
-              <td class="text-left" > {{PV.Manager}}</td>
-                    </tr>
-					  </tbody>
-					</table>
-					<table class="table table-responsive table-striped table-hover">
-						<tbody>
-                    <tr class="bg-teal">
-                       <th style="width: 10px">#</th>
-                       <th>Producto</th>
-                       <th>Cantidad</th>
-                       <th>Porcentaje</th>
-                    </tr>
-                    <tr ng-repeat="job in PV.Jobs">
-                       <td ng-click="PV_Info_Prod(job)">{{$index+1}}</td>
-                       <td class="text-left" ng-click="PV_Info_Prod(job)">{{job.JobName}}</td>
-                       <td ng-click="PV_Info_Prod(job)">{{job.Quantity}}</td>
-                       <td>
-                          <div class="progress progress-xs progress-striped active">
-                             <div class="progress-bar bg-teal" style="width:{{((job.Quantity_Register*100)/job.Quantity)}}%"><b style="color:#000">{{(job.Quantity_Register*100)/job.Quantity}}%</b></div>
-                          </div>
-                       </td>
-                    </tr>
-					  </tbody>
-					</table>
-                </div>
-              </div>
-           </div>
-       
-           </div>-->
   
      <div class="row" >
        <!--Rastreo de Camión-->

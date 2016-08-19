@@ -140,10 +140,9 @@ $scope.See_Info = function(User){
 try{
 		eflowDTS.Session.Ram.UserControl = User;
 		eflowDTS.Session.Ram.UserControl.Date = new Date().format("yyyy-mm-dd");
+		Set_Cookie("EflowCookie",eflowDTS);
 		location.href="#/detail";
-		eflowDTS.Session.Ultimate_Page="#/detail";
-	    Set_Cookie("EflowCookie",eflowDTS);
-	    
+		
 	}catch (e) {
         
         var err;
