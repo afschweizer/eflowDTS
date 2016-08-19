@@ -82,8 +82,8 @@ try{
   
 };
 	
-	$scope.Resize = function(){
-		try{
+$scope.Resize = function(){
+try{
 		if(typeof map === "object"){
 			map.refresh();	
 		}
@@ -109,7 +109,8 @@ try{
     }
 	};
 	
-	$scope.refresh = function(){try{
+$scope.refresh = function(){
+try{
 		Select_User_Online();
 		Select_Jobs();
 		}catch (e) {
@@ -166,7 +167,8 @@ try{
   
 };
 	
-    function Select_User_Online(){	try{	
+function Select_User_Online(){
+try{	
 		var JsonData = {
 			'Method_Name': 'Select_User_Online',
              'Data': {
@@ -234,7 +236,7 @@ try{
   
 };
 	
-	$scope.Create_Map = function(User){
+$scope.Create_Map = function(User){
 		try{
 		if($scope.Show_Components.Map_Online_User === false){
 			$scope.Show_Components.Map_Online_User = true;
@@ -328,13 +330,14 @@ var Load_Map = function(User){
   
 };
 	
-	function Select_Jobs(){
-		try{
-		var Query = {
+function Select_Jobs(){
+try{
+ var Query = {
 			'Method_Name':'Select_Jobs',
 			'Data':{
 				'Company':eflowDTS.Session.Company.Identifier,
-				"Estimated_Date": new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference
+				/*"Estimated_Date": new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference*/
+				"Estimated_Date" : new Date().format("yyyy-mm-dd")
                 
 			},
 			'Fields':{

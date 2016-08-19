@@ -119,23 +119,23 @@
 				   <br/>
 				    <span> 
 						<label>Asignar al Usuario: </label>
-                   <input type="" class="form-control" list="Users" ng-model="Assign.User" placeholder="Usuario"required>
+                    <!-- <input type="" class="form-control" list="Users" ng-model="Assign.User" placeholder="Usuario"required>
               <datalist id="Users">
                   <option ng-repeat="Obj in ArrayUser| orderBy:'Name'" value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}"> </option>
-              </datalist>    
-						  <!--  <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" class="form-control" id="Usuario"> </select>-->
+              </datalist>    -->
+						  <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" class="form-control" id="Usuario"> </select>
                </span>
 				   <br/>
 				    <span>
 						<label>Asignar al Vehículo:</label>
-                   <input type="" class="form-control" list="ID_Trucks" ng-model="Assign.ID_Truck"  placeholder="Vehículo"required>
+               <!--    <input type="" class="form-control" list="ID_Trucks" ng-model="Assign.ID_Truck"  placeholder="Vehículo"required>
               <datalist id="ID_Trucks" >
                   <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
-              </datalist> 
-						<!--<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
+              </datalist> -->
+						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
 						 <br/>
                   <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
-               --></span>
+               </span>
 				   <br/>
 				<!--	<span>
 						<a class="btn btn-primary span4" ng-click="Assign_All(Assign);" data-toggle="tooltip" title="Asignar" >
@@ -350,11 +350,11 @@
               <label class="col-sm-4 control-label">Asignar al Usuario:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">    
-                       <input type="" class="form-control" list="Users" ng-model="VisitPoint.User" placeholder="User"required>
+                  <!--       <input type="" class="form-control" list="Users" ng-model="VisitPoint.User" placeholder="User"required>
               <datalist id="Users">
                   <option ng-repeat="Obj in ArrayUser | orderBy:'Name' " value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}" > </option>
-              </datalist>    
-						  <!-- 
+              </datalist>  -->  
+						 
               <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+ Obj.ID + ' )' for Obj in ArrayUser" style="width: 80%;" class="form-control" id="Usuario"></select>
 				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            </div></div>
@@ -363,13 +363,13 @@
               <label class="col-sm-4 control-label">Asignar al Vehículo:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">  
-                         <input type="" class="form-control" list="ID_Trucks" ng-model="VisitPoint.ID_Truck" placeholder="Vehículo"required>
+                       <!--   <input type="" class="form-control" list="ID_Trucks" ng-model="VisitPoint.ID_Truck" placeholder="Vehículo"required>
               <datalist id="ID_Trucks">
                   <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
               </datalist>    
-						  <!-- 
+						  -->
               <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 80%;" class="form-control" id="Vehicle" ></select><!--ng-change="Info_Vehicle(Vehicle.ID_Truck,ArrayVehicle)"
-				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}-->
+				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
            <!-- <input type="text" class="form-control" ng-model="VisitPoint.ID_Truck" placeholder="Asignar al Vehiculo..." required>-->
             </div></div>
                    </div>
@@ -393,10 +393,10 @@
      
             <div  id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo" style="background-color:#4096c6"><b>Trabajos</b>  
-              <a class="btn btn-primary" data-toggle="tooltip" title="agregar tareas" style="background-color:#295C7A">
+             <!-- <a class="btn btn-primary" data-toggle="tooltip" title="agregar tareas" style="background-color:#295C7A">
                <i class="glyphicon glyphicon-plus" ng-click="Tareas=true;VisitPoint_Add_Task={};"></i></a>
                <a class="btn btn-primary" data-toggle="tooltip" title="Cerrar" style="background-color:#295C7A">
-               <i class="glyphicon glyphicon-remove" ng-click="Tareas=false;VisitPoint_Add_Task={}"></i></a>
+               <i class="glyphicon glyphicon-remove" ng-click="Tareas=false;VisitPoint_Add_Task={}"></i></a>-->
                            
              </div> 
            <div class="panel-body"> 
@@ -573,8 +573,8 @@
                             <td>
                             <a class="btn btn-primary" data-toggle="tooltip" title="Eliminar tareas" style="background-color:#295C7A">
                               <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);"></i></a>
-                            <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
-                              <i class="glyphicon glyphicon-pencil"  ng-click="Tareas=true; Edit_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);" ></i></a>
+                           <!-- <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
+                              <i class="glyphicon glyphicon-pencil"  ng-click="Tareas=true; Edit_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);" ></i></a>-->
                             </td>
                           </tr>
                         </tbody>
@@ -925,8 +925,8 @@
                             <td>
                             <a class="btn btn-danger">
                               <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);"></i></a>
-                              <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
-                              <i class="glyphicon glyphicon-pencil"  ng-click="Edit_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);" ></i></a>
+                             <!--  <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
+                             <i class="glyphicon glyphicon-pencil"  ng-click="Edit_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);" ></i></a>-->
                             </td>
                           </tr>
                         </tbody>

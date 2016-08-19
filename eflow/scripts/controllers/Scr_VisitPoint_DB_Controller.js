@@ -2165,7 +2165,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 	Task_Obj.JobCubics === "" || Task_Obj.JobCubics === undefined ){
 			bootbox.dialog({
 			title:"¡Alerta!",
-			message:"Debe completar todos los campos2",
+			message:"Debe completar todos los campos",
 			buttons:{
 				main:{
 					label:"Ok!",
@@ -2240,11 +2240,11 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
 					obj.JobActions = [];
-					if($scope.Array_VisitPoint_Task_Edit){
+					if($scope.VisitPoint_Add_Array_Task){
 						$scope.VisitPoint_Add_Array_Task.push(obj);			
 					}else{
-						$scope.Array_VisitPoint_Task_Edit = [];
-						$scope.Array_VisitPoint_Task_Edit.push(obj);	
+						$scope.VisitPoint_Add_Array_Task = [];
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
 					}
 					$scope.VisitPoint_Add_Task = {};
 	       $scope.Show_Serie=false;
@@ -2270,11 +2270,11 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobValidator = "var arr = obj.JobActions;var suma = 0; for (var j = 0; j < arr.length; j++) {suma = suma + arr[j].Quantity;} if(suma == 0){return \"Not_Started\";} else if(suma == obj.Quantity){return \"Finalized\";} else if(suma > 0 && suma < obj.Quantity){return \"In_Process\";}";
 					obj.JobImage = "Funcion de Photos('Task.Photo')";
 					obj.JobActions = [];					
-					if($scope.Array_VisitPoint_Task_Edit){
-						$scope.Array_VisitPoint_Task_Edit.push(obj);			
+					if($scope.VisitPoint_Add_Array_Task){
+						$scope.VisitPoint_Add_Array_Task.push(obj);			
 					}else{
-						$scope.Array_VisitPoint_Task_Edit = [];
-						$scope.Array_VisitPoint_Task_Edit.push(obj);	
+						$scope.VisitPoint_Add_Array_Task = [];
+						$scope.VisitPoint_Add_Array_Task.push(obj);	
 					}
 					$scope.VisitPoint_Add_Task = {};
 					$scope.Array_Serials = [];
