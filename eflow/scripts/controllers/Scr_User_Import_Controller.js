@@ -40,6 +40,9 @@ $scope.Domain = eflowDTS.Session.Company.Domain;
     }  
   
 };
+	$scope.Change_Class=function(class_name,class_value){
+		$scope["Align_class_"+class_value] = class_name;
+	};
 $scope.Verify_License=function(Type){
 	try{
 	if (Type === "Conductor"){

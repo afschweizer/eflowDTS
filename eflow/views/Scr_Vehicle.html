@@ -43,7 +43,20 @@
            <p class="" />
        	  <input type="checkbox"  ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);"/>
          </th>
-        <th style="text-align:center" ng-repeat="headers in ArrayHeaders" ng-click="To_Order_By(headers.value);"><i class="glyphicon glyphicon-sort"></i>   {{headers.es}}</th>
+        <th style="text-align:center" ng-repeat="headers in ArrayHeaders"><!-- ng-click="To_Order_By(headers.value);"--><!--i class="glyphicon glyphicon-sort"></i-->   {{headers.es}}<span class="dropdown">
+    <span class="caret dropdown-toggle" type="button" data-toggle="dropdown">&nbsp;&nbsp;
+    </span>
+    <ul class="dropdown-menu">
+      <li class="dropdown-header"><b>Alineación de texto</b></li>
+      <li><a class="glyphicon glyphicon-align-left" ng-click="Change_Class('text-left',headers.value)"><b> Izquierda</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-center" ng-click="Change_Class('text-center',headers.value)"><b> Centro</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-right" ng-click="Change_Class('text-right',headers.value)"><b> Derecha</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-justify" ng-click="Change_Class('text-justify',headers.value)"><b> Justificaado</b></a> </li>
+      <li class="dropdown-header"><b>Ordenamiento de texto</b></li>
+      <!--<li><a class="glyphicon glyphicon-chevron-up" ng-click="To_Order_By(header.value)desc"></a></li>-->
+      <li><a class="glyphicon glyphicon-sort" ng-click="To_Order_By(headers.value)"><b> Ascendente / Descendente</b></a> </li>
+    </ul>
+  </span></th>
        
       </tr>
        <tr>
@@ -81,11 +94,11 @@
         	  </div> 
           </a>-->
         </td>
-        <td ng-click="Visualize_Vehicle(Obj);">{{Obj.ID_Truck}}</td>
-		  <td ng-click="Visualize_Vehicle(Obj);">{{Obj.Brand}}</td>
-        <td ng-click="Visualize_Vehicle(Obj);">{{Obj.Year}}</td>
-        <td ng-click="Visualize_Vehicle(Obj);">{{Obj.Weight}}</td>
-        <td ng-click="Visualize_Vehicle(Obj);">{{Obj.Cubics}}</td>
+        <td ng-click="Visualize_Vehicle(Obj);"ng-class="Align_class_ID_Truck">{{Obj.ID_Truck}}</td>
+		  <td ng-click="Visualize_Vehicle(Obj);"ng-class="Align_class_Brand">{{Obj.Brand}}</td>
+        <td ng-click="Visualize_Vehicle(Obj);"ng-class="Align_class_Year">{{Obj.Year}}</td>
+        <td ng-click="Visualize_Vehicle(Obj);"ng-class="Align_class_Weight">{{Obj.Weight}}</td>
+        <td ng-click="Visualize_Vehicle(Obj);"ng-class="Align_class_Cubics">{{Obj.Cubics}}</td>
       </tr>
     </tbody>
     

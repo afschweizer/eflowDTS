@@ -81,7 +81,9 @@ try{
     }  
   
 };
-	
+	$scope.Change_Class=function(class_name,class_value){
+		$scope["Align_class_"+class_value] = class_name;
+	};
 $scope.Add_Serial =function(value,Parameter_array){
 try{
 	 

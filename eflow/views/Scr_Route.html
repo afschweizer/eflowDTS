@@ -202,7 +202,20 @@
           <p class="" />
        	 <input type="checkbox"  ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);"/>
         </th>
-        <th style="text-align:center" ng-repeat="headers in ArrayHeaders" ng-click="To_Order_By(headers.value);"><i class="glyphicon glyphicon-sort"></i>   {{headers.es}}</th>
+        <th style="text-align:center" ng-repeat="headers in ArrayHeaders" ><!--ng-click="To_Order_By(headers.value);"--><!--i class="glyphicon glyphicon-sort"></i-->   {{headers.es}}<span class="dropdown">
+    <span class="caret dropdown-toggle" type="button" data-toggle="dropdown">&nbsp;&nbsp;
+    </span> 
+    <ul class="dropdown-menu">
+      <li class="dropdown-header"><b>Alineación de texto</b></li>
+      <li><a class="glyphicon glyphicon-align-left" ng-click="Change_Class('text-left',headers.value)"><b> Izquierda</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-center" ng-click="Change_Class('text-center',headers.value)"><b> Centro</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-right" ng-click="Change_Class('text-right',headers.value)"><b> Derecha</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-justify" ng-click="Change_Class('text-justify',headers.value)"><b> Justificaado</b></a> </li>
+      <li class="dropdown-header"><b>Ordenamiento de texto</b></li>
+      <!--<li><a class="glyphicon glyphicon-chevron-up" ng-click="To_Order_By(header.value)desc"></a></li>-->
+      <li><a class="glyphicon glyphicon-sort" ng-click="To_Order_By(header.value)"><b> Ascendente / Descendente</b></a> </li>
+    </ul>
+  </span></th>
       </tr>
        <tr>
           <th>
@@ -232,9 +245,9 @@
         	  </div> 
           </a>-->
         </td>
-        <td style="text-align:left" ng-click="Visualize_Route(Obj);">{{Obj.Route_Name}}</td>
-		  <td style="text-align:left" ng-click="Visualize_Route(Obj);">{{Obj.ID_Route}}</td>
-        <td style="text-align:left" ng-click="Visualize_Route(Obj);">{{Obj.Route_Description}}</td>
+        <td style="text-align:left" ng-click="Visualize_Route(Obj);"ng-class="Align_class_Route_Name">{{Obj.Route_Name}}</td>
+		  <td style="text-align:left" ng-click="Visualize_Route(Obj);"ng-class="Align_class_ID_Route">{{Obj.ID_Route}}</td>
+        <td style="text-align:left" ng-click="Visualize_Route(Obj);"ng-class="Align_class_Route_Description">{{Obj.Route_Description}}</td>
       </tr>
     </tbody>
     

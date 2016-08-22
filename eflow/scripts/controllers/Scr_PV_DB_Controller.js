@@ -37,8 +37,9 @@ $scope.init = function() {
     }  
 };
 
-
-
+	$scope.Change_Class=function(class_name,class_value){
+		$scope["Align_class_"+class_value] = class_name;
+	};
 
 $scope.Select_PV = function(){
 	try {

@@ -33,8 +33,9 @@ $scope.Select();
     }  
   
 };
-
-
+	$scope.Change_Class=function(class_name,class_value){
+		$scope["Align_class_"+class_value] = class_name;
+	};
 $scope.Checking_Checkboxes_Check = function(){try{
 	$scope.Show_Actions = false;
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");

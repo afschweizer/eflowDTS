@@ -62,10 +62,10 @@ th, td {
     text-align: center;
 }
 .Aborted{
-    background-color: #F5A9A9;
+    background-color: ##F5A9A9;
 }
 .Finalized{
-   background-color: #D0F5A9;
+   background-color: #4E8613;/*#D0F5A9;*/
 }
 .In_Process{
   background-color: #A9E2F3;
@@ -94,31 +94,31 @@ th, td {
   cursor: pointer;
 }
 .badge-Aborted {
-  background-color: #F5A9A9;
+  background-color: #F60B0B;/* #F5A9A9;*/
 }
 .badge-Aborted:hover {
   background-color: #953b39;
 }
 .badge-Partial {
-  background-color: #F2F5A9;
+  background-color:#FF8000;/*#F2F5A9;*/
 }
 .badge-Partial:hover {
   background-color: #c67605;
 }
 .badge-Finalized {
-  background-color: #D0F5A9;
+  background-color:#4E8613;/*#D0F5A9;*/
 }
 .badge-Finalized:hover {
   background-color: #356635;
 }
 .badge-In_Process {
-  background-color: #A9E2F3;
+  background-color:#1185A9;/*#A9E2F3;*/
 }
 .badge-In_Process:hover {
   background-color: #2d6987;
 }
 .badge-Unassigned {
-  background-color: #E6E6E6;
+  background-color:#9D9D98;/*#E6E6E6;*/
 }
 .badge-Unassigned:hover {
   background-color: #1a1a1a;

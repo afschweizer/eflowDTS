@@ -44,7 +44,9 @@ $scope.init = function(){
         }
     }  
 };
-    
+    	$scope.Change_Class=function(class_name,class_value){
+		$scope["Align_class_"+class_value] = class_name;
+	};
 	function Load_Map_Init(){
 		
 	try{

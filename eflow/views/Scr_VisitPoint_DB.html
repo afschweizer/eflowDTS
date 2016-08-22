@@ -180,13 +180,34 @@
         
  		  <input type="checkbox"  ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);" /> 
         </th> 
-           <th  style="text-align:center" ng-repeat="header in Headers" ng-click="To_Order_By(header.value);" ><i class="glyphicon glyphicon-sort"></i>   {{header.es}}</th>
+          
+           <th  style="text-align:center" ng-repeat="header in Headers"  ><!--i class="glyphicon glyphicon-sort" ng-click="To_Order_By(header.value);"></i-->   
+             {{header.es}}
+               <span class="dropdown">
+    <span class="caret dropdown-toggle" type="button" data-toggle="dropdown">&nbsp;&nbsp;
+    </span>
+    <ul class="dropdown-menu">
+      <li class="dropdown-header"><b>Alineación de texto</b></li>
+      <li><a class="glyphicon glyphicon-align-left" ng-click="Change_Class('text-left',header.value)"><b> Izquierda</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-center" ng-click="Change_Class('text-center',header.value)"><b> Centro</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-right" ng-click="Change_Class('text-right',header.value)"><b> Derecha</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-justify" ng-click="Change_Class('text-justify',header.value)"><b> Justificaado</b></a> </li>
+      <li class="dropdown-header"><b>Ordenamiento de texto</b></li>
+      <!--<li><a class="glyphicon glyphicon-chevron-up" ng-click="To_Order_By(header.value)desc"></a></li>-->
+      <li><a class="glyphicon glyphicon-sort" ng-click="To_Order_By(header.value)"><b> Ascendente / Descendente</b></a> </li>
+    </ul>
+  </span>
+           <!-- <span class="glyphicon glyphicon-align-left" ng-click="Change_Class('text-left',header.value)"></span>
+            <span class="glyphicon glyphicon-align-center" ng-click="Change_Class('text-center',header.value)"></span>
+            <span class="glyphicon glyphicon-align-right" ng-click="Change_Class('text-right',header.value)"></span>
+            <span class="glyphicon glyphicon-align-justify" ng-click="Change_Class('text-justify',header.value)"></span> -->
+</th>
          </tr>
         <tr>
           <th></th>
           <th></th>
           <th>
-            <input ng-model="search.Name">
+            <input ng-model="search.Name" >
           </th>
           <th>
             <input ng-model="search.ID_Truck">
@@ -210,12 +231,13 @@
       
           <td>{{$index+1}}</td>
           <td><input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{obj._id.$id}}"/></td>  
-          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Name}}</td> 
-          <td ng-click="Visualize_VisitPoint(obj);">{{obj.ID_Truck}}</td> 
-          <td ng-click="Visualize_VisitPoint(obj);">{{obj.User}}</td> 
-          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Route.Route_Name}}</td> 
-          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Sequence}}</td> 
-          <td ng-click="Visualize_VisitPoint(obj);">{{obj.Estimated_Delivery_Time}}</td>
+         
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_Name">{{obj.Name}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_ID_Truck">{{obj.ID_Truck}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_User">{{obj.User}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_Route">{{obj.Route.Route_Name}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_Sequence">{{obj.Sequence}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_Estimated_Delivery_Time">{{obj.Estimated_Delivery_Time}}</td>
         </tr>
       </tbody>
     </table>
@@ -224,7 +246,7 @@
   <div class="text-center" >
           
           </div>
-  
+   
   <!--Modal VisitPoint Edit and Visualize -->
   <div id="Modal_Edit_VisitPoint" class="modal fade" role="dialog">
 

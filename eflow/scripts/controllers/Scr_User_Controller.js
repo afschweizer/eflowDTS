@@ -9,7 +9,7 @@ $scope.init = function() {
 	//Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
 var Headers= [{"es":"NOMBRE","value":"Name"},{"es":"PRIMER APELLIDO","value":"Lastname"},
-{"es":"SEGUNDO APELLIDO","value":"Lastname2"},{"es":"CEDULA","value":"Identification"},{"es":"TIPO","value":"Type"}] ;
+{"es":"SEGUNDO APELLIDO","value":"Lastname2"},{"es":"CEDULA","value":"Identification"},{"es":"IDENTIFICADOR","value":"ID"},{"es":"TIPO","value":"Type"}] ;
 $scope.ArrayHeaders = Headers;
 var Gender =[{"es":"Masculino","value":"Male"},{"es":"Femenino","value":"Female"}] ;
 $scope.ArrayLicense = eflowDTS.Session.Company.Settings.License;
@@ -40,7 +40,9 @@ $scope.Select();
     }  
   
 };
-
+	$scope.Change_Class=function(class_name,class_value){
+		$scope["Align_class_"+class_value] = class_name;
+	};
 $scope.Password = function(x){
 	try{
 

@@ -35,7 +35,9 @@ $scope.ArrayLicense =eflowDTS.Session.Company.Settings.License;
     }  
   
 };
-
+	$scope.Change_Class=function(class_name,class_value){
+		$scope["Align_class_"+class_value] = class_name;
+	};
 $scope.Action_Option= function(Option){
 	try{
 	if(Option === "Asignar"){

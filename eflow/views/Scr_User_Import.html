@@ -110,8 +110,21 @@ $(document).ready( function() {
          <th> 
             <input type="checkbox"  ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);" />
           </th>
-           <th ng-repeat="header in Headers" ng-click="To_Order_By(header.value);" >
-			<i class="glyphicon glyphicon-sort"></i>   {{header.es}}
+           <th ng-repeat="header in Headers"><!-- ng-click="To_Order_By(header.value);" -->
+			<!--i class="glyphicon glyphicon-sort"></i-->   {{header.es}}<span class="dropdown">
+    <span class="caret dropdown-toggle" type="button" data-toggle="dropdown">&nbsp;&nbsp;
+    </span>
+    <ul class="dropdown-menu">
+      <li class="dropdown-header"><b>Alineación de texto</b></li>
+      <li><a class="glyphicon glyphicon-align-left" ng-click="Change_Class('text-left',header.value)"><b> Izquierda</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-center" ng-click="Change_Class('text-center',header.value)"><b> Centro</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-right" ng-click="Change_Class('text-right',header.value)"><b> Derecha</b></a> </li>
+      <li><a class="glyphicon glyphicon-align-justify" ng-click="Change_Class('text-justify',header.value)"><b> Justificaado</b></a> </li>
+      <li class="dropdown-header"><b>Ordenamiento de texto</b></li>
+      <!--<li><a class="glyphicon glyphicon-chevron-up" ng-click="To_Order_By(header.value)desc"></a></li>-->
+      <li><a class="glyphicon glyphicon-sort" ng-click="To_Order_By(header.value)"><b> Ascendente / Descendente</b></a> </li>
+    </ul>
+  </span>
 		   </th>
          </tr>
         <tr>
@@ -140,11 +153,11 @@ $(document).ready( function() {
          <!--<tr  dir-paginate="obj in ArrayJobs_Import  | filter:search | orderBy: OrderList | itemsPerPage: pageSize" current-page="currentPage">-->
           <td>{{$index+1}}</td>
           <td><input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}"/></td>  
-          <td ng-click="Visualize_User_Import(obj);">{{obj.Name}}</td> 
-		  <td ng-click="Visualize_User_Import(obj);">{{obj.Lastname}}</td> 
-          <td ng-click="Visualize_User_Import(obj);">{{obj.Lastname2}}</td>
-          <td ng-click="Visualize_User_Import(obj);">{{obj.Identification}}</td>
-          <td ng-click="Visualize_User_Import(obj);">{{obj.Type}}</td> 
+          <td ng-click="Visualize_User_Import(obj);"ng-class="Align_class_Name">{{obj.Name}}</td> 
+		  <td ng-click="Visualize_User_Import(obj);"ng-class="Align_class_Lastname">{{obj.Lastname}}</td> 
+          <td ng-click="Visualize_User_Import(obj);"ng-class="Align_class_Lastname2">{{obj.Lastname2}}</td>
+          <td ng-click="Visualize_User_Import(obj);"ng-class="Align_class_Identification">{{obj.Identification}}</td>
+          <td ng-click="Visualize_User_Import(obj);"ng-class="Align_class_Type">{{obj.Type}}</td> 
         </tr>
       </tbody>
 
