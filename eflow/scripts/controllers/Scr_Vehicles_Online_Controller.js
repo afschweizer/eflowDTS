@@ -140,6 +140,7 @@ $scope.See_Info = function(User){
 try{
 		eflowDTS.Session.Ram.UserControl = User;
 		eflowDTS.Session.Ram.UserControl.Date = new Date().format("yyyy-mm-dd");
+		eflowDTS.Session.Ram.page="Vehicles_Online";
 		Set_Cookie("EflowCookie",eflowDTS);
 		location.href="#/detail";
 		

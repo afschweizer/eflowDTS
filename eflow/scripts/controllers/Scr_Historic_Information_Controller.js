@@ -204,7 +204,8 @@ $scope.Select_User = function(Historic){
 		eflowDTS.Session.Ram.UserControl.User = Historic.User.split("(")[0];
 		eflowDTS.Session.Ram.UserControl.UserName = $scope.ArrayUser[0].Name+" "+$scope.ArrayUser[0].Lastname;
     	eflowDTS.Session.Ram.UserControl.ID_Truck = Historic.User.split("(")[1].split(")")[0];
-		eflowDTS.Session.Ram.UserControl.Date = Historic.Date;
+		eflowDTS.Session.Ram.UserControl.Date = Historic.Date;		
+		eflowDTS.Session.Ram.page="Vehicles_Historic";
 		Set_Cookie("EflowCookie",eflowDTS);
 	    $("#Charge_New_Modal").on("hidden.bs.modal", function () {
    		 location.href="#/detail";

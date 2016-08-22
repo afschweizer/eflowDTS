@@ -4,7 +4,10 @@ DTS_APP.controller('Scr_Vehicles_Detail_Controller',function($scope) {
 
 $scope.init = function(){
 	try{
-		
+		$scope.Show_Message=false;
+		if(eflowDTS.Session.Ram.page==="Vehicles_Online"){
+			$scope.Show_Message=true;
+		}
     Set_Current_Page();
 	Load_Map();
 	$scope.Load_Visit_Point();
@@ -123,14 +126,14 @@ try{
     			"Company": eflowDTS.Session.Company.Identifier,
                 "User": eflowDTS.Session.Ram.UserControl.User,
     			"ID_Truck": eflowDTS.Session.Ram.UserControl.ID_Truck,
-                "Estimated_Date": new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference,
+                "Estimated_Date": eflowDTS.Session.Ram.UserControl.Date,//new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference,
 				"State": "Unread",
 				"Matter": TextAsunto,
 				"Detail": TextMessage,
 				"Transferring_State": "Pending_To_Mobile"
 			 }
 			 };
-				var onSuccess = function(JsonData){
+				var onSuccess = function(onSuccess){
 				
 				bootbox.dialog({
 					title:"¡Alerta!",
@@ -144,7 +147,7 @@ try{
 				$scope.TextAsunto="";
 				$scope.TextMessage="";
 				};
-				var onError = function(JsonData){
+				var onError = function(onError){
 			var erro={
 			Generated: true,
                 Page: "Scr_Vehicles_Detail_Controller",
@@ -153,10 +156,10 @@ try{
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: onError
         };
 			throw erro;	
-				console.log(JsonData);
+				console.log(onError);
 				};
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 	

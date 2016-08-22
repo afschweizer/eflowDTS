@@ -332,7 +332,7 @@ $scope.Save_User_Edit = function(Obj){
 		var Json = Obj;
 		Json.Control.Modification_date = new Date().getTime();
 		Json.Control.Modify_User = eflowDTS.Session.Current_User.UserName;
-		Json.Mail = Obj.Mail.toLowerCase();
+		Json.Mail = Obj.Mail.toLowerCase()+ eflowDTS.Session.Company.Domain.toLowerCase();
 		delete Json['$$hashKey'];
 		var JsonData = 
 				{
