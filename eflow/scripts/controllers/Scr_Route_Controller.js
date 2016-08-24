@@ -1191,7 +1191,7 @@ doc.line(20, 130, 800, 130);
     };   
     var footer = function (data) {
         var str = "Pag " + data.pageCount;
-				doc.addImage(logo, 'JPEG', 420, 550, 150, 30);
+				doc.addImage(logo, 'JPEG', 420, 550, 90, 30);
         // Total page number plugin only available in jspdf v1.0+
        
         doc.text(str, data.settings.margin.left, doc.internal.pageSize.height - 30);

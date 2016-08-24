@@ -34,6 +34,11 @@ switch($dataObject->Method_Name){
       require'Get_Data.php';
       break;
     }
+   case 'Get_Data_Assistant':
+    {
+      require'Get_Data_Assistant.php';
+      break;
+    }
    case 'Insert_Info_Vehicle':
     {
       require'Insert_Info_Vehicle.php';

@@ -112,7 +112,12 @@ $scope.Select_VisitPoint = function(Historic_Date){
 
 var Load_Select = function(ArrayJobs){
 	try {
-		
+		if(ArrayJobs.length===0){
+				alert("No Existe Información");
+		        $scope.Historic = "";
+				$scope.Information =false ;
+		}
+		else{
 		$scope.User_Truck=[]; 
 		
 		 for(var i=0; i<ArrayJobs.length;i++){
@@ -136,7 +141,7 @@ var Load_Select = function(ArrayJobs){
 		}
 		
 		$scope.Information=true; 
-		
+		}
 } catch (e) {
         var err;
         if (e.hasOwnProperty("Generated") === false) {
@@ -197,21 +202,26 @@ $scope.Select_User = function(Historic){
             }
         };
 		var onSuccess = function(Response){
-		$scope.ArrayUser = Response;
-		$scope.$apply($scope.ArrayUser);
-		
-		eflowDTS.Session.Ram.UserControl={};
-		eflowDTS.Session.Ram.UserControl.User = Historic.User.split("(")[0];
-		eflowDTS.Session.Ram.UserControl.UserName = $scope.ArrayUser[0].Name+" "+$scope.ArrayUser[0].Lastname;
-    	eflowDTS.Session.Ram.UserControl.ID_Truck = Historic.User.split("(")[1].split(")")[0];
-		eflowDTS.Session.Ram.UserControl.Date = Historic.Date;		
-		eflowDTS.Session.Ram.page="Vehicles_Historic";
-		Set_Cookie("EflowCookie",eflowDTS);
-	    $("#Charge_New_Modal").on("hidden.bs.modal", function () {
-   		 location.href="#/detail";
-		});
-		$("#Charge_New_Modal").modal('hide');
-		
+			if(Response.length===0){
+				alert("Este Usuario No EXISTE");
+		        $scope.Historic = "";
+				$scope.Information =false ;
+			}
+			else{
+				$scope.ArrayUser = Response;
+				$scope.$apply($scope.ArrayUser);
+				eflowDTS.Session.Ram.UserControl = {};
+				eflowDTS.Session.Ram.UserControl.User = Historic.User.split("(")[0];
+				eflowDTS.Session.Ram.UserControl.UserName = $scope.ArrayUser[0].Name+" "+$scope.ArrayUser[0].Lastname;
+		    	eflowDTS.Session.Ram.UserControl.ID_Truck = Historic.User.split("(")[1].split(")")[0];
+				eflowDTS.Session.Ram.UserControl.Date = Historic.Date;		
+				eflowDTS.Session.Ram.page="Vehicles_Historic";
+				Set_Cookie("EflowCookie",eflowDTS);
+			    $("#Charge_New_Modal").on("hidden.bs.modal", function () {
+		   		 location.href="#/detail";
+				});
+				$("#Charge_New_Modal").modal('hide');
+			}
 	    
 		};
 		var onError =  function(e){

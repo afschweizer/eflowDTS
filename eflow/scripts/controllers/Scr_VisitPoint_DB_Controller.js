@@ -909,7 +909,7 @@ doc.setTextColor(100);
 
 doc.setFontType("bold");
 
-doc.addImage(ima, 'JPEG', 20, 20, 150, 90);
+doc.addImage(ima, 'JPEG', 20, 20, 150, 80);
     
 doc.text(420, 70, 'Nombre de la Compañia: '+ Compania.Name);
     
@@ -955,7 +955,6 @@ doc.save('Puntos_de_Visita.pdf');
 
 };
 Image_To_Base64("images/ima.png",onSucces_Img2);
-
 };
 Image_To_Base64("images/logo.png",onSucces_Img1);
 

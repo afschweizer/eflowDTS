@@ -62,19 +62,19 @@ th, td {
     text-align: center;
 }
 .Aborted{
-    background-color: ##F5A9A9;
+    background-color: #F5A9A9;/*FF9999;/*FF8888;/*F36161;/*F5A9A9;*/
 }
 .Finalized{
-   background-color: #4E8613;/*#D0F5A9;*/
+   background-color: #D0F5A9;/*88FF88;/*6C8B4B ;/*4E8613;/*D0F5A9;*/
 }
 .In_Process{
-  background-color: #A9E2F3;
+  background-color: #A9E2F3;/*33CCFF;/*1ACAFF;/*5C98AB ;/*A9E2F3;*/
 }
 .Partial{
-    background-color: #F2F5A9;
+    background-color: #F6DDA9;/*FFCC99;/*FDC892;/*FEB369;/*F2F5A9;*/
 }
 .Unassigned{
-   background-color: #E6E6E6;
+   background-color: #E6E6E6;/*E0E0E0;/*D6D6D6;/*C4C4BF ;/*E6E6E6;*/
 }
 
 .badgea {
@@ -99,12 +99,6 @@ th, td {
 .badge-Aborted:hover {
   background-color: #953b39;
 }
-.badge-Partial {
-  background-color:#FF8000;/*#F2F5A9;*/
-}
-.badge-Partial:hover {
-  background-color: #c67605;
-}
 .badge-Finalized {
   background-color:#4E8613;/*#D0F5A9;*/
 }
@@ -116,6 +110,12 @@ th, td {
 }
 .badge-In_Process:hover {
   background-color: #2d6987;
+}
+.badge-Partial {
+  background-color:#FF8000;/*#F2F5A9;*/
+}
+.badge-Partial:hover {
+  background-color: #c67605;
 }
 .badge-Unassigned {
   background-color:#9D9D98;/*#E6E6E6;*/

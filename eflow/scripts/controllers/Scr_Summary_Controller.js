@@ -131,8 +131,11 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    $scope.Charge_DataSet = function(DataSet){
 		try{
-   	
-   	$("#Charge_New_Modal").modal('hide');   	
+   	$scope.Filter={};
+   	$("#Charge_New_Modal").modal('hide');
+		$scope.Filter.End_Date =  new Date(DataSet.End_Date).format("yyyy-mm-dd");
+		$scope.Filter.Start_Date =  new Date(DataSet.Start_Date).format("yyyy-mm-dd");  	
+		$scope.Filter.Type =  DataSet.Type;  	
    
    	$scope.Refresh_Pivot_Table(DataSet);   	
    	
@@ -245,7 +248,6 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    $scope.Refresh_Pivot_Table = function(Filter){
 		try{
-   	
    	var JsonData = {
             'Method_Name': 'Select_Summary_'+Filter.Type,
              'Data': {
@@ -273,7 +275,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		Create_Pivot_Table();	
 		
 		};		
-		var onError = function(JsonData){
+		var onError = function(onError){
 			var erro={
 			Generated: true,
                 Page: "Scr_Summary_Controller",
@@ -282,7 +284,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: onError
         };
 			throw erro;		
 		console.log(JsonData);		

@@ -1266,10 +1266,12 @@ var columns = [
 		{title:"Correo",dataKey:"Mail"},
 		{title:"Latitud",dataKey:"Latitude"},
 		{title:"Longitud",dataKey:"Longitude"},
-		{title:"Identificador Ruta",dataKey:"Route>ID_Route"},
-		{title:"Nombre Ruta",dataKey:"Route>Route_Name"}];
+		{title:"Identificador Ruta",dataKey:"ID_Route"},
+		{title:"Nombre Ruta",dataKey:"Route_Name"}];
 var rows = [];
 for(var i = 0; i < Arr.length; i++){
+	Arr[i].ID_Route=Arr[i].Route.ID_Route;
+	Arr[i].Route_Name=Arr[i].Route.Route_Name;
 	   rows.push(Arr[i]);
 }	
 
