@@ -74,8 +74,11 @@
             .when('/404',{
             	templateUrl: 'views/Scr_404.html'
             })
-            .when('/Scr_Historic_Information',{
+            .when('/Historic_Information',{
             	templateUrl: 'views/Scr_Historic_Information.html'
+            })
+            .when('/Prueba',{
+            	templateUrl: 'views/Scr_Prueba.html'
             })
             .otherwise({
             	redirectTo : '/404'
