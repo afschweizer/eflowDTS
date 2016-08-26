@@ -87,6 +87,7 @@ try{
 		if(typeof map === "object"){
 			map.refresh();	
 		}
+		
 }catch (e) {
         
         var err;
@@ -185,6 +186,12 @@ try{
 			  var Today = $scope.Watch;
 			  for(var i = 0; i < Json.length; i++){
 				if((Today - new Date(Json[i].Date)) < 300000){
+					
+					if(Json[i].Type === 'Conductor'){
+					Json[i].Class = "fa fa-truck";
+					}else{
+					Json[i].Class =  "fa fa-user";
+					}
 					$scope.ArrayUser.push(Json[i]);
 					$scope.$apply($scope.ArrayUser);	
 					$scope.Show_Components.Show_User_Online = false;

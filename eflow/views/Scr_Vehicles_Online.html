@@ -74,7 +74,15 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 		 		 <div class="box ">
                 <div class="box-header with-border bg-blue">
-                  <h3 class="box-title"><b>Rastreo de Vehículos</b></h3>
+                  <h3 class="box-title"><b>Rastreo de Vehículos</b>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-truck"></i> Conductor.
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-user"></i> Ayudante.</h3>
                  <div class="box-tools pull-right">                   
                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Ajustar Tamaño" ng-click="Resize();"><i class="glyphicon glyphicon-refresh"></i></button>
                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Refrescar" ng-click="Create_Map();"><i class="glyphicon glyphicon-sort"></i></button>
@@ -102,8 +110,6 @@
     
   </div>
   
-  
-  
   <div class="row" ng-show="Show_Components.Show_List">
 
     		<div class="col-lg-3 col-xs-6" ng-repeat="User in ArrayUser">
@@ -120,7 +126,7 @@
                   </div>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-truck"></i>                  
+                    <i ng-class="User.Class"></i>                  
                 </div>
                 <a ng-click="See_Info(User)" class=" small-box-footer bg-black">
                  Más Información <i class="fa fa-arrow-circle-right"></i>

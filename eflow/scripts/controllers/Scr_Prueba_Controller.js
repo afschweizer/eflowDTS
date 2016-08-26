@@ -1,15 +1,14 @@
 DTS_APP.controller('Scr_Prueba_Controller',function($scope){
 
 $scope.init = function(){
-		
+		$scope.Select_Route();
 	$scope.Name = "sdfsf";
 		$scope.Value = "15";
 		
 		$scope.Array_Objs = [
 		{
 		"Name":"Ruta A",
-		"Value":50,
-		//click=(Show_Detail_VisitPoint:true;
+		"Value":50
 		},
 		{
 	    "Name":"Ruta B",
@@ -156,4 +155,69 @@ $scope.Generate_Charts = function(){
      
 		
 	};
+	
+	
+	
+$scope.Select_Route = function(){
+
+	 try {
+        var JsonData = {
+            'Method_Name': 'Select_All_Route',
+             'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier
+            },
+            'Fields':{
+            	
+            }
+        };
+		
+		var onSuccess = function(JsonData){
+		
+		$scope.ArrayRoute = JsonData;
+		$scope.$apply($scope.ArrayRoute);
+
+		};
+		
+		var onError = function(JsonData){
+				
+					 var erro={
+			Generated: true,
+            Page: "Scr_Prueba_Controller",
+            Method: "Select_Route",
+            Description: "onError",
+           User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;
+		console.log(JsonData);
+		
+		};
+		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);
+        
+    } catch (e) {
+        onError(e);
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Route_Controller",
+                Method: "Select",
+                Description: "Error no controlado",
+               User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+};
+	
 });

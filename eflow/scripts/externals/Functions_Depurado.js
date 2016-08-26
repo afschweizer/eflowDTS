@@ -3,14 +3,14 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 var eflowDTS = {
   Configuration: {
     "URLs": {
-      "eflow_Get": "http://104.197.119.240/testing/eflowDTS/Eflow_Get.php",
-      "eflow_Post": "http://104.197.119.240/testing/eflowDTS/Eflow_Post.php",
-      "eflow_Date_Time": "http://104.197.119.240/testing/eflowDTS/time.php"
+      "eflow_Get": "http://104.197.119.240/production/eflowDTS/Eflow_Get.php",
+      "eflow_Post": "http://104.197.119.240/production/eflowDTS/Eflow_Post.php",
+      "eflow_Date_Time": "http://104.197.119.240/production/eflowDTS/time.php"
     }
   },
   Session: {
     "Current_User": {},
-    "Company": {},
+    "Company": {}, 
     "Ram": {},
     "LoggedIn": false,
     "Save_Session": false,
