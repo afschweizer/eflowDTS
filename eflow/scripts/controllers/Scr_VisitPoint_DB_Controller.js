@@ -2651,7 +2651,7 @@ function Export_CSV(arr) {
        
         CSV += row + '\r\n';
 		}        
-    } 
+    }  
     
     if (CSV === '') {        
         alert("Invalid data");
@@ -2666,7 +2666,9 @@ function Export_CSV(arr) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
+   
+   
+   
 }catch (e) {
         
         var err;
