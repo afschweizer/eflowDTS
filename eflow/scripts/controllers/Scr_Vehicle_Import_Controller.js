@@ -1,5 +1,15 @@
 DTS_APP.controller('Scr_Vehicle_Import_Controller',function($scope) {
 
+
+$scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayVehicles_Import = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayVehicles_Import.length/$scope.pageSize);
+};
+
+
 $scope.init = function(){try{
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();

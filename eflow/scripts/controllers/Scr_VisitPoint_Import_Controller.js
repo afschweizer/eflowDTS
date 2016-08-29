@@ -1,5 +1,13 @@
  DTS_APP.controller('Scr_VisitPoint_Import_Controller',function($scope) {
 
+$scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayVisitPoints_Import = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayVisitPoints_Import.length/$scope.pageSize); 
+};
+
 $scope.init = function(){
 try{
        	Set_Current_Page();

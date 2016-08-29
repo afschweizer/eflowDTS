@@ -2,6 +2,16 @@
 var map; 
 DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
  
+  
+$scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayVisitPoint = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayVisitPoint.length/$scope.pageSize);
+};
+
+
 $scope.init = function(){
 try{
        	Set_Current_Page();

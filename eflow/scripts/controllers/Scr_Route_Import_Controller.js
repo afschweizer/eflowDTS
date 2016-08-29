@@ -1,5 +1,13 @@
 DTS_APP.controller('Scr_Route_Import_Controller',function($scope) {
  
+ $scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayRoutes_Import = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayRoutes_Import.length/$scope.pageSize);
+};
+
 $scope.init = function(){
 	try{
        	Set_Current_Page();

@@ -1,5 +1,14 @@
 DTS_APP.controller('Scr_Job_Import_Controller',function($scope) {
 
+
+$scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayJobs_Import = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayJobs_Import.length/$scope.pageSize);
+};
+
 $scope.init = function(){
 try{
 		

@@ -2,8 +2,18 @@
 DTS_APP.controller('Scr_User_Controller',function($scope){
 
 $scope.Type = "password";  
+
+$scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayUser = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayUser.length/$scope.pageSize);
+};
+
 $scope.init = function() {
 	try{
+		
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 	//Get_Cookie("EflowCookie");

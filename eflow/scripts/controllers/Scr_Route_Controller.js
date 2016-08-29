@@ -3,6 +3,15 @@ var Array_Route = [];
 var Polygon;
 
 DTS_APP.controller('Scr_Route_Controller',function($scope) {
+	
+	
+$scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayRoute = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayRoute.length/$scope.pageSize);
+};
 
 $scope.init = function(){
 	try{

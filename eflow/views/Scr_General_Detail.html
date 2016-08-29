@@ -54,14 +54,14 @@
  </div>
 
  <div class="row">
-    <div class="col-sm-4" ng-show="Show_VisitPoint_Route">
+    <div class="col-sm-6" ng-show="Show_VisitPoint_Route">
 			<h2 align="center">
        Punto de Visita por Ruta
       </h2>
 				<div id="piechart_3d" style="width:100%; height: 200%"></div>   
     </div>
     
-     <div class="col-sm-4" ng-show="Show_Detail_VisitPoint"> 
+     <div class="col-sm-4" > 
       <h2 align="center">
         Detalle Punto de Visita por Ruta
       </h2>
@@ -69,35 +69,29 @@
 						<tbody>
                     <tr class="bg-aqua">
                        <th style="width: 10px">#</th>
-                       <th>Producto</th>
-                       <th>Cantidad</th>
-                       <th>Porcentaje</th>
+                       <th>Nombre</th>
+                       <th>Estado</th>
+                       <th>Usuario</th>
+                       <th>Placa</th>
+                       <th>Incidentes</th>
                     </tr>
-                    <tr >
-                       <td ng-click="PV_Info_Prod(job)">1</td>
-                       <td class="text-left" ng-click="PV_Info_Prod(job)">sd</td>
-                       <td ng-click="PV_Info_Prod(job)">50</td>
-                       <td>
-                          <div class="progress progress-xs progress-striped active">
+                   <tr  ng-repeat="obj in ArrayJobs | filter: {Route:obj}">  
+          <td>{{$index+1}}</td>
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_Name">{{obj.Name}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_ID_Truck"> 
+            <div class="progress progress-xs progress-striped active">
                              <div class="progress-bar bg-teal" style="width:{{((12*100)/50)}}%"><b style="color:#000">Completo</b></div>
                           </div>
-                       </td>
-                    </tr>
-                    <tr >
-                       <td ng-click="PV_Info_Prod(job)">2</td>
-                       <td class="text-left" ng-click="PV_Info_Prod(job)">sd</td>
-                       <td ng-click="PV_Info_Prod(job)">50</td>
-                       <td>
-                          <div class="progress progress-xs progress-striped active">
-                             <div class="progress-bar bg-teal" style="width:{{((12*100)/50)}}%"><b style="color:#000">Parcial</b></div>
-                          </div>
-                       </td>
-                    </tr>
-					  </tbody>
+                     </td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_User">{{obj.User}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_Route">{{obj.ID_Truck}}</td> 
+          <td ng-click="Visualize_VisitPoint(obj);" ng-class="Align_class_Sequence">{{obj.Sequence}}</td> 
+        </tr>
+      </tbody>
 					</table>
     </div>
     
-    <div class="col-sm-4" ng-show="Show_Detail_VisitPoint">
+    <div class="col-sm-2" ng-show="Show_Detail_VisitPoint">
       <h2 align="center">
         Avance
       </h2>

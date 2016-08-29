@@ -1,5 +1,15 @@
 DTS_APP.controller('Scr_VisitPoint_DB_Controller',function($scope) {
  
+ 
+$scope.currentPage = 0;
+$scope.pageSize = 10; 
+$scope.ArrayJobs = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayJobs.length/$scope.pageSize);
+};
+
+
 $scope.init = function(){
 try{
 	

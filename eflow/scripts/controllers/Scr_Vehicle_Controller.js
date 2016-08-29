@@ -1,5 +1,15 @@
 DTS_APP.controller('Scr_Vehicle_Controller',function($scope){
 
+
+$scope.currentPage = 0;
+$scope.pageSize = 5; 
+$scope.ArrayVehicle = [];
+
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayVehicle.length/$scope.pageSize);
+};
+
+
 $scope.init = function() {try{
        	Set_Current_Page();
 		//To_Reload_Eflow_Config();
