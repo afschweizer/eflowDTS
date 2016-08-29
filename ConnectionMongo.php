@@ -15,8 +15,8 @@ $options = array("connectTimeoutMS" => 30000);
 
 $conn = new MongoClient($uri,$options);
   
-$db = $conn->selectDB("eflowdtsProduction");
-//$db = $conn->selectDB("eflowdtsTesting");
+//$db = $conn->selectDB("eflowdtsProduction");
+$db = $conn->selectDB("eflowdtsTesting");
 //$db = $conn->selectDB("eflowdtsDevelopment");
   
   
