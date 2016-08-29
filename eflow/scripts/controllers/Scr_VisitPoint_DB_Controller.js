@@ -53,7 +53,6 @@ try{
   
 };
 	
-	
 $scope.See_Status=function(status){
 try{
  		
