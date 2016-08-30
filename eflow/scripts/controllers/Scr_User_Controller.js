@@ -1,7 +1,6 @@
-       
 DTS_APP.controller('Scr_User_Controller',function($scope){
 
-$scope.Type = "password";  
+$scope.Type = "password";   
 
 $scope.currentPage = 0;
 $scope.pageSize = 5; 
@@ -13,8 +12,7 @@ $scope.numberOfPages = function(){
 
 $scope.init = function() {
 	try{
-		
-       	Set_Current_Page();
+	Set_Current_Page();
 		//To_Reload_Eflow_Config();
 	//Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
@@ -27,6 +25,9 @@ $scope.ArrayTypes = eflowDTS.Session.Company.Settings.User;
 $scope.ArrayGenders = Gender;
 $scope.Domain = eflowDTS.Session.Company.Domain;
 $scope.Select();
+
+
+
 
    }catch (e) {
         
