@@ -6,7 +6,7 @@ DTS_APP.controller('Scr_Route_Controller',function($scope) {
 	
 	
 $scope.currentPage = 0;
-$scope.pageSize = 5; 
+$scope.pageSize = 15; 
 $scope.ArrayRoute = [];
 
 $scope.numberOfPages = function(){

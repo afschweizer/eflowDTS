@@ -162,7 +162,7 @@ $scope.Type = "password";
 		map.setContextMenu({
 				  control: 'map',
 				  options: [{
-				    title: 'Agregar Vértice',
+				    title: 'Seleccionar Ubicación',
 				    name: 'Add_Vertex',
 				    action: function(e) {
 				    	

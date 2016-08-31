@@ -2,7 +2,7 @@ DTS_APP.controller('Scr_Vehicle_Controller',function($scope){
 
 
 $scope.currentPage = 0;
-$scope.pageSize = 5; 
+$scope.pageSize = 15; 
 $scope.ArrayVehicle = [];
 
 $scope.numberOfPages = function(){

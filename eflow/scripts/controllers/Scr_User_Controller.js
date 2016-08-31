@@ -3,7 +3,7 @@ DTS_APP.controller('Scr_User_Controller',function($scope){
 $scope.Type = "password";   
 
 $scope.currentPage = 0;
-$scope.pageSize = 5; 
+$scope.pageSize = 15; 
 $scope.ArrayUser = [];
 
 $scope.numberOfPages = function(){
@@ -11,8 +11,9 @@ $scope.numberOfPages = function(){
 };
 
 $scope.init = function() {
-	try{
-	Set_Current_Page();
+try{
+
+Set_Current_Page();
 		//To_Reload_Eflow_Config();
 	//Get_Cookie("EflowCookie");
 	//	eflowDTS = Get_Cookie("EflowCookie");
@@ -25,9 +26,6 @@ $scope.ArrayTypes = eflowDTS.Session.Company.Settings.User;
 $scope.ArrayGenders = Gender;
 $scope.Domain = eflowDTS.Session.Company.Domain;
 $scope.Select();
-
-
-
 
    }catch (e) {
         
@@ -441,6 +439,7 @@ $scope.Visualize_User = function(Obj){
 	
 $scope.Open_Modal_Add_VisitPoint = function(){
 	try{
+		
 	$scope.Show_Components.License=false;
 $scope.Show_Components.Type_License=false;
 	$scope.User = {};

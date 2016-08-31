@@ -2,7 +2,7 @@ DTS_APP.controller('Scr_VisitPoint_DB_Controller',function($scope) {
  
  
 $scope.currentPage = 0;
-$scope.pageSize = 10; 
+$scope.pageSize = 25; 
 $scope.ArrayJobs = [];
 
 $scope.numberOfPages = function(){

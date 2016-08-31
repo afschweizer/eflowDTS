@@ -4,7 +4,7 @@ DTS_APP.controller('Scr_VisitPoint_Controller',function($scope) {
  
   
 $scope.currentPage = 0;
-$scope.pageSize = 5; 
+$scope.pageSize = 15; 
 $scope.ArrayVisitPoint = [];
 
 $scope.numberOfPages = function(){

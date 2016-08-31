@@ -661,7 +661,7 @@ function CSV_To_JSON(csv){
 				 }
 				 
 				// Obj.Age = parseInt(Obj.Age);
-				 Obj.Identification = parseInt(Obj.Identification);
+				 Obj.Identification = Obj.Identification;
 				 Obj.Company = eflowDTS.Session.Company.Identifier;
 				 
 				 ArrayJson.push(Obj);
