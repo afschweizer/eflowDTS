@@ -4,6 +4,8 @@ include 'ConnectionMongo.php';
 
 $coll = $db->Store_Jobs_Send;
 
+$arrayResult = Array();
+
  foreach($dataObject->Data as $doc){
 
       $id = '$id';
@@ -14,6 +16,10 @@ $coll = $db->Store_Jobs_Send;
 
       $coll->insert($doc);
 	
+      array_push($arrayResult, $doc->_id->$id);
+   
     }
+
+echo json_encode(array("Data"=>$arrayResult,"Collection_Name"=>$dataObject->Collection_Name));
 
 ?>
