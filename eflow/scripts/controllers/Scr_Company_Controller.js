@@ -1,5 +1,5 @@
 function comprueba(val,input){
-	
+	 
 var arroba = /@/;
 
 /*if(arroba.test(val)){

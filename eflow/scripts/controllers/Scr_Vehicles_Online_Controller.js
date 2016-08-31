@@ -185,7 +185,7 @@ try{
 			if(Json.length > 0){
 			  var Today = $scope.Watch;
 			  for(var i = 0; i < Json.length; i++){
-				if((Today - new Date(Json[i].Date)) < 300000){
+				if((Today - new Date(Json[i].Date)) < eflowDTS.Configuration.Time_Since_Last_Connection){
 					
 					if(Json[i].Type === 'Conductor'){
 					Json[i].Class = "fa fa-truck";
