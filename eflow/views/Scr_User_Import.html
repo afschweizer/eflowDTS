@@ -270,7 +270,7 @@ $(document).ready( function() {
 											
               <label class="col-sm-4 control-label">Fecha de vencimiento:</label><div class="col-sm-8"> 
                   <div class="form-group">
-											<input id="DueDate" type="date" class="form-control"  ng-model="User_Import.DueDate"  required>
+											<input id="DueDate" type="date" min="2016-01-01" class="form-control"  ng-model="User_Import.DueDate"  required>
                               </div></div></div>
               <div class="form-group">
 											
@@ -282,7 +282,7 @@ $(document).ready( function() {
 											
               <label class="col-sm-4 control-label">Fecha de nacimiento:</label><div class="col-sm-8"> 
                   <div class="form-group">
-											<input id="Birthdate" type="date" class="form-control" name="Birthdate"  ng-model="User_Import.Birthdate"  required>
+											<input id="Birthdate" type="date" min="1900-01-01" max="2016-01-01"class="form-control" name="Birthdate"  ng-model="User_Import.Birthdate"  required>
                               </div></div></div>
               
                 <div class="form-group" >
