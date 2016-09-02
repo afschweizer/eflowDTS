@@ -252,11 +252,19 @@ try{
   
 };
    
-	$scope.Open_Modal_Add_VisitPoint = function(jobs){
+	$scope.Open_Modal_Add_VisitPoint = function(jobs,type ){
 	try{
-
-	$scope.Incidents =jobs;
-	$("#Modal_Add_VisitPoint").modal("show");	
+	if(type==="Incidents"){
+	$scope.Incidents = jobs;	
+		$scope.Show_Test=false;
+		$scope.Show_Incidents=true;
+	}
+	else{
+	$scope.Test=jobs;
+		$scope.Show_Test=true;
+		$scope.Show_Incidents=false;
+	}
+	$("#Modal_Add_VisitPoint").modal("show");
 	}catch (e) {
         
         var err;
@@ -266,6 +274,33 @@ try{
                 Generated: false,
                 Page: "Scr_Vehicles_Detail_Controller",
                 Method: "Open_Modal_Add_VisitPoint",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+	$scope.Open_Modal_Add_VisitPoint_Test = function(jobs){
+	try{
+
+	$scope.Notes =jobs;
+	$("#Modal_Add_VisitPoint_Test").modal("show");	
+	}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Detail_Controller",
+                Method: "Open_Modal_Add_VisitPoint_Test",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
@@ -387,9 +422,15 @@ try{
 		}else{
 			  		$scope.Show_Certificate = false;
 		}
+		if(obj.Notes.lengh<=0){
+			  		$scope.Show_Test = false;			  		
+		}else{
+			  		$scope.Show_Test = true;
+		}
    	    $scope.PV = obj;
 		$scope.Show_Detail_Prod=false;
         $scope.Show_Incidentes=false;
+        $scope.Show_Detail_Test=false;
 		$scope.Show_Punto_Visita=true;
     
     
@@ -469,6 +510,41 @@ try{
   
 };
   
+$scope.PV_Info_Test = function(obj){
+try{
+	$scope.Info_Test = obj.Notes;
+		$scope.Show_Detail_Test=true;
+		$scope.Show_DetailTest = true;
+		if(!$scope.Info_Test.lengh ===0){
+			$scope.Show_Notes=true;
+			$scope.Show_Buttons=false;
+		}
+		else{
+			$scope.Show_Notes=false;
+			$scope.Show_Buttons=true;
+		}	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Vehicles_Detail_Controller",
+                Method: "PV_Info_Test",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
   
   function Draw_Route(JsonArray){
   	try{

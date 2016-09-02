@@ -6,7 +6,7 @@ header("Access-Control-Allow-Headers: Content-Type, Depth, User-Agent, X-File-Si
 $Json_String = file_get_contents('php://input');
 $Json_Object = json_decode($Json_String);
 include 'ConnectionMongo.php';
-$coll = $db->Store_Jobs_Test;
+$coll = $db->Store_Jobs_Send;
 for($i = 0;$i < count($Json_Object);$i++){
 $doc = $Json_Object[$i];
 $doc->Control->Creation_Date = date_timestamp_get(date_create())*1000;
