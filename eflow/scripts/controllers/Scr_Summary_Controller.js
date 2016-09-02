@@ -130,7 +130,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 };
    
    $scope.Charge_DataSet = function(DataSet){
-		try{
+	try{
+		
    	$scope.Filter={};
    	$("#Charge_New_Modal").modal('hide');
 		$scope.Filter.End_Date =  new Date(DataSet.End_Date).format("yyyy-mm-dd");
@@ -267,11 +268,31 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		}else{
 			eflowDTS.Session.Ram.Flag_DataSet = "Old";
 		}
+		
+		switch(Filter.Type){
+			case 'Item':{
+				
+				break;
+				}
+			case 'Visit_Point':{
+				for(var i = 0; i < ArrData.length; i++){
+					ArrData[i].In_Time === true ? ArrData[i].In_Time = "Sí" : ArrData[i].In_Time = "No";
+					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
+					ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("default");
+				}
+				break;
+				}
+			case 'Trip':{
+				
+
+				break;}			
+		}
+		
 		$scope.PivotData = ArrData;
 		$scope.DataSet.Type = Filter.Type;
 		$scope.DataSet.Start_Date = new Date(Filter.Start_Date).getTime();
 		$scope.DataSet.End_Date = new Date(Filter.End_Date).getTime();
-		$scope.$apply();	
+		setInterval(function(){$scope.$apply();	},0);
 		Create_Pivot_Table();	
 		
 		};		

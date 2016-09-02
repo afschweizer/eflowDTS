@@ -422,7 +422,7 @@ try{
 		}else{
 			  		$scope.Show_Certificate = false;
 		}
-		if(obj.Notes.lengh<=0){
+		if(obj.Notes.length===0){
 			  		$scope.Show_Test = false;			  		
 		}else{
 			  		$scope.Show_Test = true;
