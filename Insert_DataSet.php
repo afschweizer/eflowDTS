@@ -21,11 +21,10 @@ if(isset($dataObject->Data[$i]->_id)){
     $id = '$id';
 
     $coll->remove(array('_id' => new MongoId($dataObject->Data[$i]->_id->$id)));
-
     $dataObject->Data[$i]->_id = new MongoId($dataObject->Data[$i]->_id->$id);
 
-    $coll->insert($document);
-   
+    $coll->insert($dataObject->Data[$i]);
+  
    }else{
      
      $result = $coll->insert($dataObject->Data[$i]);
