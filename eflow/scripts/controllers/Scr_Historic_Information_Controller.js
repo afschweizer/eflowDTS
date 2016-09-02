@@ -5,7 +5,7 @@ $scope.init = function(){
 		 $("#Charge_New_Modal").modal('show');
 		$scope.Information = false;
 		
-	}catch (e) {
+	}catch (e) {   
 		var err;
 		if (e.hasOwnProperty("Generated") === false) {
 	       err = {
