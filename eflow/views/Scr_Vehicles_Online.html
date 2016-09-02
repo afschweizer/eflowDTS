@@ -78,11 +78,11 @@
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-truck"></i> Conductor.
+                    <i class="fa fa-truck"></i> Conductor. {{(ArrayUser | filter:  {'type': 'Conductor'} :true).length}}
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-user"></i> Ayudante.</h3>
+                    <i class="fa fa-user"></i> Ayudante. {{ArrayUser.length}}</h3>
                  <div class="box-tools pull-right">                   
                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Ajustar Tamaño" ng-click="Resize();"><i class="glyphicon glyphicon-refresh"></i></button>
                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Refrescar" ng-click="Create_Map();"><i class="glyphicon glyphicon-sort"></i></button>

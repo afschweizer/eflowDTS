@@ -261,7 +261,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             'Fields':{
             }
         };
-		var onSuccess = function(ArrData){
+		var onSuccess = function(ArrData){ 
 		
 		if($scope.DataSet.Name === ""){
 			eflowDTS.Session.Ram.Flag_DataSet = "New";
@@ -278,7 +278,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 				for(var i = 0; i < ArrData.length; i++){
 					ArrData[i].In_Time === true ? ArrData[i].In_Time = "Sí" : ArrData[i].In_Time = "No";
 					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
-					ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("default");
+                    ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].End_Date).format("h:MM:ss TT"); 
 				}
 				break;
 				}
