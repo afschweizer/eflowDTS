@@ -279,6 +279,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 					ArrData[i].In_Time === true ? ArrData[i].In_Time = "Sí" : ArrData[i].In_Time = "No";
 					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
                     ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].End_Date).format("h:MM:ss TT"); 
+                    ArrData[i].Duration = (ArrData[i].End_Date - ArrData[i].Start_Date) / 60 /1000;
 				}
 				break;
 				}
