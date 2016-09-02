@@ -276,10 +276,11 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 				}
 			case 'Visit_Point':{
 				for(var i = 0; i < ArrData.length; i++){
+					ArrData[i].Duration = Math.round((ArrData[i].End_Date - ArrData[i].Start_Date) / 60 /1000);
 					ArrData[i].In_Time === true ? ArrData[i].In_Time = "Sí" : ArrData[i].In_Time = "No";
 					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
                     ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].End_Date).format("h:MM:ss TT"); 
-                    ArrData[i].Duration = (ArrData[i].End_Date - ArrData[i].Start_Date) / 60 /1000;
+                    
 				}
 				break;
 				}
