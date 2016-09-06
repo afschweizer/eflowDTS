@@ -1,0 +1,19 @@
+<?php
+  
+include 'ConnectionMongo.php'; 
+  
+$coll = $db->Store_DB_Manager;
+
+$result = $coll->findOne($dataObject->Data);
+
+if($result != null){
+ echo json_encode($result);
+}else{
+ $js = array('Result'=>false);
+ echo json_encode($js);  
+}
+
+  
+?>
+
+  
