@@ -148,7 +148,7 @@ $scope.Close_Modal = function(){
     
  $scope.Save_Data=function(Restoring){
 try{
-	if(Restoring.User == null || Restoring.User === "" || Restoring.Password == null || Restoring.Password === "" || Restoring.onSuccess == null || Restoring.onSuccess === "" || Restoring.onError == null || Restoring.onError === "" ){
+	if(Restoring.User == null || Restoring.User === "" || Restoring.Password == null || Restoring.Password === "" || Restoring.Script == null || Restoring.Script === ""  ){
 		
 		bootbox.dialog(
                 {
@@ -171,8 +171,7 @@ try{
     			"ID_Truck": Restoring.User.split("(")[1].split(")")[0],
                 "Date": new Date().getTime(),
 				"Password": Restoring.Password,
-				"onSuccess": Restoring.onSuccess,
-				"onError": Restoring.onError
+				"Script": Restoring.Script
 			 }
 			 };
 				var onSuccess = function(onSuccess){
