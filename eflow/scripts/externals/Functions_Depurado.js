@@ -3,9 +3,9 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 var eflowDTS = {
   Configuration: {
     "URLs": {
-      "eflow_Get": "http://104.197.119.240/production/eflowDTS/Eflow_Get.php",
-      "eflow_Post": "http://104.197.119.240/production/eflowDTS/Eflow_Post.php",
-      "eflow_Date_Time": "http://104.197.119.240/production/eflowDTS/time.php"
+      "eflow_Get": "http://104.197.119.240/testing/eflowDTS/Eflow_Get.php",
+      "eflow_Post": "http://104.197.119.240/testing/eflowDTS/Eflow_Post.php",
+      "eflow_Date_Time": "http://104.197.119.240/testing/eflowDTS/time.php"
     },
     "Time_Since_Last_Connection": (30)*60*1000, // Intervalo de tiempo en minutos, mínimo de última conexión de usuarios
   },

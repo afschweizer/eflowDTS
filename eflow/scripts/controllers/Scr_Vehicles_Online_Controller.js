@@ -173,7 +173,10 @@ try{
 		var JsonData = {
 			'Method_Name': 'Select_User_Online',
              'Data': {
-    			"Company": eflowDTS.Session.Company.Identifier
+    			"Company": eflowDTS.Session.Company.Identifier,
+            	"Date": {
+            		"$gte":new Date().getTime() - eflowDTS.Configuration.Time_Since_Last_Connection
+            		}
             },
             'Fields':{
             	
@@ -183,9 +186,7 @@ try{
 		var onSuccess = function(Json){
 			$scope.ArrayUser = [];
 			if(Json.length > 0){
-			  var Today = $scope.Watch;
 			  for(var i = 0; i < Json.length; i++){
-				if((Today - new Date(Json[i].Date)) < eflowDTS.Configuration.Time_Since_Last_Connection){
 					
 					if(Json[i].Type === 'Conductor'){
 					Json[i].Class = "fa fa-truck";
@@ -196,7 +197,7 @@ try{
 					$scope.$apply($scope.ArrayUser);	
 					$scope.Show_Components.Show_User_Online = false;
 					$scope.Show_Components.Show_List = true;
-				}
+				
 				}			
 			}else{
 				$scope.Show_User_Online = true;		

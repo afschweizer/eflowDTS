@@ -123,7 +123,12 @@ switch($dataObject->Method_Name){
     {
       require'Select_Geolocation.php';
       break;
-    }  
+    } 
+   case 'Select_DB_Manager':
+    {
+      require 'Select_DB_Manager.php';
+      break;
+    }
    default:
     {
     	echo json_encode( array('Error' => 'Metodo_Incorrecto'));

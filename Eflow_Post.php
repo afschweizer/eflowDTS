@@ -130,6 +130,11 @@ switch($dataObject->Method_Name){
       require'Insert_Error.php';
       break;
     }
+  case 'Insert_DB_Manager':
+    {
+      require 'Insert_DB_Manager.php';
+      break;
+    } 
   case 'Delete_Task':
     {
       require'Delete_Task.php';

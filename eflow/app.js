@@ -80,6 +80,9 @@
             .when('/Prueba',{
             	templateUrl: 'views/Scr_Prueba.html'
             })
+            .when('/Restoring_DB',{
+            	templateUrl: 'views/Scr_Restoring_DB.html'
+            })
             .otherwise({
             	redirectTo : '/404'
             });
