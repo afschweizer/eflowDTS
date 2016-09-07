@@ -9,7 +9,7 @@
 						<h4 style="text-align: center;"><span class="fa fa-history"></span><label>  Restauracion de base de datos </label></h4>
 					</div>
 					<div class="modal-body">
-          <form ng-submit="Save_Data(Restoring)">     
+          <form ng-show="Show_Data" ng-submit="Save_Data(Restoring)">     
           <div class="row"> 
             <div class="col-sm-1">	</div>
            <div class="col-sm-9">	
@@ -45,10 +45,11 @@
                     <div class="form-group" >
                 
                        
-                        <div class="col-sm-12 controls">                  
-                          <button type="button" class="btn btn-primary pull-right" ng-click="Close_Modal('#Charge_New_Modal');" style="background-color: #014D7C;color:#fff;" ><i class="glyphicon glyphicon-remove"></i>Cerrar</button>
-          						<button type="reset" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="glyphicon glyphicon-erase"></i>Limpiar</button>     
-                            <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" ><i class="glyphicon glyphicon-log-in"></i> Enviar</button>   
+                        <div class="col-sm-12 controls">   
+                          <button type="reset" class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" >
+                            <i class="glyphicon glyphicon-erase"></i> Limpiar</button>  
+                           <button type="submit"  class="btn btn-primary pull-right" style="background-color: #014D7C;color:#fff;" >
+                             <i class="glyphicon glyphicon-log-in"></i> Enviar</button>   
                       </div>
                     </div>
                 </div>            
@@ -56,16 +57,20 @@
             <div class="col-sm-2">	</div>            
         </div>    
       
-        </form>       <!-- Button      
-                  <div ng-show="No_Data" name="No_Data" id="No_Data" class="form-horizontal">   
-              
-                  <div class="input-group">
-                  <label>En este momento no se cuenta con usuarios conectados.</label>
+        </form>        
+               <form ng-show="Show_No_Data" >  
+                  <div >
+                    <h2 > <i class="glyphicon glyphicon-warning-sign danger" ></i> 
+                      En este momento no se cuenta con usuarios conectados.</h2>
                  </div>                                                                
 						
-                </div>      --> 
+                </form>      
                 </div>
                <div class="modal-footer">
+                 <button type="button" class="btn btn-primary pull-right" ng-click="Close_Modal('#Charge_New_Modal');" style="background-color: #014D7C;color:#fff;" >
+                   <i class="glyphicon glyphicon-remove"></i> Cerrar</button>
+          			   
+                           
      <!-- <button type="button"  class="btn btn-primary pull-right" ng-click="Close_Modal('#NO_Data_Modal');" style="background-color: #014D7C;color:#fff;" ><i class="glyphicon glyphicon-remove"></i>Cerrar</button>
           		  
      <button type="button"data-dismiss="modal" class="btn btn-primary pull-left" ng-click="init()" style="background-color: #014D7C;color:#fff;" ><i class="glyphicon glyphicon-remove"></i>Refrescar</button>

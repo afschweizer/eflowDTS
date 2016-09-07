@@ -65,7 +65,7 @@
             .when('/VisitPoint_General_View',{
             	templateUrl : 'views/Scr_VisitPoint_General_View.html'
             })
-            .when('/General_Detail_Routes',{
+            .when('/General_Detail',{
             	templateUrl : 'views/Scr_General_Detail.html'
             })
             .when('/Settings',{
@@ -76,9 +76,6 @@
             })
             .when('/Historic_Information',{
             	templateUrl: 'views/Scr_Historic_Information.html'
-            })
-            .when('/Prueba',{
-            	templateUrl: 'views/Scr_Prueba.html'
             })
             .when('/Restoring_DB',{
             	templateUrl: 'views/Scr_Restoring_DB.html'

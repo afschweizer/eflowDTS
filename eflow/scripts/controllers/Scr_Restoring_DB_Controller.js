@@ -1,6 +1,8 @@
 DTS_APP.controller('Scr_Restoring_DB_Controller', function($scope) {
 
  $scope.init = function() {
+			$scope.Show_No_Data=false;
+			$scope.Show_Data=false;
 		 $("#Charge_New_Modal").modal('show');
     $scope.Select_User();
   };
@@ -68,10 +70,14 @@ DTS_APP.controller('Scr_Restoring_DB_Controller', function($scope) {
 var Load_Select = function(ArrayJobs){
 	try {
 		if(ArrayJobs.length===0){
+			$scope.Show_Data=false;
+			$scope.Show_No_Data=true;
 				//alert("No Existe Información");
 	//$("#Charge_New_Modal").modal('hide');
 		}
 		else{
+			$scope.Show_No_Data=false;
+			$scope.Show_Data=true;
 		$scope.User_Truck=[]; 
 		
 		 for(var i=0; i<ArrayJobs.length;i++){
