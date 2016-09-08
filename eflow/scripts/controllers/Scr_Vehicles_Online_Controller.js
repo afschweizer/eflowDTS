@@ -352,7 +352,7 @@ try{
 				'Visit_State':true,
 				'User':true,
 				'Name':true,
-				'ID_Truck':true				
+				'ID_Truck':true				 
 			} 
 		};
 		

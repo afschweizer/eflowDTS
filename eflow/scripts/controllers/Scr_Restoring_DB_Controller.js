@@ -1,7 +1,7 @@
 DTS_APP.controller('Scr_Restoring_DB_Controller', function($scope) {
 
  $scope.init = function() {
-			$scope.Show_No_Data=false;
+			$scope.Show_No_Data=false; 
 			$scope.Show_Data=false;
 		 $("#Charge_New_Modal").modal('show');
     $scope.Select_User();
