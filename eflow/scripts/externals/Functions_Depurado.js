@@ -527,5 +527,25 @@ function Image_To_Base64(url, callback) {
     }  
 }
 
+function Resize_Image(file, callback) {
+     var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = new Image();
+                img.onload = function() {
+                    var MAXWidthHeight = 120;
+                    var rel = MAXWidthHeight / Math.max(this.width, this.height),
+                        width = Math.round( this.width *  rel),
+                        height = Math.round( this.height *  rel),
+                        canvas = document.createElement("canvas");
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext("2d").drawImage(this, 0, 0, width, height);
+                    callback(canvas.toDataURL());                    
+                };
+                img.src = e.target.result;
+            };
+        reader.readAsDataURL(file); 
+			
+}
 
 

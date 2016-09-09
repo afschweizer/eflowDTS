@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html ng-app="DTS_APP">
+<html lang="en" ng-app="DTS_APP">
     <head>
         <title>Delivery Tracking System</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="shortcut icon" href="images/Eflow_Icon.ico">
         <link rel="stylesheet" href="styles/Css_Proyect.css">
+        <link rel="stylesheet" href="styles/blue.css">
       
         <link rel="stylesheet" href="styles/Dashboard.css"> 
+      
       
         <link rel="stylesheet" href="styles/responsive-calendar.css">
         <link rel="stylesheet" href="styles/pivot.css"> 
@@ -28,7 +30,10 @@
         <script type="text/javascript" src="scripts/externals/pivot.js"></script>
         <script type="text/javascript" src="scripts/externals/gchart_renderers.js"></script>  
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript" src="scripts/externals/knob.js"></script>  
+        <script type="text/javascript" src="scripts/externals/knob.js"></script> 
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+  
        
 
     <!-- 	<script src="scripts/externals/jsPDF.js"></script>
@@ -219,6 +224,8 @@
 		<script src="scripts/controllers/Scr_Restoring_DB_Controller.js"></script>
       <script src="scripts/controllers/Scr_Info_Controller.js"></script>
       <script src="scripts/controllers/Scr_Tutorial_Controller.js"></script>
+      <script src="scripts/controllers/Scr_Notification_Controller.js"></script>
+      
       <script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
 	   <script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
 	   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -316,9 +323,9 @@
                            <ul class="dropdown-menu dropdown-menu-right">
                             <li><a style="color:#000000;" ng-click="Sign_Out()" class="fa fa-sign-out" data-toggle="tooltip" title="Cerrar Sesi&oacute;n" tabindex="0"> Cerrar Sesi&oacute;n</a></li>
                             <li><a style="color:#000000;" href="#Settings" class="fa fa-cog" data-toggle="tooltip" title="Ajustes" tabindex="0"> Ajustes</a></li>
-                           <li><a style="color:#000000;" href="#Restoring_DB" class="fa fa-database" data-toggle="tooltip" title="Administracion de Base Datos" tabindex="0"> Base Datos</a></li>  
-                           <!-- <li><a style="color:#000000;" href="#General_Detail" class="fa fa-area-chart" data-toggle="tooltip" title="Administracion de Reportes" tabindex="0"> Reporteria</a></li>  
-                          -->  <li><a  style="color:#000000;" href="/testing/eflowDTS/eflow/Manuals/Manual_de_Usuario_DTS.pdf" target="_blank"  class="fa fa-file-pdf-o" data-toggle="tooltip" title="Manuales" tabindex="0"> Manual</a></li>
+                            <li><a style="color:#000000;" href="#Restoring_DB" class="fa fa-database" data-toggle="tooltip" title="Administracion de Base Datos" tabindex="0"> Base Datos</a></li>  
+                            <li><a style="color:#000000;" href="#General_Detail" class="fa fa-area-chart" data-toggle="tooltip" title="Administracion de Reportes" tabindex="0"> Reporteria</a></li>  
+                            <li><a  style="color:#000000;" href="/testing/eflowDTS/eflow/Manuals/Manual_de_Usuario_DTS.pdf" target="_blank"  class="fa fa-file-pdf-o" data-toggle="tooltip" title="Manuales" tabindex="0"> Manual</a></li>
 					<!--  	 <li><a style="color:#000000;" href="#General_Detail_Routes" class="glyphicon glyphicon-road" data-toggle="tooltip" title="General Detail Routes" tabindex="0"> General Detail Routes</a></li>  
                             
                              <li><a style="color:#000000;" href="#Historic_Information" class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Información Histórica" tabindex="0"> Información Histórica</a></li> 
@@ -351,7 +358,8 @@
                         <li><a style="color:#000;" href="#user" data-toggle="tooltip" title="Usuarios">Usuarios</a></li>
                              <li><a style="color:#000;" href="#vehicle" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
                              <li><a style="color:#000;" href="#VisitPoint" data-toggle="tooltip" title="Establecimientos">Establecimientos</a></li>          
-                             <li><a style="color:#000;" href="#Routes" data-toggle="tooltip" title="Sector">Sectores</a></li>           
+                             <li><a style="color:#000;" href="#Routes" data-toggle="tooltip" title="Sector">Sectores</a></li>                 
+                             <li><a style="color:#000;" href="#Notification" data-toggle="tooltip" title="Sector">Notificaciones</a></li>           
                             <!-- <li><a href="#product" data-toggle="tooltip" title="Productos">Productos</a></li>  --> 
                    
                    </ul>
