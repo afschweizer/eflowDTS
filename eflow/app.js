@@ -83,6 +83,9 @@
             .when('/Info',{
             	templateUrl: 'views/Scr_Info.html'
             })
+            .when('/Tuto',{
+            	templateUrl: 'views/Scr_Tutorial.html'
+            })
             .otherwise({
             	redirectTo : '/404'
             });

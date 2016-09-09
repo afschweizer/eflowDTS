@@ -2,37 +2,33 @@
 <html ng-app="DTS_APP">
     <head>
         <title>Delivery Tracking System</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link rel="shortcut icon" href="images/Eflow_Icon.ico">
-		<link rel="stylesheet" href="styles/Css_Proyect.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="shortcut icon" href="images/Eflow_Icon.ico">
+        <link rel="stylesheet" href="styles/Css_Proyect.css">
       
-	  <link rel="stylesheet" href="styles/Dashboard.css"> 
+        <link rel="stylesheet" href="styles/Dashboard.css"> 
       
-      <link rel="stylesheet" href="styles/responsive-calendar.css">
-      <link rel="stylesheet" href="styles/pivot.css"> 
+        <link rel="stylesheet" href="styles/responsive-calendar.css">
+        <link rel="stylesheet" href="styles/pivot.css"> 
       
-       <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
-      
-<script src="scripts/externals/jspdf.min.js"></script>
-<script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+        <script src="scripts/externals/jspdf.min.js"></script>
+        <script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-      
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-      <script src="//code.angularjs.org/1.2.19/i18n/angular-locale_es-es.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-		
-      <script type="text/javascript" src="scripts/externals/Functions_Depurado.js"></script>
-      <script type="text/javascript" src="scripts/externals/dateFormat.js"></script>
-      <script src="scripts/externals/pagination.js"></script>
-      <script src="scripts/externals/Dexie.js"></script> 
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA6j2QfERe0APfyuG-tH6ffhM6vig3qoqk"></script>
-		<script type="text/javascript" src="scripts/externals/Gmaps.js"></script>    
-      <script type="text/javascript" src="scripts/externals/pivot.js"></script>
-      <script type="text/javascript" src="scripts/externals/gchart_renderers.js"></script>  
-      
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-      <script type="text/javascript" src="scripts/externals/knob.js"></script>  
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script src="//code.angularjs.org/1.2.19/i18n/angular-locale_es-es.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <script type="text/javascript" src="scripts/externals/Functions_Depurado.js"></script>
+        <script type="text/javascript" src="scripts/externals/dateFormat.js"></script>
+        <script src="scripts/externals/pagination.js"></script>
+        <script src="scripts/externals/Dexie.js"></script> 
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA6j2QfERe0APfyuG-tH6ffhM6vig3qoqk"></script>
+        <script type="text/javascript" src="scripts/externals/Gmaps.js"></script>    
+        <script type="text/javascript" src="scripts/externals/pivot.js"></script>
+        <script type="text/javascript" src="scripts/externals/gchart_renderers.js"></script>  
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="scripts/externals/knob.js"></script>  
        
 
     <!-- 	<script src="scripts/externals/jsPDF.js"></script>
@@ -222,18 +218,16 @@
       <script src="scripts/controllers/Scr_Historic_Information_Controller.js"></script>
 		<script src="scripts/controllers/Scr_Restoring_DB_Controller.js"></script>
       <script src="scripts/controllers/Scr_Info_Controller.js"></script>
-      
-	<script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
-	<script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-   
- 
-	 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>  
-    </head>
-    <body  ng-controller="indexController" ng-init="init();">
+      <script src="scripts/controllers/Scr_Tutorial_Controller.js"></script>
+      <script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+	   <script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
+	   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>  
+</head>
+<body  ng-controller="indexController" ng-init="init();">
       <!-- HEADER AND NAVBAR -->
        <!--<header >
             <nav class="navbar navbar-inverse" style="">
