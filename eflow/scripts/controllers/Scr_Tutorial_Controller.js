@@ -36,15 +36,35 @@ DTS_APP.controller('Scr_Tutorial_Controller',function($scope){
 		Tuto.Control.Creation_Date = new Date().getTime();
 		Tuto.Control.Created_User = eflowDTS.Session.Current_User.UserName;
 		
+		
+		var Request = {
+			"Method_Name":"Insert_Tutorial",
+			"Data":Tuto
+		};
+		
 		var onSuccess = function(Response){
 			document.getElementById("Description").innerHTML = "";
 			$('#Description').summernote('code',"");
 			$scope.Tuto = {};
-			$scope.Image_Name = "";
+			$scope.Image_Name = "";	
 			
+			botbox.dialog({
+				title:"¡Alerta!",
+				message:"Tutorial Guardado",
+				buttons:{
+					main:{
+						label:"OK",
+						className:"btn-primary"
+					}
+				}
+			});
 	    };
 
-		onSuccess();
+		var onError = function(e){
+			alert("Error: "+e);
+		};	
+		
+		Send_JSON(eflowDTS.Configuration.URLs.eflow_Post,Request,onSuccess,onError);
 		
 	};
 	
