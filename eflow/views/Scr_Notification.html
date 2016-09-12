@@ -27,15 +27,14 @@
                 <li>
                   <a href="">
                     <i class="fa fa-file-text-o"></i> Bandeja de entregados
-                    <span class="label label-primary pull-right">{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}
+                    <span class="label label-primary pull-right">{{(ArrayJobs | filter:  {'State': 'Read'} :true).length}}
                     </span>
                   </a>
                 </li>
                 <li>
                   <a href="">
                     <i class="fa fa-envelope-o"></i> Bandeja de leidos
-                    <span class="label label-primary pull-right">
-                 {{ArrayNotificacion.length}}
+                    <span class="label label-primary pull-right">{{(ArrayJobs | filter:  {'State': 'Read'} :true).length}}
                     </span>
                   </a>
                 </li>
