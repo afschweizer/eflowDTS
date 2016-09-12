@@ -532,7 +532,7 @@ function Resize_Image(file, callback) {
             reader.onload = function(e) {
                 var img = new Image();
                 img.onload = function() {
-                    var MAXWidthHeight = 120;
+                    var MAXWidthHeight = 800;
                     var rel = MAXWidthHeight / Math.max(this.width, this.height),
                         width = Math.round( this.width *  rel),
                         height = Math.round( this.height *  rel),
