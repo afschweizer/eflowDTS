@@ -96,6 +96,7 @@ try{
             Save_Error(e);
         }
     }  
+    
   
 };
 $scope.Delect_messages =function(Obj){
@@ -106,11 +107,13 @@ try{
 		
 	var JsonData = {
             'Method_Name': 'Delete_Message',
-            'Data': Obj._id.$id
+            'Data':[ Obj._id.$id]
         };
         
 	var onSuccess = function(onSuccess){
 		$scope.Select();
+		$scope.Show_Read_Message=false;
+		$scope.Show_All_Message=false;
 		};
 	
 	var onError =function(onError){
