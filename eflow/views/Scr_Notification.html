@@ -80,7 +80,7 @@
                   <button class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Selecionar">
                  <input  class="btn btn-primary" type="checkbox" ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);" /> 
                   </button>
-      			 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+      			 <button type="button" ng-show="Show_Delete_Message" class="btn btn-primary" ng-click="Delect_message(Obj,ArrayNotificacion)" data-toggle="tooltip" data-container="body" title="Eliminar">
                     <i class="fa fa-trash-o"></i></button>
                 <button type="button" class="btn btn-primary" ng-click="init()" data-toggle="tooltip" data-container="body" title="Refrescar">
                   <i class="fa fa-refresh"></i></button>
@@ -108,7 +108,7 @@
                     </td-->
                     
                     <td>
-                      <input type="checkbox" name="CheckBox_messages" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{obj._id.$id}}"/>
+                      <input type="checkbox" name="CheckBox_messages" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{Obj}}" id_check="{{Obj._id.$id}}"/>
                     </td>  
          
                     <td ng-click="Info_Message(Obj,'Read')" class="mailbox-name">{{Obj.User}}</td>
@@ -126,7 +126,7 @@
                   <button class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Selecionar">
                  <input  class="btn btn-primary" type="checkbox" ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);" /> 
                   </button>
-                  <button type="button" class="btn btn-primary" ng-click="Delect_message(Obj,ArrayNotificacion)"data-toggle="tooltip" data-container="body" title="Eliminar">
+                  <button type="button" class="btn btn-primary" ng-show="Show_Delete_Message" ng-click="Delect_message()" data-toggle="tooltip" data-container="body" title="Eliminar">
                     <i class="fa fa-trash-o"></i></button>
                 <button type="button" class="btn btn-primary" ng-click="init()" data-toggle="tooltip" data-container="body" title="Refrescar">
                   <i class="fa fa-refresh"></i></button>
@@ -165,7 +165,7 @@
                     <i class="fa fa-share"></i></button>
                  <button type="button" class="btn btn-primary" ng-click="" data-toggle="tooltip"  data-container="body" title="Imprimir">
                    <i class="fa fa-print"></i></button>
-                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+                  <button type="button" class="btn btn-primary" ng-click="Delect_messages(mess)" data-toggle="tooltip" data-container="body" title="Eliminar">
                     <i class="fa fa-trash-o"></i></button>
                 </div>
               </div>

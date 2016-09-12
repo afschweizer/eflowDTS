@@ -1194,7 +1194,7 @@ $scope.Edit_In_Array = function(Obj,Array){
             err = {
                 Generated: false,
                 Page: "Scr_VisitPoint_DB_Controller",
-                Method: "Remove_In_Array",
+                Method: "Edit_In_Array",
                 Description: "Error no controlado",
                 User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,

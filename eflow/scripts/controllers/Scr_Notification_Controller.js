@@ -6,6 +6,7 @@ $scope.init = function(){
 		$scope.Show_Folder=true;
 		$scope.Show_Read_Message=false;
 		$scope.Show_All_Message=false;
+		$scope.Show_Delete_Message=false;
         $scope.Class_Folder = "fa fa-minus";
 		$scope.Select();
 }catch (e) {
@@ -30,13 +31,143 @@ $scope.init = function(){
     }  
   
 };
+
+$scope.Checking_Checkboxes_Check = function(){
+	try{
+	$scope.Show_Actions = false;
+	
+	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+
+	for ( var i = 0; i < CheckBoxes_Array.length ; i++ ){
+	  if(CheckBoxes_Array[i].checked === true){
+		$scope.Show_Delete_Message=true;	
+		break;
+	   }
+	} 
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Notification_Controller",
+                Method: "Checking_Checkboxes_Check",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+$scope.Checking_Checkboxes_Check_Master = function(master){
+try{
+	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+	for(var i = 0; i < CheckBoxes_Array.length; i++){
+		CheckBoxes_Array[i].checked = !master;
+	}
+	$scope.Checking_Checkboxes_Check();
+	
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Notification_Controller",
+                Method: "Checking_Checkboxes_Check_Master",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+$scope.Delect_messages =function(Obj,arrayname){
+try{
+	try{
+	var Success = function(result){
+	
+	if(result === true){
+		
+	var JsonData = {
+            'Method_Name': 'Delete_Message',
+            'Data': Obj
+        };
+        
+	var onSuccess = function(onSuccess){
+		$scope.Select();
+		};
+	
+	var onError =function(onError){
+			var erro={
+			Generated: true,
+                Page: "Scr_Notification_Controller",
+                Method: "Delect_message",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: onError
+        };
+			throw erro;	
+		console.log(JsonData);
+		};
+		
+	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+	 
+	 
+	 }
+	 };
+	 
+	 bootbox.confirm("¿Realmente desea borrar los elementos seleccionados?",Success);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Notification_Controller",
+                Method: "Delect_messages",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+}
+
 $scope.Delect_message = function(){
 		try{
 	var Success = function(result){
 	
 	if(result === true){
 		
-	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+	var CheckBoxes_Array = document.getElementsByName("CheckBox_messages");
 	var Array_Delete_ID=[];
 	
 		for (var i=0; i < CheckBoxes_Array.length ;i++){
@@ -54,11 +185,11 @@ $scope.Delect_message = function(){
             'Data': Array_Delete_ID
         };
         
-	var onSuccess = function(JsonData){
-		$scope.Select_VisitPoint();
+	var onSuccess = function(onSuccess){
+		$scope.Select();
 		};
 	
-	var onError =function(JsonData){
+	var onError =function(onError){
 			var erro={
 			Generated: true,
                 Page: "Scr_Notification_Controller",
@@ -67,7 +198,7 @@ $scope.Delect_message = function(){
             User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
+            Error: onError
         };
 			throw erro;	
 		console.log(JsonData);
