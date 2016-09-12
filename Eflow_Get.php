@@ -129,6 +129,11 @@ switch($dataObject->Method_Name){
       require 'Select_DB_Manager.php';
       break;
     }
+   case 'Select_Tutorial':
+    {
+      require 'Select_Tutorial.php';
+      break;
+    }
    default:
     {
     	echo json_encode( array('Error' => 'Metodo_Incorrecto'));

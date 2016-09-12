@@ -175,6 +175,11 @@ switch($dataObject->Method_Name){
       require 'Confirm_Synch.php';
       break;
     } 
+  case 'Insert_Tutorial':
+    {
+      require 'Insert_Tutorial.php';
+      break;
+    }
   default:
     {
     	echo json_encode( array('Error' => 'Metodo Incorrecto'));

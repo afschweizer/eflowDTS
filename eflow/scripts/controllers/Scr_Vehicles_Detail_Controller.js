@@ -123,6 +123,10 @@ try{
 					"Collection_Schema": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
     
 				},
+			   "Control":{
+					 	"Creation_Date": new Date().getTime(),
+					 	"Created_User" : eflowDTS.Session.Current_User.UserName
+					 	},
     			"Company": eflowDTS.Session.Company.Identifier,
                 "User": eflowDTS.Session.Ram.UserControl.User,
     			"ID_Truck": eflowDTS.Session.Ram.UserControl.ID_Truck,

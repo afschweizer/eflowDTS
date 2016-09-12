@@ -10,7 +10,7 @@
               </a>
 
               <div class="box-tools">
-                <button type="button" class="btn btn-box-tool" ng-click="Show_Folder = ! Show_Folder"><i class="fa fa-minus"></i>
+                <button type="button" class="btn btn-box-tool" ng-click="Show_Folder = ! Show_Folder; Switch_Folder_Data(Show_Folder);"><i  ng-class="Class_Folder"></i> 
                 </button>
               </div>
             </div>
@@ -19,21 +19,23 @@
                 <li>
                   <a href="">
                     <i class="fa fa-inbox"></i> Bandeja de enviados
-                    <span class="label label-primary pull-right">12
+                    <span class="label label-primary pull-right">
+                 {{ArrayNotificacion.length}}
                     </span>
                   </a>
                 </li>
                 <li>
                   <a href="">
                     <i class="fa fa-file-text-o"></i> Bandeja de entregados
-                    <span class="label label-primary pull-right">12
+                    <span class="label label-primary pull-right">{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}
                     </span>
                   </a>
                 </li>
                 <li>
                   <a href="">
                     <i class="fa fa-envelope-o"></i> Bandeja de leidos
-                    <span class="label label-primary pull-right">12
+                    <span class="label label-primary pull-right">
+                 {{ArrayNotificacion.length}}
                     </span>
                   </a>
                 </li>
@@ -50,9 +52,9 @@
           </div>
         </div>
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-md-9" ng-show="Show_All_Message">
           <div class="box box-primary">
-            <div class="box-header with-border">
+            <div class="box-header bg-primary with-border">
               <h3 class="box-title">Notificaciones</h3>
 
               <div class="box-tools pull-right">
@@ -65,31 +67,31 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
-              <div class="mailbox-controls">
+              <div class="mailbox-controls ">
                 <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                <button type="button" class="btn btn-primary checkbox-toggle"><i class="fa fa-square-o"></i>
                 </button>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-share"></i></button>
                 </div>
                 <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
                  {{ArrayNotificacion.length}}
                   <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-chevron-right"></i></button>
                   </div>
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.pull-right -->
               </div>
-              <div class="table-responsive mailbox-messages">
-                <table class="table table-hover table-striped">
-                  <tbody>
-                  <tr ng-repeat="Obj in ArrayNotificacion">
+              <div class="table-responsive ">
+                <table class="table table-hover" class="resizable" >
+					 <tbody>
+                  <tr style="color:#000; align:center" ng-repeat="Obj in ArrayNotificacion">
                     <td>
                       <div class="icheckbox_flat-blue" aria-checked="false" aria-disabled="false" style="position: relative;">
                         <input type="checkbox" style="position: absolute; opacity: 0;">
@@ -97,20 +99,10 @@
                         </ins>
                       </div>
                     </td>
-                    <td class="mailbox-star">
-                      <a href="#">
-                        <i class="fa fa-star text-yellow">
-                        </i>
-                      </a>
-                    </td>
-                    <td class="mailbox-name">
-                      <a href="read-mail.html">{{Obj.User}}</a>
-                    </td>
-                    <td class="mailbox-subject">
-                      {{Obj.ID_Truck}}
-                    </td>
-                    <td class="mailbox-attachment">{{Obj.Matter}}</td>
-                    <td class="mailbox-date">{{Obj.Estimated_Date}}</td>
+                    <td ng-click="Info_Message(Obj,'Read')" class="mailbox-name">{{Obj.User}}</td>
+                    <td ng-click="Info_Message(Obj,'Read')" class="mailbox-subject"> {{Obj.ID_Truck}}</td>
+                    <td ng-click="Info_Message(Obj,'Read')" class="mailbox-attachment">{{Obj.Matter}}</td>
+                    <td ng-click="Info_Message(Obj,'Read')" class="mailbox-date">{{Obj.Estimated_Date}}</td>
                   </tr>
                   
                   </tbody>
@@ -123,20 +115,20 @@
             <div class="box-footer no-padding">
               <div class="mailbox-controls">
                 <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                <button type="button" class="btn btn-primary checkbox-toggle"><i class="fa fa-square-o"></i>
                 </button>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-share"></i></button>
                 </div>
                 <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
-                  1-50/200
+                 {{ArrayNotificacion.length}}
                   <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-chevron-right"></i></button>
                   </div>
                   <!-- /.btn-group -->
                 </div>
@@ -147,7 +139,118 @@
           <!-- /. box -->
         </div>
         <!-- /.col -->
+        
+
+      
+        <div class="col-md-9"  ng-show="Show_Read_Message">
+          <div class="box box-primary">
+            <div class="box-header bg-primary with-border">
+              <h3 class="box-title ">Lectura de la notificación</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              
+              <div class="mailbox-read-info" ng-repeat="mess in Message">
+                <h5><b>Enviado por el usuario: </b>{{mess.Control.Created_User}}</h5>
+                <h5><b>Enviado al usuario: </b>{{mess.User}}</h5>
+                <h5><b>Enviado al Vehiculo: </b>{{mess.ID_Truck}}</h5>
+                <h5><b>Enviado el </b>{{mess.Estimated_Date}}</h5>
+                <h5><b>Recibido el </b>{{mess.Control.Syncroniced_Date}}</h5>
+                <h5><b>Leido el </b>{{mess.Reading_Date}}</h5>
+              </div>
+              <div class="mailbox-controls with-border text-center">
+                <div class="btn-group">
+                   <button type="button" class="btn btn-primary" ng-click="Info_Message(mess,'Return')"data-toggle="tooltip" data-container="body" title="Regresar">
+                    <i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Reenviar">
+                    <i class="fa fa-share"></i></button>
+                 <button type="button" class="btn btn-primary" ng-click="Print_Message(mess,'Return')" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                  <i class="fa fa-print"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+                    <i class="fa fa-trash-o"></i></button>
+                </div>
+              </div>
+              <div class="mailbox-read-message" ng-repeat="mess in Message">
+					<br/>
+                <p>{{mess.Matter}}</p>
+					<br/>
+                <p>{{mess.Detail}}</p>
+					<br/>
+              </div>
+            </div>
+           
+            <div class="box-footer">
+              <div class="mailbox-controls with-border text-center">
+				<div class="btn-group">
+                   <button type="button" class="btn btn-primary" ng-click="Info_Message(mess,'Return')"data-toggle="tooltip" data-container="body" title="Regresar">
+                    <i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Reenviar">
+                    <i class="fa fa-share"></i></button>
+                 <button type="button" class="btn btn-primary" ng-click="Print_Message(mess,'Return')" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                  <i class="fa fa-print"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+                    <i class="fa fa-trash-o"></i></button>
+                </div>
+             </div>
+             </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /. box -->
+        </div>
+        
+        
+        <div class="col-md-9"  ng-show="Show_Read_Message1">
+          <div class="box box-primary">
+            <div class="box-header with-border ">
+              <h3 class="box-title">Lectura de la notificación</h3>
+            </div>
+            <div class="box-body no-padding">
+                <div class="mailbox-controls with-border text-center pull-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary" ng-click="Info_Message(Obj,'Return')"data-toggle="tooltip" data-container="body" title="Regresar">
+                    <i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Reenviar">
+                    <i class="fa fa-share"></i></button>
+                 <button type="button" class="btn btn-primary" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                  <i class="fa fa-print"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+                    <i class="fa fa-trash-o"></i></button>
+                </div>
+                </div>
+              <!-- /.mailbox-read-info -->
+              <div class="mailbox-read-info">
+                <h3>Message Subject Is Placed Here</h3>
+                <h5>Enviado por el usuario: {{Obj.Control.Created_User}}</h5>
+                <h5>Enviado al usuario: {{Obj.User}}</h5>
+                <h5>Enviado al Vehiculo: {{Obj.ID_Truck}}</h5>
+                <h5>Enviado el {{Obj.Estimated_Date}}</h5>
+                <h5>Recibido el {{Obj.Control.Syncroniced_Date}}</h5>
+                <h5>Leido el {{Obj.Reading_Date}}</h5>
+              </div>
+              <!-- /.mailbox-controls -->
+              <div class="mailbox-read-message">
+                <p>{{Obj.Matter}}</p>
+
+                <p>{{Obj.Detail}}</p>
+              </div>
+            </div>
+                <div class="mailbox-controls with-border text-center pull-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary" ng-click="Info_Message(Obj,'Return')"data-toggle="tooltip" data-container="body" title="Regresar">
+                    <i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Reenviar">
+                    <i class="fa fa-share"></i></button>
+                 <button type="button" class="btn btn-primary" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                  <i class="fa fa-print"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+                    <i class="fa fa-trash-o"></i></button>
+                </div>
+                </div>
+          </div>
+        </div>
+        
       </div>
   </section>	
+  
 </div>
 
