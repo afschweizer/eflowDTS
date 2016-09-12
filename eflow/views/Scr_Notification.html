@@ -76,10 +76,11 @@
             </div>
             <div class="box-body no-padding">
               <div class="mailbox-controls">
-                <button type="button" class="btn btn-primary checkbox-toggle"><i class="fa fa-square-o"></i>
-                </button>
-                 <div class="btn-group">
-                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+                <div class="btn-group">
+                  <button class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Selecionar">
+                 <input  class="btn btn-primary" type="checkbox" ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);" /> 
+                  </button>
+      			 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
                     <i class="fa fa-trash-o"></i></button>
                 <button type="button" class="btn btn-primary" ng-click="init()" data-toggle="tooltip" data-container="body" title="Refrescar">
                   <i class="fa fa-refresh"></i></button>
@@ -107,7 +108,8 @@
                     </td-->
                     
                     <td>
-                      <input type="checkbox" name="CheckBox_messages" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{obj._id.$id}}"/></td>  
+                      <input type="checkbox" name="CheckBox_messages" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{obj._id.$id}}"/>
+                    </td>  
          
                     <td ng-click="Info_Message(Obj,'Read')" class="mailbox-name">{{Obj.User}}</td>
                     <td ng-click="Info_Message(Obj,'Read')" class="mailbox-subject">{{Obj.ID_Truck}}</td>
@@ -120,10 +122,11 @@
             </div>
             <div class="box-footer no-padding">
               <div class="mailbox-controls">
-                <button type="button" class="btn btn-primary checkbox-toggle"><i class="fa fa-square-o"></i>
-                </button>
                  <div class="btn-group">
-                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
+                  <button class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Selecionar">
+                 <input  class="btn btn-primary" type="checkbox" ng-model="master" ng-click="Checking_Checkboxes_Check_Master(master);" /> 
+                  </button>
+                  <button type="button" class="btn btn-primary" ng-click="Delect_message(Obj,ArrayNotificacion)"data-toggle="tooltip" data-container="body" title="Eliminar">
                     <i class="fa fa-trash-o"></i></button>
                 <button type="button" class="btn btn-primary" ng-click="init()" data-toggle="tooltip" data-container="body" title="Refrescar">
                   <i class="fa fa-refresh"></i></button>
@@ -140,7 +143,7 @@
           </div>
         </div>
         
-        <div class="col-md-9" id="printThisElement" ng-show="Show_Read_Message">
+        <div class="col-md-9" ng-show="Show_Read_Message">
           <div class="box box-primary"  ng-repeat="mess in Message" >
             <div class="box-header bg-primary with-border">
               <h3 class="box-title ">Lectura de la notificación</h3>

@@ -30,6 +30,79 @@ $scope.init = function(){
     }  
   
 };
+$scope.Delect_message = function(){
+		try{
+	var Success = function(result){
+	
+	if(result === true){
+		
+	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+	var Array_Delete_ID=[];
+	
+		for (var i=0; i < CheckBoxes_Array.length ;i++){
+		if (CheckBoxes_Array[i].checked === true){
+			//var Obj = JSON.parse(CheckBoxes_Array[i].value);
+			Array_Delete_ID.push(CheckBoxes_Array[i].attributes.id_check.value);
+			//Array_Remove($scope.ArrayJobs,Obj);
+			}
+	}
+		
+	
+	
+	var JsonData = {
+            'Method_Name': 'Delete_Message',
+            'Data': Array_Delete_ID
+        };
+        
+	var onSuccess = function(JsonData){
+		$scope.Select_VisitPoint();
+		};
+	
+	var onError =function(JsonData){
+			var erro={
+			Generated: true,
+                Page: "Scr_Notification_Controller",
+                Method: "Delect_message",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: JsonData
+        };
+			throw erro;	
+		console.log(JsonData);
+		};
+		
+	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+	 
+	 
+	 }
+	 };
+	 
+	 bootbox.confirm("¿Realmente desea borrar los elementos seleccionados?",Success);
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Notification_Controller",
+                Method: "Delect_message",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 $scope.Reenviar_Message= function(mess){
 	try{
 		var JsonData = {
@@ -53,6 +126,7 @@ $scope.Reenviar_Message= function(mess){
 				"State_Sent": false,
 				"State_Received": false,
 				"State_Open": false,
+				"State": "Unread",
 				"Matter": mess.Matter,
 				"Detail": mess.Detail,
 				"Transferring_State": "Pending_To_Mobile"

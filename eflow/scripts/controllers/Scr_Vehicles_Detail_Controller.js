@@ -135,6 +135,7 @@ try{
 				"State_Sent": false,
 				"State_Received": false,
 				"State_Open": false,
+				"State": "Unread",
 				"Matter": TextAsunto,
 				"Detail": TextMessage,
 				"Transferring_State": "Pending_To_Mobile"
