@@ -164,7 +164,7 @@ $scope.Delect_message = function(){
 	var Success = function(result){
 	
 	if(result === true){
-		
+		    
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_messages");
 	var Array_Delete_ID=[];
 	
