@@ -34,9 +34,8 @@ $scope.init = function(){
 
 $scope.Checking_Checkboxes_Check = function(){
 	try{
-	$scope.Show_Actions = false;
-	
-	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+	$scope.Show_Delete_Message = false;
+	var CheckBoxes_Array = document.getElementsByName("CheckBox_messages");
 
 	for ( var i = 0; i < CheckBoxes_Array.length ; i++ ){
 	  if(CheckBoxes_Array[i].checked === true){
@@ -71,7 +70,7 @@ $scope.Checking_Checkboxes_Check = function(){
 $scope.Checking_Checkboxes_Check_Master = function(master){
 try{
 		$scope.Show_Delete_Message=true;	
-	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+	var CheckBoxes_Array = document.getElementsByName("CheckBox_messages");
 	for(var i = 0; i < CheckBoxes_Array.length; i++){
 		CheckBoxes_Array[i].checked = !master;
 	}
