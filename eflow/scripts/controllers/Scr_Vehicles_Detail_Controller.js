@@ -131,7 +131,10 @@ try{
                 "User": eflowDTS.Session.Ram.UserControl.User,
     			"ID_Truck": eflowDTS.Session.Ram.UserControl.ID_Truck,
                 "Estimated_Date": eflowDTS.Session.Ram.UserControl.Date,//new Date(new Date().format('yyyy-mm-dd')).getTime()+eflowDTS.Time.Difference,
-				"State": "Unread",
+				"State_Created": true,
+				"State_Sent": false,
+				"State_Received": false,
+				"State_Open": false,
 				"Matter": TextAsunto,
 				"Detail": TextMessage,
 				"Transferring_State": "Pending_To_Mobile"
