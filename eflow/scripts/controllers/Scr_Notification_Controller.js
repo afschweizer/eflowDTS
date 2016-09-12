@@ -100,7 +100,6 @@ try{
 };
 $scope.Delect_messages =function(Obj,arrayname){
 try{
-	try{
 	var Success = function(result){
 	
 	if(result === true){
@@ -159,7 +158,6 @@ try{
     }  
   
 };
-}
 
 $scope.Delect_message = function(){
 		try{
