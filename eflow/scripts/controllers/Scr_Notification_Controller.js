@@ -98,7 +98,7 @@ try{
     }  
   
 };
-$scope.Delect_messages =function(Obj,arrayname){
+$scope.Delect_messages =function(Obj){
 try{
 	var Success = function(result){
 	
@@ -188,7 +188,7 @@ $scope.Delect_message = function(){
 		};
 	
 	var onError =function(onError){
-			var erro={
+			var erro1={
 			Generated: true,
                 Page: "Scr_Notification_Controller",
                 Method: "Delect_message",
@@ -198,7 +198,7 @@ $scope.Delect_message = function(){
                 Date: new Date().getTime(),
             Error: onError
         };
-			throw erro;	
+			throw erro1;	
 		console.log(JsonData);
 		};
 		
