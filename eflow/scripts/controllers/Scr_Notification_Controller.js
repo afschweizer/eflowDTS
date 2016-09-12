@@ -1,6 +1,5 @@
 DTS_APP.controller('Scr_Notification_Controller',function($scope) {
 
-
 $scope.init = function(){
 	try{
 		$scope.Show_Folder=true;
