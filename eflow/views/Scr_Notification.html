@@ -19,7 +19,7 @@
             <div class="box-body no-padding" ng-show="Show_Folder">
               <ul class="nav nav-pills nav-stacked">
                 <li>
-                  <a ng-click="query = {'State_Created':true};Show_All_Message=true;Show_Read_Message = ! Show_Read_Message; Show_All_Message = ! Show_All_Message;">
+                  <a ng-click="query = {'State_Created':true};Show_All_Message=true;Show_Read_Message = false; ">
                     <i class="fa fa-inbox"></i> Bandeja de salida
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Created':true}:true).length}}
@@ -27,7 +27,7 @@
                   </a>
                 </li>
                 <li>
-                  <a ng-click="query = {'State_Sent':true};Show_All_Message=true;Show_Read_Message = ! Show_Read_Message; Show_All_Message = ! Show_All_Message;">
+                  <a ng-click="query = {'State_Sent':true};Show_All_Message=true;Show_Read_Message = false;">
                     <i class="fa fa-inbox"></i> Bandeja de enviados
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Sent':true}:true).length}}
@@ -35,7 +35,7 @@
                   </a>
                 </li>
                 <li>
-                   <a ng-click="query = {'State_Received':true};Show_All_Message=true;Show_Read_Message = ! Show_Read_Message; Show_All_Message = ! Show_All_Message;">
+                   <a ng-click="query = {'State_Received':true};Show_All_Message=true;Show_Read_Message = false;">
                     <i class="fa fa-file-text-o"></i> Bandeja de entregados
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Received':true}:true).length}} 
@@ -43,7 +43,7 @@
                   </a>
                 </li>
                 <li>
-                  <a ng-click="query = {'State_Open':true};Show_All_Message=true;Show_Read_Message = ! Show_Read_Message; Show_All_Message = ! Show_All_Message;">
+                  <a ng-click="query = {'State_Open':true};Show_All_Message=true;Show_Read_Message = false;">
                     <i class="fa fa-envelope-o"></i> Bandeja de leidos
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Open':true}:true).length}}
