@@ -2,6 +2,12 @@ DTS_APP.controller('Scr_Notification_Controller',function($scope) {
 
 $scope.init = function(){
 	try{
+$scope.currentPage = 0;
+$scope.pageSize = 10; 
+$scope.numberOfPages = function(){
+	return Math.ceil($scope.ArrayNotificacion.length/$scope.pageSize);
+};
+
 		$scope.Show_Folder=true;
 		$scope.Show_Read_Message=false;
 		$scope.Show_All_Message=false;
@@ -442,5 +448,11 @@ $scope.Info_Message = function(obj,type){
     }  
   
 };		
-
+$scope.printDiv = function(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;        
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+}
 });

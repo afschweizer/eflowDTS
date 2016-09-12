@@ -1,8 +1,6 @@
 <script src="scripts/externals/jspdf.min.js"></script>
 <script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.rawgit.com/gilf/ngPrint/master/ngPrint.min.css" />
-    <script src="https://rawgit.com/gilf/ngPrint/master/ngPrint.min.js"></script>
 <div ng-controller="Scr_Notification_Controller" ng-init="init()">  
   <section class="content">
       <div class="row"> 
@@ -50,28 +48,23 @@
                     </span>
                   </a>
                 </li>    
-                <li>
+                <!--li>
                   <a href="">
                     <i class="fa fa-filter"></i> Filtro de busqueda 
                     <span class="label label-warning pull-right">65
                     </span>
                   </a>
-                </li>
+                </li-->
               </ul>
             </div>        
           </div> 
         </div>
-        <div class="col-md-9" ng-show="Show_All_Message">
+        <div class="col-md-9" id="printableArea" ng-show="Show_All_Message">
           <div class="box box-primary">
             <div class="box-header bg-primary with-border">
               <h3 class="box-title">Notificaciones</h3>
-
-              <div class="box-tools pull-right">
-                <div class="has-feedback">
-                  <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
-              </div>
+              
+    
             </div> 
             <div class="box-body no-padding">
               <div class="mailbox-controls">
@@ -83,21 +76,31 @@
                     <i class="fa fa-trash-o"></i></button>
                 <button type="button" class="btn btn-primary" ng-click="init()" data-toggle="tooltip" data-container="body" title="Refrescar">
                   <i class="fa fa-refresh"></i></button>
+                 <button type="button" class="btn btn-primary" ng-click="printDiv('printableArea')" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                   <i class="fa fa-print"></i></button>
                 </div>
-                <div class="pull-right">
-                 {{(ArrayNotificacion|  filter: query).length}}
+               
+                 <div class="pull-right">
+                  <!--  {{(ArrayNotificacion|  filter: query).length}}
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary"><i class="fa fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-primary"><i class="fa fa-chevron-right"></i></button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
+                </div>-->
+                <div class="text-right">
+    <span> 
+      Número de registro por página: <input style="color:#000; "ng-model="pageSize" placeholder="10" type="number" min="1" size="2">
+    </span>
+    <button class="btn btn-info" ng-disabled="currentPage == 0"  style="background-color:#4096c6; color:#fff; " ng-click="currentPage=currentPage-1"> <i class="fa fa-angle-double-left"></i> </button>    
+      <span>{{currentPage+1}}/{{numberOfPages()}}</span>    
+    <button class="btn btn-info" style="background-color:#4096c6; color:#fff; " ng-disabled="currentPage >= ArrayNotificacion.length/pageSize - 1" ng-click="currentPage=currentPage+1"> <i class="fa fa-angle-double-right"></i> </button>
+    </div>   </div>
+               
                 <!-- /.pull-right -->
               </div>
               <div class="table-responsive ">
                 <table class="table table-hover" class="resizable" >
 					 <tbody>
-                  <tr style="color:#000; align:center" ng-repeat="Obj in ArrayNotificacion| filter: query">
+                  <tr style="color:#000; align:center" ng-repeat="Obj in ArrayNotificacion | startFrom:currentPage*pageSize | limitTo:pageSize | filter: query">
                     <!--td>
                       <div class="icheckbox_flat-blue" aria-checked="false" aria-disabled="false" style="position: relative;">
                         <input type="checkbox" style="position: absolute; opacity: 0;">
@@ -129,20 +132,29 @@
                     <i class="fa fa-trash-o"></i></button>
                 <button type="button" class="btn btn-primary" ng-click="init()" data-toggle="tooltip" data-container="body" title="Refrescar">
                   <i class="fa fa-refresh"></i></button>
+                 <button type="button" class="btn btn-primary"  ng-click="printDiv('printableArea')" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                   <i class="fa fa-print"></i></button>
                 </div>
                 <div class="pull-right">
-                 {{(ArrayNotificacion|  filter: query).length}}
+                <div class="text-right">
+    <span> 
+      Número de registro por página: <input style="color:#000; "ng-model="pageSize" placeholder="10" type="number" min="1" size="2">
+    </span>
+    <button class="btn btn-info" ng-disabled="currentPage == 0"  style="background-color:#4096c6; color:#fff; " ng-click="currentPage=currentPage-1"> <i class="fa fa-angle-double-left"></i> </button>    
+      <span>{{currentPage+1}}/{{numberOfPages()}}</span>    
+    <button class="btn btn-info" style="background-color:#4096c6; color:#fff; " ng-disabled="currentPage >= ArrayNotificacion.length/pageSize - 1" ng-click="currentPage=currentPage+1"> <i class="fa fa-angle-double-right"></i> </button>
+    </div>   <!-- {{(ArrayNotificacion|  filter: query).length}}
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary"><i class="fa fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-primary"><i class="fa fa-chevron-right"></i></button>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div> 
           </div>
         </div>
         
-        <div class="col-md-9" ng-show="Show_Read_Message">
+        <div class="col-md-9"  id="printableArea1" ng-show="Show_Read_Message">
           <div class="box box-primary"  ng-repeat="mess in Message" >
             <div class="box-header bg-primary with-border">
               <h3 class="box-title ">Lectura de la notificación</h3>
@@ -162,7 +174,7 @@
                     <i class="fa fa-reply"></i></button>
                   <button type="button" class="btn btn-primary" ng-click="Reenviar_Message(mess)" data-toggle="tooltip" data-container="body" title="Reenviar">
                     <i class="fa fa-share"></i></button>
-                 <button type="button" class="btn btn-primary" ng-click="" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                 <button type="button" class="btn btn-primary"  ng-click="printDiv('printableArea1')" data-toggle="tooltip"  data-container="body" title="Imprimir">
                    <i class="fa fa-print"></i></button>
                   <button type="button" class="btn btn-primary" ng-click="Delect_messages(mess)" data-toggle="tooltip" data-container="body" title="Eliminar">
                     <i class="fa fa-trash-o"></i></button>
@@ -186,6 +198,8 @@
                     <i class="fa fa-share"></i></button>
                   <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
                     <i class="fa fa-trash-o"></i></button>
+                 <button type="button" class="btn btn-primary"  ng-click="printDiv('printableArea1')" data-toggle="tooltip"  data-container="body" title="Imprimir">
+                   <i class="fa fa-print"></i></button>
                 </div>
              </div>
              </div>
