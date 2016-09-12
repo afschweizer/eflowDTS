@@ -48,7 +48,7 @@ DTS_APP.controller('Scr_Tutorial_Controller',function($scope){
 			$scope.Tuto = {};
 			$scope.Image_Name = "";	
 			
-			botbox.dialog({
+			bootbox.dialog({
 				title:"¡Alerta!",
 				message:"Tutorial Guardado",
 				buttons:{
