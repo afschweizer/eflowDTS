@@ -106,7 +106,7 @@ try{
 		
 	var JsonData = {
             'Method_Name': 'Delete_Message',
-            'Data': Obj
+            'Data': Obj._id.$id
         };
         
 	var onSuccess = function(onSuccess){
