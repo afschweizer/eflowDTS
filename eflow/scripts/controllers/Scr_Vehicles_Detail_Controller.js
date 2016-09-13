@@ -1,4 +1,6 @@
 var map;
+
+
 DTS_APP.controller('Scr_Vehicles_Detail_Controller',function($scope) {
 
 
