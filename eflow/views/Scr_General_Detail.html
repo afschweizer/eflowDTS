@@ -1,167 +1,73 @@
-<div id="Contents" ng-controller="Scr_General_Detail_Controller" ng-init="init()"> 
 
-<div class="row" >
-  <div class="col-md-2 ">
-    <div ng-click="Show_Route=!Show_Route" class="info-box bg-aqua"> 
-	  <h4> 
-        <span class="info-box-icon fa">
-         Porcentaje Espacio Utilizado
-        </span>
-      </h4>
-       <div class="info-box-content"> 
-          <h2>51%</h2>
+<div id="Contents"  ng-controller="Scr_General_Detail_Controller" ng-init="init()"> 
+
+<div class="row">
+  <div class="col-md-12" >
+    <h1>
+      Informacion General
+    </h1>
+       <div class="col-md-2 info-box" ng-click="Show_Route = true"  > 
+         <h4> % Espacio Utilizado</h4> 
+         <h2 style="text-align: center;">51%</h2>
       </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-         Porcentaje de Ordenes con Dañados
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
+      <div class="col-md-2 info-box" > 
+          <h4> % Ordenes Dañadas</h4>
+          <h2 style="text-align: center;">51%</h2>
       </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-          <br/>First Pass Yield<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
+      <div class="col-md-2 info-box" > 
+          <h4> First Pass Yield</h4>
+          <h2 style="text-align: center;">51%</h2>
       </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-         <br/>Drop Size<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
+      <div class="col-md-2 info-box"> 
+          <h4> Drop Size</h4>
+          <h2 style="text-align: center;">51%</h2>
       </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-         <br/>On Time Delivery<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
+      <div class="col-md-2 info-box"> 
+          <h4> On Time Delivery</h4>
+          <h2 style="text-align: center;">51%</h2>
       </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-          <br/>Efectividad de Entrega<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
+      <div class="col-md-2 info-box" > 
+          <h4> Efectividad de Entrega</h4>
+          <h2 style="text-align: center;">51%</h2>
       </div>
-    </div>
   </div>
-</div>
-<div class="row" ng-show="Show_Route">
-  <div class="col-md-2 ">
-    <div ng-click="" > 
-	  
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-         Porcentaje de Ordenes con Dañados
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-          <br/>First Pass Yield<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-         <br/>Drop Size<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-         <br/>On Time Delivery<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2 ">
-    <div class="info-box bg-aqua"> 
-      <h4> 
-        <span class="info-box-icon fa">
-          <br/>Efectividad de Entrega<br/>
-        </span>
-      </h4>
-      <div class="info-box-content">
-        <span class="info-box-number"> 
-          <h2>51%</h2>
-        </span>
-      </div>
-    </div>
-  </div>
-</div>  
   
+  <div class="col-md-12" >
+  		 <div class="col-md-4 info-box" style="background:#E6E6E6;" > 
+           <h4>Porcentaje Espacio Utilizado</h4> 
+           <h2 style="text-align: center;">51%</h2>
+        </div>
+        <div class="col-md-4 info-box" style="background:#E0F2F7;" > 
+            <h4> Porcentaje de Ordenes con Dañados</h4>
+            <h2 style="text-align: center;">51%</h2>
+        </div>
+        <div class="col-md-4 info-box" style="background:#FBFCF1;" > 
+            <h4> First Pass Yield</h4>
+            <h2 style="text-align: center;">51%</h2>
+        </div>
+  </div>
+  
+  <div class="col-md-12" >
+       
+        <div class="col-md-4 cliente" > 
+            <h4> Drop Size</h4>
+            <h2 style="text-align: center;">51%</h2>
+          </div>
+        <div class="col-md-4 cliente" > 
+               <div id="piechart" style="width: 900px; height: 500px;"></div>
+ 
+          </div>
+        <div class="col-md-4 cliente"  > 
+            <h4> Efectividad de Entrega</h4>
+            <h2 style="text-align: center;">51%</h2>
+          </div>
+      </div>
+</div>
+  
+  
+  
+  
+
   
   
 </div>
