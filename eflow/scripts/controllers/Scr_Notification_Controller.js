@@ -38,6 +38,33 @@ $scope.numberOfPages = function(){
     }  
   
 };
+$scope.refresh = function(){
+	try{
+		$scope.Select();
+		$scope.Select_User();
+		$scope.Select_Vehicle();
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Notification_Controller",
+                Method: "refresh",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 
 $scope.Checking_Checkboxes_Check = function(){
 	try{
