@@ -2,18 +2,20 @@ DTS_APP.controller('Scr_Notification_Controller',function($scope) {
 
 $scope.init = function(){
 	try{
+		$scope.Show_Folder=true;
+		$scope.Show_Read_Message=false;
+		$scope.Show_All_Message=false;
+		$scope.Show_Delete_Message=false;
 $scope.currentPage = 0;
 $scope.pageSize = 10; 
 $scope.numberOfPages = function(){
 	return Math.ceil($scope.ArrayNotificacion.length/$scope.pageSize);
 };
 
-		$scope.Show_Folder=true;
-		$scope.Show_Read_Message=false;
-		$scope.Show_All_Message=false;
-		$scope.Show_Delete_Message=false;
         $scope.Class_Folder = "fa fa-minus";
 		$scope.Select();
+		$scope.Select_User();
+		$scope.Select_Vehicle();
 }catch (e) {
         
         var err;
@@ -240,6 +242,90 @@ $scope.Delect_message = function(){
     }  
   
 };
+$scope.Send_Message= function(Noti){
+	try{
+		var JsonData = {
+            'Method_Name': 'Insert_Notification',
+            'Data': {
+				"Collection_Info": 
+				{
+					"Collection_Name": "Store_Notification",
+					"Collection_Schema": "'_id.$id,User,ID_Truck,Company,Estimated_Date,State,Matter,Details,[User+ID_Truck+Company],Transferring_State'"
+    
+				},
+			   "Control":{
+					 	"Creation_Date": new Date().getTime(),
+					 	"Created_User" : eflowDTS.Session.Current_User.UserName
+					 	},
+    			"Company": eflowDTS.Session.Company.Identifier,
+                "User": Noti.User,
+    			"ID_Truck": new Date(Noti.ID_Truck).format('yyyy-mm-dd'),
+                "Estimated_Date":Noti.Date,
+                "State_Created": true,
+				"State_Sent": false,
+				"State_Received": false,
+				"State_Open": false,
+				"State": "Unread",
+				"Matter": Noti.Matter,
+				"Detail": Noti.Detail,
+				"Transferring_State": "Pending_To_Mobile"
+			 }
+			 };
+				var onSuccess = function(onSuccess){
+				
+				bootbox.dialog({
+					title:"¡Alerta!",
+					message:"Notificación Enviada",
+					buttons:{
+						main:{
+							label:'Ok',
+							className:'btn-primary'
+						}}				
+				});
+				$scope.Select();
+				$scope.Show_Read_Message=false;
+				$scope.Show_New_Message=false;
+				$scope.Show_All_Message=false;
+				};
+				var onError = function(onError){
+			var erro={
+			Generated: true,
+                Page: "Scr_Notification_Controller",
+                Method: "Send_Message",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: onError
+        };
+			throw erro;	
+				console.log(onError);
+				};
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+	
+		
+}catch (e) {
+        
+        var err;
+         
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_Notification_Controller",
+                Method: "Send_Message",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
 $scope.Reenviar_Message= function(mess){
 	try{
 		var JsonData = {
@@ -420,9 +506,11 @@ $scope.Info_Message = function(obj,type){
 		$scope.Message.push(obj);
 		$scope.$apply($scope.Message);
 		$scope.Show_Read_Message=true;
+		$scope.Show_New_Message = false;
 		$scope.Show_All_Message = false;
 		}else{
 		$scope.Show_Read_Message=false;
+		$scope.Show_New_Message = false;
 		$scope.Show_All_Message = true;
 		}
 		
@@ -447,12 +535,175 @@ $scope.Info_Message = function(obj,type){
         }
     }  
   
-};		
+};
+
+
+$scope.Filter_License = function(ID){
+try{
+	
+for(var j = 0; j < $scope.ArrayUser.length; j++){
+	if($scope.ArrayUser[j].ID === ID){
+		var User = $scope.ArrayUser[j];
+		break;
+	}
+}
+$scope.Show_Select_Vehicule = true;
+$scope.ArrayVehicle_Filter = [];
+
+for(var x = 0; x < $scope.ArrayVehicle.length; x++){
+    for(var y = 0; y < $scope.ArrayVehicle[x].License.length; y++){
+         for(var z = 0; z < User.License.length; z++){
+                    if($scope.ArrayVehicle[x].License[y] === User.License[z]){
+                        if($scope.ArrayVehicle_Filter.indexOf($scope.ArrayVehicle[x]) === -1){
+                            $scope.ArrayVehicle_Filter.push($scope.ArrayVehicle[x]);
+                           }
+                        break;
+                    }         
+         }
+     }
+}
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Filter_License",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  };
+
+
+$scope.Select_User = function(){
+	try {
+        var Request = {
+            'Method_Name': 'Select_All_User',
+            'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier,
+    			"Type": "Conductor"
+            },
+            'Fields':{
+            	
+            }
+        };
+		var onSuccess = function(Response){
+		$scope.ArrayUser = Response;
+		$scope.$apply($scope.ArrayUser);
+		};
+		var onError =  function(e){
+			var erro={
+			Generated: true,
+            Page: "Scr_VisitPoint_DB_Controller",
+            Method: "Select_User",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+            Company: eflowDTS.Session.Company.Identifier,
+            Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;			
+		};
+		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, Request, onSuccess, onError);
+        
+    } catch (e) {        
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_User",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+
+
+$scope.Select_Vehicle = function(){
+	try {
+        var Request = {
+            'Method_Name': 'Select_All_Vehicle',
+            'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier
+            },
+            'Fields':{
+            	
+            }
+        };
+		var onSuccess = function(Response){
+			$scope.ArrayVehicle = Response;
+			$scope.$apply($scope.ArrayVehicle);
+		};
+		
+		var onError = function(e){
+			var erro={
+			Generated: true,
+            Page: "Scr_VisitPoint_DB_Controller",
+            Method: "Select_Vehicle",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+            Company: eflowDTS.Session.Company.Identifier,
+            Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;	
+		};
+		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, Request, onSuccess, onError);
+        
+    } catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Select_Vehicle",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
+
+		
 $scope.printDiv = function(divName) {
     var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;        
     document.body.innerHTML = printContents;
     window.print();
     document.body.innerHTML = originalContents;
-}
+};
 });

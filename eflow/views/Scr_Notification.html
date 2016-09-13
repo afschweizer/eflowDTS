@@ -17,7 +17,7 @@
             <div class="box-body no-padding" ng-show="Show_Folder">
               <ul class="nav nav-pills nav-stacked">
                 <li>
-                  <a ng-click="query = {'State_Created':true};Show_All_Message=true;Show_Read_Message = false; ">
+                  <a ng-click="query = {'State_Created':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
                     <i class="fa fa-inbox"></i> Bandeja de salida
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Created':true}:true).length}}
@@ -25,7 +25,7 @@
                   </a>
                 </li>
                 <li>
-                  <a ng-click="query = {'State_Sent':true};Show_All_Message=true;Show_Read_Message = false;">
+                  <a ng-click="query = {'State_Sent':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
                     <i class="fa fa-inbox"></i> Bandeja de enviados
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Sent':true}:true).length}}
@@ -33,7 +33,7 @@
                   </a>
                 </li>
                 <li>
-                   <a ng-click="query = {'State_Received':true};Show_All_Message=true;Show_Read_Message = false;">
+                   <a ng-click="query = {'State_Received':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
                     <i class="fa fa-file-text-o"></i> Bandeja de entregados
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Received':true}:true).length}} 
@@ -41,11 +41,16 @@
                   </a>
                 </li>
                 <li>
-                  <a ng-click="query = {'State_Open':true};Show_All_Message=true;Show_Read_Message = false;">
+                  <a ng-click="query = {'State_Open':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
                     <i class="fa fa-envelope-o"></i> Bandeja de leidos
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Open':true}:true).length}}
                     </span>
+                  </a>
+                </li>  
+                <li>
+                  <a ng-click="Show_All_Message=false; Show_New_Message=true;Show_Read_Message = false;">
+                    <i class="fa fa-envelope-o"></i> Nuevo Mensaje
                   </a>
                 </li>    
                 <!--li>
@@ -155,12 +160,12 @@
         </div>
         
         <div class="col-md-9"  id="printableArea1" ng-show="Show_Read_Message">
-          <div class="box box-primary"  ng-repeat="mess in Message" >
+          <div class="box box-primary"  >
             <div class="box-header bg-primary with-border">
               <h3 class="box-title ">Lectura de la notificación</h3>
             </div>
             <div class="box-body no-padding">
-              <div class="mailbox-read-info"><!-- ng-repeat="mess in Message"-->
+              <div class="mailbox-read-info" ng-repeat="mess in Message">
                 <h5><b>Enviado por el usuario: </b>{{mess.Control.Created_User}}</h5>
                 <h5><b>Enviado al usuario: </b>{{mess.User}}</h5>
                 <h5><b>Enviado al Vehiculo: </b>{{mess.ID_Truck}}</h5>
@@ -169,7 +174,7 @@
                 <h5><b>Leido el </b>{{mess.Reading_Date}}</h5>
               </div>
               <div class="mailbox-controls with-border text-center">
-                <div class="btn-group">
+                <div class="btn-group"  ng-repeat="mess in Message">
                    <button type="button" class="btn btn-primary" ng-click="Info_Message(mess,'Return')"data-toggle="tooltip" data-container="body" title="Regresar">
                     <i class="fa fa-reply"></i></button>
                   <button type="button" class="btn btn-primary" ng-click="Reenviar_Message(mess)" data-toggle="tooltip" data-container="body" title="Reenviar">
@@ -191,7 +196,7 @@
            
             <div class="box-footer">
               <div class="mailbox-controls with-border text-center">
-				<div class="btn-group">
+				<div class="btn-group"  ng-repeat="mess in Message">
                    <button type="button" class="btn btn-primary" ng-click="Info_Message(mess,'Return')"data-toggle="tooltip" data-container="body" title="Regresar">
                     <i class="fa fa-reply"></i></button>
                   <button type="button" class="btn btn-primary" ng-click="Reenviar_Message(mess)" data-toggle="tooltip" data-container="body" title="Reenviar">
@@ -206,7 +211,61 @@
           </div>
         </div>
         
-      </div>
+        <div class="col-md-9" ng-show="Show_New_Message">
+          <div class="box box-primary">
+            <div class="box-header bg-primary with-border">
+              <h3 class="box-title">Creacion de mensaje</h3>
+            </div>
+            <div class="box-body">
+              <div class="form-group">
+              	  <label class="col-sm-4 control-label">Asignar al Usuario:</label>
+                 <div class="col-sm-8"> 
+                   <div class="form-group">
+                     <select ng-model="Noti.User" style="width: 100%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" ng-change="Filter_License(Noti.User)"  class="form-control" id="Usuario"> </select>
+                   </div>
+                 </div>
+              </div>  
+					<div class="form-group" ng-show="Show_Select_Vehicule">
+						<label class="col-sm-4 control-label">Asignar al Vehículo:</label>
+						<div class="col-sm-8"> 
+							<div class="form-group">						
+                       <select  ng-model="Noti.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter | orderBy:'ID_Truck'" style="width: 100%;" class="form-control" id="Vehicle"></select>
+							</div>
+						</div>
+					</div> 
+              <div class="form-group">
+                 <label class="col-sm-4 control-label">Fecha:</label>
+                 <div class="col-sm-8"> 
+                   <div class="form-group">
+                		<input type="date" ng-model="Noti.Date"class="form-control">
+             		 </div>
+                 </div>
+              </div>  
+              <div class="form-group">
+                 <label class="col-sm-4 control-label">Asunto:</label>
+                 <div class="col-sm-8"> 
+                   <div class="form-group">
+               			 <textarea class="form-control" ng-model="Noti.Matter" placeholder="Asunto:"></textarea>
+           				</div>
+                 </div>
+              </div> 
+              <div class="form-group">
+                 <label class="col-sm-4 control-label">Mensaje:</label>
+                 <div class="col-sm-8"> 
+                   <div class="form-group">
+               			 <textarea class="form-control" ng-model="Noti.Detail" placeholder="Mensaje:"></textarea>
+           				</div>
+                 </div>
+              </div>  
+            </div>
+            <div class="box-footer">
+              <div class="pull-right">
+                <button type="submit" class="btn btn-primary pull-right" ng-click="Send_Message(Noti)" > Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
   </section>	
   
 </div>
