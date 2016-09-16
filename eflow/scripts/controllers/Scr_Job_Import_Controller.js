@@ -327,9 +327,10 @@ var onSuccess = function(result){
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_VisitPoint_To_Assign = [];
 	
-	for (i=0; i < CheckBoxes_Array.length ; i++){
+	for (var i=0; i < CheckBoxes_Array.length ; i++){
 		if (CheckBoxes_Array[i].checked === true){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
+			//json_obj.job[i].JobID = new Date().getTime();
 			//var json_obj1={};
 			//json_obj1.Estimated_Date = new Date(json_obj.Estimated_Date).getTime() + eflowDTS.Time.Difference;
 			//json_obj.Estimated_Date = json_obj1.Estimated_Date;
@@ -407,10 +408,9 @@ var onSuccess = function(result){
 
 $scope.Open_Modal_Add_VisitPoint_Import = function(){
 	try{
-	
-	$scope.VisitPoint_Import_Add = {};
-	$scope.VisitPoint_Import_Add_Array_Task = [];
-	$("#Modal_Add_VisitPoint_Import").modal("show");	
+		$scope.VisitPoint_Import_Add = {};
+		$scope.VisitPoint_Import_Add_Array_Task = [];
+		$("#Modal_Add_VisitPoint_Import").modal("show");	
 	}catch (e) {
         
         var err;
@@ -836,7 +836,7 @@ function Complete_Json_CSV(arr){
   var job = {};
   
   						
-  job.JobID = parseInt(puntoVisitaExcel.JobID);
+  job.JobID = (new Date().getTime())+Math.floor((Math.random() * 100) + 1);//parseInt(puntoVisitaExcel.JobID);
   job.JobType = puntoVisitaExcel.JobType;
   job.JobName = puntoVisitaExcel.JobName;
   job.JobDescription = puntoVisitaExcel.JobDescription;

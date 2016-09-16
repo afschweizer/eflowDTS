@@ -1,29 +1,7 @@
 <script src="scripts/externals/jspdf.min.js"></script>
 <script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
+ 
 <div ng-controller="Scr_Notification_Controller" ng-init="init()">  
   <section class="content">
       <div class="row"> 
@@ -33,11 +11,12 @@
               <a class="box-title" style="color:#fff;">Carpetas
               </a>
               <div class="box-tools">
-                <button type="button" class="btn btn-box-tool" ng-click="Show_Folder = ! Show_Folder; Switch_Folder_Data(Show_Folder);"><i style="color:#fff;" ng-class="Class_Folder"></i> 
+                <button type="button" class="btn btn-box-tool" ng-click="Show_Folder = ! Show_Folder; Switch_Folder_Data(Show_Folder,'Show_Folder');"><i style="color:#fff;" ng-class="Class_Folder"></i> 
                 </button>
               </div>
             </div>
             <div class="box-body no-padding" ng-show="Show_Folder">
+              
               <ul class="nav nav-pills nav-stacked">
                 <li>
                   <a ng-click="query = {'State_Created':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
@@ -73,16 +52,62 @@
                 </li>  
                 <li>
                   <a ng-click="Show_All_Message=false; Show_New_Message=true;Show_Read_Message = false;">
-                    <i class="fa fa-envelope-o"></i> Nuevo Mensaje
+                    <i class="fa fa-envelope"></i> Nuevo Mensaje
                   </a>
                 </li>    
                 <!--li>
                   <a href="">
-                    <i class="fa fa-filter"></i> Filtro de busqueda 
+                    <i class="fa fa-filter"></i>  
                     <span class="label label-warning pull-right">65
                     </span>
                   </a>
                 </li-->
+              </ul>
+            </div>        
+          </div> 
+          <div class="box box-solid">
+            <div class="box-header with-border btn btn-primary btn-block margin-bottom">
+              <a class="box-title" style="color:#fff;">Filtro de busqueda
+              </a>
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" ng-click="Show_Filter = ! Show_Filter; Switch_Folder_Data(Show_Filter,'Show_Filter');"><i style="color:#fff;" ng-class="Class_Filter"></i> 
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding" ng-show="Show_Filter">
+              <ul class="nav nav-pills nav-stacked">
+                <li>
+                  <a ng-click="search.User">
+                    <i class="fa fa-user"></i>Usuario
+                    <span>
+                     <select style="width: 50%;"  ng-model="search.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser| orderBy:'Name'" class="form-control pull-right" id="Usuario"> </select>
+							</span><br/><br/>
+						</a>
+                </li>
+                <li>
+                  <a ng-click="search.ID_Truck">
+                    <i class="fa fa-truck"></i>Vehiculo
+                    <span>
+                      <select style="width: 50%;"  ng-model="search.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle | orderBy:'ID_Truck'" class="form-control pull-right" id="Vehicle"></select>
+							</span><br/><br/>
+						</a>
+                </li>
+                <li>
+        				<div class="col-md-6">
+                    <i class="fa fa-calendar"></i> Fecha
+                  </div>
+                    <div class="col-md-6 input-group date" >
+                      <input type="date" class="form-control pull-right" ng-model="search.Estimated_Date" ng-change="search.Estimated_Date">
+                    </div>
+                </li>
+                <li>
+                  <a ng-click="search.ID_Truck">
+                    <i class="fa fa-file-o"></i>Asusnto
+                    <span>
+                    		<input type="text" style="width: 50%;" class="form-control pull-right" ng-model="search.Matter" >
+                    </span><br/><br/>
+						</a>
+                </li>
               </ul>
             </div>        
           </div> 
@@ -116,8 +141,8 @@
                 </div>-->
                 <div class="text-right">
     <span> 
-      Número de registro por página: <input style="color:#000; "ng-model="pageSize" placeholder="10" type="number" min="1" size="2">
-    </span>
+      Número de registro por página: <input style="color:#000; "ng-model="pageSize" placeholder="10" type="number" min="1" size="2"> de {{(ArrayNotificacion|  filter: query).length}}.
+     </span>
     <button class="btn btn-primary" ng-disabled="currentPage == 0"  style="background-color:#4096c6; color:#fff; " ng-click="currentPage=currentPage-1"> <i class="fa fa-angle-double-left"></i> </button>    
       <span>{{currentPage+1}}/{{numberOfPages()}}</span>    
     <button class="btn btn-primary" style="background-color:#4096c6; color:#fff; " ng-disabled="currentPage >= ArrayNotificacion.length/pageSize - 1" ng-click="currentPage=currentPage+1"> <i class="fa fa-angle-double-right"></i> </button>
@@ -127,7 +152,7 @@
               <div class="table-responsive ">
                 <table class="table table-hover" class="resizable" >
 					 <tbody>
-                  <tr style="color:#000; align:center" ng-repeat="Obj in ArrayNotificacion  | startFrom:currentPage*pageSize | limitTo:pageSize | filter: query">
+                  <tr style="color:#000; align:center" ng-repeat="Obj in ArrayNotificacion  | startFrom:currentPage*pageSize | limitTo:pageSize | filter: search |  filter: query">
                     <!--td>
                       <div class="icheckbox_flat-blue" aria-checked="false" aria-disabled="false" style="position: relative;">
                         <input type="checkbox" style="position: absolute; opacity: 0;">
@@ -164,8 +189,9 @@
                 </div>
                 <div class="pull-right">
                 <div class="text-right">
+                 
     <span> 
-      Número de registro por página: <input style="color:#000; "ng-model="pageSize" placeholder="10" type="number" min="1" size="2">
+      Número de registro por página: <input style="color:#000; "ng-model="pageSize" placeholder="10" type="number" min="1" size="2"> de {{(ArrayNotificacion|  filter: query).length}}.
     </span>
     <button class="btn btn-primary" ng-disabled="currentPage == 0"  style="background-color:#4096c6; color:#fff; " ng-click="currentPage=currentPage-1"> <i class="fa fa-angle-double-left"></i> </button>    
       <span>{{currentPage+1}}/{{numberOfPages()}}</span>    

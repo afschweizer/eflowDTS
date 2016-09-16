@@ -9,12 +9,14 @@ $scope.numberOfPages = function(){
 $scope.init = function(){
 	try{
 		$scope.Show_Folder=true;
+		$scope.Show_Filter=true;
 		$scope.Show_Read_Message=false;
 		$scope.Show_All_Message=false;
 		$scope.Show_Delete_Message=false;
 
 
         $scope.Class_Folder = "fa fa-minus";
+        $scope.Class_Filter = "fa fa-minus";
 		$scope.Select();
 		$scope.Select_User();
 		$scope.Select_Vehicle();
@@ -499,13 +501,30 @@ $scope.Select = function(){
   
 };
 
-$scope.Switch_Folder_Data = function(Show_Folder){
-			try{
+$scope.Switch_Folder_Data = function(Show_Folder,tipo){
+try{
+	switch (tipo) {
+    case "Show_Folder":
+      	 	if(Show_Folder){
+				$scope.Class_Folder = "fa fa-minus";
+			}else{
+				$scope.Class_Folder = "fa fa-plus";
+			}
+        break;
+    case "Show_Filter":
+        	if(Show_Folder){
+				$scope.Class_Filter = "fa fa-minus";
+			}else{
+				$scope.Class_Filter = "fa fa-plus";
+			}
+        break;
+}				
+			/*	
 			if(Show_Folder){
 			$scope.Class_Folder = "fa fa-minus";
 			}else{
 			$scope.Class_Folder = "fa fa-plus";
-			}
+			}*/
 		}catch (e) {
         
         var err;

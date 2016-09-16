@@ -1290,6 +1290,7 @@ $scope.Delete_Job_DB = function(){
 			Array_Delete_ID.push(CheckBoxes_Array[i].attributes.id_check.value);
 			//Array_Remove($scope.ArrayJobs,Obj);
 			}
+			$scope.Show_Actions=false;
 	}
 		
 	

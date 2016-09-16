@@ -11,6 +11,7 @@ $scope.init = function(){
  Select_Vehicle
  
  */
+
  function Get_Total_Weight_Jobs(Arr){
  	var Total_Weight = 0;
  	for(var i = 0; i<Arr.length;i++){
@@ -31,7 +32,8 @@ $scope.init = function(){
 /* Metodos a utilizar:
 Select_Jobs
 
-*/
+*/   
+
 function Get_Total_Order_Damaged(Orders){
 	var Total_Order = 0;
 	for(var i =0; i < Orders.length;i++){
@@ -57,11 +59,46 @@ function Get_Total_Order_Damaged(Orders){
 
 function Get_(){}
 
+
+//Gra. 4
+/* Metodos a utilizar:
+Select_Jobs
+
+*/   
+
+
+//Gra. 5
+/* Metodos a utilizar:
+Select_Jobs
+
+*/   
+
+
+
+//Gra. 6
+/* Metodos a utilizar:
+Select_Jobs
+
+*/   
+
+  
+  
+//Gra.7
+/* Metodos a utilizar:
+Select_Summary_Trip
+
+*/
+
+function Get_Drop_Size(){
+	
+}
+
 //Gra. 8
 /* Metodos a utilizar:
 Select_Summary_Trip
 
 */
+
 function Get_On_Time_Delivery(trip){
 	var Total_Order_Time = 0;
 	var TotalJobs = 0;
@@ -73,11 +110,13 @@ function Get_On_Time_Delivery(trip){
 	Total_Order_Time =(TotalTime/TotalJobs);
 	return Total_Order_Time;
 }
+
 //Gra. 9
 /* Metodos a utilizar:
 Select_Summary_Trip
 
 */
+
 function Get_Efficiency_Delivery(trip){
 	var Total_Efficiency_Delivery = 0;
 	var TotalUnits = 0;
@@ -90,13 +129,12 @@ function Get_Efficiency_Delivery(trip){
 	return Total_Efficiency_Delivery;
 }
 
-
-//Gra.7
+//Gra. 10
 /* Metodos a utilizar:
-Select_Summary_Trip
+Select_Jobs
 
-*/
-function Get_Drop_Size(){
-	
-}
+*/ 
+
+
+
 });

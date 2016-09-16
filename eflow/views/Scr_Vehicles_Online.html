@@ -70,28 +70,47 @@
  </div>
  
   <div class="row" >
-       <!--Rastreo de Camión-->
 			<div class="col-md-12 col-sm-12 col-xs-12">
 		 		 <div class="box ">
                 <div class="box-header with-border bg-blue">
-                  <h3 class="box-title"><b>Rastreo de Vehículos</b>
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-truck"></i> Conductor. {{(ArrayUser | filter:  {'Type': 'Conductor'} :true).length}}
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-user"></i> Ayudante. {{(ArrayUser | filter:  {'Type': 'Ayudante'} :true).length}}</h3>
+                  <div class="row" >
+                    <div class="col-md-3 ">
+                      <h3 class="box-title">
+                        <b>
+                          Rastreo de Vehículos
+                        </b>
+                      </h3>
+                    </div>
+                    <div class="col-md-3 ">
+                      <h3 class="box-title" ng-click="query = {'Type': 'Conductor'};"> 
+                        <i class="fa fa-truck"></i> 
+                        Conductor: {{(ArrayUser | filter:  {'Type': 'Conductor'} :true).length}}
+                      </h3>
+                   </div>
+                    <div class="col-md-3 "> 
+                      <h3 class="box-title"ng-click="query = {'Type': 'Ayudante'};"> 
+                      <i class="fa fa-user"></i> 
+                        Ayudante: {{(ArrayUser | filter:  {'Type': 'Ayudante'} :true).length}}
+                      </h3>
+                </div>
+                    <div class="col-md-3 ">  
+                      <h3 class="box-title" ng-click="query = {};"> 
+                        <i class="fa fa-user"></i> 
+                        <i class="fa fa-truck "></i> 
+                        Todos: {{(ArrayUser | filter:  {} :true).length}}
+                      </h3>
+                </div>
+                    </div> 
+                  
                  <div class="box-tools pull-right">                   
                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Ajustar Tamaño" ng-click="Resize();"><i class="glyphicon glyphicon-refresh"></i></button>
                    <button class="btn btn-box-tool" data-toggle="tooltip" title="Refrescar" ng-click="Create_Map();"><i class="glyphicon glyphicon-sort"></i></button>
                   </div>
-                </div><!-- /.box-header -->
+                </div>
                 <div class="box-body no-padding" ng-show="Show_Components.Map_Online_User">
                    <div id="Wrapper_Map">
 								<div id="Map_Online_User" style="height:100%; width:100%;"></div>
-                   </div><!-- /.box-body -->
+                   </div>
                 </div>
            </div>
    </div>
@@ -112,8 +131,7 @@
   
   <div class="row" ng-show="Show_Components.Show_List">
 
-    		<div class="col-lg-3 col-xs-6" ng-repeat="User in ArrayUser">
-              <!-- small box -->
+    		<div class="col-lg-3 col-xs-6" ng-repeat="User in ArrayUser | filter: query">
               <div class="small-box bg-blue ">
                 <div class="inner" ng-click="Create_Map(User)">
                   <h5>{{User.Geolocation.Address}}</h5> 
@@ -133,7 +151,6 @@
                 </a>
               </div>
             </div>
-  
   </div> 
   
   <div class="modal fade" id="Charging" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
