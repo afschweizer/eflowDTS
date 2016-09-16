@@ -16,6 +16,8 @@ $scope.numberOfPages = function(){
 $scope.init = function(){
 	try{
     Set_Current_Page(); 
+    $scope.checked=false;
+			$scope.Show_Alerta=false;
 	$scope.Show_Components.Route_Form = true;	
 	$scope.Show_Components.Route_Table = false;
 	Load_Map_Init();
@@ -169,8 +171,10 @@ $scope.Checking_Checkboxes_Check_Master = function(master){
 $scope.Load = function(){
 	
 	try{
+	$scope.checked=false; 
+	$scope.Show_Alerta=false;
 	$scope.Route = {};
-	Load_Map();			
+	Load_Map();		
 	}catch (e) {
         
         var err;
@@ -193,10 +197,70 @@ $scope.Load = function(){
     }  
 };
 
+
+   
+$scope.Verifica_Sector = function(Obj){
+	 try {
+        var JsonData = {
+            'Method_Name': 'Select_All_Visit_Point',
+             'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier,
+    			"Route":{
+    			"ID_Route": Obj.ID_Route}
+            },
+            'Fields':{
+            }
+        };
+		var onSuccess = function(Response){		
+		$scope.Tam_VisitPoint = Response.length;
+		if(Response.length>0){
+			$scope.checked=true;
+			$scope.Show_Alerta=true;
+		}else{
+			$scope.checked=false;}
+		
+		};		
+		var onError = function(e){
+			var erro={
+			Generated: true,
+                Page: "Scr_Route_Controller",
+                Method: "Verifica_Sector",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;					
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
+    } catch (e) {
+        alert(e);
+        var err;
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Verifica_Sector",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+};
+	
+
+
 $scope.Visualize_Route = function(Obj){
 	
 try{
-	
+	$scope.Verifica_Sector(Obj);
 	$scope.Show_Components.Route_Form = true;
 	$scope.Show_Components.Route_Table = false;
 	$scope.Show_Components.Route_Add = false;

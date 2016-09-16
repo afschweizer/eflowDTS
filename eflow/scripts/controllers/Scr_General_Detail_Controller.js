@@ -2,6 +2,11 @@ DTS_APP.controller('Scr_General_Detail_Controller',function($scope){
 
 $scope.init = function(){
 	$scope.Show_Route=false;
+	
+	Select_Trip({},{});
+    Select_Visit_Point({},{});
+    Select_Item({},{});
+		
  };
  
  
@@ -134,6 +139,73 @@ function Get_Efficiency_Delivery(trip){
 Select_Jobs
 
 */ 
+
+
+/*Code To Select Info*/
+
+function Select_Trip(Data_Request,Fields_Request){
+	 
+	var Request = {
+		'Method_Name':'Select_Summary_Trip',
+		'Data':Data_Request,
+		'Fields':Fields_Request
+	};	 
+
+	var onSuccess = function(Response){
+		$scope.Array_Trip = Response;
+	};
+	
+	var onError = function(Error_Response){
+		alert(Error_Response);		
+	};	
+	
+	Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Request,onSuccess,onError);
+};
+
+function Select_Visit_Point(Data_Request,Fields_Request){
+	
+	var Request = {
+		'Method_Name':'Select_Summary_Visit_Point',
+		'Data':Data_Request,
+		'Fields':Fields_Request
+	};
+	
+	var onSuccess = function(Response){
+		$scope.Arra_Visit_Point = Response;
+	};
+	
+	var onError = function(Error_Response){
+		alert(Error_Response);
+	};
+
+	Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Request,onSuccess,onError);
+
+};
+
+function Select_Item(Data_Request,Fields_Request){
+	
+	var Request = {
+		'Method_Name':'Select_Summary_Item',
+		'Data':Data_Request,
+		'Fields':Fields_Request
+	};
+	
+	var onSuccess = function(Response){
+		$scope.Array_Item = Response;
+	};
+	
+	var onError = function(Error_Response){
+		alert(Error_Response);
+	};
+	
+	Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Request,onSuccess,onError);
+
+};
+
+
+
+
+
 
 
 

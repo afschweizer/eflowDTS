@@ -617,10 +617,67 @@ $scope.Select = function(){
     }  
    
 }; 
-   
+
+
+$scope.Verifica_Trabajos = function(Obj){
+	 try {
+        var JsonData = {
+            'Method_Name': 'Select_Jobs',
+             'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier,
+    			"ID_Location": Obj.ID_Location
+            },
+            'Fields':{
+            }
+        };
+		var onSuccess = function(Response){
+			
+		$scope.Tam_VisitPoint = Response.length;
+		if(Response.length>0){
+			$scope.checked=true;
+			$scope.Show_Alerta=true;
+		}else{
+			$scope.checked=false;}
+		
+		};		
+		var onError = function(e){
+			var erro={
+			Generated: true,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Verifica_Sector",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;					
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
+    } catch (e) {
+        alert(e);
+        var err;
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_Controller",
+                Method: "Verifica_Trabajos",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+};
+	
 $scope.Visualize_Visit_Point = function(Obj){
 	try{
-		
+	$scope.Verifica_Trabajos(Obj);
    $scope.flag =false;
    $scope.VisitPoint = Obj;   
    $scope.Show_Components.VisitPoint_Form = true;

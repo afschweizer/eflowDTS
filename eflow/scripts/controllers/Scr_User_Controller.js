@@ -13,6 +13,8 @@ $scope.numberOfPages = function(){
 $scope.init = function() {
 try{
 
+    $scope.checked=false;
+			$scope.Show_Alerta=false;
 Set_Current_Page();
 		//To_Reload_Eflow_Config();
 	//Get_Cookie("EflowCookie");
@@ -395,11 +397,67 @@ $scope.Save_User_Edit = function(Obj){
   
 };
 	
- 
+   
+$scope.Verifica_Trabajos = function(Obj){
+	 try {
+        var JsonData = {
+            'Method_Name': 'Select_Jobs',
+             'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier,
+    			"User": Obj.User
+            },
+            'Fields':{
+            }
+        };
+		var onSuccess = function(Response){		
+		$scope.Tam_VisitPoint = Response.length;
+		if(Response.length>0){
+			$scope.checked=true;
+			$scope.Show_Alerta=true;
+		}else{
+			$scope.checked=false;}
+		
+		};		
+		var onError = function(e){
+			var erro={
+			Generated: true,
+                Page: "Scr_User_Controller",
+                Method: "Verifica_Sector",
+            Description: "onError",
+            User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+            Error: e
+        };
+			throw erro;					
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
+    } catch (e) {
+        alert(e);
+        var err;
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_User_Controller",
+                Method: "Verifica_Trabajos",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+};
+	
 
 $scope.Visualize_User = function(Obj){
 	try{
 	
+	$scope.Verifica_Trabajos(Obj);
    $scope.User = Obj;
    
 	$scope.User.Mail=Obj.Mail.split("@")[0];
