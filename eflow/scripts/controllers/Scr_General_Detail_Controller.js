@@ -88,7 +88,7 @@ function Select_Item(Data_Request,Fields_Request){
 /* Gráficos */ 
 
 //Unique_Select_Info
-function Selec_Data(){
+function Select_Data(){
 	var Request = {
 		'Method_Name':'Select_Data_Graph',
 		'Data_Trip':{
