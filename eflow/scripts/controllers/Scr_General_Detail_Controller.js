@@ -107,7 +107,7 @@ function Selec_Data(){
 	               
                 	},3000);
                 	
-	};
+	}; 
 	
 	var onError = function(Error_Response){
 		alert(Error_Response);
