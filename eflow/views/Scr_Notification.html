@@ -1,6 +1,4 @@
-<script src="scripts/externals/jspdf.min.js"></script>
-<script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
  
 <div ng-controller="Scr_Notification_Controller" ng-init="init()">  
   <section class="content">
@@ -101,7 +99,7 @@
                     </div>
                 </li>
                 <li>
-                  <a ng-click="search.ID_Truck">
+                  <a ng-click="search.Matter">
                     <i class="fa fa-file-o"></i>Asusnto
                     <span>
                     		<input type="text" style="width: 50%;" class="form-control pull-right" ng-model="search.Matter" >
@@ -244,15 +242,15 @@
            
             <div class="box-footer">
               <div class="mailbox-controls with-border text-center">
-				<div class="btn-group"  ng-repeat="mess in Message">
+                <div class="btn-group"  ng-repeat="mess in Message">
                    <button type="button" class="btn btn-primary" ng-click="Info_Message(mess,'Return')"data-toggle="tooltip" data-container="body" title="Regresar">
                     <i class="fa fa-reply"></i></button>
                   <button type="button" class="btn btn-primary" ng-click="Reenviar_Message(mess)" data-toggle="tooltip" data-container="body" title="Reenviar">
                     <i class="fa fa-share"></i></button>
-                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-container="body" title="Eliminar">
-                    <i class="fa fa-trash-o"></i></button>
                  <button type="button" class="btn btn-primary"  ng-click="printDiv('printableArea1')" data-toggle="tooltip"  data-container="body" title="Imprimir">
                    <i class="fa fa-print"></i></button>
+                  <button type="button" class="btn btn-primary" ng-click="Delect_messages(mess)" data-toggle="tooltip" data-container="body" title="Eliminar">
+                    <i class="fa fa-trash-o"></i></button>
                 </div>
              </div>
              </div>

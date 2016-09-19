@@ -372,7 +372,20 @@ function Send_JSON(Url, JsonData, onSucess, onError) {
     }  
   
 };
-//-----------------------------------
+
+function Exist_In_Array(Arr,Value){
+	var Result = false;
+	
+	for(var i = 0; i < Arr.length; i++){
+		if(Arr[i] === Value){
+		 Result = true;
+		 break;
+		}
+	}
+	
+	return Result;
+};
+
 function Array_Remove(Array,Value){
 	try{
 	for ( var i = 0, j = Array.length ; i < j; i++ ) {

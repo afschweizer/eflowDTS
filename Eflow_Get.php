@@ -134,6 +134,11 @@ switch($dataObject->Method_Name){
       require 'Select_Tutorial.php';
       break;
     }
+    case 'Select_Data_Graph':
+    {
+      require 'Select_Data_Graph.php';
+      break;
+    }
    default:
     {
     	echo json_encode( array('Error' => 'Metodo_Incorrecto'));

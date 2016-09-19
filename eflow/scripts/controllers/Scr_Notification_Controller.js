@@ -552,7 +552,7 @@ $scope.Info_Message = function(obj,type){
 		$scope.Message=[];
 	if(type === "Read"){
 		$scope.Message.push(obj);
-		$scope.$apply($scope.Message);
+		//$scope.$apply($scope.Message);
 		$scope.Show_Read_Message=true;
 		$scope.Show_New_Message = false;
 		$scope.Show_All_Message = false;
@@ -754,4 +754,7 @@ $scope.printDiv = function(divName) {
     window.print();
     document.body.innerHTML = originalContents;
 };
+
+
+
 });
