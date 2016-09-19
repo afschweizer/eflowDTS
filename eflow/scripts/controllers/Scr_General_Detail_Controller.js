@@ -13,7 +13,7 @@ $scope.init = function(){
     //Select_Visit_Point({},{});
     //Select_Item({},{});
     
-	 
+	 Select_Data();
 
  };
  
@@ -69,8 +69,8 @@ function Select_Item(Data_Request,Fields_Request){
 	
 	var Request = {
 		'Method_Name':'Select_Summary_Item',
-		'Data':Data_Request,
-		'Fields':Fields_Request
+		'Data_Trip':Data_Request,
+		'Fields_Trip':Fields_Request
 	};
 	
 	var onSuccess = function(Response){
@@ -91,10 +91,28 @@ function Select_Item(Data_Request,Fields_Request){
 function Selec_Data(){
 	var Request = {
 		'Method_Name':'Select_Data_Graph',
-		'Data':{
-			'Company':eflowDTS.Session.Company.Identifier
+		'Data_Trip':{
+			
 		},
-		'Fields':{
+		'Fields_Trip':{
+			
+		},
+		'Data_Visit_Point':{
+			
+		},
+		'Fields_Visit_Point':{
+			
+		},
+		'Data_Item':{
+			
+		},
+		'Fields_Item':{
+			
+		},
+		'Data_Vehicle':{
+			
+		},
+		'Fields_Vehicle':{
 			
 		}
 	};
