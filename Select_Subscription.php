@@ -2,7 +2,7 @@
   
 include 'ConnectionMongo.php'; 
   
-$coll = $db->Store_Subscription_type;
+$coll = $db->Store_Subscription_Types;
 
 $result = $coll->find($dataObject->Data);
 
