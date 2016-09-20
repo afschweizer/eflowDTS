@@ -8,82 +8,11 @@ $scope.init = function(){
 	$scope.Array_Visit_Point = [];
 	$scope.Array_Item = [];
 	$scope.Array_Vehicle = [];
-			
-	//Select_Trip({},{});
-    //Select_Visit_Point({},{});
-    //Select_Item({},{});
     
-	 Select_Data();
+	Select_Data();
 
  };
  
-/*Code To Select Info*/
-
-function Select_Trip(Data_Request,Fields_Request){
-	 
-	var Request = {
-		'Method_Name':'Select_Summary_Trip',
-		'Data':Data_Request,
-		'Fields':Fields_Request
-	};	 
-
-	var onSuccess = function(Response){
-		$scope.Array_Trip = Response;
-		 	$scope.Graf1 = ($scope.Array_Trip[0].Total_Weight / 500)*100;
-	                	$scope.Graf2 = ($scope.Array_Trip[0].Total_Units_Damaged / $scope.Array_Trip[0].Total_Units)*100;
-	                	$scope.Graf3 = ($scope.Array_Trip[0].Total_Units_Rejected / $scope.Array_Trip[0].Total_Units)*100;
-	                	$scope.Graf4 = ($scope.Array_Trip[0].Total_Jobs_Confirmed / $scope.Array_Trip[0].Total_Jobs)*100;
-	                	$scope.Graf5 = ($scope.Array_Trip[0].Total_VisitPoint_In_Time / $scope.Array_Trip[0].Total_VisitPoint)*100;
-	                	$scope.Graf6 = ($scope.Array_Trip[0].Total_Units_Confirmed / $scope.Array_Trip[0].Total_Units)*100;
-	                	
-	};
-	
-	var onError = function(Error_Response){
-		alert(Error_Response);		
-	};	
-	
-	Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Request,onSuccess,onError);
-};
-
-function Select_Visit_Point(Data_Request,Fields_Request){
-	
-	var Request = {
-		'Method_Name':'Select_Summary_Visit_Point',
-		'Data':Data_Request,
-		'Fields':Fields_Request
-	};
-	
-	var onSuccess = function(Response){
-		$scope.Arra_Visit_Point = Response;
-	};
-	
-	var onError = function(Error_Response){
-		alert(Error_Response);
-	};
-
-	Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Request,onSuccess,onError);
-
-};
-
-function Select_Item(Data_Request,Fields_Request){
-	
-	var Request = {
-		'Method_Name':'Select_Summary_Item',
-		'Data_Trip':Data_Request,
-		'Fields_Trip':Fields_Request
-	};
-	
-	var onSuccess = function(Response){
-		$scope.Array_Item = Response;
-	};
-	
-	var onError = function(Error_Response){
-		alert(Error_Response);
-	};
-	
-	Send_JSON(eflowDTS.Configuration.URLs.eflow_Get,Request,onSuccess,onError);
-
-};
 
 /* Gráficos */ 
 
@@ -92,25 +21,25 @@ function Select_Data(){
 	var Request = {
 		'Method_Name':'Select_Data_Graph',
 		'Data_Trip':{
-			
+			'Company':eflowDTS.Session.Company.Identifier
 		},
 		'Fields_Trip':{
 			
 		},
 		'Data_Visit_Point':{
-			
+			'Company':eflowDTS.Session.Company.Identifier
 		},
 		'Fields_Visit_Point':{
 			
 		},
 		'Data_Item':{
-			
+			'Company':eflowDTS.Session.Company.Identifier
 		},
 		'Fields_Item':{
 			
 		},
 		'Data_Vehicle':{
-			
+			'Company':eflowDTS.Session.Company.Identifier
 		},
 		'Fields_Vehicle':{
 			

@@ -10,13 +10,20 @@
 <script>
 
   
-</script>
+</script>   
+
 <div ng-controller="Scr_Company_Controller" ng-init="init()">  
 	<div class="panel panel-primary "  ng-show="Show_Company" >
-		<div class="panel-heading" >Datos de la Compañia</div>
+		<div class="panel-heading" >Datos de la Compañia </div>
       <div class="panel-body">
         <form  ng-submit="validate_Companys(Companys);"class="form-horizontal">
           <div class="form-group"> 
+            <label  class="col-sm-3 control-label">Tipo de suscripcion:</label>
+            <div class="col-sm-7"> 
+              <input type="text" disabled class="form-control" ng-model="Companys.subscription" value="{{subscription}}" placeholder="{{subscription}}"required>
+            </div>
+    			<div class="col-sm-2"></div>
+          </div><div class="form-group"> 
             <label  class="col-sm-3 control-label">Nombre:</label>
             <div class="col-sm-7"> 
               <input type="text" class="form-control" ng-model="Companys.name" placeholder="Nombre"required>

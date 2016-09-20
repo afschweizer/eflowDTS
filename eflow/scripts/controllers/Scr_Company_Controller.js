@@ -18,6 +18,7 @@ $scope.Type = "password";
 		
 		try{
 	    
+		$scope.subscription = eflowDTS.Session.Ram.Subscription.Type_subscription;
 	    $scope.Show_Components.Main_Menu = false;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
 		$scope.Show_Components.Login = false;
