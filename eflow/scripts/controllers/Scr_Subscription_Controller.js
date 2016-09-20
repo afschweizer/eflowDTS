@@ -3,59 +3,6 @@ DTS_APP.controller('Scr_Subscription_Controller', function($scope) {
 	
 	$scope.init = function(){
 			$scope.Select();
-	
-		
-		
-		/*$scope.subscription=[{"Subriction_ID":"01",
-"Subscription_Name":"Demo", 
-"Subscription_Type":"Free", 
-  "Comments": "Comments bout subscription Type",
-  "Features":["Gratis para App.",
-  "Ilimitado de seguimiento de vehículos.",
-  "Ilimitado prueba de entrega.",
-  "Tiempo real.",
-  "Notificaciones. ",
-  "Creacion de 1 Vehiculo, Usuario, Establecimiento, Sector.",
-  "Gratuito por un mes."],
-  "Subscription_Period": "30",
-  "Amount": "0",
-  "Free_Users":"1"
-},{"Subriction_ID":"02",
-"Subscription_Name":"Mensual", 
-"Subscription_Type":"Monthly", 
-  "Comments": "Comments bout subscription Type",
-  "Features":["Gratis para wimdows.",
-  "Ilimitado de seguimiento de vehículos.",
-  "Ilimitado prueba de entrega.",
-  "Tiempo real.",
-  "Notificaciones. ",
-  "Creacion de 1 Vehiculo, Usuario, Establecimiento, Sector.",
-  "Gratuito por un mes."],
-  "Subscription_Period": "30",
-  "Amount": "20",
-  "Free_Users":"1"
-},{"Subriction_ID":"03",
-"Subscription_Name":"Anual", 
-"Subscription_Type":"Annual", 
-  "Comments": "Comments bout subscription Type",
-  "Features":["Gratis para  Android App.",
-  "Ilimitado de seguimiento de vehículos.",
-  "Ilimitado prueba de entrega.",
-  "Tiempo real.",
-  "Notificaciones. ",
-  "Creacion de 1 Vehiculo, Usuario, Establecimiento, Sector.",
-  "Gratuito por un mes."],
-  "Subscription_Period": "30",
-  "Amount": "100",
-  "Free_Users":"1"
-}**
-
-
-
-
-
-];
-$scope.Features=$scope.subscription[0].Features;*/
 	};
 	
 	

@@ -56,7 +56,7 @@ switch($dataObject->Method_Name){
     }
     case 'Select_Subscription':
     {
-		rquire 'Select_Subscription.php';
+		require 'Select_Subscription.php';
       break;
     }
    case 'Select_All_Route':
