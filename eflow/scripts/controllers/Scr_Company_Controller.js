@@ -441,6 +441,11 @@ try{
 							 	"Creation_Date": new Date().getTime(),
 							 	"Created_User" : "Default"
 							 	},
+							 	"Subscription":{
+							 	"Creation_Date": new Date().getTime(),
+							 	"Ending_Date": new Date().getTime() + (30*24*60*60*1000),
+							 	"Type_Subscription" : "Demo"
+							 	},
 				    			"Name": $scope.Companys.name,
 				    			"Identifier": $scope.Companys.name.toUpperCase(),
 							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),

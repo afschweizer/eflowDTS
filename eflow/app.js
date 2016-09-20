@@ -83,6 +83,9 @@
             .when('/Info',{
             	templateUrl: 'views/Scr_Info.html'
             })
+            .when('/Subscription',{
+            	templateUrl: 'views/Scr_Subscription.html'
+            })
             .when('/Notification',{
             	templateUrl: 'views/Scr_Notification.html'
             })
