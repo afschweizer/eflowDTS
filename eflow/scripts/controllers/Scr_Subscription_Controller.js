@@ -2,6 +2,9 @@
 DTS_APP.controller('Scr_Subscription_Controller', function($scope) {
 	
 	$scope.init = function(){
+			    $scope.Show_Components.Main_Menu = false;  
+		$scope.Show_Components.SubMenu_Maintenance = false;
+		$scope.Show_Components.Login = false;
 			$scope.Select();
 	};
 	

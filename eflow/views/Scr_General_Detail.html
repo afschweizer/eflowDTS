@@ -2,34 +2,34 @@
 <div id="Contents"  ng-controller="Scr_General_Detail_Controller" ng-init="init()"> 
 
   
-<div class="row" ng-show="a">
+<div class="row">
   <div class="col-md-12" >
     <h1>
       Informacion General
     </h1>
        <div class="col-md-2 info-box"> 
          <h4> % Espacio Utilizado</h4> 
-         <h2 style="text-align: center;">{{Graf1}}%</h2>
+         <h2 style="text-align: center;">{{Gra1}}%</h2>
       </div>
       <div class="col-md-2 info-box" > 
-          <h4> % Ordenes Dañadas</h4>
-          <h2 style="text-align: center;">{{Graf2}}%</h2>
+          <h4> % Ordenes con Daño</h4>
+          <h2 style="text-align: center;">{{Gra2}}%</h2>
       </div>
       <div class="col-md-2 info-box" > 
-          <h4> First Pass Yield</h4>
-          <h2 style="text-align: center;">{{Graf3}}%</h2>
+          <h4> Devoluciones</h4>
+          <h2 style="text-align: center;">{{Gra3}}%</h2>
       </div>
       <div class="col-md-2 info-box"> 
-          <h4> Drop Size</h4>
-          <h2 style="text-align: center;">{{Graf4}}%</h2>
+          <h4> First Pass Yield</h4>
+          <h2 style="text-align: center;">{{Gra6}}%</h2>
       </div>
       <div class="col-md-2 info-box"> 
           <h4> On Time Delivery</h4>
-          <h2 style="text-align: center;">{{Graf5}}%</h2>
+          <h2 style="text-align: center;">{{Gra8}}%</h2>
       </div>
       <div class="col-md-2 info-box" > 
           <h4> Efectividad de Entrega</h4>
-          <h2 style="text-align: center;">{{Graf6}}%</h2>
+          <h2 style="text-align: center;">{{Gra9}}%</h2>
       </div>
   </div>
   
@@ -64,60 +64,6 @@
           </div>
       </div>
 </div>
-  
-<p>  
-1.	Porcentaje Espacio Utilizado:
-Este indicador mide el porcentaje del espacio utilizado en la carga de camión. 
-<h2>{{Gra1}}</h2>  
-</p>
-<p>
-2.	Porcentaje de Ordenes con Productos Dañados:
-Este indicador mide el porcentaje de órdenes que llevan productos dañados. 
-<h2>{{Gra2}}</h2>  
-</p>
-<p>
-3.	Porcentaje de Devoluciones:
-Este indicador mide el porcentaje de devoluciones por ruta. 
-<h2>{{Gra3}}</h2>  
-</p>
-<p>
-4.	Tiempo de Transito: 
-Este indicador mide el tiempo que dura en llegar el vehículo desde que sale del almacén hasta que llega donde el cliente.
-<h2>{{Gra4}}</h2>  
-</p>
-<p> 
-5.	Tiempo de Atención por Cliente: 
-Este indicador mide el tiempo que dura el transportista en llegar y salir del establecimiento. 
-<h2>{{Gra5}}</h2>  
-</p>
-<p>
-6.	First Pass Yield:
-Este indicador mide el porcentaje de entregas que se realizaron exitosamente la primera vez. 
-<h2>{{Gra6}}</h2>  
-</p>
-<p>
-7.	Drop Size:
-Este indicador mide el promedio de productos que se entregan por periodo por cada cliente. 
-<h2>{{Gra7}}</h2>  
-</p>
-<p>
-8.	On Time Delivery:
-Este indicador mide el porcentaje de entregas realizadas en el momento especificado al cliente. 
- <h2>{{Gra8}}</h2>  
-</p>
-<p>
-9.	Efectividad de Entrega:
-Este indicador mide el porcentaje de los productos realmente entregados contra los programados para entrega. 
- <h2>{{Gra9}}</h2>  
-</p>
-<p>
-10.	Porcentaje de Merma:
-Este indicador mide el porcentaje de producto dañado y/o perdido del total del producto establecido.
-  <h2>{{Gra10}}</h2>  
-</p>
-
- 
-
   
    <div class="modal fade" id="Charging" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">

@@ -65,7 +65,7 @@ function Select_Data(){
   
 function Generate_Graphs(Data){
 	
-	$scope.Gra1 = (Get_Total_Weigth_Charge(Data.Trip)/Get_Total_Weigth_Vehicle(Data.Vehicle,Get_Vehicles_ID(Data.Trip)))*100;
+	$scope.Gra1 = (Get_Total_Weight_Charge(Data.Trip)/Get_Total_Weight_Vehicle(Data.Vehicle,Get_Vehicles_ID(Data.Trip)))*100;
 	
 	$scope.Gra2 = (Get_Total_Order_With_Unit_Damaged(Data.Visit_Point)/Data.Visit_Point.length)*100;
 	
@@ -84,31 +84,31 @@ function Generate_Graphs(Data){
 };
 
 //#1
-function Get_Total_Weigth_Charge(Arr){
-	var Total_Weigth = 0;
+function Get_Total_Weight_Charge(Arr){
+	var Total_Weight = 0;
 	
 	for(var i = 0; i < Arr.length; i++){
-		Total_Weigth += Arr[i].Total_Weigth;
+		Total_Weight += Arr[i].Total_Weight;
 	}
 	
-	return Total_Weigth;
+	return Total_Weight;
 };
 
-function Get_Total_Weigth_Vehicle(Arr_Vehicles,Arr_IDS){
-	var Total_Weigth = 0;
+function Get_Total_Weight_Vehicle(Arr_Vehicles,Arr_IDS){
+	var Total_Weight = 0;
 	
 	for(var i = 0; i < Arr_Vehicles.length; i++){
 		var Vehi = Arr_Vehicles[i];
 		for(var x = 0; x < Arr_IDS.length; x++){
 			var ID = Arr_IDS[x];
 			if(Vehi.ID_Truck === ID){
-				Total_Weigth += Vehi.Weight;
+				Total_Weight += Vehi.Weight;
 				break;
 			}
 		}
 	}
 	
-	return Total_Weigth;
+	return Total_Weight;
 };
 
 function Get_Vehicles_ID(Arr){
@@ -143,14 +143,14 @@ function Get_Total_Unit_Rejected(Arr){
 	var Total_Unit = 0;
 	
 	for(var i = 0; i < Arr.length; i++){
-		Total_Unit += Arr[i].Total_Unit_Rejected;
+		Total_Unit += Arr[i].Total_Units_Rejected;
 	}
 	
 	return Total_Unit;
 };
 
 function Get_Total_Unit(Arr){
-	var Total_Unit;
+	var Total_Unit = 0;
 	
 	for(var i = 0; i < Arr.length; i++){
 		Total_Unit += Arr[i].Total_Units;
