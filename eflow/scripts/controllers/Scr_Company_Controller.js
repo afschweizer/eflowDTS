@@ -436,8 +436,8 @@ function Select_User(){
 $scope.SaveData= function(){
 try{
 	  var JsonData = {
-						  	'Method_Name': 'Insert',
-							 'Company_Data': {
+	'Method_Name': 'Insert',
+		 'Company_Data': {
 							 	"Control":{
 							 	"Creation_Date": new Date().getTime(),
 							 	"Created_User" : "Default"
@@ -476,8 +476,26 @@ try{
 							    "Vehicle": $scope.Array_Vehicle ,
 							    "License": $scope.Array_License 
 							    }
-							    },
-							 'User_Data': {
+		},
+		'Subscription_Company':
+{
+"Company":$scope.Companys.name,
+  "Subscription_Type":{
+    "Subscription_ID": eflowDTS.Session.Ram.Subscription.Subscription_ID,
+    "Subscription_Name": eflowDTS.Session.Ram.Subscription.Subscription_Name,
+    "Subscription_Type": eflowDTS.Session.Ram.Subscription.Subscription_Type,
+    "Comments": eflowDTS.Session.Ram.Subscription.Comments,
+    "Features": eflowDTS.Session.Ram.Subscription.Features,
+    "Subscription_Period": eflowDTS.Session.Ram.Subscription.Subscription_Period,
+    "Amount": eflowDTS.Session.Ram.Subscription.Amount,
+    "Free_Users": eflowDTS.Session.Ram.Subscription.Free_Users
+},
+"Creation_Date": new Date().getTime(),
+"Ending_Date": new Date().getTime() + (30*24*60*60*1000),
+"Automatic_Renewal":true ,
+"State":"Active"
+},
+		 'User_Data': {
 							 	"Control":{
 							 	"Creation_Date": new Date().getTime(),
 							 	"Created_User" : "Default"
@@ -495,7 +513,9 @@ try{
 							    "Birthdate": $scope.User.Birthdate,
 							    "Type": "Administrador",
 							    "Address": $scope.User.Address
-							    }
+		}
+		
+		
 						};
 			  var onSuccess = function(onSuccess){
 			  	window.location.href = "#";

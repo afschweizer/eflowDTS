@@ -20,6 +20,11 @@ $coll_User = $db->Store_User_Access;
 
   $result_Insert_User = $coll_User->insert($dataObject->User_Data);
 
+  
+$coll_Subscription = $db->Store_Company_Subscription;
+
+  $result_Insert_User = $coll_Subscription->insert($dataObject->Subscription_Company);
+
 /*if($result_Insert_User->result->ok == 1){
   
   echo json_encode(array("Message"=>"Insertado informacion de usuario y compañia","Error"=>false));
