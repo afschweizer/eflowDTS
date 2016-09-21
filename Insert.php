@@ -23,7 +23,7 @@ $coll_User = $db->Store_User_Access;
   
 $coll_Subscription = $db->Store_Company_Subscription;
 
-  $result_Insert_User = $coll_Subscription->insert($dataObject->Subscription_Company);
+  $result_Insert_Subscription = $coll_Subscription->insert($dataObject->Subscription_Company);
 
 /*if($result_Insert_User->result->ok == 1){
   

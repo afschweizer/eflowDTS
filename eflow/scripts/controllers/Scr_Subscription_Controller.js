@@ -70,22 +70,26 @@ $scope.Select = function(){
   
 };
  
-	$scope.Save_info = function(variable){
+	$scope.Save_info = function(obj){
+		var variable= obj.Subscription_Name;
 			eflowDTS.Session.Ram.Subscription={};
 		switch (variable){
 		case "Demo":
+			eflowDTS.Session.Ram.Subscription=obj;			
 			eflowDTS.Session.Ram.Subscription.Type_subscription="Demo";
-			eflowDTS.Session.Ram.Subscription.Ending_Date=new Date().getTime() + (30*24*60*60*1000);
+			//eflowDTS.Session.Ram.Subscription.Ending_Date=new Date().getTime() + (30*24*60*60*1000);
 			window.location.href='#Company';
         break;
-   		case "Mensual":
-			eflowDTS.Session.Ram.Subscription.Type_subscription="Mensual";
-			eflowDTS.Session.Ram.Subscription.Ending_Date=new Date().getTime() + (30*24*60*60*1000);
+   		case "Monthly":
+			eflowDTS.Session.Ram.Subscription=obj;	
+			eflowDTS.Session.Ram.Subscription.Type_subscription="Monthly";
+			//eflowDTS.Session.Ram.Subscription.Ending_Date=new Date().getTime() + (30*24*60*60*1000);
 			window.location.href='#Company';
         break;
-   		case "Anual":
-			eflowDTS.Session.Ram.Subscription.Type_subscription="Anual";
-			eflowDTS.Session.Ram.Subscription.Ending_Date=new Date().getTime() + (365*24*60*60*1000);
+   		case "Annual":
+			eflowDTS.Session.Ram.Subscription=obj;	
+			eflowDTS.Session.Ram.Subscription.Type_subscription="Annual";
+			//eflowDTS.Session.Ram.Subscription.Ending_Date=new Date().getTime() + (365*24*60*60*1000);
 			window.location.href='#Company';
         break;
   		}
