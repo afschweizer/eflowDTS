@@ -2,7 +2,7 @@ DTS_APP.controller('Scr_Calendar_Controller',function($scope) {
 
 $scope.init = function(){
 try{
-			
+			    
     Set_Current_Page();
 	$scope.Select_VisitPoint();		
 
