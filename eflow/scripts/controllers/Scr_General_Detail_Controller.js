@@ -75,10 +75,13 @@ function Generate_Graphs(Data){
 	
 	$scope.Gra8 = (Get_Total_Visit_Point_In_Time(Data.Trip)/Get_Total_Visit_Point(Data.Trip))*100;
 	
-	$scope.Gra9 = (Get_Total_Unit_Confirmed(Data.Trip)/Get_Total_Unit(Data.Trip))*100;
+	$scope.Gra9 = (Get_Total_Visit_Point_Off_Time(Data.Trip)/Get_Total_Visit_Point(Data.Trip))*100;
 	
-	$scope.Gra10 = (Get_Total_Unit_Damaged(Data.Trip)/Get_Total_Unit(Data.Trip))*100;
+	$scope.Gra10 = (Get_Total_Unit_Confirmed(Data.Trip)/Get_Total_Unit(Data.Trip))*100;
+	
+	$scope.Gra11 = (Get_Total_Unit_Damaged(Data.Trip)/Get_Total_Unit(Data.Trip))*100;
 
+	
 	
 	
 };
@@ -219,6 +222,8 @@ function Get_Total_Visit_Point_In_Time(Arr){
 	return Visit_Point_In_Time;
 };
 
+//#9
+//Get_Total_Visit_Point(Parameter); Parameter = Array Trip
 function Get_Total_Visit_Point_Off_Time(Arr){
 	var Visit_Point_Off_Time = 0;
 	
@@ -229,7 +234,7 @@ function Get_Total_Visit_Point_Off_Time(Arr){
 	return Visit_Point_Off_Time;
 };
 
-//#9
+//#10
 // Get_Total_Unit(Parameter); Parameter = Array Trip;
 function Get_Total_Unit_Confirmed(Arr){
 	var Total_Unit = 0;
@@ -241,7 +246,7 @@ function Get_Total_Unit_Confirmed(Arr){
 	return Total_Unit;
 }
 
-//#10
+//#11
 //Get_Total_Unit(Parameter); Parameter = Array Trip;
 function Get_Total_Unit_Damaged(Arr){
    	var Total_Unit = 0;

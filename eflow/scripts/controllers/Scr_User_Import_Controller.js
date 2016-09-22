@@ -214,22 +214,32 @@ var onSuccess = function(result){
 				
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
 	var Array_User_To_Assign = [];
+	var Array_Audit_To_Assign = [];
 	
-	for (i=0; i < CheckBoxes_Array.length ; i++){
-		if (CheckBoxes_Array[i].checked == true){
+	for (var i=0; i < CheckBoxes_Array.length ; i++){
+		if (CheckBoxes_Array[i].checked === true){
 			var json_obj = JSON.parse(CheckBoxes_Array[i].value);
 			json_obj.Control = {};
 			json_obj.Control.Creation_Date = new Date().getTime();
 			json_obj.Control.Created_User = eflowDTS.Session.Current_User.UserName;
 			json_obj.Mail = json_obj.Mail.split("@")[0]+ eflowDTS.Session.Company.Domain.toLowerCase();
 			Array_User_To_Assign.push(json_obj);
+			var audit_obj={};
+			audit_obj.Company= eflowDTS.Session.Company.Identifier;
+			audit_obj.User_ID= json_obj.Identification;
+			audit_obj.Created_On= new Date().getTime();
+			audit_obj.Created_By= eflowDTS.Session.Current_User.UserName;
+			audit_obj.Audit_State="Open";
+			
+			Array_Audit_To_Assign.push(audit_obj);
+			
 			}
 	}
 	
 	 var JsonData = {
             'Method_Name': 'Insert_User',
-            'Data': 
-            Array_User_To_Assign,
+            'DataUser': Array_User_To_Assign,
+            'DataAudit': Array_Audit_To_Assign,
             'Fields':{
             	
             }

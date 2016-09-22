@@ -856,7 +856,7 @@ $scope.Add_New_User = function(New_User){
 	try{
 		var JsonData = 	{
 					'Method_Name': 'Insert_User',
-					 'Data': [{
+					 'DataUser': [{
 					 	"Control":{
 					 	"Creation_Date": new Date().getTime(),
 					 	"Created_User" : eflowDTS.Session.Current_User.UserName
@@ -876,7 +876,18 @@ $scope.Add_New_User = function(New_User){
 					    "License": New_User.License,
 					    "Type": New_User.Type,
 					    "Address": New_User.Address
-					    }]
+					    }],
+					 'DataAudit': [{
+					    "Company": eflowDTS.Session.Company.Identifier,
+					    "User_ID":  New_User.Identification,
+					    "Created_On":  new Date().getTime(),
+					    "Created_By": eflowDTS.Session.Current_User.UserName,
+					    "Audit_State": "Open"}
+					    ],
+            'Fields':{
+            	
+            }
+					    
 				};
 				var onSuccess = function(JsonData){
 				$scope.Select();
