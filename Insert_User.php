@@ -23,27 +23,25 @@ for($i = 0; $i < $ArrayLength; $i++){
 echo json_encode(array("Message"=>"Insertado"));
 
 */
-$coll = $db->Store_User_Access;
+$coll_User = $db->Store_User_Access;
 $coll_Audit = $db->Store_Audit_User;
 
-$ArrayUserLength = count($dataObject->DataUser);
+$ArrayDataLength = count($dataObject->Data);
 
 
-for($i = 0; $i < $ArrayUserLength; $i++){
-
-  $result_Insert_User = $coll->insert($dataObject->DataUser[$i]);
+for($i = 0; $i < $ArrayDataLength; $i++){
   
+  
+  $Mongo = new MongoId();  
+  $User = $dataObject->Data[$i]->User;
+  $Audit = $dataObject->Data[$i]->Audit;
+  
+  $User->_id = $Mongo;  
+  $Audit->Mongo_User_ID = $Mongo; 
 
-}
-
-
-
-$ArrayAuditLength = count($dataObject->DataAudit);
-
-for($j = 0; $j < $ArrayAuditLength; $j++){
-
-  $result_Insert_Audit = $coll_Audit->insert($dataObject->DataAudit[$j]);
-
+   $coll_User->insert($User);
+   $coll_Audit->insert($Audit);
+  
 }
 
 

@@ -856,7 +856,42 @@ $scope.Add_New_User = function(New_User){
 	try{
 		var JsonData = 	{
 					'Method_Name': 'Insert_User',
-					 'DataUser': [{
+					 'Data': [
+						 {
+						    "User": {
+							      "Control": {
+							        "Creation_Date": new Date().getTime(),
+							        "Created_User": eflowDTS.Session.Current_User.UserName
+							      },
+							      "Company": eflowDTS.Session.Company.Identifier,
+							      "UserName": New_User.UserName,
+							      "Password": New_User.Password,
+							      "ID": New_User.ID,
+							      "Name": New_User.Name,
+							      "Lastname": New_User.Lastname,
+							      "Lastname2": New_User.Lastname2,
+							      "Identification": New_User.Identification,
+							      "Mail": New_User.Mail.toLowerCase()+ eflowDTS.Session.Company.Domain.toLowerCase(),
+							      "Gender": New_User.Gender,
+							      "Birthdate": New_User.Birthdate,
+							      "DueDate": New_User.DueDate,
+							      "License": New_User.License,
+							      "Type": New_User.Type,
+							      "Address": New_User.Address
+						    },
+						    "Audit": {
+							      "Company": eflowDTS.Session.Company.Identifier,
+							      "User_ID": New_User.Identification,
+							      "Created_On": new Date().getTime(),
+							      "Created_By": eflowDTS.Session.Current_User.UserName,
+							      "Audit_State": "Open"
+						    }
+						  }
+					 ],
+					 
+					 
+					 
+					 /*[{
 					 	"Control":{
 					 	"Creation_Date": new Date().getTime(),
 					 	"Created_User" : eflowDTS.Session.Current_User.UserName
@@ -883,7 +918,7 @@ $scope.Add_New_User = function(New_User){
 					    "Created_On":  new Date().getTime(),
 					    "Created_By": eflowDTS.Session.Current_User.UserName,
 					    "Audit_State": "Open"}
-					    ],
+					    ],*/
             'Fields':{
             	
             }
