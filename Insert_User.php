@@ -20,20 +20,10 @@ for($i = 0; $i < $ArrayLength; $i++){
   $result = $coll->insert($dataObject->Data[$i]);
 
 }
-
-
-
-
 echo json_encode(array("Message"=>"Insertado"));
 
-
-
 */
-
-
-
- 
-$coll_Company = $db->Store_User_Access;
+$coll = $db->Store_User_Access;
 
 $ArrayUserLength = count($dataObject->DataUser);
 
@@ -43,13 +33,13 @@ for($i = 0; $i < $ArrayUserLength; $i++){
 
 }
 
-$coll_Company = $db->Store_Audit_User;
+$coll_Audit = $db->Store_Audit_User;
 
 $ArrayAuditLength = count($dataObject->DataAudit);
 
-for($i = 0; $i < $ArrayAuditLength; $i++){
+for($j = 0; $j < $ArrayAuditLength; $j++){
 
-  $result_Insert_Audit = $coll->insert($dataObject->DataAudit[$i]);
+  $result_Insert_Audit = $coll_Audit->insert($dataObject->DataAudit[$j]);
 
 }
 
