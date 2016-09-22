@@ -31,13 +31,13 @@ $ArrayDataLength = count($dataObject->Data);
 
 for($i = 0; $i < $ArrayDataLength; $i++){
   
-  
+  $id='$id';
   $Mongo = new MongoId();  
   $User = $dataObject->Data[$i]->User;
   $Audit = $dataObject->Data[$i]->Audit;
   
   $User->_id = $Mongo;  
-  $Audit->Mongo_User_ID = $Mongo; 
+  $Audit->Mongo_User_ID = $Mongo->$id; 
 
    $coll_User->insert($User);
    $coll_Audit->insert($Audit);

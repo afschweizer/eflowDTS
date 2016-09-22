@@ -286,7 +286,11 @@ $scope.Delete_User_DB = function(){
 	
 	var JsonData = {
             'Method_Name': 'Delete_User',
-            'Data': Array_Delete_ID
+            'Data': Array_Delete_ID,
+            'User_Audit':{
+            	"Deleted_On": new Date().getTime(),
+            	"Delete_By": eflowDTS.Session.Current_User.UserName
+            }
         };
         
 	var onSuccess = function(JsonData){
