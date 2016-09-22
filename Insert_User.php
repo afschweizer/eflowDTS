@@ -24,16 +24,19 @@ echo json_encode(array("Message"=>"Insertado"));
 
 */
 $coll = $db->Store_User_Access;
+$coll_Audit = $db->Store_Audit_User;
 
 $ArrayUserLength = count($dataObject->DataUser);
+
 
 for($i = 0; $i < $ArrayUserLength; $i++){
 
   $result_Insert_User = $coll->insert($dataObject->DataUser[$i]);
+  
 
 }
 
-$coll_Audit = $db->Store_Audit_User;
+
 
 $ArrayAuditLength = count($dataObject->DataAudit);
 
