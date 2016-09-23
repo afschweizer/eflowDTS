@@ -1,6 +1,69 @@
-DTS_APP.controller('Scr_General_Detail_Controller',function($scope){ 
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart","bar"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
 
+        var options = {
+          title: 'My Daily Activities',
+          pieHole: 0.4,
+        };
+ var data1 = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
+        ]);
+
+        var options1 = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data1, options1);
+        var chart2 = new google.charts.Bar(document.getElementById('columnchart_material2'));
+
+        chart2.draw(data1, options1);
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+
+
+DTS_APP.controller('Scr_General_Detail_Controller',function($scope){ 
+ 
+ google.charts.load('current', {'packages':['bar']});
+ 
 $scope.init = function(){
+	
+		$scope.Show_Grap1 = true;
+		$scope.Show_Grap2 = true;
+		$scope.Show_Grap3 = true;
+		$scope.Show_Grap6 = true;
+		$scope.Show_Grap8 = true;
+		$scope.Show_Grap9 = true;
+		$scope.Show_Grap10 = true;
+		$scope.Show_Grap11 = true;
+
+		$scope.Show_Chart1 = true;
+		$scope.Show_Chart2 = true;
+		$scope.Show_Chart3 = true;
+		$scope.Show_Chart4 = true;
+		$scope.Show_Chart5 = true;
+
 	$scope.Show_Route=false;
 	$('#Charging').modal('show');
 	
@@ -11,7 +74,43 @@ $scope.init = function(){
     
 	Select_Data();
 
+
  };
+ 
+ $scope.Switch_Folder_Data = function(tipo){
+try{
+	
+			if($scope["Show_"+tipo]){
+				$scope["Class_"+tipo] = "fa fa-minus";
+			}else{
+				$scope["Class_"+tipo] = "fa fa-plus";
+			}
+	
+		}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_General_Detail_Controller",
+                Method: "Switch_Folder_Data",
+                Description: "Error no controlado",
+                User: "Default",
+                Company: "Default",
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    } 
+		};
+		
+ 
+ 
+ 
  
 
 /* Gráficos */ 
@@ -82,6 +181,40 @@ function Generate_Graphs(Data){
 	$scope.Gra11 = (Get_Total_Unit_Damaged(Data.Trip)/Get_Total_Unit(Data.Trip))*100;
 
 	
+      google.charts.setOnLoadCallback(Graf_Trip);
+      
+      function Graf_Trip(){
+		
+	  var Array_Graf = [];
+		
+	   Array_Graf.push(['Identificador de viaje', 'Confirmado(%)', 'Dañado(%)', 'Duración(min)' ]);
+		
+      	for(var i = 0; i < Data.Trip.length; i++){
+      		var Trip = Data.Trip[i];
+      		Array_Graf.push([Trip.User+" "+Trip.ID_Truck, Trip.PERC_Confirmed, Trip.PERC_Damaged, Trip.Total_Duration]);
+      		
+      	}
+      	
+        var data = google.visualization.arrayToDataTable(Array_Graf);
+
+        var options = {
+        	isStacked: 'percentage',
+          	bars:'horizontal',
+          chart: {
+          	
+            title: 'Viajes',
+            subtitle: 'Duración, Porcentajes Dañados y Confirmado',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('ColumnChart_Trip'));
+
+        chart.draw(data, options);
+        
+      var chart1 = new google.charts.Bar(document.getElementById('ColumnChart_Sector'));
+
+        chart1.draw(data, options);
+      }
 	
 	
 };

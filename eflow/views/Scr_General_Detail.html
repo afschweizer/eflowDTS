@@ -1,80 +1,278 @@
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart","bar"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          pieHole: 0.4,
+        };
+ var data1 = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
+        ]);
+
+        var options1 = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data1, options1);
+        var chart2 = new google.charts.Bar(document.getElementById('columnchart_material2'));
+
+        chart2.draw(data1, options1);
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+
+
 
 <div id="Contents"  ng-controller="Scr_General_Detail_Controller" ng-init="init()"> 
 
-  
+
 <div class="row">
   <div style="text-align:center;">
    
   </div>
-  <div class="col-md-12" >      
-      <div class="col-md-3 info-box" > 
-          <h4> Espacio Utilizado</h4>
-          <h2 style="text-align: center;">{{Gra1 | number:0}}%</h2>
-      </div>
-      <div class="col-md-3 info-box"> 
-          <h4> Ordenes con Producto Dañado</h4>
-          <h2 style="text-align: center;">{{Gra2 | number:0}}%</h2>
-      </div>
-      <div class="col-md-3 info-box"> 
-          <h4> Devoluciones</h4>
-          <h2 style="text-align: center;">{{Gra3 | number:0}}%</h2>
-      </div>
-      <div class="col-md-3 info-box" > 
-          <h4> Rendimiento Visitas </h4>
-          <h2 style="text-align: center;">{{Gra6 | number:0}}%</h2>
-      </div>
+  <div class="col-md-12" >     
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Espacio Utilizado</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap1 = ! Show_Grap1; Switch_Folder_Data('Grap1');">
+                  <i style="color:#fff;" ng-class="Class_Grap1" class="fa fa-minus"></i> 
+                </button>
+              </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap1">
+             <h4 style="text-align: center;">{{Gra1 | number:0}}%</h4>
+            </div>
+          </div>
+        </div>  
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Orden con Producto Dañado</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap2 = ! Show_Grap2; Switch_Folder_Data(Show_Grap2,'Show_Grap2');">
+                  <i style="color:#fff;" ng-class="Class_Grap2" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap2">
+             <h4 style="text-align: center;">{{Gra2 | number:0}}%</h4>
+            </div>
+          </div>
+        </div>  
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Devoluciones</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap3 = ! Show_Grap3; Switch_Folder_Data(Show_Grap3,'Show_Grap3');">
+                  <i style="color:#fff;" ng-class="Class_Grap3" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap3">
+             <h4 style="text-align: center;">{{Gra3 | number:0}}%</h4>
+            </div>
+          </div>
+        </div>  
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Rendimiento Visitas</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap6 = ! Show_Grap6; Switch_Folder_Data(Show_Grap6,'Show_Grap6');">
+                  <i style="color:#fff;" ng-class="Class_Grap6" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap6">
+             <h4 style="text-align: center;">{{Gra6 | number:0}}%</h4>
+            </div>
+          </div>
+        </div>
+    
     </div>
   <div class="col-md-12" >    
-   <div class="col-md-3 info-box" > 
-          <h4> Visitas a tiempo</h4>
-          <h2 style="text-align: center;">{{Gra8 | number:0}}%</h2>
-      </div>
-      <div class="col-md-3 info-box" > 
-          <h4> Visitas fuera de tiempo</h4>
-          <h2 style="text-align: center;">{{Gra9 | number:0}}%</h2>
-      </div>
-      <div class="col-md-3 info-box"> 
-          <h4> Efectividad de Entrega</h4>
-          <h2 style="text-align: center;">{{Gra10 | number:0}}%</h2>
-      </div>
-      <div class="col-md-3 info-box"> 
-          <h4> Merma</h4>
-          <h2 style="text-align: center;">{{Gra11 | number:0}}%</h2>
-      </div>      
-  </div>
-  
-  <div class="col-md-12" >
-  		 <div class="col-md-4 info-box" style="background:#E6E6E6;" > 
-           <h4>Porcentaje Espacio Utilizado</h4> 
-           <h2 style="text-align: center;">51%</h2>
-        </div>
-        <div class="col-md-4 info-box" style="background:#E0F2F7;" > 
-            <h4> Porcentaje de Ordenes con Dañados</h4>
-            <h2 style="text-align: center;">51%</h2>
-        </div>
-        <div class="col-md-4 info-box" style="background:#FBFCF1;" > 
-            <h4> First Pass Yield</h4>
-            <h2 style="text-align: center;">51%</h2>
-        </div>
-  </div>
-  
-  <div class="col-md-12" >
-       
-        <div class="col-md-4" > 
-            <h4> Drop Size</h4>
-            <h2 style="text-align: center;">51%</h2>
+     
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Visitas a tiempo</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap8 = ! Show_Grap8; Switch_Folder_Data(Show_Grap8,'Show_Grap8');">
+                  <i style="color:#fff;" ng-class="Class_Grap8" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap8">
+             <h4 style="text-align: center;">{{Gra8 | number:0}}%</h4>
+            </div>
           </div>
-        <div class="col-md-4" > 
-              
- 
+        </div>
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Visitas fuera de tiempo</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap9 = ! Show_Grap9; Switch_Folder_Data(Show_Grap9,'Show_Grap9');">
+                  <i style="color:#fff;" ng-class="Class_Grap9" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap9">
+             <h4 style="text-align: center;">{{Gra9 | number:0}}%</h4>
+            </div>
           </div>
-        <div class="col-md-4"  > 
-            <h4> Efectividad de Entrega</h4>
-            <h2 style="text-align: center;">51%</h2>
+        </div>
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Efectividad de Entrega</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap10 = ! Show_Grap10; Switch_Folder_Data(Show_Grap10,'Show_Grap10');">
+                  <i style="color:#fff;" ng-class="Class_Grap10" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap10">
+             <h4 style="text-align: center;">{{Gra10 | number:0}}%</h4>
+            </div>
           </div>
-      </div>
+        </div>
+    <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Merma</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Grap11 = ! Show_Grap11; Switch_Folder_Data(Show_Grap11,'Show_Grap11');">
+                  <i style="color:#fff;" ng-class="Class_Grap11" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Grap11">
+             <h4 style="text-align: center;">{{Gra11 | number:0}}%</h4>
+            </div>
+          </div>
+        </div>
+      
+  </div>  
 </div>
   
+ 
+<div class="row">
+  <div class="col-md-12" >
+  		 <div class="col-md-6 info-box" > 
+         <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Tiempo</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Chart1 = ! Show_Chart1; Switch_Folder_Data(Show_Chart1,'Show_Chart1');">
+                  <i ng-class="Class_Chart1" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Chart1">		
+         	<div id="columnchart_material" style="width: 100%; height: 100%;"></div>	
+ 			  </div>
+          </div>  
+        </div>
+       
+  		 <div class="col-md-6 info-box" > 
+         <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Incidentes</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Chart2 = ! Show_Chart2; Switch_Folder_Data(Show_Chart2,'Show_Chart2');">
+                  <i ng-class="Class_Chart2" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Chart2">
+         	<div id="donutchart" style="width: 100%; height: 100%;"></div>		         
+				</div>
+          </div>      
+ 			</div>
+  </div>
+  <div class="col-md-12" >
+  		 <div class="col-md-6 info-box" > 
+         <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Ordenes</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Chart3 = ! Show_Chart3; Switch_Folder_Data(Show_Chart3,'Show_Chart3');">
+                  <i ng-class="Class_Chart3" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Chart3">
+        			 <div id="ColumnChart_Trip" style="width: 100%; height: 100%;"></div>		         
+ 			  </div>
+          </div>  
+        </div>
+       
+  		 <div class="col-md-6 info-box" > 
+         <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Productos</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Chart4 = ! Show_Chart4; Switch_Folder_Data(Show_Chart4,'Show_Chart4');">
+                  <i ng-class="Class_Chart4" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Chart4">
+         	 <div id="ColumnChart_Sector" style="width: 100%; height: 100%;"></div>		         
+				</div>
+          </div>      
+ 			</div>
+  </div>
+  <div class="col-md-12 info-box" > 
+         <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Analisis por periodo de tiempo general</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Chart5 = ! Show_Chart5; Switch_Folder_Data(Show_Chart5,'Show_Chart5');">
+                  <i ng-class="Class_Chart5" class="fa fa-minus"></i> 
+                </button>
+            </div>
+            </div>
+            <div class="box-body" style="display: block;" ng-show="Show_Chart5">
+         	<div id="columnchart_material2" style="width: 100%; height: 100%;"></div>		         
+ 			  </div>
+          </div>  
+        </div>
+     
+  
+</div>
+  
+  
+  
+  
+  
+  
+  <!-- Modal cargando -->
    <div class="modal fade" id="Charging" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">
         <div class="modal-dialog vertical-align-center">

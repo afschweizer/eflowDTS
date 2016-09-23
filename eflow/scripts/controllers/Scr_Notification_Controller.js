@@ -8,15 +8,16 @@ $scope.numberOfPages = function(){
 };
 $scope.init = function(){
 	try{
-		$scope.Show_Folder=true;
-		$scope.Show_Filter=true;
 		$scope.Show_Read_Message=false;
 		$scope.Show_All_Message=false;
 		$scope.Show_Delete_Message=false;
 
+		$scope.Show_Folder=true;
+		$scope.Show_Filter=true;
 
         $scope.Class_Folder = "fa fa-minus";
         $scope.Class_Filter = "fa fa-minus";
+        
 		$scope.Select();
 		$scope.Select_User();
 		$scope.Select_Vehicle();
