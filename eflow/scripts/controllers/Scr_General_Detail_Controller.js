@@ -1,49 +1,4 @@
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart","bar"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          pieHole: 0.4,
-        };
- var data1 = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
-        ]);
-
-        var options1 = {
-          chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data1, options1);
-        var chart2 = new google.charts.Bar(document.getElementById('columnchart_material2'));
-
-        chart2.draw(data1, options1);
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
-    </script>
-
-
-DTS_APP.controller('Scr_General_Detail_Controller',function($scope){ 
+ DTS_APP.controller('Scr_General_Detail_Controller',function($scope){ 
  
  google.charts.load('current', {'packages':['bar']});
  
@@ -109,8 +64,67 @@ try{
 		};
 		
  
- 
- 
+ /*Graficos segunda pante de la */
+ function Separated_By_Sector(Arr){
+var Obj = {};
+for(var i = 0; i < Arr.length; i++){
+
+	if(!Obj.hasOwnProperty(Arr[i].Route_Name)){
+    	Obj[Arr[i].Route_Name] = [];
+        Obj[Arr[i].Route_Name].push(Arr[i]);
+    }else{
+        Obj[Arr[i].Route_Name].push(Arr[i]);
+    }
+    
+}
+return Obj;
+};
+
+
+
+      
+function Chart_Jobs(Obj) {      
+      var Data = [];
+      Data.push(["Sector","Total de Órdenes","Órdenes Confirmadas","Órdenes Rechazadas","Órdenes Dañadas","Órdenes Faltantes","Órdenes Vencidas","Órdenes Otras","Órdenes Mixtas"]);
+      
+      for(key in Obj){      
+      var Trip = {
+    "Total_Jobs": 0,
+    "Total_Jobs_Confirmed": 0,
+    "Total_Jobs_Rejected": 0,
+    "Total_Jobs_Damaged": 0,
+    "Total_Jobs_Missing": 0,
+    "Total_Jobs_Expired": 0,
+    "Total_Jobs_Other": 0,
+      };
+      Trip.Route_Name = key;
+      for(var i = 0; i < Obj[key].length; i++){
+      var Trip_Unique = Obj[key][i];  
+      Trip.Total_Jobs += Trip_Unique.Total_Jobs;
+    Trip.Total_Jobs_Confirmed += Trip_Unique.Total_Jobs_Confirmed;
+    Trip.Total_Jobs_Rejected += Trip_Unique.Total_Jobs_Rejected;
+    Trip.Total_Jobs_Damaged += Trip_Unique.Total_Jobs_Damaged;
+    Trip.Total_Jobs_Missing += Trip_Unique.Total_Jobs_Missing;
+    Trip.Total_Jobs_Expired += Trip_Unique.Total_Jobs_Expired;
+    Trip.Total_Jobs_Other += Trip_Unique.Total_Jobs_Other;
+      } 
+      
+      Data.push([Trip.Route_Name,Trip.Total_Jobs,Trip.Total_Jobs_Confirmed,Trip.Total_Jobs_Rejected,Trip.Total_Jobs_Damaged,Trip.Total_Jobs_Missing,Trip.Total_Jobs_Expired,Trip.Total_Jobs_Other,Trip.Total_Jobs-(Trip.Total_Jobs_Confirmed+Trip.Total_Jobs_Rejected+Trip.Total_Jobs_Damaged+Trip.Total_Jobs_Missing+Trip.Total_Jobs_Expired+Trip.Total_Jobs_Other)]); 
+      } 
+ var data_chart = google.visualization.arrayToDataTable(Data);
+
+        var options = {
+          chart: {
+            title: 'Ordenes por Viaje',
+            subtitle: 'Confirmadas,Rechazadas,Mal Estado,Dañado,Faltante,Vencidas,Otras',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data_chart, options);
+      }
+
  
 
 /* Gráficos */ 
@@ -180,7 +194,12 @@ function Generate_Graphs(Data){
 	
 	$scope.Gra11 = (Get_Total_Unit_Damaged(Data.Trip)/Get_Total_Unit(Data.Trip))*100;
 
-	
+	google.charts.load("current", {packages:["corechart","bar"]});     
+
+google.charts.setOnLoadCallback(function() {
+   Chart_Jobs(Separated_By_Sector(Data.Trip));
+});
+
       google.charts.setOnLoadCallback(Graf_Trip);
       
       function Graf_Trip(){

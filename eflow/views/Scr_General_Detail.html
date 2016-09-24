@@ -1,49 +1,3 @@
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart","bar"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          pieHole: 0.4,
-        };
- var data1 = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
-        ]);
-
-        var options1 = {
-          chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data1, options1);
-        var chart2 = new google.charts.Bar(document.getElementById('columnchart_material2'));
-
-        chart2.draw(data1, options1);
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
-    </script>
-
-
-
 <div id="Contents"  ng-controller="Scr_General_Detail_Controller" ng-init="init()"> 
 
 
@@ -194,7 +148,6 @@
             </div>
             </div>
             <div class="box-body" style="display: block;" ng-show="Show_Chart1">		
-         	<div id="columnchart_material" style="width: 100%; height: 100%;"></div>	
  			  </div>
           </div>  
         </div>
@@ -209,8 +162,7 @@
                 </button>
             </div>
             </div>
-            <div class="box-body" style="display: block;" ng-show="Show_Chart2">
-         	<div id="donutchart" style="width: 100%; height: 100%;"></div>		         
+            <div class="box-body" style="display: block;" ng-show="Show_Chart2">       
 				</div>
           </div>      
  			</div>
@@ -227,7 +179,7 @@
             </div>
             </div>
             <div class="box-body" style="display: block;" ng-show="Show_Chart3">
-        			 <div id="ColumnChart_Trip" style="width: 100%; height: 100%;"></div>		         
+         	<div id="columnchart_material" style="width: 100%; height: 100%;"></div>	         
  			  </div>
           </div>  
         </div>
@@ -242,13 +194,14 @@
                 </button>
             </div>
             </div>
-            <div class="box-body" style="display: block;" ng-show="Show_Chart4">
-         	 <div id="ColumnChart_Sector" style="width: 100%; height: 100%;"></div>		         
+            <div class="box-body" style="display: block;" ng-show="Show_Chart4">		         
 				</div>
           </div>      
  			</div>
   </div>
   <div class="col-md-12 info-box" > 
+    <div class="col-md-4 info-box" > </div>
+  		 <div class="col-md-8 info-box" > 
          <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Analisis por periodo de tiempo general</h3>
@@ -263,6 +216,7 @@
  			  </div>
           </div>  
         </div>
+     </div>
      
   
 </div>
