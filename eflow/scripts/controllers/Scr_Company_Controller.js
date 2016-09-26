@@ -98,7 +98,19 @@ $scope.Type = "password";
     } 
 		};
 		
-	
+$scope.Upload_Image = function(){
+		
+		var file = document.getElementById('File_Image').files[0];
+		$scope.Image_Name = file.name;		
+		
+		var onSuccess = function(base64){			
+			$scope.Image = base64;
+			setInterval(function(){$scope.$apply();},0);			
+		};
+		
+		Resize_Image(file,onSuccess);
+		
+	};	
 
   function cargar_paises(){
   	try{
@@ -448,6 +460,7 @@ try{
 							 	"Type_Subscription" : "Demo"
 							 	},
 				    			"Name": $scope.Companys.name,
+							    "Logo": $scope.Companys.logo,
 				    			"Identifier": $scope.Companys.name.toUpperCase(),
 							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),
