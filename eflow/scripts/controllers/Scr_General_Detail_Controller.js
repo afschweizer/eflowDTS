@@ -167,6 +167,14 @@ function Select_Data(){
 	               
                 	},3000);
                 	
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(function() {
+ Chart_Jobs(Separated_By_Sector(Data.Trip));
+ Chart_Units(Separated_By_Sector(Data.Trip));
+ Chart_Time(Separated_By_Sector(Data.Trip));
+});                	
+                	
+                	
 	}; 
 	
 	var onError = function(Error_Response){
@@ -409,6 +417,158 @@ function Get_Total_Unit_Damaged(Arr){
    	
    	return Total_Unit;
 };
+
+//Graficos
+function Chart_Jobs(Obj) {      
+      var Data = [];
+      Data.push(["Sector","Total de Órdenes","Órdenes Confirmadas","Órdenes Rechazadas","Órdenes Dañadas","Órdenes Faltantes","Órdenes Vencidas","Órdenes Otras","Órdenes Mixtas"]);
+      
+      for(key in Obj){      
+      var Trip = {
+    "Total_Jobs": 0,
+    "Total_Jobs_Confirmed": 0,
+    "Total_Jobs_Rejected": 0,
+    "Total_Jobs_Damaged": 0,
+    "Total_Jobs_Missing": 0,
+    "Total_Jobs_Expired": 0,
+    "Total_Jobs_Other": 0,
+      };
+      Trip.Route_Name = key;
+      for(var i = 0; i < Obj[key].length; i++){
+      var Trip_Unique = Obj[key][i];  
+      Trip.Total_Jobs += Trip_Unique.Total_Jobs;
+    Trip.Total_Jobs_Confirmed += Trip_Unique.Total_Jobs_Confirmed;
+    Trip.Total_Jobs_Rejected += Trip_Unique.Total_Jobs_Rejected;
+    Trip.Total_Jobs_Damaged += Trip_Unique.Total_Jobs_Damaged;
+    Trip.Total_Jobs_Missing += Trip_Unique.Total_Jobs_Missing;
+    Trip.Total_Jobs_Expired += Trip_Unique.Total_Jobs_Expired;
+    Trip.Total_Jobs_Other += Trip_Unique.Total_Jobs_Other;
+      } 
+      
+      Data.push([Trip.Route_Name,Trip.Total_Jobs,Trip.Total_Jobs_Confirmed,Trip.Total_Jobs_Rejected,Trip.Total_Jobs_Damaged,Trip.Total_Jobs_Missing,Trip.Total_Jobs_Expired,Trip.Total_Jobs_Other,Trip.Total_Jobs-(Trip.Total_Jobs_Confirmed+Trip.Total_Jobs_Rejected+Trip.Total_Jobs_Damaged+Trip.Total_Jobs_Missing+Trip.Total_Jobs_Expired+Trip.Total_Jobs_Other)]); 
+      } 
+ var data_chart = google.visualization.arrayToDataTable(Data);
+
+        var options = {
+          chart: {
+            title: 'Ordenes por Viaje',
+            subtitle: 'Confirmadas,Rechazadas,Mal Estado,Dañado,Faltante,Vencidas,Otras',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('Chart_Order'));
+
+        chart.draw(data_chart, options);
+      }
+
+
+function Separated_By_Sector(Arr){
+var Obj = {};
+for(var i = 0; i < Arr.length; i++){
+
+	if(!Obj.hasOwnProperty(Arr[i].Route_Name)){
+    	Obj[Arr[i].Route_Name] = [];
+        Obj[Arr[i].Route_Name].push(Arr[i]);
+    }else{
+        Obj[Arr[i].Route_Name].push(Arr[i]);
+    }
+    
+}
+return Obj;
+};
+
+
+      
+
+      
+function Chart_Units(Obj) {      
+      var Data = [];
+      Data.push(["Sector","Total de Unidades","Unidades Confirmadas","Unidades Rechazadas","Unidades Dañadas","Unidades Faltantes","Unidades Vencidas","Unidades Otras"]);
+      
+      for(key in Obj){      
+      var Trip = {
+    "Total_Units": 0,
+    "Total_Units_Confirmed": 0,
+    "Total_Units_Rejected": 0,
+    "Total_Units_Damaged": 0,
+    "Total_Units_Missing": 0,
+    "Total_Units_Expired": 0,
+    "Total_Units_Other": 0,
+      };
+      Trip.Route_Name = key;
+      for(var i = 0; i < Obj[key].length; i++){
+      var Trip_Unique = Obj[key][i];  
+      Trip.Total_Units += Trip_Unique.Total_Units;
+    Trip.Total_Units_Confirmed += Trip_Unique.Total_Units_Confirmed;
+    Trip.Total_Units_Rejected += Trip_Unique.Total_Units_Rejected;
+    Trip.Total_Units_Damaged += Trip_Unique.Total_Units_Damaged;
+    Trip.Total_Units_Missing += Trip_Unique.Total_Units_Missing;
+    Trip.Total_Units_Expired += Trip_Unique.Total_Units_Expired;
+    Trip.Total_Units_Other += Trip_Unique.Total_Units_Other;
+      } 
+      
+      Data.push([Trip.Route_Name,Trip.Total_Units,Trip.Total_Units_Confirmed,Trip.Total_Units_Rejected,Trip.Total_Units_Damaged,Trip.Total_Units_Missing,Trip.Total_Units_Expired,Trip.Total_Units_Other]); 
+      } 
+ var data_chart = google.visualization.arrayToDataTable(Data);
+
+        var options = {
+         legend: { position: 'top', maxLines: 3, textStyle: {color: 'black', fontSize: 16 } },
+		isStacked: true,
+          chart: {  
+          title: 'Unidades por Viaje',
+            subtitle: 'Confirmadas,Rechazadas,Mal Estado,Dañado,Faltante,Vencidas,Otras',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('Chart_Product'));
+
+        chart.draw(data_chart, options);
+      }
+
+
+
+      
+function Chart_Time(Obj) {      
+      var Data = [];
+      Data.push(["Sector","Total Puntos Visita","Total Puntos Visita A tiempo","Total Puntos Visita en desatiempo","Total Kilometros",
+      "Duración Total","Promedio de duración por cliente"]);
+      
+      for(key in Obj){      
+      var Trip = {
+    "Total_VisitPoint": 0,
+    "Total_VisitPoint_In_Time": 0,
+    "Total_VisitPoint_Off_Time": 0,
+    "Average_Time_Visit": 0,
+    "Total_Kilometer": 0,
+    "Total_Duration": 0
+      };
+      Trip.Route_Name = key;
+      for(var i = 0; i < Obj[key].length; i++){
+      var Trip_Unique = Obj[key][i];  
+    Trip.Total_VisitPoint += Trip_Unique.Total_VisitPoint;
+    Trip.Total_VisitPoint_In_Time += Trip_Unique.Total_VisitPoint_In_Time;
+    Trip.Total_VisitPoint_Off_Time += Trip_Unique.Total_VisitPoint_Off_Time;
+    Trip.Total_Kilometer += Trip_Unique.Total_Kilometer;
+    Trip.Total_Duration += Trip_Unique.Total_Duration;
+      } 
+      
+      Data.push([Trip.Route_Name,Trip.Total_VisitPoint,Trip.Total_VisitPoint_In_Time,Trip.Total_VisitPoint_Off_Time,Trip.Total_Kilometer,Trip.Total_Duration,Math.round(Trip.Total_Duration/Trip.Total_VisitPoint)]); 
+      } 
+ var data_chart = google.visualization.arrayToDataTable(Data);
+
+        var options = {
+         legend: { position: 'top', maxLines: 3, textStyle: {color: 'black', fontSize: 16 } },
+		isStacked: true,
+          chart: {  
+          title: 'Duración por Viaje',
+            subtitle: 'Total Puntos Visita,Total Puntos Visita A tiempo,Total Puntos Visita en desatiempo,Total Kilometros,Duración Total,Promedio de duración por cliente',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('Chart_Time'));
+
+        chart.draw(data_chart, options);
+      }
 
 
 
