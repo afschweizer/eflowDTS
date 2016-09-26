@@ -5,7 +5,9 @@
     resize: vertical;
     padding: 10px;
     overflow: auto;
-} 
+} ::-webkit-input-placeholder { /* WebKit browsers */
+    text-transform: none;
+}
 </style>
 <script>
 
@@ -18,7 +20,7 @@
       <div class="panel-body">
         <form  ng-submit="validate_Companys(Companys);"class="form-horizontal">
           <div class="form-group"> 
-            <label  class="col-sm-3 control-label">Tipo de suscripcion:</label>
+            <label  class="col-sm-3 control-label">Tipo de Suscripcion:</label>
             <div class="col-sm-7"> 
               <input type="text" disabled class="form-control" ng-model="Companys.subscription" value="{{subscription}}" placeholder="{{subscription}}"required>
             </div>
@@ -181,7 +183,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label" style="text-align:right;font-weight: bold;">Fecha de nacimiento:</label>
+            <label class="col-sm-3 control-label" style="text-align:right;font-weight: bold;">Fecha de Nacimiento:</label>
             <div class="col-sm-9">
               <input id="Birthdate" type="date" min="18" max="80" class="form-control" name="Birthdate" value="" ng-model="User.Birthdate"  required>
             </div>

@@ -1,7 +1,6 @@
  DTS_APP.controller('Scr_General_Detail_Controller',function($scope){ 
  
- google.charts.load('current', {'packages':['corechart','bar']});
- 
+
 $scope.init = function(){
 	
 		$scope.Show_Grap1 = true;
@@ -12,7 +11,7 @@ $scope.init = function(){
 		$scope.Show_Grap9 = true;
 		$scope.Show_Grap10 = true;
 		$scope.Show_Grap11 = true;
-
+		$scope.Show_General = true;
 		$scope.Show_Chart1 = true;
 		$scope.Show_Chart2 = true;
 		$scope.Show_Chart3 = true;
@@ -82,50 +81,6 @@ return Obj;
 
 
 
-      
-function Chart_Jobs(Obj) {      
-      var Data = [];
-      Data.push(["Sector","Total de Órdenes","Órdenes Confirmadas","Órdenes Rechazadas","Órdenes Dañadas","Órdenes Faltantes","Órdenes Vencidas","Órdenes Otras","Órdenes Mixtas"]);
-      
-      for(key in Obj){      
-      var Trip = {
-    "Total_Jobs": 0,
-    "Total_Jobs_Confirmed": 0,
-    "Total_Jobs_Rejected": 0,
-    "Total_Jobs_Damaged": 0,
-    "Total_Jobs_Missing": 0,
-    "Total_Jobs_Expired": 0,
-    "Total_Jobs_Other": 0,
-      };
-      Trip.Route_Name = key;
-      for(var i = 0; i < Obj[key].length; i++){
-      var Trip_Unique = Obj[key][i];  
-      Trip.Total_Jobs += Trip_Unique.Total_Jobs;
-    Trip.Total_Jobs_Confirmed += Trip_Unique.Total_Jobs_Confirmed;
-    Trip.Total_Jobs_Rejected += Trip_Unique.Total_Jobs_Rejected;
-    Trip.Total_Jobs_Damaged += Trip_Unique.Total_Jobs_Damaged;
-    Trip.Total_Jobs_Missing += Trip_Unique.Total_Jobs_Missing;
-    Trip.Total_Jobs_Expired += Trip_Unique.Total_Jobs_Expired;
-    Trip.Total_Jobs_Other += Trip_Unique.Total_Jobs_Other;
-      } 
-      
-      Data.push([Trip.Route_Name,Trip.Total_Jobs,Trip.Total_Jobs_Confirmed,Trip.Total_Jobs_Rejected,Trip.Total_Jobs_Damaged,Trip.Total_Jobs_Missing,Trip.Total_Jobs_Expired,Trip.Total_Jobs_Other,Trip.Total_Jobs-(Trip.Total_Jobs_Confirmed+Trip.Total_Jobs_Rejected+Trip.Total_Jobs_Damaged+Trip.Total_Jobs_Missing+Trip.Total_Jobs_Expired+Trip.Total_Jobs_Other)]); 
-      } 
- var data_chart = google.visualization.arrayToDataTable(Data);
-
-        var options = {
-          chart: {
-            title: 'Ordenes por Viaje',
-            subtitle: 'Confirmadas,Rechazadas,Mal Estado,Dañado,Faltante,Vencidas,Otras',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data_chart, options);
-      }
-
- 
 
 /* Gráficos */ 
 
@@ -160,18 +115,18 @@ function Select_Data(){
 	};
 	
 	var onSuccess = function(Response){
-		
+		$scope.Data=Response;
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(function() {
+ Chart_Jobs(Separated_By_Sector($scope.Data.Trip));
+ Chart_Units(Separated_By_Sector($scope.Data.Trip));
+ Chart_Time(Separated_By_Sector($scope.Data.Trip));
 		Generate_Graphs(Response);
 		setTimeout(function(){
 	                	$('#Charging').modal('hide');
 	               
                 	},3000);
                 	
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(function() {
- Chart_Jobs(Separated_By_Sector(Data.Trip));
- Chart_Units(Separated_By_Sector(Data.Trip));
- Chart_Time(Separated_By_Sector(Data.Trip));
 });                	
                 	
                 	
@@ -208,42 +163,7 @@ google.charts.setOnLoadCallback(function() {
    Chart_Jobs(Separated_By_Sector(Data.Trip));
 });
 
-      google.charts.setOnLoadCallback(Graf_Trip);
-      
-      function Graf_Trip(){
-		
-	  var Array_Graf = [];
-		
-	   Array_Graf.push(['Identificador de viaje', 'Confirmado(%)', 'Dañado(%)', 'Duración(min)' ]);
-		
-      	for(var i = 0; i < Data.Trip.length; i++){
-      		var Trip = Data.Trip[i];
-      		Array_Graf.push([Trip.User+" "+Trip.ID_Truck, Trip.PERC_Confirmed, Trip.PERC_Damaged, Trip.Total_Duration]);
-      		
-      	}
-      	
-        var data = google.visualization.arrayToDataTable(Array_Graf);
-
-        var options = {
-        	isStacked: 'percentage',
-          	bars:'horizontal',
-          chart: {
-          	
-            title: 'Viajes',
-            subtitle: 'Duración, Porcentajes Dañados y Confirmado',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('ColumnChart_Trip'));
-
-        chart.draw(data, options);
-        
-      var chart1 = new google.charts.Bar(document.getElementById('ColumnChart_Sector'));
-
-        chart1.draw(data, options);
-      }
-	
-	
+     
 };
 
 //#1
@@ -452,7 +372,7 @@ function Chart_Jobs(Obj) {
         var options = {
           chart: {
             title: 'Ordenes por Viaje',
-            subtitle: 'Confirmadas,Rechazadas,Mal Estado,Dañado,Faltante,Vencidas,Otras',
+            subtitle: 'Confirmadas,Rechazadas,Mal Estado,Dañado,Faltante,Vencidas,Mixtas,Otras',
           }
         };
 

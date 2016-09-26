@@ -41,7 +41,7 @@
       
       <span id="right" style="float:right;"> 
            <select style="width:175px " class="btn btn-primary span4" ng-model="Export_Type" ng-change="Export_File(Export_Type,(ArrayJobs | filter: search | filter: {'Visit_State': Status_Filter} | orderBy: OrderList))"> 
-              <option value="">Exportar a archivo</option>
+              <option value="">Exportar a Archivo</option>
               <option value="JSON">JSON</option>
               <option value="XML">XML</option>
               <option value="CSV">CSV</option>
@@ -157,7 +157,7 @@
   <!-- style="background-color:#295C7A"*/-->
     <div style="float:left;"> 
         <ul class="nav nav-pills " >
-           <li ><a ng-click="See_Status('');">Total de registros <span  class="badgea">{{ArrayJobs.length}}</span></a></li>
+           <li ><a ng-click="See_Status('');">Total de Registros <span  class="badgea">{{ArrayJobs.length}}</span></a></li>
            <li ><a ng-click="See_Status('Finalized');">Finalizados <span class="badgea badge-Finalized" >{{(ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true).length}}</span></a></li>
            <li ><a ng-click="See_Status('Partial');">Parcialmente Finalizados <span class="badgea badge-Partial">{{(ArrayJobs | filter:  {'Visit_State': 'Partial'} :true).length}}</span></a></li> 
            <li ><a ng-click="See_Status('In_Process');">En Proceso <span class="badgea badge-In_Process" >{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span></a></li>
@@ -680,10 +680,10 @@
 						</div>
                     </div>
                     <div class="form-group">
-						<label class="col-sm-4 control-label">Número de factura:</label>
+						<label class="col-sm-4 control-label">Número de Factura:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Invoice" placeholder="Número de factura..." required >
+								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Invoice" placeholder="Número de Factura..." required >
 							</div>
 						</div>
 					</div>
@@ -770,7 +770,7 @@
 						</div>
 					</div>        
 					<div class="form-group">
-						<label class="col-sm-4 control-label">Fecha de visita:</label>
+						<label class="col-sm-4 control-label">Fecha de Visita:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">
 								<input type="date" class="form-control" min="2015-01-01" min="{{Watch|date}}" ng-model="VisitPoint_Add.Estimated_Date" required>
@@ -796,7 +796,7 @@
 						</div>
 					</div>      
 					<div class="form-group">
-						<label class="col-sm-4 control-label">Tiempo promedio(min):</label>
+						<label class="col-sm-4 control-label">Tiempo Promedio(min):</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">
 								<input required  type="number" class="form-control" ng-model="VisitPoint_Add.Estimated_Delivery_Time" placeholder="Tiempo promedio..." required>
@@ -895,7 +895,7 @@
                         </div> 
                         </div>        
                         <div class="form-group">
-                      <label class="col-sm-4 control-label">Unidad de medida:</label>
+                      <label class="col-sm-4 control-label">Unidad de Medida:</label>
                           <div class="col-sm-8"> 
                  <div class="form-group">  						
                        <select ng-model="VisitPoint_Add_Task.UoM" placeholder="Unidad de medida..." ng-options="Obj.Value as Obj.Description for Obj in ArrayUnidads" style="width: 80%;" class="form-control"></select>
@@ -921,7 +921,7 @@
                         </div> 
                        </div>
                         <div class="form-group">
-                      <label class="col-sm-4 control-label">Peso total(kg):</label>
+                      <label class="col-sm-4 control-label">Peso Total(kg):</label>
                           <div class="col-sm-8">   
                  <div class="form-group">
                        <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobWeight" placeholder="Peso...">
@@ -929,7 +929,7 @@
                         </div> 
                         </div> 
                         <div class="form-group">
-                      <label class="col-sm-4 control-label">Volumen total(m³):</label>
+                      <label class="col-sm-4 control-label">Volumen Total(m³):</label>
                           <div class="col-sm-8">   
                  <div class="form-group">
                        <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobCubics" placeholder="Volumen...">
@@ -947,7 +947,7 @@
                     </div> 
                     <hr/>
                     <div class="table-responsive">
-                      <h4>Trabajos asignados</h4>
+                      <h4>Trabajos Asignados</h4>
                       <table class="table table-condensed">
                         <thead>
                           <tr>
