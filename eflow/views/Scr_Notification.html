@@ -18,7 +18,7 @@
               <ul class="nav nav-pills nav-stacked">
                 <li>
                   <a ng-click="query = {'State_Created':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
-                    <i class="fa fa-inbox"></i> Bandeja de salida
+                    <i class="fa fa-inbox"></i> Bandeja de Salida
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Created':true}:true).length}}
                     </span>
@@ -26,7 +26,7 @@
                 </li>
                 <li>
                   <a ng-click="query = {'State_Sent':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
-                    <i class="fa fa-inbox"></i> Bandeja de enviados
+                    <i class="fa fa-inbox"></i> Bandeja de Enviados
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Sent':true}:true).length}}
                     </span>
@@ -34,7 +34,7 @@
                 </li>
                 <li>
                    <a ng-click="query = {'State_Received':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
-                    <i class="fa fa-file-text-o"></i> Bandeja de entregados
+                    <i class="fa fa-file-text-o"></i> Bandeja de Entregados
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Received':true}:true).length}} 
                     </span>
@@ -42,7 +42,7 @@
                 </li>
                 <li>
                   <a ng-click="query = {'State_Open':true};Show_All_Message=true;Show_Read_Message = false;Show_New_Message = false;">
-                    <i class="fa fa-envelope-o"></i> Bandeja de leidos
+                    <i class="fa fa-envelope-o"></i> Bandeja de Leidos
                     <span class="label label-primary pull-right">
                       {{(ArrayNotificacion|  filter: {'State_Open':true}:true).length}}
                     </span>
@@ -65,7 +65,7 @@
           </div> 
           <div class="box box-solid">
             <div class="box-header with-border btn btn-primary btn-block margin-bottom">
-              <a class="box-title" style="color:#fff;">Filtro de busqueda
+              <a class="box-title" style="color:#fff;">Filtro de Busqueda
               </a>
               <div class="box-tools">
                 <button type="button" class="btn btn-box-tool" ng-click="Show_Filter = ! Show_Filter; Switch_Folder_Data(Show_Filter,'Show_Filter');"><i style="color:#fff;" ng-class="Class_Filter"></i> 
@@ -100,7 +100,7 @@
                 </li>
                 <li>
                   <a ng-click="search.Matter">
-                    <i class="fa fa-file-o"></i>Asusnto
+                    <i class="fa fa-file-o"></i>Asunto
                     <span>
                     		<input type="text" style="width: 50%;" class="form-control pull-right" ng-model="search.Matter" >
                     </span><br/><br/>
