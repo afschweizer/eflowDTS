@@ -1,6 +1,6 @@
  DTS_APP.controller('Scr_General_Detail_Controller',function($scope){ 
  
- google.charts.load('current', {'packages':['bar']});
+ google.charts.load('current', {'packages':['corechart','bar']});
  
 $scope.init = function(){
 	
