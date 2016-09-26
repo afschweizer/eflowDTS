@@ -288,6 +288,7 @@ $scope.Delete_User_DB = function(){
             'Method_Name': 'Delete_User',
             'Data': Array_Delete_ID,
             'User_Audit':{
+            	"Audit_State":"Close",
             	"Deleted_On": new Date().getTime(),
             	"Delete_By": eflowDTS.Session.Current_User.UserName
             }

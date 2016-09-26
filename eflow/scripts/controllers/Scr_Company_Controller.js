@@ -101,7 +101,7 @@ $scope.Type = "password";
 $scope.Upload_Image = function(){
 		
 		var file = document.getElementById('File_Image').files[0];
-		$scope.Image_Name = file.name;		
+		$scope.Companys.Logo = file.name;		
 		
 		var onSuccess = function(base64){			
 			$scope.Image = base64;
@@ -457,10 +457,10 @@ try{
 							 	"Subscription":{
 							 	"Creation_Date": new Date().getTime(),
 							 	"Ending_Date": new Date().getTime() + (30*24*60*60*1000),
-							 	"Type_Subscription" : "Demo"
+							 	"Type_Subscription" :  $scope.Companys.subscription
 							 	},
 				    			"Name": $scope.Companys.name,
-							    "Logo": $scope.Companys.logo,
+							    "Logo": $scope.Companys.Logo,
 				    			"Identifier": $scope.Companys.name.toUpperCase(),
 							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),

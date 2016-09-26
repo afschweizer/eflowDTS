@@ -10,11 +10,11 @@ $ArrayLength = count($dataObject->Data);
 for($i = 0; $i < $ArrayLength; $i++) {
   
 $coll_User->remove(array('_id' => new MongoId($dataObject->Data[$i])));
-$coll_Audit->update(array('Mongo_User_ID'=>$dataObject->Data[$i]),array('$set'=>array('Delete_By'=>$dataObject->User_Audit->Delete_By,'Deleted_On'=>$dataObject->User_Audit->Deleted_On)));
+$coll_Audit->update(array('Mongo_User_ID'=>$dataObject->Data[$i]),array('$set'=>array('Audit_State'=>$dataObject->User_Audit->Audit_State,'Delete_By'=>$dataObject->User_Audit->Delete_By,'Deleted_On'=>$dataObject->User_Audit->Deleted_On)));
   
 }
 
-/*
+/*Audit_State
  * var JsonData = {
             'Method_Name': 'Delete_User',
             'Data': Array_Delete_ID,
