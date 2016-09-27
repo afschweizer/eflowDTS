@@ -6,13 +6,9 @@
         <link rel="shortcut icon" href="images/Eflow_Icon.ico">
         <link rel="stylesheet" href="styles/Css_Proyect.css">
         <link rel="stylesheet" href="styles/blue.css">
-      
         <link rel="stylesheet" href="styles/Dashboard.css"> 
-      
-      
         <link rel="stylesheet" href="styles/responsive-calendar.css">
         <link rel="stylesheet" href="styles/pivot.css"> 
-      
         <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
         <script src="scripts/externals/jspdf.min.js"></script>
         <script src="scripts/externals/jspdf.plugin.autotable.src.js"></script>
@@ -33,13 +29,6 @@
         <script type="text/javascript" src="scripts/externals/knob.js"></script> 
         <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
-       
-
-    <!-- 	<script src="scripts/externals/jsPDF.js"></script>
-      
-      <script src="scripts/externals/AutoTable.js"></script>
--->
-  
 <style>
 ::-webkit-input-placeholder { /* WebKit browsers */
     text-transform: none;
@@ -124,20 +113,16 @@
   -o-transform: scale(1, -1);
   transform: scale(1, -1);
 }
-  
-  
 .modal {
 }
 .glyphicon-refresh-animate {
     -animation: spin .7s infinite linear;
     -webkit-animation: spin2 .7s infinite linear;
 }
-
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg);}
     to { -webkit-transform: rotate(360deg);}
 }
-
 @keyframes spin {
     from { transform: scale(1) rotate(0deg);}
     to { transform: scale(1) rotate(360deg);}
@@ -146,7 +131,6 @@
 {
     opacity:0.9 !important;
 }
-
 .vertical-alignment-helper {
     display:table;
     height: 100%;
@@ -164,7 +148,6 @@
     /* To center horizontally */
     margin: 0 auto;
 }
-
  .footer {
         color:#000000;
         background-color: #ffffff;
@@ -173,7 +156,7 @@
     width: 100%;
     height: 60px;
 }
-      .nav.nav-tabs.nav-justified li a {
+ .nav.nav-tabs.nav-justified li a {
     color: #fff;
 }  
   .nav.nav-tabs.nav-justified li:hover a {
@@ -197,8 +180,6 @@
      border-top-right-radius: 5px;
 }
       </style>
-      
-      
       <script src="app.js"></script>
 		<script src="scripts/controllers/indexController.js"></script>
 		<script src="scripts/controllers/Scr_Job_Import_Controller.js"></script>
@@ -226,8 +207,7 @@
       <script src="scripts/controllers/Scr_Info_Controller.js"></script>
       <script src="scripts/controllers/Scr_Tutorial_Controller.js"></script>
       <script src="scripts/controllers/Scr_Notification_Controller.js"></script>
-      <script src="scripts/controllers/Scr_Subscription_Controller.js"></script>
-      
+      <script src="scripts/controllers/Scr_Subscription_Controller.js"></script>      
       <script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
 	   <script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
 	   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -237,74 +217,13 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>  
 </head>
 <body  ng-controller="indexController" ng-init="init();">
-      <!-- HEADER AND NAVBAR -->
-       <!--<header >
-            <nav class="navbar navbar-inverse" style="">
-               <div class="navbar-header" style="width:100%; color:#000000;background-color: #ffffff">
-                 <span style=" float:left; text-align:left;">
-                   <img src="images/Logo.jpg" align="left" alt="Eflow" height="42px">
-        					<img src="images/DTS.png" align="left" alt="Delivery Tracking System" height="42px">
-                 </span>
-           <span >
-                   	<a class="navbar-brand glyphicon glyphicon-time" style="color:#000000;">
-                      {{Watch|date:"mediumTime"}}
-                     </a> 
-                 </span>
-                 <span >
-                  	<a class="navbar-brand glyphicon glyphicon-calendar"style="color:#000000;">
-                      {{Watch|date:"shortDate"}}
-                     </a>
-                 </span>
-                 <span style="float:right; text-align:right;color:#000000;">
-                    <h4>
-                  <ul style="list-style:none; ">
-                     <li id="Login" class="dropdown" style="color:#000000;">
-                       <span class="fa fa-university" data-toggle="tooltip" title="Usuario Activo"></span>{{Company}}      
-                       <span class="glyphicon glyphicon-user" data-toggle="tooltip" title="Usuario Activo"></span>{{UserName}}      .
-                       <a style="color:#000000;" ng-click="Sign_Out()" class="glyphicon glyphicon-log-out" data-toggle="tooltip" title="Cerrar Sesi&oacute;n" tabindex="0"></a>
-                     </li>
-                     </ul>
-                   </h4>
-                 </span>
-
-              </div>
-				  <div>
-                <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Main_Menu">
-                     <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Calendar" data-toggle="tooltip" title="Planificador">Planificador</a></li>
-                 		    
-                  	<li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicles_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
-               		<li ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false"><a data-toggle="tooltip" title="Mantenimiento">Mantenimiento</a>
-                   		 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.SubMenu_Maintenance">
-                  		    <li><a href="#user" data-toggle="tooltip" title="Usuarios">Usuarios</a></li>
-                             <li><a href="#vehicle" data-toggle="tooltip" title="Vehículos">Vehículos</a></li>    
-                             <li><a href="#VisitPoint" data-toggle="tooltip" title="Establecimientos">Establecimientos</a></li>          
-                             <li><a href="#Routes" data-toggle="tooltip" title="Rutas">Rutas</a></li>           
-                           
-                   </ul></li>
-                  	<li ng-click="Show_Components.SubMenu_Import = true;Show_Components.SubMenu_Maintenance = false"><a data-toggle="tooltip" title="Mantenimiento">Importar</a>
-                   		 <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.SubMenu_Import">
-                  		     <li><a href="#Job_Import" data-toggle="tooltip" title="Importar Puntos de Visita">Trabajos</a></li>
-                  		     <li><a href="#User_Import" data-toggle="tooltip" title="Importar Usuarios">Usuarios</a></li> 
-                             <li><a href="#Vehicle_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
-                  		     <li><a href="#Route_Import" data-toggle="tooltip" title="Importar Rutas">Rutas</a></li> 
-                             <li><a href="#VisitPoint_Import" data-toggle="tooltip" title="Importar Establecimientos">Establecimientos</a></li>          
-                           
-                   </ul></li>
-                   
-                    
-                </ul>   
-              </div>
-            </nav> 
-        </header>--> <header>
+<header>
             <nav class=" navbar navbar-dark bg-primary " style="color: #fff;">
                <div class="navbar-header" style="width:100%; color:#000000; background-color: #ffffff"><!--background-color: #014D7C;-->
-                 
                  <span style=" float:left; text-align:left;">
                    <img src="images/Logo.jpg" align="left" alt="Eflow" height="42px">
-                 
-             <img src="images/DTS.png" align="left" alt="Delivery Tracking System" height="42px">
+              <img src="images/DTS.png" align="left" alt="Delivery Tracking System" height="42px">
                  </span>
-                   
                  <span >
                     <a class="navbar-brand glyphicon glyphicon-time" style="color:#000000;">
                       {{Watch|date:"mediumTime"}}
@@ -328,31 +247,19 @@
 					             <li><a style="color:#000000;" href="#Settings" class="fa fa-cog" data-toggle="tooltip" title="Ajustes" tabindex="0"> Ajustes</a></li>
                             <li><a style="color:#000000;" href="#Restoring_DB" class="fa fa-database" data-toggle="tooltip" title="Administracion de Base Datos" tabindex="0"> Base Datos</a></li>  
                              <li><a style="color:#000000;" href="#General_Detail" class="fa fa-area-chart" data-toggle="tooltip" title="Administracion de Reportes" tabindex="0"> Reporteria</a></li>  
-                          <!--   <li><a style="color:#000000;" href="#Subscription" class="glyphicon glyphicon-road" data-toggle="tooltip" title="Tipos de Subscription" tabindex="0">Subscription</a></li>  
-                            
-                            <!-- <li><a style="color:#000000;" href="#Historic_Information" class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Información Histórica" tabindex="0"> Información Histórica</a></li> 
-                        <li><a style="color:#000000;" href="#Prueba" class="glyphicon glyphicon-road" data-toggle="tooltip" title="Prueba" tabindex="0"> Prueba</a></li>
-                          --> </ul>
+                           </ul>
                      </li>
                      </ul>  
                    </h4>
                  </span>
                  <span style="float:right; text-align:right; color:#000000;">
-                   <h4>
-                 <!-- 	 <a href="#tracking"  class="button icon-left ion-search button-clear button-dark"> Rastreo.   </a>-->
-                 </h4>
+                   <h4> </h4>
                  </span>
                    
               </div>
-      <div> <!--
-         <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Menu=true"> 
-        <li><a  href="#Login" data-toggle="tooltip" title="Login">Ingreso</a></li>
-        <li><a  href="#Verificar" data-toggle="tooltip" title="Verificar">Verificar Pedido</a></li>
-        </ul>      -->
+      <div>
         <ul class="nav nav-tabs nav-justified" ng-show="Show_Components.Main_Menu"> 
                      <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Calendar" data-toggle="tooltip" title="Planificador">Planificador</a></li>
-                     
-                       
                    <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Vehicles_Online" data-toggle="tooltip" title="Ver vehículos en tiempo real">Tiempo Real</a></li>
  <li class="dropdown" ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false">
           <a  class="dropdown-toggle" data-toggle="dropdown" title="Mantenimiento">Mantenimiento <span class="caret"></span></a>
@@ -362,8 +269,6 @@
                              <li><a style="color:#000;" href="#VisitPoint" data-toggle="tooltip" title="Establecimientos">Establecimientos</a></li>          
                              <li><a style="color:#000;" href="#Routes" data-toggle="tooltip" title="Sector">Sectores</a></li>                 
                              <li><a style="color:#000;" href="#Notification" data-toggle="tooltip" title="Sector">Notificaciones</a></li>           
-                            <!-- <li><a href="#product" data-toggle="tooltip" title="Productos">Productos</a></li>  --> 
-                   
                    </ul>
         </li>
 <li class="dropdown" ng-click="Show_Components.SubMenu_Import = true;Show_Components.SubMenu_Maintenance = false">
@@ -374,22 +279,13 @@
                              <li><a style="color:#000;" href="#Vehicle_Import" data-toggle="tooltip" title="Importar Vehículos">Vehículos</a></li>
                          <li><a style="color:#000;" href="#Route_Import" data-toggle="tooltip" title="Importar Sector">Sectores</a></li> 
                              <li><a style="color:#000;" href="#VisitPoint_Import" data-toggle="tooltip" title="Importar Establecimientos">Establecimientos</a></li>          
-                            <!-- <li><a href="#product" data-toggle="tooltip" title="Productos">Productos</a></li>  --> 
-                   
-                   </ul></li>
-                  
-                 <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Data_Summary" data-toggle="tooltip" title="Análisis Datos">Análisis Datos</a></li> 
+                    </ul></li>
+                <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Data_Summary" data-toggle="tooltip" title="Análisis Datos">Análisis Datos</a></li> 
           			    <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Historic_Information" data-toggle="tooltip" title="Información Histórica" > Información Histórica</a></li> 
-                        <!--      <li><a style="color:#000000;" href="#General_Detail"  data-toggle="tooltip" title="General Detail Routes" tabindex="0"> Prueba</a></li>  
-                            
-                      
-          <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Settings" data-toggle="tooltip" title="Ajustes">Ajustes</a></li> -->
-               </ul>
+                </ul>
               </div>
             </nav>
         </header>
-      
-      
           <!-- Modal -->
 <div class="modal fade" id="Log_Out" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">
@@ -402,24 +298,14 @@
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>Cerrando Sesión...
                 </div>
                 <div class="modal-footer">
-                   
                 </div>
             </div>
         </div>
     </div>
 </div>
-      
-     
-      
         <!-- MAIN CONTENT AND INJECTED VIEWS -->
         <div id="main">
-            <!-- angular templating -->
-            <!-- this is where content will be injected -->
 				<div ng-view></div>
-          
-          
-    <!--  <script src="scripts/externals/Dashboard.js"></script> -->
         </div>
-  
   </body>
     </html>

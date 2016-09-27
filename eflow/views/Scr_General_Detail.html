@@ -5,64 +5,42 @@
 }
 </style>
 <div id="Contents"style="background-color:#E6E6E6;" ng-controller="Scr_General_Detail_Controller" ng-init="init()"> 
-  
 <div class="row">
   		 <div class="col-md-12 " >
-       
-  		 <div class="col-md-12 info-box" style="background-color:#E6E6E6;" > 
-  <div class="box box-primary" >
-    <div class="box-header with-border ">
-      <h3 class="box-title">Analisis de graficos</h3>
-      <div class="box-tools pull-right">
-        <button class="btn btn-box-tool"  type="button" data-widget="collapse" ng-click="Show_General = ! Show_General; Switch_Folder_Data('General');" >
-           <i ng-class="Class_General" class="fa fa-minus"></i> 
-        </button>
-      </div>
-    </div>
-    <div class="box-body no-padding" style="display: block;" ng-show="Show_General">
-     	
-             
-    <div class="col-md-3"  style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 0px 0px 10px;">
+    <div class="col-md-3"  style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 0px 0px 10px;">
               <h4 style="text-align: center;color:Grey">Espacio Utilizado</h4>
              <h3 style="text-align: center;">{{Gra1 | number:0}}%</h3>
             </div>  
-    <div class="col-md-3" style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 0px 0px 10px;">
+    <div class="col-md-3" style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 0px 0px 10px;">
               <h4 style="text-align: center;color:Grey">Orden con Producto Dañado</h4>
              <h3 style="text-align: center;">{{Gra2 | number:0}}%</h3>
             </div>  
-    <div class="col-md-3" style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 0px 0px 10px;">
+    <div class="col-md-3" style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 0px 0px 10px;">
               <h4 style="text-align: center;color:Grey">Devoluciones</h4>
              <h3 style="text-align: center;">{{Gra3 | number:0}}%</h3>
             </div>
-    <div class="col-md-3" style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 10px 0px 10px;">
+    <div class="col-md-3" style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 10px 0px 10px;">
               <h4 style="text-align: center;color:Grey">Rendimiento Visitas</h4>
              <h3 style="text-align: center;">{{Gra6 | number:0}}%</h3>
             </div>
-    <div class="col-md-3" style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 0px 10px 10px;">
+    <div class="col-md-3" style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 0px 10px 10px;">
               <h4 style="text-align: center;color:Grey">Visitas a tiempo</h4>
              <h3 style="text-align: center;">{{Gra8 | number:0}}%</h3>
             </div>
-    <div class="col-md-3" style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 0px 10px 10px;">
+    <div class="col-md-3" style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 0px 10px 10px;">
               <h4 style="text-align: center;color:Grey">Visitas fuera de tiempo</h4>
              <h3 style="text-align: center;">{{Gra9 | number:0}}%</h3>
             </div>
-    <div class="col-md-3" style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 0px 10px 10px;">
+    <div class="col-md-3" style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 0px 10px 10px;">
               <h4 style="text-align: center;color:Grey">Efectividad de Entrega</h4>
              <h3 style="text-align: center;">{{Gra10 | number:0}}%</h3>
         </div>
-    <div class="col-md-3" style="border-style: solid ; border-color:#E6E6E6; border-width: 10px 10px 10px 10px;">
+    <div class="col-md-3" style="border-style: solid ; background-color:#ffffff; border-color:#E6E6E6; border-width: 10px 10px 10px 10px;">
               <h4 style="text-align: center;color:Grey">Merma</h4>
              <h3 style="text-align: center;">{{Gra11 | number:0}}%</h3>
             </div>
-      
   </div>  
   </div>
-     </div>
-  </div>
-     </div>
-  			
-  		
- 
 <div class="row">
   <div class="col-md-12">
   		 <div class="col-md-6 info-box"style="background-color:#E6E6E6;"> 
@@ -76,12 +54,10 @@
             </div>
             </div>
             <div class="box-body" style="display: block;" ng-show="Show_Chart1">		
-              
-         	<div id="Chart_Time" class="chart"></div>     
+          	<div id="Chart_Time" class="chart"></div>     
  			  </div>
           </div>  
         </div>
-       
   		 <div class="col-md-6 info-box" style="background-color:#E6E6E6;" > 
          <div class="box box-primary">
             <div class="box-header with-border">
@@ -113,8 +89,7 @@
          	<div id="Chart_Order" class="chart"></div>            
  			  </div>
           </div>  
-        </div>
-       
+        </div>       
   		 <div class="col-md-6 info-box" style="background-color:#E6E6E6;"> 
          <div class="box box-primary">
             <div class="box-header with-border">
@@ -131,8 +106,7 @@
           </div>      
  			</div>
   </div>
-</div>
-  
+</div>  
 <div class="row">
   		 <div class="col-md-12 "style="background-color:#E6E6E6;">
        
@@ -153,10 +127,6 @@
         </div>
      </div>
      </div>
-  
-  
-  
-  
   <!-- Modal cargando -->
    <div class="modal fade" id="Charging" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">
@@ -169,14 +139,9 @@
                 <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate">  </span> 
                 </div>
                 <div class="modal-footer">
-                   
                 </div>
             </div>
         </div>
     </div>
 </div>
-  
-
-  
-  
 </div>

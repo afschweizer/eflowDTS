@@ -398,9 +398,6 @@ return Obj;
 };
 
 
-      
-
-      
 function Chart_Units(Obj) {      
       var Data = [];
       Data.push(["Sector","Total de Unidades","Unidades Confirmadas","Unidades Rechazadas","Unidades Dañadas","Unidades Faltantes","Unidades Vencidas","Unidades Otras"]);
@@ -446,8 +443,6 @@ function Chart_Units(Obj) {
       }
 
 
-
-      
 function Chart_Time(Obj) {      
       var Data = [];
       Data.push(["Sector","Total Puntos Visita","Total Puntos Visita A tiempo","Total Puntos Visita en desatiempo","Total Kilometros",
