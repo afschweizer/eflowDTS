@@ -246,8 +246,8 @@
                             <li><a  style="color:#000000;" href="/testing/eflowDTS/eflow/Manuals/Manual_de_Usuario_DTS.pdf" target="_blank"  class="fa fa-file-pdf-o" data-toggle="tooltip" title="Manuales" tabindex="0"> Manual</a></li>
 					             <li><a style="color:#000000;" href="#Settings" class="fa fa-cog" data-toggle="tooltip" title="Ajustes" tabindex="0"> Ajustes</a></li>
                             <li><a style="color:#000000;" href="#Restoring_DB" class="fa fa-database" data-toggle="tooltip" title="Administracion de Base Datos" tabindex="0"> Base Datos</a></li>  
-                             <li><a style="color:#000000;" href="#General_Detail" class="fa fa-area-chart" data-toggle="tooltip" title="Administracion de Reportes" tabindex="0"> Reporteria</a></li>  
-                           </ul>
+                            <!-- <li><a style="color:#000000;" href="#General_Detail" class="fa fa-area-chart" data-toggle="tooltip" title="Administracion de Reportes" tabindex="0"> Reporteria</a></li>  
+                           --></ul>
                      </li>
                      </ul>  
                    </h4>
@@ -280,9 +280,23 @@
                          <li><a style="color:#000;" href="#Route_Import" data-toggle="tooltip" title="Importar Sector">Sectores</a></li> 
                              <li><a style="color:#000;" href="#VisitPoint_Import" data-toggle="tooltip" title="Importar Establecimientos">Establecimientos</a></li>          
                     </ul></li>
-                <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a  href="#Data_Summary" data-toggle="tooltip" title="Análisis Datos">Análisis Datos</a></li> 
+          
+          <li class="dropdown" ng-click="Show_Components.SubMenu_Maintenance = true;Show_Components.SubMenu_Import = false">
+          <a  class="dropdown-toggle" data-toggle="dropdown" title="Mantenimiento">Análisis Datos <span class="caret"></span></a>
+          <ul class="dropdown-menu " style="background-color:#3E94DF; "ng-show="Show_Components.SubMenu_Maintenance">
+                				  <li><a style="color:#000;" href="#Data_Summary" data-toggle="tooltip" title="Creación de Gráficos"> Creación de Gráficos</a></li> 
+                             <li><a style="color:#000;" href="#General_Detail" data-toggle="tooltip" title="Administracion de Reportes" > Análisis de Reportería</a></li>  
+                             <li><a style="color:#000;" href="#Historic_Information" data-toggle="tooltip" title="Información Histórica" > Información Histórica</a></li>  
+                                    
+                   </ul>
+        </li>
+          
+          
+          
+               <!--  <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false">
+                  <a  href="#Data_Summary" data-toggle="tooltip" title="Análisis Datos">Análisis Datos</a></li> 
           			    <li ng-click="Show_Components.SubMenu_Maintenance = false;Show_Components.SubMenu_Import = false"><a href="#Historic_Information" data-toggle="tooltip" title="Información Histórica" > Información Histórica</a></li> 
-                </ul>
+               --> </ul>
               </div>
             </nav>
         </header>
