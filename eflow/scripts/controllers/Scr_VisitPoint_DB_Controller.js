@@ -919,6 +919,7 @@ doc.setTextColor(100);
 doc.setFontType("bold");
 
 doc.addImage(ima, 'JPEG', 20, 20, 150, 80);
+doc.addImage(eflowDTS.Session.Company.Logo, 'JPEG', 180,20, 150, 90);
     
 doc.text(420, 70, 'Nombre de la Compañia: '+ Compania.Name);
     

@@ -105,6 +105,7 @@ $scope.Upload_Image = function(){
 		
 		var onSuccess = function(base64){			
 			$scope.Image = base64;
+			$scope.Companys.LogoImage = base64;
 			setInterval(function(){$scope.$apply();},0);			
 		};
 		
@@ -300,9 +301,9 @@ function Select_Company(){
 		 var JsonData = {
             'Method_Name': 'Select_Company',
             'Data': {
-    			"Identifier": $scope.Companys.name.toUpperCase(),
+    			"Identifier": $scope.Companys.name.toUpperCase()/*,
     			"Domain":"@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
-    			"Name":$scope.Companys.name
+    			"Name":$scope.Companys.name*/
             },
             'Fields':{
             	
@@ -460,7 +461,7 @@ try{
 							 	"Type_Subscription" :  $scope.Companys.subscription
 							 	},
 				    			"Name": $scope.Companys.name,
-							    "Logo": $scope.Companys.Logo,
+							    "Logo": $scope.Companys.LogoImage,
 				    			"Identifier": $scope.Companys.name.toUpperCase(),
 							    "Domain": "@"+$scope.Companys.domain1.toLowerCase()+"."+$scope.Companys.domain2.toLowerCase(),
 							    "Mail": $scope.Companys.mail.toLowerCase(),

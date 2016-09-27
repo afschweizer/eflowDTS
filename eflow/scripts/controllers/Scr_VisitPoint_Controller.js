@@ -1360,6 +1360,7 @@ doc.setFontType("bold");
 
 doc.addImage(ima, 'JPEG', 20, 20, 150, 90);
     
+doc.addImage(eflowDTS.Session.Company.Logo, 'JPEG', 180,20, 150, 90);
   
 doc.text(420, 70, 'Nombre de la Compañia: '+ Compania.Name);
 doc.text(420, 80, 'Teléfono: '+ Compania.Phone);
