@@ -3,13 +3,16 @@ DTS_APP.controller('Scr_Settings_Controller', function($scope) {
     $scope.init = function() {
     		try{
        	Set_Current_Page();
+$scope.Companys={};
+$scope.Company = eflowDTS.Session.Company.Name;
+$scope.Image = eflowDTS.Session.Company.Logo;
 $scope.Array_License = eflowDTS.Session.Company.Settings.License;
 $scope.Array_User = eflowDTS.Session.Company.Settings.User;
 $scope.Array_Vehicle = eflowDTS.Session.Company.Settings.Vehicle;
 $scope.Array_Fuel = eflowDTS.Session.Company.Settings.Fuel;
 $scope.Array_Unity = eflowDTS.Session.Company.Settings.Unity;
 
-
+        $scope.Show_Settings=true;
    }catch (e) {
         
         var err;
@@ -32,7 +35,20 @@ $scope.Array_Unity = eflowDTS.Session.Company.Settings.Unity;
     }  
   
 };
-
+$scope.Upload_Image = function(){
+	
+		var file = document.getElementById('File_Image').files[0];
+		$scope.Companys.Logo = file.name;		
+		
+		var onSuccess = function(base64){			
+			$scope.Image = base64;
+			//$scope.LogoImage = base64;
+			setInterval(function(){$scope.$apply();},0);			
+		};
+		
+		Resize_Image(file,onSuccess);
+		
+	};	
 $scope.Remove_In_Array = function(Obj,Array){
 	try{
 	Array_Remove(Array,Obj);
@@ -129,6 +145,7 @@ try{
 		var Json = eflowDTS.Session.Company;
 		Json.Control.Modification_date = new Date().getTime();
 		Json.Control.Modify_User = eflowDTS.Session.Current_User.UserName;
+		Json.Logo = $scope.Image;
 		Json.Settings = {
 							    "Unity": $scope.Array_Unity,
 							    "Fuel": $scope.Array_Fuel,

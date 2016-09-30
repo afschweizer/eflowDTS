@@ -409,7 +409,7 @@ $scope.Verifica_Trabajos = function(Obj){
             'Method_Name': 'Select_Jobs',
              'Data': {
     			"Company": eflowDTS.Session.Company.Identifier,
-    			"User": Obj.User
+    			"User": Obj.ID//User
             },
             'Fields':{
             }
@@ -420,7 +420,8 @@ $scope.Verifica_Trabajos = function(Obj){
 			$scope.checked=true;
 			$scope.Show_Alerta=true;
 		}else{
-			$scope.checked=false;}
+			$scope.checked=false;
+			$scope.Show_Alerta=false;}
 		
 		};		
 		var onError = function(e){

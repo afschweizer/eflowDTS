@@ -271,12 +271,15 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		
 		switch(Filter.Type){
 			case 'Item':{
-				
+				for(var i = 0; i < ArrData.length; i++){					
+					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
+                    ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].End_Date).format("h:MM:ss TT"); 
+                    
+				}
 				break;
 				}
 			case 'Visit_Point':{
-				for(var i = 0; i < ArrData.length; i++){
-					ArrData[i].Duration = Math.round((ArrData[i].End_Date - ArrData[i].Start_Date) / 60 /1000);
+				for(var i = 0; i < ArrData.length; i++){					
 					ArrData[i].In_Time === true ? ArrData[i].In_Time = "Sí" : ArrData[i].In_Time = "No";
 					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
                     ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].End_Date).format("h:MM:ss TT"); 
@@ -285,12 +288,16 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 				break;
 				}
 			case 'Trip':{
-				
+				for(var i = 0; i < ArrData.length; i++){
+					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
+                    ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].End_Date).format("h:MM:ss TT"); 
+                    
+				}				
 
 				break;}			
 		}
 		
-		$scope.PivotData = ArrData;
+		$scope.PivotData = Spanish_Version(ArrData,Filter.Type);
 		$scope.DataSet.Type = Filter.Type;
 		$scope.DataSet.Start_Date = new Date(Filter.Start_Date).getTime();
 		$scope.DataSet.End_Date = new Date(Filter.End_Date).getTime();
@@ -450,6 +457,64 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 };
    
    
+  function Spanish_Version(Arr, Type) {
+         var Trip_Schema = [{"En":"Trip_ID","Es":"Viaje_ID"},{"En":"User","Es":"Conductor"},{"En":"ID_Truck","Es":"Placa"},{"En":"Year","Es":"Año"},{"En":"Quarter","Es":"Cuatrimestre"},{"En":"Trimester","Es":"Trimestre"},{"En":"Month","Es":"Mes"},{"En":"Week","Es":"Semana"},{"En":"DayWeek","Es":"Día de la semana"},{"En":"Day","Es":"Día"},{"En":"Start_Date","Es":"Fecha de Inicio"},{"En":"Total_VisitPoint","Es":"Total_Puntos_Visita"},{"En":"Total_VisitPoint_In_Time","Es":"Total_Puntos_Visita_A_Tiempo"},{"En":"Total_VisitPoint_Off_Time","Es":"Total_Puntos_Visita_Desatiempo"},{"En":"Total_Jobs","Es":"Total_Ordenes"},{"En":"Total_Jobs_Confirmed","Es":"Total_Ordenes_Confirmadas"},{"En":"Total_Jobs_Rejected","Es":"Total_Ordenes_Rechazadas"},{"En":"Total_Jobs_Damaged","Es":"Total_Ordenes_Dañadas"},{"En":"Total_Jobs_Missing","Es":"Total_Ordenes_Faltantes"},{"En":"Total_Jobs_Expired","Es":"Total_Ordenes_Vencidos"},{"En":"Total_Jobs_Other","Es":"Total_Ordenes_Otros"},{"En":"Total_Units","Es":"Total_Unidades"},{"En":"Total_Volume","Es":"Total_Volume"},{"En":"Total_Weight","Es":"Total_Peso"},{"En":"Total_Units_Confirmed","Es":"Total_Unidades_Confirmadas"},{"En":"Total_Volume_Confirmed","Es":"Total_Volume_Confirmadas"},{"En":"Total_Weight_Confirmed","Es":"Total_Peso_Confirmadas"},{"En":"Total_Units_Rejected","Es":"Total_Unidades_Rechazadas"},{"En":"Total_Volume_Rejected","Es":"Total_Volume_Rechazado"},{"En":"Total_Weight_Rejected","Es":"Total_Peso_Rechazado"},{"En":"Total_Units_Damaged","Es":"Total_Unidades_Dañadas"},{"En":"Total_Volume_Damaged","Es":"Total_Volume_Dañado"},{"En":"Total_Weight_Damaged","Es":"Total_Peso_Dañado"},{"En":"Total_Units_Missing","Es":"Total_Unidades_Faltantes"},{"En":"Total_Volume_Missing","Es":"Total_Volume_Faltante"},{"En":"Total_Weight_Missing","Es":"Total_Peso_Faltante"},{"En":"Total_Units_Expired","Es":"Total_Unidades_Vencidas"},{"En":"Total_Volume_Expired","Es":"Total_Volume_Vencido"},{"En":"Total_Weight_Expired","Es":"Total_Peso_Vencido"},{"En":"Total_Units_Other","Es":"Total_Unidades_Otras"},{"En":"Total_Volume_Other","Es":"Total_Volume_Otro"},{"En":"Total_Weight_Other","Es":"Total_Peso_Otro"},{"En":"Total_Incidents","Es":"Total_Incidentes"},{"En":"Excessive_Wait_Incidents","Es":"Incidentes_Espera Excesiva"},{"En":"Canceled_Order_Incidents","Es":"Incidentes_Orden_Cancelada"},{"En":"Closed_Local_Incidents","Es":"Incidentes_Local_Cerrado"},{"En":"Damaged_Truck_Incidents","Es":"Incidentes_Falla_Camion"},{"En":"Order_With_Difference_Incidents","Es":"Incidentes_Orden_Con_Diferencia"},{"En":"Damaged_Product_Incidents","Es":"Incidentes_Producto_Dañado"},{"En":"Excessive_Transit_Incidents","Es":"Incidentes_Transito_Excesivo"},{"En":"No_Money_Incidents","Es":"Incidentes_Sin_Dinero"},{"En":"Assault_Incidents","Es":"Incidentes_Asalto"},{"En":"ID_Route","Es":"Sector_ID"},{"En":"Route_Name","Es":"Sector_Nombre"},{"En":"PERC_Confirmed","Es":"Porcentaje_Confirmado"},{"En":"PERC_Rejected","Es":"Porcentaje_Rechazado"},{"En":"PERC_Damaged","Es":"Porcentaje_Dañado"},{"En":"PERC_Expired","Es":"Porcentaje_Vencido"},{"En":"PERC_Missing","Es":"Porcentaje_Faltante"},{"En":"PERC_Other","Es":"Porcentaje_Otro"},{"En":"Average_Time_Visit","Es":"Promedio_Tiempo_Visita"},{"En":"End_Date","Es":"Fecha_Final"},{"En":"Total_Kilometer","Es":"Total_Kilometros"},{"En":"Total_Duration","Es":"Total_Duracion"}];
+         var Visit_Point_Schema = [{"En":"Name","Es":"Nombre"},{"En":"Trip_ID","Es":"Viaje_ID"},{"En":"User","Es":"Conductor"},{"En":"Truck_ID","Es":"Placa"},{"En":"ID_Route","Es":"Sector_ID"},{"En":"Route_Name","Es":"Sector_Nombre"},{"En":"Start_Date","Es":"Fecha de Inicio"},{"En":"Year","Es":"Año"},{"En":"Quarter","Es":"Cuatrimestre"},{"En":"Trimester","Es":"Trimestre"},{"En":"Month","Es":"Mes"},{"En":"Week","Es":"Semana"},{"En":"DayWeek","Es":"Día de la semana"},{"En":"Day","Es":"Día"},{"En":"VisitPoint_ID","Es":"Punto_Visita_ID"},{"En":"VisitPoint_Name","Es":"Punto_Visita_Name"},{"En":"Country","Es":"Pais"},{"En":"Province","Es":"Provincia"},{"En":"Canton","Es":"Canton"},{"En":"District","Es":"Distrito"},{"En":"Total_Jobs","Es":"Total_Ordenes"},{"En":"Total_Jobs_Confirmed","Es":"Total_Ordenes_Confirmadas"},{"En":"Total_Jobs_Rejected","Es":"Total_Ordenes_Rechazadas"},{"En":"Total_Jobs_Damaged","Es":"Total_Ordenes_Dañadas"},{"En":"Total_Jobs_Missing","Es":"Total_Ordenes_Faltantes"},{"En":"Total_Jobs_Expired","Es":"Total_Ordenes_Vencidos"},{"En":"Total_Jobs_Other","Es":"Total_Ordenes_Otros"},{"En":"Total_Units","Es":"Total_Unidades"},{"En":"Total_Volume","Es":"Total_Volume"},{"En":"Total_Weight","Es":"Total_Peso"},{"En":"Total_Units_Confirmed","Es":"Total_Unidades_Confirmadas"},{"En":"Total_Volume_Confirmed","Es":"Total_Volume_Confirmadas"},{"En":"Total_Weight_Confirmed","Es":"Total_Peso_Confirmadas"},{"En":"Total_Units_Rejected","Es":"Total_Unidades_Rechazadas"},{"En":"Total_Volume_Rejected","Es":"Total_Volume_Rechazado"},{"En":"Total_Weight_Rejected","Es":"Total_Peso_Rechazado"},{"En":"Total_Units_Damaged","Es":"Total_Unidades_Dañadas"},{"En":"Total_Volume_Damaged","Es":"Total_Volume_Dañado"},{"En":"Total_Weight_Damaged","Es":"Total_Peso_Dañado"},{"En":"Total_Units_Missing","Es":"Total_Unidades_Faltantes"},{"En":"Total_Volume_Missing","Es":"Total_Volume_Faltante"},{"En":"Total_Weight_Missing","Es":"Total_Peso_Faltante"},{"En":"Total_Units_Expired","Es":"Total_Unidades_Vencidas"},{"En":"Total_Volume_Expired","Es":"Total_Volume_Vencido"},{"En":"Total_Weight_Expired","Es":"Total_Peso_Vencido"},{"En":"Total_Units_Other","Es":"Total_Unidades_Otras"},{"En":"Total_Volume_Other","Es":"Total_Volume_Otro"},{"En":"Total_Weight_Other","Es":"Total_Peso_Otro"},{"En":"Total_Incidents","Es":"Total_Incidentes"},{"En":"Excessive_Wait_Incidents","Es":"Incidentes_Espera Excesiva"},{"En":"Canceled_Order_Incidents","Es":"Incidentes_Orden_Cancelada"},{"En":"Closed_Local_Incidents","Es":"Incidentes_Local_Cerrado"},{"En":"Damaged_Truck_Incidents","Es":"Incidentes_Falla_Camion"},{"En":"Order_With_Difference_Incidents","Es":"Incidentes_Orden_Con_Diferencia"},{"En":"Damaged_Product_Incidents","Es":"Incidentes_Producto_Dañado"},{"En":"Excessive_Transit_Incidents","Es":"Incidentes_Transito_Excesivo"},{"En":"No_Money_Incidents","Es":"Incidentes_Sin_Dinero"},{"En":"Assault_Incidents","Es":"Incidentes_Asalto"},{"En":"In_Time","Es":"A_Tiempo"},{"En":"End_Date","Es":"Fecha_Final"},{"En":"Duration","Es":"Total_Duracion"},{"En":"PERC_Confirmed","Es":"Porcentaje_Confirmado"},{"En":"PERC_Rejected","Es":"Porcentaje_Rechazado"},{"En":"PERC_Damaged","Es":"Porcentaje_Dañado"},{"En":"PERC_Expired","Es":"Porcentaje_Vencido"},{"En":"PERC_Missing","Es":"Porcentaje_Faltante"},{"En":"PERC_Other","Es":"Porcentaje_Otro"}];
+         var Item_Schema =[{"En":"Trip_ID","Es":"Viaje_ID"},{"En":"User","Es":"Conductor"},{"En":"Truck_ID","Es":"Placa"},{"En":"ID_Route","Es":"Sector_ID"},{"En":"Route_Name","Es":"Sector_Nombre"},{"En":"Year","Es":"Año"},{"En":"Quarter","Es":"Cuatrimestre"},{"En":"Trimester","Es":"Trimestre"},{"En":"Month","Es":"Mes"},{"En":"Week","Es":"Semana"},{"En":"DayWeek","Es":"Día de la semana"},{"En":"Day","Es":"Día"},{"En":"Start_Date","Es":"Fecha de Inicio"},{"En":"VisitPoint_ID","Es":"Punto_Visita_ID"},{"En":"VisitPoint_Name","Es":"Punto_Visita_Name"},{"En":"Doc_Type","Es":"Tipo"},{"En":"Ref1","Es":"Ref1"},{"En":"Ref2","Es":"Ref2"},{"En":"Ref3","Es":"Ref3"},{"En":"Item_ID","Es":"Producto_ID"},{"En":"Item_Name","Es":"Producto_Name"},{"En":"Item_Desc","Es":"Producto_Descripcion"},{"En":"UOM","Es":"Unidad_Medida"},{"En":"Quantity","Es":"Cantidad"},{"En":"Country","Es":"Pais"},{"En":"Province","Es":"Provincia"},{"En":"Canton","Es":"Canton"},{"En":"District","Es":"Distrito"},{"En":"Total_Units","Es":"Total_Unidades"},{"En":"Total_Volume","Es":"Total_Volume"},{"En":"Total_Weight","Es":"Total_Peso"},{"En":"Total_Units_Confirmed","Es":"Total_Unidades_Confirmadas"},{"En":"Total_Volume_Confirmed","Es":"Total_Volume_Confirmadas"},{"En":"Total_Weight_Confirmed","Es":"Total_Peso_Confirmadas"},{"En":"Total_Units_Rejected","Es":"Total_Unidades_Rechazadas"},{"En":"Total_Volume_Rejected","Es":"Total_Volume_Rechazado"},{"En":"Total_Weight_Rejected","Es":"Total_Peso_Rechazado"},{"En":"Total_Units_Damaged","Es":"Total_Unidades_Dañadas"},{"En":"Total_Volume_Damaged","Es":"Total_Volume_Dañado"},{"En":"Total_Weight_Damaged","Es":"Total_Peso_Dañado"},{"En":"Total_Units_Missing","Es":"Total_Unidades_Faltantes"},{"En":"Total_Volume_Missing","Es":"Total_Volume_Faltante"},{"En":"Total_Weight_Missing","Es":"Total_Peso_Faltante"},{"En":"Total_Units_Expired","Es":"Total_Unidades_Vencidas"},{"En":"Total_Volume_Expired","Es":"Total_Volume_Vencido"},{"En":"Total_Weight_Expired","Es":"Total_Peso_Vencido"},{"En":"Total_Units_Other","Es":"Total_Unidades_Otras"},{"En":"Total_Volume_Other","Es":"Total_Volume_Otro"},{"En":"Total_Weight_Other","Es":"Total_Peso_Otro"},{"En":"PERC_Confirmed","Es":"Porcentaje_Confirmado"},{"En":"PERC_Rejected","Es":"Porcentaje_Rechazado"},{"En":"PERC_Damaged","Es":"Porcentaje_Dañado"},{"En":"PERC_Expired","Es":"Porcentaje_Vencido"},{"En":"PERC_Missing","Es":"Porcentaje_Faltante"},{"En":"PERC_Other","Es":"Porcentaje_Otro"},{"En":"End_Date","Es":"Fecha_Final"}];
+         var Arr_Return = [];
+
+        switch (Type) {
+            case 'Trip':
+                {
+                    for (var i = 0; i < Arr.length; i++) {
+                        var Obj = {};
+                        for (key in Arr[i]) {
+                            for (var x = 0; x < Trip_Schema.length; x++) {
+                                if (key === Trip_Schema[x].En) {
+                                    Obj[Trip_Schema[x].Es] = Arr[i][key];
+                                }
+                            }
+                        }
+                        Arr_Return.push(Obj);
+                    }
+                    break;
+                }
+            case 'Visit_Point':
+                 {
+                    for (var i = 0; i < Arr.length; i++) {
+                        var Obj = {};
+                        for (key in Arr[i]) {
+                            for (var x = 0; x < Visit_Point_Schema.length; x++) {
+                                if (key === Visit_Point_Schema[x].En) {
+                                    Obj[Visit_Point_Schema[x].Es] = Arr[i][key];
+                                }
+                            }
+                        }
+                        Arr_Return.push(Obj);
+                    }
+                    break;
+                }
+            case 'Item':
+                  {
+                    for (var i = 0; i < Arr.length; i++) {
+                        var Obj = {};
+                        for (key in Arr[i]) {
+                            for (var x = 0; x < Item_Schema.length; x++) {
+                                if (key === Item_Schema[x].En) {
+                                    Obj[Item_Schema[x].Es] = Arr[i][key];
+                                }
+                            }
+                        }
+                        Arr_Return.push(Obj);
+                    }
+                    break;
+                }
+        }
+
+        return Arr_Return;
+    };
+
+
    
    
    
