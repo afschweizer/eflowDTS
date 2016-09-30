@@ -275,7 +275,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 				for(var i = 0; i < ArrData.length; i++){					
 					ArrData[i].Start_Date = new Date(ArrData[i].Start_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].Start_Date).format("h:MM:ss TT"); 
                     ArrData[i].End_Date = new Date(ArrData[i].End_Date).format("dd-mm-yyyy")+"  " +new Date(ArrData[i].End_Date).format("h:MM:ss TT"); 
-                    
+                  
+          ArrData[i].Condition_Item = "Mixta";
         if (ArrData[i].Quantity === ArrData[i].Total_Units_Confirmed) {
             ArrData[i].Condition_Item = "Confirmada";
         }
@@ -293,9 +294,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
         }
         if (ArrData[i].Quantity === ArrData[i].Total_Units_Other) {
             ArrData[i].Condition_Item = "Otro";
-        }else{
-        	ArrData[i].Condition_Item = "Mixta";
-        }
+        }        
 				}
 				break;
 				}
