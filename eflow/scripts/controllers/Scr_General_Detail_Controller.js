@@ -1,9 +1,41 @@
 DTS_APP.controller('Scr_General_Detail_Controller',function($scope){
  	
  	$scope.Data = {};
- 	
+ 	$scope.Chart_Roles =
+ 	[
+  {
+    "Value": "Espacio_Utilizado",
+    "Es": "Espacio Utilizado"
+  },
+  {
+    "Value": "Devoluciones",
+    "Es": "Devoluciones"
+  },
+  {
+    "Value": "Rendimiento_Visitas",
+    "Es": "Rendimiento Visitas"
+  },
+  {
+    "Value": "A_Tiempo",
+    "Es": "A Tiempo"
+  },
+  {
+    "Value": "Desatiempo",
+    "Es": "Desatiempo"
+  },
+  {
+    "Value": "Efectividad_Entrega",
+    "Es": "Efectividad Entrega"
+  },
+  {
+    "Value": "Merma",
+    "Es": "Merma"
+  }
+];
+
  	$scope.init = function(){
  		$('#Charging').modal('show');
+ 		$scope.Chart_Roles_Checked = $scope.Chart_Roles;
  		$scope.Show_All_Chart();
  		$scope.Select_Data();
     };

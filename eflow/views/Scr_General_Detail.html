@@ -151,29 +151,10 @@
          	<div id="General_Charts" class="chart"></div>		         
  			  </div>
            <div class="box-header with-border">       
-              <label class="checkbox-inline">
-                    <input type="checkbox" value="Espacio_Utilizado">Espacio Utilizado
-                  </label>
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="Devoluciones">Devoluciones
-                  </label>
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="Rendimiento_Visitas">Rendimiento Visitas
-                  </label>
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="A_Tiempo">Visitas a tiempo
-                  </label>
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="Desatiempo">Visitas fuera de tiempo
-                  </label>
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="Efectividad_Entrega">Efectividad de Entreg
-                  </label>
-             		<label class="checkbox-inline">
-                    <input type="checkbox" value="Merma">Merma
-                  </label>
-           
-          </div>  
+             <label ng-repeat="role in Chart_Roles">
+  <input type="checkbox" checklist-model="Chart_Roles_Checked" checklist-value="role"> {{role.Es}} <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>   
+				</label>           
+          </div>   
         </div>
      </div>
      </div>
