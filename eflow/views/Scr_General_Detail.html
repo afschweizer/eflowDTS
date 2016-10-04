@@ -141,7 +141,7 @@
                
               
               <div class="box-tools pull-right">
-                 <button class="btn btn-box-tool" data-toggle="tooltip" title="Refrescar" ng-click=""><i class="glyphicon glyphicon-refresh"></i></button>
+                 <button class="btn btn-box-tool" data-toggle="tooltip" title="Refrescar" ng-click="Chart_General('Year',Data.Trip);"><i class="glyphicon glyphicon-refresh"></i></button>
                  <button type="button" class="btn btn-box-tool" data-widget="collapse" ng-click="Show_Chart5 = ! Show_Chart5; Switch_Folder_Data('Chart5');">
                   <i ng-class="Class_Chart5"></i> 
                 </button>
@@ -152,7 +152,7 @@
  			  </div>
            <div class="box-header with-border">       
              <label ng-repeat="role in Chart_Roles">
-  <input type="checkbox" checklist-model="Chart_Roles_Checked" checklist-value="role"> {{role.Es}} <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>   
+   <input type="checkbox" data-checklist-model="Chart_Roles_Checked" data-checklist-value="role">  {{role.Es}} <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>   
 				</label>           
           </div>   
         </div>

@@ -2,7 +2,7 @@
 
     // create the module and name it DTS_APP
         // also include ngRoute for all our routing needs
-    var DTS_APP = angular.module('DTS_APP', ['ngRoute']);
+    var DTS_APP = angular.module('DTS_APP', ['ngRoute','checklist-model']);
 
     // configure our routes
     DTS_APP.config(function($routeProvider) {

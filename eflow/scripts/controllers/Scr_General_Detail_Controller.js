@@ -1,6 +1,7 @@
 DTS_APP.controller('Scr_General_Detail_Controller',function($scope){
  	
  	$scope.Data = {};
+ 	
  	$scope.Chart_Roles =
  	[
   {
@@ -32,10 +33,10 @@ DTS_APP.controller('Scr_General_Detail_Controller',function($scope){
     "Es": "Merma"
   }
 ];
+$scope.Chart_Roles_Checked =  angular.copy($scope.Chart_Roles);
 
  	$scope.init = function(){
  		$('#Charging').modal('show');
- 		$scope.Chart_Roles_Checked = $scope.Chart_Roles;
  		$scope.Show_All_Chart();
  		$scope.Select_Data();
     };
@@ -694,7 +695,7 @@ DTS_APP.controller('Scr_General_Detail_Controller',function($scope){
      var options = {
          chart: {
              title: '',
-             subtitle: '',
+             subtitle: '', 
          }
      };
 
@@ -706,17 +707,24 @@ DTS_APP.controller('Scr_General_Detail_Controller',function($scope){
   	
   	$scope.Chart_General = function(Period,Data){
   		var Obj = $scope.Separated_By_Period(Data, Period);
+  		if($scope.Chart_Roles_Checked.length === 0){
+  			$scope.Chart_Roles_Checked = angular.copy($scope.Chart_Roles);  			
+  		}
   		var Data = [];
-      
-      Data.push(["Periodo","Espacio Utilizado",/*"Orden Producto Dañado",*/"Devoluciones","Rendimiento Visitas","A Tiempo","Desatiempo","Efectividad Entrega","Merma"]);
-      
-      for(key in Obj){      
+      var Data_Header = [];
+      Data_Header.push("Periodo");
+      for(var i = 0; i < $scope.Chart_Roles_Checked.length; i++){
+		      	Data_Header.push($scope.Chart_Roles_Checked[i].Es);
+      }
+     // Data.push(["Periodo","Espacio Utilizado",/*"Orden Producto Dañado",*/"Devoluciones","Rendimiento Visitas","A Tiempo","Desatiempo","Efectividad Entrega","Merma"]);
+      Data.push(Data_Header);
+      for(key in Obj){      	
     var Trip = {
     "Espacio_Utilizado":0,
     /*"Orden_Producto_Danado":0,*/
     "Devoluciones":0,
     "Rendimiento_Visitas":0,
-    "A_Tiempo":0,
+    "A_Tiempo":0, 
     "Desatiempo":0,
     "Efectividad_Entrega":0,
     "Merma":0    
@@ -738,9 +746,14 @@ DTS_APP.controller('Scr_General_Detail_Controller',function($scope){
      Trip.Efectividad_Entrega = (Get_Total_Unit_Confirmed(Obj[key]) / Get_Total_Unit(Obj[key])) * 100;
 
      Trip.Merma = (Get_Total_Unit_Damaged(Obj[key]) / Get_Total_Unit(Obj[key])) * 100;     
-        
-     Data.push([Trip.Period,Trip.Espacio_Utilizado+"%"/*,Trip.Orden_Producto_Danado+"%"*/,Trip.Devoluciones+"%",Trip.Rendimiento_Visitas+"%",Trip.A_Tiempo+"%",Trip.Desatiempo+"%",Trip.Efectividad_Entrega+"%",Trip.Merma+"%"]); 
        
+       var Data_Colums = [];
+       Data_Colums.push(Trip.Period);
+       for(var k = 0; k < $scope.Chart_Roles_Checked.length; k++){
+       	Data_Colums.push(Trip[$scope.Chart_Roles_Checked[k].Value]); 
+       }
+    // Data.push([Trip.Period,Trip.Espacio_Utilizado+"%"/*,Trip.Orden_Producto_Danado+"%"*/,Trip.Devoluciones+"%",Trip.Rendimiento_Visitas+"%",Trip.A_Tiempo+"%",Trip.Desatiempo+"%",Trip.Efectividad_Entrega+"%",Trip.Merma+"%"]); 
+      Data.push(Data_Colums); 
       }  
       
  var data_chart = google.visualization.arrayToDataTable(Data);
