@@ -118,9 +118,8 @@
                 <div ng-show="Show_PV_Process"> 
                         <div class="list-group-item" style=" background-color: #A9E2F3;" ng-repeat="PV_Process in ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true" ng-click="PV_Info(PV_Process);"><i class="fa fa-home fa-2x"></i>    {{PV_Process.Name}}</div>
                     </div>
-              
-                </div><!-- /.info-box -->          
-            </div><!-- /.col -->
+                </div>       
+            </div>
       
          <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box" style="background-color: #F5A9A9;">
@@ -134,8 +133,8 @@
                         <div ng-show="Show_PV_Aborted"> 
                               <div class="list-group-item" style="background-color: #F5A9A9;" ng-repeat="PV_Aborted in ArrayJobs | filter:  {'Visit_State': 'Aborted'} :true" ng-click="PV_Info(PV_Aborted);"><i class="fa fa-home fa-2x"></i>    {{PV_Aborted.Name}}</div>
                           </div>
-                        </div><!-- /.info-box -->         
-			</div><!-- /.col -->            
+                        </div>      
+			</div>          
          <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box " style="background-color: #F2F5A9;">
                            <div class="info-box " style="background-color: #F2F5A9;">
@@ -143,13 +142,13 @@
                           <div class="info-box-content">
                             <span class="info-box-text">Parciales</span>
                             <span class="info-box-number">{{(ArrayJobs | filter:  {'Visit_State': 'Partial'} :true).length}}</span>
-                          </div><!-- /.info-box-content -->
+                          </div>
                              </div>
                           <div ng-show="Show_PV_Partial"> 
                               <div class="list-group-item" style="background-color: #F2F5A9;" ng-repeat="PV_Partial in ArrayJobs | filter:  {'Visit_State': 'Partial'} :true" ng-click="PV_Info(PV_Partial);"><i class="fa fa-home fa-2x"></i>    {{PV_Partial.Name}}</div>
                           </div>
-                        </div><!-- /.info-box -->       
-			</div><!-- /.col -->
+                        </div>       
+			</div>
          <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box" style="background-color: #D0F5A9;">
                           <div class="info-box" style="background-color: #D0F5A9;">
@@ -162,8 +161,8 @@
                           <div ng-show="Show_PV_Finalized"> 
                               <div class="list-group-item" style="background-color: #D0F5A9;" ng-repeat="PV_Finalized in ArrayJobs | filter:  {'Visit_State': 'Finalized'} :true" ng-click="PV_Info(PV_Finalized);"><i class="fa fa-home fa-2x"></i>    {{PV_Finalized.Name}}</div>
                           </div>
-                        </div><!-- /.info-box -->             
-			</div><!-- /.col -->
+                        </div>          
+			</div>
      </div>			
  
   </div>
