@@ -12,7 +12,6 @@ $scope.numberOfPages = function(){
 
 $scope.init = function() {
 try{
-
     $scope.checked=false;
 			$scope.Show_Alerta=false;
 Set_Current_Page();
@@ -262,77 +261,111 @@ $scope.See_License=function(){
   
 };
 	
-
 $scope.Delete_User_DB = function(){
-	
-	try{
-		
-	var onSuccess = function(result){
-	
-	if(result === true){
-		
-	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
-	var Array_Delete_ID=[];
-	
-	for (i=0; i < CheckBoxes_Array.length ;i++){
-		if (CheckBoxes_Array[i].checked === true){
-			//var Obj = JSON.parse(CheckBoxes_Array[i].value);
-			Array_Delete_ID.push(CheckBoxes_Array[i].attributes.id_check.value);
-			//Array_Remove($scope.ArrayJobs,Obj);
-			}
-	}
-		
-	
-	
-	var JsonData = {
-            'Method_Name': 'Delete_User',
-            'Data': Array_Delete_ID,
-            'User_Audit':{
-            	"Audit_State":"Close",
-            	"Deleted_On": new Date().getTime(),
-            	"Delete_By": eflowDTS.Session.Current_User.UserName
+ try {
+        var JsonData = {
+            'Method_Name': 'Select_Jobs',
+             'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier
+            },
+            'Fields':{
+				'User':true,
+				'_id.$id':true
             }
         };
-        
-	var onSuccess = function(JsonData){
-		$scope.Select();
-		};
-	
-	var onError =  function(JsonData){
+		var onSuccess = function(Response){		
+			var onSuccess2 = function(result){
+				if(result === true){
+					var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+					var Array_Delete_User_ID = [];
+					for (var i=0; i < CheckBoxes_Array.length ;i++){
+						if (CheckBoxes_Array[i].checked === true){
+							var m={
+								"id_check":CheckBoxes_Array[i].attributes.id_check.value,
+								"id_User_id":CheckBoxes_Array[i].attributes.id_User_id.value  
+							};
+							Array_Delete_User_ID.push(m);  
+						}
+					}
+					var Array_Delete_ID=[];	
+					var Array_Not_Delete_ID=[];
+					var obj={};
+					for(var j=0; j< Response.length ;j++){
+						if(obj.hasOwnProperty(Response[j].User)){
+							obj[Response[j].User]+=1;
+						}
+						else{
+							obj[Response[j].User]=1;
+						}		
+					}
+					for(var k = 0; k < Array_Delete_User_ID.length; k++){
+						if(obj.hasOwnProperty(Array_Delete_User_ID[k].id_check)){
+							Array_Not_Delete_ID.push(Array_Delete_User_ID[k].id_check);
+						}else{
+							Array_Delete_ID.push(Array_Delete_User_ID[k].id_User_id);
+					    }
+					 }
+					if(Array_Delete_ID.length>0){
+						var JsonData1 = {
+							'Method_Name': 'Delete_User',
+							'Data': Array_Delete_ID,
+							'User_Audit':{
+								"Audit_State":"Close",
+								"Deleted_On": new Date().getTime(),
+								"Delete_By": eflowDTS.Session.Current_User.UserName
+							}
+						};
+						var onSuccess1 = function(resonSuccess1){
+							$scope.Select();
+						};
+						var onError1 =  function(onError1){
+							var erro={
+								Generated: true,
+								Page: "Scr_Summary_Controller",
+								Method: "Delete_User_DB",
+								Description: "onError",
+								User: eflowDTS.Session.Current_User.UserName,
+								Company: eflowDTS.Session.Company.Identifier,
+								Date: new Date().getTime(),
+								Error: onError1
+							};
+							throw erro;		
+							console.log(erro);
+						};
+						Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData1, onSuccess1, onError1);		 
+					}
+					if(Array_Not_Delete_ID.length>0){
+					 alert("Los siguientes usuarios "+Array_Not_Delete_ID +" no se pueden eliminar por tener Puntos de visita asignados ");
+					} 
+				}
+			};
+			bootbox.confirm("¿Realmente desea borrar los elementos seleccionados?",onSuccess2);
+		};		
+		var onError = function(e){
 			var erro={
-			Generated: true,
-                Page: "Scr_Summary_Controller",
-                Method: "Delete_User_DB",
-            Description: "onError",
-            User: eflowDTS.Session.Current_User.UserName,
+				Generated: true,
+                Page: "Scr_User_Controller",
+                Method: "Verifica_Trabajos1",
+				Description: "onError",
+				User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
-            Error: JsonData
-        };
-			throw erro;		
-		console.log(JsonData);
-		};
-		
-	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
-	 
-	 
-	 }
-	 };
-	 
-	 bootbox.confirm("¿Realmente desea borrar los elementos seleccionados?",onSuccess);
-	 
-
-   }catch (e) {
-        
+				Error: e
+			};
+			throw erro;					
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError);        
+    } 
+	catch (e) {
+        alert(e);
         var err;
-        
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
                 Page: "Scr_User_Controller",
                 Method: "Delete_User_DB",
                 Description: "Error no controlado",
-               User: eflowDTS.Session.Current_User.UserName,
+                User: eflowDTS.Session.Current_User.UserName,
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
@@ -342,7 +375,6 @@ $scope.Delete_User_DB = function(){
             Save_Error(e);
         }
     }  
-  
 };
 
 $scope.Save_User_Edit = function(Obj){
@@ -401,7 +433,8 @@ $scope.Save_User_Edit = function(Obj){
     }  
   
 };
-	
+   
+
    
 $scope.Verifica_Trabajos = function(Obj){
 	 try {

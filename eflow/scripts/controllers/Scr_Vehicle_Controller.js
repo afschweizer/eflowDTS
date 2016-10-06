@@ -139,6 +139,95 @@ $scope.Action_Option= function(Option){try{
 
 $scope.Delete_Vehicle_DB = function(){
 	try{
+		        var JsonData = {
+            'Method_Name': 'Select_Jobs',
+             'Data': {
+    			"Company": eflowDTS.Session.Company.Identifier
+            },
+            'Fields':{
+				'Id_Vehicle':true,
+				'_id.$id':true
+            }
+        };
+		var onSuccess = function(Response){		
+			var onSuccess2 = function(result){
+				if(result === true){
+					var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
+					var Array_Delete_Truck_ID = [];
+					for (var i=0; i < CheckBoxes_Array.length ;i++){
+						if (CheckBoxes_Array[i].checked === true){
+							var m={
+								"id_check":CheckBoxes_Array[i].attributes.id_check.value,
+								"id_Truck_id":CheckBoxes_Array[i].attributes.id_Truck_id.value  
+							};
+							Array_Delete_Truck_ID.push(m);  
+						}
+					}
+					var Array_Delete_ID=[];	
+					var Array_Not_Delete_ID=[];
+					var obj={};
+					for(var j=0; j< Response.length ;j++){
+						if(obj.hasOwnProperty(Response[j].Id_Vehicle)){
+							obj[Response[j].Id_Vehicle]+=1;
+						}
+						else{
+							obj[Response[j].Id_Vehicle]=1;
+						}		
+					}
+					for(var k = 0; k < Array_Delete_Truck_ID.length; k++){
+						if(obj.hasOwnProperty(Array_Delete_Truck_ID[k].id_check)){
+							Array_Not_Delete_ID.push(Array_Delete_Truck_ID[k].id_check);
+						}else{
+							Array_Delete_ID.push(Array_Delete_Truck_ID[k].id_Truck_id);
+					    }
+					 }
+					if(Array_Delete_ID.length>0){
+						var JsonData1 = {
+							'Method_Name': 'Delete_User',
+							'Data': Array_Delete_ID
+						};
+						var onSuccess1 = function(onSuccess1){
+							$scope.Select();
+						};
+						var onError1 =  function(onError1){
+							var erro={
+								Generated: true,
+								Page: "Scr_Summary_Controller",
+								Method: "Delete_Truck_DB",
+								Description: "onError",
+								User: eflowDTS.Session.Current_User.UserName,
+								Company: eflowDTS.Session.Company.Identifier,
+								Date: new Date().getTime(),
+								Error: onError1
+							};
+							throw erro;		
+							console.log(erro);
+						};
+						Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData1, onSuccess1, onError1);		 
+					}
+					if(Array_Not_Delete_ID.length>0){
+					 alert("Los siguientes vehiculos "+Array_Not_Delete_ID +" no se pueden eliminar por tener Puntos de visita asignados ");
+					} 
+				}
+			};
+			bootbox.confirm("¿Realmente desea borrar los elementos seleccionados?",onSuccess2);
+		};		
+		var onError = function(e){
+			var erro={
+				Generated: true,
+                Page: "Scr_User_Controller",
+                Method: "Verifica_Trabajos1",
+				Description: "onError",
+				User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+				Error: e
+			};
+			throw erro;					
+		};		
+        Send_JSON(eflowDTS.Configuration.URLs.eflow_Get, JsonData, onSuccess, onError); 
+		
+		/*
 	if(confirm("¿Realmente desea borrar los elementos seleccionados?") == true){
 		
 	var CheckBoxes_Array = document.getElementsByName("CheckBox_Options");
@@ -181,7 +270,7 @@ $scope.Delete_Vehicle_DB = function(){
 	 Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
 	 
 	 
-	 }
+	 }*/
 }catch (e) {
         
         var err;

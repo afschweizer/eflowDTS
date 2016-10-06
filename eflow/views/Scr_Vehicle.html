@@ -97,7 +97,7 @@
       <tr  ng-repeat="Obj in ArrayVehicle | startFrom:currentPage*pageSize | limitTo:pageSize | filter: search |  orderBy: OrderList">
         <td ng-click="Visualize_Vehicle(Obj);">{{$index+1}}</td> 
         <td>
-         <input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{Obj}}" ID_Check="{{Obj._id.$id}}"/> 
+         <input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{Obj}}" id_check="{{Obj.Id_Vehicle}}" id_Truck_id="{{Obj._id.$id}}"/>
          
         	<!--<a >
            <div class="btn-group" role="group" aria-label="...">

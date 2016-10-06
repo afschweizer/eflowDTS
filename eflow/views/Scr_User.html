@@ -102,7 +102,7 @@
       <tr  ng-repeat="Obj in ArrayUser | startFrom:currentPage*pageSize | limitTo:pageSize | filter: search |  orderBy: OrderList">
         <td ng-click="Visualize_User(Obj);">{{$index+1}}</td>
         <td>
-          <input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{Obj._id.$id}}"/> 
+          <input type="checkbox" name="CheckBox_Options" ng-checked="master" ng-click="Checking_Checkboxes_Check();" value="{{obj}}" id_check="{{Obj.ID}}" id_User_id="{{Obj._id.$id}}"/> 
          
         	<!--<a >
            <div class="btn-group" role="group" aria-label="...">

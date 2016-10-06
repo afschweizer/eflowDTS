@@ -168,20 +168,29 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	
    	var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
    
-     $("#Pivot_Table").pivotUI($scope.PivotData, {
+     if(!$scope.DataSet.Config){
+     	$("#Pivot_Table").pivotUI($scope.PivotData, {/*
                 renderers: renderers,
                 aggregatorName: $scope.DataSet.Aggregator_Name,
                 cols: $scope.DataSet.Cols,
                 rows: $scope.DataSet.Rows,
                 rendererName: $scope.DataSet.Renderer_Name,
                 onRefresh: function(config){
-					$scope.DataSet.Cols = config.cols;
+					/*$scope.DataSet.Cols = config.cols;
 					$scope.DataSet.Rows = config.rows;
 					$scope.DataSet.Renderer_Name = config.rendererName;
 					$scope.DataSet.Aggregator_Name = config.aggregatorName;
-					$scope.$apply();				
-				}
-     });
+					$scope.$apply();	
+					var config = $("#Pivot_Table").data("pivotUIOptions");
+					delete config["aggregators"];
+					delete config["renderes"];
+					$scope.DataSet.Config = JSON.stringify(config);
+				}*/
+     }/*JSON.parse($scope.DataSet.Config),true*/);
+     
+     }else{
+     	$("#Pivot_Table").pivotUI($scope.PivotData,JSON.parse($scope.DataSet.Config),true);
+     }
    	   	
 }catch (e) {
         
@@ -197,7 +206,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
                 Company: eflowDTS.Session.Company.Identifier,
                 Date: new Date().getTime(),
                 Error: e
-            };
+            }; 
             Save_Error(err);
         } else {
             Save_Error(e);
@@ -214,11 +223,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	eflowDTS.Session.Flag_DataSet = "New";
    	
 	   	$scope.DataSet = {
-	   		"Name":"",
-	   		"Rows":[],
-	   		"Cols":[],
-	   		"Aggregator_Name":"Count",
-	   		"Renderer_Name": "Table"
+	   		"Name":""
 	   	};
 	   	
 	   	$scope.PivotData = [];
@@ -244,7 +249,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             Save_Error(e);
         }
     }  
-  
+   
 };
    
    $scope.Refresh_Pivot_Table = function(Filter){
@@ -253,8 +258,8 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             'Method_Name': 'Select_Summary_'+Filter.Type,
              'Data': {
              	"Start_Date":  {
-                		"$gte": new Date(Filter.Start_Date).getTime(),
-                        "$lte": new Date(Filter.End_Date).getTime()
+                		"$gte": new Date(Filter.Start_Date).getTime()-(18)*60*60*1000+(24)*60*60*1000,
+                        "$lte": new Date(Filter.End_Date).getTime()+(5)*60*60*1000+(24)*60*60*1000
                 		},
     			"Company": eflowDTS.Session.Company.Identifier
             },
@@ -410,6 +415,14 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	$scope.DataSet.Name = Name;
    	$scope.DataSet.Company = eflowDTS.Session.Company.Identifier;
   	$scope.DataSet.User = eflowDTS.Session.Current_User.ID;
+  	var config = $("#Pivot_Table").data("pivotUIOptions");
+  	delete config["aggregators"];
+  	delete config["renderers"];
+  	delete $scope.DataSet["Rows"];
+  	delete $scope.DataSet["Renderer_Name"];
+  	delete $scope.DataSet["Aggregator_Name"];
+  	delete $scope.DataSet["Cols"];
+  	$scope.DataSet.Config = JSON.stringify(config);
    	if(eflowDTS.Session.Flag_DataSet === "New"){
       $scope.DataSet.Date_Created = new Date().getTime();
    	}
