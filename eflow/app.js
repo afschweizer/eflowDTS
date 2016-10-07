@@ -29,8 +29,8 @@
 			.when('/Route_Import',{
             	templateUrl : 'views/Scr_Route_Import.html'
             })
-			.when('/VisitPoint_Import',{
-            	templateUrl : 'views/Scr_VisitPoint_Import.html'
+			.when('/Establishment_Import',{
+            	templateUrl : 'views/Scr_Establishment_Import.html'
             })
             .when('/PV_DB', {
                 templateUrl : 'views/Scr_VisitPoint_DB.html'
@@ -41,8 +41,8 @@
              .when('/user', {
                 templateUrl : 'views/Scr_User.html'
             })
-             .when('/VisitPoint', {
-                templateUrl : 'views/Scr_VisitPoint.html'
+             .when('/Establishment', {
+                templateUrl : 'views/Scr_Establishment.html'
             })
             .when('/vehicle', {
                 templateUrl : 'views/Scr_Vehicle.html'  
