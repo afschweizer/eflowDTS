@@ -628,6 +628,7 @@ try{
 	obj.Estimated_Delivery_Time = y.EstimatedDeliveryTime;
 	obj.Sequence = y.Sequence;
 	obj.User = y.User;
+	obj.Notes = [];
 	obj.ID_Truck = new Date().getTime();
 	obj.Visit_State = y.VisitPoint.State_Visit;
 	obj.Transferring_State = "Pending_To_Mobile";
