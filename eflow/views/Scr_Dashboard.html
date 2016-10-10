@@ -1,0 +1,66 @@
+<div id="Contents" ng-controller="Scr_Dashboard_Controller" ng-init="init()">
+  <div class="modal fade" id="Charge_New_Modal" role="dialog">
+    <div class="vertical-alignment-helper modal-dna">
+        <div class="modal-dialog vertical-align-center  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                      <!-- header -->  
+                <button type="button" class="close" ng-click="Close_Modal('#Charge_New_Modal');">&times;</button> 
+                <h4><span class="fa fa-line-chart"></span><label>Tablas de Visualización</label></h4>
+              </div>
+                <div class="modal-body">
+                  <!-- body -->
+                  
+          <form ng-submit="Charge_DataSet(DataSet);">     
+          <div class="row">
+           <div class="col-sm-6">	
+             <h4>
+               Nombre del Dashboard:
+             </h4>
+                    <div class="input-group">
+                       <span class="input-group-addon"><i class="fa fa-list-ul" data-toggle="tooltip" title="Usuario"></i></span> 
+                      <select required ng-model="DataSet" ng-options="DataSet.Name for DataSet in ArrayDataSet | filter: query : true track by DataSet._id.$id" class="form-control">
+                        <option value="">Selección del Dashboard</option>
+                       </select>                        
+                    </div>
+           </div>
+          
+            <div class="col-sm-6">	
+               <h4>
+                 Nuevo
+               </h4>
+               <div class="input-group">
+                 
+                  <div class="btn-group" role="group" aria-label="...">
+                    <button  class="btn btn-primary" type="button"  ng-click="query = {}"><i></i>2 Gráficos</button>
+                     <button class="btn btn-primary" type="button"  ng-click="query = QueryForUser"><i></i>4 Gráficos</button>
+                    <button  class="btn btn-primary" type="button"  ng-click="query = QueryForDate"><i></i>6 Gráficos</button>
+                  </div>
+               </div>
+           </div>
+             
+            
+        </div>    
+          
+             <div class="space-line-5px"></div>
+             <div class="space-line-5px"></div>
+                  
+        <div class="row">
+           <div class="col-sm-12">	
+            <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>Cargar</button>
+           </div>
+        </div>  
+                  
+        </form>            
+                  
+                </div>
+                <div class="modal-footer">
+                   <!-- footer -->
+                  <button type="button" class="btn btn-primary" ng-click="Close_Modal('#Charge_New_Modal');">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

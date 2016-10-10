@@ -7,17 +7,13 @@ try{
 			$scope.Show_Components = {};
 			$scope.Show_Components.Map_Online_User = true;
 	        $('#Charging').modal('show');
-			Load_Init_Map();
-		
+			Load_Init_Map();		
 			Select_User_Online();
 			Select_Jobs();		       				
 			$scope.Show_Components.Show_User_Online = true;	
-			$scope.Show_Components.Show_List = false;				
-			
-	}catch (e) {
-        
-        var err;
-        
+			$scope.Show_Components.Show_List = false;							
+	}catch (e) {        
+        var err;        
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
@@ -33,16 +29,12 @@ try{
         } else {
             Save_Error(e);
         }
-    }  
-  
+    }    
 };
 
-	
-	function Load_Init_Map(){
-		try{
-			
-		var div = document.getElementById('Map_Online_User');
-   			
+function Load_Init_Map(){
+		try{			
+		var div = document.getElementById('Map_Online_User');   			
    			if(div){
 	   		    map = new GMaps({
 				div: div,
@@ -56,13 +48,10 @@ try{
 	                	}, 3000);
 			    	}
 			    }); 
-			 }
-			 
+			 }			 
 		//$scope.Show_Components.Map_Online_User = false;
-	}catch (e) {
-        
-        var err;
-        
+	}catch (e) {        
+        var err;        
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
@@ -78,20 +67,16 @@ try{
         } else {
             Save_Error(e);
         }
-    }  
-  
+    }    
 };
 	
 $scope.Resize = function(){
 try{
 		if(typeof map === "object"){
 			map.refresh();	
-		}
-		
-}catch (e) {
-        
-        var err;
-        
+		}		
+}catch (e) {        
+        var err;        
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
@@ -108,16 +93,14 @@ try{
             Save_Error(e);
         }
     }
-	};
+};
 	
 $scope.refresh = function(){
 try{
 		Select_User_Online();
 		Select_Jobs();
-		}catch (e) {
-        
+		}catch (e) {        
         var err;
-        
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
@@ -134,7 +117,6 @@ try{
             Save_Error(e);
         }
     }  
-  
 };
 	
 $scope.See_Info = function(User){
@@ -143,12 +125,9 @@ try{
 		eflowDTS.Session.Ram.UserControl.Date = new Date().format("yyyy-mm-dd");
 		eflowDTS.Session.Ram.page="Vehicles_Online";
 		Set_Cookie("EflowCookie",eflowDTS);
-		location.href="#/detail";
-		
-	}catch (e) {
-        
-        var err;
-        
+		location.href="#/detail";		
+	}catch (e) {        
+        var err;        
         if (e.hasOwnProperty("Generated") === false) {
             err = {
                 Generated: false,
@@ -164,8 +143,7 @@ try{
         } else {
             Save_Error(e);
         }
-    }  
-  
+    }    
 };
 	
 function Select_User_Online(){
@@ -193,6 +171,22 @@ try{
 					}else{
 					Json[i].Class =  "fa fa-user";
 					}
+					var x = Json[i];
+  			map.addMarker({
+			  lat: x.Geolocation.Latitude, 
+			  lng: x.Geolocation.Longitude,
+			  icon: 'images/truck.png',
+			  infoWindow: {
+			  content: 
+			'<div class="small-box">'+
+                '<div class="inner">'+
+                  '<h5>Placa: '+x.ID_Truck+'    </h5> '+
+                  '<h5>'+x.UserName+'  </h5> '+
+                  '</div>'+                               
+              '</div>'
+			  },
+			  value: x			  
+			  });
 					$scope.ArrayUser.push(Json[i]);
 					$scope.$apply($scope.ArrayUser);	
 					$scope.Show_Components.Show_User_Online = false;

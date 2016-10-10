@@ -92,12 +92,15 @@
             .when('/Tuto',{
             	templateUrl: 'views/Scr_Tutorial.html'
             })
+            .when('/Dashboard',{
+            	templateUrl: 'views/Scr_Dashboard.html'
+            })
             .otherwise({
             	redirectTo : '/404'
             });
 			
     });
-    
+     
     
     
     DTS_APP.filter('startFrom',function(){

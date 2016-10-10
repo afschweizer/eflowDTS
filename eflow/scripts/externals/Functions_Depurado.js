@@ -553,7 +553,7 @@ function Resize_Image(file, callback) {
                     canvas.width = width;
                     canvas.height = height;
                     canvas.getContext("2d").drawImage(this, 0, 0, width, height);
-                    callback(canvas.toDataURL());                    
+                    callback(canvas.toDataURL('image/jpeg'));                    
                 };
                 img.src = e.target.result;
             };

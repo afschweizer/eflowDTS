@@ -86,13 +86,13 @@
                   <!-- body -->
                    
                   <div>
-                  	<form ng-submit="Save_DataSet(Save_Name);">
+                  	<form>
                        <div class="input-group">
                          <span class="input-group-addon"><i class="fa fa-area-chart" data-toggle="tooltip" title="Nombre del DataSet"></i></span> 
-                               <input required type="text" ng-model="Save_Name" class="form-control" placeholder="Nombre del DataSet...">                
+                               <input required type="text" ng-model="Save_Name" class="form-control" placeholder="Nombre del DataSet...">                                               
                      </div>
                     <br/> 
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+                    <button type="button" class="btn btn-primary" ng-click="Save_DataSet(Save_Name);"><i class="fa fa-save"></i> Guardar</button>                                          
                     </form>
                   </div>
                 
@@ -174,10 +174,13 @@
    
 <br/> 
 
-  
-      
+ <div>  
+<button type="button" class="btn" ng-click="Pivot_UI = !Pivot_UI; Switch_See_Pivot_UI(Pivot_UI);">
+                 Editar <i ng-class="Pivot_UI_Class"></i> 
+</button> 
+   
 <div id="Pivot_Table"></div>
-     
+  </div>   
 
   
   

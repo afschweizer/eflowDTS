@@ -628,7 +628,6 @@ try{
 	obj.Estimated_Delivery_Time = y.EstimatedDeliveryTime;
 	obj.Sequence = y.Sequence;
 	obj.User = y.User;
-	obj.Notes = [];
 	obj.ID_Truck = new Date().getTime();
 	obj.Visit_State = y.VisitPoint.State_Visit;
 	obj.Transferring_State = "Pending_To_Mobile";
@@ -1829,6 +1828,7 @@ try{
 		obj_Job.Company= eflowDTS.Session.Company.Identifier;	
 		obj_Job.Legal_Cedula = New_Job.PV_Info.Legal_Cedula;
 		obj_Job.Route = {};
+		obj_Job.Notes = [];
 		obj_Job.Route.Route_Name=New_Job.PV_Info.Route.Route_Name;
 		obj_Job.Route.ID_Route=New_Job.PV_Info.Route.ID_Route;
 		

@@ -4,7 +4,6 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		try{
         Set_Current_Page();
 		//Get_Cookie("EflowCookie");
-		
 		$scope.query = {};
 		var User = eflowDTS.Session.Current_User.ID;
 		var Current_Date = new Date(new Date().format("yyyy-mm-dd")).getTime()+eflowDTS.Time.Difference;	
@@ -74,7 +73,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
   
 };
 
-	function Select_DataSet(){
+function Select_DataSet(){
 	 try {
 	 	
 	 	$scope.User = eflowDTS.Session.Ram.ID;
@@ -133,11 +132,11 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 	try{
 		
    	$scope.Filter={};
+   	
    	$("#Charge_New_Modal").modal('hide');
 		$scope.Filter.End_Date =  new Date(DataSet.End_Date).format("yyyy-mm-dd");
 		$scope.Filter.Start_Date =  new Date(DataSet.Start_Date).format("yyyy-mm-dd");  	
-		$scope.Filter.Type = DataSet.Type;  	
-   
+		$scope.Filter.Type = DataSet.Type; 	    
    	$scope.Refresh_Pivot_Table(DataSet);   	
    	
   }catch (e) {
@@ -160,15 +159,37 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             Save_Error(e);
         }
     }  
-  
-};
    
-   function Create_Pivot_Table(){
+};
+
+   $scope.Switch_See_Pivot_UI = function(UI){
+   	
+   if(UI){
+   	$scope.Pivot_UI_Class = "fa fa-compress";
+   }else{
+    $scope.Pivot_UI_Class = "fa fa-expand"; 
+   }
+   Create_Pivot_Table(UI);
+   };
+   
+   function Create_Pivot_Table(UI){
 		try{
    	
    	var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
-   	$("#Pivot_Table").pivotUI($scope.PivotData,JSON.parse($scope.DataSet.Config),true);
-   
+   	var config = JSON.parse($scope.DataSet.Config);
+   	config.onRefresh = function(e){
+   		var config = $("#Pivot_Table").data("pivotUIOptions");
+   		delete config["aggregators"];
+   		delete config["renderers"];
+   		$scope.DataSet.Config
+   	};
+   	if(UI){
+   		config.renderers = renderers;
+       $("#Pivot_Table").pivotUI($scope.PivotData,config,true);		
+   	}else{
+   		config.renderer = $.pivotUtilities.gchart_renderers[config.rendererName];
+   		$("#Pivot_Table").pivot($scope.PivotData,config,true);
+    } 
    	   	
 }catch (e) {
         
@@ -190,7 +211,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             Save_Error(e);
         }
     }  
-  
+   
 };
    
    $scope.New_DataSet = function(){
@@ -198,7 +219,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    	
    	$("#Charge_New_Modal").modal('hide');
    	   	
-   	eflowDTS.Session.Flag_DataSet = "New";
+   	eflowDTS.Session.Ram.Flag_DataSet = "New";
    	
 	   	$scope.DataSet = {
 	   		"Name":"",
@@ -206,8 +227,9 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 	   	};
 	   	
 	   	$scope.PivotData = [];
+	   	$scope.Pivot_UI_Class = "fa fa-compress"; 
+	   	Create_Pivot_Table(true);
 	   	
-	   	Create_Pivot_Table();
  }catch (e) {
         
         var err;
@@ -306,7 +328,14 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		$scope.DataSet.Start_Date = new Date(Filter.Start_Date).getTime();
 		$scope.DataSet.End_Date = new Date(Filter.End_Date).getTime();
 		setInterval(function(){$scope.$apply();	},0);
-		Create_Pivot_Table();	
+		
+		if($scope.DataSet.Name === ""){
+			$scope.Pivot_UI_Class = "fa fa-compress"; 
+		Create_Pivot_Table(true);	
+		}else{
+			$scope.Pivot_UI_Class = "fa fa-expand"; 
+		Create_Pivot_Table(false);	
+		}	
 		
 		};		
 		var onError = function(onError){
@@ -349,7 +378,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 };
    
    $scope.Confirm_DataSet = function(){
-		try{
+   try{
    	
    	if(typeof $scope.DataSet.Type === "undefined" || typeof $scope.DataSet.Start_Date === "undefined" || typeof $scope.DataSet.End_Date === "undefined"){
    		
@@ -364,7 +393,12 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 			}}); 
    		
    	}else{
-   	    $("#Save_Modal").modal('show');
+   	   
+   	    if($scope.DataSet.Default){
+   	    	$scope.Save_Name = "";   	    	
+   	    }   	    
+ 		$("#Save_Modal").modal('show'); 
+ 
    	 }
 }catch (e) {
         
@@ -391,12 +425,21 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
    
    $scope.Save_DataSet = function(Name){
 		try{
+			
    	$scope.DataSet.Name = Name;
    	$scope.DataSet.Company = eflowDTS.Session.Company.Identifier;
   	$scope.DataSet.User = eflowDTS.Session.Current_User.ID;
-  	var config = $("#Pivot_Table").data("pivotUIOptions");  	
-  	$scope.DataSet.Config = JSON.stringify(config);
-   	if(eflowDTS.Session.Flag_DataSet === "New"){
+  	
+  	if($scope.DataSet.Default){
+  		delete $scope.DataSet["_id"];
+  		$scope.DataSet.Default = false;
+  	}
+  	$scope.DataSet.Default = true;
+  //	var config = $("#Pivot_Table").data("pivotUIOptions");  	
+  //	delete config["aggregators"];
+  //	delete config["renderers"];
+  //	$scope.DataSet.Config = JSON.stringify(config);
+   	if(eflowDTS.Session.Ram.Flag_DataSet === "New"){
       $scope.DataSet.Date_Created = new Date().getTime();
    	}
    	$scope.DataSet.Date_Updated = new Date().getTime();
@@ -439,6 +482,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
 		};	
 		
         Send_JSON(eflowDTS.Configuration.URLs.eflow_Post, JsonData, onSuccess, onError);
+        
  }catch (e) {
         
         var err;
@@ -503,7 +547,7 @@ DTS_APP.controller('Scr_Summary_Controller',function($scope) {
             case 'Item':
                   {
                     for (var i = 0; i < Arr.length; i++) {
-                        var Obj = {};
+                       var Obj = {};
                         for (key in Arr[i]) {
                             for (var x = 0; x < Item_Schema.length; x++) {
                                 if (key === Item_Schema[x].En) {
