@@ -810,9 +810,10 @@
            </div>
               
             <br/>
-              
+       <div  role="alert"> <strong>{{freeWeight}}</strong></div>
+
             <br/>
-            <div  id="demo" class="panel panel-primary">
+            <div ng-show="Show_Alerta" id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo"><b>Trabajos</b></div>  
      <div class="panel-body"> 
               <div class="form-group">
@@ -992,7 +993,7 @@
            
                </div>
                     
- <div class="modal-footer">
+ <div ng-show="Show_Alerta" class="modal-footer">
             <button type="submit" class="btn btn-primary" ><i class="glyphicon glyphicon-save"> </i>  Guardar</button>
             <a class="btn btn-primary glyphicon glyphicon-remove" data-dismiss="modal"><b> Cerrar</b></a>
 

@@ -177,11 +177,11 @@ function Select_DataSet(){
    	
    	var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
    	var config = JSON.parse($scope.DataSet.Config);
-   	config.onRefresh = function(e){
-   		var config = $("#Pivot_Table").data("pivotUIOptions");
-   		delete config["aggregators"];
-   		delete config["renderers"];
-   		$scope.DataSet.Config
+   	config.onRefresh = function(config){
+   		var config_copy = JSON.parse(JSON.stringify(config));
+   		delete config_copy["aggregators"];
+   		delete config_copy["renderers"];
+   		$scope.DataSet.Config = JSON.stringify(config_copy);
    	};
    	if(UI){
    		config.renderers = renderers;
@@ -228,6 +228,7 @@ function Select_DataSet(){
 	   	
 	   	$scope.PivotData = [];
 	   	$scope.Pivot_UI_Class = "fa fa-compress"; 
+	   	$scope.Pivot_UI = true;
 	   	Create_Pivot_Table(true);
 	   	
  }catch (e) {

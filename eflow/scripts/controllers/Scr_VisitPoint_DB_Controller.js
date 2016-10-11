@@ -15,6 +15,7 @@ try{
 	
        	Set_Current_Page();
 	 
+			$scope.Show_Alerta=false;
 		$scope.Show_Serie=false;
         $scope.Show_Code=false;
         $scope.Show_Quantity=false;
@@ -463,6 +464,13 @@ try{
 		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
 		$scope.ObjVeh.Weight = ArrayVehicle[i].Weight;
 		$scope.ObjVeh.Cubics = ArrayVehicle[i].Cubics;
+		if($scope.ObjVeh.Weight<$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
+			$scope.Show_Alerta=true;			
+		$scope.freeWeight =("*  Tiene disponible "+($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck])+" kilos para cargar la unidad. ");
+		}else{
+			$scope.Show_Alerta=false;			
+			$scope.freeWeight =("*  No Tiene disponible kilos para cargar la unidad. ");
+		}
       }     
    } 
 
@@ -743,6 +751,18 @@ $scope.Select_VisitPoint = function(){
         };
 		var onSuccess = function(Response){
 		$scope.ArrayJobs = Response;
+		$scope.Data_Vehicule=[];
+		for(var i=0; i<Response.length;i++ ){
+			var jobs=Response[i].Jobs;
+			for(var j=0; j<jobs.length;j++ ){
+			if($scope.Data_Vehicule.hasOwnProperty(Response[i].ID_Truck)){
+				$scope.Data_Vehicule[Response[i].ID_Truck]+=jobs[j].JobWeight;
+			}
+			else{
+				$scope.Data_Vehicule[Response[i].ID_Truck]=jobs[j].JobWeight;
+			}	
+					}
+			}
 		//Change_Structure(JsonData);
 		};
 		var onError = function(e){
