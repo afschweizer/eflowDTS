@@ -420,6 +420,7 @@
               </datalist>    
 						  -->
               <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter" style="width: 80%;" class="form-control" id="Vehicle" ></select>
+                       
                        <!--ng-change="Info_Vehicle(Vehicle.ID_Truck,ArrayVehicle)"
 				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
            <!-- <input type="text" class="form-control" ng-model="VisitPoint.ID_Truck" placeholder="Asignar al Vehiculo..." required>-->
@@ -439,6 +440,7 @@
             </div> 
             <br/>
               
+       <div  role="alert"> <strong>{{freeWeight}}  </strong></div>
             <br/>
               
 <!--TAREAS-->
@@ -810,7 +812,7 @@
            </div>
               
             <br/>
-       <div  role="alert"> <strong>{{freeWeight}}</strong></div>
+       <div  role="alert"> <strong>{{freeWeight}}  </strong></div>
 
             <br/>
             <div ng-show="Show_Alerta" id="demo" class="panel panel-primary">
@@ -925,7 +927,8 @@
                       <label class="col-sm-4 control-label">Peso Total(kg):</label>
                           <div class="col-sm-8">   
                  <div class="form-group">
-                       <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobWeight" placeholder="Peso...">
+                       <input type="number" id="TaskWeight"class="form-control" ng-model="VisitPoint_Add_Task.JobWeight" placeholder="Peso...">
+                   <strong>{{VisitPoint_Add_Task.alert}}</strong>
                    </div>
                         </div> 
                         </div> 

@@ -173,23 +173,36 @@ function Select_DataSet(){
    };
    
    function Create_Pivot_Table(UI){
-		try{
-   	
+		try{ 
+   	 
    	var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
    	var config = JSON.parse($scope.DataSet.Config);
    	config.onRefresh = function(config){
    		var config_copy = JSON.parse(JSON.stringify(config));
    		delete config_copy["aggregators"];
    		delete config_copy["renderers"];
-   		$scope.DataSet.Config = JSON.stringify(config_copy);
+   		setTimeout(function(){
+   			$scope.$apply( function(){
+   				$scope.DataSet.Config = JSON.stringify(config_copy);
+   				});},0);
    	};
+   	config.filter = function(rowObj){         
+         			
+				for(key in config.exclusions){				
+					
+					if(config.exclusions[key].indexOf(rowObj[key]) > -1){
+						return false;
+					}
+				}
+			return true;
+			};
    	if(UI){
    		config.renderers = renderers;
        $("#Pivot_Table").pivotUI($scope.PivotData,config,true);		
    	}else{
    		config.renderer = $.pivotUtilities.gchart_renderers[config.rendererName];
    		$("#Pivot_Table").pivot($scope.PivotData,config,true);
-    } 
+    }  
    	   	
 }catch (e) {
         
@@ -433,13 +446,12 @@ function Select_DataSet(){
   	
   	if($scope.DataSet.Default){
   		delete $scope.DataSet["_id"];
-  		$scope.DataSet.Default = false;
   	}
-  	$scope.DataSet.Default = true;
-  //	var config = $("#Pivot_Table").data("pivotUIOptions");  	
-  //	delete config["aggregators"];
-  //	delete config["renderers"];
-  //	$scope.DataSet.Config = JSON.stringify(config);
+    $scope.DataSet.Default = false; 
+  	/*	var config = $("#Pivot_Table").data("pivotUIOptions");  	
+  	delete config["aggregators"];
+  	delete config["renderers"];
+  	$scope.DataSet.Config = JSON.stringify(config);*/
    	if(eflowDTS.Session.Ram.Flag_DataSet === "New"){
       $scope.DataSet.Date_Created = new Date().getTime();
    	}
@@ -448,7 +460,7 @@ function Select_DataSet(){
    	var JsonData = {
             'Method_Name': 'Insert_DataSet',
              'Data': [$scope.DataSet]
-        };
+        }; 
         
 		var onSuccess = function(ArrData){
 			
@@ -461,7 +473,7 @@ function Select_DataSet(){
 					label:"Ok!",
 					className:"btn-primary"
 				}
-			}});
+			}}); 
 	});
     
 	$("#Save_Modal").modal('hide');

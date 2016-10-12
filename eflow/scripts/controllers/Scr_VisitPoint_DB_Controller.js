@@ -34,7 +34,7 @@ try{
 		$scope.Select_VisitPoint();
 		$scope.Select_Local();
 		$scope.Select_User();
-		$scope.Select_Vehicle();
+	//	$scope.Select_Vehicle();
 		clearInterval(myVar);
     
    var myVar = setInterval(function() {   	
@@ -456,19 +456,20 @@ try{
 };
 
  $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
-	try{
-	
+	try{	
 	for(var i = 0; i < ArrayVehicle.length ; i++ ){
       if(Vehicle === ArrayVehicle[i].ID_Truck){
 		$scope.ObjVeh = {};
 		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
 		$scope.ObjVeh.Weight = ArrayVehicle[i].Weight;
 		$scope.ObjVeh.Cubics = ArrayVehicle[i].Cubics;
-		if($scope.ObjVeh.Weight<$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
-			$scope.Show_Alerta=true;			
-		$scope.freeWeight =("*  Tiene disponible "+($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck])+" kilos para cargar la unidad. ");
+		
+		if($scope.ObjVeh.Weight>$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
+			$scope.Show_Alerta=true;	
+			$scope.Weight=($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]);
+		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
 		}else{
-			$scope.Show_Alerta=false;			
+			$scope.Show_Alerta=false;	
 			$scope.freeWeight =("*  No Tiene disponible kilos para cargar la unidad. ");
 		}
       }     
@@ -567,6 +568,14 @@ $scope.Select_Vehicle = function(){
         };
 		var onSuccess = function(Response){
 			$scope.ArrayVehicle = Response;
+		for(var i=0; i<$scope.ArrayVehicle.length;i++ ){
+			if($scope.Data_Vehicule.hasOwnProperty($scope.ArrayVehicle[i].ID_Truck)){
+				$scope.Data_Vehicule[$scope.ArrayVehicle[i].ID_Truck]=$scope.Data_Vehicule[$scope.ArrayVehicle[i].ID_Truck];
+			}
+			else{
+				$scope.Data_Vehicule[$scope.ArrayVehicle[i].ID_Truck]=0;
+			}
+		}
 			$scope.$apply($scope.ArrayVehicle);
 		};
 		
@@ -764,6 +773,8 @@ $scope.Select_VisitPoint = function(){
 					}
 			}
 		//Change_Structure(JsonData);
+		
+		$scope.Select_Vehicle();
 		};
 		var onError = function(e){
 			var erro={
@@ -1237,6 +1248,9 @@ $scope.Edit_In_Array = function(Obj,Array){
 	
 $scope.Remove_In_Array = function(Obj,Array){
 	try{
+		//obj.JobWeight = Task_Obj.JobWeight;					
+		$scope.Weight=$scope.Weight+Obj.JobWeight;
+		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
 	Array_Remove(Array,Obj);
 
 }catch (e) {
@@ -1988,7 +2002,10 @@ $scope.Add_Task_In_VisitPoint_Array_edit = function(Task_Obj){
         
         alert("Todos los campos son necesarios");
         
-    } else { $scope.create_Task(Task_Obj);
+    } else {
+    	
+    	
+    	$scope.create_Task(Task_Obj);
     
   /* if(typeof Task_Obj.JobID === 'undefined'){
    		Task_Obj.JobID = (new Date().getTime()).toString();
@@ -2238,7 +2255,18 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.Quantity = Task_Obj.Quantity;
 				/*	cantidad.JobWeight = Task_Obj.JobWeight;
 					cantidad.JobCubics = Task_Obj.JobCubics;*/
-					obj.JobWeight = Task_Obj.JobWeight;
+				//	var Weight=($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck])
+					if(Task_Obj.JobWeight>$scope.Weight){
+						$scope.VisitPoint_Add_Task.alert=("El peso indicado sobre pasa en "+(Task_Obj.JobWeight-$scope.Weight)+" el peso disponible en la unidad de transporte, solo se cuenta con "+$scope.Weight);
+						Task_Obj.JobWeight="";
+						 document.getElementById("TaskWeight").focus();
+		        	break;
+					}else{						
+					obj.JobWeight = Task_Obj.JobWeight;					
+					$scope.Weight=$scope.Weight-obj.JobWeight;
+		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+					
+					}
 					obj.JobCubics = Task_Obj.JobCubics;
 					obj.Quantity_Register = 0;
 					obj.JobState = "Uninitiated";
@@ -2254,7 +2282,6 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 						$scope.VisitPoint_Add_Array_Task.push(obj);	
 					}
 					$scope.VisitPoint_Add_Task = {};
-					
 	       $scope.Show_Serie=false;
            $scope.Show_Code=false;
            $scope.Show_Quantity=false;
@@ -2270,8 +2297,17 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobInstructions = Task_Obj.Instruction;
 					obj.UOM = Task_Obj.UoM;
 					obj.Quantity = Task_Obj.Quantity;
-					
-					obj.JobWeight = Task_Obj.JobWeight;
+					if(Task_Obj.JobWeight>$scope.Weight){
+						alert("El peso indicado sobre pasa en "+(Task_Obj.JobWeight-$scope.Weight)+" el peso disponible en la unidad de transporte, solo se cuenta con "+$scope.Weight);
+						Task_Obj.JobWeight="";
+						 document.getElementById("TaskWeight").focus();
+		        	break;
+					}else{						
+					obj.JobWeight = Task_Obj.JobWeight;		
+					$scope.Weight=$scope.Weight-obj.JobWeight;
+		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+					}
+					//obj.JobWeight = Task_Obj.JobWeight;
 					obj.JobCubics = Task_Obj.JobCubics;
 					obj.Quantity_Register = 0;
 					obj.JobState = "Uninitiated";
@@ -2301,7 +2337,17 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					obj.JobInstructions = Task_Obj.Instruction;
 					obj.UOM = Task_Obj.UoM;
 					obj.Quantity = ($scope.Array_Serials.length);
-					obj.JobWeight = Task_Obj.JobWeight;
+					if(Task_Obj.JobWeight>$scope.Weight){
+						alert("El peso indicado sobre pasa en "+(Task_Obj.JobWeight-$scope.Weight)+" el peso disponible en la unidad de transporte, solo se cuenta con "+$scope.Weight);
+						Task_Obj.JobWeight="";
+						 document.getElementById("TaskWeight").focus();
+		        	break;
+					}else{						
+					obj.JobWeight = Task_Obj.JobWeight;		
+					$scope.Weight=$scope.Weight-obj.JobWeight;
+		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+					}
+					//obj.JobWeight = Task_Obj.JobWeight;
 					obj.JobCubics = Task_Obj.JobCubics;
 					obj.Quantity_Register = 0;
 					obj.JobState = "Uninitiated";
