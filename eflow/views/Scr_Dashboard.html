@@ -1,5 +1,32 @@
-<div id="Contents" ng-controller="Scr_Dashboard_Controller" ng-init="init()">
-  <div class="modal fade" id="Charge_New_Modal" role="dialog">
+<div id="Contents" ng-controller="Scr_Dashboard_Controller">
+  
+
+   
+<div class="btn-group" role="group" aria-label="...">
+    <button type="button" ng-click="template='views/Dashboard_1x1.html';" class="btn btn-primary"><i class="fa fa-table"></i> 1x1</button>
+    <button type="button" ng-click="template='views/Dashboard_1x2.html';" class="btn btn-primary"><i class="fa fa-table"></i> 1x2</button>
+    <button type="button" ng-click="template='views/Dashboard_2x1.html';" class="btn btn-primary"><i class="fa fa-table"></i> 2x1</button>
+    <button type="button" ng-click="template='views/Dashboard_2x2.html';" class="btn btn-primary"><i class="fa fa-table"></i> 2x2</button>
+    <button type="button" ng-click="template='views/Dashboard_3x1.html';" class="btn btn-primary"><i class="fa fa-table"></i> 3x1</button>
+    <button type="button" ng-click="template='views/Dashboard_2x3.html';" class="btn btn-primary"><i class="fa fa-table"></i> 2x3</button>
+    <button type="button" ng-click="template='views/Dashboard_3x2.html';" class="btn btn-primary"><i class="fa fa-table"></i> 3x2</button>
+</div>
+  
+  <div ng-include="template">
+      
+  </div>
+  
+  
+   
+
+  
+  
+  
+  
+  
+  
+  
+  <div class="modal fade" id="Charge_New_Dashboard" role="dialog">
     <div class="vertical-alignment-helper modal-dna">
         <div class="modal-dialog vertical-align-center  modal-lg">
             <div class="modal-content">
@@ -32,9 +59,13 @@
                <div class="input-group">
                  
                   <div class="btn-group" role="group" aria-label="...">
-                    <button  class="btn btn-primary" type="button"  ng-click="query = {}"><i></i>2 Gráficos</button>
-                     <button class="btn btn-primary" type="button"  ng-click="query = QueryForUser"><i></i>4 Gráficos</button>
-                    <button  class="btn btn-primary" type="button"  ng-click="query = QueryForDate"><i></i>6 Gráficos</button>
+<button type="button" ng-click="Create_Dashboard(1,1);" class="btn btn-primary"><i class="fa fa-table"></i> 1x1</button>
+<button type="button" ng-click="Create_Dashboard(2,1);" class="btn btn-primary"><i class="fa fa-table"></i> 2x1</button>
+<button type="button" ng-click="Create_Dashboard(1,2);" class="btn btn-primary"><i class="fa fa-table"></i> 1x2</button>
+<button type="button" ng-click="Create_Dashboard(2,2);" class="btn btn-primary"><i class="fa fa-table"></i> 2x2</button>
+<button type="button" ng-click="Create_Dashboard(2,3);" class="btn btn-primary"><i class="fa fa-table"></i> 2x3</button>
+<button type="button" ng-click="Create_Dashboard(3,2);" class="btn btn-primary"><i class="fa fa-table"></i> 3x2</button>
+
                   </div>
                </div>
            </div>
@@ -62,5 +93,9 @@
         </div>
     </div>
 </div>
+  
+  
+  
+  
 
 </div>

@@ -24,16 +24,6 @@
               <option value="Estados" >Cambiar Estados</option>
            </select>
      </span>
-     <!--    
-      <span>
-        <a class="btn btn-primary span4"  data-toggle="tooltip" title="Eliminar" ng-click="Delete_Job_DB();">
-          <i class="glyphicon glyphicon-remove-sign"></i>  Eliminar</a>
-      </span> 
-      <span>
-        <a class="btn btn-primary span4" title="Cambiar" data-toggle="tooltip" ng-click="Open_Modal_Change()">
-          <i class=" glyphicon glyphicon-pencil"></i>  Cambiar</a>
-      </span>
-       -->
       <span>
             <a class="btn btn-primary span4" ng-click="Open_Modal_Add_VisitPoint();" data-toggle="tooltip" title="Agregar una tarea" >
             <i class="glyphicon glyphicon-plus"></i>  Nueva Tarea</a>
@@ -48,35 +38,10 @@
               <option value="PDF">PDF</option>
            </select>
       </span> 
-      
-  <!--  
-      <span>
-      <div id="change" style="display:none">
-         <div class="form-group">
-           <span> 
-              <label>Asignar al Usuario:</label>
-              <select ng-model="Assign.User" ng-options="Obj.ID as Obj.Name for Obj in ArrayUser" style="width: 30%;" class="form-control" id="Usuario"></select>
-			  </span>
-           <span>
-              <label>Asignar al Vehículo:</label>
-              <select ng-model="Assign.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle" style="width: 30%;" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
-          <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
-           </span>
-           <br/>
-            <span>
-            <a class="btn btn-primary span4" ng-click="Assign_All(Assign);" data-toggle="tooltip" title="Asignar" >
-            <i class=""></i>Guardar</a>  
-              
-      </span>
-		   </div>
-       </div>
-      </span>-->
-     <!-- <label>Filtrar por estado: <input ng-model="search.Visit_State"></label> <br>-->
     </div> 
     
      <div id="Modal_Change_Status" class="modal fade"  role="dialog" >
     <div class="modal-dialog modal-lg"  style="width: 40%;" >
-        <!-- Modal content-->
         <div class="modal-content" >
 			<div class="modal-header" style="background-color:#4096c6;color:#fff">
 				<h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Cambiar Estado Actual </h2>
@@ -104,8 +69,7 @@
   
       <div id="Modal_Change" class="modal fade"  role="dialog" >
     <div class="modal-dialog modal-lg"  style="width: 40%;" >
-        <!-- Modal content-->
-        <div class="modal-content" >
+       <div class="modal-content" >
 			<div class="modal-header" style="background-color:#4096c6;color:#fff">
 				<h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Cambiar Usuario y Vehiculo </h2>
             </div>
@@ -123,28 +87,17 @@
 				   <br/>
 				    <span> 
 						<label>Asignar al Usuario: </label>
-                    <!-- <input type="" class="form-control" list="Users" ng-model="Assign.User" placeholder="Usuario"required>
-              <datalist id="Users">
-                  <option ng-repeat="Obj in ArrayUser| orderBy:'Name'" value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}"> </option>
-              </datalist>    -->
-						  <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" ng-change="Filter_License(Assign.User)"  class="form-control" id="Usuario"> </select>
+           	  <select ng-model="Assign.User" style="width: 50%;"ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser  | orderBy:'Name'" ng-change="Filter_License(Assign.User)"  class="form-control" id="Usuario"> </select>
                </span>
 				   <br/>
 				    <span ng-show="Show_Select_Vehicule">
 						<label>Asignar al Vehículo:</label>
-               <!--    <input type="" class="form-control" list="ID_Trucks" ng-model="Assign.ID_Truck"  placeholder="Vehículo"required>
-              <datalist id="ID_Trucks" >
-                  <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
-              </datalist> -->
-						<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
+              	<select ng-model="Assign.ID_Truck" style="width: 50%;"ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter  | orderBy:'ID_Truck'" class="form-control" id="Vehicle" ng-change="Info_Vehicle(Assign.ID_Truck,ArrayVehicle)"></select>
 						 <br/>
                   <label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
                </span>
 				   <br/>
-				<!--	<span>
-						<a class="btn btn-primary span4" ng-click="Assign_All(Assign);" data-toggle="tooltip" title="Asignar" >
-						<i class=""></i>Guardar</a>  
-					</span>-->
+				
 				</div>
 			</div>  
       <div class="modal-footer">
@@ -154,7 +107,6 @@
         </div>
 	</div>  
 </div>    
-  <!-- style="background-color:#295C7A"*/-->
     <div style="float:left;"> 
         <ul class="nav nav-pills " >
            <li ><a ng-click="See_Status('');">Total de Registros <span  class="badgea">{{ArrayJobs.length}}</span></a></li>
@@ -163,8 +115,6 @@
            <li ><a ng-click="See_Status('In_Process');">En Proceso <span class="badgea badge-In_Process" >{{(ArrayJobs | filter:  {'Visit_State': 'In_Process'} :true).length}}</span></a></li>
            <li ><a ng-click="See_Status('Aborted');">Abortados <span class="badgea badge-Aborted">{{(ArrayJobs | filter:  {'Visit_State': 'Aborted'} :true).length}}</span></a></li>
            <li ><a ng-click="See_Status('Unassigned');">No Asignados <span class="badgea badge-Unassigned"  >{{(ArrayJobs | filter: {'Visit_State': 'Unassigned'} :true).length}}</span></a></li>
-          
-           
         </ul>   
     </div>
        <div class="text-right"><B>
@@ -177,14 +127,9 @@
    
 </div>
    
-
-
   <!--Table VisitPoint DataBase -->
   
   <div id="Table_VisitPoint_DB"  class="table-responsive" style="margin-left: 1%;width: 98%; margin-right: 1%;" >  
-    
-   
-    
     
     <table class="table table-responsive table-hover"  class="resizable">
      <thead >   
@@ -207,15 +152,10 @@
       <li><a class="glyphicon glyphicon-align-right" ng-click="Change_Class('text-right',header.value)"><b> Derecha</b></a> </li>
       <li><a class="glyphicon glyphicon-align-justify" ng-click="Change_Class('text-justify',header.value)"><b> Justificaado</b></a> </li>
       <li class="dropdown-header"><b>Ordenamiento de texto</b></li>
-      <!--<li><a class="glyphicon glyphicon-chevron-up" ng-click="To_Order_By(header.value)desc"></a></li>-->
       <li><a class="glyphicon glyphicon-sort" ng-click="To_Order_By(header.value)"><b> Ascendente / Descendente</b></a> </li>
     </ul>
   </span>
-           <!-- <span class="glyphicon glyphicon-align-left" ng-click="Change_Class('text-left',header.value)"></span>
-            <span class="glyphicon glyphicon-align-center" ng-click="Change_Class('text-center',header.value)"></span>
-            <span class="glyphicon glyphicon-align-right" ng-click="Change_Class('text-right',header.value)"></span>
-            <span class="glyphicon glyphicon-align-justify" ng-click="Change_Class('text-justify',header.value)"></span> -->
-</th>
+ </th>
          </tr>
         <tr>
           <th></th>
@@ -240,7 +180,7 @@
           </th>
         </tr>
       </thead>
-      <tbody><!--style="background-color:#deedf5" --> 
+      <tbody>
         <tr  ng-class="obj.Visit_State" ng-repeat="obj in ArrayJobs | startFrom:currentPage*pageSize | limitTo:pageSize | filter: search | filter: {'Visit_State': Status_Filter} | orderBy: OrderList ">         
       
           <td>{{$index+1}}</td>
@@ -280,17 +220,12 @@
   <div id="Modal_Edit_VisitPoint" class="modal fade" role="dialog">
 
      <div class="modal-dialog modal-lg">
-
-          <!-- Modal content-->
           <div class="modal-content">
-
             <div class="modal-header" style="background-color:#4096c6;color:#fff">
               <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Visualizar/Editar 
               </h2>
             </div>
-          
             <div class="modal-body">
-
             <div class="panel panel-info"><div class="panel-heading"><b>Puede</b> editar los campos.</div></div>
               <div class="form-group">
               <label class="col-sm-4 control-label">Número de orden:</label>
@@ -306,83 +241,14 @@
               <input type="text" class="form-control" ng-model="VisitPoint.Invoice" placeholder="Número de factura..." required >
             </div></div>
                    </div>
-              
                 <div class="form-group">
 						<label class="col-sm-4 control-label">Establecimiento:</label> 
 						<div class="col-sm-8"> 
 							<div class="form-group">  
               <input type="text" class="form-control" ng-model="VisitPoint.Name" placeholder="Nombre De Establecimiento..." disabled >
-				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            				</div>
 						</div>
-					</div>
-              <!--
-              <div class="form-group">
-              <label class="col-sm-4 control-label">Nombre del establecimiento:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">  
-              <input type="text" class="form-control" ng-model="VisitPoint.Name" placeholder="Nombre del establecimiento..." required>
-            </div></div>
-                   </div>
-                     <div class="form-group">
-              <label class="col-sm-4 control-label">Identificador del establecimiento:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">  
-              <input type="text" class="form-control" ng-model="VisitPoint.ID_Location" placeholder="Identificador del establecimiento..." required >
-           </div></div>
-                    </div>
-                    <div class="form-group">
-					 <label class="col-sm-4 control-label">Latitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label> 
-             	<div class="col-sm-8"> 
-							<div class="form-group">  
-              <input type="text" class="form-control" ng-model="VisitPoint.Latitude" placeholder="Latitud..." required>
-            </div></div>
-                   </div>
-              
-                    <div class="form-group"> 
-						<label class="col-sm-4 control-label">Longitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label> 
-              <div class="col-sm-8"> 
-							<div class="form-group">  
-              <input type="text" class="form-control" ng-model="VisitPoint.Longitude" placeholder="Longitud..." required>
-            </div></div>
-                   </div>
-             <div class="form-group">
-              <label class="col-sm-4 control-label">Dirección:</label> 
-						<div class="col-sm-8"> 
-							<div class="form-group">  
-                 <!--<div class="input-group">
-                    <input type="text" class="form-control" ng-model="VisitPoint.Province" style="width: 33%;" placeholder="Provincia..." required>
-						  <input type="text" class="form-control" ng-model="VisitPoint.Canton" style="width: 33%;" placeholder="Cantón..." required>
- 						  <input type="text" class="form-control" ng-model="VisitPoint.District" style="width: 33%;" placeholder="Distrito..." required>
-                </div>-->
-              <!--<input type="text" class="form-control" ng-model="VisitPoint.Address" placeholder="Dirección exacta..." required>
-            </div></div>
-                   </div>-->
-          <!--  <div class="form-group">
-              <label>Nombre de la ruta:</label> 
-              <input type="text" class="form-control" ng-model="VisitPoint.Route" placeholder="Ruta..." required>
-            </div>-->
-                <!--   <div class="form-group">
-              <label class="col-sm-4 control-label">Número de teléfono:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">  
-              <input type="number" class="form-control" ng-model="VisitPoint.Telephone_Number" placeholder="Número de teléfono..." required>
-            </div></div>
-                   </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Entregar a:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">  
-              <input type="text" class="form-control" ng-model="VisitPoint.Manager" placeholder="Entregar a..." required>
-            </div></div>
-                   </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Correo del establecimiento:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">  
-              <input type="text" class="form-control" ng-model="VisitPoint.Mail" placeholder="Correo del establecimiento..." required>
-            </div></div>
-                   </div>-->
+					</div>            
             <div class="form-group">
               <label  class="col-sm-4 control-label" for="usr">Prioridad:</label>
 						<div class="col-sm-8"> 
@@ -400,32 +266,15 @@
             <div class="form-group">
               <label class="col-sm-4 control-label">Asignar al Usuario:</label>
 						<div class="col-sm-8"> 
-							<div class="form-group">    
-                  <!--       <input type="" class="form-control" list="Users" ng-model="VisitPoint.User" placeholder="User"required>
-              <datalist id="Users">
-                  <option ng-repeat="Obj in ArrayUser | orderBy:'Name' " value="{{Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )'}}" > </option>
-              </datalist>  -->  
-						 
-              <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+ Obj.ID + ' )' for Obj in ArrayUser" ng-change="Filter_License(VisitPoint.User)"  style="width: 80%;" class="form-control" id="Usuario"></select>
-				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
-           </div></div>
-                    </div>
+							<div class="form-group">                  	 
+              <select ng-model="VisitPoint.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+ Obj.ID + ' )' for Obj in ArrayUser| orderBy:'Name'" ng-change="Filter_License(VisitPoint.User)"  style="width: 80%;" class="form-control" id="Usuario"></select>
+           </div></div> </div>
             <div class="form-group">
               <label class="col-sm-4 control-label">Asignar al Vehículo:</label>
 						<div class="col-sm-8"> 
-							<div class="form-group">  
-                       <!--   <input type="" class="form-control" list="ID_Trucks" ng-model="VisitPoint.ID_Truck" placeholder="Vehículo"required>
-              <datalist id="ID_Trucks">
-                  <option ng-repeat="Obj1 in ArrayVehicle  | orderBy:'ID_Truck'" value="{{Obj1.ID_Truck}}" > </option>
-              </datalist>    
-						  -->
-              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter" style="width: 80%;" class="form-control" id="Vehicle" ></select>
-                       
-                       <!--ng-change="Info_Vehicle(Vehicle.ID_Truck,ArrayVehicle)"
-				<label>Descripcion del Vehículo:</label> {{ObjVeh.Description}}<br/><label>  Peso Soportado:</label>{{ObjVeh.Weight}}<br/><label>   Volumen Soportado:</label>{{ObjVeh.Cubics}}
-           <!-- <input type="text" class="form-control" ng-model="VisitPoint.ID_Truck" placeholder="Asignar al Vehiculo..." required>-->
-            </div></div>
-                   </div>
+							<div class="form-group">                       
+              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj.ID_Truck as Obj.ID_Truck for Obj in ArrayVehicle_Filter| orderBy:'ID_Truck'" ng-change="Info_Vehicle1(VisitPoint.ID_Truck,ArrayVehicle)" style="width: 80%;" class="form-control" id="Vehicle" ></select>
+            </div></div></div>
             <div class="form-group">
               <label class="col-sm-4 control-label">Tiempo promedio(min):</label>
 						<div class="col-sm-8"> 
@@ -438,24 +287,15 @@
                 <input type="time" style="width:40%;right: 55%; float:left; position: absolute;"  data-toggle="tooltip" title="Hora de Inicio" class="form-control" ng-model="VisitPoint.Delivery_Period_Start" required>
                 <input type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" class="form-control" ng-model="VisitPoint.Delivery_Period_End" required>
             </div> 
-            <br/>
-              
-       <div  role="alert"> <strong>{{freeWeight}}  </strong></div>
-            <br/>
-              
+            <br/>              
+
+       <div  ng-show="Show_Alert"role="alert"> <strong>*  Tiene disponible {{freeWeight}} kilos para cargar la unidad. </strong></div>            <br/>              
 <!--TAREAS-->
-     
             <div  id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo" style="background-color:#4096c6"><b>Trabajos</b>  
-             <!-- <a class="btn btn-primary" data-toggle="tooltip" title="agregar tareas" style="background-color:#295C7A">
-               <i class="glyphicon glyphicon-plus" ng-click="Tareas=true;VisitPoint_Add_Task={};"></i></a>
-               <a class="btn btn-primary" data-toggle="tooltip" title="Cerrar" style="background-color:#295C7A">
-               <i class="glyphicon glyphicon-remove" ng-click="Tareas=false;VisitPoint_Add_Task={}"></i></a>-->
-                           
-             </div> 
+            </div> 
            <div class="panel-body"> 
-              <div ng-show="Tareas">
-                
+              <div ng-show="Tareas">                
               <div class="form-group">
                   <label class="col-sm-4 control-label">Tipo de Tarea:</label> 
                 <div class="col-sm-8"> 
@@ -468,7 +308,6 @@
                     </div>  
                     </div>  
              </div> 
-             
                     <div class="form-group">      
                        <label class="col-sm-4 control-label">Nombre:</label>
                        <div class="col-sm-8">  
@@ -493,11 +332,9 @@
                        <label class="col-sm-4 control-label">Serie:</label>
                        <div class="col-sm-5">  
                  <div class="form-group">
-                            <input type="text" id="Input_Serial1" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">
-                   
+                            <input type="text" id="Input_Serial1" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">                   
                        </div>
-                     </div>
-         
+                     </div>         
                        <div class="col-sm-3">  
                  <div class="form-group">
                         <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie,VisitPoint_Add_Task.Serial_List)">
@@ -539,8 +376,6 @@
                           <div class="col-sm-8"> 
                  <div class="form-group">  						
                        <select ng-model="VisitPoint_Add_Task.UOM" placeholder="Unidad de medida..." ng-options="Obj.Value as Obj.Description for Obj in ArrayUnidads  | orderBy:'Value'" style="width: 80%;" class="form-control"></select>
-
-                       <!--<input type="text" class="form-control" ng-model="VisitPoint_Add_Task.UoM" placeholder="Unidad de medida...">-->
                    </div>
                         </div> 
                         </div> 
@@ -574,11 +409,7 @@
                  <div class="form-group">
                        <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobCubics" placeholder="Volumen...">
                     </div>
-                        </div> 
-                       <!-- <div class="form-group">
-                      <label>Foto:</label>
-                        <input type="file" class="form-control" id="VisitPoint_Add_Task.Photo"/>
-                    </div>   -->   
+                        </div>   
                     <div class="form-group">
                       <span>
                         <a style="cursor: pointer"  ng-click="Add_Task_In_VisitPoint_Array_edit(VisitPoint_Add_Task)">
@@ -594,7 +425,6 @@
                           <tr style="background-color:#4096c6; color:#fff">
                             <th>Tipo</th>
                             <th>Nombre</th>
-                           <!-- <th>Codigo de barras</th>-->
                             <th>Descripción</th>
                             <th>Unidad</th>
                             <th>Cantidad</th>
@@ -610,8 +440,6 @@
              <input type="text" class="form-control" ng-model="Task_Edit.JobTypeEs"></td>
                             <td>
              <input type="text" class="form-control" ng-model="Task_Edit.JobName"></td>
-                         <!--   <td>
-             <input type="text" class="form-control" ng-model="Task_Edit.BarCode"></td>-->
                             <td>
              <input type="text" class="form-control" ng-model="Task_Edit.JobDescription"></td>
                             <td>
@@ -627,51 +455,28 @@
                             <td>
                             <a class="btn btn-primary" data-toggle="tooltip" title="Eliminar tareas" style="background-color:#295C7A">
                               <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);"></i></a>
-                           <!-- <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
-                              <i class="glyphicon glyphicon-pencil"  ng-click="Tareas=true; Edit_In_Array(Task_Edit,Array_VisitPoint_Task_Edit);" ></i></a>-->
-                            </td>
+                           </td>
                           </tr>
                         </tbody>
                       </table>
-                      
-
-                        
                       </div>
                     </div>
         </div>
-                    
-
          </div>
-
             <div class="modal-footer">
             <button type="submit" class="btn btn-primary glyphicon glyphicon-save" style="background-color:#295C7A" data-dismiss="modal" data-toggle="tooltip" title="Guardar" ng-click="Save_Job_Edit(VisitPoint)"> Guardar</button>
             <a class="btn btn-primary glyphicon glyphicon-remove" data-toggle="tooltip" title="Cerrar"  style="background-color:#295C7A" data-dismiss="modal"><b> Cerrar</b></a>
-
             </div>
-               </div>
-                  
-
-
-
-        </div>
-      </div>
-  
-
+               </div> </div> </div>  
   <!--Modal VisitPoint Add -->
   <div id="Modal_Add_VisitPoint" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
-
-          <!-- Modal content-->
           <div class="modal-content">
-
             <div class="modal-header">
               <h2 class="modal-title"><i class="glyphicon glyphicon-briefcase"></i> Nueva Tarea</h2>
-            </div>
-            
+            </div>           
             <div class="modal-body">
-
-            <div class="panel panel-info"><div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>
-              
+            <div class="panel panel-info"><div class="panel-heading"><b>Todos</b> los campos son requeridos.</div></div>              
              <form  ng-submit="Add_New_VisitPoint(VisitPoint_Add)">
          <div class="form-group">
 						<label class="col-sm-4 control-label">Número de Orden:</label>
@@ -694,75 +499,9 @@
 						<div class="col-sm-8"> 
 							<div class="form-group">  
               				<select ng-model="VisitPoint_Add.PV_Info" ng-options="Obj as Obj.Name for Obj in ArrayVisitPoint | orderBy:'Name'" style="width: 80%;" class="form-control" id="Establecimiento"></select>
-				 <!--<input type="text" class="form-control" ng-model="VisitPoint.User" placeholder="Asignar al Usuario..." required>-->
            				</div>
 						</div>
 					</div>
-               <!--
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Nombre del establecimiento:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Name" placeholder="Nombre del establecimiento..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Identificador del establecimiento:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.ID_Location" placeholder="Identificador del establecimiento..." required >
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Latitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label> 
-						<div class="col-sm-8"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Latitude" placeholder="Latitud..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Longitud:<a href="https://www.google.es/maps/@9.9330189,-84.1190632,16z" target="_blank">Mapa</a></label>
-						<div class="col-sm-8"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Longitude" placeholder="Longitud..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Dirección:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Address" placeholder="Dirección..." required>
-							</div>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label class="col-sm-4 control-label">Número de teléfono:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">  
-							  <input required type="number" class="form-control" ng-model="VisitPoint_Add.Telephone_Number" placeholder="Número de teléfono..." required>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Entregar a:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Manager" placeholder="Entregar a..." required>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Correo del establecimiento:</label>
-						<div class="col-sm-8"> 
-							<div class="form-group">
-								<input required type="text" class="form-control" ng-model="VisitPoint_Add.Mail" placeholder="Correo del establecimiento..." required>
-							</div>
-						</div>
-					</div>-->
 					<div class="form-group">
 						<label class="col-sm-4 control-label" for="usr">Prioridad:</label>
 						<div class="col-sm-8"> 
@@ -784,7 +523,6 @@
 						<div class="col-sm-8"> 
 							<div class="form-group">
 								<select ng-model="VisitPoint_Add.User" ng-options="Obj.ID as Obj.Name  + ' ' +Obj.Lastname+ ' ( '+Obj.ID+ ' )' for Obj in ArrayUser | orderBy:'Name'" ng-change="Filter_License(VisitPoint_Add.User)" style="width: 80%;" class="form-control" id="Usuario"></select>
-						<!--<input type="text" class="form-control" ng-model="VisitPoint_Add.User" placeholder="Asignar al Usuario..." required>-->
 							</div>
 						</div>
 					</div>
@@ -793,7 +531,6 @@
 						<div class="col-sm-8"> 
 							<div class="form-group">						
                        <select  ng-model="VisitPoint_Add.ID_Truck" ng-options="Obj1.ID_Truck as Obj1.ID_Truck for Obj1 in ArrayVehicle_Filter | orderBy:'ID_Truck'" style="width: 80%;" class="form-control" id="Vehicle" ng-change="Info_Vehicle(VisitPoint_Add.ID_Truck,ArrayVehicle)"></select>
-<!--<input type="text" class="form-control" ng-model="VisitPoint_Add.User" placeholder="Asignar al Usuario..." required>-->
 							</div>
 						</div>
 					</div>      
@@ -809,11 +546,9 @@
 						<label >    Ventana de tiempo:</label>
 					<input required type="time" style="width:40%;right: 55%; float:left; position: absolute;"  data-toggle="tooltip" title="Hora de Inicio" class="form-control" ng-model="VisitPoint_Add.Delivery_Period_Start" required>
                 <input required type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" class="form-control" ng-model="VisitPoint_Add.Delivery_Period_End" required>
-           </div>
-              
+           </div>              
             <br/>
-       <div  role="alert"> <strong>{{freeWeight}}  </strong></div>
-
+       <div  ng-show="Show_Alert"role="alert"> <strong>*  Tiene disponible {{freeWeight}} kilos para cargar la unidad. </strong></div>
             <br/>
             <div ng-show="Show_Alerta" id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo"><b>Trabajos</b></div>  
@@ -829,8 +564,7 @@
                       </select>
                     </div>  
                     </div>  
-             </div> 
-             
+             </div>              
                     <div class="form-group">      
                        <label class="col-sm-4 control-label">Nombre:</label>
                        <div class="col-sm-8">  
@@ -855,11 +589,9 @@
                        <label class="col-sm-4 control-label">Serie:</label>
                        <div class="col-sm-5">  
                  <div class="form-group">
-                            <input type="text" id="Input_Serial" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">
-                   
+                            <input type="text" id="Input_Serial" class="form-control" ng-model="VisitPoint_Add_Task.Serie" placeholder="Serie...">                   
                        </div>
-                     </div>
-         
+                     </div>         
                        <div class="col-sm-3">  
                  <div class="form-group">
                         <a   ng-click="Add_Serial(VisitPoint_Add_Task.Serie,Array_Serials)">
@@ -879,8 +611,7 @@
                       </td>
                     </tr>
                   </table>
-                     </div>   
-             
+                     </div>                
                         <div class="form-group" ng-show="Show_Code">
                    	     <label class="col-sm-4 control-label">Código de Barras:</label>
                           <div class="col-sm-8">   
@@ -902,9 +633,7 @@
                           <div class="col-sm-8"> 
                  <div class="form-group">  						
                        <select ng-model="VisitPoint_Add_Task.UoM" placeholder="Unidad de medida..." ng-options="Obj.Value as Obj.Description for Obj in ArrayUnidads" style="width: 80%;" class="form-control"></select>
-
-                       <!--<input type="text" class="form-control" ng-model="VisitPoint_Add_Task.UoM" placeholder="Unidad de medida...">-->
-                   </div>
+   </div>
                         </div> 
                         </div> 
                         <div class="form-group"  ng-show="Show_Quantity">
@@ -939,10 +668,6 @@
                        <input type="number" class="form-control" ng-model="VisitPoint_Add_Task.JobCubics" placeholder="Volumen...">
                     </div>
                         </div> 
-                       <!-- <div class="form-group">
-                      <label>Foto:</label>
-                        <input type="file" class="form-control" id="VisitPoint_Add_Task.Photo"/>
-                    </div>   -->   
                     <div class="form-group">
                       <span>
                         <a style="cursor: pointer"  ng-click="Add_Task_In_VisitPoint_Array(VisitPoint_Add_Task)">
@@ -957,7 +682,6 @@
                           <tr>
                             <th>Tipo</th>
                             <th>Nombre</th>
-                           <!-- <th>Código de barras</th>-->
                             <th>Descripción</th>
                             <th>Unidad</th>
                             <th>Cantidad</th>
@@ -971,7 +695,6 @@
                           <tr ng-repeat="VisitPoint_Task in VisitPoint_Add_Array_Task">
                             <td>{{VisitPoint_Task.JobTypeEs}}</td>
                             <td>{{VisitPoint_Task.JobName}}</td>
-                           <!-- <td>{{VisitPoint_Task.BarCode}}</td>-->
                             <td>{{VisitPoint_Task.JobDescription}}</td>
                             <td>{{VisitPoint_Task.UOM}}</td>
                             <td>{{VisitPoint_Task.Quantity}}</td>
@@ -981,33 +704,21 @@
                             <td>
                             <a class="btn btn-danger">
                               <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);"></i></a>
-                             <!--  <a class="btn btn-primary" data-toggle="tooltip" title="Editar tareas" style="background-color:#295C7A"  >
-                             <i class="glyphicon glyphicon-pencil"  ng-click="Edit_In_Array(VisitPoint_Task,VisitPoint_Add_Array_Task);" ></i></a>-->
-                            </td>
+                             </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
         </div>
-
-
          </div>
-
-           
-               </div>
-                    
+               </div>                    
  <div ng-show="Show_Alerta" class="modal-footer">
             <button type="submit" class="btn btn-primary" ><i class="glyphicon glyphicon-save"> </i>  Guardar</button>
             <a class="btn btn-primary glyphicon glyphicon-remove" data-dismiss="modal"><b> Cerrar</b></a>
-
             </div>
-
               </form>
-
         </div>
       </div>
-
-      </div>
-   
+      </div>   
 </div>
 </div>

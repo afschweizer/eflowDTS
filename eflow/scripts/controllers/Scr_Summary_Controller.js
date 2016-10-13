@@ -177,8 +177,8 @@ function Select_DataSet(){
    	 
    	var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
    	var config = JSON.parse($scope.DataSet.Config);
-   	config.onRefresh = function(config){
-   		var config_copy = JSON.parse(JSON.stringify(config));
+   	config.onRefresh = function(ram_config){
+   		var config_copy = JSON.parse(JSON.stringify(ram_config));
    		delete config_copy["aggregators"];
    		delete config_copy["renderers"];
    		setTimeout(function(){

@@ -77,7 +77,7 @@ try{
 	          events: obj,
 	          
 		      onDayClick : function(){		      	
-		      	 eflowDTS.Session.Ram.Calendar_Date = (new Date(this.title)).format("yyyy-mm-dd");
+		      	 eflowDTS.Session.Ram.Calendar_Date =this.title;// (new Date(this.title)).format("yyyy-mm-dd");
 		      	 Set_Cookie("EflowCookie",eflowDTS);
 		      	 location.href = "#/PV_DB";
 		      	 }

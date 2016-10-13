@@ -659,11 +659,11 @@ function CSV_To_JSON(csv){
 				    }
 
 				 }
+				 
 				 Obj.Company = eflowDTS.Session.Company.Identifier;
 				 Obj.Year = parseInt(Obj.Year);
 				 Obj.Weight = parseInt(Obj.Weight);
 				 Obj.Cubics = parseInt(Obj.Cubics);
-				 
 				 ArrayJson.push(Obj);
 		  }
 		  

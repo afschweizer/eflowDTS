@@ -16,6 +16,7 @@ try{
        	Set_Current_Page();
 	 
 			$scope.Show_Alerta=false;
+			$scope.Show_Alert=false;
 		$scope.Show_Serie=false;
         $scope.Show_Code=false;
         $scope.Show_Quantity=false;
@@ -454,7 +455,52 @@ try{
         }
     }    
 };
+ $scope.Info_Vehicle1 = function(Vehicle,ArrayVehicle){
+	try{
+	for(var i = 0; i < ArrayVehicle.length ; i++ ){
+      if(Vehicle === ArrayVehicle[i].ID_Truck){
+		$scope.ObjVeh = {};
+		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
+		$scope.ObjVeh.Weight = ArrayVehicle[i].Weight;
+		$scope.ObjVeh.Cubics = ArrayVehicle[i].Cubics;
+		
+		if($scope.ObjVeh.Weight>$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
+			$scope.Show_Alerta=true;	
+			$scope.Show_Alert=true;	
+			$scope.Weight=($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]);
+		$scope.freeWeight =$scope.Weight;
+	//	$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+		}else{
+			$scope.Show_Alerta=false;	
+			$scope.Show_Alert=true;	
+		$scope.freeWeight =0;
+			//$scope.freeWeight =("*  No Tiene disponible kilos para cargar la unidad. ");
+		}
+      }     
+   } 
 
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Info_Vehicle1",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};
  $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
 	try{	
 	for(var i = 0; i < ArrayVehicle.length ; i++ ){
@@ -466,11 +512,15 @@ try{
 		
 		if($scope.ObjVeh.Weight>$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
 			$scope.Show_Alerta=true;	
+			$scope.Show_Alert=true;	
 			$scope.Weight=($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]);
-		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+		$scope.freeWeight =$scope.Weight;
+	//	$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
 		}else{
 			$scope.Show_Alerta=false;	
-			$scope.freeWeight =("*  No Tiene disponible kilos para cargar la unidad. ");
+			$scope.Show_Alert=true;	
+		$scope.freeWeight =0;
+			//$scope.freeWeight =("*  No Tiene disponible kilos para cargar la unidad. ");
 		}
       }     
    } 
@@ -1068,7 +1118,9 @@ try{
 
 $scope.Visualize_VisitPoint = function(Obj){
 try{
-	
+	$scope.Filter_License(Obj.User);
+	$scope.Info_Vehicle1(Obj.ID_Truck,$scope.ArrayVehicle);
+	 $scope.Show_Alert=true;
 		for(var i = 0; i < Obj.Jobs.length; i++){
 			if(Obj.Jobs[i].JobType === "delivery"){
 				Obj.Jobs[i].JobTypeEs = "Entrega";
@@ -1250,7 +1302,7 @@ $scope.Remove_In_Array = function(Obj,Array){
 	try{
 		//obj.JobWeight = Task_Obj.JobWeight;					
 		$scope.Weight=$scope.Weight+Obj.JobWeight;
-		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+		$scope.freeWeight =$scope.Weight;
 	Array_Remove(Array,Obj);
 
 }catch (e) {
@@ -1755,6 +1807,8 @@ try{
 	
 $scope.Open_Modal_Add_VisitPoint = function(){
 	try{
+	$scope.Show_Alert = false;
+			$scope.Show_Alerta=false;
 	$scope.Show_Select_Vehicule = false;
 	$scope.VisitPoint_Add = {};
 	$scope.VisitPoint_Add_Task = {};
@@ -2264,7 +2318,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					}else{						
 					obj.JobWeight = Task_Obj.JobWeight;					
 					$scope.Weight=$scope.Weight-obj.JobWeight;
-		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+		$scope.freeWeight =$scope.Weight;
 					
 					}
 					obj.JobCubics = Task_Obj.JobCubics;
@@ -2305,7 +2359,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					}else{						
 					obj.JobWeight = Task_Obj.JobWeight;		
 					$scope.Weight=$scope.Weight-obj.JobWeight;
-		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+		$scope.freeWeight =$scope.Weight;
 					}
 					//obj.JobWeight = Task_Obj.JobWeight;
 					obj.JobCubics = Task_Obj.JobCubics;
@@ -2345,7 +2399,7 @@ $scope.Add_Task_In_VisitPoint_Array = function(Task_Obj){
 					}else{						
 					obj.JobWeight = Task_Obj.JobWeight;		
 					$scope.Weight=$scope.Weight-obj.JobWeight;
-		$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+		$scope.freeWeight =$scope.Weight;
 					}
 					//obj.JobWeight = Task_Obj.JobWeight;
 					obj.JobCubics = Task_Obj.JobCubics;
@@ -2686,13 +2740,23 @@ function Export_CSV(arr) {
 			row += '"JobID",';
 			row += '"JobType",';
 			row += '"JobName",';
-			row += '"BarCode",';
+		//	row += '"BarCode",';
 			row += '"JobDescription",';
 			row += '"UOM",';
-			row += '"Quantity",';
+		//	row += '"Quantity",';
 			row += '"JobWeight",';
 			row += '"JobCubics",';
 			row += '"JobInstructions",';
+			
+			row += '"JobClass",';
+			row += '"JobInfo",';
+			row += '"Canton",';
+			row += '"Province",';
+			row += '"District",';
+			row += '"Country",';
+			row += '"Legal_Cedula",';
+			row += '"Route_Name",';
+			row += '"ID_Route",';
 			
         
         row = row.slice(0, -1);
@@ -2723,13 +2787,47 @@ function Export_CSV(arr) {
 		row += '"' + arrData[i].Jobs[j].JobID + '",';
 		row += '"' + arrData[i].Jobs[j].JobType + '",';
 		row += '"' + arrData[i].Jobs[j].JobName + '",';
-		row += '"' + arrData[i].Jobs[j].BarCode + '",';
+		//row += '"' + arrData[i].Jobs[j].BarCode + '",';
 		row += '"' + arrData[i].Jobs[j].JobDescription + '",';
 		row += '"' + arrData[i].Jobs[j].UOM + '",';
-		row += '"' + arrData[i].Jobs[j].Quantity + '",';
+		//row += '"' + arrData[i].Jobs[j].Quantity + '",';
 		row += '"' + arrData[i].Jobs[j].JobWeight + '",';
 		row += '"' + arrData[i].Jobs[j].JobCubics + '",';
 		row += '"' + arrData[i].Jobs[j].JobInstructions + '",';
+		
+		row += '"' + arrData[i].Jobs[j].JobClass + '",';
+		 switch(arrData[i].Jobs[j].JobClass){
+	 case 'SP':{
+	 	var BarCode="";
+		for(var K = 0; K < arrData[i].Jobs[j].Serial_List.length; K++){
+			BarCode=arrData[i].Jobs[j].Serial_List[K].Serial+"|"+BarCode;
+		}
+	    row += '"' + BarCode+arrData[i].Jobs[j].Quantity+'",';		 
+			break;   
+      } 
+      case 'SS':{
+	    row += '"' + arrData[i].Jobs[j].BarCode + "|"+arrData[i].Jobs[j].Quantity+'",';
+			break;          
+      } 
+     case 'SU':{       
+	    row += '"' + arrData[i].Jobs[j].Quantity+'",';
+			break;
+      }
+
+	}
+		
+		row += '"' + arrData[i].Canton + '",';
+		row += '"' + arrData[i].Province + '",';
+		row += '"' + arrData[i].District + '",';
+		row += '"' + arrData[i].Country + '",';
+		row += '"' + arrData[i].Legal_Cedula + '",';
+		row += '"' + arrData[i].Route.Route_Name + '",';
+		row += '"' + arrData[i].Route.ID_Route + '",';
+	//	row += '"' + arrData[i].Jobs[j].JobInfo + '",';
+		//row += '"' + arrData[i].Jobs[j].Quantity + '",';
+		//row += '"' + arrData[i].Jobs[j].BarCode + '",';
+		
+		
 		row.slice(0, row.length - 1);
        
         CSV += row + '\r\n';

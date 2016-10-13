@@ -953,7 +953,6 @@ function Export_CSV(arr) {
 	   row += '"Id_Vehicle",';
 	   row += '"Brand",';
 	   row += '"Model",';
-	   row += '"License",';
 	   row += '"Year",';
 	   row += '"Fuel",';
 	   row += '"Cylinder_Capacity",';
@@ -961,6 +960,9 @@ function Export_CSV(arr) {
 	   row += '"Weight",';
 	   row += '"Cubics",';
 	   row += '"Description",';
+	   row += '"Type_Vehicle",';
+	   row += '"License",';
+	   
     
         row = row.slice(0, -1);
          
@@ -973,7 +975,6 @@ function Export_CSV(arr) {
 		row += '"' + arrData[i].Id_Vehicle + '",';
 		row += '"' + arrData[i].Brand + '",';
 		row += '"' + arrData[i].Model + '",';
-		row += '"' + arrData[i].License+ '",';
 		row += '"' + arrData[i].Year + '",';
 		row += '"' + arrData[i].Fuel + '",';
 		row += '"' + arrData[i].Cylinder_Capacity + '",';
@@ -981,6 +982,14 @@ function Export_CSV(arr) {
 		row += '"' + arrData[i].Weight + '",';
 		row += '"' + arrData[i].Cubics + '",';
 		row += '"' + arrData[i].Description + '",';
+		row += '"' + arrData[i].Type_Vehicle + '",';
+		var License="";
+		for(var K = 0; K < arrData[i].License.length; K++){
+			License=arrData[i].License[K]+"|"+License;
+		}
+	    row += '"' + License+'",';	
+		
+		//row += '"' + arrData[i].License+ '",';
 		row.slice(0, row.length - 1);
        
         CSV += row + '\r\n';

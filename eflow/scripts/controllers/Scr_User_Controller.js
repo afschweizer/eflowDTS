@@ -1321,7 +1321,7 @@ function Export_CSV(arr) {
         
       // row += '"Company",';
 	   row += '"UserName",';
-	   //row += '"Password",';
+	   row += '"Password",';
 	   row += '"ID",';
 	   row += '"Name",';
 	   row += '"Lastname",';
@@ -1329,11 +1329,11 @@ function Export_CSV(arr) {
 	   row += '"Identification",';
 	   row += '"Mail",';
 	   row += '"Gender",';
+	   row += '"Type",'; 
 	   row += '"Birthdate",';
 	   row += '"DueDate",';
-	   row += '"License",';
 	   row += '"Address",';
-	   row += '"Type",'; 
+	   row += '"License",';
     
         row = row.slice(0, -1);
          
@@ -1344,7 +1344,7 @@ function Export_CSV(arr) {
 		row = "";
 		//row += '"' + arrData[i].Company + '",';
 		row += '"' + arrData[i].UserName + '",';
-		//row += '"' + arrData[i].Password + '",';
+		row += '"' + arrData[i].Password + '",';
 		row += '"' + arrData[i].ID + '",';
 		row += '"' + arrData[i].Name + '",';
 		row += '"' + arrData[i].Lastname + '",';
@@ -1352,11 +1352,12 @@ function Export_CSV(arr) {
 		row += '"' + arrData[i].Identification + '",';
 		row += '"' + arrData[i].Mail+ '",';
 		row += '"' + arrData[i].Gender + '",';
+		row += '"' + arrData[i].Type + '",';
 		row += '"' + arrData[i].Birthdate + '",';
 		row += '"' + arrData[i].DueDate + '",';
-		row += '"' + arrData[i].License + '",';
 		row += '"' + arrData[i].Address + '",';
-		row += '"' + arrData[i].Type + '",';
+		row += '"' + arrData[i].License + '",';
+		
 		row.slice(0, row.length - 1);
        
         CSV += row + '\r\n';

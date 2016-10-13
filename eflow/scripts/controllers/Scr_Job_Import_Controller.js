@@ -565,7 +565,13 @@ $scope.Checking_Checkboxes = function(){
 
 $scope.Visualize_VisitPoint_Import = function(Obj){
 	try{
-  
+  for(var i = 0; i < Obj.Jobs.length; i++){
+			if(Obj.Jobs[i].JobType === "delivery"){
+				Obj.Jobs[i].JobTypeEs = "Entrega";
+			}else{
+			  Obj.Jobs[i].JobTypeEs = "Recolección";
+			}
+		}
   		$scope.VisitPoint_Import = Obj;
         $scope.Array_VisitPoint_Import_Task = Obj.Jobs;
 	    $scope.Estimated_Date = new Date(Obj.Estimated_Date.replace(/-/g,'\/')).format("yyyy-mm-dd");
