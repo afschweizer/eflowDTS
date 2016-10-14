@@ -650,17 +650,17 @@ $scope.Remove_In_Array = function(Obj,Array){
 };
 
 function CSV_To_JSON(csv){
-	try{
-		
+	try{		
 		  var Lines = csv.split("\n");
 		  var ArrayJson = [];
 		  var Headers = Lines[0].replace(/"/g,'').split(",");
 		  
 		  for(var i = 1; i < (Lines.length)-1; i++){
-			  
+		  	
 			 var Obj = {};
 			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");
 			 Obj.Company = eflowDTS.Session.Company.Identifier;
+			 
 			 
 				 for(var j = 0; j < Headers.length; j++){					
 					

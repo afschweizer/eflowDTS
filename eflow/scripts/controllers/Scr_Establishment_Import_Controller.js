@@ -655,8 +655,9 @@ function CSV_To_JSON(csv){
 			  
 			 var Obj = {};
 			 Obj.Route = {};
-			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");
-			 			 
+			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");			 			 
+				 Obj.Company = eflowDTS.Session.Company.Identifier;
+				 
 				 for(var j = 0; j < Headers.length; j++){					
 					
 					if(Headers[j] === "ID_Route" || Headers[j] === "Route_Name"){
@@ -666,7 +667,6 @@ function CSV_To_JSON(csv){
 					}
 					
 				 }
-				 Obj.Company = eflowDTS.Session.Company.Identifier;
 				 Obj.Legal_Cedula = parseInt(Obj.Legal_Cedula);
 				 Obj.Telephone_Number = parseInt(Obj.Telephone_Number);
 				 Obj.Latitude = parseFloat(Obj.Latitude);

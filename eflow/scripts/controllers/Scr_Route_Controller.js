@@ -1147,10 +1147,11 @@ function Export_CSV(arr) {
         
         
       // row += '"Company",';
+	   row += '"Route_Path",';
 	   row += '"Route_Name",';
 	   row += '"ID_Route",';
 	   row += '"Route_Description",';
-	   row += '"Route_Path",';
+	   row += '"",';
 	  
     
         row = row.slice(0, -1);
@@ -1161,11 +1162,27 @@ function Export_CSV(arr) {
       
 		row = "";
 		//row += '"' + arrData[i].Company + '",';
+		
+	 	var Route_Path="";
+		for(var K = 0; K < arrData[i].Route_Path.length; K++){			
+			for(var m = 0; m < arrData[i].Route_Path[K].length; m++){
+			if(Route_Path===""){
+				Route_Path=arrData[i].Route_Path[K][0]+"|"+ arrData[i].Route_Path[K][1];
+			}else{
+			Route_Path=Route_Path+"|"+arrData[i].Route_Path[K][0]+"|"+ arrData[i].Route_Path[K][1];
+			}
+		}
+			
+		}
+	    row += '"' + Route_Path+'",';		 
+			   
 		row += '"' + arrData[i].Route_Name + '",';
 		row += '"' + arrData[i].ID_Route + '",';
 		row += '"' + arrData[i].Route_Description + '",';
-		row += '"' + arrData[i].Route_Path+ '",';
+		row += '"'  + '",';
+		//row += '"' + arrData[i].Route_Path+ '",';
 		row.slice(0, row.length - 1);
+	//	|
        
         CSV += row + '\r\n';
     } 

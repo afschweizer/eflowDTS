@@ -1240,18 +1240,22 @@ function Export_CSV(arr) {
     
         var row = "";
       // row += '"Company",';
+	   row += '"ID_Route",';
+	   row += '"Route_Name",';
 	   row += '"ID_Location",';
-	   row += '"Manager",';
-	   row += '"Name",';
 	   row += '"Legal_Cedula",';
 	   row += '"Address",';
 	   row += '"Telephone_Number",';
 	   row += '"Mail",';
 	   row += '"Latitude",';
 	   row += '"Longitude",';
-	   row += '"ID_Route",';
-	   row += '"Route_Name",';
-    
+	   row += '"Manager",';
+	   row += '"Name",';
+	   row += '"Country",';
+	   row += '"Province",';
+	   row += '"Canton",';
+	   row += '"District",';
+	   row += '"",';
         row = row.slice(0, -1);
          
         CSV += row + '\r\n';
@@ -1260,17 +1264,22 @@ function Export_CSV(arr) {
       
 		row = "";
 		//row += '"' + arrData[i].Company + '",';
+		row += '"' + arrData[i].Route.ID_Route + '",';
+		row += '"' + arrData[i].Route.Route_Name + '",';
 		row += '"' + arrData[i].ID_Location + '",';
-		row += '"' + arrData[i].Manager + '",';
-		row += '"' + arrData[i].Name + '",';
 		row += '"' + arrData[i].Legal_Cedula + '",';
 		row += '"' + arrData[i].Address + '",';
 		row += '"' + arrData[i].Telephone_Number + '",';
 		row += '"' + arrData[i].Mail + '",';
 		row += '"' + arrData[i].Latitude+ '",';
 		row += '"' + arrData[i].Longitude + '",';
-		row += '"' + arrData[i].Route.ID_Route + '",';
-		row += '"' + arrData[i].Route.Route_Name + '",';
+		row += '"' + arrData[i].Manager + '",';
+		row += '"' + arrData[i].Name + '",';
+		row += '"' + arrData[i].Country+ '",';
+		row += '"' + arrData[i].Province + '",';
+		row += '"' + arrData[i].Canton + '",';
+		row += '"' + arrData[i].District + '",';
+		row += '"'  + '",';
 		row.slice(0, row.length - 1);
        
         CSV += row + '\r\n';
