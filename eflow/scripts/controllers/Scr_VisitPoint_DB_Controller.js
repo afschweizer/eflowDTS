@@ -1807,7 +1807,7 @@ try{
 	
 $scope.Open_Modal_Add_VisitPoint = function(){
 	try{
-	$scope.Show_Alert = false;
+	$scope.Show_Alert = true;
 			$scope.Show_Alerta=false;
 	$scope.Show_Select_Vehicule = false;
 	$scope.VisitPoint_Add = {};
