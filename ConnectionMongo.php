@@ -3,7 +3,7 @@
 try{ 
 
 //Google Mongo Cluster string connection
-  
+  ini_set('mongo.long_as_object', 1);
 $uri = "mongodb://104.197.248.93:27017";
   
 $options = array("connectTimeoutMS" => 30000);
