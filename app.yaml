@@ -8,14 +8,23 @@ handlers:
 - url: /(.+\.php)$
   script: \1 
   
-- url: /css
-  static_dir: css
+- url: /eflow/Manuals
+  static_dir: eflow/Manuals  
   
-- url: /JavaScript
-  static_dir: JavaScript
+- url: /eflow/images
+  static_dir: eflow/images
+    
+- url: /eflow/scripts/controllers
+  static_dir: eflow/scripts/controllers
+   
+- url: /eflow/scripts/externals
+  static_dir: eflow/scripts/externals
   
-- url: /html
-  static_dir: html
+- url: /eflow/styles
+  static_dir: eflow/styles
   
-- url: /images
-  static_dir: images
+- url: /eflow/views
+  static_dir: eflow/views
+ 
+- url: /eflow
+  static_dir: eflow

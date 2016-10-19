@@ -53,7 +53,7 @@ $scope.Select_DataSet();
   
 };
 
-	$scope.Charge_Pivot = function(id,pivot,UI){
+$scope.Charge_Pivot = function(id,pivot,UI){
 		
 		var renderers = $.extend($.pivotUtilities.renderers,$.pivotUtilities.gchart_renderers);
    	    var config = JSON.parse(pivot.Config);
@@ -94,7 +94,7 @@ $scope.Select_DataSet();
 		
 	};
 	
-	$scope.Select_DataSet = function(){
+$scope.Select_DataSet = function(){
 	 try {
 	 	
 	 	$scope.User = eflowDTS.Session.Ram.ID;
@@ -206,9 +206,7 @@ $scope.Select_DataSet();
         return Arr_Return;
     };
 
-	
-	
-	$scope.Select_Data = function() {
+$scope.Select_Data = function() {
         try{
         	
         var Request = {
@@ -270,7 +268,7 @@ $scope.Select_DataSet();
      }
  };
 	
- function Filter_Properties(Arr_Data,Arr_Pro){
+function Filter_Properties(Arr_Data,Arr_Pro){
 	 
 	 for(var i = 0; i < Arr_Data.length; i++){
 		 
@@ -323,7 +321,7 @@ $scope.Select_DataSet();
      } 
  };
  	
- 	$scope.Show_All_Chart = function() {
+$scope.Show_All_Chart = function() {
      try {
 		
 	var Arr = ["Pivot_1x1","Pivot_1x2","Pivot_1x3","Pivot_2x1","Pivot_2x2","Pivot_2x3","Pivot_3x1","Pivot_3x2"];
