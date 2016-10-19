@@ -9,11 +9,17 @@
 <div id="Contents" ng-controller="Scr_VisitPoint_DB_Controller" ng-init="init()">
   <div id="container" style="clear:both; margin-left: 1%;width: 98%; margin-right: 1%;" >
    <div style="text-align: center;">  
-    <span style="display:inline-block;">
+    
+       <div class="controls">
+            <a class="pull-left" ng-click="mostrarFecha(-1);"><div class="btn btn-primary">Anterior</div></a>
+            <h4><span data-head-year></span> <span data-head-month></span></h4>
+         <span style="display:inline-block;">
       <h4>
           {{Date|date:"fullDate"}}
       </h4>
     </span>
+            <a class="pull-right" ng-click="mostrarFecha(1);"><div class="btn btn-primary">Siguiente</div></a>
+        </div>
    </div>
     <div id="left"  >     
      <span  ng-show="Show_Actions">

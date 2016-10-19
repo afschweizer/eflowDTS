@@ -65,6 +65,28 @@ try{
   
 };
 	
+$scope.mostrarFecha = function(days){ 
+  fecha= $scope.Date;//new Date();
+    day=fecha.getDate();
+    // el mes es devuelto entre 0 y 11
+    month=fecha.getMonth()+1;
+    year=fecha.getFullYear();
+	//document.write("Fecha actual: "+day+"/"+month+"/"+year);
+	//Obtenemos los milisegundos desde media noche del 1/1/1970
+    tiempo=fecha.getTime();
+    //Calculamos los milisegundos sobre la fecha que hay que sumar o restar...
+    milisegundos=parseInt(days*24*60*60*1000);
+    //Modificamos la fecha actual
+    total=fecha.setTime(tiempo+milisegundos);
+    day1=fecha.getDate();
+    month1=fecha.getMonth()+1;
+    year1=fecha.getFullYear(); 
+	//document.write("Fecha modificada: "+day+"/"+month+"/"+year);
+  eflowDTS.Session.Ram.Calendar_Date = year1+"-"+month1+"-"+day1;		      	
+  Set_Cookie("EflowCookie",eflowDTS);
+  $scope.init();
+}	;
+	
 $scope.See_Status=function(status){
 try{
  		

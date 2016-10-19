@@ -77,9 +77,16 @@ try{
 	          events: obj,
 	          
 		      onDayClick : function(){
-		      	var day =new Date(this.title);
-		      	if(day.getMonth() >9){
-		      		eflowDTS.Session.Ram.Calendar_Date =this.title;// (new Date(this.title)).format("yyyy-mm-dd");
+		      	var day =this.title;
+		      var Month=	day.split("-")[1];
+		      var days=	day.split("-")[2];
+		      	if(Month >9){
+		      		if(days<10){
+		      			eflowDTS.Session.Ram.Calendar_Date = (new Date(this.title)).format("yyyy-mm-dd");
+		      		}
+		      		else{
+		      		eflowDTS.Session.Ram.Calendar_Date =this.title;
+		      		}
 		      	}
 				else{
 					eflowDTS.Session.Ram.Calendar_Date = (new Date(this.title)).format("yyyy-mm-dd");
