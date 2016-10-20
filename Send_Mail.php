@@ -1,17 +1,43 @@
 <?php
-$mail = "Prueba de mensaje";
-//Titulo
-$titulo = "PRUEBA DE TITULO";
-//cabecera
-$headers = "MIME-Version: 1.0\r\n"; 
-$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-//dirección del remitente 
-$headers .= "From: Geeky Theory < yeisonfallas@gmail.com >\r\n";
-//Enviamos el mensaje a tu_dirección_email 
-$bool = mail("yeisonfallas@gmail.com",$titulo,$mail,$headers);
-if($bool){
-    echo "Mensaje enviado";
-}else{
-    echo "Mensaje no enviado";
+
+require_once('class.phpmailer.php');
+//include("class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
+
+$mail             = new PHPMailer();
+
+$body = "sdfsdf";
+
+$mail->IsSMTP(); // telling the class to use SMTP
+$mail->Host       = "mail.eprac.com"; // SMTP server
+$mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+                                           // 1 = errors and messages
+                                           // 2 = messages only
+$mail->SMTPAuth   = true;                  // enable SMTP authentication
+$mail->Host       = "mail.eprac.com"; // sets the SMTP server
+$mail->Port       = 26;                    // set the SMTP port for the GMAIL server
+$mail->Username   = "info@eprac.com"; // SMTP account username
+$mail->Password   = "wolFe224";        // SMTP account password
+
+$mail->SetFrom('info@eprac.com', 'First Last');
+
+$mail->AddReplyTo("kathy.f0611@gmail.com","First Last");
+
+$mail->Subject    = "PHPMailer Test Subject via smtp, basic with authentication";
+
+$mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
+
+$mail->MsgHTML($body);
+
+$address = "yeison@gmail.com";
+$mail->AddAddress($address, "John Doe");
+
+
+
+if(!$mail->Send()) {
+  echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+  echo "Message sent!";
 }
+    
+
 ?>
