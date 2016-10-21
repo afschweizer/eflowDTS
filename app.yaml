@@ -1,5 +1,5 @@
 application: eflowv1
-version: testing
+version: development
 runtime: php55
 api_version: 1
 
@@ -28,3 +28,6 @@ handlers:
  
 - url: /eflow
   static_dir: eflow
+  
+- url: /eflow
+  script: eflow/index.html

@@ -17,7 +17,6 @@ $scope.Type = "password";
 	$scope.init = function(){
 		
 		try{
-	    
 		$scope.subscription = eflowDTS.Session.Ram.Subscription.Type_subscription;
 	    $scope.Show_Components.Main_Menu = false;  
 		$scope.Show_Components.SubMenu_Maintenance = false;
@@ -501,7 +500,7 @@ try{
     "Comments": eflowDTS.Session.Ram.Subscription.Comments,
     "Features": eflowDTS.Session.Ram.Subscription.Features,
     "Subscription_Period": eflowDTS.Session.Ram.Subscription.Subscription_Period,
-    "Amount": eflowDTS.Session.Ram.Subscription.Amount,
+    "Ammount": eflowDTS.Session.Ram.Subscription.Ammount,
     "Free_Users": eflowDTS.Session.Ram.Subscription.Free_Users
 },
 "Creation_Date": new Date().getTime(),
