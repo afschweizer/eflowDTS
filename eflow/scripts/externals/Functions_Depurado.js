@@ -343,6 +343,7 @@ function Send_JSON(Url, JsonData, onSucess, onError) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status == 200 || xhr.status == 304) {
+                	console.log(JSON.parse(xhr.responseText)); 
                     onSucess(JSON.parse(xhr.responseText));
                 } else {
                     onError(xhr.statusText);
@@ -426,7 +427,7 @@ return Array;
 function Save_Error(e) {
     
     try {
-        
+       console.log(e); 
         if (typeof e === 'object') {
         	
             e.Company = eflowDTS.Session.Company.Identifier;

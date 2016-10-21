@@ -150,6 +150,8 @@ $scope.Upload_Image = function(){
 		
 	try{
 		var div = document.getElementById('Map_Dashboard_Company');
+		
+				eflowDTS.Session.Company={};
 		$('#Charging').modal('show');
 		if(div){ 			
 			map = new GMaps({
@@ -311,6 +313,7 @@ function Select_Company(){
 		var onSuccess = function(arr){
 			if(arr.length > 0){
 				alert("Esta Compañia ya esta registrada");
+				eflowDTS.Session.Company={};
 				window.location.href='#';
 			}
 			

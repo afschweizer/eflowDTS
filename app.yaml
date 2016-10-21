@@ -28,6 +28,3 @@ handlers:
  
 - url: /eflow
   static_dir: eflow
-  
-- url: /eflow
-  script: eflow/index.html
