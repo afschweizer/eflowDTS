@@ -18,9 +18,18 @@ DTS_APP.controller('indexController', function($scope) {
 		$scope.Show_Components.SubMenu_Maintenance = true;
 		$scope.Show_Components.Login = true;
 		
+		Get_Time(); 
+		
 		setInterval(function() {
-                    timers();
+                  $scope.$apply(function(){
+						$scope.UserName = eflowDTS.Session.Current_User.UserName;
+						$scope.Company = eflowDTS.Session.Company.Name;
+		           });  
         }, 1000);
+        
+        setInterval(function(){
+        	Get_Time();
+        },60000);
   
         }catch (e) {
         
@@ -47,18 +56,18 @@ DTS_APP.controller('indexController', function($scope) {
 
       
 
-function timers() {
+function Get_Time() {
 	
 try{
 		
 Load_JSON(eflowDTS.Configuration.URLs.eflow_Date_Time, function(Text_Json) {
              
-	var x = JSON.parse(Text_Json);
+	var x = JSON.parse(Text_Json);	
 	
-		$scope.Watch = new Date(x.Time);		
-		$scope.UserName = eflowDTS.Session.Current_User.UserName;
-		$scope.Company = eflowDTS.Session.Company.Name;
-		$scope.$apply();
+		$scope.$apply(function(){
+			$scope.Watch = new Date(x.Time);
+		});
+		
 		});
      
 }catch (e) {        
@@ -80,7 +89,11 @@ Load_JSON(eflowDTS.Configuration.URLs.eflow_Date_Time, function(Text_Json) {
         }
     }    
 }
+	
+
 		
+		
+	
 $scope.Sign_Out = function(){
 try{
 	
