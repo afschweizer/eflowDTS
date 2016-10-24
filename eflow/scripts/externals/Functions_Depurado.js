@@ -342,8 +342,11 @@ function Send_JSON(Url, JsonData, onSucess, onError) {
         xhr.send(data);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
-                if (xhr.status == 200 || xhr.status == 304) {
-                	console.log(JSON.parse(xhr.responseText)); 
+                if (xhr.status === 200 || xhr.status === 304) {
+                	if(xhr.responseText === "No es posible conectarnos a la base de datos:Failed to connect to: 104.197.248.93:27017: Remote server has closed the connection"){
+                	alert("Error, revise la consola...");
+                	console.error(xhr.responseText);	
+                	}                	
                     onSucess(JSON.parse(xhr.responseText));
                 } else {
                     onError(xhr.statusText);
