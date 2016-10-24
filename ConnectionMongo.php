@@ -27,7 +27,7 @@ $options = array("connectTimeoutMS" => 30000);
 }
 catch(Exception $e) {
   
- $MaxRetries = 5;
+/*$MaxRetries = 5;
     for( $Counts = 1; $Counts <= $MaxRetries; $Counts ++ ) {
         try {
            $Connection = new MongoClient( $uri,$options );
@@ -37,6 +37,8 @@ catch(Exception $e) {
         }
         return;
     }
+  */
+  echo $e;
   
 }
 

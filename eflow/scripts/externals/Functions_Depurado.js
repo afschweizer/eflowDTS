@@ -3,9 +3,9 @@ google.load("visualization", "1", {packages:["corechart"/*, "charteditor"*/]});
 var eflowDTS = {
   Configuration: {
     "URLs": {
-      "eflow_Get": "https://1-dot-eflowv1.appspot.com/Eflow_Get.php",
-      "eflow_Post": "https://1-dot-eflowv1.appspot.com/Eflow_Post.php",
-      "eflow_Date_Time": "https://1-dot-eflowv1.appspot.com/time.php"
+      "eflow_Get": "https://development-dot-eflowv1.appspot.com/Eflow_Get.php",
+      "eflow_Post": "https://development-dot-eflowv1.appspot.com/Eflow_Post.php",
+      "eflow_Date_Time": "https://development-dot-eflowv1.appspot.com/time.php"
     },
     "Time_Since_Last_Connection": (30)*60*1000, // Intervalo de tiempo en minutos, mínimo de última conexión de usuarios
   },
