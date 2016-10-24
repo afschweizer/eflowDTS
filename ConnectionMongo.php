@@ -27,7 +27,7 @@ $options = array("connectTimeoutMS" => 30000);
 }
 catch(MongoConnectionException $e) {
 
-  /*$MaxRetries = 5;
+   $MaxRetries = 5;
     for( $Counts = 1; $Counts <= $MaxRetries; $Counts ++ ) {
         try {
            $Connection = new MongoClient( $uri,$options );
@@ -37,7 +37,7 @@ catch(MongoConnectionException $e) {
         }
         return;
     }
-  */
+ 
   
 die("No es posible conectarnos a la base de datos:".$e->getMessage());
   
