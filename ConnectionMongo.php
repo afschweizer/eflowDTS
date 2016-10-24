@@ -12,19 +12,34 @@ $uri = "mongodb://104.197.248.93:27017";
   
 $options = array("connectTimeoutMS" => 30000);
 
-$conn = new MongoClient($uri,$options);
+//$conn = new MongoClient($uri,$options);
   
 //$db = $conn->selectDB("eflowdtsProduction");
 //$db = $conn->selectDB("eflowdtsTesting");
-$db = $conn->selectDB("eflowdtsDevelopment");
+//$db = $conn->selectDB("eflowdtsDevelopment");
 //$db = $conn->selectDB("eflowdtsPresentation");
+//
+  
+    $Connection = new MongoClient( $uri,$options );
+    $db = $Connection->selectDB( "eflowdtsDevelopment" );
   
   
 }
-catch(MongoConnectionException $e) {
+catch(Exception $e) {
   
-die("No es posible conectarnos a la base de datos:".$e->getMessage());
+ $MaxRetries = 5;
+    for( $Counts = 1; $Counts <= $MaxRetries; $Counts ++ ) {
+        try {
+           $Connection = new MongoClient( $uri,$options );
+    		  $db = $Connection->selectDB( "eflowdtsDevelopment" );
+        } catch( Exception $e ) {
+            continue;
+        }
+        return;
+    }
   
 }
 
 ?>
+
+ 
