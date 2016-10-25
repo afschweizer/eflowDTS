@@ -291,7 +291,7 @@ $scope.Send_Message= function(Noti){
 					 	},
     			"Company": eflowDTS.Session.Company.Identifier,
                 "User": Noti.User,
-    			"ID_Truck": new Date(Noti.ID_Truck).format('yyyy-mm-dd'),
+    			"ID_Truck": Noti.ID_Truck,
                 "Estimated_Date":Noti.Date,
                 "State_Created": true,
 				"State_Sent": false,
