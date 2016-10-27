@@ -7,6 +7,9 @@ handlers:
 
 - url: /(.+\.php)$
   script: \1 
+ 
+- url: /Mail(.+\.php)$
+  script: \1
   
 - url: /eflow/Manuals
   static_dir: eflow/Manuals  
