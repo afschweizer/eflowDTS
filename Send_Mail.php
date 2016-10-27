@@ -1,43 +1,56 @@
 <?php
 
-require_once('class.phpmailer.php');
-//include("class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
+date_default_timezone_set('Etc/UTC');
 
-$mail             = new PHPMailer();
+require 'PHPMailerAutoload.php';
 
-$body = "sdfsdf";
+//$pdfString = "dsfsdf";
 
-$mail->IsSMTP(); // telling the class to use SMTP
-$mail->Host       = "mail.eprac.com"; // SMTP server
-$mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
-                                           // 1 = errors and messages
-                                           // 2 = messages only
-$mail->SMTPAuth   = true;                  // enable SMTP authentication
-$mail->Host       = "mail.eprac.com"; // sets the SMTP server
-$mail->Port       = 26;                    // set the SMTP port for the GMAIL server
-$mail->Username   = "info@eprac.com"; // SMTP account username
-$mail->Password   = "wolFe224";        // SMTP account password
+//Create a new PHPMailer instance
+$mail = new PHPMailer;
+//Tell PHPMailer to use SMTP
+$mail->isSMTP();
+//Enable SMTP debugging
+// 0 = off (for production use)
+// 1 = client messages
+// 2 = client and server messages
+$mail->SMTPDebug = 2;
+//Ask for HTML-friendly debug output
+$mail->Debugoutput = 'html';
+//Set the hostname of the mail server
+$mail->Host = "smtpout.secureserver.net";
+//Set the SMTP port number - likely to be 25, 465 or 587
+$mail->Port = 25;
+//Whether to use SMTP authentication
+$mail->SMTPAuth = true;
+//Username to use for SMTP authentication
+$mail->Username = "info@eprac.com";
+//Password to use for SMTP authentication
+$mail->Password = "wolFe224";
+//Set who the message is to be sent from
+$mail->setFrom('DTS_TRACK@eprac.com', 'DTS Track');
+//Set an alternative reply-to address
+//$mail->addReplyTo('katherine.fallas@eprac.com', 'First Last');
+//Set who the message is to be sent to
+$mail->addAddress('yeisonfallas@gmail.com', 'John Doe');
+//Set the subject line
+$mail->Subject = 'PHPMailer SMTP test';
+//Read an HTML message body from an external file, convert referenced images to embedded,
+//convert HTML into a basic plain-text alternative body
+$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+//Replace the plain text body with one created manually
+$mail->AltBody = 'This is a plain-text message body';
+//Attach an image file
+$mail->addAttachment('images/phpmailer_mini.png');
 
-$mail->SetFrom('info@eprac.com', 'First Last');
+//$pdf_decoded = base64_decode ($pdfString);
 
-$mail->AddReplyTo("kathy.f0611@gmail.com","First Last");
-
-$mail->Subject    = "PHPMailer Test Subject via smtp, basic with authentication";
-
-$mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
-
-$mail->MsgHTML($body);
-
-$address = "yeison@gmail.com";
-$mail->AddAddress($address, "John Doe");
+//$mail->AddStringAttachment($pdf_decoded, 'BASE64.pdf');
 
 
-
-if(!$mail->Send()) {
-  echo "Mailer Error: " . $mail->ErrorInfo;
+//send the message, check for errors
+if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
-  echo "Message sent!";
+    echo "Message sent!";
 }
-    
-
-?>
