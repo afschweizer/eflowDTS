@@ -3,10 +3,11 @@
 include 'ConnectionMongo.php'; 
 
 $coll = $db->Store_Jobs_Send;
+$coll_Mails = $db->Store_Mail_Status;
 
 $arrayResult = Array();
 
- foreach($dataObject->Data as $doc){
+ foreach($dataObject->Data as $doc){ 
 
       $id = '$id';
 
@@ -17,6 +18,12 @@ $arrayResult = Array();
       $coll->insert($doc);
 	
       array_push($arrayResult, $doc->_id->$id);
+   
+    }
+
+	foreach($dataObject->Data_PDF as $doc){
+  
+      $coll_Mails->insert($doc);
    
     }
 
