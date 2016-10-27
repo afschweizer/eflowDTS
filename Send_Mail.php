@@ -37,11 +37,11 @@ $mail->addAddress('yeisonfallas@gmail.com', 'John Doe');
 $mail->Subject = 'PHPMailer SMTP test';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+//$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
 //Replace the plain text body with one created manually
 $mail->AltBody = 'This is a plain-text message body';
 //Attach an image file
-$mail->addAttachment('images/phpmailer_mini.png');
+//$mail->addAttachment('images/phpmailer_mini.png');
 
 //$pdf_decoded = base64_decode ($pdfString);
 
