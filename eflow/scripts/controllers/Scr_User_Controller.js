@@ -284,8 +284,12 @@ $scope.Delete_User_DB = function(){
 								"id_check":CheckBoxes_Array[i].attributes.id_check.value,
 								"id_User_id":CheckBoxes_Array[i].attributes.id_User_id.value  
 							};
-							Array_Delete_User_ID.push(m);  
+						if(eflowDTS.Session.Current_User.ID===CheckBoxes_Array[i].attributes.id_check.value){								
+				 alert("El usuario "+CheckBoxes_Array[i].attributes.id_check.value +" no se pueden eliminar por ser el usuario que esta activo actualmente");
+						}else{
+						Array_Delete_User_ID.push(m); 
 						}
+					}
 					}
 					var Array_Delete_ID=[];	
 					var Array_Not_Delete_ID=[];

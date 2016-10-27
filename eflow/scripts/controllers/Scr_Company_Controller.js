@@ -476,6 +476,7 @@ try{
 							     "Address": $scope.Companys.Address,
 							    "Phone": $scope.Companys.phone,
 							    "Fax": $scope.Companys.fax,
+							    "Mails":[],
 							    "Settings":{
 							    "Unity": $scope.Array_Unity,
 							    "Fuel": $scope.Array_Fuel,
@@ -529,9 +530,7 @@ try{
 							    "Birthdate": $scope.User.Birthdate,
 							    "Type": "Administrador",
 							    "Address": $scope.User.Address
-		}
-		
-		
+		}			
 						};
 			  var onSuccess = function(onSuccess){
 			  	window.location.href = "#";

@@ -477,8 +477,81 @@ try{
         }
     }    
 };
- $scope.Info_Vehicle1 = function(Vehicle,ArrayVehicle){
+ $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
 	try{
+	for(var i = 0; i < ArrayVehicle.length ; i++ ){
+      if(Vehicle === ArrayVehicle[i].ID_Truck){
+		$scope.ObjVeh = {};
+		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
+		$scope.ObjVeh.Weight = ArrayVehicle[i].Weight;
+		$scope.ObjVeh.Cubics = ArrayVehicle[i].Cubics;
+		//peso
+		if($scope.ObjVeh.Weight>$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
+			$scope.Show_Alerta=true;	
+			$scope.Show_Alert=true;	
+			$scope.Weight=($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]);
+			//volumen
+				if($scope.ObjVeh.Cubics>$scope.Data_Vehicule_Cubics[ArrayVehicle[i].ID_Truck]){
+					$scope.Show_Alerta=true;	
+					$scope.Show_Alert=true;	
+					$scope.Cubics=($scope.ObjVeh.Cubics-$scope.Data_Vehicule_Cubics[ArrayVehicle[i].ID_Truck]);
+				 	$scope.freeCubics =$scope.Cubics;
+				}else{
+					$scope.Show_Alerta=false;	
+					$scope.Show_Alert=true;	
+					$scope.freeCubics =0;
+				}
+			$scope.freeWeight =$scope.Weight;
+		}else{
+			$scope.Show_Alerta=false;	
+			$scope.Show_Alert=true;	
+			$scope.freeWeight =0;
+		}
+		
+		
+		/*
+		if($scope.ObjVeh.Weight>$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
+			$scope.Show_Alerta=true;	
+			$scope.Show_Alert=true;	
+			$scope.Weight=($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]);
+			$scope.Cubics=($scope.ObjVeh.Cubics-$scope.Data_Vehicule_Cubics[ArrayVehicle[i].ID_Truck]);
+		$scope.freeWeight =$scope.Weight;
+		$scope.freeCubics =$scope.Cubics;
+	//	$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
+		}else{
+			$scope.Show_Alerta=false;	
+			$scope.Show_Alert=true;	
+		$scope.freeWeight =0;
+	$scope.freeCubics =0;
+			//$scope.freeWeight =("*  No Tiene disponible kilos para cargar la unidad. ");
+		}*/
+      }     
+   } 
+
+}catch (e) {
+        
+        var err;
+        
+        if (e.hasOwnProperty("Generated") === false) {
+            err = {
+                Generated: false,
+                Page: "Scr_VisitPoint_DB_Controller",
+                Method: "Info_Vehicle",
+                Description: "Error no controlado",
+                User: eflowDTS.Session.Current_User.UserName,
+                Company: eflowDTS.Session.Company.Identifier,
+                Date: new Date().getTime(),
+                Error: e
+            };
+            Save_Error(err);
+        } else {
+            Save_Error(e);
+        }
+    }  
+  
+};/*
+ $scope.Info_Vehicle1 = function(Vehicle,ArrayVehicle){
+	try{	
 	for(var i = 0; i < ArrayVehicle.length ; i++ ){
       if(Vehicle === ArrayVehicle[i].ID_Truck){
 		$scope.ObjVeh = {};
@@ -523,53 +596,7 @@ try{
     }  
   
 };
- $scope.Info_Vehicle = function(Vehicle,ArrayVehicle){
-	try{	
-	for(var i = 0; i < ArrayVehicle.length ; i++ ){
-      if(Vehicle === ArrayVehicle[i].ID_Truck){
-		$scope.ObjVeh = {};
-		$scope.ObjVeh.Description = ArrayVehicle[i].Description;
-		$scope.ObjVeh.Weight = ArrayVehicle[i].Weight;
-		$scope.ObjVeh.Cubics = ArrayVehicle[i].Cubics;
-		
-		if($scope.ObjVeh.Weight>$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]){
-			$scope.Show_Alerta=true;	
-			$scope.Show_Alert=true;	
-			$scope.Weight=($scope.ObjVeh.Weight-$scope.Data_Vehicule[ArrayVehicle[i].ID_Truck]);
-		$scope.freeWeight =$scope.Weight;
-	//	$scope.freeWeight =("*  Tiene disponible "+$scope.Weight+" kilos para cargar la unidad. ");
-		}else{
-			$scope.Show_Alerta=false;	
-			$scope.Show_Alert=true;	
-		$scope.freeWeight =0;
-			//$scope.freeWeight =("*  No Tiene disponible kilos para cargar la unidad. ");
-		}
-      }     
-   } 
-
-}catch (e) {
-        
-        var err;
-        
-        if (e.hasOwnProperty("Generated") === false) {
-            err = {
-                Generated: false,
-                Page: "Scr_VisitPoint_DB_Controller",
-                Method: "Info_Vehicle",
-                Description: "Error no controlado",
-                User: eflowDTS.Session.Current_User.UserName,
-                Company: eflowDTS.Session.Company.Identifier,
-                Date: new Date().getTime(),
-                Error: e
-            };
-            Save_Error(err);
-        } else {
-            Save_Error(e);
-        }
-    }  
-  
-};
-
+*/
 $scope.Select_User = function(){
 	try {
         var Request = {
@@ -643,9 +670,11 @@ $scope.Select_Vehicle = function(){
 		for(var i=0; i<$scope.ArrayVehicle.length;i++ ){
 			if($scope.Data_Vehicule.hasOwnProperty($scope.ArrayVehicle[i].ID_Truck)){
 				$scope.Data_Vehicule[$scope.ArrayVehicle[i].ID_Truck]=$scope.Data_Vehicule[$scope.ArrayVehicle[i].ID_Truck];
+				$scope.Data_Vehicule_Cubics[$scope.ArrayVehicle[i].ID_Truck]=$scope.Data_Vehicule_Cubics[$scope.ArrayVehicle[i].ID_Truck];
 			}
 			else{
 				$scope.Data_Vehicule[$scope.ArrayVehicle[i].ID_Truck]=0;
+				$scope.Data_Vehicule_Cubics[$scope.ArrayVehicle[i].ID_Truck]=0;
 			}
 		}
 			$scope.$apply($scope.ArrayVehicle);
@@ -833,14 +862,18 @@ $scope.Select_VisitPoint = function(){
 		var onSuccess = function(Response){
 		$scope.ArrayJobs = Response;
 		$scope.Data_Vehicule=[];
+		$scope.Data_Vehicule_Cubics=[];
 		for(var i=0; i<Response.length;i++ ){
 			var jobs=Response[i].Jobs;
 			for(var j=0; j<jobs.length;j++ ){
 			if($scope.Data_Vehicule.hasOwnProperty(Response[i].ID_Truck)){
+				
 				$scope.Data_Vehicule[Response[i].ID_Truck]+=jobs[j].JobWeight;
+				$scope.Data_Vehicule_Cubics[Response[i].ID_Truck]+=jobs[j].JobCubics;
 			}
 			else{
 				$scope.Data_Vehicule[Response[i].ID_Truck]=jobs[j].JobWeight;
+				$scope.Data_Vehicule_Cubics[Response[i].ID_Truck]=jobs[j].JobCubics;
 			}	
 					}
 			}
@@ -1141,7 +1174,7 @@ try{
 $scope.Visualize_VisitPoint = function(Obj){
 try{
 	$scope.Filter_License(Obj.User);
-	$scope.Info_Vehicle1(Obj.ID_Truck,$scope.ArrayVehicle);
+	$scope.Info_Vehicle(Obj.ID_Truck,$scope.ArrayVehicle);
 	 $scope.Show_Alert=true;
 		for(var i = 0; i < Obj.Jobs.length; i++){
 			if(Obj.Jobs[i].JobType === "delivery"){

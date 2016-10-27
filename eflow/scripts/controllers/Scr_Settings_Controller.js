@@ -4,6 +4,9 @@ DTS_APP.controller('Scr_Settings_Controller', function($scope) {
     		try{
        	Set_Current_Page();
 $scope.Companys={};
+if(!eflowDTS.Session.Company.Mails){
+	eflowDTS.Session.Company.Mails=[];
+}
 $scope.Company = eflowDTS.Session.Company.Name;
 $scope.Image = eflowDTS.Session.Company.Logo;
 $scope.Array_License = eflowDTS.Session.Company.Settings.License;
@@ -11,6 +14,7 @@ $scope.Array_User = eflowDTS.Session.Company.Settings.User;
 $scope.Array_Vehicle = eflowDTS.Session.Company.Settings.Vehicle;
 $scope.Array_Fuel = eflowDTS.Session.Company.Settings.Fuel;
 $scope.Array_Unity = eflowDTS.Session.Company.Settings.Unity;
+$scope.Array_Mail = eflowDTS.Session.Company.Mails;
 
         $scope.Show_Settings=true;
    }catch (e) {

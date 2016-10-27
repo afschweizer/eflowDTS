@@ -173,8 +173,39 @@
               <img class="profile-user-img img-responsive img-circle"  ng-click="Show_Settings_Logo=true; Show_Settings = false" src="{{Image}}" alt="User profile picture" width="350px" height="350px">
               <h3 class="profile-username text-center">{{Company}} </h3>
 
+          <div  class="panel panel-info">
+            <div class="panel-heading" ng-click="Show_Settings_Logo=false; Show_Settings_License= false; Show_Settings_Mail= true;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Correos para envio de PDF</div>
+            <div class="panel-body" ng-show="Show_Settings_Mail"> 
+                <label class="col-sm-4 control-label">Nombre del Departamento o Persona:</label>
+                <input class="col-sm-2"type="text" name="Input_Value" class="form-control" ng-model="Mail.Value" placeholder="Nombre...">
+                <label class="col-sm-2 control-label">Correo:</label>
+                <input class="col-sm-2" type="Mail" name="Input_Description" class="form-control" ng-model="Mail.Description" placeholder="Correo...">
+                <div class="col-sm-2">
+                  <a   ng-click="validate_Settings(Mail,Array_Mail)">
+                    <i class="glyphicon glyphicon-check" >Guardar Correo</i>
+                  </a>
+                </div>
+              
+               <table style="width:100%">
+                  <tr>
+                    <th class="col-sm-4">Nombre</th>
+                    <th class="col-sm-4">Correo</th>
+                    <td class="col-sm-4">Mantenimiento</td>
+                  </tr>
+                  <tr ng-repeat="Mails in Array_Mail">
+                    <td class="col-sm-4"> {{Mails.Value}}</td>
+                    <td class="col-sm-4"> {{Mails.Description}}</td>
+                    <td class="col-sm-4">
+                      <a class="btn btn-danger">
+                        <i class="glyphicon glyphicon-remove-sign" ng-click="Remove_In_Array(Mails,Array_Mail)"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
               <div  class="panel panel-info">
-            <div class="panel-heading" ng-click="Show_Settings_Logo=false; Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = true">Unidad de Medida</div>
+            <div class="panel-heading" ng-click="Show_Settings_Logo=false;Show_Settings_Mail= false;Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = true">Unidad de Medida</div>
             <div class="panel-body"  ng-show="Show_Settings_Unity"> 
                 <label class="col-sm-2 control-label">Valor:</label>
                 <input class="col-sm-2"type="text" name="Input_Value" class="form-control" ng-model="Unity.Value" placeholder="Valor...">
@@ -204,7 +235,7 @@
               </div>
             </div>  
           <div  class="panel panel-info">
-            <div class="panel-heading"ng-click="Show_Settings_Logo=false; Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= true;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Combustible</div>
+            <div class="panel-heading"ng-click="Show_Settings_Logo=false;Show_Settings_Mail= false;Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= true;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Combustible</div>
             <div class="panel-body"  ng-show="Show_Settings_Fuel"> 
                 <label class="col-sm-2 control-label">Valor:</label>
                 <input class="col-sm-2"type="text" name="Input_Value" class="form-control" ng-model="Fuel.Value" placeholder="Valor...">
@@ -264,7 +295,7 @@
               </div>
             </div>-->
           <div  class="panel panel-info">
-            <div class="panel-heading" ng-click="Show_Settings_Logo=false; Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= true;Show_Settings_Unity = false">Tipos de Vehiculos</div>
+            <div class="panel-heading" ng-click="Show_Settings_Logo=false;Show_Settings_Mail= false;Show_Settings_License= false;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= true;Show_Settings_Unity = false">Tipos de Vehiculos</div>
             <div class="panel-body" ng-show="Show_Settings_Vehicle"> 
                 <label class="col-sm-2 control-label">Valor:</label>
                 <input class="col-sm-2"type="text" name="Input_Value" class="form-control" ng-model="Vehicle.Value" placeholder="Valor...">
@@ -294,7 +325,7 @@
               </div>
             </div>
           <div  class="panel panel-info">
-            <div class="panel-heading" ng-click="Show_Settings_Logo=false; Show_Settings_License= true;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Licencia</div>
+            <div class="panel-heading" ng-click="Show_Settings_Logo=false;Show_Settings_Mail= false;Show_Settings_License= true;Show_Settings_User= false;Show_Settings_Fuel= false;Show_Settings_Vehicle= false;Show_Settings_Unity = false">Tipos de Licencia</div>
             <div class="panel-body" ng-show="Show_Settings_License"> 
                 <label class="col-sm-2 control-label">Valor:</label>
                 <input class="col-sm-2"type="text" name="Input_Value" class="form-control" ng-model="License.Value" placeholder="Valor...">

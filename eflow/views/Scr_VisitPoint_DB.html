@@ -279,7 +279,7 @@
               <label class="col-sm-4 control-label">Asignar al Vehículo:</label>
 						<div class="col-sm-8"> 
 							<div class="form-group">                       
-              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj.ID_Truck as Obj.ID_Truck for Obj in ArrayVehicle_Filter| orderBy:'ID_Truck'" ng-change="Info_Vehicle1(VisitPoint.ID_Truck,ArrayVehicle)" style="width: 80%;" class="form-control" id="Vehicle" ></select>
+              <select ng-model="VisitPoint.ID_Truck" ng-options="Obj.ID_Truck as Obj.ID_Truck for Obj in ArrayVehicle_Filter| orderBy:'ID_Truck'" ng-change="Info_Vehicle(VisitPoint.ID_Truck,ArrayVehicle)" style="width: 80%;" class="form-control" id="Vehicle" ></select>
             </div></div></div>
             <div class="form-group">
               <label class="col-sm-4 control-label">Tiempo promedio(min):</label>
@@ -294,8 +294,7 @@
                 <input type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" class="form-control" ng-model="VisitPoint.Delivery_Period_End" required>
             </div> 
             <br/>              
-
-       <div  ng-show="Show_Alert"role="alert"> <strong>*  Tiene disponible {{freeWeight}} kilos para cargar la unidad. </strong></div>            <br/>              
+       <div  ng-show="Show_Alert"role="alert"> <strong>*  Tiene disponible {{freeCubics}} de volumen para cargar la unidad. *  Tiene disponible {{freeWeight}} kilos para cargar la unidad. </strong></div>            <br/>              
 <!--TAREAS-->
             <div  id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo" style="background-color:#4096c6"><b>Trabajos</b>  
@@ -327,7 +326,7 @@
                 <div class="col-sm-8">  
                  <div class="form-group">
                       <select class="form-control" ng-model="VisitPoint_Add_Task.JobClass" ng-change="Show_Serial_Edit(VisitPoint_Add_Task)" required> 
-                        <option value="SS">Sin serie</option>
+                        <option value="SS">Sin Serie</option>
                         <option value="SU">Serie Unica</option>
                         <option value="SP">Serie Programada</option>
                       </select>
@@ -554,8 +553,8 @@
                 <input required type="time" style="width:40%; left: 55%; float:right;  position: absolute;" data-toggle="tooltip" title="Hora de Finalización" class="form-control" ng-model="VisitPoint_Add.Delivery_Period_End" required>
            </div>              
             <br/>
-       <div  ng-show="Show_Alert"role="alert"> <strong>*  Tiene disponible {{freeWeight}} kilos para cargar la unidad. </strong></div>
-            <br/>
+       <div  ng-show="Show_Alert"role="alert"> <strong>*  Tiene disponible {{freeCubics}} de volumen para cargar la unidad. *  Tiene disponible {{freeWeight}} kilos para cargar la unidad. </strong></div>            <br/>              
+
             <div ng-show="Show_Alerta" id="demo" class="panel panel-primary">
              <div class="panel-heading" data-toggle="" data-target="#demo"><b>Trabajos</b></div>  
      <div class="panel-body"> 
