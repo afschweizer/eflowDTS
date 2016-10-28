@@ -17,6 +17,7 @@ $scope.ArrayVisitPoints_Import = [];
 	$scope.Headers= [{"es":"NOMBRE","value":"Name"},{"es":"CEDULA JURIDICA","value":"Legal_Cedula"},
 		{"es":"SECTOR","value":"Route"},{"es":"DIRECCION","value":"Address"},
 		{"es":"ENCARGADO","value":"Manager"},{"es":"CORREO","value":"Mail"}] ;
+$scope.Cabecera =["ID_Location","Manager","Name","Legal_Cedula","Address","Telephone_Number","Mail","Latitude","Longitude","ID_Route","Route_Name","Country","District","Canton","Province"];
  Select_Routes();
 
 }catch (e) {
@@ -647,10 +648,27 @@ $scope.Remove_In_Array = function(Obj,Array){
 
 function CSV_To_JSON(csv){
 		try{
+		var existe =false;
 		  var Lines = csv.split("\n");
 		  var ArrayJson = [];
 		  var Headers = Lines[0].replace(/"/g,'').split(",");
-		  
+		  if($scope.Cabecera.length===(Headers.length)-1){
+			for(var k = 0; k < $scope.Cabecera.length; k++){
+		  		if((Headers.indexOf($scope.Cabecera[k]))!==-1){
+		  		 existe =false;
+			  	}
+			  	else{		  		
+		 			existe=true;
+					break;
+			  	}
+		  	}
+	 	}else{
+	 		existe=true;
+	 	}
+		if(existe===true){
+	 		alert("Archivo invalido");
+	 		return ArrayJson=0;
+	 	}else{
 		  for(var i = 1; i < (Lines.length)-1; i++){
 			  
 			 var Obj = {};
@@ -676,7 +694,7 @@ function CSV_To_JSON(csv){
 		  }
 		  
      return ArrayJson; 
-	 
+	 }
 	}catch (e) {
         
         var err;

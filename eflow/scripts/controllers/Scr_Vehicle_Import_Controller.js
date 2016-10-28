@@ -22,6 +22,7 @@ $scope.ArrayLicense =eflowDTS.Session.Company.Settings.License;
 	$scope.Headers= 
 [{"es":"PLACA","value":"ID_Truck"},{"es":"MARCA","value":"Brand"},
 {"es":"AÑO","value":"Year"},{"es":"PESO","value":"Weight"},{"es":"VOLUMEN","value":"Cubics"}] ;
+$scope.Cabecera =["Id_Vehicle","Brand","Model","Year","Fuel","Type_Vehicle","Cylinder_Capacity","ID_Truck","Weight","Cubics","Description","License"];
 
 }catch (e) {
          
@@ -429,6 +430,9 @@ function Import_Json(file){
 	 var arr = [];
 	arr = JSON.parse(this.result);
 	
+	
+	
+	
 	for(var i = 0; i < arr.length; i++){
         arr[i].Company = eflowDTS.Session.Company.Identifier;
 		arr[i].ID_Truck = arr[i].ID_Truck.replace(/\s/g, '').toUpperCase();
@@ -639,37 +643,46 @@ $scope.Remove_In_Array = function(Obj,Array){
 };
 
 function CSV_To_JSON(csv){
-		try{
-		  var Lines = csv.split("\n");
-		  var ArrayJson = [];
-		  var Headers = Lines[0].replace(/"/g,'').split(",");
-		  
-		  for(var i = 1; i < (Lines.length)-1; i++){
-			  
-			 var Obj = {};
-			 var CurrentLine = Lines[i].replace(/"/g,'').split(",");
-			 
-			 
-				 for(var j = 0; j < Headers.length; j++){
-					
+	try{
+		var existe =false;
+		var Lines = csv.split("\n");
+		var ArrayJson = [];
+		var Headers = Lines[0].replace(/"/g,'').split(",");
+		if($scope.Cabecera.length===(Headers.length)-1){
+			for(var j = 0; j < $scope.Cabecera.length; j++){
+		  		if((Headers.indexOf($scope.Cabecera[j]))!==-1){
+		  		 existe =false;
+			  	}
+			  	else{		  		
+		 			existe=true;
+					break;
+			  	}
+		  	}
+	 	}else{
+	 		existe=true;
+	 	}
+		if(existe===true){
+	 		alert("Archivo invalido");
+	 		return ArrayJson=0;
+	 	}else{
+	 		for(var i = 1; i < (Lines.length)-1; i++){
+				var Obj = {};
+				var CurrentLine = Lines[i].replace(/"/g,'').split(",");
+			  	for(var j = 0; j < Headers.length; j++){
 					if(Headers[j] === "License"){
 						Obj[Headers[j]] = CurrentLine[j].split("|");
 					}else{
-					Obj[Headers[j]] = CurrentLine[j];
-				    }
-
-				 }
-				 
-				 Obj.Company = eflowDTS.Session.Company.Identifier;
-				 Obj.Year = parseInt(Obj.Year);
-				 Obj.Weight = parseInt(Obj.Weight);
-				 Obj.Cubics = parseInt(Obj.Cubics);
-				 ArrayJson.push(Obj);
-		  }
-		  
-     return ArrayJson; 
-	 
-
+						Obj[Headers[j]] = CurrentLine[j];
+					}
+				}
+				Obj.Company = eflowDTS.Session.Company.Identifier;
+				Obj.Year = parseInt(Obj.Year);
+				Obj.Weight = parseInt(Obj.Weight);
+				Obj.Cubics = parseInt(Obj.Cubics);
+				ArrayJson.push(Obj);
+			}
+     		return ArrayJson; 
+	 	}	
 }catch (e) {
         
         var err;

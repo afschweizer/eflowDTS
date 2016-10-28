@@ -19,6 +19,7 @@ $scope.init = function(){
 $scope.ArrayRoutes_Import = [];
 	$scope.Headers= [{"es":"NOMBRE","value":"Route_Name"},{"es":"IDENTIFICADOR","value":"ID_Route"},
 	{"es":"DESCRIPCION","value":"Route_Description"}] ;
+	$scope.Cabecera =["Route_Name","ID_Route","Route_Description","Route_Path"];
 
 }catch (e) {
         
@@ -639,10 +640,27 @@ $scope.Remove_In_Array = function(Obj,Array){
 function CSV_To_JSON(csv){
 	try{
 		
+		var existe =false;
 		  var Lines = csv.split("\n");
 		  var ArrayJson = [];
 		  var Headers = Lines[0].replace(/"/g,'').split(",");
-		  
+		    if($scope.Cabecera.length===(Headers.length)-1){
+			for(var k = 0; k < $scope.Cabecera.length; k++){
+		  		if((Headers.indexOf($scope.Cabecera[k]))!==-1){
+		  		 existe =false;
+			  	}
+			  	else{		  		
+		 			existe=true;
+					break;
+			  	}
+		  	}
+	 	}else{
+	 		existe=true;
+	 	}
+		if(existe===true){
+	 		alert("Archivo invalido");
+	 		return ArrayJson=0;
+	 	}else{
 		  for(var x = 1; x < (Lines.length)-1; x++){
 			  
 			 var Obj = {};
@@ -682,7 +700,7 @@ function CSV_To_JSON(csv){
 		  }
 		  
      return ArrayJson; 
-	 
+	 }
 	}catch (e) {
         
         var err;

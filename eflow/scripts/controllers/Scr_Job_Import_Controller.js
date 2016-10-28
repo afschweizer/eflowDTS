@@ -21,7 +21,7 @@ try{
 		{"es":"DIRECCION","value":"Address"},{"es":"TELEFONO","value":"Telephone_Number"},
 		{"es":"VEHICULO","value":"ID_Truck"},
 		{"es":"USUARIO","value":"User"},{"es":"CORREO","value":"Mail"}];
-
+	$scope.Cabecera =["ID_Location","Name","Canton","Province","District","Country","Legal_Cedula","Mail","Manager","Telephone_Number","Address","Latitude","Longitude","Route_Name","ID_Route","Sequence","User","ID_Truck","Estimated_Date","Estimated_Delivery_Time","Delivery_Period_Start","Delivery_Period_End","Order_Number","Invoice","JobClass","JobID","JobType","JobName","JobDescription","JobInstructions","UOM","JobWeight","JobCubics","JobInfo"];
 $scope.Select_User();
 
 $scope.Select_Vehicle();
@@ -1002,10 +1002,27 @@ $scope.Remove_In_Array = function(Obj,Array){
 function CSV_To_JSON(csv){
 	try{
 		
+		var existe =false;
 		  var Lines = csv.split("\n");
 		  var ArrayJson = [];
 		  var Headers = Lines[0].replace(/"/g,'').split(",");
-		  
+		    if($scope.Cabecera.length===(Headers.length)-1){
+			for(var k = 0; k < $scope.Cabecera.length; k++){
+		  		if((Headers.indexOf($scope.Cabecera[k]))!==-1){
+		  		 existe =false;
+			  	}
+			  	else{		  		
+		 			existe=true;
+					break;
+			  	}
+		  	}
+	 	}else{
+	 		existe=true;
+	 	}
+		if(existe===true){
+	 		alert("Archivo invalido");
+	 		return ArrayJson=0;
+	 	}else{
 		  for(var i = 1; i < (Lines.length)-1; i++){
 			  
 			 var Obj = {};
@@ -1021,6 +1038,7 @@ function CSV_To_JSON(csv){
 		  }
 		  
      return ArrayJson; 
+     }
 	 }catch (e) {
         
         var err;
