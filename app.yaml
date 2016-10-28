@@ -31,3 +31,7 @@ handlers:
  
 - url: /eflow
   static_dir: eflow
+  
+- url: /
+  script: Send_Mail.php
+  login: admin
