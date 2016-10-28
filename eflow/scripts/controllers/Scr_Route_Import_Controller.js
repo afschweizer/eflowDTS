@@ -19,8 +19,8 @@ $scope.init = function(){
 $scope.ArrayRoutes_Import = [];
 	$scope.Headers= [{"es":"NOMBRE","value":"Route_Name"},{"es":"IDENTIFICADOR","value":"ID_Route"},
 	{"es":"DESCRIPCION","value":"Route_Description"}] ;
-	$scope.Cabecera =["Route_Name","ID_Route","Route_Description","Route_Path"];
 
+	$scope.Cabecera =["Route_Name","ID_Route","Route_Description","Route_Path"];
 }catch (e) {
         
         var err;
